@@ -3,6 +3,12 @@ import os
 
 EXPECTED_INTERVIEW_MINUTES = 40
 EXPECTED_INTERVIEW_SECONDS = EXPECTED_INTERVIEW_MINUTES * 60
+MIN_RESPONSE_LENGTH = 30
+MIN_RESPONSE_TIME_SECONDS = 10
+MAX_RESPONSE_LENGTH = 200
+MAX_RESPONSE_TIME_SECONDS = 60
+LONG_INTERVIEW_THRESHOLD = 0.8
+SHORT_INTERVIEW_THRESHOLD = 0.3
 
 def interview_simulator():
     print("-----------------------------------------------------")
@@ -39,9 +45,9 @@ def interview_simulator():
         responses[key] = {"question": question, "answer": user_response, "time": response_time}
 
         # Feedback based on response quality indicators
-        if len(user_response) < 30 and response_time < 10 and i > 0:
+        if len(user_response) < MIN_RESPONSE_LENGTH and response_time < MIN_RESPONSE_TIME_SECONDS and i > 0:
             print("フィードバック: もう少し具体的に、掘り下げて回答できると良いでしょう。STAR法（状況→課題→行動→結果）を意識してみてください。")
-        elif len(user_response) > 200 and response_time > 60:
+        elif len(user_response) > MAX_RESPONSE_LENGTH and response_time > MAX_RESPONSE_TIME_SECONDS:
             print("フィードバック: 回答が長すぎると、要点が伝わりにくくなることがあります。結論→理由→具体例の順で簡潔にまとめましょう。")
         else:
             print("フィードバック: 回答を承りました。")
@@ -66,9 +72,9 @@ def interview_simulator():
         print("-" * 20)
 
     print(f"\n合計回答時間: {total_response_time}秒")
-    if total_response_time > EXPECTED_INTERVIEW_SECONDS * 0.8:
+    if total_response_time > EXPECTED_INTERVIEW_SECONDS * LONG_INTERVIEW_THRESHOLD:
         print("総合評価: 全体的に回答時間が長くなる傾向があるようです。時間配分を意識し、より簡潔に要点を伝える練習をしましょう。")
-    elif total_response_time < EXPECTED_INTERVIEW_SECONDS * 0.3:
+    elif total_response_time < EXPECTED_INTERVIEW_SECONDS * SHORT_INTERVIEW_THRESHOLD:
         print("総合評価: 回答時間が短い傾向にあるようです。質問に対して、より具体例や深掘りした内容を盛り込むことを意識しましょう。")
     else:
         print("総合評価: 時間配分は概ね良好です。さらに回答の質を高めることに注力しましょう。")
