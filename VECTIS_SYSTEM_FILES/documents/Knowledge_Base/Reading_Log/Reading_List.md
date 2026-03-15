@@ -19,6 +19,11 @@ Since your "Second Brain" needs to be organized, use this file to track books, a
 - [ ] **複雑系の経営**
   - *Focus*: カオス理論、自己組織化のビジネス応用。
 
+## 🔖 Tech Trend Posts (X)
+
+- [x] **AI・開発ツール 6選 (2026-03)** — BM25s / Zed for Students / MiroFish / phi16 シェーダー / freee MCP / CodeGraphContext
+  - [Note: AI_Dev_Tools_Trends_Report.md](../Deep_Knowledge/2026-03-15_AI_Dev_Tools_Trends_Report.md)
+
 ## ✅ Completed
 
 - [x] **Liberal Arts Deep Knowledge Sources** (Aggregation)
@@ -31,3 +36,4 @@ All detailed notes are stored in `Knowledge_Base/Reading_Log/` or `Knowledge_Bas
 - [Liberal Arts / Philosophy](../Deep_Knowledge/2026-02-03_LiberalArts_DeepKnowledge.md)
 - [Kyoto School & AI](../Deep_Knowledge/2026-02-03_Kyoto_School_AI.md)
 - [VSM Trends Report](../Deep_Knowledge/2026-02-03_VSM_Trends_Report.md)
+- [AI・開発ツール トレンドレポート (2026-03)](../Deep_Knowledge/2026-03-15_AI_Dev_Tools_Trends_Report.md)
