@@ -1,6 +1,9 @@
 import time
 import os
 
+EXPECTED_INTERVIEW_MINUTES = 40
+EXPECTED_INTERVIEW_SECONDS = EXPECTED_INTERVIEW_MINUTES * 60
+
 def interview_simulator():
     print("-----------------------------------------------------")
     print("  パーソルAVCテクノロジー株式会社 面接シミュレーション  ")
@@ -63,9 +66,9 @@ def interview_simulator():
         print("-" * 20)
 
     print(f"\n合計回答時間: {total_response_time}秒")
-    if total_response_time > 40 * 60 * 0.8:
+    if total_response_time > EXPECTED_INTERVIEW_SECONDS * 0.8:
         print("総合評価: 全体的に回答時間が長くなる傾向があるようです。時間配分を意識し、より簡潔に要点を伝える練習をしましょう。")
-    elif total_response_time < 40 * 60 * 0.3:
+    elif total_response_time < EXPECTED_INTERVIEW_SECONDS * 0.3:
         print("総合評価: 回答時間が短い傾向にあるようです。質問に対して、より具体例や深掘りした内容を盛り込むことを意識しましょう。")
     else:
         print("総合評価: 時間配分は概ね良好です。さらに回答の質を高めることに注力しましょう。")
