@@ -1,0 +1,23 @@
+{
+  "title": "経験者採用 - kansai.meti.go.jp",
+  "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9tT3NqVFhxTi1zZ3l0dFZOeVRldGNhUHRjNmhSYlBNbmVRMjduQmFQcWszRXpVd0ZBTmlOMzdCRm9UcHJ5LUlTYlAwM3dUTThFX3k0a3d6Ym9xN0gwekR2UzEwZFoyc1RERVNydUVB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTE9tT3NqVFhxTi1zZ3l0dFZOeVRldGNhUHRjNmhSYlBNbmVRMjduQmFQcWszRXpVd0ZBTmlOMzdCRm9UcHJ5LUlTYlAwM3dUTThFX3k0a3d6Ym9xN0gwekR2UzEwZFoyc1RERVNydUVB?o",
+  "ai_analysis": {
+    "relevance": "low",
+    "summary": "関西経済産業局の経験者採用情報。詳細不明。",
+    "true_intent": "省庁のマンパワー強化。即戦力確保と、民間企業のノウハウ吸収が目的か。採用側の都合の良い人材獲得を狙っている可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "関西経済産業局",
+    "action_required": false,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "## 関西経済産業局：本質と27卒が狙うべき理由\n\n1. **主要武器**: 関西経済界への圧倒的影響力と情報網。中小企業から大企業、大学まで繋ぐハブ機能が強み。地域経済活性化のキーマンとなれる。\n2. **26-27卒への温度感**: 採用数自体は少ないが、地域活性化への熱意と多様なバックグラウンドを持つ人材を重視。\n3. **EGO適性**: 政策立案には論理的思考力必須。データ分析やAI活用はまだ発展途上だが、推進できる人材は重宝される。\n4. **裏の弱点**: 官僚組織ゆえの硬直性、スピード感の欠如。創造的なアイデアが形になるまで時間がかかる可能性あり。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "省庁のマンパワー強化。即戦力確保と、民間企業のノウハウ吸収が目的か。採用側の都合の良い人材獲得を狙っている可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:29:18.890943",
+  "source": "経産省 採用"
+}

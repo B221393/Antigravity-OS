@@ -1,0 +1,24 @@
+{
+  "title": "ソニーのUI/UXデザイナーの働き方徹底解剖！ イメージング",
+  "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE12VXFsVWdqV3d3TmZnd1NkX2pLOUlUZHV2WkpGX1d3LS0yRm8zZHJMUFdjOVVpVjZNeUw1OU5LY0xSN0R0Wm1pX21kWGJoaXpYWktFNWR5MkJNckRIbFVSeGhGeGl3UmgyV2htX21SNG5oTWVVemc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMidkFVX3lxTE12VXFsVWdqV3d3TmZnd1NkX2pLOUlUZHV2WkpGX1d3LS0yRm8zZHJMUFdjOVVpVjZNeUw1OU5LY0xSN0R0Wm1pX21kWGJoaXpYWktFNWR5MkJNckRIbFVSeGhGeGl3UmgyV2htX21SNG",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ソニーがUI/UXデザイナーの働き方を紹介。イメージング領域にフォーカス。",
+    "true_intent": "27卒を含む学生への企業イメージ向上と、優秀なUI/UXデザイナーの採用促進。イメージング領域の技術力をアピールし、競合他社への牽制も含む。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "Sony",
+    "action_required": true,
+    "category": "広告",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。ソニーの本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: グローバルブランド、多様な技術ポートフォリオ（エンタメ、イメージング、センシング等）、クリエイティビティを尊重する企業文化。\n2.  **26-27卒への温度感**: ポテンシャル重視。多様なバックグラウンドを持つ学生を積極的に採用。グローバル志向、挑戦意欲を重視。\n3.  **EGO適性**: データドリブンな意思決定を推進。AI、機械学習技術の活用に積極的。論理的思考力、問題解決能力を重視する文化。\n4.  **裏の弱点**: 事業領域が広いため、部署によっては縦割り意識が残存。変化のスピードが遅い場合も。グローバル競争激化のリスク。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Source:** Sony Japan (sony.jp)\n*   **Encoding:** Shift_JIS (Japanese)\n*   **Description:** Focuses on products, company information, and online store.\n*   **Technology:** Utilizes JavaScript, CSS, and Tealium for analytics.\n*   **Meta Tags:** Includes descriptions, keywords, and social media tags (OG).\n\n**Structured Summary:**\n\nSony Japan website, built using Shift_JIS encoding, provides product information, company details, and access to the Sony online store. The site uses standard web technologies and Tealium for tracking.\n\n**Gap Analysis:**\n\n*   **Encoding:** The use of Shift_JIS indicates a focus on legacy Japanese systems, which might not be optimal for global accessibility and modern web standards.\n*   **Modernization:** Site rendering is old.\n*   **Content:** All scraped texts are in Japanese."
+  },
+  "critical_analysis": {
+    "true_intent": "27卒を含む学生への企業イメージ向上と、優秀なUI/UXデザイナーの採用促進。イメージング領域の技術力をアピールし、競合他社への牽制も含む。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:15:38.991118",
+  "source": "ソニーグループ 戦略"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "ビジネスコース新卒採用において6月6日から27卒向けインター",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE54cXEwTGhkRjJzbnd5WkNpQnMwYWRPU2tmQjRTTjBDTUlCYTFaSDFuM3pheXVXWXRldEFTcE8tcVB4LWVkNUJadHRKd01JVUR2NjRoSjZyenVHNnYzOHc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE54cXEwTGhkRjJzbnd5WkNpQnMwYWRPU2tmQjRTTjBDTUlCYTFaSDFuM3pheXVXWXRldEFTcE8tcVB4LWVkNUJadHRKd01JVUR2NjRoSjZyenVHNnYzOHc?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "この情報はインターンシップを支援する企業への利権獲得に関係している可能性があることを指摘する。",
+    "true_intent": "この情報は、インターンシップの機会を確保するための利権獲得に関係している可能性があることを暗示する。",
+    "bias_warning": "利権構造を特定するための特定の分析はできないため、完全な分析はできない。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、インターンシップの機会を確保するための利権獲得に関係している可能性があることを暗示する。",
+    "bias_warning": "利権構造を特定するための特定の分析はできないため、完全な分析はできない。"
+  },
+  "collected_at": "2026-01-26T19:21:23.259100",
+  "source": "ES締切 (Google)"
+}

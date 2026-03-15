@@ -1,0 +1,23 @@
+{
+  "title": "戦略的IR支援プログラム「IR For Growth」を提供",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBETnlFcE1fSl9hQU5FWmhtNnFVZW51TS1XcFV3SVphYkxWNFdoN29OV2YyRmxXZl9tUUVsVzB3OWVRaVZpMmJaZl9KcGpmbjQ3MlZyTF9DN0tXR3d6ZkR3MmxaRDdlaUpNU2dV?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTFBETnlFcE1fSl9hQU5FWmhtNnFVZW51TS1XcFV3SVphYkxWNFdoN29OV2YyRmxXZl9tUUVsVzB3OWVRaVZpMmJaZl9KcGpmbjQ3MlZyTF9DN0tXR3d6ZkR3MmxaRDdlaUpNU2dV?oc=5\"",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "電通がIR支援プログラム「IR For Growth」開始。企業の株価向上を支援。",
+    "true_intent": "電通が上場企業向けIR支援で収益源を拡大。株主価値向上支援を名目に、企業と投資家の情報格差を利用し、高額なコンサルティングフィーを得る狙いか。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "電通",
+    "action_required": true,
+    "category": "広告/メディア",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。電通の本質的価値と27卒が狙うべき理由を構造化します。\n\n1.  **主要武器**: クライアント課題解決を起点とした、統合マーケティング戦略立案力と実行力。メディア、クリエイティブ、PR等、多様な専門性を束ねる総合力が源泉。\n\n2.  **26-27卒への温度感**: デジタル人材、データ分析人材を積極的に採用。多様なバックグラウンドを持つ人材を求める傾向が強まっている。\n\n3.  **EGO適性**: 構造的思考は必須。AI活用は推進中だが、使いこなせる人材は不足。提案力と実行力で差がつく。\n\n4.  **裏の弱点**: 組織の縦割り構造が残存し、連携に時間がかかる場合がある。長時間労働体質からの脱却は道半ば。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "電通が上場企業向けIR支援で収益源を拡大。株主価値向上支援を名目に、企業と投資家の情報格差を利用し、高額なコンサルティングフィーを得る狙いか。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T14:37:10.790145",
+  "source": "Active:電通"
+}

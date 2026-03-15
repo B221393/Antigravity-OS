@@ -1,0 +1,2802 @@
+[
+  {
+    "id": "app_100",
+    "name": "Cpu Calculator",
+    "category": "Utility",
+    "path": "app_100_cpu_calculator.py",
+    "desc": "Auto-generated micro app for Cpu."
+  },
+  {
+    "id": "app_101",
+    "name": "Password Generator",
+    "category": "Utility",
+    "path": "app_101_password_generator.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_102",
+    "name": "Code Analyzer",
+    "category": "Utility",
+    "path": "app_102_code_analyzer.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_103",
+    "name": "Color Checker",
+    "category": "Health",
+    "path": "app_103_color_checker.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_104",
+    "name": "Sleep Converter",
+    "category": "System",
+    "path": "app_104_sleep_converter.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_105",
+    "name": "Mood Converter",
+    "category": "Dev",
+    "path": "app_105_mood_converter.py",
+    "desc": "Auto-generated micro app for Mood."
+  },
+  {
+    "id": "app_106",
+    "name": "Guid Analyzer",
+    "category": "Finance",
+    "path": "app_106_guid_analyzer.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_107",
+    "name": "Water Logger",
+    "category": "System",
+    "path": "app_107_water_logger.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_108",
+    "name": "Code Logger",
+    "category": "Dev",
+    "path": "app_108_code_logger.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_109",
+    "name": "Diff Logger",
+    "category": "Dev",
+    "path": "app_109_diff_logger.py",
+    "desc": "Auto-generated micro app for Diff."
+  },
+  {
+    "id": "app_110",
+    "name": "Stock Logger",
+    "category": "Utility",
+    "path": "app_110_stock_logger.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_111",
+    "name": "Stock Generator",
+    "category": "Security",
+    "path": "app_111_stock_generator.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_112",
+    "name": "Time Generator",
+    "category": "Utility",
+    "path": "app_112_time_generator.py",
+    "desc": "Auto-generated micro app for Time."
+  },
+  {
+    "id": "app_113",
+    "name": "Color Generator",
+    "category": "Security",
+    "path": "app_113_color_generator.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_114",
+    "name": "Loan Generator",
+    "category": "System",
+    "path": "app_114_loan_generator.py",
+    "desc": "Auto-generated micro app for Loan."
+  },
+  {
+    "id": "app_115",
+    "name": "Mood Logger",
+    "category": "Utility",
+    "path": "app_115_mood_logger.py",
+    "desc": "Auto-generated micro app for Mood."
+  },
+  {
+    "id": "app_116",
+    "name": "Lint Viewer",
+    "category": "Learning",
+    "path": "app_116_lint_viewer.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_117",
+    "name": "Color Viewer",
+    "category": "Health",
+    "path": "app_117_color_viewer.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_118",
+    "name": "Hash Calculator",
+    "category": "Health",
+    "path": "app_118_hash_calculator.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_119",
+    "name": "Guid Generator",
+    "category": "Security",
+    "path": "app_119_guid_generator.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_120",
+    "name": "Stock Generator 47",
+    "category": "Security",
+    "path": "app_120_stock_generator_47.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_121",
+    "name": "Process Logger",
+    "category": "Utility",
+    "path": "app_121_process_logger.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_122",
+    "name": "Password Calculator",
+    "category": "Utility",
+    "path": "app_122_password_calculator.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_123",
+    "name": "Process Analyzer",
+    "category": "Learning",
+    "path": "app_123_process_analyzer.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_124",
+    "name": "Date Viewer",
+    "category": "Security",
+    "path": "app_124_date_viewer.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_125",
+    "name": "Calories Checker",
+    "category": "Utility",
+    "path": "app_125_calories_checker.py",
+    "desc": "Auto-generated micro app for Calories."
+  },
+  {
+    "id": "app_126",
+    "name": "Memory Checker",
+    "category": "Security",
+    "path": "app_126_memory_checker.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_127",
+    "name": "Stock Optimizer",
+    "category": "Health",
+    "path": "app_127_stock_optimizer.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_128",
+    "name": "Base64 Logger",
+    "category": "Dev",
+    "path": "app_128_base64_logger.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_129",
+    "name": "Sleep Optimizer",
+    "category": "Finance",
+    "path": "app_129_sleep_optimizer.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_130",
+    "name": "Mood Calculator",
+    "category": "Dev",
+    "path": "app_130_mood_calculator.py",
+    "desc": "Auto-generated micro app for Mood."
+  },
+  {
+    "id": "app_131",
+    "name": "Water Optimizer",
+    "category": "System",
+    "path": "app_131_water_optimizer.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_132",
+    "name": "Color Analyzer",
+    "category": "Health",
+    "path": "app_132_color_analyzer.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_133",
+    "name": "Loan Generator 70",
+    "category": "Health",
+    "path": "app_133_loan_generator_70.py",
+    "desc": "Auto-generated micro app for Loan."
+  },
+  {
+    "id": "app_134",
+    "name": "Stock Generator 13",
+    "category": "Security",
+    "path": "app_134_stock_generator_13.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_135",
+    "name": "Sleep Checker",
+    "category": "Health",
+    "path": "app_135_sleep_checker.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_136",
+    "name": "Loan Logger",
+    "category": "Learning",
+    "path": "app_136_loan_logger.py",
+    "desc": "Auto-generated micro app for Loan."
+  },
+  {
+    "id": "app_137",
+    "name": "Lint Optimizer",
+    "category": "Dev",
+    "path": "app_137_lint_optimizer.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_138",
+    "name": "Calories Checker 36",
+    "category": "Utility",
+    "path": "app_138_calories_checker_36.py",
+    "desc": "Auto-generated micro app for Calories."
+  },
+  {
+    "id": "app_139",
+    "name": "Interest Analyzer",
+    "category": "Hobby",
+    "path": "app_139_interest_analyzer.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_140",
+    "name": "Interest Optimizer",
+    "category": "Dev",
+    "path": "app_140_interest_optimizer.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_141",
+    "name": "Network Checker",
+    "category": "Security",
+    "path": "app_141_network_checker.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_142",
+    "name": "Process Optimizer",
+    "category": "Dev",
+    "path": "app_142_process_optimizer.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_143",
+    "name": "Focus Generator",
+    "category": "Dev",
+    "path": "app_143_focus_generator.py",
+    "desc": "Auto-generated micro app for Focus."
+  },
+  {
+    "id": "app_144",
+    "name": "Date Analyzer",
+    "category": "Learning",
+    "path": "app_144_date_analyzer.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_145",
+    "name": "Guid Analyzer 2",
+    "category": "Finance",
+    "path": "app_145_guid_analyzer_2.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_146",
+    "name": "Water Converter",
+    "category": "Security",
+    "path": "app_146_water_converter.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_147",
+    "name": "Tax Analyzer",
+    "category": "Learning",
+    "path": "app_147_tax_analyzer.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_148",
+    "name": "Focus Logger",
+    "category": "Finance",
+    "path": "app_148_focus_logger.py",
+    "desc": "Auto-generated micro app for Focus."
+  },
+  {
+    "id": "app_149",
+    "name": "Calories Calculator",
+    "category": "Health",
+    "path": "app_149_calories_calculator.py",
+    "desc": "Auto-generated micro app for Calories."
+  },
+  {
+    "id": "app_150",
+    "name": "Disk Logger",
+    "category": "Learning",
+    "path": "app_150_disk_logger.py",
+    "desc": "Auto-generated micro app for Disk."
+  },
+  {
+    "id": "app_151",
+    "name": "Budget Analyzer",
+    "category": "Security",
+    "path": "app_151_budget_analyzer.py",
+    "desc": "Auto-generated micro app for Budget."
+  },
+  {
+    "id": "app_152",
+    "name": "Water Logger 9",
+    "category": "Health",
+    "path": "app_152_water_logger_9.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_153",
+    "name": "Hex Calculator",
+    "category": "Finance",
+    "path": "app_153_hex_calculator.py",
+    "desc": "Auto-generated micro app for Hex."
+  },
+  {
+    "id": "app_154",
+    "name": "Process Checker",
+    "category": "Utility",
+    "path": "app_154_process_checker.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_155",
+    "name": "Guid Calculator",
+    "category": "Security",
+    "path": "app_155_guid_calculator.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_156",
+    "name": "Regex Analyzer",
+    "category": "Learning",
+    "path": "app_156_regex_analyzer.py",
+    "desc": "Auto-generated micro app for Regex."
+  },
+  {
+    "id": "app_157",
+    "name": "Sleep Viewer",
+    "category": "Security",
+    "path": "app_157_sleep_viewer.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_158",
+    "name": "Salary Analyzer",
+    "category": "Utility",
+    "path": "app_158_salary_analyzer.py",
+    "desc": "Auto-generated micro app for Salary."
+  },
+  {
+    "id": "app_159",
+    "name": "Memory Optimizer",
+    "category": "Finance",
+    "path": "app_159_memory_optimizer.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_160",
+    "name": "Salary Checker",
+    "category": "Finance",
+    "path": "app_160_salary_checker.py",
+    "desc": "Auto-generated micro app for Salary."
+  },
+  {
+    "id": "app_161",
+    "name": "Stock Generator 81",
+    "category": "Health",
+    "path": "app_161_stock_generator_81.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_162",
+    "name": "Process Checker 97",
+    "category": "Dev",
+    "path": "app_162_process_checker_97.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_163",
+    "name": "Tax Converter",
+    "category": "Finance",
+    "path": "app_163_tax_converter.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_164",
+    "name": "Water Optimizer 65",
+    "category": "Finance",
+    "path": "app_164_water_optimizer_65.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_165",
+    "name": "Regex Calculator",
+    "category": "Health",
+    "path": "app_165_regex_calculator.py",
+    "desc": "Auto-generated micro app for Regex."
+  },
+  {
+    "id": "app_166",
+    "name": "Hash Logger",
+    "category": "System",
+    "path": "app_166_hash_logger.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_167",
+    "name": "Format Checker",
+    "category": "Hobby",
+    "path": "app_167_format_checker.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_168",
+    "name": "Lint Generator",
+    "category": "Security",
+    "path": "app_168_lint_generator.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_169",
+    "name": "Tax Calculator",
+    "category": "Hobby",
+    "path": "app_169_tax_calculator.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_170",
+    "name": "Water Analyzer",
+    "category": "Security",
+    "path": "app_170_water_analyzer.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_171",
+    "name": "Guid Logger",
+    "category": "Security",
+    "path": "app_171_guid_logger.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_172",
+    "name": "Json Converter",
+    "category": "System",
+    "path": "app_172_json_converter.py",
+    "desc": "Auto-generated micro app for Json."
+  },
+  {
+    "id": "app_173",
+    "name": "Hash Analyzer",
+    "category": "System",
+    "path": "app_173_hash_analyzer.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_174",
+    "name": "Guid Generator 99",
+    "category": "Hobby",
+    "path": "app_174_guid_generator_99.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_175",
+    "name": "Time Generator 40",
+    "category": "Dev",
+    "path": "app_175_time_generator_40.py",
+    "desc": "Auto-generated micro app for Time."
+  },
+  {
+    "id": "app_176",
+    "name": "Cpu Calculator 4",
+    "category": "Utility",
+    "path": "app_176_cpu_calculator_4.py",
+    "desc": "Auto-generated micro app for Cpu."
+  },
+  {
+    "id": "app_177",
+    "name": "Code Optimizer",
+    "category": "Finance",
+    "path": "app_177_code_optimizer.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_178",
+    "name": "Process Checker 35",
+    "category": "Security",
+    "path": "app_178_process_checker_35.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_179",
+    "name": "Text Logger",
+    "category": "Dev",
+    "path": "app_179_text_logger.py",
+    "desc": "Auto-generated micro app for Text."
+  },
+  {
+    "id": "app_180",
+    "name": "Base64 Converter",
+    "category": "Health",
+    "path": "app_180_base64_converter.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_181",
+    "name": "Hash Generator",
+    "category": "Security",
+    "path": "app_181_hash_generator.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_182",
+    "name": "Hex Checker",
+    "category": "Utility",
+    "path": "app_182_hex_checker.py",
+    "desc": "Auto-generated micro app for Hex."
+  },
+  {
+    "id": "app_183",
+    "name": "Code Generator",
+    "category": "Dev",
+    "path": "app_183_code_generator.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_184",
+    "name": "Process Checker 8",
+    "category": "Learning",
+    "path": "app_184_process_checker_8.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_185",
+    "name": "Date Viewer 56",
+    "category": "Learning",
+    "path": "app_185_date_viewer_56.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_186",
+    "name": "Hash Analyzer 94",
+    "category": "Dev",
+    "path": "app_186_hash_analyzer_94.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_187",
+    "name": "Mood Converter 28",
+    "category": "Dev",
+    "path": "app_187_mood_converter_28.py",
+    "desc": "Auto-generated micro app for Mood."
+  },
+  {
+    "id": "app_188",
+    "name": "Stock Calculator",
+    "category": "Dev",
+    "path": "app_188_stock_calculator.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_189",
+    "name": "Steps Generator",
+    "category": "Utility",
+    "path": "app_189_steps_generator.py",
+    "desc": "Auto-generated micro app for Steps."
+  },
+  {
+    "id": "app_190",
+    "name": "Diff Analyzer",
+    "category": "Security",
+    "path": "app_190_diff_analyzer.py",
+    "desc": "Auto-generated micro app for Diff."
+  },
+  {
+    "id": "app_191",
+    "name": "Mood Converter 99",
+    "category": "Learning",
+    "path": "app_191_mood_converter_99.py",
+    "desc": "Auto-generated micro app for Mood."
+  },
+  {
+    "id": "app_192",
+    "name": "Password Checker",
+    "category": "Security",
+    "path": "app_192_password_checker.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_193",
+    "name": "Network Analyzer",
+    "category": "Learning",
+    "path": "app_193_network_analyzer.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_194",
+    "name": "Hash Analyzer 37",
+    "category": "System",
+    "path": "app_194_hash_analyzer_37.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_195",
+    "name": "Process Optimizer 63",
+    "category": "Health",
+    "path": "app_195_process_optimizer_63.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_196",
+    "name": "Disk Viewer",
+    "category": "Finance",
+    "path": "app_196_disk_viewer.py",
+    "desc": "Auto-generated micro app for Disk."
+  },
+  {
+    "id": "app_197",
+    "name": "Network Checker 57",
+    "category": "Dev",
+    "path": "app_197_network_checker_57.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_198",
+    "name": "Tax Analyzer 48",
+    "category": "Dev",
+    "path": "app_198_tax_analyzer_48.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_199",
+    "name": "Calories Viewer",
+    "category": "System",
+    "path": "app_199_calories_viewer.py",
+    "desc": "Auto-generated micro app for Calories."
+  },
+  {
+    "id": "app_200",
+    "name": "Code Logger 2",
+    "category": "Dev",
+    "path": "app_200_code_logger_2.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_201",
+    "name": "Tax Checker",
+    "category": "Security",
+    "path": "app_201_tax_checker.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_202",
+    "name": "Tax Logger",
+    "category": "Dev",
+    "path": "app_202_tax_logger.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_203",
+    "name": "Network Analyzer 9",
+    "category": "Utility",
+    "path": "app_203_network_analyzer_9.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_204",
+    "name": "File Checker",
+    "category": "Dev",
+    "path": "app_204_file_checker.py",
+    "desc": "Auto-generated micro app for File."
+  },
+  {
+    "id": "app_205",
+    "name": "Time Converter",
+    "category": "Learning",
+    "path": "app_205_time_converter.py",
+    "desc": "Auto-generated micro app for Time."
+  },
+  {
+    "id": "app_206",
+    "name": "Disk Analyzer",
+    "category": "Health",
+    "path": "app_206_disk_analyzer.py",
+    "desc": "Auto-generated micro app for Disk."
+  },
+  {
+    "id": "app_207",
+    "name": "Mood Generator",
+    "category": "Learning",
+    "path": "app_207_mood_generator.py",
+    "desc": "Auto-generated micro app for Mood."
+  },
+  {
+    "id": "app_208",
+    "name": "Stock Checker",
+    "category": "Learning",
+    "path": "app_208_stock_checker.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_209",
+    "name": "Minify Logger",
+    "category": "Finance",
+    "path": "app_209_minify_logger.py",
+    "desc": "Auto-generated micro app for Minify."
+  },
+  {
+    "id": "app_210",
+    "name": "Budget Viewer",
+    "category": "Dev",
+    "path": "app_210_budget_viewer.py",
+    "desc": "Auto-generated micro app for Budget."
+  },
+  {
+    "id": "app_211",
+    "name": "Cpu Checker",
+    "category": "Finance",
+    "path": "app_211_cpu_checker.py",
+    "desc": "Auto-generated micro app for Cpu."
+  },
+  {
+    "id": "app_212",
+    "name": "Process Calculator",
+    "category": "Dev",
+    "path": "app_212_process_calculator.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_213",
+    "name": "Calories Converter",
+    "category": "Health",
+    "path": "app_213_calories_converter.py",
+    "desc": "Auto-generated micro app for Calories."
+  },
+  {
+    "id": "app_214",
+    "name": "Code Logger 88",
+    "category": "System",
+    "path": "app_214_code_logger_88.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_215",
+    "name": "Salary Generator",
+    "category": "Finance",
+    "path": "app_215_salary_generator.py",
+    "desc": "Auto-generated micro app for Salary."
+  },
+  {
+    "id": "app_216",
+    "name": "Guid Optimizer",
+    "category": "System",
+    "path": "app_216_guid_optimizer.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_217",
+    "name": "Lint Logger",
+    "category": "Finance",
+    "path": "app_217_lint_logger.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_218",
+    "name": "Diff Converter",
+    "category": "System",
+    "path": "app_218_diff_converter.py",
+    "desc": "Auto-generated micro app for Diff."
+  },
+  {
+    "id": "app_219",
+    "name": "Calories Logger",
+    "category": "Utility",
+    "path": "app_219_calories_logger.py",
+    "desc": "Auto-generated micro app for Calories."
+  },
+  {
+    "id": "app_220",
+    "name": "Text Optimizer",
+    "category": "Learning",
+    "path": "app_220_text_optimizer.py",
+    "desc": "Auto-generated micro app for Text."
+  },
+  {
+    "id": "app_221",
+    "name": "Tax Analyzer 79",
+    "category": "Dev",
+    "path": "app_221_tax_analyzer_79.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_222",
+    "name": "Password Logger",
+    "category": "Health",
+    "path": "app_222_password_logger.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_223",
+    "name": "Interest Generator",
+    "category": "Learning",
+    "path": "app_223_interest_generator.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_224",
+    "name": "Water Converter 84",
+    "category": "Hobby",
+    "path": "app_224_water_converter_84.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_225",
+    "name": "Password Analyzer",
+    "category": "Utility",
+    "path": "app_225_password_analyzer.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_226",
+    "name": "Steps Viewer",
+    "category": "Health",
+    "path": "app_226_steps_viewer.py",
+    "desc": "Auto-generated micro app for Steps."
+  },
+  {
+    "id": "app_227",
+    "name": "Tax Checker 17",
+    "category": "Utility",
+    "path": "app_227_tax_checker_17.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_228",
+    "name": "Json Calculator",
+    "category": "Finance",
+    "path": "app_228_json_calculator.py",
+    "desc": "Auto-generated micro app for Json."
+  },
+  {
+    "id": "app_229",
+    "name": "Date Optimizer",
+    "category": "Hobby",
+    "path": "app_229_date_optimizer.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_230",
+    "name": "Guid Calculator 84",
+    "category": "Utility",
+    "path": "app_230_guid_calculator_84.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_231",
+    "name": "Tax Analyzer 3",
+    "category": "Learning",
+    "path": "app_231_tax_analyzer_3.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_232",
+    "name": "Steps Optimizer",
+    "category": "Finance",
+    "path": "app_232_steps_optimizer.py",
+    "desc": "Auto-generated micro app for Steps."
+  },
+  {
+    "id": "app_233",
+    "name": "Loan Checker",
+    "category": "Health",
+    "path": "app_233_loan_checker.py",
+    "desc": "Auto-generated micro app for Loan."
+  },
+  {
+    "id": "app_234",
+    "name": "Stock Viewer",
+    "category": "Dev",
+    "path": "app_234_stock_viewer.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_235",
+    "name": "Color Optimizer",
+    "category": "Hobby",
+    "path": "app_235_color_optimizer.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_236",
+    "name": "Process Calculator 82",
+    "category": "Dev",
+    "path": "app_236_process_calculator_82.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_237",
+    "name": "Hex Checker 88",
+    "category": "Utility",
+    "path": "app_237_hex_checker_88.py",
+    "desc": "Auto-generated micro app for Hex."
+  },
+  {
+    "id": "app_238",
+    "name": "Text Converter",
+    "category": "Health",
+    "path": "app_238_text_converter.py",
+    "desc": "Auto-generated micro app for Text."
+  },
+  {
+    "id": "app_239",
+    "name": "Focus Calculator",
+    "category": "Utility",
+    "path": "app_239_focus_calculator.py",
+    "desc": "Auto-generated micro app for Focus."
+  },
+  {
+    "id": "app_240",
+    "name": "Process Calculator 54",
+    "category": "Dev",
+    "path": "app_240_process_calculator_54.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_241",
+    "name": "Loan Generator 43",
+    "category": "Dev",
+    "path": "app_241_loan_generator_43.py",
+    "desc": "Auto-generated micro app for Loan."
+  },
+  {
+    "id": "app_242",
+    "name": "Network Calculator",
+    "category": "Dev",
+    "path": "app_242_network_calculator.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_243",
+    "name": "Format Calculator",
+    "category": "Security",
+    "path": "app_243_format_calculator.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_244",
+    "name": "Sleep Analyzer",
+    "category": "Utility",
+    "path": "app_244_sleep_analyzer.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_245",
+    "name": "Minify Viewer",
+    "category": "Learning",
+    "path": "app_245_minify_viewer.py",
+    "desc": "Auto-generated micro app for Minify."
+  },
+  {
+    "id": "app_246",
+    "name": "Sleep Generator",
+    "category": "Finance",
+    "path": "app_246_sleep_generator.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_247",
+    "name": "Guid Optimizer 66",
+    "category": "Finance",
+    "path": "app_247_guid_optimizer_66.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_248",
+    "name": "Calories Generator",
+    "category": "Dev",
+    "path": "app_248_calories_generator.py",
+    "desc": "Auto-generated micro app for Calories."
+  },
+  {
+    "id": "app_249",
+    "name": "Hash Analyzer 53",
+    "category": "Health",
+    "path": "app_249_hash_analyzer_53.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_250",
+    "name": "Tax Converter 18",
+    "category": "Health",
+    "path": "app_250_tax_converter_18.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_251",
+    "name": "Network Optimizer",
+    "category": "Hobby",
+    "path": "app_251_network_optimizer.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_252",
+    "name": "Tax Converter 4",
+    "category": "Security",
+    "path": "app_252_tax_converter_4.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_253",
+    "name": "Hash Calculator 82",
+    "category": "System",
+    "path": "app_253_hash_calculator_82.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_254",
+    "name": "Budget Logger",
+    "category": "System",
+    "path": "app_254_budget_logger.py",
+    "desc": "Auto-generated micro app for Budget."
+  },
+  {
+    "id": "app_255",
+    "name": "Network Logger",
+    "category": "Learning",
+    "path": "app_255_network_logger.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_256",
+    "name": "Loan Converter",
+    "category": "Dev",
+    "path": "app_256_loan_converter.py",
+    "desc": "Auto-generated micro app for Loan."
+  },
+  {
+    "id": "app_257",
+    "name": "Json Logger",
+    "category": "Dev",
+    "path": "app_257_json_logger.py",
+    "desc": "Auto-generated micro app for Json."
+  },
+  {
+    "id": "app_258",
+    "name": "Password Checker 44",
+    "category": "Learning",
+    "path": "app_258_password_checker_44.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_259",
+    "name": "Mood Optimizer",
+    "category": "Utility",
+    "path": "app_259_mood_optimizer.py",
+    "desc": "Auto-generated micro app for Mood."
+  },
+  {
+    "id": "app_260",
+    "name": "Water Converter 29",
+    "category": "Health",
+    "path": "app_260_water_converter_29.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_261",
+    "name": "Guid Calculator 25",
+    "category": "Utility",
+    "path": "app_261_guid_calculator_25.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_262",
+    "name": "Code Calculator",
+    "category": "Finance",
+    "path": "app_262_code_calculator.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_263",
+    "name": "Code Analyzer 58",
+    "category": "Health",
+    "path": "app_263_code_analyzer_58.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_264",
+    "name": "Json Optimizer",
+    "category": "Utility",
+    "path": "app_264_json_optimizer.py",
+    "desc": "Auto-generated micro app for Json."
+  },
+  {
+    "id": "app_265",
+    "name": "Date Logger",
+    "category": "System",
+    "path": "app_265_date_logger.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_266",
+    "name": "Password Converter",
+    "category": "Dev",
+    "path": "app_266_password_converter.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_267",
+    "name": "Hash Optimizer",
+    "category": "Dev",
+    "path": "app_267_hash_optimizer.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_268",
+    "name": "Steps Converter",
+    "category": "Utility",
+    "path": "app_268_steps_converter.py",
+    "desc": "Auto-generated micro app for Steps."
+  },
+  {
+    "id": "app_269",
+    "name": "Format Analyzer",
+    "category": "Finance",
+    "path": "app_269_format_analyzer.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_270",
+    "name": "Sleep Checker 17",
+    "category": "System",
+    "path": "app_270_sleep_checker_17.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_271",
+    "name": "Network Analyzer 82",
+    "category": "Dev",
+    "path": "app_271_network_analyzer_82.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_272",
+    "name": "Sleep Converter 64",
+    "category": "Security",
+    "path": "app_272_sleep_converter_64.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_273",
+    "name": "Color Optimizer 11",
+    "category": "Dev",
+    "path": "app_273_color_optimizer_11.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_274",
+    "name": "Stock Logger 95",
+    "category": "Health",
+    "path": "app_274_stock_logger_95.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_275",
+    "name": "Color Analyzer 92",
+    "category": "Dev",
+    "path": "app_275_color_analyzer_92.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_276",
+    "name": "Guid Generator 25",
+    "category": "Utility",
+    "path": "app_276_guid_generator_25.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_277",
+    "name": "Mood Generator 68",
+    "category": "Dev",
+    "path": "app_277_mood_generator_68.py",
+    "desc": "Auto-generated micro app for Mood."
+  },
+  {
+    "id": "app_278",
+    "name": "File Calculator",
+    "category": "Learning",
+    "path": "app_278_file_calculator.py",
+    "desc": "Auto-generated micro app for File."
+  },
+  {
+    "id": "app_279",
+    "name": "Guid Checker",
+    "category": "Dev",
+    "path": "app_279_guid_checker.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_280",
+    "name": "Salary Analyzer 60",
+    "category": "System",
+    "path": "app_280_salary_analyzer_60.py",
+    "desc": "Auto-generated micro app for Salary."
+  },
+  {
+    "id": "app_281",
+    "name": "Base64 Converter 49",
+    "category": "System",
+    "path": "app_281_base64_converter_49.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_282",
+    "name": "Date Checker",
+    "category": "Security",
+    "path": "app_282_date_checker.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_283",
+    "name": "Date Generator",
+    "category": "Finance",
+    "path": "app_283_date_generator.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_284",
+    "name": "Steps Converter 35",
+    "category": "Security",
+    "path": "app_284_steps_converter_35.py",
+    "desc": "Auto-generated micro app for Steps."
+  },
+  {
+    "id": "app_285",
+    "name": "Sleep Converter 26",
+    "category": "Learning",
+    "path": "app_285_sleep_converter_26.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_286",
+    "name": "Date Converter",
+    "category": "Dev",
+    "path": "app_286_date_converter.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_287",
+    "name": "Minify Converter",
+    "category": "Utility",
+    "path": "app_287_minify_converter.py",
+    "desc": "Auto-generated micro app for Minify."
+  },
+  {
+    "id": "app_288",
+    "name": "Color Optimizer 5",
+    "category": "Utility",
+    "path": "app_288_color_optimizer_5.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_289",
+    "name": "Salary Viewer",
+    "category": "Security",
+    "path": "app_289_salary_viewer.py",
+    "desc": "Auto-generated micro app for Salary."
+  },
+  {
+    "id": "app_290",
+    "name": "Password Generator 1",
+    "category": "Utility",
+    "path": "app_290_password_generator_1.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_291",
+    "name": "Regex Calculator 76",
+    "category": "Learning",
+    "path": "app_291_regex_calculator_76.py",
+    "desc": "Auto-generated micro app for Regex."
+  },
+  {
+    "id": "app_292",
+    "name": "Budget Viewer 64",
+    "category": "Learning",
+    "path": "app_292_budget_viewer_64.py",
+    "desc": "Auto-generated micro app for Budget."
+  },
+  {
+    "id": "app_293",
+    "name": "Code Generator 35",
+    "category": "System",
+    "path": "app_293_code_generator_35.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_294",
+    "name": "Focus Checker",
+    "category": "Health",
+    "path": "app_294_focus_checker.py",
+    "desc": "Auto-generated micro app for Focus."
+  },
+  {
+    "id": "app_295",
+    "name": "Budget Checker",
+    "category": "Finance",
+    "path": "app_295_budget_checker.py",
+    "desc": "Auto-generated micro app for Budget."
+  },
+  {
+    "id": "app_296",
+    "name": "Salary Logger",
+    "category": "Health",
+    "path": "app_296_salary_logger.py",
+    "desc": "Auto-generated micro app for Salary."
+  },
+  {
+    "id": "app_297",
+    "name": "Format Generator",
+    "category": "Finance",
+    "path": "app_297_format_generator.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_298",
+    "name": "Cpu Viewer",
+    "category": "Dev",
+    "path": "app_298_cpu_viewer.py",
+    "desc": "Auto-generated micro app for Cpu."
+  },
+  {
+    "id": "app_299",
+    "name": "Steps Logger",
+    "category": "Finance",
+    "path": "app_299_steps_logger.py",
+    "desc": "Auto-generated micro app for Steps."
+  },
+  {
+    "id": "app_300",
+    "name": "Time Generator 10",
+    "category": "Health",
+    "path": "app_300_time_generator_10.py",
+    "desc": "Auto-generated micro app for Time."
+  },
+  {
+    "id": "app_301",
+    "name": "Interest Optimizer 40",
+    "category": "Dev",
+    "path": "app_301_interest_optimizer_40.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_302",
+    "name": "Diff Checker",
+    "category": "Health",
+    "path": "app_302_diff_checker.py",
+    "desc": "Auto-generated micro app for Diff."
+  },
+  {
+    "id": "app_303",
+    "name": "Password Generator 92",
+    "category": "Dev",
+    "path": "app_303_password_generator_92.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_304",
+    "name": "Format Checker 85",
+    "category": "Hobby",
+    "path": "app_304_format_checker_85.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_305",
+    "name": "Regex Optimizer",
+    "category": "Security",
+    "path": "app_305_regex_optimizer.py",
+    "desc": "Auto-generated micro app for Regex."
+  },
+  {
+    "id": "app_306",
+    "name": "File Optimizer",
+    "category": "Finance",
+    "path": "app_306_file_optimizer.py",
+    "desc": "Auto-generated micro app for File."
+  },
+  {
+    "id": "app_307",
+    "name": "Focus Checker 16",
+    "category": "System",
+    "path": "app_307_focus_checker_16.py",
+    "desc": "Auto-generated micro app for Focus."
+  },
+  {
+    "id": "app_308",
+    "name": "Tax Calculator 52",
+    "category": "Health",
+    "path": "app_308_tax_calculator_52.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_309",
+    "name": "Password Optimizer",
+    "category": "Finance",
+    "path": "app_309_password_optimizer.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_310",
+    "name": "Hash Checker",
+    "category": "Dev",
+    "path": "app_310_hash_checker.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_311",
+    "name": "Guid Logger 19",
+    "category": "Learning",
+    "path": "app_311_guid_logger_19.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_312",
+    "name": "Water Viewer",
+    "category": "Security",
+    "path": "app_312_water_viewer.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_313",
+    "name": "Lint Analyzer",
+    "category": "Health",
+    "path": "app_313_lint_analyzer.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_314",
+    "name": "Format Converter",
+    "category": "Security",
+    "path": "app_314_format_converter.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_315",
+    "name": "Time Checker",
+    "category": "Dev",
+    "path": "app_315_time_checker.py",
+    "desc": "Auto-generated micro app for Time."
+  },
+  {
+    "id": "app_316",
+    "name": "Date Viewer 99",
+    "category": "Utility",
+    "path": "app_316_date_viewer_99.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_317",
+    "name": "Mood Optimizer 57",
+    "category": "Health",
+    "path": "app_317_mood_optimizer_57.py",
+    "desc": "Auto-generated micro app for Mood."
+  },
+  {
+    "id": "app_318",
+    "name": "Hash Logger 10",
+    "category": "Utility",
+    "path": "app_318_hash_logger_10.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_319",
+    "name": "Budget Converter",
+    "category": "Finance",
+    "path": "app_319_budget_converter.py",
+    "desc": "Auto-generated micro app for Budget."
+  },
+  {
+    "id": "app_320",
+    "name": "Disk Converter",
+    "category": "System",
+    "path": "app_320_disk_converter.py",
+    "desc": "Auto-generated micro app for Disk."
+  },
+  {
+    "id": "app_321",
+    "name": "Date Calculator",
+    "category": "Security",
+    "path": "app_321_date_calculator.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_322",
+    "name": "Steps Converter 13",
+    "category": "Dev",
+    "path": "app_322_steps_converter_13.py",
+    "desc": "Auto-generated micro app for Steps."
+  },
+  {
+    "id": "app_323",
+    "name": "Lint Generator 3",
+    "category": "Health",
+    "path": "app_323_lint_generator_3.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_324",
+    "name": "Cpu Optimizer",
+    "category": "Learning",
+    "path": "app_324_cpu_optimizer.py",
+    "desc": "Auto-generated micro app for Cpu."
+  },
+  {
+    "id": "app_325",
+    "name": "Regex Calculator 26",
+    "category": "Utility",
+    "path": "app_325_regex_calculator_26.py",
+    "desc": "Auto-generated micro app for Regex."
+  },
+  {
+    "id": "app_326",
+    "name": "Tax Logger 28",
+    "category": "Hobby",
+    "path": "app_326_tax_logger_28.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_327",
+    "name": "Text Checker",
+    "category": "Utility",
+    "path": "app_327_text_checker.py",
+    "desc": "Auto-generated micro app for Text."
+  },
+  {
+    "id": "app_328",
+    "name": "Time Viewer",
+    "category": "Hobby",
+    "path": "app_328_time_viewer.py",
+    "desc": "Auto-generated micro app for Time."
+  },
+  {
+    "id": "app_329",
+    "name": "Hash Viewer",
+    "category": "Learning",
+    "path": "app_329_hash_viewer.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_330",
+    "name": "Network Checker 92",
+    "category": "Utility",
+    "path": "app_330_network_checker_92.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_331",
+    "name": "Password Checker 22",
+    "category": "Hobby",
+    "path": "app_331_password_checker_22.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_332",
+    "name": "Interest Viewer",
+    "category": "Dev",
+    "path": "app_332_interest_viewer.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_333",
+    "name": "Stock Logger 84",
+    "category": "Security",
+    "path": "app_333_stock_logger_84.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_334",
+    "name": "Interest Generator 65",
+    "category": "Security",
+    "path": "app_334_interest_generator_65.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_335",
+    "name": "Loan Generator 16",
+    "category": "Learning",
+    "path": "app_335_loan_generator_16.py",
+    "desc": "Auto-generated micro app for Loan."
+  },
+  {
+    "id": "app_336",
+    "name": "File Calculator 97",
+    "category": "Dev",
+    "path": "app_336_file_calculator_97.py",
+    "desc": "Auto-generated micro app for File."
+  },
+  {
+    "id": "app_337",
+    "name": "Color Calculator",
+    "category": "Utility",
+    "path": "app_337_color_calculator.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_338",
+    "name": "File Optimizer 44",
+    "category": "Learning",
+    "path": "app_338_file_optimizer_44.py",
+    "desc": "Auto-generated micro app for File."
+  },
+  {
+    "id": "app_339",
+    "name": "Text Viewer",
+    "category": "Health",
+    "path": "app_339_text_viewer.py",
+    "desc": "Auto-generated micro app for Text."
+  },
+  {
+    "id": "app_340",
+    "name": "Json Analyzer",
+    "category": "Learning",
+    "path": "app_340_json_analyzer.py",
+    "desc": "Auto-generated micro app for Json."
+  },
+  {
+    "id": "app_341",
+    "name": "Time Optimizer",
+    "category": "System",
+    "path": "app_341_time_optimizer.py",
+    "desc": "Auto-generated micro app for Time."
+  },
+  {
+    "id": "app_342",
+    "name": "Diff Analyzer 24",
+    "category": "Utility",
+    "path": "app_342_diff_analyzer_24.py",
+    "desc": "Auto-generated micro app for Diff."
+  },
+  {
+    "id": "app_343",
+    "name": "Water Generator",
+    "category": "Hobby",
+    "path": "app_343_water_generator.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_344",
+    "name": "Date Generator 4",
+    "category": "Dev",
+    "path": "app_344_date_generator_4.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_345",
+    "name": "Hash Checker 73",
+    "category": "Finance",
+    "path": "app_345_hash_checker_73.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_346",
+    "name": "Interest Generator 4",
+    "category": "Health",
+    "path": "app_346_interest_generator_4.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_347",
+    "name": "Hex Optimizer",
+    "category": "Hobby",
+    "path": "app_347_hex_optimizer.py",
+    "desc": "Auto-generated micro app for Hex."
+  },
+  {
+    "id": "app_348",
+    "name": "Tax Logger 52",
+    "category": "Health",
+    "path": "app_348_tax_logger_52.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_349",
+    "name": "Guid Logger 37",
+    "category": "Finance",
+    "path": "app_349_guid_logger_37.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_350",
+    "name": "Format Viewer",
+    "category": "Health",
+    "path": "app_350_format_viewer.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_351",
+    "name": "Water Viewer 10",
+    "category": "System",
+    "path": "app_351_water_viewer_10.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_352",
+    "name": "Cpu Viewer 69",
+    "category": "System",
+    "path": "app_352_cpu_viewer_69.py",
+    "desc": "Auto-generated micro app for Cpu."
+  },
+  {
+    "id": "app_353",
+    "name": "Water Generator 93",
+    "category": "Dev",
+    "path": "app_353_water_generator_93.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_354",
+    "name": "Memory Generator",
+    "category": "Learning",
+    "path": "app_354_memory_generator.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_355",
+    "name": "Minify Generator",
+    "category": "Hobby",
+    "path": "app_355_minify_generator.py",
+    "desc": "Auto-generated micro app for Minify."
+  },
+  {
+    "id": "app_356",
+    "name": "Code Generator 25",
+    "category": "Security",
+    "path": "app_356_code_generator_25.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_357",
+    "name": "Lint Viewer 73",
+    "category": "Hobby",
+    "path": "app_357_lint_viewer_73.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_358",
+    "name": "Password Logger 73",
+    "category": "System",
+    "path": "app_358_password_logger_73.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_359",
+    "name": "Focus Logger 72",
+    "category": "Hobby",
+    "path": "app_359_focus_logger_72.py",
+    "desc": "Auto-generated micro app for Focus."
+  },
+  {
+    "id": "app_360",
+    "name": "Process Converter",
+    "category": "Security",
+    "path": "app_360_process_converter.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_361",
+    "name": "Text Analyzer",
+    "category": "Hobby",
+    "path": "app_361_text_analyzer.py",
+    "desc": "Auto-generated micro app for Text."
+  },
+  {
+    "id": "app_362",
+    "name": "Diff Optimizer",
+    "category": "Dev",
+    "path": "app_362_diff_optimizer.py",
+    "desc": "Auto-generated micro app for Diff."
+  },
+  {
+    "id": "app_363",
+    "name": "Time Analyzer",
+    "category": "System",
+    "path": "app_363_time_analyzer.py",
+    "desc": "Auto-generated micro app for Time."
+  },
+  {
+    "id": "app_364",
+    "name": "Format Converter 49",
+    "category": "Dev",
+    "path": "app_364_format_converter_49.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_365",
+    "name": "Color Logger",
+    "category": "Utility",
+    "path": "app_365_color_logger.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_366",
+    "name": "Water Viewer 44",
+    "category": "Hobby",
+    "path": "app_366_water_viewer_44.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_367",
+    "name": "Sleep Converter 95",
+    "category": "Learning",
+    "path": "app_367_sleep_converter_95.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_368",
+    "name": "Format Converter 16",
+    "category": "Utility",
+    "path": "app_368_format_converter_16.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_369",
+    "name": "Cpu Analyzer",
+    "category": "System",
+    "path": "app_369_cpu_analyzer.py",
+    "desc": "Auto-generated micro app for Cpu."
+  },
+  {
+    "id": "app_370",
+    "name": "Interest Generator 54",
+    "category": "Utility",
+    "path": "app_370_interest_generator_54.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_371",
+    "name": "Lint Checker",
+    "category": "Utility",
+    "path": "app_371_lint_checker.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_372",
+    "name": "Date Logger 2",
+    "category": "Health",
+    "path": "app_372_date_logger_2.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_373",
+    "name": "Base64 Converter 71",
+    "category": "System",
+    "path": "app_373_base64_converter_71.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_374",
+    "name": "Date Converter 78",
+    "category": "Learning",
+    "path": "app_374_date_converter_78.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_375",
+    "name": "Hex Logger",
+    "category": "Dev",
+    "path": "app_375_hex_logger.py",
+    "desc": "Auto-generated micro app for Hex."
+  },
+  {
+    "id": "app_376",
+    "name": "Guid Viewer",
+    "category": "Dev",
+    "path": "app_376_guid_viewer.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_377",
+    "name": "Guid Logger 47",
+    "category": "Dev",
+    "path": "app_377_guid_logger_47.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_378",
+    "name": "Minify Viewer 69",
+    "category": "Hobby",
+    "path": "app_378_minify_viewer_69.py",
+    "desc": "Auto-generated micro app for Minify."
+  },
+  {
+    "id": "app_379",
+    "name": "Process Optimizer 77",
+    "category": "Utility",
+    "path": "app_379_process_optimizer_77.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_380",
+    "name": "Color Checker 80",
+    "category": "Utility",
+    "path": "app_380_color_checker_80.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_381",
+    "name": "Guid Viewer 46",
+    "category": "System",
+    "path": "app_381_guid_viewer_46.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_382",
+    "name": "Cpu Calculator 3",
+    "category": "Utility",
+    "path": "app_382_cpu_calculator_3.py",
+    "desc": "Auto-generated micro app for Cpu."
+  },
+  {
+    "id": "app_383",
+    "name": "Mood Converter 70",
+    "category": "Health",
+    "path": "app_383_mood_converter_70.py",
+    "desc": "Auto-generated micro app for Mood."
+  },
+  {
+    "id": "app_384",
+    "name": "Lint Analyzer 95",
+    "category": "Learning",
+    "path": "app_384_lint_analyzer_95.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_385",
+    "name": "Guid Converter",
+    "category": "Finance",
+    "path": "app_385_guid_converter.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_386",
+    "name": "Format Optimizer",
+    "category": "Learning",
+    "path": "app_386_format_optimizer.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_387",
+    "name": "Text Analyzer 13",
+    "category": "Finance",
+    "path": "app_387_text_analyzer_13.py",
+    "desc": "Auto-generated micro app for Text."
+  },
+  {
+    "id": "app_388",
+    "name": "Sleep Analyzer 10",
+    "category": "System",
+    "path": "app_388_sleep_analyzer_10.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_389",
+    "name": "Interest Logger",
+    "category": "Security",
+    "path": "app_389_interest_logger.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_390",
+    "name": "Interest Converter",
+    "category": "Health",
+    "path": "app_390_interest_converter.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_391",
+    "name": "Format Converter 81",
+    "category": "Utility",
+    "path": "app_391_format_converter_81.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_392",
+    "name": "Water Analyzer 25",
+    "category": "Finance",
+    "path": "app_392_water_analyzer_25.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_393",
+    "name": "Disk Analyzer 70",
+    "category": "Utility",
+    "path": "app_393_disk_analyzer_70.py",
+    "desc": "Auto-generated micro app for Disk."
+  },
+  {
+    "id": "app_394",
+    "name": "Guid Analyzer 87",
+    "category": "Dev",
+    "path": "app_394_guid_analyzer_87.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_395",
+    "name": "Cpu Checker 59",
+    "category": "Hobby",
+    "path": "app_395_cpu_checker_59.py",
+    "desc": "Auto-generated micro app for Cpu."
+  },
+  {
+    "id": "app_396",
+    "name": "Interest Converter 52",
+    "category": "Security",
+    "path": "app_396_interest_converter_52.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_397",
+    "name": "Minify Optimizer",
+    "category": "Utility",
+    "path": "app_397_minify_optimizer.py",
+    "desc": "Auto-generated micro app for Minify."
+  },
+  {
+    "id": "app_398",
+    "name": "Disk Generator",
+    "category": "Health",
+    "path": "app_398_disk_generator.py",
+    "desc": "Auto-generated micro app for Disk."
+  },
+  {
+    "id": "app_399",
+    "name": "Stock Logger 68",
+    "category": "Dev",
+    "path": "app_399_stock_logger_68.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_400",
+    "name": "Interest Checker",
+    "category": "Health",
+    "path": "app_400_interest_checker.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_401",
+    "name": "Color Generator 36",
+    "category": "Finance",
+    "path": "app_401_color_generator_36.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_402",
+    "name": "Password Calculator 42",
+    "category": "Dev",
+    "path": "app_402_password_calculator_42.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_403",
+    "name": "Salary Viewer 52",
+    "category": "Dev",
+    "path": "app_403_salary_viewer_52.py",
+    "desc": "Auto-generated micro app for Salary."
+  },
+  {
+    "id": "app_404",
+    "name": "Disk Generator 54",
+    "category": "System",
+    "path": "app_404_disk_generator_54.py",
+    "desc": "Auto-generated micro app for Disk."
+  },
+  {
+    "id": "app_405",
+    "name": "Text Converter 48",
+    "category": "Dev",
+    "path": "app_405_text_converter_48.py",
+    "desc": "Auto-generated micro app for Text."
+  },
+  {
+    "id": "app_406",
+    "name": "Date Analyzer 69",
+    "category": "Learning",
+    "path": "app_406_date_analyzer_69.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_407",
+    "name": "Format Calculator 98",
+    "category": "Security",
+    "path": "app_407_format_calculator_98.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_408",
+    "name": "Color Converter",
+    "category": "Health",
+    "path": "app_408_color_converter.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_409",
+    "name": "Tax Analyzer 66",
+    "category": "Utility",
+    "path": "app_409_tax_analyzer_66.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_410",
+    "name": "Diff Converter 57",
+    "category": "Utility",
+    "path": "app_410_diff_converter_57.py",
+    "desc": "Auto-generated micro app for Diff."
+  },
+  {
+    "id": "app_411",
+    "name": "Water Analyzer 5",
+    "category": "Finance",
+    "path": "app_411_water_analyzer_5.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_412",
+    "name": "Guid Generator 8",
+    "category": "Dev",
+    "path": "app_412_guid_generator_8.py",
+    "desc": "Auto-generated micro app for Guid."
+  },
+  {
+    "id": "app_413",
+    "name": "Hash Analyzer 33",
+    "category": "System",
+    "path": "app_413_hash_analyzer_33.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_414",
+    "name": "Focus Logger 9",
+    "category": "System",
+    "path": "app_414_focus_logger_9.py",
+    "desc": "Auto-generated micro app for Focus."
+  },
+  {
+    "id": "app_415",
+    "name": "Time Logger",
+    "category": "Finance",
+    "path": "app_415_time_logger.py",
+    "desc": "Auto-generated micro app for Time."
+  },
+  {
+    "id": "app_416",
+    "name": "Focus Converter",
+    "category": "Utility",
+    "path": "app_416_focus_converter.py",
+    "desc": "Auto-generated micro app for Focus."
+  },
+  {
+    "id": "app_417",
+    "name": "Tax Converter 79",
+    "category": "Health",
+    "path": "app_417_tax_converter_79.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_418",
+    "name": "Base64 Checker",
+    "category": "Finance",
+    "path": "app_418_base64_checker.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_419",
+    "name": "Interest Generator 65",
+    "category": "Utility",
+    "path": "app_419_interest_generator_65.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_420",
+    "name": "Water Generator 81",
+    "category": "Dev",
+    "path": "app_420_water_generator_81.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_421",
+    "name": "Regex Checker",
+    "category": "Health",
+    "path": "app_421_regex_checker.py",
+    "desc": "Auto-generated micro app for Regex."
+  },
+  {
+    "id": "app_422",
+    "name": "Base64 Generator",
+    "category": "Utility",
+    "path": "app_422_base64_generator.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_423",
+    "name": "Salary Logger 12",
+    "category": "Security",
+    "path": "app_423_salary_logger_12.py",
+    "desc": "Auto-generated micro app for Salary."
+  },
+  {
+    "id": "app_424",
+    "name": "Lint Calculator",
+    "category": "Utility",
+    "path": "app_424_lint_calculator.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_425",
+    "name": "File Checker 60",
+    "category": "Security",
+    "path": "app_425_file_checker_60.py",
+    "desc": "Auto-generated micro app for File."
+  },
+  {
+    "id": "app_426",
+    "name": "Steps Optimizer 16",
+    "category": "Dev",
+    "path": "app_426_steps_optimizer_16.py",
+    "desc": "Auto-generated micro app for Steps."
+  },
+  {
+    "id": "app_427",
+    "name": "Water Generator 38",
+    "category": "Security",
+    "path": "app_427_water_generator_38.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_428",
+    "name": "Hash Checker 94",
+    "category": "Utility",
+    "path": "app_428_hash_checker_94.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_429",
+    "name": "Format Viewer 14",
+    "category": "Utility",
+    "path": "app_429_format_viewer_14.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_430",
+    "name": "Hex Generator",
+    "category": "System",
+    "path": "app_430_hex_generator.py",
+    "desc": "Auto-generated micro app for Hex."
+  },
+  {
+    "id": "app_431",
+    "name": "Code Generator 96",
+    "category": "Security",
+    "path": "app_431_code_generator_96.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_432",
+    "name": "Memory Checker 5",
+    "category": "Utility",
+    "path": "app_432_memory_checker_5.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_433",
+    "name": "Hash Converter",
+    "category": "Hobby",
+    "path": "app_433_hash_converter.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_434",
+    "name": "Date Viewer 85",
+    "category": "Learning",
+    "path": "app_434_date_viewer_85.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_435",
+    "name": "Process Viewer",
+    "category": "Dev",
+    "path": "app_435_process_viewer.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_436",
+    "name": "Memory Logger",
+    "category": "Security",
+    "path": "app_436_memory_logger.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_437",
+    "name": "Base64 Logger 98",
+    "category": "Health",
+    "path": "app_437_base64_logger_98.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_438",
+    "name": "Calories Optimizer",
+    "category": "System",
+    "path": "app_438_calories_optimizer.py",
+    "desc": "Auto-generated micro app for Calories."
+  },
+  {
+    "id": "app_439",
+    "name": "Memory Analyzer",
+    "category": "Dev",
+    "path": "app_439_memory_analyzer.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_440",
+    "name": "Water Converter 36",
+    "category": "Hobby",
+    "path": "app_440_water_converter_36.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_441",
+    "name": "Memory Calculator",
+    "category": "Security",
+    "path": "app_441_memory_calculator.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_442",
+    "name": "Interest Calculator",
+    "category": "Utility",
+    "path": "app_442_interest_calculator.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_443",
+    "name": "Interest Viewer 56",
+    "category": "Security",
+    "path": "app_443_interest_viewer_56.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_444",
+    "name": "Date Viewer 11",
+    "category": "Hobby",
+    "path": "app_444_date_viewer_11.py",
+    "desc": "Auto-generated micro app for Date."
+  },
+  {
+    "id": "app_445",
+    "name": "Disk Analyzer 13",
+    "category": "Finance",
+    "path": "app_445_disk_analyzer_13.py",
+    "desc": "Auto-generated micro app for Disk."
+  },
+  {
+    "id": "app_446",
+    "name": "Water Optimizer 14",
+    "category": "Utility",
+    "path": "app_446_water_optimizer_14.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_447",
+    "name": "Time Optimizer 69",
+    "category": "Finance",
+    "path": "app_447_time_optimizer_69.py",
+    "desc": "Auto-generated micro app for Time."
+  },
+  {
+    "id": "app_448",
+    "name": "Disk Logger 9",
+    "category": "System",
+    "path": "app_448_disk_logger_9.py",
+    "desc": "Auto-generated micro app for Disk."
+  },
+  {
+    "id": "app_449",
+    "name": "Base64 Generator 19",
+    "category": "Learning",
+    "path": "app_449_base64_generator_19.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_450",
+    "name": "Code Logger 81",
+    "category": "Utility",
+    "path": "app_450_code_logger_81.py",
+    "desc": "Auto-generated micro app for Code."
+  },
+  {
+    "id": "app_451",
+    "name": "Json Logger 47",
+    "category": "Learning",
+    "path": "app_451_json_logger_47.py",
+    "desc": "Auto-generated micro app for Json."
+  },
+  {
+    "id": "app_452",
+    "name": "Hex Converter",
+    "category": "Hobby",
+    "path": "app_452_hex_converter.py",
+    "desc": "Auto-generated micro app for Hex."
+  },
+  {
+    "id": "app_453",
+    "name": "Color Checker 52",
+    "category": "Dev",
+    "path": "app_453_color_checker_52.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_454",
+    "name": "Network Generator",
+    "category": "Hobby",
+    "path": "app_454_network_generator.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_455",
+    "name": "Water Converter 66",
+    "category": "Learning",
+    "path": "app_455_water_converter_66.py",
+    "desc": "Auto-generated micro app for Water."
+  },
+  {
+    "id": "app_456",
+    "name": "Format Checker 30",
+    "category": "Learning",
+    "path": "app_456_format_checker_30.py",
+    "desc": "Auto-generated micro app for Format."
+  },
+  {
+    "id": "app_457",
+    "name": "Hash Logger 76",
+    "category": "Finance",
+    "path": "app_457_hash_logger_76.py",
+    "desc": "Auto-generated micro app for Hash."
+  },
+  {
+    "id": "app_458",
+    "name": "Network Viewer",
+    "category": "Dev",
+    "path": "app_458_network_viewer.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_459",
+    "name": "Tax Calculator 57",
+    "category": "Dev",
+    "path": "app_459_tax_calculator_57.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_460",
+    "name": "Memory Logger 57",
+    "category": "Dev",
+    "path": "app_460_memory_logger_57.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_461",
+    "name": "Base64 Checker 67",
+    "category": "Utility",
+    "path": "app_461_base64_checker_67.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_462",
+    "name": "Cpu Calculator 85",
+    "category": "System",
+    "path": "app_462_cpu_calculator_85.py",
+    "desc": "Auto-generated micro app for Cpu."
+  },
+  {
+    "id": "app_463",
+    "name": "Tax Analyzer 16",
+    "category": "Learning",
+    "path": "app_463_tax_analyzer_16.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_464",
+    "name": "Memory Converter",
+    "category": "Finance",
+    "path": "app_464_memory_converter.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_465",
+    "name": "Process Checker 59",
+    "category": "Learning",
+    "path": "app_465_process_checker_59.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_466",
+    "name": "Memory Optimizer 30",
+    "category": "Finance",
+    "path": "app_466_memory_optimizer_30.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_467",
+    "name": "Password Checker 44",
+    "category": "System",
+    "path": "app_467_password_checker_44.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_468",
+    "name": "Password Converter 67",
+    "category": "System",
+    "path": "app_468_password_converter_67.py",
+    "desc": "Auto-generated micro app for Password."
+  },
+  {
+    "id": "app_469",
+    "name": "Steps Optimizer 30",
+    "category": "Security",
+    "path": "app_469_steps_optimizer_30.py",
+    "desc": "Auto-generated micro app for Steps."
+  },
+  {
+    "id": "app_470",
+    "name": "Loan Logger 59",
+    "category": "Utility",
+    "path": "app_470_loan_logger_59.py",
+    "desc": "Auto-generated micro app for Loan."
+  },
+  {
+    "id": "app_471",
+    "name": "Memory Calculator 99",
+    "category": "Finance",
+    "path": "app_471_memory_calculator_99.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_472",
+    "name": "Color Checker 82",
+    "category": "Dev",
+    "path": "app_472_color_checker_82.py",
+    "desc": "Auto-generated micro app for Color."
+  },
+  {
+    "id": "app_473",
+    "name": "Tax Calculator 40",
+    "category": "Security",
+    "path": "app_473_tax_calculator_40.py",
+    "desc": "Auto-generated micro app for Tax."
+  },
+  {
+    "id": "app_474",
+    "name": "Network Analyzer 77",
+    "category": "Finance",
+    "path": "app_474_network_analyzer_77.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_475",
+    "name": "Regex Generator",
+    "category": "Finance",
+    "path": "app_475_regex_generator.py",
+    "desc": "Auto-generated micro app for Regex."
+  },
+  {
+    "id": "app_476",
+    "name": "Process Checker 99",
+    "category": "Security",
+    "path": "app_476_process_checker_99.py",
+    "desc": "Auto-generated micro app for Process."
+  },
+  {
+    "id": "app_477",
+    "name": "Json Checker",
+    "category": "System",
+    "path": "app_477_json_checker.py",
+    "desc": "Auto-generated micro app for Json."
+  },
+  {
+    "id": "app_478",
+    "name": "Diff Logger 87",
+    "category": "Hobby",
+    "path": "app_478_diff_logger_87.py",
+    "desc": "Auto-generated micro app for Diff."
+  },
+  {
+    "id": "app_479",
+    "name": "Network Viewer 89",
+    "category": "System",
+    "path": "app_479_network_viewer_89.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_480",
+    "name": "Memory Converter 60",
+    "category": "Health",
+    "path": "app_480_memory_converter_60.py",
+    "desc": "Auto-generated micro app for Memory."
+  },
+  {
+    "id": "app_481",
+    "name": "Interest Optimizer 47",
+    "category": "Security",
+    "path": "app_481_interest_optimizer_47.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_482",
+    "name": "Sleep Calculator",
+    "category": "Learning",
+    "path": "app_482_sleep_calculator.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_483",
+    "name": "Sleep Logger",
+    "category": "Security",
+    "path": "app_483_sleep_logger.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_484",
+    "name": "Sleep Calculator 28",
+    "category": "Health",
+    "path": "app_484_sleep_calculator_28.py",
+    "desc": "Auto-generated micro app for Sleep."
+  },
+  {
+    "id": "app_485",
+    "name": "Steps Analyzer",
+    "category": "Dev",
+    "path": "app_485_steps_analyzer.py",
+    "desc": "Auto-generated micro app for Steps."
+  },
+  {
+    "id": "app_486",
+    "name": "Network Generator 54",
+    "category": "Utility",
+    "path": "app_486_network_generator_54.py",
+    "desc": "Auto-generated micro app for Network."
+  },
+  {
+    "id": "app_487",
+    "name": "Focus Calculator 24",
+    "category": "Security",
+    "path": "app_487_focus_calculator_24.py",
+    "desc": "Auto-generated micro app for Focus."
+  },
+  {
+    "id": "app_488",
+    "name": "Interest Viewer 52",
+    "category": "Security",
+    "path": "app_488_interest_viewer_52.py",
+    "desc": "Auto-generated micro app for Interest."
+  },
+  {
+    "id": "app_489",
+    "name": "Diff Generator",
+    "category": "Hobby",
+    "path": "app_489_diff_generator.py",
+    "desc": "Auto-generated micro app for Diff."
+  },
+  {
+    "id": "app_490",
+    "name": "Hex Viewer",
+    "category": "Hobby",
+    "path": "app_490_hex_viewer.py",
+    "desc": "Auto-generated micro app for Hex."
+  },
+  {
+    "id": "app_491",
+    "name": "Hex Logger 62",
+    "category": "Finance",
+    "path": "app_491_hex_logger_62.py",
+    "desc": "Auto-generated micro app for Hex."
+  },
+  {
+    "id": "app_492",
+    "name": "Calories Calculator 96",
+    "category": "Health",
+    "path": "app_492_calories_calculator_96.py",
+    "desc": "Auto-generated micro app for Calories."
+  },
+  {
+    "id": "app_493",
+    "name": "Stock Checker 1",
+    "category": "Health",
+    "path": "app_493_stock_checker_1.py",
+    "desc": "Auto-generated micro app for Stock."
+  },
+  {
+    "id": "app_494",
+    "name": "Lint Logger 29",
+    "category": "Utility",
+    "path": "app_494_lint_logger_29.py",
+    "desc": "Auto-generated micro app for Lint."
+  },
+  {
+    "id": "app_495",
+    "name": "Regex Converter",
+    "category": "Learning",
+    "path": "app_495_regex_converter.py",
+    "desc": "Auto-generated micro app for Regex."
+  },
+  {
+    "id": "app_496",
+    "name": "Calories Generator 85",
+    "category": "Finance",
+    "path": "app_496_calories_generator_85.py",
+    "desc": "Auto-generated micro app for Calories."
+  },
+  {
+    "id": "app_497",
+    "name": "Base64 Converter 41",
+    "category": "Health",
+    "path": "app_497_base64_converter_41.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_498",
+    "name": "Base64 Analyzer",
+    "category": "Learning",
+    "path": "app_498_base64_analyzer.py",
+    "desc": "Auto-generated micro app for Base64."
+  },
+  {
+    "id": "app_499",
+    "name": "Sleep Optimizer 4",
+    "category": "Learning",
+    "path": "app_499_sleep_optimizer_4.py",
+    "desc": "Auto-generated micro app for Sleep."
+  }
+]

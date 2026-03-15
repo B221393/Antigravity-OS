@@ -1,0 +1,24 @@
+{
+  "title": "電通が「今もっとも欲しい人材」をトップが明言、面接で見極めら",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE96ejFZTjRBV0tFUy1qSlV0Q0RTNTRndHJtcW16Q0xlY2dGVUsxQ3BCQ2JiZjhPaXdEMmdDUV90dGZwUWNnQUZRTmZ2U1HSAU9BVV95cUxNd21RU3B3cjI3SUxqdzh3WXc2aGl2WG94QzZWX0tiZW1fNEZTSUg5bnRUd0pjQTJ0a2lyU29UN2t0SXRXaXV5bEVSd05VWUFn?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTE96ejFZTjRBV0tFUy1qSlV0Q0RTNTRndHJtcW16Q0xlY2dGVUsxQ3BCQ2JiZjhPaXdEMmdDUV90dGZwUWNnQUZRTmZ2U1HSAU9BVV95cUxNd21RU3B3cjI3SUxqdzh3WXc2aGl2WG94Qz",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "電通トップが求める人材像を明言。ダイヤモンドオンラインが報道。",
+    "true_intent": "電通の企業イメージ向上と、求める人材像の明確化による応募者増加。ダイヤモンド・オンラインは記事アクセス数増加と広告収入。電通に有利な人材誘導の可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "電通",
+    "action_required": true,
+    "category": "広告/メディア",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。電通の本質的価値と27卒が狙うべき理由を以下に構造化します。\n\n1.  **主要武器**: 顧客課題解決への徹底的なコミットメントと、それを実現する多様な専門性を持つ人材、及びメディアとの強固な関係性。\n\n2.  **26-27卒への温度感**: デジタル領域の強化を目指し、多様なバックグラウンドを持つ人材を積極的に採用。変化への適応力と成長意欲を重視。\n\n3.  **EGO適性**: データドリブンな意思決定を推進しており、構造的思考やAI活用に積極的。適性は高いと言える。\n\n4.  **裏の弱点**: 組織の縦割り構造が残存し、部署間の連携に課題が残る。長時間労働体質も依然として懸念される。\n",
+    "deep_web_intel": "```json\n{\n  \"company_name\": \"電通\",\n  \"summary\": \"株式会社電通は、広告代理店。\\n会社や事業の概要、採用関連情報、サステナビリティへの取り組みなど。\",\n  \"key_points\": [\n    \"広告代理店\",\n    \"会社情報\",\n    \"事業概要\",\n    \"採用情報\",\n    \"サステナビリティ\",\n    \"株式会社電通グループ\"\n  ],\n  \"gap_analysis\": {\n    \"missing_information\": [\n      \"詳細な事業内容\",\n      \"財務情報\",\n      \"組織構造\",\n      \"沿革\",\n      \"競合\",\n      \"主要顧客\",\n      \"Wikipediaの内容\"\n    ]\n  }\n}\n```"
+  },
+  "critical_analysis": {
+    "true_intent": "電通の企業イメージ向上と、求める人材像の明確化による応募者増加。ダイヤモンド・オンラインは記事アクセス数増加と広告収入。電通に有利な人材誘導の可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:02:40.594120",
+  "source": "電通"
+}

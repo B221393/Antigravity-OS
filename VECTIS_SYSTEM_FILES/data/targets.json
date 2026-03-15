@@ -1,0 +1,50 @@
+{
+  "targets": [
+    {
+      "name": "JERA",
+      "priority": "High",
+      "status": "researching"
+    },
+    {
+      "name": "NTT Group",
+      "priority": "High",
+      "status": "researching"
+    },
+    {
+      "name": "ドリコム",
+      "priority": "Medium",
+      "status": "pending_research",
+      "source": "auto_discovery"
+    },
+    {
+      "name": "入退室管理システムメーカーの",
+      "priority": "Medium",
+      "status": "pending_research",
+      "source": "auto_discovery"
+    },
+    {
+      "name": "アートでは",
+      "priority": "Medium",
+      "status": "pending_research",
+      "source": "auto_discovery"
+    },
+    {
+      "name": "入退室管理システムの",
+      "priority": "Medium",
+      "status": "pending_research",
+      "source": "auto_discovery"
+    },
+    {
+      "name": "アートは長い歴史の中で培った知識と技術で",
+      "priority": "Medium",
+      "status": "pending_research",
+      "source": "auto_discovery"
+    },
+    {
+      "name": "出入管理システム",
+      "priority": "Medium",
+      "status": "pending_research",
+      "source": "auto_discovery"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "title": "NEC・富士通・NTTデータ・日立が挑むコンサルへの転換、「",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9ySzRuc1M1UEJLYmd0dTNlR2VEb3ZyZFE0M0hsaE16ZFRlTzhRaWRWSVV1RURxM0M3c1VLaU8wV0NaXzNCdzdPUDl2SEtsTFBpWlE4TkRmZGxVbFBaOWZ3VVJEdndxdTYxaFJYcA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE9ySzRuc1M1UEJLYmd0dTNlR2VEb3ZyZFE0M0hsaE16ZFRlTzhRaWRWSVV1RURxM0M3c1VLaU8wV0NaXzNCdzdPUDl2SEtsTFBpWlE4TkRmZGxVbFBaOWZ3VVJEdndxdTYxaFJYcA?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "NEC,富士通,NTTデータ,日立がコンサル転換。御用聞きからの脱却を目指す。",
+    "true_intent": "旧態依然としたSIerからの脱却をアピールし、高収益なコンサル市場への参入を正当化。自社の技術力を背景にしたコンサルティング需要の喚起を狙う。政府系案件獲得への布石か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "旧態依然としたSIerからの脱却をアピールし、高収益なコンサル市場への参入を正当化。自社の技術力を背景にしたコンサルティング需要の喚起を狙う。政府系案件獲得への布石か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:25:01.171228",
+  "source": "Active:NTT"
+}

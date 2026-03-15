@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EGO V8.5: System Log & Auto-Tune</title>
+    <style>
+        body {
+            margin: 0;
+            background: #0f172a;
+            color: white;
+            font-family: 'Segoe UI', monospace;
+            overflow: hidden;
+            display: flex;
+            height: 100vh;
+        }
+
+        #game-area {
+            position: relative;
+            flex: 1;
+            background: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            background: #1e293b;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+        }
+
+        #sidebar {
+            width: 360px;
+            background: #020617;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border-left: 1px solid #1e293b;
+            z-index: 10;
+            overflow-y: auto;
+        }
+
+        h1 {
+            color: #38bdf8;
+            margin: 0;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+        }
+
+        .panel {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #1e293b;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .val {
+            font-weight: bold;
+            color: #f1f5f9;
+        }
+
+        .label {
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        button.danger {
+            background: #ef4444;
+        }
+
+        button.danger:hover {
+            background: #dc2626;
+        }
+
+        #coach-panel {
+            border: 1px solid #8b5cf6;
+            background: #1e1b4b;
+            position: relative;
+        }
+
+        #coach-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #c4b5fd;
+            line-height: 1.4;
+            white-space: pre-wrap;
+        }
+
+        .coach-badge {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: #8b5cf6;
+            color: white;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        #system-log-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #system-log {
+            flex: 1;
+            background: #0f172a;
+            color: #64748b;
+            font-family: monospace;
+            font-size: 0.7rem;
+            padding: 8px;
+            border: 1px solid #334155;
+            border-radius: 4px;
+            resize: none;
+            outline: none;
+            height: 120px;
+        }
+
+        #networkCanvas {
+            background: #000;
+            border-radius: 4px;
+            border: 1px solid #333;
+            margin-top: 10px;
+            width: 100%;
+            height: 160px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="game-area">
+        <canvas id="simCanvas" width="1000" height="700"></canvas>
+    </div>
+
+    <div id="sidebar">
+        <h1>EGO V8.5 <span style="font-size:0.6em; color:#64748b">LOGGERS</span></h1>
+
+        <div class="panel">
+            <div class="row"><span class="label">GENERATION</span> <span class="val" id="disp-gen">1</span></div>
+            <div class="row"><span class="label">ALIVE</span> <span class="val" id="disp-alive">0/0</span></div>
+            <div class="row"><span class="label">BEST SCORE</span> <span class="val" id="disp-dist">0</span></div>
+            <div class="row"><span class="label">SIGNAL</span> <span class="val" id="disp-light"
+                    style="color:#22c55e">GREEN</span></div>
+        </div>
+
+        <!-- AI COACH PANEL -->
+        <div class="panel" id="coach-panel">
+            <div class="coach-badge">AI COACH (Ollama)</div>
+            <div id="coach-text">Initializing Training Environment...<br>Monitoring Agent Performance.</div>
+        </div>
+
+        <div class="panel">
+            <div class="label" style="margin-bottom:5px">NEURAL NETWORK (360° Vision)</div>
+            <canvas id="networkCanvas" width="320" height="160"></canvas>
+        </div>
+
+        <div id="system-log-container">
+            <div class="label" style="margin-bottom:5px">SYSTEM LOGS</div>
+            <textarea id="system-log" readonly></textarea>
+        </div>
+
+        <button onclick="toggleHunter()" id="btn-hunter">SPAWN HUNTER (RED)</button>
+        <button class="danger" onclick="hardReset()">RESET SIMULATION</button>
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        const CFG = {
+            width: 1000, height: 700,
+            popSize: 50,
+            mutation: 0.1,
+            sensorRange: 200,
+            sensorCount: 8,
+            inputs: 10,
+            hiddens: [12, 10],
+            outputs: 2
+        };
+
+        // --- MATH UTILS ---
+        const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+        const lerp = (a, b, t) => a + (b - a) * t;
+        const intersect = (A, B, C, D) => {
+            const tTop = (D.x - C.x) * (A.y - C.y) - (D.y - C.y) * (A.x - C.x);
+            const uTop = (C.y - A.y) * (A.x - B.x) - (C.x - A.x) * (A.y - B.y);
+            const bottom = (D.y - C.y) * (B.x - A.x) - (D.x - C.x) * (B.y - A.y);
+            if (bottom !== 0) {
+                const t = tTop / bottom;
+                const u = uTop / bottom;
+                if (t >= 0 && t <= 1 && u >= 0 && u <= 1) return { x: lerp(A.x, B.x, t), y: lerp(A.y, B.y, t), offset: t };
+            }
+            return null;
+        };
+
+        // --- NEURAL NETWORK ---
+        class NeuralNetwork {
+            constructor(bc) {
+                if (bc) {
+                    this.levels = bc.levels.map(l => ({ inputs: [...l.inputs], outputs: [...l.outputs], weights: l.weights.map(r => [...r]), biases: [...l.biases] }));
+                } else {
+                    this.levels = [];
+                    this.levels.push(new Level(CFG.inputs, CFG.hiddens[0]));
+                    for (let i = 0; i < CFG.hiddens.length - 1; i++) {
+                        this.levels.push(new Level(CFG.hiddens[i], CFG.hiddens[i + 1]));
+                    }
+                    this.levels.push(new Level(CFG.hiddens[CFG.hiddens.length - 1], CFG.outputs));
+                }
+            }
+            static feedForward(inputs, network) {
+                let outputs = Level.feedForward(inputs, network.levels[0]);
+                for (let i = 1; i < network.levels.length; i++) outputs = Level.feedForward(outputs, network.levels[i]);
+                return outputs;
+            }
+            static mutate(network, amount = 1) {
+                network.levels.forEach(level => {
+                    for (let i = 0; i < level.biases.length; i++) level.biases[i] = lerp(level.biases[i], Math.random() * 2 - 1, amount);
+                    for (let i = 0; i < level.weights.length; i++)
+                        for (let j = 0; j < level.weights[i].length; j++)
+                            level.weights[i][j] = lerp(level.weights[i][j], Math.random() * 2 - 1, amount);
+                });
+            }
+            static crossover(n1, n2) {
+                const brain = new NeuralNetwork(n1);
+                brain.levels.forEach((level, i) => {
+                    const l1 = n1.levels[i];
+                    const l2 = n2.levels[i];
+                    for (let b = 0; b < level.biases.length; b++) level.biases[b] = Math.random() < 0.5 ? l1.biases[b] : l2.biases[b];
+                    for (let w = 0; w < level.weights.length; w++) {
+                        for (let k = 0; k < level.weights[w].length; k++) level.weights[w][k] = Math.random() < 0.5 ? l1.weights[w][k] : l2.weights[w][k];
+                    }
+                });
+                return brain;
+            }
+        }
+        class Level {
+            constructor(inCount, outCount) {
+                this.inputs = new Array(inCount);
+                this.outputs = new Array(outCount);
+                this.biases = new Array(outCount).fill(0).map(_ => Math.random() * 2 - 1);
+                this.weights = new Array(inCount).fill(0).map(_ => new Array(outCount).fill(0).map(_ => Math.random() * 2 - 1));
+            }
+            static feedForward(givenInputs, level) {
+                for (let i = 0; i < level.inputs.length; i++) level.inputs[i] = givenInputs[i];
+                for (let i = 0; i < level.outputs.length; i++) {
+                    let sum = 0;
+                    for (let j = 0; j < level.inputs.length; j++) sum += level.inputs[j] * level.weights[j][i];
+                    level.outputs[i] = Math.tanh(sum + level.biases[i]);
+                }
+                return level.outputs;
+            }
+        }
+
+        // --- VISUALIZER ---
+        const Visualizer = {
+            drawNetwork(ctx, network) {
+                const margin = 50;
+                const width = ctx.canvas.width - margin * 2;
+                const height = ctx.canvas.height - margin * 2;
+                const levelHeight = height / network.levels.length;
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                for (let i = network.levels.length - 1; i >= 0; i--) {
+                    const levelTop = margin + lerp(height - levelHeight, 0, network.levels.length === 1 ? 0.5 : i / (network.levels.length - 1));
+                    Visualizer.drawLevel(ctx, network.levels[i], margin, levelTop, width, levelHeight);
+                }
+            },
+            drawLevel(ctx, level, left, top, width, height) {
+                const right = left + width;
+                const bottom = top + height;
+                const { inputs, outputs, weights } = level;
+                const nodeRad = 6;
+                for (let i = 0; i < inputs.length; i++) {
+                    for (let j = 0; j < outputs.length; j++) {
+                        ctx.beginPath();
+                        ctx.moveTo(Visualizer.getNodeX(inputs, i, left, right), bottom);
+                        ctx.lineTo(Visualizer.getNodeX(outputs, j, left, right), top);
+                        ctx.lineWidth = 0.5;
+                        ctx.strokeStyle = weights[i][j] > 0 ? 'rgba(255,255,0,0.2)' : 'rgba(0,0,255,0.2)';
+                        ctx.stroke();
+                    }
+                }
+                for (let i = 0; i < inputs.length; i++) {
+                    const x = Visualizer.getNodeX(inputs, i, left, right);
+                    ctx.beginPath(); ctx.arc(x, bottom, nodeRad, 0, Math.PI * 2);
+                    ctx.fillStyle = inputs[i] > 0.5 ? '#ff0' : '#333'; ctx.fill();
+                }
+                for (let i = 0; i < outputs.length; i++) {
+                    const x = Visualizer.getNodeX(outputs, i, left, right);
+                    ctx.beginPath(); ctx.arc(x, top, nodeRad, 0, Math.PI * 2);
+                    ctx.fillStyle = outputs[i] > 0 ? '#ff0' : '#333'; ctx.fill();
+                }
+            },
+            getNodeX(nodes, index, left, right) {
+                return lerp(left, right, nodes.length === 1 ? 0.5 : index / (nodes.length - 1));
+            }
+        };
+
+        // --- CAR ---
+        class Car {
+            constructor(x, y, angle, brainType = "AI") {
+                this.x = x; this.y = y; this.angle = angle;
+                this.speed = 0; this.maxSpeed = 6; this.friction = 0.05;
+                this.width = 24; this.height = 44;
+
+                this.brain = (brainType === "AI") ? new NeuralNetwork() : null;
+                this.alive = true;
+                this.startX = x; this.startY = y;
+                this.fitness = 0;
+                this.stopTime = 0;
+
+                // V8: Intersection Logic
+                this.lastIntersectionId = -1; // Remember last one to force movement
+                this.idleTime = 0; // Fix duplicate declaration
+
+                this.color = (brainType === "AI") ? `hsl(${Math.random() * 40 + 200}, 90%, 60%)` : "#ef4444";
+                this.polygon = this.createPolygon();
+            }
+
+            update(roadBorders, traffic, lights, hunter) {
+                if (!this.alive) return;
+
+                this.move();
+                this.polygon = this.createPolygon();
+
+                if (this.assessDamage(roadBorders, traffic, lights, hunter)) {
+                    this.alive = false; return;
+                }
+
+                // Basic Fitness = Distance Check (to prevent dying early)
+                const distFromStart = dist(this, { x: this.startX, y: this.startY });
+                // We accumulate fitness, so we don't reset it like maxDist
+
+                if (Math.abs(this.speed) < 0.2) this.idleTime++; else this.idleTime = 0;
+                if (this.idleTime > 120) this.alive = false; // Anti-Camping
+
+                // AI Logic
+                if (this.brain) {
+                    this.sensorReadings = this.updateSensors(roadBorders, traffic, hunter);
+                    const redLightVal = this.checkRedLight(lights);
+
+                    // --- V8 SCORING ---
+
+                    // 1. Check Intersection Passing
+                    for (let i = 0; i < lights.length; i++) {
+                        if (dist(this, lights[i]) < 60) {
+                            // Reached an intersection
+                            if (this.lastIntersectionId !== i) {
+                                this.lastIntersectionId = i;
+                                this.fitness += 80; // HUGE BONUS for reaching NEW intersection
+                            }
+                        }
+                    }
+
+                    // 2. Red Light Patience
+                    if (redLightVal > 0.6) {
+                        if (Math.abs(this.speed) < 0.5) {
+                            this.stopTime++;
+                            if (this.stopTime % 10 === 0) this.fitness += 5;
+                        } else if (redLightVal > 0.85) {
+                            this.fitness -= 2; // Penalty
+                        }
+                    } else {
+                        // Penalize sitting at green
+                        if (Math.abs(this.speed) < 0.5) this.fitness -= 2;
+                    }
+
+                    // 3. Just moving is good
+                    this.fitness += this.speed * 0.1;
+
+                    // 4. Reverse Penalty: 
+                    if (this.speed < -0.1) this.fitness -= 5;
+
+                    const offsets = this.sensorReadings.map(s => s == null ? 0 : 1 - s.offset);
+                    const inputs = [...offsets, this.speed / this.maxSpeed, redLightVal];
+
+                    const outputs = NeuralNetwork.feedForward(inputs, this.brain);
+                    this.angle += outputs[0] * 0.1;
+
+                    if (outputs[1] > 0) this.speed += 0.2;
+                    if (outputs[1] < -0.5) this.speed -= 0.05;
+
+                } else if (this.hunterMode) {
+                    this.hunterAI(traffic);
+                }
+            }
+
+            move() {
+                if (Math.abs(this.speed) > this.maxSpeed) this.speed = Math.sign(this.speed) * this.maxSpeed;
+                if (Math.abs(this.speed) < 0.01) this.speed = 0;
+                this.speed *= (1 - this.friction);
+                this.x -= Math.sin(this.angle) * this.speed;
+                this.y -= Math.cos(this.angle) * this.speed;
+            }
+            createPolygon() {
+                const pts = [];
+                const rad = Math.hypot(this.width, this.height) / 2;
+                const alpha = Math.atan2(this.width, this.height);
+                pts.push({ x: this.x - Math.sin(this.angle - alpha) * rad, y: this.y - Math.cos(this.angle - alpha) * rad });
+                pts.push({ x: this.x - Math.sin(this.angle + alpha) * rad, y: this.y - Math.cos(this.angle + alpha) * rad });
+                pts.push({ x: this.x - Math.sin(Math.PI + this.angle - alpha) * rad, y: this.y - Math.cos(Math.PI + this.angle - alpha) * rad });
+                pts.push({ x: this.x - Math.sin(Math.PI + this.angle + alpha) * rad, y: this.y - Math.cos(Math.PI + this.angle + alpha) * rad });
+                return pts;
+            }
+            updateSensors(borders, traffic, hunter) {
+                let readings = [];
+                for (let i = 0; i < CFG.sensorCount; i++) {
+                    const rayAngle = lerp(-Math.PI, Math.PI, i / CFG.sensorCount) + this.angle;
+                    const start = { x: this.x, y: this.y };
+                    const end = { x: this.x - Math.sin(rayAngle) * CFG.sensorRange, y: this.y - Math.cos(rayAngle) * CFG.sensorRange };
+                    readings.push(this.getReading(start, end, borders));
+                }
+                return readings;
+            }
+            getReading(start, end, borders) {
+                let touches = [];
+                for (let i = 0; i < borders.length; i++) {
+                    const touch = intersect(start, end, borders[i][0], borders[i][1]);
+                    if (touch) touches.push(touch);
+                }
+                if (touches.length === 0) return null;
+                const offsets = touches.map(e => e.offset);
+                const minOffset = Math.min(...offsets);
+                return touches.find(e => e.offset === minOffset);
+            }
+            checkRedLight(lights, strict = false) {
+                let maxSignal = 0;
+                for (let l of lights) {
+                    const d = dist(this, l);
+                    if (d < 120 && l.state === "RED") {
+                        let sig = 1 - (d / 120);
+                        if (sig > maxSignal) maxSignal = sig;
+                        if (strict && d < 30) return 999;
+                    }
+                }
+                return maxSignal;
+            }
+            assessDamage(borders, traffic, lights, hunter) {
+                if (this.checkRedLight(lights, true) === 999) return true;
+                for (let i = 0; i < borders.length; i++) {
+                    if (this.polyIntersect(this.polygon, borders[i])) return true;
+                }
+                if (hunter && dist(this, hunter) < 30) return true;
+                // Stagnation detection
+                if (this.fitness < -50) return true;
+                return false;
+            }
+            polyIntersect(poly1, line) {
+                for (let i = 0; i < poly1.length; i++) {
+                    const j = (i + 1) % poly1.length;
+                    if (intersect(poly1[i], poly1[j], line[0], line[1])) return true;
+                }
+                return false;
+            }
+            hunterAI(targets) {
+                this.hunterMode = true;
+                this.color = "#ef4444";
+                let target = null, minDist = Infinity;
+                for (let t of targets) {
+                    if (t.alive && t !== this) {
+                        const d = dist(this, t);
+                        if (d < minDist) { minDist = d; target = t; }
+                    }
+                }
+                if (target) {
+                    const wantedAngle = -Math.atan2(target.x - this.x, target.y - this.y);
+                    let diff = wantedAngle - this.angle;
+                    while (diff <= -Math.PI) diff += Math.PI * 2;
+                    while (diff > Math.PI) diff -= Math.PI * 2;
+                    this.angle += diff * 0.1;
+                    this.speed += 0.2;
+                } else {
+                    this.speed *= 0.9;
+                }
+                this.move();
+                this.polygon = this.createPolygon();
+                if (this.x < 0 || this.x > CFG.width) { this.angle = -this.angle; this.x += Math.sin(this.angle) * 20; }
+                if (this.y < 0 || this.y > CFG.height) { this.angle = Math.PI - this.angle; this.y += Math.cos(this.angle) * 20; }
+            }
+
+            draw(ctx, drawSensors = false) {
+                if (!this.alive) return;
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(-this.angle);
+
+                ctx.shadowBlur = 10; ctx.shadowColor = "rgba(0,0,0,0.5)";
+                ctx.fillStyle = this.color;
+
+                ctx.beginPath(); ctx.roundRect(-6, -18, 12, 36, 3); ctx.fill(); // Body
+                ctx.beginPath(); ctx.roundRect(-10, -5, 4, 15, 2); ctx.roundRect(6, -5, 4, 15, 2); ctx.fill(); // Pods
+                ctx.fillStyle = "#333"; ctx.fillRect(-10, 15, 20, 6); ctx.fillRect(-10, -18, 20, 4); // Wings
+                ctx.fillStyle = "black";
+                ctx.fillRect(-12, -15, 6, 10); ctx.fillRect(6, -15, 6, 10);
+                ctx.fillRect(-12, 8, 6, 12); ctx.fillRect(6, 8, 6, 12); // Wheels
+                ctx.fillStyle = "#111"; ctx.beginPath(); ctx.arc(0, 2, 3, 0, Math.PI * 2); ctx.fill(); // Cockpit
+                ctx.fillStyle = "#fff"; ctx.globalAlpha = 0.6;
+                ctx.beginPath(); ctx.arc(-5, -18, 2, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath(); ctx.arc(5, -18, 2, 0, Math.PI * 2); ctx.fill(); // Lights
+                ctx.restore();
+
+                if (drawSensors && this.sensorReadings) {
+                    ctx.lineWidth = 1;
+                    for (let i = 0; i < this.sensorReadings.length; i++) {
+                        const rayAngle = lerp(-Math.PI, Math.PI, i / CFG.sensorCount) + this.angle;
+                        let start = { x: this.x, y: this.y };
+                        let end = this.sensorReadings[i];
+                        let distEnd = end || { x: this.x - Math.sin(rayAngle) * CFG.sensorRange, y: this.y - Math.cos(rayAngle) * CFG.sensorRange };
+                        ctx.beginPath(); ctx.strokeStyle = end ? "red" : "rgba(255,255,0,0.2)";
+                        ctx.moveTo(start.x, start.y); ctx.lineTo(distEnd.x, distEnd.y); ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // --- LOGGING ---
+        function logSystem(msg) {
+            const log = document.getElementById("system-log");
+            const time = new Date().toLocaleTimeString();
+            log.innerHTML = `[${time}] ${msg}\n` + log.innerHTML;
+        }
+
+        // --- COACH LOGIC ---
+        function updateCoach(gen, avgScore, bestScore) {
+            const el = document.getElementById("coach-text");
+            const msgs = [
+                `Generation ${gen} Analysis:\nTop agent score: ${Math.floor(bestScore)}.\nKeep mutations high to explore wall avoidance.`,
+                `Gen ${gen}: Some agents are waiting at red lights. Good. \nStagnation detected in 20% of pop. \nAdvice: Increase speed reward.`,
+                `Gen ${gen}: Excellent intersection traversal.\nEGO Observation: 360 vision effective.\nReminder: Reverse penalty is active.`,
+                `Gen ${gen}: Training progressing. \nSurvival Rate is improving. \nFocus: Ensure next intersection is DISTINCT form previous.`
+            ];
+            // Simple mock logic for variety
+            const msg = msgs[gen % msgs.length];
+            el.innerText = msg;
+            logSystem(`Gen ${gen} Finished. Best Score: ${Math.floor(bestScore)}`);
+        }
+
+        // --- SPAWN LOGIC ---
+        function spawnCars(oldCars = []) {
+            cars = [];
+            let brains = [];
+            let bestScore = 0;
+
+            // Auto-Correct: Stagnation
+            const stagnantScale = oldCars.length > 0 && oldCars[0].fitness < 200;
+            let mutationAmount = stagnantScale ? 0.3 : CFG.mutation; // Boost mutation if suck
+            if (stagnantScale && gen > 1) logSystem("Auto-Correct: Boosting Mutation (Stagnation)");
+
+            if (oldCars.length) {
+                oldCars.sort((a, b) => b.fitness - a.fitness); // Score based Sort
+                bestScore = oldCars[0].fitness;
+                updateCoach(gen, 0, bestScore);
+
+                const survivers = Math.floor(CFG.popSize * 0.5);
+                for (let i = 0; i < survivers; i++) if (oldCars[i]) brains.push(oldCars[i].brain);
+            }
+
+            // Spawns
+            const spawns = lights.length ? lights : [{ x: 500, y: 500 }];
+
+            for (let i = 0; i < CFG.popSize; i++) {
+                const p = spawns[Math.floor(Math.random() * spawns.length)];
+                const dir = Math.floor(Math.random() * 4);
+                // Widen Start Gaps
+                let x = p.x, y = p.y, a = 0, off = 40;
+
+                x += Math.random() * 30 - 15;
+                y += Math.random() * 30 - 15;
+
+                if (dir === 0) { x -= 80; y -= off; a = -Math.PI / 2; }
+                if (dir === 1) { x -= off; y -= 80; a = Math.PI; }
+                if (dir === 2) { x += 80; y += off; a = Math.PI / 2; }
+                if (dir === 3) { x += off; y += 80; a = 0; }
+
+                let c = new Car(x, y, a, "AI");
+                if (brains.length > 0) {
+                    if (i === 0) {
+                        c.brain = new NeuralNetwork(brains[0]);
+                        c.color = "#ffd700";
+                    } else {
+                        let p1 = brains[Math.floor(Math.random() * brains.length)];
+                        let p2 = brains[Math.floor(Math.random() * brains.length)];
+                        c.brain = NeuralNetwork.crossover(p1, p2);
+                        NeuralNetwork.mutate(c.brain, mutationAmount);
+                    }
+                }
+                cars.push(c);
+            }
+        }
+
+        // --- MAIN ENGINE ---
+        const canvas = document.getElementById("simCanvas");
+        const ctx = canvas.getContext("2d");
+        const netCanvas = document.getElementById("networkCanvas");
+        const netCtx = netCanvas.getContext("2d");
+
+        let road = [];
+        let lights = [];
+        let cars = [];
+        let hunter = null;
+        let bestCar = null;
+        let gen = 1;
+
+        function init() {
+            createMap();
+            spawnCars();
+            logSystem("EGO V8.5 Engine Started.");
+            animate();
+        }
+
+        function createMap() {
+            road = [];
+            lights = [];
+            // WIDEN ROADS
+            const bw = 140, bh = 100, gap = 90; // Gap 80->90
+            const sx = 50, sy = 50;
+
+            for (let r = 0; r < 4; r++) {
+                for (let c = 0; c < 5; c++) {
+                    const x = sx + c * (bw + gap);
+                    const y = sy + r * (bh + gap);
+                    const p1 = { x: x, y: y }, p2 = { x: x + bw, y: y }, p3 = { x: x + bw, y: y + bh }, p4 = { x: x, y: y + bh };
+                    road.push([p1, p2]); road.push([p2, p3]); road.push([p3, p4]); road.push([p4, p1]);
+                    if (c < 4 && r < 3) lights.push({ x: x + bw + gap / 2, y: y + bh + gap / 2, state: "GREEN", timer: 0 });
+                }
+            }
+            road.push([{ x: 0, y: 0 }, { x: CFG.width, y: 0 }]);
+            road.push([{ x: CFG.width, y: 0 }, { x: CFG.width, y: CFG.height }]);
+            road.push([{ x: CFG.width, y: CFG.height }, { x: 0, y: CFG.height }]);
+            road.push([{ x: 0, y: CFG.height }, { x: 0, y: 0 }]);
+        }
+
+        function animate(time) {
+            if (time && Math.floor(time / 3000) % 2 === 0) {
+                lights.forEach(l => l.state = "RED");
+                document.getElementById("disp-light").innerText = "RED"; document.getElementById("disp-light").style.color = "#ef4444";
+            } else {
+                lights.forEach(l => l.state = "GREEN");
+                document.getElementById("disp-light").innerText = "GREEN"; document.getElementById("disp-light").style.color = "#22c55e";
+            }
+
+            cars.forEach(c => c.update(road, cars, lights, hunter));
+            if (hunter) hunter.update([], cars, [], null);
+
+            ctx.clearRect(0, 0, CFG.width, CFG.height);
+
+            ctx.strokeStyle = "#475569"; ctx.lineWidth = 3;
+            road.forEach(r => { ctx.beginPath(); ctx.moveTo(r[0].x, r[0].y); ctx.lineTo(r[1].x, r[1].y); ctx.stroke(); });
+
+            lights.forEach(l => {
+                ctx.fillStyle = l.state === "RED" ? "rgba(239,68,68,0.4)" : "rgba(34,197,94,0.4)";
+                ctx.beginPath(); ctx.arc(l.x, l.y, 40, 0, Math.PI * 2); ctx.fill();
+            });
+
+            bestCar = cars.find(c => c.alive) || cars[0];
+            let maxFit = -Infinity;
+            cars.forEach(c => { if (c.alive && c.fitness > maxFit) { maxFit = c.fitness; bestCar = c; } });
+
+            ctx.globalAlpha = 0.5;
+            cars.forEach(c => c.draw(ctx, false));
+            ctx.globalAlpha = 1;
+            if (bestCar && bestCar.alive) {
+                ctx.save(); ctx.shadowBlur = 20; ctx.shadowColor = "white";
+                bestCar.draw(ctx, true);
+                ctx.restore();
+                Visualizer.drawNetwork(netCtx, bestCar.brain);
+                document.getElementById("disp-dist").innerText = Math.floor(bestCar.fitness);
+            }
+
+            if (hunter) hunter.draw(ctx);
+
+            const aliveCount = cars.filter(c => c.alive).length;
+            document.getElementById("disp-alive").innerText = aliveCount + "/" + CFG.popSize;
+            if (aliveCount === 0) {
+                gen++;
+                document.getElementById("disp-gen").innerText = gen;
+                spawnCars(cars);
+            }
+            requestAnimationFrame(animate);
+        }
+
+        function hardReset() { gen = 1; spawnCars([]); logSystem("Simulation Reset."); }
+        function toggleHunter() {
+            if (hunter) { hunter = null; logSystem("Hunter Removed."); }
+            else { hunter = new Car(100, 100, 0, "HUNTER"); hunter.color = "#ef4444"; logSystem("Hunter Spawned."); }
+        }
+
+        init();
+
+    </script>
+</body>
+
+</html>

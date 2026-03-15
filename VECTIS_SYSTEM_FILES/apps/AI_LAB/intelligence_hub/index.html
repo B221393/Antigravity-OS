@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligence Hub - EGO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .source-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid;
+        }
+
+        .source-card.job {
+            border-color: #667eea;
+        }
+
+        .source-card.youtube {
+            border-color: #ff0000;
+        }
+
+        .source-card.news {
+            border-color: #4CAF50;
+        }
+
+        .source-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .source-icon {
+            font-size: 32px;
+            margin-right: 15px;
+        }
+
+        .source-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .source-count {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: auto;
+        }
+
+        .intelligence-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .intel-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .intel-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
+        }
+
+        .intel-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .intel-meta {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .intel-preview {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .sync-status {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sync-icon {
+            font-size: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🧠 Intelligence Hub</h1>
+        <p class="subtitle">統合情報収集センター - AI駆動インテリジェンス</p>
+
+        <div class="sync-status">
+            <div class="sync-icon">🔄</div>
+            <div>
+                <strong>自動同期: アクティブ</strong><br>
+                <span style="font-size: 12px; opacity: 0.9;">
+                    最終更新: <span id="lastSync">未取得</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalIntel">0</div>
+                <div class="stat-label">Total Intelligence</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="todayIntel">0</div>
+                <div class="stat-label">Today's Findings</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="jobIntel">0</div>
+                <div class="stat-label">Job Opportunities</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="trendIntel">0</div>
+                <div class="stat-label">Trending Topics</div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary" onclick="loadIntelligence()">🔄 データを読み込む</button>
+            <button class="btn btn-primary" onclick="syncToKnowledgeNetwork()">🌐 Knowledge Networkに同期</button>
+            <button class="btn btn-secondary" onclick="exportData()">📥 Export JSON</button>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterIntel('all')">All</button>
+            <button class="filter-btn" onclick="filterIntel('job')">💼 Job</button>
+            <button class="filter-btn" onclick="filterIntel('youtube')">📺 YouTube</button>
+            <button class="filter-btn" onclick="filterIntel('news')">📰 News</button>
+            <button class="filter-btn" onclick="filterIntel('today')">🆕 Today</button>
+        </div>
+
+        <div class="sources-grid">
+            <div class="source-card job">
+                <div class="source-header">
+                    <div class="source-icon">💼</div>
+                    <div class="source-title">Job Intelligence</div>
+                    <div class="source-count" id="jobCount">0</div>
+                </div>
+                <div class="intelligence-list" id="jobList"></div>
+            </div>
+
+            <div class="source-card youtube">
+                <div class="source-header">
+                    <div class="source-icon">📺</div>
+                    <div class="source-title">YouTube Trends</div>
+                    <div class="source-count" id="youtubeCount">0</div>
+                </div>
+                <div class="intelligence-list" id="youtubeList"></div>
+            </div>
+
+            <div class="source-card news">
+                <div class="source-header">
+                    <div class="source-icon">📰</div>
+                    <div class="source-title">News & Research</div>
+                    <div class="source-count" id="newsCount">0</div>
+                </div>
+                <div class="intelligence-list" id="newsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'vectis_intelligence_hub';
+        let currentFilter = 'all';
+
+        // サンプルデータ（実際のデータはBOOKSHELFやrun_cli.pyから読み込む）
+        const mockIntelligence = {
+            job: [
+                {
+                    title: "株式会社テック企業 - Webエンジニア募集",
+                    source: "Job Patrol",
+                    date: "2026-01-19",
+                    preview: "React/TypeScript経験者歓迎。リモート可。年収500-800万円。",
+                    url: "#",
+                    category: "job"
+                },
+                {
+                    title: "AI研究開発エンジニア - スタートアップ",
+                    source: "Job Patrol",
+                    date: "2026-01-19",
+                    preview: "機械学習・深層学習の実務経験。Python必須。",
+                    url: "#",
+                    category: "job"
+                }
+            ],
+            youtube: [
+                {
+                    title: "TOEIC満点への道 - 効率的学習法",
+                    source: "YouTube Intelligence",
+                    date: "2026-01-19",
+                    preview: "3ヶ月で800→990点を達成した勉強法を解説...",
+                    url: "#",
+                    category: "youtube"
+                },
+                {
+                    title: "2026年 AIトレンド予測",
+                    source: "YouTube Intelligence",
+                    date: "2026-01-18",
+                    preview: "生成AI、マルチモーダルAIの最新動向...",
+                    url: "#",
+                    category: "youtube"
+                }
+            ],
+            news: [
+                {
+                    title: "プログラミング言語ランキング2026",
+                    source: "News Feed",
+                    date: "2026-01-19",
+                    preview: "Python、TypeScript、Rustが上位をキープ...",
+                    url: "#",
+                    category: "news"
+                }
+            ]
+        };
+
+        function loadIntelligence() {
+            // LocalStorageまたはファイルシステムから読み込み
+            const stored = localStorage.getItem(STORAGE_KEY);
+            const intelligence = stored ? JSON.parse(stored) : mockIntelligence;
+
+            // 統計を更新
+            updateStats(intelligence);
+
+            // リストを表示
+            renderIntelligence(intelligence);
+
+            // 最終同期時刻
+            document.getElementById('lastSync').textContent = new Date().toLocaleString('ja-JP');
+        }
+
+        function updateStats(intel) {
+            const total = (intel.job?.length || 0) + (intel.youtube?.length || 0) + (intel.news?.length || 0);
+            const today = new Date().toISOString().split('T')[0];
+
+            const todayCount = [...(intel.job || []), ...(intel.youtube || []), ...(intel.news || [])]
+                .filter(item => item.date === today).length;
+
+            document.getElementById('totalIntel').textContent = total;
+            document.getElementById('todayIntel').textContent = todayCount;
+            document.getElementById('jobIntel').textContent = intel.job?.length || 0;
+            document.getElementById('trendIntel').textContent = intel.youtube?.length || 0;
+        }
+
+        function renderIntelligence(intel) {
+            renderList('jobList', intel.job || [], 'jobCount');
+            renderList('youtubeList', intel.youtube || [], 'youtubeCount');
+            renderList('newsList', intel.news || [], 'newsCount');
+        }
+
+        function renderList(containerId, items, countId) {
+            const container = document.getElementById(containerId);
+            const count = document.getElementById(countId);
+
+            count.textContent = items.length;
+
+            if (items.length === 0) {
+                container.innerHTML = '<div class="empty-state">データがありません</div>';
+                return;
+            }
+
+            container.innerHTML = items.slice(0, 5).map(item => `
+                <div class="intel-item" onclick="openIntel('${item.url}')">
+                    <div class="intel-title">${escapeHtml(item.title)}</div>
+                    <div class="intel-meta">📅 ${item.date} | 📍 ${item.source}</div>
+                    <div class="intel-preview">${escapeHtml(item.preview)}</div>
+                </div>
+            `).join('');
+        }
+
+        function syncToKnowledgeNetwork() {
+            const intelligence = JSON.parse(localStorage.getItem(STORAGE_KEY) || JSON.stringify(mockIntelligence));
+
+            // Knowledge Network用のデータ形式に変換
+            const knowledgeData = {
+                nodes: [],
+                timestamp: new Date().toISOString()
+            };
+
+            [...(intelligence.job || []), ...(intelligence.youtube || []), ...(intelligence.news || [])]
+                .forEach((item, index) => {
+                    knowledgeData.nodes.push({
+                        id: `intel_${index}`,
+                        title: item.title,
+                        category: item.category,
+                        content: item.preview,
+                        source: item.source,
+                        date: item.date,
+                        url: item.url
+                    });
+                });
+
+            // LocalStorageに保存（Knowledge Networkと共有）
+            localStorage.setItem('vectis_knowledge_sync', JSON.stringify(knowledgeData));
+
+            alert(`✅ ${knowledgeData.nodes.length}件の情報をKnowledge Networkに同期しました！`);
+        }
+
+        function exportData() {
+            const intelligence = JSON.parse(localStorage.getItem(STORAGE_KEY) || JSON.stringify(mockIntelligence));
+            const dataStr = JSON.stringify(intelligence, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `vectis_intelligence_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function filterIntel(type) {
+            currentFilter = type;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // TODO: フィルタリング実装
+            loadIntelligence();
+        }
+
+        function openIntel(url) {
+            if (url && url !== '#') {
+                window.open(url, '_blank');
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 初期化
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(mockIntelligence));
+        loadIntelligence();
+
+        // 60秒ごとに自動更新
+        setInterval(() => {
+            loadIntelligence();
+        }, 60000);
+    </script>
+</body>
+
+</html>

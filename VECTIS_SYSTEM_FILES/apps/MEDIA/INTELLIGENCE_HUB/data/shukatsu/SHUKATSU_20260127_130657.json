@@ -1,0 +1,22 @@
+{
+  "title": "職員採用／採用サポーター制度 - pref.hyogo.lg",
+  "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYY0twMy1mYTdBN3E3SGo2V3hZTHJqM2xGZkxQRGFCX0dTSzBDTGR5NGtIMDN2MFBtd1RYaEdQaVFlZEU1eDZMUVdjZmpHOURrb0dEblRxR200TXh0dk5pbElSV0ZnQQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYY0twMy1mYTdBN3E3SGo2V3hZTHJqM2xGZkxQRGFCX0dTSzBDTGR5NGtIMDN2MFBtd1RYaEdQaVFlZEU1eDZMUVdjZmpHOURrb0dEblRxR200TXh0dk5pbElSV0ZnQQ?oc=5\" targe",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "兵庫県が職員採用と採用サポーター制度を告知。27卒も対象になりうる。",
+    "true_intent": "若手人材確保のアピール。県職員の魅力を伝え、優秀な学生を囲い込む狙い。採用実績を上げることで組織の評価向上も期待。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "若手人材確保のアピール。県職員の魅力を伝え、優秀な学生を囲い込む狙い。採用実績を上げることで組織の評価向上も期待。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:06:57.430854",
+  "source": "兵庫県庁 採用"
+}

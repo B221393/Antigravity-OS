@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS NERVE CENTER</title>
+    <!-- Core Libs -->
+    <script src="https://unpkg.com/3d-force-graph"></script>
+    <script src="https://unpkg.com/three"></script>
+    <script src="https://unpkg.com/three-spritetext"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f3ff;
+            --secondary: #bc13fe;
+            --bg: #050505;
+            --panel-bg: rgba(5, 10, 20, 0.85);
+            --border: 1px solid rgba(0, 243, 255, 0.3);
+            --text-glow: 0 0 10px rgba(0, 243, 255, 0.5);
+            --box-glow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: 'Share Tech Mono', monospace;
+            overflow: hidden;
+            color: var(--primary);
+        }
+
+        #graph {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* Scanline Overlay */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.3;
+        }
+
+        /* --- UI COMPONENTS --- */
+
+        .hud-panel {
+            background: var(--panel-bg);
+            border: var(--border);
+            box-shadow: var(--box-glow);
+            backdrop-filter: blur(8px);
+            padding: 15px;
+            position: absolute;
+            z-index: 10;
+        }
+
+        /* Header */
+        .header {
+            top: 20px;
+            left: 20px;
+            border-left: 4px solid var(--primary);
+            width: 300px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: var(--text-glow);
+            background: linear-gradient(90deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-blink {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 10px var(--primary);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .system-status {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        /* Control Deck */
+        .control-deck {
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+
+        .btn:hover,
+        .btn.active {
+            background: rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 15px var(--primary);
+            text-shadow: 0 0 5px #fff;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Stats Side (Right) */
+        .data-column {
+            top: 20px;
+            right: 20px;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .stat-card {
+            background: rgba(5, 10, 20, 0.8);
+            border-right: 2px solid var(--secondary);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-val {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            color: var(--secondary);
+            text-shadow: 0 0 5px var(--secondary);
+        }
+
+        /* Detail Panel */
+        .intel-panel {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%) perspective(1000px) rotateY(10deg) translateX(-150%);
+            width: 400px;
+            max-height: 80vh;
+            background: rgba(0, 10, 20, 0.95);
+            border: 1px solid var(--primary);
+            padding: 30px;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            overflow-y: auto;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .intel-panel.active {
+            transform: translateY(-50%) perspective(1000px) rotateY(0deg) translateX(0);
+        }
+
+        .intel-panel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-top: 20px solid var(--primary);
+            border-left: 20px solid transparent;
+        }
+
+        .intel-category {
+            color: var(--secondary);
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .intel-title {
+            font-size: 20px;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+            color: #fff;
+        }
+
+        .intel-body {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 30px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Search */
+        .search-bar {
+            position: absolute;
+            top: 140px;
+            left: 22px;
+            width: 300px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #333;
+            border-bottom: 2px solid var(--primary);
+            color: var(--primary);
+            font-family: 'Share Tech Mono';
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        /* Loading / Drop Zone */
+        .drop-zone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary);
+            border: 2px dashed #333;
+        }
+
+        .drop-zone.hidden {
+            display: none;
+        }
+
+        .drop-zone h1 {
+            text-shadow: 0 0 20px var(--primary);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scanlines"></div>
+    <div id="graph"></div>
+
+    <!-- Drop Zone Fallback -->
+    <div id="dropZone" class="drop-zone hidden">
+        <h1>INITIALIZING SYSTEM...</h1>
+        <p>[ ERROR: LOCAL DATA ACCESS DENIED ]</p>
+        <p>DROP 'universe.json' HERE TO BYPASS SECURITY PROTOCOLS</p>
+    </div>
+
+    <!-- UI Layer -->
+    <div class="hud-panel header">
+        <div style="display:flex; align-items:center;">
+            <div class="status-blink"></div>
+            <h1>VECTIS<span style="font-size:12px; vertical-align:top;">OS</span></h1>
+        </div>
+        <div class="system-status" id="sysStatus">System Normal // Monitoring Active</div>
+    </div>
+
+    <input type="text" class="search-bar" id="search" placeholder=">> SEARCH DATABASE...">
+
+    <div class="data-column">
+        <div class="stat-card">
+            <span>ACTIVE NODES</span>
+            <span class="stat-val" id="nodeCount">000</span>
+        </div>
+        <div class="stat-card">
+            <span>SYNAPSES</span>
+            <span class="stat-val" id="linkCount">000</span>
+        </div>
+        <div class="stat-card">
+            <span>CLUSTERS</span>
+            <span class="stat-val" id="groupCount">00</span>
+        </div>
+        <div id="clusterList" style="max-height: 300px; overflow-y: auto; font-size: 10px; margin-top: 10px;"></div>
+    </div>
+
+    <div class="hud-panel control-deck">
+        <button class="btn active" id="modeOrbit">3D ORBIT</button>
+        <button class="btn" id="modeAuto">AUTO-PILOT</button>
+        <button class="btn" id="modeFocus" style="border-color: var(--secondary); color: var(--secondary);">DEEP
+            FOCUS</button>
+    </div>
+
+    <div class="intel-panel" id="intelPanel">
+        <div class="close-btn" id="closePanel">[x]</div>
+        <div class="intel-category" id="intelCat">CATEGORY</div>
+        <div class="intel-title" id="intelTitle">Node Title</div>
+        <div class="intel-body" id="intelBody">Content loading...</div>
+    </div>
+
+    <script>
+        // --- CONFIG & STATE ---
+        const CONFIG = {
+            autoSpeed: 0.001,
+            colors: {
+                primary: '#00f3ff',
+                secondary: '#bc13fe',
+                alert: '#ff0055'
+            }
+        };
+
+        const STATE = {
+            nodes: [],
+            links: [],
+            mode: 'ORBIT', // ORBIT, AUTO, FOCUS
+            autoIdx: 0,
+            autoInterval: null,
+            focusGroup: null
+        };
+
+        const Graph = ForceGraph3D()(document.getElementById('graph'));
+
+        // --- INIT ---
+        async function init() {
+            // Try load data
+            let data = await loadData();
+            if (!data) {
+                document.getElementById('dropZone').classList.remove('hidden');
+                initDropZone();
+            } else {
+                startSystem(data);
+            }
+        }
+
+        async function loadData() {
+            // Simulated Fetch for self-contained robustness
+            try {
+                // Try adjacent first
+                let r = await fetch('../youtube_channel/data/universe.json');
+                if (r.ok) return await r.json();
+                // Try absolute
+                r = await fetch('/VECTIS_SYSTEM_FILES/apps/MEDIA/youtube_channel/data/universe.json');
+                if (r.ok) return await r.json();
+            } catch (e) { console.warn("Auto-load failed"); }
+            return null;
+        }
+
+        function initDropZone() {
+            const dz = document.getElementById('dropZone');
+            dz.addEventListener('dragover', e => e.preventDefault());
+            dz.addEventListener('drop', e => {
+                e.preventDefault();
+                const f = e.dataTransfer.files[0];
+                const r = new FileReader();
+                r.onload = ev => {
+                    try {
+                        const d = JSON.parse(ev.target.result);
+                        dz.classList.add('hidden');
+                        startSystem(d);
+                    } catch (err) { alert("DATA CORRUPTED"); }
+                };
+                r.readAsText(f);
+            });
+        }
+
+        function startSystem(data) {
+            // Process Data
+            STATE.nodes = data.nodes.map(n => ({
+                ...n,
+                val: (n.importance || 5) * 1.5,
+                color: getColor(n.group)
+            }));
+
+            // Generate Links
+            STATE.links = [];
+            STATE.nodes.forEach((n, i) => {
+                // Connect same groups
+                for (let j = i + 1; j < STATE.nodes.length; j++) {
+                    if (STATE.nodes[j].group === n.group) {
+                        if (Math.random() > 0.8) STATE.links.push({ source: n.id, target: STATE.nodes[j].id });
+                    }
+                }
+            });
+
+            // Update UI Stats
+            document.getElementById('nodeCount').innerText = String(STATE.nodes.length).padStart(3, '0');
+            document.getElementById('linkCount').innerText = String(STATE.links.length).padStart(3, '0');
+
+            const groups = [...new Set(STATE.nodes.map(n => n.group))].sort();
+            document.getElementById('groupCount').innerText = String(groups.length).padStart(2, '0');
+
+            // Render Cluster List
+            const cl = document.getElementById('clusterList');
+            groups.forEach(g => {
+                const d = document.createElement('div');
+                d.style.cssText = "padding: 5px; cursor: pointer; color: #888; border-bottom: 1px solid #222;";
+                d.innerText = `> ${g}`;
+                d.onmouseover = () => { d.style.color = CONFIG.colors.primary; };
+                d.onmouseout = () => { d.style.color = '#888'; };
+                d.onclick = () => setFocusMode(g);
+                cl.appendChild(d);
+            });
+
+
+            // Init Graph
+            Graph
+                .graphData({ nodes: STATE.nodes, links: STATE.links })
+                .nodeLabel('title')
+                .nodeColor('color')
+                .nodeRelSize(4)
+                .linkWidth(0.5)
+                .linkDirectionalParticles(2)
+                .linkDirectionalParticleWidth(1)
+                .linkDirectionalParticleSpeed(0.005)
+                .nodeThreeObject(node => {
+                    // Custom Shader-like Sprite
+                    const sprite = new SpriteText(node.title);
+                    sprite.color = node.color;
+                    sprite.textHeight = node.val / 2;
+                    sprite.backgroundColor = 'rgba(0,0,0,0.85)';
+                    sprite.padding = [4, 2];
+                    sprite.borderColor = node.color;
+                    sprite.borderWidth = 0.5;
+                    sprite.borderRadius = 2;
+                    sprite.fontFace = 'Share Tech Mono';
+                    return sprite;
+                })
+                .onNodeClick(handleNodeClick)
+                .backgroundColor('#000000');
+
+            // Add Ambient Particles (Starfield)
+            // (ThreeJS scene is accessible via Graph.scene())
+            setTimeout(() => {
+                const scene = Graph.scene();
+                const starsGeo = new THREE.BufferGeometry();
+                const starsCnt = 2000;
+                const starsPos = new Float32Array(starsCnt * 3);
+                for (let i = 0; i < starsCnt * 3; i++) starsPos[i] = (Math.random() - 0.5) * 800;
+                starsGeo.setAttribute('position', new THREE.BufferAttribute(starsPos, 3));
+                const starsMat = new THREE.PointsMaterial({ color: 0x555555, size: 0.5 });
+                const starField = new THREE.Points(starsGeo, starsMat);
+                scene.add(starField);
+            }, 1000);
+
+            // Start Animation Loop
+            requestAnimationFrame(animate);
+        }
+
+        // --- CORE LOGIC ---
+
+        function getColor(group) {
+            // Consistent hashing for colors
+            let hash = 0;
+            for (let i = 0; i < group.length; i++) hash = group.charCodeAt(i) + ((hash << 5) - hash);
+            const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+            return '#' + "00000".substring(0, 6 - c.length) + c;
+        }
+
+        function handleNodeClick(node) {
+            // Update Panel
+            const p = document.getElementById('intelPanel');
+            p.classList.add('active');
+
+            document.getElementById('intelCat').innerText = node.group;
+            document.getElementById('intelCat').style.color = node.color;
+            document.getElementById('intelTitle').innerText = node.title;
+            document.getElementById('intelBody').innerText = node.summary || "NO DATA AVAILABLE FOR THIS NODE.";
+
+            // Cam Focus
+            const dist = 100;
+            const distRatio = 1 + dist / Math.hypot(node.x, node.y, node.z);
+            Graph.cameraPosition(
+                { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
+                node,
+                1500
+            );
+
+            // SFX (Visual only)
+            document.getElementById('sysStatus').innerText = `ACCESSING NODE: ${node.id}`;
+        }
+
+        function setFocusMode(group) {
+            STATE.mode = 'FOCUS';
+            STATE.focusGroup = group;
+            updateButtons();
+
+            // Fade out non-group nodes
+            Graph.nodeVisibility(n => n.group === group);
+            Graph.linkVisibility(l => l.source.group === group && l.target.group === group);
+
+            // Re-center on group centroid
+            const groupNodes = STATE.nodes.filter(n => n.group === group);
+            if (groupNodes.length > 0) {
+                const center = groupNodes.reduce((acc, n) => ({ x: acc.x + n.x, y: acc.y + n.y, z: acc.z + n.z }), { x: 0, y: 0, z: 0 });
+                center.x /= groupNodes.length;
+                center.y /= groupNodes.length;
+                center.z /= groupNodes.length;
+
+                Graph.cameraPosition(
+                    { x: center.x * 2, y: center.y * 2, z: center.z * 2 },
+                    center,
+                    2000
+                );
+            }
+
+            document.getElementById('sysStatus').innerText = `FILTER APPLIED: ${group}`;
+        }
+
+        // --- MODES ---
+
+        // Auto Pilot Logic
+        let angle = 0;
+        function animate() {
+            if (STATE.mode === 'AUTO') {
+                angle += 0.001;
+                Graph.cameraPosition({
+                    x: 200 * Math.sin(angle),
+                    z: 200 * Math.cos(angle)
+                });
+
+                // Randomly target a node every few seconds
+                if (Math.random() < 0.005) {
+                    const target = STATE.nodes[Math.floor(Math.random() * STATE.nodes.length)];
+                    Graph.cameraPosition(
+                        { x: target.x * 1.5, y: target.y * 1.5, z: target.z * 1.5 },
+                        target,
+                        3000
+                    );
+                    document.getElementById('sysStatus').innerText = `AUTO-PILOT: SCANNING ${target.id}`;
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // --- CONTROLS ---
+
+        document.getElementById('modeOrbit').onclick = () => {
+            STATE.mode = 'ORBIT';
+            updateButtons();
+            Graph.nodeVisibility(true);
+            Graph.linkVisibility(true);
+            document.getElementById('sysStatus').innerText = "MODE: FREE ORBIT";
+        };
+
+        document.getElementById('modeAuto').onclick = () => {
+            STATE.mode = 'AUTO';
+            updateButtons();
+            Graph.nodeVisibility(true);
+            Graph.linkVisibility(true);
+            document.getElementById('sysStatus').innerText = "MODE: AUTO-PILOT ENGAGED";
+        };
+
+        document.getElementById('modeFocus').onclick = () => {
+            alert("SELECT A CATEGORY FROM THE RIGHT LIST TO FOCUS");
+        };
+
+        document.getElementById('closePanel').onclick = () => {
+            document.getElementById('intelPanel').classList.remove('active');
+        };
+
+        function updateButtons() {
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+            if (STATE.mode === 'ORBIT') document.getElementById('modeOrbit').classList.add('active');
+            if (STATE.mode === 'AUTO') document.getElementById('modeAuto').classList.add('active');
+            if (STATE.mode === 'FOCUS') document.getElementById('modeFocus').classList.add('active');
+        }
+
+        document.getElementById('search').addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            if (!val) {
+                Graph.nodeVisibility(true);
+                return;
+            }
+            Graph.nodeVisibility(n => n.title.toLowerCase().includes(val) || (n.summary && n.summary.toLowerCase().includes(val)));
+        });
+
+        // Start
+        init();
+
+    </script>
+</body>
+
+</html>

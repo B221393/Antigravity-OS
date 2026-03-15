@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 JSON Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toolbar {
+            background: #2d2d2d;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            border-bottom: 1px solid #404040;
+        }
+
+        .toolbar button {
+            padding: 8px 15px;
+            background: #404040;
+            border: none;
+            border-radius: 5px;
+            color: #d4d4d4;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+
+        .toolbar button:hover {
+            background: #505050;
+        }
+
+        .toolbar button.primary {
+            background: #0e639c;
+        }
+
+        .toolbar button.primary:hover {
+            background: #1177bb;
+        }
+
+        .toolbar .spacer {
+            flex: 1;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        .status.valid {
+            background: #1e4620;
+            color: #4ec950;
+        }
+
+        .status.invalid {
+            background: #5a1d1d;
+            color: #f48771;
+        }
+
+        .main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .pane {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pane-header {
+            background: #2d2d2d;
+            padding: 8px 15px;
+            font-size: 12px;
+            color: #888;
+            border-bottom: 1px solid #404040;
+        }
+
+        textarea {
+            flex: 1;
+            background: #1e1e1e;
+            border: none;
+            padding: 15px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #d4d4d4;
+            resize: none;
+            outline: none;
+        }
+
+        .tree-view {
+            flex: 1;
+            padding: 15px;
+            overflow: auto;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            background: #252526;
+            border-left: 1px solid #404040;
+        }
+
+        .tree-item {
+            margin-left: 20px;
+        }
+
+        .tree-key {
+            color: #9cdcfe;
+        }
+
+        .tree-string {
+            color: #ce9178;
+        }
+
+        .tree-number {
+            color: #b5cea8;
+        }
+
+        .tree-boolean {
+            color: #569cd6;
+        }
+
+        .tree-null {
+            color: #808080;
+        }
+
+        .error-line {
+            background: rgba(255, 0, 0, 0.1);
+        }
+
+        .error-msg {
+            padding: 15px;
+            background: #5a1d1d;
+            color: #f48771;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toolbar">
+        <button class="primary" onclick="formatJSON()">🎨 整形</button>
+        <button onclick="minifyJSON()">📦 圧縮</button>
+        <button onclick="validateJSON()">✅ 検証</button>
+        <button onclick="sortKeys()">🔤 ソート</button>
+        <button onclick="escapeJSON()">🔒 エスケープ</button>
+        <button onclick="unescapeJSON()">🔓 アンエスケープ</button>
+        <div class="spacer"></div>
+        <span id="status" class="status valid">✓ Valid JSON</span>
+        <button onclick="copyOutput()">📋 コピー</button>
+        <button onclick="clearAll()">🗑️ クリア</button>
+    </div>
+
+    <div class="main">
+        <div class="pane">
+            <div class="pane-header">📝 Input JSON</div>
+            <textarea id="input" placeholder='{"example": "ここにJSONを貼り付け..."}'>{
+  "name": "VECTIS",
+  "version": "2.0",
+  "features": ["API Hub", "Fun Zone", "Tools"],
+  "active": true,
+  "users": 1000
+}</textarea>
+        </div>
+        <div class="pane">
+            <div class="pane-header">🌳 Tree View / Output</div>
+            <div class="tree-view" id="output"></div>
+        </div>
+    </div>
+
+    <script>
+        const input = document.getElementById('input');
+        const output = document.getElementById('output');
+        const status = document.getElementById('status');
+
+        function parse() {
+            try {
+                const json = JSON.parse(input.value);
+                status.className = 'status valid';
+                status.textContent = '✓ Valid JSON';
+                return json;
+            } catch (e) {
+                status.className = 'status invalid';
+                status.textContent = '✗ Invalid: ' + e.message.split(':')[0];
+                return null;
+            }
+        }
+
+        function renderTree(obj, depth = 0) {
+            if (obj === null) return '<span class="tree-null">null</span>';
+            if (typeof obj === 'string') return `<span class="tree-string">"${escapeHtml(obj)}"</span>`;
+            if (typeof obj === 'number') return `<span class="tree-number">${obj}</span>`;
+            if (typeof obj === 'boolean') return `<span class="tree-boolean">${obj}</span>`;
+
+            if (Array.isArray(obj)) {
+                if (obj.length === 0) return '[]';
+                let html = '[<br>';
+                obj.forEach((item, i) => {
+                    html += '<div class="tree-item">' + renderTree(item, depth + 1);
+                    if (i < obj.length - 1) html += ',';
+                    html += '</div>';
+                });
+                return html + ']';
+            }
+
+            if (typeof obj === 'object') {
+                const keys = Object.keys(obj);
+                if (keys.length === 0) return '{}';
+                let html = '{<br>';
+                keys.forEach((key, i) => {
+                    html += `<div class="tree-item"><span class="tree-key">"${escapeHtml(key)}"</span>: ${renderTree(obj[key], depth + 1)}`;
+                    if (i < keys.length - 1) html += ',';
+                    html += '</div>';
+                });
+                return html + '}';
+            }
+
+            return String(obj);
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function formatJSON() {
+            const json = parse();
+            if (json) {
+                input.value = JSON.stringify(json, null, 2);
+                output.innerHTML = renderTree(json);
+            } else {
+                output.innerHTML = '<div class="error-msg">JSONの解析に失敗しました</div>';
+            }
+        }
+
+        function minifyJSON() {
+            const json = parse();
+            if (json) {
+                input.value = JSON.stringify(json);
+                output.innerHTML = '<pre>' + escapeHtml(JSON.stringify(json)) + '</pre>';
+            }
+        }
+
+        function validateJSON() {
+            const json = parse();
+            if (json) {
+                output.innerHTML = `<div style="color:#4ec950;padding:20px;text-align:center;font-size:1.5em">
+                    ✓ 有効なJSONです<br>
+                    <small style="color:#888;font-size:0.6em">
+                        キー数: ${countKeys(json)}<br>
+                        深さ: ${getDepth(json)}
+                    </small>
+                </div>`;
+            }
+        }
+
+        function countKeys(obj, count = 0) {
+            if (typeof obj !== 'object' || obj === null) return count;
+            for (const key in obj) {
+                count++;
+                count = countKeys(obj[key], count);
+            }
+            return count;
+        }
+
+        function getDepth(obj, depth = 0) {
+            if (typeof obj !== 'object' || obj === null) return depth;
+            let maxDepth = depth;
+            for (const key in obj) {
+                const d = getDepth(obj[key], depth + 1);
+                if (d > maxDepth) maxDepth = d;
+            }
+            return maxDepth;
+        }
+
+        function sortKeys() {
+            const json = parse();
+            if (json) {
+                const sorted = sortObject(json);
+                input.value = JSON.stringify(sorted, null, 2);
+                output.innerHTML = renderTree(sorted);
+            }
+        }
+
+        function sortObject(obj) {
+            if (Array.isArray(obj)) return obj.map(sortObject);
+            if (typeof obj !== 'object' || obj === null) return obj;
+            const sorted = {};
+            Object.keys(obj).sort().forEach(key => {
+                sorted[key] = sortObject(obj[key]);
+            });
+            return sorted;
+        }
+
+        function escapeJSON() {
+            const json = parse();
+            if (json) {
+                const escaped = JSON.stringify(JSON.stringify(json));
+                output.innerHTML = '<pre style="word-break:break-all">' + escapeHtml(escaped) + '</pre>';
+            }
+        }
+
+        function unescapeJSON() {
+            try {
+                const unescaped = JSON.parse(input.value);
+                if (typeof unescaped === 'string') {
+                    input.value = unescaped;
+                    formatJSON();
+                }
+            } catch (e) {
+                output.innerHTML = '<div class="error-msg">アンエスケープに失敗しました</div>';
+            }
+        }
+
+        function copyOutput() {
+            navigator.clipboard.writeText(input.value);
+            alert('コピーしました！');
+        }
+
+        function clearAll() {
+            input.value = '';
+            output.innerHTML = '';
+            status.className = 'status valid';
+            status.textContent = '---';
+        }
+
+        input.addEventListener('input', () => {
+            parse();
+        });
+
+        // Init
+        formatJSON();
+    </script>
+</body>
+
+</html>

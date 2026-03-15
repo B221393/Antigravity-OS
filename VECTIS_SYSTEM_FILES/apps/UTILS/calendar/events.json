@@ -1,0 +1,20 @@
+[
+  {
+    "id": "meitec_event_001",
+    "title": "メイテック (面接/説明会)",
+    "date": "2026-02-09",
+    "time": "10:00",
+    "category": "💼 就活",
+    "memo": "User requested update.",
+    "created": "2026-02-08T17:30:44.723947"
+  },
+  {
+    "id": "civil_service_001",
+    "title": "公務員試験 応募",
+    "date": "2026-02-08",
+    "time": "",
+    "category": "💼 就活",
+    "memo": "Preparation/Application",
+    "created": "2026-02-08T17:30:44.723989"
+  }
+]

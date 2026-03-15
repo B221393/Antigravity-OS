@@ -1,0 +1,24 @@
+{
+  "title": "新卒採用情報 - 株式会社ラック",
+  "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9IaDlfODRCb0Q4NzVfbWc0Qjcza1llaUJ1eXNsaW51d2xsbjlySGhQcUlWdE13M21RcHAyVVk3bC1xNlViYjhoaF9DVU1WcThvdmQ5Mg?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiVEFVX3lxTE9IaDlfODRCb0Q4NzVfbWc0Qjcza1llaUJ1eXNsaW51d2xsbjlySGhQcUlWdE13M21RcHAyVVk3bC1xNlViYjhoaF9DVU1WcThvdmQ5Mg?oc=5\" target=\"_blank\">新卒採用情報</a>&nb",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ラックの新卒採用情報公開。サイバーセキュリティ人材需要増に対応か。",
+    "true_intent": "優秀な人材の早期囲い込み。セキュリティ市場拡大を見据え、将来の成長を確実にするための投資。企業イメージ向上も目的。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "株式会社ラック",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。株式会社ラックの本質的な価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: 独立系SIerとしての顧客との深い信頼関係と、セキュリティ分野における長年の実績と知見。官公庁や大企業向けの高度なセキュリティコンサルティングが強み。\n\n2.  **26-27卒への温度感**: 即戦力採用に加え、ポテンシャル採用も強化。セキュリティ人材育成への投資意欲が高く、未経験者にもチャンスあり。\n\n3.  **EGO適性**: 論理的思考力は必須。AI等の最新技術活用には積極的だが、セキュリティ保守の堅実性を重視する文化も根強い。バランス感覚が重要。\n\n4.  **裏の弱点**: セキュリティ業界全体の慢性的な人材不足。高度な専門知識習得へのプレッシャーと、プロジェクトによっては保守的な働き方が求められる可能性。\n",
+    "deep_web_intel": "**株式会社ラック (LAC Co., Ltd.) - Security & SI Focus:**\n\n*   **Core Business:** IT total solutions, cybersecurity.\n*   **Services:** Security consulting, system integration, managed security services, security education, incident response.\n*   **Keywords:** Cybersecurity, security diagnostics, monitoring, security education, information leak investigation.\n*   **Mission:** Contribute to customer business development and realize a safe and secure information society.\n\n**株式会社ラック (T-Luck Co., Ltd.) - Home Renovation Focus:**\n\n*   **Core Business:** Home renovation, after-sales service, and security.\n*   **Services:** Short-term and long-term after-sales inspection and repair work for major housing manufacturers, energy-saving paint.\n*   **Establishment:** June, 2001\n*   **Employees:** 75\n\n**Gap Analysis:**\n\n*   Two companies with the same name. One focuses on IT security, the other on home renovation.\n*   Wikipedia entry retrieval failed due to encoding issues."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材の早期囲い込み。セキュリティ市場拡大を見据え、将来の成長を確実にするための投資。企業イメージ向上も目的。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:32:32.302599",
+  "source": "Active:KDDI"
+}

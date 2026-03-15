@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EGO LOGIC STUDIO</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #1a1a1a;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+        }
+
+        /* LAYOUT */
+        #container {
+            display: flex;
+            height: 100vh;
+        }
+
+        #toolbar {
+            width: 220px;
+            background: #222;
+            border-right: 1px solid #444;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #workspace {
+            flex: 1;
+            position: relative;
+            background: #1a1a1a;
+            overflow: hidden;
+            background-image: radial-gradient(#333 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        #preview {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 320px;
+            height: 240px;
+            background: black;
+            border: 2px solid #00ff88;
+            border-radius: 4px;
+            z-index: 100;
+        }
+
+        /* GUI Svg Layer */
+        #wires-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* NODES */
+        .node {
+            position: absolute;
+            width: 140px;
+            background: #333;
+            border: 1px solid #555;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            user-select: none;
+        }
+
+        .node-header {
+            padding: 8px;
+            background: #444;
+            border-bottom: 1px solid #555;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: grab;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .node-header:active {
+            cursor: grabbing;
+        }
+
+        .node-body {
+            padding: 10px;
+        }
+
+        /* PORTS */
+        .port {
+            width: 12px;
+            height: 12px;
+            background: #777;
+            border-radius: 50%;
+            border: 2px solid #333;
+            margin: 5px 0;
+            cursor: crosshair;
+            position: relative;
+        }
+
+        .port:hover {
+            background: #fff;
+            transform: scale(1.2);
+        }
+
+        .port.in {
+            float: left;
+            margin-left: -17px;
+            background: #ffcc00;
+        }
+
+        .port.out {
+            float: right;
+            margin-right: -17px;
+            background: #00ff88;
+        }
+
+        .port-label {
+            font-size: 10px;
+            color: #aaa;
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 3px;
+        }
+
+        .in-row {
+            text-align: left;
+            margin-bottom: 5px;
+            clear: both;
+        }
+
+        .out-row {
+            text-align: right;
+            margin-bottom: 5px;
+            clear: both;
+        }
+
+        /* TOOLBAR ITEMS */
+        .tool-item {
+            background: #333;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid #444;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+
+        .tool-item:hover {
+            background: #444;
+            border-color: #00ff88;
+        }
+
+        .tool-icon {
+            font-size: 18px;
+        }
+
+        /* PREVIEW PLAYER */
+        #player-obj {
+            width: 20px;
+            height: 20px;
+            background: red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Wire Line */
+        path {
+            fill: none;
+            stroke: #00ff88;
+            stroke-width: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="toolbar">
+            <h3 style="margin:0 0 10px 0; color:#00ff88;">LOGIC STUDIO</h3>
+            <div class="tool-item" onclick="spawnNode('input')">
+                <span class="tool-icon">⌨️</span> Input (Key)
+            </div>
+            <div class="tool-item" onclick="spawnNode('math')">
+                <span class="tool-icon">🧮</span> Math
+            </div>
+            <div class="tool-item" onclick="spawnNode('move')">
+                <span class="tool-icon">🕹️</span> Move Player
+            </div>
+            <div class="tool-item" onclick="spawnNode('log')">
+                <span class="tool-icon">📝</span> Log Output
+            </div>
+            <hr style="border:0; border-top:1px solid #444; width:100%;">
+            <button onclick="clearAll()"
+                style="background:#522; border:none; color:white; padding:5px; cursor:pointer;">Reset All</button>
+        </div>
+
+        <div id="workspace">
+            <svg id="wires-layer"></svg>
+            <!-- Nodes go here -->
+        </div>
+
+        <div id="preview">
+            <div id="player-obj"></div>
+        </div>
+
+        <script>
+            // --- STATE ---
+            let nodes = [];
+            let wires = [];
+            let draggingNode = null;
+            let dragOffset = { x: 0, y: 0 };
+            let activeWire = null;
+
+            const workspace = document.getElementById('workspace');
+            const svgLayer = document.getElementById('wires-layer');
+
+            // --- NODE DEFINITIONS ---
+            const NODE_TYPES = {
+                'input': { title: 'Input (Key)', color: '#ffaa00', ins: [], outs: ['Signal'], config: { key: ' ' } },
+                'move_x': { title: 'Move Horizontal', color: '#ff4444', ins: ['Left', 'Right'], outs: [] },
+                'jump': { title: 'Jump Action', color: '#aa00ff', ins: ['Trigger'], outs: [] }
+            };
+
+            // --- NODE FACTORY ---
+            function spawnNode(type, x = 100, y = 100, configOverride = {}) {
+                const def = NODE_TYPES[type];
+                const el = document.createElement('div');
+                el.className = 'node';
+                el.style.left = x + 'px';
+                el.style.top = y + 'px';
+                el.style.borderColor = def.color;
+
+                // Config ID for Inputs
+                const configId = Date.now();
+                let extraHtml = '';
+                if (type === 'input') {
+                    const k = configOverride.key || ' ';
+                    extraHtml = `<select onchange="updateKey(this)" style="margin:5px; width:90%; background:#222; color:white; border:none;">
+                <option value="ArrowLeft" ${k === 'ArrowLeft' ? 'selected' : ''}>Left Arrow</option>
+                <option value="ArrowRight" ${k === 'ArrowRight' ? 'selected' : ''}>Right Arrow</option>
+                <option value=" " ${k === ' ' ? 'selected' : ''}>Space (Jump)</option>
+                <option value="a" ${k === 'a' ? 'selected' : ''}>A</option>
+                <option value="d" ${k === 'd' ? 'selected' : ''}>D</option>
+            </select>`;
+                }
+
+                el.innerHTML = `
+            <div class="node-header" style="background:${def.color}44; color:${def.color}">
+                ${def.title} <span style="font-size:10px; cursor:pointer;" onclick="deleteNode(this)">✖</span>
+            </div>
+            <div class="node-body">
+                ${extraHtml}
+            </div>
+        `;
+
+                const body = el.querySelector('.node-body');
+
+                // Render Inputs
+                def.ins.forEach(p => {
+                    const row = document.createElement('div');
+                    row.className = 'in-row';
+                    row.innerHTML = `<div class="port in" data-port="${p}" data-type="in"></div><span class="port-label">${p}</span>`;
+                    body.appendChild(row);
+                });
+
+                // Render Outputs
+                def.outs.forEach(p => {
+                    const row = document.createElement('div');
+                    row.className = 'out-row';
+                    row.innerHTML = `<span class="port-label">${p}</span><div class="port out" data-port="${p}" data-type="out"></div>`;
+                    body.appendChild(row);
+                });
+
+                // Drag Logic
+                const header = el.querySelector('.node-header');
+                header.addEventListener('mousedown', (e) => {
+                    draggingNode = el;
+                    dragOffset.x = e.clientX - el.offsetLeft;
+                    dragOffset.y = e.clientY - el.offsetTop;
+                });
+
+                // Port Logic
+                el.querySelectorAll('.port').forEach(port => {
+                    port.addEventListener('mousedown', (e) => startWire(e, el, port));
+                    port.addEventListener('mouseup', (e) => endWire(e, el, port));
+                });
+
+                workspace.appendChild(el);
+
+                const nodeObj = { id: configId, el, type, config: { key: configOverride.key || ' ' } };
+                el.dataset.id = nodeObj.id; // Link DOM to data
+                nodes.push(nodeObj);
+                return nodeObj;
+            }
+
+            function updateKey(sel) {
+                const nodeEl = sel.closest('.node');
+                const node = nodes.find(n => n.el === nodeEl);
+                if (node) node.config.key = sel.value;
+            }
+
+            function deleteNode(btn) {
+                const nodeEl = btn.closest('.node');
+                nodeEl.remove();
+                wires = wires.filter(w => w.startNode !== nodeEl && w.endNode !== nodeEl);
+                nodes = nodes.filter(n => n.el !== nodeEl);
+                drawWires();
+            }
+
+            function clearAll() {
+                nodes = []; wires = [];
+                workspace.innerHTML = '<svg id="wires-layer"></svg>';
+                location.reload();
+            }
+
+            function startWire(e, node, port) {
+                if (port.dataset.type !== 'out') return;
+                e.stopPropagation();
+                activeWire = { startNode: node, startPort: port, endX: e.clientX, endY: e.clientY };
+            }
+
+            function endWire(e, node, port) {
+                if (!activeWire) return;
+                if (port.dataset.type !== 'in') return;
+
+                wires.push({
+                    startNode: activeWire.startNode, startPort: activeWire.startPort,
+                    endNode: node, endPort: port
+                });
+                activeWire = null;
+                drawWires();
+            }
+
+            document.addEventListener('mousemove', (e) => {
+                if (draggingNode) {
+                    draggingNode.style.left = (e.clientX - dragOffset.x) + 'px';
+                    draggingNode.style.top = (e.clientY - dragOffset.y) + 'px';
+                    drawWires();
+                }
+                if (activeWire) {
+                    activeWire.endX = e.clientX;
+                    activeWire.endY = e.clientY;
+                    drawWires();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                draggingNode = null;
+                activeWire = null;
+                drawWires();
+            });
+
+            function getCenter(el) {
+                const rect = el.getBoundingClientRect();
+                return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+            }
+
+            function drawWires() {
+                const svg = document.getElementById('wires-layer');
+                let html = '';
+                const wsRect = workspace.getBoundingClientRect();
+
+                wires.forEach(w => {
+                    const p1 = getCenter(w.startPort);
+                    const p2 = getCenter(w.endPort);
+                    const x1 = p1.x - wsRect.left;
+                    const y1 = p1.y - wsRect.top;
+                    const x2 = p2.x - wsRect.left;
+                    const y2 = p2.y - wsRect.top;
+                    const d = `M ${x1} ${y1} C ${x1 + 50} ${y1}, ${x2 - 50} ${y2}, ${x2} ${y2}`;
+                    html += `<path d="${d}" />`;
+                });
+
+                if (activeWire) {
+                    const p1 = getCenter(activeWire.startPort);
+                    const x1 = p1.x - wsRect.left;
+                    const y1 = p1.y - wsRect.top;
+                    const x2 = activeWire.endX - wsRect.left;
+                    const y2 = activeWire.endY - wsRect.top;
+                    const d = `M ${x1} ${y1} C ${x1 + 50} ${y1}, ${x2 - 50} ${y2}, ${x2} ${y2}`;
+                    html += `<path d="${d}" style="stroke:#fff; stroke-dasharray:5;" />`;
+                }
+                svg.innerHTML = html;
+            }
+
+            // --- GAME ENGINE (PLATFORMER PHYSICS) ---
+            const player = { x: 50, y: 80, vx: 0, vy: 0, grounded: false };
+            const keys = {};
+
+            document.addEventListener('keydown', e => keys[e.key] = true);
+            document.addEventListener('keyup', e => keys[e.key] = false);
+
+            function gameLoop() {
+                // 1. Reset Forces
+                let moveLeft = false;
+                let moveRight = false;
+                let doJump = false;
+
+                // 2. Evaluate Graph
+                wires.forEach(w => {
+                    const startNode = nodes.find(n => n.el === w.startNode);
+                    const endNode = nodes.find(n => n.el === w.endNode);
+
+                    if (!startNode || !endNode) return;
+
+                    // Signal is active if Key is pressed
+                    if (startNode.type === 'input') {
+                        const isActive = keys[startNode.config.key];
+                        if (isActive) {
+                            if (endNode.type === 'move_x') {
+                                if (w.endPort.dataset.port === 'Left') moveLeft = true;
+                                if (w.endPort.dataset.port === 'Right') moveRight = true;
+                            }
+                            if (endNode.type === 'jump') {
+                                doJump = true;
+                            }
+                        }
+                    }
+                });
+
+                // 3. Physics
+                const GRAVITY = 0.5;
+                const SPEED = 1.0;
+                const JUMP_FORCE = -10;
+                const FLOOR = 80;
+
+                if (moveLeft) player.x -= SPEED;
+                if (moveRight) player.x += SPEED;
+
+                if (doJump && player.grounded) {
+                    player.vy = JUMP_FORCE;
+                    player.grounded = false;
+                }
+
+                player.vy += GRAVITY;
+                player.y += player.vy;
+
+                // Floor Collision
+                if (player.y > FLOOR) {
+                    player.y = FLOOR;
+                    player.vy = 0;
+                    player.grounded = true;
+                }
+
+                // 4. Render
+                const plEl = document.getElementById('player-obj');
+                // Wrap around screen
+                if (player.x > 100) player.x = 0;
+                if (player.x < 0) player.x = 100;
+
+                plEl.style.left = player.x + '%';
+                plEl.style.top = player.y + '%';
+
+                // Debug
+                document.getElementById('dbg').innerText = `POS: ${Math.round(player.x)},${Math.round(player.y)} | G:${player.grounded} | JUMP:${doJump}`;
+
+                requestAnimationFrame(gameLoop);
+            }
+
+            // --- PRE-WIRED MARIO SETUP (Sample Upload) ---
+            setTimeout(() => {
+                // Nodes
+                const nLeft = spawnNode('input', 50, 50, { key: 'ArrowLeft' });
+                const nRight = spawnNode('input', 50, 200, { key: 'ArrowRight' });
+                const nJump = spawnNode('input', 50, 350, { key: ' ' });
+
+                const nMove = spawnNode('move_x', 300, 100);
+                const nAct = spawnNode('jump', 300, 350);
+
+                // Wires
+                // Left -> Move Left
+                wires.push({ startNode: nLeft.el, startPort: nLeft.el.querySelector('.port[data-port="Signal"]'), endNode: nMove.el, endPort: nMove.el.querySelector('.port[data-port="Left"]') });
+                // Right -> Move Right
+                wires.push({ startNode: nRight.el, startPort: nRight.el.querySelector('.port[data-port="Signal"]'), endNode: nMove.el, endPort: nMove.el.querySelector('.port[data-port="Right"]') });
+                // Space -> Jump
+                wires.push({ startNode: nJump.el, startPort: nJump.el.querySelector('.port[data-port="Signal"]'), endNode: nAct.el, endPort: nAct.el.querySelector('.port[data-port="Trigger"]') });
+
+                drawWires();
+            }, 100);
+
+            gameLoop();
+        </script>
+</body>
+
+</html>

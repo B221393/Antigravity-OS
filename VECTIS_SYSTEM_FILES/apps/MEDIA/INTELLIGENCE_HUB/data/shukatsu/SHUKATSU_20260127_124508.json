@@ -1,0 +1,22 @@
+{
+  "title": "米10月求人件数、1.2万件増 経済の不透明感から採用は減 ",
+  "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNZmY2QlRwUS1ldUhldGFiRzZQdWY2V1JnSkVpYmVXOXhsbDN3S2k2YXdHbEZNWmlTelYzWl9LdDhoeTM2ZElEbUhGRDdLbG5lNFdwZkV2UUtKQzdtQ2ZtOHRtd3FwM0IxTFJIWmdXNGtyOGJVQjJnWGtRc2hzRi1LYQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxNZmY2QlRwUS1ldUhldGFiRzZQdWY2V1JnSkVpYmVXOXhsbDN3S2k2YXdHbEZNWmlTelYzWl9LdDhoeTM2ZElEbUhGRDdLbG5lNFdwZkV2UUtKQzdtQ2ZtOHRtd3FwM0IxTFJIWmdXNG",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "米10月求人微増も採用減。経済不透明感で企業の慎重姿勢。",
+    "true_intent": "求人増加と採用減の矛盾を強調し、景気後退への警戒感を煽ることで、特定の投資行動（安全資産への逃避など）を誘導しようとする意図の可能性。または、単なる現状分析。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "求人増加と採用減の矛盾を強調し、景気後退への警戒感を煽ることで、特定の投資行動（安全資産への逃避など）を誘導しようとする意図の可能性。または、単なる現状分析。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:45:08.139644",
+  "source": "ロイター 企業ニュース"
+}

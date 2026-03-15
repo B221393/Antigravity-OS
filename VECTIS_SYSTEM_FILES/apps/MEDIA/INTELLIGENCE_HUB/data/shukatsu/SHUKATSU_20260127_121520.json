@@ -1,0 +1,24 @@
+{
+  "title": "日系ＥＶに中国の技術…トヨタはファーウェイのＯＳ採用、ホンダ",
+  "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5DbEt4dWN6NmZlTXVMTElDaXlITEZVUm1OSEwzSGw0OGQxZ2R5UDNLdzBaOF90VmVBS3pnTkhGODYxSm52Q2RwellCWXRQd3ZzU20yREFyZXo1WDVfWmlER0FqNHc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZEFVX3lxTE5DbEt4dWN6NmZlTXVMTElDaXlITEZVUm1OSEwzSGw0OGQxZ2R5UDNLdzBaOF90VmVBS3pnTkhGODYxSm52Q2RwellCWXRQd3ZzU20yREFyZXo1WDVfWmlER0FqNHc?oc=5\" target=\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トヨタがファーウェイOS、ホンダがDeepSeek AI採用。日系EVに中国技術導入。",
+    "true_intent": "中国技術の競争力アピールと、日本市場への浸透を狙う中国企業の宣伝。読売新聞は対中関係の変化を強調し、危機感を煽る意図も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "トヨタ, ホンダ, ファーウェイ, DeepSeek",
+    "action_required": true,
+    "category": "IT/自動車/メディア",
+    "target_year": "2027",
+    "company_profile": "## トヨタ, ホンダ, ファーウェイ, DeepSeek の本質と27卒が狙うべき理由\n\n**トヨタ:**\n1. **主要武器**: 圧倒的な生産技術とサプライチェーン、ブランド力。\n2. **26-27卒への温度感**: DX人材獲得競争激化。多様なバックグラウンドを重視。\n3. **EGO適性**: 改善文化根強く、データドリブンな思考は浸透中だが、組織の壁も。\n4. **裏の弱点**: EVシフトの遅れ、保守的な企業文化。\n\n**ホンダ:**\n1. **主要武器**: エンジン技術、モビリティ領域での革新性、グローバル展開力。\n2. **26-27卒への温度感**: 新領域（空、宇宙）への挑戦意欲ある人材を求める。\n3. **EGO適性**: 自由闊達な社風だが、形式主義も残存。AI活用は積極的。\n4. **裏の弱点**: 電動化戦略の遅れ、品質問題。\n\n**ファーウェイ:**\n1. **主要武器**: 圧倒的な研究開発投資、政府支援、価格競争力。\n2. **26-27卒への温度感**: グローバル人材、特に技術系人材を積極的に採用。\n3. **EGO適性**: 実力主義、成果主義が徹底。AI技術は最先端。\n4. **裏の弱点**: 米中対立の影響、情報セキュリティへの懸念。\n\n**DeepSeek:**\n1. **主要武器**: 最先端AI技術、優秀なエンジニア集団、高速な意思決定。\n2. **26-27卒への温度感**: トップレベルのAIエンジニア、研究者を求める。\n3. **EGO適性**: 構造的思考、データ分析、AI活用は必須。\n4. **裏の弱点**: スタートアップ特有の不安定さ、競争激化。\n",
+    "deep_web_intel": "**Toyota:**\n\n*   Official websites (toyota.jp, global.toyota/jp) provide brand/corporate information, services.\n*   Toyota Mobi Tokyo (toyota-mobi-tokyo.co.jp) focuses on car sales.\n\n**Honda:** Not present in provided data.\n\n**Huawei:** Not present in provided data.\n\n**DeepSeek:** Not present in provided data.\n\n**Gap Analysis:**\n\n*   Data limited to Toyota.\n*   No information on Honda, Huawei, or DeepSeek."
+  },
+  "critical_analysis": {
+    "true_intent": "中国技術の競争力アピールと、日本市場への浸透を狙う中国企業の宣伝。読売新聞は対中関係の変化を強調し、危機感を煽る意図も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:15:20.289019",
+  "source": "トヨタ自動車 戦略"
+}

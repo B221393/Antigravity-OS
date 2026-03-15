@@ -1,0 +1,22 @@
+{
+  "title": "「たのしいさわぎ」を起こす組織のポテンシャルを引き出す - ",
+  "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5DUG9PZDBKTkd6OUswWlpuRk1oUnc0QVNRd01UNGQzOHZvdXlBZ1ZVSXdMLVpXazFuWHRtN1d0dWNVNnJLRGwwZXlnSm5rMjItRHBaZjJQUU0xeDEtQndLSg?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTE5DUG9PZDBKTkd6OUswWlpuRk1oUnc0QVNRd01UNGQzOHZvdXlBZ1ZVSXdMLVpXazFuWHRtN1d0dWNVNnJLRGwwZXlnSm5rMjItRHBaZjJQUU0xeDEtQndLSg?oc=5\" target=\"_blan",
+  "ai_analysis": {
+    "relevance": "low",
+    "summary": "詳細不明。組織のポテンシャルを引き出すという抽象的な内容。",
+    "true_intent": "東京大学(hit-u.ac.jp)のイベント告知の可能性。大学のブランドイメージ向上、企業との連携強化、学生のキャリア支援が目的か。詳細不明のため憶測の域を出ない。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "東京大学(hit-u.ac.jp)のイベント告知の可能性。大学のブランドイメージ向上、企業との連携強化、学生のキャリア支援が目的か。詳細不明のため憶測の域を出ない。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:02:43.318357",
+  "source": "P&G 採用"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "デンソーは特許総価値8位 全社横断「知財戦略会議」でソフト化",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBOcTBNVTg0d2ZSUkZ1ODZVR2daMVphbkw1Wk1NNTlVQWtGTk05bHEwMFBEcW9CLUdzN0gwODJDNzNjSXpYYzhGYl84dUdpTmRiRGJwc0ZTM0hIOGo5M3d6UzU5eW9QVkU?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBOcTBNVTg0d2ZSUkZ1ODZVR2daMVphbkw1Wk1NNTlVQWtGTk05bHEwMFBEcW9CLUdzN0gwODJDNzNjSXpYYzhGYl84dUdpTmRiRGJwc0ZTM0hIOGo5M3d6UzU5eW9QVkU?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "デンソーが知財戦略を強化し、ソフト化に対応。特許価値8位をアピール。",
+    "true_intent": "デンソーの技術力をアピールし、優秀な人材獲得（特にソフトウェアエンジニア）を狙う広報活動。自動車業界のソフト化競争における優位性を示唆し、株価上昇も期待。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "デンソー",
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027",
+    "company_profile": "## デンソー：就活メンター視点\n\n1.  **主要武器**: トヨタグループの技術力を背景とした、幅広い分野での高度な開発・製造力。自動車部品に留まらず、FAや農業など多角的な事業展開が強み。\n2.  **26-27卒への温度感**: 新領域への挑戦を加速するため、専門性を持つ人材を積極的に採用。多様なバックグラウンドを持つ学生にチャンスあり。\n3.  **EGO適性**: 構造的思考は必須。AI/データ活用も推進中だが、部署による差も。自ら学び、活用できる人材が求められる。\n4.  **裏の弱点**: 伝統的な企業体質が残存し、意思決定の遅さや硬直的な組織文化が課題。変革を担う気概が必要。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Name:** 株式会社デンソー (KK Denso).\n*   **Content:** Company overview, organization, history.\n\n**Gap Analysis:**\n\n*   The first source (denso.com) is inaccessible (HTTP 403 Forbidden).\n*   The second source (Wikipedia) has encoding issues.\n*   Only the third source (kk-denso.co.jp) is accessible and contains basic company information.  Lacks detailed data."
+  },
+  "critical_analysis": {
+    "true_intent": "デンソーの技術力をアピールし、優秀な人材獲得（特にソフトウェアエンジニア）を狙う広報活動。自動車業界のソフト化競争における優位性を示唆し、株価上昇も期待。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:14:34.123756",
+  "source": "Active:デンソー"
+}

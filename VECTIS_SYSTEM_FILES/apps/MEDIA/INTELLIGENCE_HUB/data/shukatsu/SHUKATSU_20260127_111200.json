@@ -1,0 +1,24 @@
+{
+  "title": "理工系分野の“女子学生向け”支援プログラム「SONY STE",
+  "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBvVWY0eWlKZ0haemhSSzN0VVZXUVcwNU1hYUNYN3kzNWRST1hvWkZ0RkE2cjB1eEZwWWEzemxhazFyQ3E1S2lCdDN5UDlweW9jTGwtYmE3U1lISzlUZDVoUA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTFBvVWY0eWlKZ0haemhSSzN0VVZXUVcwNU1hYUNYN3kzNWRST1hvWkZ0RkE2cjB1eEZwWWEzemxhazFyQ3E1S2lCdDN5UDlweW9jTGwtYmE3U1lISzlUZDVoUA?oc=5\" target=\"_blan",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ソニーが理工系女子学生向け支援プログラム「SONY STEAM GIRLS EXPERIENCE」を開始。高度専門型インターンシップを実施。",
+    "true_intent": "女性活躍推進をアピールし、企業イメージ向上を図るとともに、優秀な女子学生を早期囲い込み、将来的な人材獲得競争での優位性を確保する狙い。政府の女性活躍推進政策への対応も含まれる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "SONY",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## SONY 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: グローバルブランド力、多様な技術ポートフォリオ（エンタメ、イメージング、センシング等）、クリエイティビティを尊重する文化。\n2.  **26-27卒への温度感**: 多様なバックグラウンドを持つ人材を積極的に採用。ポテンシャル重視。\n3.  **EGO適性**: データドリブンな意思決定を推進。AI/データサイエンス人材のニーズ高。構造的思考は必須。\n4.  **裏の弱点**: 事業部間の連携不足、縦割り組織。変化への対応スピードが遅い場合も。\n",
+    "deep_web_intel": "**Key Points & Summary:**\n\n*   **PS5:** Guides for buying PS5 in 2025, including Slim & Pro versions, and different editions (Japan, China, Hong Kong).\n*   **ZV-E10 II:** Lens selection guide for Sony ZV-E10 II camera in December 2025.\n*   **WH-1000XM5:** Question of whether Sony WH-1000XM5 headphones are worth buying in 2025.\n\n**Gap Analysis:**\n\n*   Information on the WH-1000XM5 is inaccessible due to a 403 error."
+  },
+  "critical_analysis": {
+    "true_intent": "女性活躍推進をアピールし、企業イメージ向上を図るとともに、優秀な女子学生を早期囲い込み、将来的な人材獲得競争での優位性を確保する狙い。政府の女性活躍推進政策への対応も含まれる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:12:00.531372",
+  "source": "Active:ソニー"
+}

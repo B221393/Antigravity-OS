@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DT Cannon Pro - EGO Training</title>
+    <style>
+        :root {
+            --bg-deep: #020617;
+            --panel-bg: #0f172a;
+            --accent-cyan: #22d3ee;
+            --accent-blue: #2563eb;
+            --accent-orange: #f97316;
+            --accent-yellow: #facc15;
+            --accent-green: #22c55e;
+            --accent-purple: #9333ea;
+            --accent-red: #ef4444;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: #334155;
+            --block-size: 24px;
+        }
+
+        @media (min-width: 768px) {
+            :root {
+                --block-size: 30px;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .game-container {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            background: linear-gradient(145deg, #0f172a, #020617);
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        /* Sidebar Panels */
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 140px;
+        }
+
+        .panel-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .panel-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* The Board */
+        #board-container {
+            position: relative;
+            background: #000;
+            border: 4px solid #1e293b;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(10, var(--block-size));
+            grid-template-rows: repeat(20, var(--block-size));
+        }
+
+        .cell {
+            width: var(--block-size);
+            height: var(--block-size);
+            border: 1px solid #0f172a;
+        }
+
+        /* Piece Colors - Neon */
+        .color-I {
+            background: var(--accent-cyan);
+            box-shadow: inset 0 0 10px rgba(34, 211, 238, 0.5);
+        }
+
+        .color-J {
+            background: var(--accent-blue);
+            box-shadow: inset 0 0 10px rgba(37, 99, 235, 0.5);
+        }
+
+        .color-L {
+            background: var(--accent-orange);
+            box-shadow: inset 0 0 10px rgba(249, 115, 22, 0.5);
+        }
+
+        .color-O {
+            background: var(--accent-yellow);
+            box-shadow: inset 0 0 10px rgba(250, 204, 21, 0.5);
+        }
+
+        .color-S {
+            background: var(--accent-green);
+            box-shadow: inset 0 0 10px rgba(34, 197, 94, 0.5);
+        }
+
+        .color-T {
+            background: var(--accent-purple);
+            box-shadow: inset 0 0 10px rgba(147, 51, 234, 0.5);
+        }
+
+        .color-Z {
+            background: var(--accent-red);
+            box-shadow: inset 0 0 10px rgba(239, 68, 68, 0.5);
+        }
+
+        .is-ghost {
+            background: rgba(148, 163, 184, 0.2) !important;
+            box-shadow: none !important;
+        }
+
+        .is-guide {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Piece Preview in Panels */
+        .preview-grid {
+            display: grid;
+            gap: 2px;
+            margin: 0 auto;
+        }
+
+        .preview-cell {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Overlays */
+        #overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border-radius: 4px;
+        }
+
+        #message-popup {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--accent-yellow);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 900;
+            font-size: 0.875rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn {
+            background: #1e293b;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #334155;
+        }
+
+        .btn-toggle.active {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .controls-list {
+            margin-top: 1rem;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .controls-list span {
+            color: var(--text-main);
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-container">
+        <!-- Left Panel -->
+        <div class="side-panel">
+            <div class="panel-box">
+                <div class="panel-label">HOLD</div>
+                <div id="hold-preview" class="preview-grid"></div>
+            </div>
+            <div class="panel-box">
+                <div class="panel-label">SCORE</div>
+                <div id="score-val" style="font-size: 1.25rem; font-weight: 800; color: var(--accent-yellow);">0</div>
+            </div>
+            <div class="controls-list">
+                <p>移動 <span>← →</span></p>
+                <p>落下 <span>↓</span></p>
+                <p>一気に <span>Space</span></p>
+                <p>回転 <span>↑/Z/X</span></p>
+                <p>ホールド <span>Shift</span></p>
+                <p>リセット <span>R</span></p>
+            </div>
+        </div>
+
+        <!-- Main Board -->
+        <div id="board-container">
+            <div id="board"></div>
+            <div id="overlay">
+                <h2 id="overlay-title" style="margin-bottom: 1rem; font-size: 2rem;">PAUSED</h2>
+                <button class="btn" onclick="togglePause()" style="width: auto; padding-inline: 2rem;">再開</button>
+            </div>
+            <div id="message-popup"></div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="side-panel">
+            <div class="panel-box">
+                <div class="panel-label">NEXT</div>
+                <div id="next-preview" class="preview-grid" style="gap: 1rem;"></div>
+            </div>
+
+            <button id="guide-toggle" class="btn btn-toggle active" onclick="toggleGuide()">DT GUIDE: ON</button>
+            <button class="btn" onclick="initGame()">RESET</button>
+
+            <div class="panel-box" style="margin-top: auto; font-size: 0.75rem; text-align: left; line-height: 1.4;">
+                <p style="color: var(--accent-cyan); font-weight: bold; margin-bottom: 4px;">DT砲の定石:</p>
+                1. L/Jで端を固める<br>
+                2. TSD (Double)<br>
+                3. TST (Triple)
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const COLS = 10;
+        const ROWS = 20;
+
+        const TETROMINOS = {
+            I: { shape: [[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]], color: 'I' },
+            J: { shape: [[1, 0, 0], [1, 1, 1], [0, 0, 0]], color: 'J' },
+            L: { shape: [[0, 0, 1], [1, 1, 1], [0, 0, 0]], color: 'L' },
+            O: { shape: [[1, 1], [1, 1]], color: 'O' },
+            S: { shape: [[0, 1, 1], [1, 1, 0], [0, 0, 0]], color: 'S' },
+            T: { shape: [[0, 1, 0], [1, 1, 1], [0, 0, 0]], color: 'T' },
+            Z: { shape: [[1, 1, 0], [0, 1, 1], [0, 0, 0]], color: 'Z' }
+        };
+
+        const DT_TEMPLATE = [
+            { r: 19, c: 0 }, { r: 19, c: 1 }, { r: 19, c: 2 }, { r: 19, c: 3 }, { r: 19, c: 5 }, { r: 19, c: 6 }, { r: 19, c: 8 }, { r: 19, c: 9 },
+            { r: 18, c: 0 }, { r: 18, c: 1 }, { r: 18, c: 2 }, { r: 18, c: 5 }, { r: 18, c: 6 }, { r: 18, c: 8 }, { r: 18, c: 9 },
+            { r: 17, c: 0 }, { r: 17, c: 1 }, { r: 17, c: 2 }, { r: 17, c: 5 }, { r: 17, c: 8 },
+            { r: 16, c: 5 }, { r: 16, c: 8 }, { r: 15, c: 7 }
+        ];
+
+        let grid = [];
+        let activePiece = null;
+        let pos = { x: 0, y: 0 };
+        let bag = [];
+        let holdPiece = null;
+        let canHold = true;
+        let score = 0;
+        let gameOver = false;
+        let isPaused = false;
+        let showGuide = true;
+        let lastKick = false;
+        let dropInterval = 1000;
+        let lastTime = 0;
+
+        // DOM cache
+        const boardEl = document.getElementById('board');
+        const holdEl = document.getElementById('hold-preview');
+        const nextEl = document.getElementById('next-preview');
+        const scoreEl = document.getElementById('score-val');
+        const overlay = document.getElementById('overlay');
+        const msgPopup = document.getElementById('message-popup');
+
+        function createEmptyBoard() {
+            return Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+        }
+
+        function generateBag() {
+            const types = Object.keys(TETROMINOS);
+            for (let i = types.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [types[i], types[j]] = [types[j], types[i]];
+            }
+            return types.map(t => ({ ...TETROMINOS[t], type: t }));
+        }
+
+        function initGame() {
+            grid = createEmptyBoard();
+            score = 0;
+            bag = generateBag();
+            holdPiece = null;
+            gameOver = false;
+            isPaused = false;
+            canHold = true;
+            scoreEl.innerText = score;
+            overlay.style.display = 'none';
+            spawnPiece();
+            requestAnimationFrame(gameLoop);
+        }
+
+        function spawnPiece() {
+            if (bag.length < 7) bag = [...bag, ...generateBag()];
+            const piece = bag.shift();
+            activePiece = JSON.parse(JSON.stringify(piece));
+            pos = { x: Math.floor(COLS / 2) - Math.ceil(activePiece.shape[0].length / 2), y: 0 };
+            lastKick = false;
+
+            if (checkCollision(activePiece.shape, pos.x, pos.y)) {
+                gameOver = true;
+                overlay.style.display = 'flex';
+                document.getElementById('overlay-title').innerText = 'GAME OVER';
+            }
+            render();
+        }
+
+        function checkCollision(shape, x, y) {
+            for (let r = 0; r < shape.length; r++) {
+                for (let c = 0; c < shape[r].length; c++) {
+                    if (shape[r][c]) {
+                        const newX = x + c;
+                        const newY = y + r;
+                        if (newX < 0 || newX >= COLS || newY >= ROWS || (newY >= 0 && grid[newY][newX])) return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function rotateMatrix(matrix, dir) {
+            const N = matrix.length;
+            const rotated = matrix.map((row, i) => row.map((val, j) => (dir === 1 ? matrix[N - 1 - j][i] : matrix[j][N - 1 - i])));
+            return rotated;
+        }
+
+        function move(dx, dy) {
+            if (checkCollision(activePiece.shape, pos.x + dx, pos.y + dy)) {
+                if (dy > 0) lockPiece();
+                return false;
+            }
+            pos.x += dx;
+            pos.y += dy;
+            lastKick = false;
+            render();
+            return true;
+        }
+
+        function tryRotate(dir) {
+            const rotatedShape = rotateMatrix(activePiece.shape, dir);
+            const kicks = [[0, 0], [1, 0], [-1, 0], [0, -1], [1, -1], [-1, -1], [0, 1]];
+            for (let [ox, oy] of kicks) {
+                if (!checkCollision(rotatedShape, pos.x + ox, pos.y + oy)) {
+                    pos.x += ox;
+                    pos.y += oy;
+                    activePiece.shape = rotatedShape;
+                    lastKick = (ox !== 0 || oy !== 0);
+                    render();
+                    return;
+                }
+            }
+        }
+
+        function hardDrop() {
+            while (move(0, 1));
+        }
+
+        function lockPiece() {
+            let tSpin = false;
+            if (activePiece.type === 'T') {
+                let corners = 0;
+                [[0, 0], [0, 2], [2, 0], [2, 2]].forEach(([r, c]) => {
+                    const by = pos.y + r, bx = pos.x + c;
+                    if (bx < 0 || bx >= COLS || by >= ROWS || (by >= 0 && grid[by][bx])) corners++;
+                });
+                if (corners >= 3) tSpin = true;
+            }
+
+            activePiece.shape.forEach((row, r) => {
+                row.forEach((v, c) => {
+                    if (v) {
+                        const gy = pos.y + r;
+                        if (gy >= 0) grid[gy][pos.x + c] = activePiece.color;
+                    }
+                });
+            });
+
+            const linesCleared = clearLines();
+            if (tSpin) {
+                if (linesCleared === 2) showMessage("T-SPIN DOUBLE! 🔥");
+                else if (linesCleared === 3) showMessage("T-SPIN TRIPLE! 🎆");
+                else showMessage("T-SPIN CLEAR");
+                score += linesCleared * 1000 + 400;
+            } else {
+                score += linesCleared * 100;
+                if (linesCleared === 4) showMessage("TETRIS!");
+            }
+            scoreEl.innerText = score;
+            canHold = true;
+            spawnPiece();
+        }
+
+        function clearLines() {
+            let lines = 0;
+            for (let r = ROWS - 1; r >= 0; r--) {
+                if (grid[r].every(v => v !== 0)) {
+                    grid.splice(r, 1);
+                    grid.unshift(Array(COLS).fill(0));
+                    lines++;
+                    r++;
+                }
+            }
+            return lines;
+        }
+
+        function hold() {
+            if (!canHold) return;
+            if (holdPiece) {
+                const temp = { ...TETROMINOS[activePiece.type], type: activePiece.type };
+                activePiece = JSON.parse(JSON.stringify(holdPiece));
+                holdPiece = temp;
+                pos = { x: Math.floor(COLS / 2) - Math.ceil(activePiece.shape[0].length / 2), y: 0 };
+            } else {
+                holdPiece = { ...TETROMINOS[activePiece.type], type: activePiece.type };
+                spawnPiece();
+            }
+            canHold = false;
+            render();
+        }
+
+        function showMessage(txt) {
+            msgPopup.innerText = txt;
+            msgPopup.style.opacity = '1';
+            setTimeout(() => msgPopup.style.opacity = '0', 1500);
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            overlay.style.display = isPaused ? 'flex' : 'none';
+            document.getElementById('overlay-title').innerText = 'PAUSED';
+        }
+
+        function toggleGuide() {
+            showGuide = !showGuide;
+            document.getElementById('guide-toggle').classList.toggle('active', showGuide);
+            document.getElementById('guide-toggle').innerText = `DT GUIDE: ${showGuide ? 'ON' : 'OFF'}`;
+            render();
+        }
+
+        function render() {
+            boardEl.innerHTML = '';
+            const ghostY = getGhostY();
+
+            for (let r = 0; r < ROWS; r++) {
+                for (let c = 0; c < COLS; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+
+                    // Static grid
+                    if (grid[r][c]) cell.classList.add('color-' + grid[r][c]);
+
+                    // Active piece
+                    const pr = r - pos.y, pc = c - pos.x;
+                    if (pr >= 0 && pr < activePiece.shape.length && pc >= 0 && pc < activePiece.shape[0].length && activePiece.shape[pr][pc]) {
+                        cell.classList.add('color-' + activePiece.color);
+                    } else {
+                        // Ghost
+                        const gr = r - ghostY;
+                        if (gr >= 0 && gr < activePiece.shape.length && pc >= 0 && pc < activePiece.shape[0].length && activePiece.shape[gr][pc]) {
+                            cell.classList.add('is-ghost', 'color-' + activePiece.color);
+                        } else if (showGuide && DT_TEMPLATE.find(t => t.r === r && t.c === c)) {
+                            cell.classList.add('is-guide');
+                        }
+                    }
+                    boardEl.appendChild(cell);
+                }
+            }
+
+            renderPreview(holdEl, holdPiece);
+            renderPreview(nextEl, bag[0]);
+        }
+
+        function getGhostY() {
+            let gy = pos.y;
+            while (!checkCollision(activePiece.shape, pos.x, gy + 1)) gy++;
+            return gy;
+        }
+
+        function renderPreview(container, piece) {
+            container.innerHTML = '';
+            if (!piece) return;
+            const s = piece.shape;
+            container.style.gridTemplateColumns = `repeat(${s[0].length}, 1fr)`;
+            s.forEach(row => row.forEach(v => {
+                const c = document.createElement('div');
+                c.className = 'preview-cell' + (v ? ' color-' + piece.color : '');
+                container.appendChild(c);
+            }));
+        }
+
+        function gameLoop(time) {
+            if (gameOver || isPaused) return;
+            if (!lastTime) lastTime = time;
+            const dt = time - lastTime;
+            if (dt > dropInterval) {
+                move(0, 1);
+                lastTime = time;
+            }
+            requestAnimationFrame(gameLoop);
+        }
+
+        window.addEventListener('keydown', e => {
+            if (gameOver) return;
+            if (e.key === 'r') initGame();
+            if (isPaused && e.key !== 'Escape') return;
+
+            switch (e.key) {
+                case 'ArrowLeft': move(-1, 0); break;
+                case 'ArrowRight': move(1, 0); break;
+                case 'ArrowDown': move(0, 1); break;
+                case 'ArrowUp': tryRotate(1); break;
+                case 'x': tryRotate(1); break;
+                case 'z': tryRotate(-1); break;
+                case ' ': e.preventDefault(); hardDrop(); break;
+                case 'Shift': hold(); break;
+                case 'Escape': togglePause(); break;
+            }
+        });
+
+        initGame();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "title": "進む早期化。「本選考を受けた」が早くも6割を超える - PR",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5TaGF2dTUzelUxQ1A2dENvczVNMHZNNnRJTEJkWHFLWXVfVkdySjFBUi13LVFNZFA1WE5MdkkyVW9XYXlnWE9SNEdaQ3NkZTlfclBlejFUTE9kczYtWXpMS1B2RWtFTDk0bmc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE5TaGF2dTUzelUxQ1A2dENvczVNMHZNNnRJTEJkWHFLWXVfVkdySjFBUi13LVFNZFA1WE5MdkkyVW9XYXlnWE9SNEdaQ3NkZTlfclBlejFUTE9kczYtWXpMS1B2RWtFTDk0bmc?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "27卒向け本選考、既に6割超が受験済。早期化が加速。",
+    "true_intent": "早期化を煽り、就活サービスの利用を促進。企業側は優秀な学生の囲い込みを早期に行いたい。PR TIMESも広告収入増加を狙う。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "PR TIMES",
+    "action_required": true,
+    "category": "出版/広告/メディア",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。PR TIMESの本質的価値と27卒が狙うべき理由を下記にまとめます。\n\n1.  **主要武器**: 圧倒的なメディアリレーションと、それを支えるSaaS型PRプラットフォーム。情報の一次流通を握り、企業のコミュニケーション戦略に不可欠な存在。\n2.  **26-27卒への温度感**: 積極採用継続。広報・PR業界への関心に加え、自社サービスへの共感を重視。多様なバックグラウンドを持つ人材を求めている。\n3.  **EGO適性**: データに基づいた意思決定を重視。AIを活用した効果測定ツール開発にも積極的で、構造的思考とテクノロジーへの理解は評価される。\n4.  **裏の弱点**: 競合サービスの台頭。情報過多によるプラットフォーム価値の低下リスク。急成長に伴う組織体制の整備が課題。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   GitHub PR tracking/management.\n*   PR open time, status checks, self-approval.\n*   Stack Overflow solutions.\n\n**Structured Summary:**\n\n*   **Tracking PR Open Time:** Methods to monitor how long pull requests remain open on GitHub.\n*   **GitHub Actions for PRs:** Using GitHub Actions to re-run status checks on pull requests.\n*   **PR Self-Approval:**  Issues with approving own PRs, even when settings allow.\n\n**Gap Analysis:**\n\n*   Focus is on common PR-related GitHub issues and troubleshooting.\n*   Lacks proactive strategies/tools for *improving* PR efficiency.\n*   No mention of advanced PR workflows (e.g., draft PRs, PR templates)."
+  },
+  "critical_analysis": {
+    "true_intent": "早期化を煽り、就活サービスの利用を促進。企業側は優秀な学生の囲い込みを早期に行いたい。PR TIMESも広告収入増加を狙う。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:06:30.872076",
+  "source": "就活ニュース (Google)"
+}

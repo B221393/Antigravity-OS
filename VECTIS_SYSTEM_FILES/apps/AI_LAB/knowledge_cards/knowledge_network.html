@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGO OS - Knowledge Neural Network</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=JetBrains+Mono:wght@400&display=swap');
+
+        :root {
+            --bg-deep: #05070a;
+            --accent-cyan: #00f3ff;
+            --accent-new: #ffffff;
+            --glass: rgba(20, 30, 40, 0.4);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-deep);
+            background-image: radial-gradient(circle at 50% 50%, #111926 0%, #05070a 80%);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        #sim-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 90%);
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8);
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0.3;
+        }
+
+        #ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+            padding: 30px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hud-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--accent-cyan);
+            border-left: 2px solid var(--accent-cyan);
+            padding-left: 10px;
+        }
+
+        .status-box {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 4px;
+            backdrop-filter: blur(5px);
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: right;
+            transform: skewX(-10deg);
+        }
+
+        #inspector {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%) translateX(50px);
+            width: 320px;
+            background: rgba(10, 15, 20, 0.90);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            padding: 25px;
+            border-radius: 12px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            pointer-events: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        #inspector.active {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+            pointer-events: all;
+        }
+
+        .insp-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-cyan);
+            margin-bottom: 5px;
+        }
+
+        .insp-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .insp-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            border-top: 1px solid var(--border);
+            padding-top: 10px;
+        }
+
+        .fresh-badge {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            font-weight: bold;
+            font-size: 0.6rem;
+            padding: 3px 8px;
+            border-radius: 3px;
+            margin-bottom: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+
+        .btn-action {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            pointer-events: all;
+            transition: all 0.2s;
+        }
+
+        .btn-action:hover {
+            background: #fff;
+            box-shadow: 0 0 20px var(--accent-cyan);
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="sim-canvas"></canvas>
+    <div class="overlay"></div>
+    <div class="scanlines"></div>
+
+    <div id="ui-layer">
+        <div class="hud-top">
+            <div class="brand">
+                EGO OS<br>
+                <span style="font-size: 1.5rem; color: #fff; font-weight:700;">記憶神経網</span>
+            </div>
+            <div class="status-box">
+                系統: 安定<br>
+                物理: 活性
+            </div>
+        </div>
+
+        <div id="inspector">
+            <div id="insp-fresh" class="fresh-badge" style="display:none;">新着内容</div>
+            <div class="insp-tag" id="insp-type">CATEGORY</div>
+            <div class="insp-title" id="insp-title">Node Title</div>
+            <div style="font-size: 0.9rem; color: #ccc; margin-top: 10px;" id="insp-desc">Description...</div>
+            <div class="insp-meta">
+                <div>閲覧: <span id="insp-views" style="color:#fff;">0</span></div>
+                <div>深度: <span id="insp-depth" style="color:#fff;">0</span></div>
+            </div>
+            <button class="btn-action" id="btn-expand">展開</button>
+        </div>
+
+        <div class="hint">[ クリック ] 展開/ズーム &nbsp;&nbsp; [ ESC ] リセット &nbsp;&nbsp; [ SPACE ] 自動回転</div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+    <script>
+        const canvas = document.getElementById('sim-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        const camera = {
+            x: 0, y: 0, zoom: 1,
+            targetX: 0, targetY: 0, targetZoom: 1,
+            rotation: 0, autoRotate: false
+        };
+
+        const colors = {
+            core: '#ffffff',
+            tech: '#00f3ff',
+            art: '#ff00ff',
+            life: '#00ff9d',
+            acad: '#ffaa00',
+            fresh: '#ffffff'
+        };
+
+        const categories = [
+            { id: 'tech', name: '技術', color: colors.tech },
+            { id: 'art', name: '芸術', color: colors.art },
+            { id: 'life', name: '生活', color: colors.life },
+            { id: 'acad', name: '学術', color: colors.acad }
+        ];
+
+        let nodes = [];
+        let selectedNode = null;
+
+        class Node {
+            constructor(type, parent, data) {
+                this.type = type;
+                this.parent = parent;
+                this.data = data;
+
+                this.x = (Math.random() - 0.5) * 150;
+                this.y = (Math.random() - 0.5) * 150;
+                this.z = (Math.random() - 0.5) * 80;
+
+                this.vx = 0; this.vy = 0; this.vz = 0;
+                this.mass = type === 'core' ? 100 : (type === 'category' ? 25 : 5);
+                this.baseSize = type === 'core' ? 18 : (type === 'category' ? 10 : 4);
+
+                this.color = data.color || '#fff';
+                this.isNew = data.isNew || false;
+                this.views = data.views || 0;
+                this.depth = data.depth || 0;
+
+                this.expanded = false;
+                this.visible = true;
+                this.pulsePhase = Math.random() * Math.PI * 2;
+            }
+
+            updateForces(nodes) {
+                // Gravity to center
+                this.vx -= this.x * 0.0003;
+                this.vy -= this.y * 0.0003;
+                this.vz -= this.z * 0.0002;
+
+                // Spring to parent
+                if (this.parent) {
+                    const dx = this.parent.x - this.x;
+                    const dy = this.parent.y - this.y;
+                    const dz = this.parent.z - this.z;
+                    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                    const restLength = this.type === 'item' ? 70 : 200;
+                    const k = 0.006;
+                    const force = (dist - restLength) * k;
+
+                    this.vx += (dx / dist) * force;
+                    this.vy += (dy / dist) * force;
+                    this.vz += (dz / dist) * force;
+                }
+
+                // Repulsion
+                nodes.forEach(other => {
+                    if (this === other || !other.visible) return;
+                    const dx = this.x - other.x;
+                    const dy = this.y - other.y;
+                    const distSq = dx * dx + dy * dy;
+                    const minDist = 100;
+
+                    if (distSq < minDist * minDist && distSq > 0) {
+                        const force = 6 / distSq;
+                        this.vx += dx * force;
+                        this.vy += dy * force;
+                    }
+                });
+
+                // Turbulence
+                this.vx += (Math.random() - 0.5) * 0.08;
+                this.vy += (Math.random() - 0.5) * 0.08;
+                this.vz += (Math.random() - 0.5) * 0.04;
+
+                // Damping
+                this.vx *= 0.93;
+                this.vy *= 0.93;
+                this.vz *= 0.93;
+
+                this.x += this.vx;
+                this.y += this.vy;
+                this.z += this.vz;
+            }
+
+            draw(ctx, cam) {
+                if (!this.visible) return;
+
+                const perspective = 900;
+                const scale = perspective / (perspective + this.z * cam.zoom);
+
+                const rotX = this.x * Math.cos(cam.rotation) - this.z * Math.sin(cam.rotation);
+                const rotZ = this.x * Math.sin(cam.rotation) + this.z * Math.cos(cam.rotation);
+
+                const screenX = (rotX - cam.x) * cam.zoom * scale + width / 2;
+                const screenY = (this.y - cam.y) * cam.zoom * scale + height / 2;
+
+                if (screenX < -100 || screenX > width + 100 || screenY < -100 || screenY > height + 100) return;
+
+                let r = this.baseSize * scale * cam.zoom;
+
+                if (this.isNew) {
+                    this.pulsePhase += 0.12;
+                    r += (Math.sin(this.pulsePhase) + 1) * 0.5 * 4;
+                }
+
+                // Connection
+                if (this.parent && this.parent.visible) {
+                    const pRotX = this.parent.x * Math.cos(cam.rotation) - this.parent.z * Math.sin(cam.rotation);
+                    const parentScale = perspective / (perspective + (this.parent.x * Math.sin(cam.rotation) + this.parent.z * Math.cos(cam.rotation)) * cam.zoom);
+                    const pScreenX = (pRotX - cam.x) * cam.zoom * parentScale + width / 2;
+                    const pScreenY = (this.parent.y - cam.y) * cam.zoom * parentScale + height / 2;
+
+                    ctx.beginPath();
+                    ctx.moveTo(pScreenX, pScreenY);
+                    ctx.lineTo(screenX, screenY);
+
+                    let lw = (1 + (this.views / 8000)) * scale * cam.zoom;
+                    ctx.lineWidth = Math.min(lw, 4);
+
+                    const grad = ctx.createLinearGradient(pScreenX, pScreenY, screenX, screenY);
+                    grad.addColorStop(0, hexToRgba(this.parent.color, 0.25));
+                    grad.addColorStop(1, this.isNew ? '#ffffff' : hexToRgba(this.color, 0.7));
+
+                    ctx.strokeStyle = grad;
+                    ctx.stroke();
+                }
+
+                // Node
+                ctx.beginPath();
+                ctx.arc(screenX, screenY, r, 0, Math.PI * 2);
+
+                if (this.isNew) {
+                    ctx.fillStyle = '#fff';
+                    ctx.shadowColor = this.color;
+                    ctx.shadowBlur = 25 * scale;
+                } else {
+                    ctx.fillStyle = this.color;
+                    ctx.shadowColor = this.color;
+                    ctx.shadowBlur = (this.type === 'category' ? 18 : 8) * scale;
+                }
+
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                // Label
+                if (this.type !== 'item' || r > 6) {
+                    ctx.fillStyle = '#fff';
+                    ctx.font = `${11 * scale * cam.zoom}px 'Outfit'`;
+                    ctx.textAlign = 'center';
+                    ctx.fillText(this.data.name, screenX, screenY + r + 18 * scale);
+                }
+            }
+        }
+
+        function initSystem() {
+            const core = new Node('core', null, { name: '自我', color: colors.core });
+            nodes.push(core);
+
+            categories.forEach((cat, i) => {
+                const angle = (Math.PI * 2 / categories.length) * i;
+                const dist = 120;
+                const catNode = new Node('category', core, { name: cat.name, color: cat.color, depth: 1 });
+
+                catNode.x = Math.cos(angle) * dist;
+                catNode.y = Math.sin(angle) * dist;
+
+                nodes.push(catNode);
+
+                // Items
+                const count = 4 + Math.floor(Math.random() * 6);
+                for (let j = 0; j < count; j++) {
+                    const isFresh = Math.random() < 0.25;
+                    const itemNode = new Node('item', catNode, {
+                        name: `項目${j + 1}`,
+                        color: cat.color,
+                        isNew: isFresh,
+                        views: Math.floor(Math.random() * 15000),
+                        depth: 2
+                    });
+                    itemNode.visible = false;
+                    itemNode.x = catNode.x + (Math.random() - 0.5) * 15;
+                    itemNode.y = catNode.y + (Math.random() - 0.5) * 15;
+                    nodes.push(itemNode);
+                }
+            });
+        }
+
+        function animate() {
+            camera.x += (camera.targetX - camera.x) * 0.08;
+            camera.y += (camera.targetY - camera.y) * 0.08;
+            camera.zoom += (camera.targetZoom - camera.zoom) * 0.08;
+
+            if (camera.autoRotate) {
+                camera.rotation += 0.002;
+            }
+
+            ctx.clearRect(0, 0, width, height);
+
+            nodes.forEach(n => n.updateForces(nodes));
+            nodes.sort((a, b) => {
+                const aZ = a.x * Math.sin(camera.rotation) + a.z * Math.cos(camera.rotation);
+                const bZ = b.x * Math.sin(camera.rotation) + b.z * Math.cos(camera.rotation);
+                return aZ - bZ;
+            });
+            nodes.forEach(n => n.draw(ctx, camera));
+
+            requestAnimationFrame(animate);
+        }
+
+        function setupInputs() {
+            window.addEventListener('resize', () => {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            });
+            window.dispatchEvent(new Event('resize'));
+
+            canvas.addEventListener('click', e => {
+                const mx = e.clientX - width / 2;
+                const my = e.clientY - height / 2;
+
+                let clicked = null;
+                let minDist = 1000;
+
+                nodes.forEach(n => {
+                    if (!n.visible) return;
+                    const screenX = (n.x - camera.x) * camera.zoom;
+                    const screenY = (n.y - camera.y) * camera.zoom;
+                    const dist = Math.sqrt((mx - screenX) ** 2 + (my - screenY) ** 2);
+
+                    if (dist < 35 * camera.zoom && dist < minDist) {
+                        minDist = dist;
+                        clicked = n;
+                    }
+                });
+
+                if (clicked) handleNodeClick(clicked);
+            });
+
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Escape') resetView();
+                if (e.key === ' ') camera.autoRotate = !camera.autoRotate;
+            });
+
+            document.getElementById('btn-expand').addEventListener('click', () => {
+                if (selectedNode && selectedNode.type === 'category') {
+                    selectedNode.expanded = !selectedNode.expanded;
+                    nodes.forEach(n => {
+                        if (n.parent === selectedNode) {
+                            n.visible = selectedNode.expanded;
+                            if (selectedNode.expanded) {
+                                n.vx = (Math.random() - 0.5) * 6;
+                                n.vy = (Math.random() - 0.5) * 6;
+                            }
+                        }
+                    });
+                    document.getElementById('btn-expand').innerText = selectedNode.expanded ? '収縮' : '展開';
+                }
+            });
+        }
+
+        function handleNodeClick(node) {
+            selectedNode = node;
+            updateInspector(node);
+
+            if (node.type === 'category') {
+                camera.targetX = node.x;
+                camera.targetY = node.y;
+                camera.targetZoom = 2;
+            } else if (node.type === 'item') {
+                camera.targetX = node.x;
+                camera.targetY = node.y;
+                camera.targetZoom = 3.5;
+            } else if (node.type === 'core') {
+                resetView();
+            }
+        }
+
+        function resetView() {
+            camera.targetX = 0;
+            camera.targetY = 0;
+            camera.targetZoom = 1;
+            document.getElementById('inspector').classList.remove('active');
+        }
+
+        function updateInspector(node) {
+            const insp = document.getElementById('inspector');
+            insp.classList.add('active');
+
+            document.getElementById('insp-type').innerText = node.type.toUpperCase();
+            document.getElementById('insp-title').innerText = node.data.name;
+            document.getElementById('insp-views').innerText = node.views.toLocaleString();
+            document.getElementById('insp-depth').innerText = node.depth;
+
+            const freshBadge = document.getElementById('insp-fresh');
+            const btnExpand = document.getElementById('btn-expand');
+
+            if (node.isNew) {
+                freshBadge.style.display = 'inline-block';
+                document.getElementById('insp-title').style.color = '#fff';
+                document.getElementById('insp-title').style.textShadow = `0 0 12px ${node.color}`;
+            } else {
+                freshBadge.style.display = 'none';
+                document.getElementById('insp-title').style.color = node.color;
+                document.getElementById('insp-title').style.textShadow = 'none';
+            }
+
+            btnExpand.style.display = node.type === 'category' ? 'block' : 'none';
+            btnExpand.innerText = node.expanded ? '収縮' : '展開';
+        }
+
+        function hexToRgba(hex, alpha) {
+            let c = hex.substring(1).split('');
+            if (c.length == 3) c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+            c = '0x' + c.join('');
+            return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + alpha + ')';
+        }
+
+        initSystem();
+        setupInputs();
+        animate();
+    </script>
+</body>
+
+</html>

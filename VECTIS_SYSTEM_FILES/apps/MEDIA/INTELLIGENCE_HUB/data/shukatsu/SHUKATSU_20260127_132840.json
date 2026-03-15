@@ -1,0 +1,23 @@
+{
+  "title": "AVD を採用して短期間でリモートワーク環境を構築した講談社",
+  "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5kV01TNC1nallNTUdWMHJLUVRGTlFjYnJFS2hZeWRfR0N4cUFsak15ZEhuU2FtNlJJeVRIWkdQOHBHYzZxU25DZnJtZVVyOWI5RV9RTUsxYVVOOFhDRmM4SW1VTTZPQjhQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE5kV01TNC1nallNTUdWMHJLUVRGTlFjYnJFS2hZeWRfR0N4cUFsak15ZEhuU2FtNlJJeVRIWkdQOHBHYzZxU25DZnJtZVVyOWI5RV9RTUsxYVVOOFhDRmM4SW1VTTZPQjhQ?oc=5\" tar",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "講談社がAVD導入でリモートワーク成功。FastTrack for Azureの支援が鍵。",
+    "true_intent": "Microsoft AzureとFastTrackの導入事例宣伝。講談社の成功を謳い、他社への導入を促す狙い。講談社側のプレスリリース協力の可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "講談社",
+    "action_required": false,
+    "category": "出版/IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。講談社の本質的価値と27卒が狙うべき理由を、以下の通り構造化します。\n\n1.  **主要武器**: 多様なヒットIP創出力と、紙・デジタル・版権等による収益多角化。長年のブランド力と編集者の企画力・作家発掘力が源泉。\n\n2.  **26-27卒への温度感**: デジタル戦略強化のため、データ分析・エンジニアリング人材を積極採用。編集職以外も視野に。\n\n3.  **EGO適性**: 部署によるが、データドリブンな意思決定は推進中。AI活用は模索段階で、主体的な提案が歓迎される。\n\n4.  **裏の弱点**: 組織の縦割り構造と、紙媒体依存からの脱却の遅れ。変化を嫌う保守的な体質も残存。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "Microsoft AzureとFastTrackの導入事例宣伝。講談社の成功を謳い、他社への導入を促す狙い。講談社側のプレスリリース協力の可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:28:40.680953",
+  "source": "Active:講談社"
+}

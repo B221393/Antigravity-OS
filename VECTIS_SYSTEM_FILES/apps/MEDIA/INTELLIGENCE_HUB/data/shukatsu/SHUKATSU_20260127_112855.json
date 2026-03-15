@@ -1,0 +1,22 @@
+{
+  "title": "神戸企業インタビュー - city.kobe.lg.jp",
+  "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPS1FXTkZFLVNtV2p5VGtaRU9mYzl2UGtUYXZOb3AxSWNWZ1QycE5FQW9fQmZlUWl6VWtUS1RFajlQYXJoODl1dkRSczU2UDctZmF6N091c2xtUTFVNjBJVDhRTlZoQ3NDUEhNRUtvb1djTFR3V3g3SGJJaTdic3haeEhFMlZzQzFYbVBjMFJBTnZnUVFhLVVHX1hR?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxPS1FXTkZFLVNtV2p5VGtaRU9mYzl2UGtUYXZOb3AxSWNWZ1QycE5FQW9fQmZlUWl6VWtUS1RFajlQYXJoODl1dkRSczU2UDctZmF6N091c2xtUTFVNjBJVDhRTlZoQ3NDUEhNRUtvb1",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "神戸市が地元企業を紹介するインタビュー記事。就活生向け。",
+    "true_intent": "神戸市への企業誘致、地元経済活性化、Uターン就職促進が目的。市と企業の関係強化、税収増加も視野か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "神戸市への企業誘致、地元経済活性化、Uターン就職促進が目的。市と企業の関係強化、税収増加も視野か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:28:55.824440",
+  "source": "フェリシモ 採用"
+}

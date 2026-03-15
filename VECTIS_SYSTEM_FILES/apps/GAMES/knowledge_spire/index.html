@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Spire - 知識の塔</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <!-- タイトル画面 -->
+        <div id="title-screen" class="screen active">
+            <div class="title-content">
+                <h1 class="game-title">
+                    <span class="title-icon">🗼</span>
+                    Knowledge Spire
+                    <span class="subtitle">知識の塔</span>
+                </h1>
+                <p class="tagline">戦略と知恵で塔を登れ</p>
+                <div class="title-buttons">
+                    <button id="btn-start" class="btn-primary pulse">🎮 ゲームスタート</button>
+                    <button id="btn-how" class="btn-secondary">📖 遊び方</button>
+                </div>
+                <div class="stats-display">
+                    <span>🏆 最高到達: <span id="high-floor">1</span>階</span>
+                    <span>⚔️ 総プレイ: <span id="total-runs">0</span>回</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- マップ画面 -->
+        <div id="map-screen" class="screen">
+            <div class="map-header">
+                <div class="player-status">
+                    <span class="hp">❤️ <span id="map-hp">80</span>/<span id="map-max-hp">80</span></span>
+                    <span class="gold">💰 <span id="map-gold">0</span></span>
+                    <span class="floor">🏛️ <span id="current-floor">1</span>階</span>
+                </div>
+                <button id="btn-deck-view" class="btn-icon">🃏 デッキ</button>
+            </div>
+            <div id="map-container">
+                <!-- マップノードがここに生成される -->
+            </div>
+        </div>
+
+        <!-- 戦闘画面 -->
+        <div id="battle-screen" class="screen">
+            <div class="battle-header">
+                <div class="player-battle-status">
+                    <span class="hp">❤️ <span id="battle-hp">80</span>/<span id="battle-max-hp">80</span></span>
+                    <span class="block">🛡️ <span id="player-block">0</span></span>
+                    <span class="energy">⚡ <span id="current-energy">3</span>/<span id="max-energy">3</span></span>
+                </div>
+            </div>
+
+            <div class="battle-area">
+                <div id="player-area" class="combatant">
+                    <div class="character player-character">
+                        <div class="character-sprite">🧙</div>
+                        <div class="character-effects"></div>
+                    </div>
+                </div>
+
+                <div id="enemy-area">
+                    <!-- 敵がここに表示される -->
+                </div>
+            </div>
+
+            <div class="card-area">
+                <div id="draw-pile" class="pile">
+                    <span class="pile-count">0</span>
+                    <span class="pile-label">山札</span>
+                </div>
+
+                <div id="hand-container">
+                    <!-- 手札がここに表示される -->
+                </div>
+
+                <div id="discard-pile" class="pile">
+                    <span class="pile-count">0</span>
+                    <span class="pile-label">捨札</span>
+                </div>
+            </div>
+
+            <button id="btn-end-turn" class="btn-end-turn">ターン終了</button>
+        </div>
+
+        <!-- イベント画面 -->
+        <div id="event-screen" class="screen">
+            <div class="event-container">
+                <div id="event-icon" class="event-icon">❓</div>
+                <h2 id="event-title">イベント</h2>
+                <p id="event-description">ここにイベントの説明が表示されます。</p>
+                <div id="event-choices">
+                    <!-- 選択肢がここに表示される -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 報酬画面 -->
+        <div id="reward-screen" class="screen">
+            <div class="reward-container">
+                <h2>🎉 勝利！</h2>
+                <p>報酬を選択してください：</p>
+                <div id="reward-cards">
+                    <!-- 報酬カードがここに表示される -->
+                </div>
+                <button id="btn-skip-reward" class="btn-secondary">スキップ</button>
+            </div>
+        </div>
+
+        <!-- ゲームオーバー画面 -->
+        <div id="gameover-screen" class="screen">
+            <div class="gameover-container">
+                <h1 id="gameover-title">💀 Game Over</h1>
+                <div class="run-stats">
+                    <p>到達階: <span id="final-floor">1</span>階</p>
+                    <p>倒した敵: <span id="enemies-killed">0</span>体</p>
+                    <p>獲得ゴールド: <span id="gold-earned">0</span></p>
+                </div>
+                <button id="btn-restart" class="btn-primary">🔄 もう一度</button>
+            </div>
+        </div>
+
+        <!-- デッキビュー -->
+        <div id="deck-view" class="modal">
+            <div class="modal-content">
+                <h2>🃏 デッキ</h2>
+                <div id="deck-cards"></div>
+                <button id="btn-close-deck" class="btn-secondary">閉じる</button>
+            </div>
+        </div>
+
+        <!-- ダメージポップアップ用 -->
+        <div id="damage-popups"></div>
+    </div>
+
+    <script src="cards.js"></script>
+    <script src="enemies.js"></script>
+    <script src="events.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>

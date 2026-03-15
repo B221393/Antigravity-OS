@@ -1,0 +1,41 @@
+{
+  "title": "KDDI系が「仕様駆動開発」を導入 AIが仕様書とソースコードを生成 - 日経クロステック",
+  "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9VXzU0SFlrc29ud3V5akg0MmlOWklZR0ZILTk5SWlMMzZxNFJVRTNUSTZUc2hUZk5ya2dOYVFlWXpHZ3ZKVEdRSG5xTXhUQUh2YVduXzkwRjNrMlRTU2U3ZndqRUdBUkQ1bW9ZdkdZYmVqZw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE9VXzU0SFlrc29ud3V5akg0MmlOWklZR0ZILTk5SWlMMzZxNFJVRTNUSTZUc2hUZk5ya2dOYVFlWXpHZ3ZKVEdRSG5xTXhUQUh2YVduXzkwRjNrMlRTU2U3ZndqRUdBUkQ1bW9ZdkdZYmVqZw?oc=5\" target=\"_blank\">KDDI系が「仕様駆動開発」を導入 AIが仕様書とソースコードを生成</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">日経クロステック</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "AIが仕様書とソースコードを生成する可能性を分析する",
+    "strategic_analysis": {
+      "true_intent": "この情報は、AIが仕様書やソースコードを自動生成する可能性や、それに基づいた開発方法を分析する",
+      "swot": {
+        "strength": "AIの進歩が、仕様書やソースコード生成の効率性を向上させる可能性",
+        "weakness": "AI技術の進歩は、特定の技術やフレームワークを強調する可能性があり、他の技術やフレームワークとの競争に影響を与える可能性",
+        "opportunity": "AIが生成する仕様書やソースコードは、より効率的で洗練された日本語で出力できる可能性",
+        "threat": "AI技術の進歩は、より複雑な開発方法を必要とする可能性があり、コストや開発時間増加の懸念"
+      },
+      "writing_technique": "この情報は、AI技術が生成する仕様書やソースコードは、日本語の自然な表現で記述される可能性や、ビジネスパーソンが書きやすい日本語で書く可能性を分析する",
+      "action_plan": "Yutoは、AIの技術の進歩を監視し、この技術がどのように活用されるか分析し、それに基づいて、適切な戦略を立てることを考える"
+    },
+    "bias_warning": "偏向報道やポジショントークの可能性を分析する",
+    "company": null,
+    "category": "IT",
+    "target_year": 2027,
+    "priority_score": 9
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、AIが仕様書やソースコードを自動生成する可能性や、それに基づいた開発方法を分析する",
+    "swot": {
+      "strength": "AIの進歩が、仕様書やソースコード生成の効率性を向上させる可能性",
+      "weakness": "AI技術の進歩は、特定の技術やフレームワークを強調する可能性があり、他の技術やフレームワークとの競争に影響を与える可能性",
+      "opportunity": "AIが生成する仕様書やソースコードは、より効率的で洗練された日本語で出力できる可能性",
+      "threat": "AI技術の進歩は、より複雑な開発方法を必要とする可能性があり、コストや開発時間増加の懸念"
+    },
+    "writing_technique": "この情報は、AI技術が生成する仕様書やソースコードは、日本語の自然な表現で記述される可能性や、ビジネスパーソンが書きやすい日本語で書く可能性を分析する",
+    "action_plan": "Yutoは、AIの技術の進歩を監視し、この技術がどのように活用されるか分析し、それに基づいて、適切な戦略を立てることを考える"
+  },
+  "deep_strategic_dossier": "",
+  "bias": "偏向報道やポジショントークの可能性を分析する",
+  "collected_at": "2026-02-05T11:08:51.882393",
+  "source": "KDDI Agile Development",
+  "score": 9
+}

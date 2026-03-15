@@ -1,0 +1,23 @@
+{
+  "title": "採用情報 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5\" target=\"_blank\">採用情報</a>&nbsp;&nbsp;<font color=\"#6f",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIは、採用情報について新しい情報を発表したと確認しました。",
+    "true_intent": "KDDIは、採用情報に関する新たな情報を提供することで、採用者への差別化を図る可能性があります。",
+    "bias_warning": "ポジショントークの可能性があることが確認されています。",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "company_profile": "- **事業の強み・特徴**: KDDIは、通信技術やサービスの開発・運用に注力した企業で、業界の技術的な強みと競争力に優れていると考えられます。\n- **社風・カルチャー**: KDDIは、スポーツやスポーツ関連のイベントを主催し、社内の文化やコミュニケーションを強化するとして有名です。\n- **求める人物像の推測**: KDDIは、技術やサービス関連の専門分野や経営系の能力を持った学生が適していると考えられます。"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIは、採用情報に関する新たな情報を提供することで、採用者への差別化を図る可能性があります。",
+    "bias_warning": "ポジショントークの可能性があることが確認されています。"
+  },
+  "collected_at": "2026-01-26T17:05:51.228504",
+  "source": "KDDI 採用 Deep Dive"
+}

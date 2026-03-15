@@ -1,0 +1,22 @@
+{
+  "title": "BOSTON CAREER FORUM 2025 - met",
+  "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNQk9LNDh5c3NSdW90RVZVLThnY0FXUEFIUnluUzVyRU9NTV95Qnpra2czQnFoYU4ycDY1RWpOQm9RR21uaVI1bDJiRmxJWWZPNG00NWtfbjIyYUF6UmNzOXFfRGIyMHdnNTBxOG90MXRQQWZEUVdUbEdxZjY4aVQ5TTNJZlo2Zw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMihgFBVV95cUxNQk9LNDh5c3NSdW90RVZVLThnY0FXUEFIUnluUzVyRU9NTV95Qnpra2czQnFoYU4ycDY1RWpOQm9RR21uaVI1bDJiRmxJWWZPNG00NWtfbjIyYUF6UmNzOXFfRGIyMHdnNTBxOG90MX",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "経産省がボストンキャリアフォーラム2025開催告知。グローバル人材獲得促進。",
+    "true_intent": "優秀な学生の海外流出阻止と、国内企業への就職誘導。経産省管轄企業の国際競争力強化が目的。外資系企業も恩恵を受ける可能性あり。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な学生の海外流出阻止と、国内企業への就職誘導。経産省管轄企業の国際競争力強化が目的。外資系企業も恩恵を受ける可能性あり。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:11:55.744003",
+  "source": "経産省 採用"
+}

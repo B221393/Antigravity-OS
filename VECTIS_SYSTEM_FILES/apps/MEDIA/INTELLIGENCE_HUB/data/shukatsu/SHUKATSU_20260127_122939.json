@@ -1,0 +1,24 @@
+{
+  "title": "採用情報 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5\" target=\"_blank\">採用情報</a>&nbsp;&nbsp;<font color=\"#6f",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIの採用情報公開。27卒向け就活生は要チェック。",
+    "true_intent": "優秀な人材の早期囲い込み。通信業界の競争激化を背景に、将来的な技術革新を担う人材を確保し、企業価値向上を目指す。広報活動の一環。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## KDDIの本質と27卒が狙うべき理由\n\n1. **主要武器**: 通信インフラ基盤とau経済圏の顧客基盤。通信事業で培った技術力と、金融・エネルギーなど生活インフラを巻き込む総合力が強み。\n\n2. **26-27卒への温度感**: デジタル人材獲得に積極的。多様なバックグラウンドを持つ人材を求め、専門性重視の採用が増加傾向。\n\n3. **EGO適性**: 構造的思考は必須。AI活用にも積極的で、データ分析や新規事業開発に活かせる人材を重視。\n\n4. **裏の弱点**: 既存事業の安定性に依存し、新規事業の成長速度が緩慢な点。変化への対応力とスピード感が課題。\n",
+    "deep_web_intel": "No search results found to analyze."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材の早期囲い込み。通信業界の競争激化を背景に、将来的な技術革新を担う人材を確保し、企業価値向上を目指す。広報活動の一環。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:29:39.197191",
+  "source": "KDDI 採用 Deep Dive"
+}

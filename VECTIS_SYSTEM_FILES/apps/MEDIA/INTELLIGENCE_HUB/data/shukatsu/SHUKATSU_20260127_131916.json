@@ -1,0 +1,23 @@
+{
+  "title": "Microsoft Dynamics 365 Sales に",
+  "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOY1Z1bHVOenBTNmlUNTVrdGEyLVhsMlNnNGd4cnd5SGJRczl5dzRhb2k0Mk1TMF9wTjBhWVhxcXVOTWZSdEt1elM0V0kwWnpFSGVnUXFacGxoNjhzYnJpZERkdFFCZjNWM0p6OFhua2g5Z0pfVlZ5dlNxdlJPUzUtb2hwZUNwVFp6SEpsOTB1Q2J0bHBhejNsZVJiVnM?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxOY1Z1bHVOenBTNmlUNTVrdGEyLVhsMlNnNGd4cnd5SGJRczl5dzRhb2k0Mk1TMF9wTjBhWVhxcXVOTWZSdEt1elM0V0kwWnpFSGVnUXFacGxoNjhzYnJpZERkdFFCZjNWM0p6OFhua2",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "MSがDynamics 365 SalesとUPWARD連携で営業マネジメント強化をアピール。",
+    "true_intent": "Dynamics 365 Salesの導入実績アピールと、UPWARD連携による機能拡張の宣伝。中小企業への導入促進が目的。SaaS市場でのシェア拡大を狙う。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "Microsoft",
+    "action_required": false,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。Microsoftの本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: クラウドプラットフォームAzureを軸とした、法人・個人向けソフトウェア/サービスのエコシステム。圧倒的な技術力とグローバル展開力。\n2.  **26-27卒への温度感**: AI/クラウド人材獲得に積極的。インターンシップや早期選考ルートも充実しており、優秀層への囲い込みを強化。\n3.  **EGO適性**: 論理的思考力、データ分析力、AI活用能力は必須。自ら課題を発見し、解決策を提案できる人材を高く評価する文化。\n4.  **裏の弱点**: 組織規模が大きく、意思決定に時間がかかる場合がある。部署によっては、変化への対応が遅れる可能性も。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "Dynamics 365 Salesの導入実績アピールと、UPWARD連携による機能拡張の宣伝。中小企業への導入促進が目的。SaaS市場でのシェア拡大を狙う。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:19:16.697476",
+  "source": "ノーリツ 採用"
+}

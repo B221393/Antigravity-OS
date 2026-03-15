@@ -1,0 +1,24 @@
+{
+  "title": "NTTデータ経営研究所と 2021.AI社 がAIリスク管理",
+  "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5lbllMX29IaVNrTVJsNi1BR055cmNUbzZfRzhFN3Jrdm90U1dwREZ0V1BuQmZYTUdnQU05VlJlM0g4MFBPcDdEVjVOcjhMZUFqQzFELTVJZmI1SXgtVVRfSXNn?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTE5lbllMX29IaVNrTVJsNi1BR055cmNUbzZfRzhFN3Jrdm90U1dwREZ0V1BuQmZYTUdnQU05VlJlM0g4MFBPcDdEVjVOcjhMZUFqQzFELTVJZmI1SXgtVVRfSXNn?oc=5\" target=\"_bl",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "NTTデータ経営研と2021.AIがAIリスク管理で協力。グローバル展開を目指す。",
+    "true_intent": "AIリスク管理市場の先行獲得と、NTTデータグループのAI関連技術の優位性アピール。規制強化を見据えた布石か。2021.AI社の技術力も利用したい思惑。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "NTTデータ",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。NTTデータの「本質」と「27卒が狙うべき理由」を以下にまとめます。\n\n1.  **主要武器**: 公共・金融を軸とした国内SIer最大手。顧客基盤と技術力を活かし、コンサル～開発・運用まで一気通貫で対応できる点が強み。\n2.  **26-27卒への温度感**: デジタル人材獲得に積極的。多様なバックグラウンドを持つ学生を歓迎し、ジョブ型採用も強化中。\n3.  **EGO適性**: 構造的思考は必須。AI/データ活用にも注力しており、親和性は高い。ただし、現場レベルでの浸透度に差がある可能性も。\n4.  **裏の弱点**: 大企業病による意思決定の遅さ、縦割り組織による部門間の連携不足。変化への対応スピードが課題。\n",
+    "deep_web_intel": "Okay, I've analyzed the provided data concerning NTT Data.  Here's a structured summary, key points, and gap analysis, keeping the text minimal:\n\n**Structured Summary**\n\n*   **NTT Data (Corporate Website):**  Focuses on digital transformation, solving social issues, and providing services. Mentions NTT Data as a global IT innovator delivering tech-enabled services.\n*   **Toyo Keizai Article:** Discusses NTT's large-scale reorganization and the complete subsidiary status of NTT Data Group by NTT.  Highlights NTT's shift to a global IT company. Mentions NTT Data Group's delisting in September 2025.\n*   **Wikipedia (NTT Data Group):**  Unable to fetch.\n\n**Key Points**\n\n*   NTT Data is involved in digital transformation and IT solutions.\n*   NTT Data Group is becoming a wholly-owned subsidiary of NTT.\n*   NTT Data Group is expected to delist in September 2025.\n*   NTT aims to transform into a global IT company.\n\n**Gap Analysis**\n\n*   **Missing Information:**  The Wikipedia entry could not be fetched. This limits a comprehensive understanding of NTT Data Group's structure, history, and activities.\n*   **Financial Data:** No specific financial performance data (revenue, profit, etc.) is provided in the given data.\n*   **Specific Services/Technologies:**  The corporate website mentions services, but lacks detailed examples of the specific technologies and solutions offered.\n*   **Organizational Structure:** While the Toyo Keizai article mentions the NTT Data *Group*, the exact structure and relationships within the group are not clear (beyond the parent-subsidiary relationship with NTT)."
+  },
+  "critical_analysis": {
+    "true_intent": "AIリスク管理市場の先行獲得と、NTTデータグループのAI関連技術の優位性アピール。規制強化を見据えた布石か。2021.AI社の技術力も利用したい思惑。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:06:50.961156",
+  "source": "Active:NTT"
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGO INTELLIGENCE DASHBOARD (STATIC)</title>
+    <!-- Load Data Bridge -->
+    <script src="data/universe.js"></script>
+    <style>
+        :root {
+            --bg: #0f111a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #00f0ff;
+            --text: #e0e6ed;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            height: 100vh;
+        }
+
+        .sidebar {
+            background: rgba(0, 0, 0, 0.3);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .main {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        h1 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            background: rgba(0, 240, 255, 0.05);
+        }
+
+        .card h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-top: 5px;
+        }
+
+        /* Search Bar */
+        #search {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        /* Initial State */
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h1>EGO</h1>
+        <div style="font-size: 12px; opacity: 0.5; margin-bottom: 20px;">STATIC DASHBOARD v1.0</div>
+        <div id="stats">
+            <div>NODES: <span id="node-count">-</span></div>
+            <div>LINKS: <span id="link-count">-</span></div>
+        </div>
+    </div>
+    <div class="main">
+        <input type="text" id="search" placeholder="Search Intelligence Database..." onkeyup="filterNodes()">
+        <div id="content">
+            <div id="loading">Loading Universe Data...</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof window.UNIVERSE_DATA !== 'undefined') {
+                renderDashboard(window.UNIVERSE_DATA);
+            } else {
+                document.getElementById('loading').innerHTML = "No Data Found.<br><small>Run Intelligence Patrol to generate 'data/universe.js'</small>";
+            }
+        });
+
+        function renderDashboard(data) {
+            const container = document.getElementById('content');
+            const nodes = data.nodes || [];
+
+            document.getElementById('node-count').innerText = nodes.length;
+            document.getElementById('link-count').innerText = (data.links || []).length;
+
+            container.innerHTML = ''; // Clear loading
+
+            // Sort by newness (assuming id contains timestamp or added order)
+            // Just take last 50 for performance demo
+            const recentNodes = nodes.slice(-100).reverse();
+
+            recentNodes.forEach(node => {
+                const el = document.createElement('div');
+                el.className = 'card';
+                el.innerHTML = `
+                    <h3>${node.label || node.id}</h3>
+                    <p>${node.info || 'No details available.'}</p>
+                    <div class="tag">${node.type || 'Unknown'}</div>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        function filterNodes() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const cards = document.getElementsByClassName('card');
+            for (let card of cards) {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(query) ? 'block' : 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

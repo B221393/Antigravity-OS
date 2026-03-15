@@ -1,0 +1,22 @@
+{
+  "title": "KDDI、「つなぐチカラ」で環境課題を解決 - 日経BP",
+  "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB6N1lXcEt0dlc1cnQwMldjdjZEaHAyY2Mxd1dvVU5WVWNxa1VtRGM4dkVsLThOeTd3cE1nVjdUTmotWlJCVkI5Rk91S0R3VnZBVGpWTi1RMjNydXRpRnVvR1ZNelQtYjZYaE5fbkZuQ3E?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTFB6N1lXcEt0dlc1cnQwMldjdjZEaHAyY2Mxd1dvVU5WVWNxa1VtRGM4dkVsLThOeTd3cE1nVjdUTmotWlJCVkI5Rk91S0R3VnZBVGpWTi1RMjNydXRpRnVvR1ZNelQtYjZYaE5fbkZuQ3",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": " KDDI、「つなぐチカラ」の環境課題解決への寄与は、利権的な意図とみられます。特に、環境問題に対する企業への支援やリソースへの投資が、環境問題解決に寄与する可能性があります。",
+    "true_intent": "利権的な意図とみられます。 KDDIは、環境問題への寄与を支援することで、収益を確保するための戦略をとると推測されます。",
+    "bias_warning": "利権的な意図とみられます。 寄与の対象となるのは、環境問題への貢献ではなく、企業への支援にすぎると推測されます。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": 2027
+  },
+  "critical_analysis": {
+    "true_intent": "利権的な意図とみられます。 KDDIは、環境問題への寄与を支援することで、収益を確保するための戦略をとると推測されます。",
+    "bias_warning": "利権的な意図とみられます。 寄与の対象となるのは、環境問題への貢献ではなく、企業への支援にすぎると推測されます。"
+  },
+  "collected_at": "2026-01-26T17:15:19.243044",
+  "source": "KDDI 事業戦略"
+}

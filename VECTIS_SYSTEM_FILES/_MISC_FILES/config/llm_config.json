@@ -1,0 +1,41 @@
+{
+  "default_provider": "ollama",
+  "providers": {
+    "gemini": {
+      "enabled": true,
+      "model": "gemini-2.0-flash-exp",
+      "api_key_env": "GEMINI_API_KEY",
+      "rate_limit": {
+        "requests_per_minute": 10,
+        "fallback_provider": "ollama"
+      }
+    },
+    "ollama": {
+      "enabled": true,
+      "url": "http://localhost:11434/api/generate",
+      "model": "llama3.2",
+      "timeout": 30
+    },
+    "phi3": {
+      "enabled": false,
+      "url": "http://localhost:11434/api/generate",
+      "model": "phi3",
+      "timeout": 30,
+      "note": "Microsoft Phi-3 via Ollama"
+    },
+    "groq": {
+      "enabled": true,
+      "model": "llama-3.1-8b-instant",
+      "api_key_env": "GROQ_API_KEY",
+      "rate_limit": {
+        "requests_per_minute": 30,
+        "fallback_provider": "ollama"
+      }
+    }
+  },
+  "features": {
+    "toeic_priority": "low",
+    "keyboard_layout": "onishi",
+    "auto_fallback": true
+  }
+}

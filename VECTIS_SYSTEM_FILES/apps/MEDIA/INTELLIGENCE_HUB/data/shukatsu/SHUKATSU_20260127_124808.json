@@ -1,0 +1,24 @@
+{
+  "title": "87%の社員が「働きがいがある」と答える環境を実現ーーCHO",
+  "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1IcjBXNUlxNHZoMGtZQzhJZU9BXzlIMDMzN0gwZGxnVUdLcGNGamRfbDhMeFgtQ3Vob3RkMU1CaVR6eGlSa2VCUktUb2JHTEFtVDVPX1dnemtaeFhsQ25PLVdDNA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE1IcjBXNUlxNHZoMGtZQzhJZU9BXzlIMDMzN0gwZGxnVUdLcGNGamRfbDhMeFgtQ3Vob3RkMU1CaVR6eGlSa2VCUktUb2JHTEFtVDVPX1dnemtaeFhsQ25PLVdDNA?oc=5\" target=\"_",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "サイバーエージェントCHO曽山氏がエンゲージメント向上施策を語り、高い働きがいをアピール。",
+    "true_intent": "採用広報の一環。高エンゲージメントを謳い、優秀な学生を惹きつけ、企業イメージ向上を図る。離職率の低さを間接的に示唆したい可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "サイバーエージェント",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。サイバーエージェントの本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: 徹底した成果主義と事業創造力。変化を恐れず、若手に裁量を与え、新規事業を次々と生み出す企業文化が強み。\n\n2.  **26-27卒への温度感**: ポテンシャル重視。地頭の良さ、成長意欲、当事者意識を重視し、優秀層の獲得に積極的。\n\n3.  **EGO適性**: 高い。データドリブンな意思決定を重視し、AI技術の活用にも積極的。構造的思考力とAIへの関心は高く評価される。\n\n4.  **裏の弱点**: 成果主義の裏返しとして、プレッシャーや競争が激しい。組織変更も多く、安定志向の人には不向き。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **CyberAgent:** Internet advertising, ABEMA (future TV), new ventures. \"21st century representative company\" vision. (CyberAgent Website)\n*   **Yahoo! Finance:** CyberAgent stock info (4751.T): price, charts, news, board. (Yahoo! Finance)\n*   **Wikipedia:** (FETCH_ERR: Encoding issue - incomplete data)\n\n**Structured Summary:**\n\nCyberAgent is a Japanese internet company focused on advertising, media (ABEMA), and new business creation. Stock information is available on Yahoo! Finance.\n\n**Gap Analysis:**\n\n*   Lack of comprehensive Wikipedia data due to encoding error.\n*   Missing concrete details on financial performance, specific business segments, and competitive landscape."
+  },
+  "critical_analysis": {
+    "true_intent": "採用広報の一環。高エンゲージメントを謳い、優秀な学生を惹きつけ、企業イメージ向上を図る。離職率の低さを間接的に示唆したい可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:48:08.951317",
+  "source": "Active:サイバーエージェント"
+}

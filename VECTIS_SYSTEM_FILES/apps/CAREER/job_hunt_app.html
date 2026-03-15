@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Hunt Navigator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg: #08080d;
+            --s1: #0e0e18;
+            --s2: #151525;
+            --s3: #1c1c30;
+            --bd: #252545;
+            --ac: #7c6cf0;
+            --ac2: #a89eff;
+            --ac3: #00d4c8;
+            --tx: #e8e8f0;
+            --tx2: #7878a0;
+            --tx3: #50506a;
+            --ok: #2ecc71;
+            --warn: #f39c12;
+            --err: #e74c3c
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Hiragino Sans', sans-serif;
+            background: var(--bg);
+            color: var(--tx);
+            height: 100dvh;
+            overflow: hidden
+        }
+
+        .app {
+            display: flex;
+            height: 100dvh
+        }
+
+        /* Sidebar */
+        .sb {
+            width: 240px;
+            background: var(--s1);
+            border-right: 1px solid var(--bd);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0
+        }
+
+        .sb-h {
+            padding: 20px 16px;
+            border-bottom: 1px solid var(--bd);
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .sb-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--ac), var(--ac3));
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .sb-logo svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff
+        }
+
+        .sb-h div h1 {
+            font-size: 13px;
+            color: var(--ac2);
+            letter-spacing: 1.5px;
+            font-weight: 600
+        }
+
+        .sb-h div p {
+            font-size: 10px;
+            color: var(--tx2)
+        }
+
+        .nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px
+        }
+
+        .ni {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            color: var(--tx2);
+            transition: all .15s;
+            margin-bottom: 1px;
+            border: 1px solid transparent
+        }
+
+        .ni:hover {
+            background: var(--s2);
+            color: var(--tx)
+        }
+
+        .ni.on {
+            background: linear-gradient(135deg, rgba(124, 108, 240, .12), rgba(0, 212, 200, .06));
+            color: var(--ac2);
+            border-color: rgba(124, 108, 240, .25)
+        }
+
+        .ni svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+            opacity: .7
+        }
+
+        .ni.on svg {
+            opacity: 1;
+            fill: var(--ac2)
+        }
+
+        /* Main */
+        .mn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden
+        }
+
+        .tb {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--bd);
+            background: rgba(14, 14, 24, .8);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .tb h2 {
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .tb h2 svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--ac2)
+        }
+
+        .ct {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            scroll-behavior: smooth
+        }
+
+        /* Editor */
+        .editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            height: calc(100% - 20px)
+        }
+
+        .card {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: border-color .2s
+        }
+
+        .card:hover {
+            border-color: rgba(124, 108, 240, .3)
+        }
+
+        .card-h {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--bd);
+            background: rgba(0, 0, 0, .15);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ac2)
+        }
+
+        .card-h svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor
+        }
+
+        textarea {
+            flex: 1;
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--tx);
+            padding: 16px;
+            font-size: 13px;
+            line-height: 1.8;
+            resize: none;
+            font-family: inherit;
+            outline: none
+        }
+
+        textarea::placeholder {
+            color: var(--tx3)
+        }
+
+        .ref {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            font-size: 12px;
+            line-height: 1.8;
+            color: var(--tx);
+            white-space: pre-wrap
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 7px 14px;
+            border-radius: 7px;
+            border: 1px solid var(--bd);
+            background: var(--s2);
+            color: var(--tx);
+            font-size: 11px;
+            cursor: pointer;
+            transition: all .15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px
+        }
+
+        .btn:hover {
+            border-color: var(--ac);
+            background: rgba(124, 108, 240, .1)
+        }
+
+        .btn-p {
+            background: linear-gradient(135deg, var(--ac), var(--ac2));
+            border: none;
+            color: #fff;
+            font-weight: 600
+        }
+
+        .btn-p:hover {
+            opacity: .9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(124, 108, 240, .3)
+        }
+
+        .btn svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--s2);
+            border: 1px solid var(--ok);
+            color: var(--ok);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity .3s;
+            pointer-events: none;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .toast.show {
+            opacity: 1
+        }
+
+        .toast svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor
+        }
+
+        /* Char counter */
+        .char-badge {
+            font-size: 10px;
+            color: var(--tx3);
+            padding: 6px 16px;
+            border-top: 1px solid var(--bd);
+            font-variant-numeric: tabular-nums;
+            display: flex;
+            justify-content: space-between
+        }
+
+        /* Responsive */
+        @media (max-width:900px) {
+            .sb {
+                width: 52px
+            }
+
+            .sb-h div,
+            .ni span:not(svg) {
+                display: none
+            }
+
+            .editor-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* Fade animation */
+        @keyframes fi {
+            from {
+                opacity: 0;
+                transform: translateY(6px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .ct>* {
+            animation: fi .25s ease
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <div class="sb">
+            <div class="sb-h">
+                <div class="sb-logo"><svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg></div>
+                <div>
+                    <h1>JOB HUNT NAV</h1>
+                    <p>業界別ES対策</p>
+                </div>
+            </div>
+            <div class="nav" id="nav"></div>
+        </div>
+        <div class="mn">
+            <div class="tb">
+                <h2><svg viewBox="0 0 24 24">
+                        <path
+                            d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                    </svg><span id="current-industry">IT・SIer 業界対策</span></h2>
+                <button class="btn btn-p" onclick="saveData()">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" />
+                    </svg>
+                    保存
+                </button>
+            </div>
+            <div class="ct">
+                <div class="editor-grid">
+                    <div class="card">
+                        <div class="card-h">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                            </svg>
+                            自分の回答案
+                        </div>
+                        <textarea id="user-input" placeholder="ここに志望動機や自己PRを入力..."></textarea>
+                        <div class="char-badge">
+                            <span id="user-char-count">0 文字</span>
+                            <span id="user-read-time">読み上げ: 約 0 秒</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-h">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                            </svg>
+                            AIのお手本（参考）
+                        </div>
+                        <div id="ai-reference" class="ref">読み込み中...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <svg viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+        </svg>
+        保存しました
+    </div>
+
+    <script>
+        // --- Industries ---
+        const industries = [
+            { key: 'it', icon: '<svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>', label: 'IT・SIer' },
+            { key: 'maker', icon: '<svg viewBox="0 0 24 24"><path d="M22 6V4H2v2h2v12H2v2h8v-2H6V6h12v12h-2v2h8v-2h-2V6h2z"/></svg>', label: 'メーカー' },
+            { key: 'human', icon: '<svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>', label: '人材・派遣' },
+            { key: 'infra', icon: '<svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>', label: 'インフラ・交通' },
+            { key: 'heavy', icon: '<svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>', label: '重工・宇宙' },
+            { key: 'general', icon: '<svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>', label: '共通・自己PR' }
+        ];
+
+        // --- AI Data ---
+        const aiData = {
+            'it': `【共通志望動機：IT・SIer向け】
+貴社の「常に最先端技術を取り入れる姿勢」に惹かれました。私は新しいモノや技術に対し、強い興味を持っています。IT業界は変化が激しく、常に新しい知識が求められますが、私にとってそれは苦ではなく、むしろ楽しみです。貴社であれば、多様なプロジェクトを通じて常に新しい技術に触れ、エンジニアとしての好奇心を満たし続けられると考えました。入社後は、分からないことを素直に先輩方に教わりながら、スポンジのように技術を吸収し、一日も早く戦力になりたいです。（238文字）
+
+──────────────────────────
+
+【企業別：ソフトバンク (AI・ロボット)】
+貴社の「AI・ロボットへの圧倒的な投資」と「変化を楽しむ社風」に強く惹かれました。私は新しい技術への好奇心が強く、特にAIが社会をどう変えるかを知りたいです。貴社は通信の枠を超え、世界中の最先端テクノロジーを取り入れています。この環境なら、私の「未知を知りたい」という欲求を原動力に、変化を楽しみながら成長できると確信しました。（158文字）
+
+【企業別：NEC (生体認証・社会)】
+貴社の「世界No.1の技術で社会を支える姿勢」に共感しました。私は旋盤実習を通じ、確かな技術こそが信頼を生むと学びました。貴社の生体認証技術は、安全な社会の基盤となっており、その技術力の高さに感銘を受けています。私の「地道に学ぶ継続力」を活かし、社会の基盤を支える技術者として貢献したいです。（156文字）
+
+【企業別：富士通 (DX・パーパス経営)】
+貴社の「顧客のビジネスを変革するDXへの本気度」に魅力を感じました。単なるシステム導入ではなく、Fujitsu Uvanceを通じて社会課題を解決しようとする姿勢に共感します。また、自律的なキャリア形成を促す制度は、独学で技術を学ぶ私の「自走するスタイル」に合っていると感じました。（172文字）
+
+──────────────────────────
+
+【競合比較：なぜNTTデータ/楽天ではないのか？】
+Q. 「NTTデータの方が規模も大きいし安定してるよ？」
+A. 「NTTデータ様は『管理・上流』がメインですが、私はまだ『現場で手を動かして技術を吸収したい』という思いが強いです。現場感を持って開発に携われる御社の方が、私の学習意欲を満たせると考えました。」
+
+Q. 「楽天の方が挑戦的では？」
+A. 「楽天様は自社サービス（モバイル・EC）に特化していますが、私は『様々な業界の技術』に触れたいです。御社なら幅広いクライアントの案件があり、多様な技術経験を積める点が魅力です。」`,
+
+            'maker': `【共通志望動機：メーカー向け】
+貴社の「モノづくりへのこだわり」に共感しました。私は大学の実習で旋盤や工作機械に触れ、自分の手でモノが形になる過程や、その背後にある緻密な技術に魅了されました。貴社の製品は、高い技術力の結晶であり、その製造現場に携われることに大きな魅力を感じています。私の「現場での実体験を大切にする姿勢」と「新しい技術への探求心」を活かし、製品開発や生産技術の現場で、泥臭くも着実に技術を学び、貢献したいと考えています。（234文字）
+
+──────────────────────────
+
+【企業別：トヨタ自動車 (ウーブン・シティ)】
+貴社が「モビリティカンパニー」へと変革し、ウーブン・シティのような「未来の街」を作ろうとしている点に、強烈なワクワク感を感じました。私は機械工学で学んだハードの知識と、独学しているソフトの知識の両方を持っています。「ソフトウェアファースト」を掲げる貴社でなら、この両輪を活かし、新しいモビリティ社会の実現に貢献できると確信しています。（168文字）
+
+──────────────────────────
+
+【競合比較】
+Q. 「ホンダや日産も面白い車作ってるよ？」
+A. 「御社（トヨタ）は『ウーブン・シティ』に代表されるように、クルマ単体だけでなく『街全体』を作ろうとしているスケール感に惹かれました。」
+
+Q. 「デンソー（部品）の方が技術力あるのでは？」
+A. 「確かに要素技術は素晴らしいですが、私は『最終製品』としてユーザーに届く形に関わりたいです。」`,
+
+            'human': `【志望動機：BTEC (BREXA) 特化】
+貴社の「圧倒的な技術領域の広さ」と「実践的な育成環境」に惹かれました。私は機械工学出身ですが、独学でITを学ぶなど新しい技術への好奇心が強いです。貴社は業界No.1のエンジニア数を誇り、自動車からIT、AIまで幅広い案件を持っています。この環境なら、私の「未知を知りたい」という欲求を満たし続けられると確信しました。特に、KENスクールと連携した研修制度は他社にない魅力で、未経験からでも最短で技術を習得できる点に強く惹かれています。（258文字）
+
+──────────────────────────
+
+【競合比較】
+Q. 「メイテックやテクノプロも研修あるけど？」
+A. 「御社はKENスクールという教育機関をグループに持っている点が違います。現場OJTだけでなく、体系的なカリキュラムで基礎から応用まで学べる環境は、私の『スポンジのように吸収したい』という性格に最適だと考えました。」
+
+Q. 「AKKODiS（コンサル）の方が上流に行けるよ？」
+A. 「私はコンサルタントとして口を出す前に、まずは『確かな技術力』を持ったエンジニアになりたいです。御社なら現場で技術を磨くことに集中できます。」
+
+Q. 「特定メーカー（アルプス技研など）の方が専門性つくのでは？」
+A. 「私は好奇心が強く、一つの業界に縛られず幅広い技術に触れたいと考えています。御社なら自動車、ロボット、ITと多角的に経験を積めるので、私のキャリアプランに合致しています。」`,
+
+            'infra': `【共通志望動機：インフラ・通信向け】
+貴社の「社会基盤を支える技術」に関心を持ちました。私は普段当たり前に使っているインフラが、どのような技術で支えられているのかを知ることに興味があります。馬術部での経験から、派手な成果だけでなく、毎日の地道な積み重ねが重要であることを学びました。インフラを守る仕事はまさにそのような積み重ねであり、私の「粘り強く継続する力」と「見えない部分を知ろうとする探求心」を活かして、社会の当たり前を支える一員になりたいです。（242文字）
+
+──────────────────────────
+
+【企業別：KDDI (通信×ライフデザイン)】
+貴社が通信だけでなく、金融やエネルギーなど「生活のあらゆる領域（ライフデザイン）」を変革している点に惹かれました。（153文字）
+
+【企業別：関西電力 (AIファースト×DX)】
+貴社が「AIファースト」を掲げ、ChatGPT Enterpriseの全社導入など、インフラ企業とは思えないスピード感でDXを推進している点に衝撃を受けました。（148文字）
+
+【企業別：JR東日本 (鉄道×生活サービス)】
+貴社の「鉄道を起点に、生活サービスすべてを繋ぐ（MaaS）」というビジョンに惹かれました。Suicaや駅ナカを含めた「生活インフラ全体の進化」に関わりたいです。（145文字）
+
+──────────────────────────
+
+【競合比較】
+Q. 「なぜJR東海（リニア）じゃないの？」
+A. 「JR東海様は『移動の大動脈（リニア）』に集中されていますが、私はJR東日本様の『生活サービスへの広がり』に魅力を感じます。」`,
+
+            'heavy': `【共通志望動機：重工・宇宙向け】
+貴社の「国家規模のプロジェクトを支える技術力」に圧倒されました。私は大学で機械工学を学び、モノづくりの奥深さに魅了されましたが、貴社が扱う防衛・宇宙・エネルギーといった分野は、その究極形だと感じています。スケールの大きな仕事には、地道な技術の積み重ねが必要です。私の「現場で泥臭く学ぶ姿勢」と「未知への探求心」を活かし、日本の根幹を支える技術者として成長したいです。（225文字）
+
+──────────────────────────
+
+【企業別：三菱重工 (陸海空宇宙の総合力)】
+貴社の「陸・海・空・宇宙の全てを網羅する総合力」に惹かれました。H3ロケットから防衛装備品まで、国の安全と未来を支えるプロジェクトの幅広さは唯一無二です。（198文字）
+
+【企業別：IHI (航空エンジン×職人魂)】
+貴社の「航空エンジンにおける圧倒的な専門性」と「実直なモノづくり精神」に共感しました。ロケットの心臓部（ターボポンプ）など、見えないけれど最も重要な部分を支える技術力に、エンジニアとしてのロマンを感じます。（158文字）`,
+
+            'general': `【自己PR：未知への探求心と継続力】
+私の強みは、未知の分野に対する強い好奇心と、それを習得するための継続的な学習習慣です。大学では機械工学を専攻し、旋盤などの工作機械を用いた実習に没頭しました。最初は全くの未経験でしたが、実際に手を動かして加工時の感覚や誤差の手触り感を体感することで、座学では得られない知識を吸収することに熱中しました。また、趣味の読書やプログラミング学習も、この「知らないことを知りたい」という欲求から続けています。（268文字）
+
+【ガクチカ：体育会馬術部での継続】
+体育会某馬術部にて、4年間一日も欠かさず早朝練習に取り組んだことです。生き物相手のため、毎日状況が変化し、正解がありません。「言葉が通じない相手を理解したい」という一心で、毎朝の観察と世話を徹底しました。極寒の朝も酷暑の日も、ただひたすらに馬と向き合い続けることで、微細な変化を察知する観察力と、どんな環境でもやり遂げる精神的タフネスを養いました。（188文字）`
+        };
+
+        // --- State ---
+        let currentIndustry = 'it';
+
+        // --- Render Nav ---
+        function renderNav() {
+            const nav = document.getElementById('nav');
+            nav.innerHTML = industries.map(ind => `
+                <div class="ni ${ind.key === currentIndustry ? 'on' : ''}" data-key="${ind.key}">
+                    ${ind.icon}<span>${ind.label}</span>
+                </div>
+            `).join('');
+            nav.querySelectorAll('.ni').forEach(el => {
+                el.addEventListener('click', () => switchIndustry(el.dataset.key));
+            });
+        }
+
+        function switchIndustry(key) {
+            saveData(false);
+            currentIndustry = key;
+            const titles = {
+                'it': 'IT・SIer 業界対策', 'maker': 'メーカー 業界対策',
+                'human': '人材・派遣 (BTEC特化)', 'infra': 'インフラ・交通 業界対策',
+                'heavy': '重工・宇宙 業界対策', 'general': '共通・自己PR・ガクチカ'
+            };
+            document.getElementById('current-industry').innerText = titles[key];
+            loadIndustryData(key);
+            renderNav();
+        }
+
+        function loadIndustryData(key) {
+            document.getElementById('ai-reference').innerText = aiData[key];
+            const saved = localStorage.getItem(`job_hunt_${key}`);
+            document.getElementById('user-input').value = saved || '';
+            updateCharCount();
+        }
+
+        function updateCharCount() {
+            const text = document.getElementById('user-input').value;
+            const len = text.length;
+            document.getElementById('user-char-count').textContent = `${len} 文字`;
+            document.getElementById('user-read-time').textContent = `読み上げ: 約 ${Math.round(len / 5)} 秒`;
+        }
+
+        function saveData(showToast = true) {
+            const content = document.getElementById('user-input').value;
+            localStorage.setItem(`job_hunt_${currentIndustry}`, content);
+            if (showToast) {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2500);
+            }
+        }
+
+        // Events
+        document.getElementById('user-input').addEventListener('input', updateCharCount);
+        setInterval(() => saveData(false), 30000);
+
+        // Init
+        renderNav();
+        loadIndustryData('it');
+    </script>
+</body>
+
+</html>

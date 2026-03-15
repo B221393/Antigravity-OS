@@ -1,0 +1,24 @@
+{
+  "title": "社員並みの実務が待っている！「内定直結型インターンシップ」で",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE12NmJnV2dvYkRMZ2RPLXZzald6VFI5MVFRbkJ3MHV4MTE5QXpQT3JlNlZkVDU5WnZVU1VocmJVVEFpaHgwV3d4RDVGa3LSAU9BVV95cUxQN0EzWW8zUzlOZlQwbl8yRWtDV20wVUk3dVZaUEM5WVVTV2JDeWpxZlZ4Y1JfeG9oNWFnekNPXzNhY0RCNWtDeVZqQmkzcGVv?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTE12NmJnV2dvYkRMZ2RPLXZzald6VFI5MVFRbkJ3MHV4MTE5QXpQT3JlNlZkVDU5WnZVU1VocmJVVEFpaHgwV3d4RDVGa3LSAU9BVV95cUxQN0EzWW8zUzlOZlQwbl8yRWtDV20wVUk3dV",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "P&Gが内定直結型インターンシップで重視する点を解説。即戦力採用を強化。",
+    "true_intent": "優秀な学生の早期囲い込み、採用コスト削減。P&Gのブランドイメージ向上と競争優位性確保が狙い。ダイヤモンド・オンラインは広告収入増。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "P&G",
+    "action_required": true,
+    "category": "広告",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。P&Gの本質的価値と27卒が狙うべき理由を以下に構造化します。\n\n1.  **主要武器**: 徹底的な消費者理解とデータドリブンなマーケティング戦略。グローバルブランド育成力と、社員の成長を促す手厚い育成制度が強み。\n2.  **26-27卒への温度感**: デジタル人材、データ分析スキルを持つ学生を積極採用。多様性を重視し、ポテンシャル採用に注力。\n3.  **EGO適性**: 論理的思考力は必須。AI・データ活用を推進しており、新しい技術への関心と学習意欲が高い人材を歓迎する文化。\n4.  **裏の弱点**: 組織規模が大きく、意思決定に時間がかかる場合がある。成果主義が徹底されており、プレッシャーを感じやすい側面も。\n",
+    "deep_web_intel": "Okay, I will extract the key points, create a structured summary, and perform a gap analysis based on the provided text data. Given the limitations of the text, the summary will be high-level.\n\n**P&G Data Analysis**\n\n**Key Points Extracted:**\n\n*   **Online Application & Open Questions PPT:** Mentioned as a file name, suggesting application-related content.\n*   **Detect SN\\1.jpg**: Mentioned as a file name, suggesting application-related content.\n*   **Various Character Encodings:** Encountered diverse character encodings and some unusual characters throughout the text (e.g., Cyrillic, special symbols), indicating potential data corruption or encoding issues during extraction.\n*   **File Names:** Identified filenames like \"Ӧ-ջƪ.pdf\" indicating more application content in PDF form.\n*   **Application Components:** Text fragments suggest potential application components (e.g., \"application,\" \"open questions,\" \"sn\" indicating Serial Number or Sample Number), indicating the material stems from a hiring process or employee data gathering\n*   **Inconsistent Data:** Presence of \"Rar\" headers interspersed with text suggests data archiving.\n*   **Date and time information**: Present in several instances\n\n**Structured Summary:**\n\n*   **Data Source**: Sourced from YingJieSheng BBS, a Chinese career forum.\n*   **Data Type:** Likely application materials for P&G.\n*   **Content:** Includes PPT, JPG, and PDF files, with topics likely covering \"online application,\" \"open questions,\" and potentially sample numbers.\n*   **Technical Issues**: File corruption or encoding conflicts are apparent.\n\n**Gap Analysis:**\n\n*   **Missing Context:** The biggest gap is the lack of context. Without understanding the purpose and relationship between different data fragments, drawing meaningful conclusions is difficult.\n*   **Content Details:** The actual content of PPT, JPG, and PDF files is unknown.\n*   **Applicant Information:** No direct applicant information (name, etc.) is extracted due to the fragmented nature and noise in the data.\n*   **Data Integrity:** Data corruption and encoding problems raise concerns about data integrity and accuracy. The presence of \"RAR!\" headers indicates that some of the files are in an archive format but is not handled appropriately.\n\n**Recommendations:**\n\n*   **Data Cleaning:** Implement better data cleaning and pre-processing to handle encoding issues and remove extraneous characters/headers.\n*   **File Extraction:** Properly extract and process the content within the archive (.rar, .zip, etc.) files.\n*   **OCR:** If PDFs are image-based, use OCR to extract text.\n*   **Contextualization:** Obtain more context about the data (purpose, structure, intended use) to improve analysis.\n\nIn summary, the data consists of application materials from a career forum, but significant data quality issues and a lack of context limit the analysis."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な学生の早期囲い込み、採用コスト削減。P&Gのブランドイメージ向上と競争優位性確保が狙い。ダイヤモンド・オンラインは広告収入増。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:41:15.345367",
+  "source": "P&G 採用"
+}

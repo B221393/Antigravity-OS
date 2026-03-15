@@ -1,0 +1,24 @@
+{
+  "title": "インターンシップ人気企業ランキング！5位ソニー、1位は？「1",
+  "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFA1TEhOZnoyZmhaaExsdUxvaWhkTmdxNWZMRl8teDEyVlQyb2phd3MxNEsxeFVlMk1VQ3JRMnc0TDU5RWVnUmNZZFQybzQ2R3I5RDZKYXF30gFPQVVfeXFMTVpXYW5SdWc4d19kOEpvMmpTYS1YZlp2TG9jUG5ReGluUXNfN2lKSHRVMnF3NG1vb3lWMURyOTc3LUMwTDhfWDdOR0ZmbkhTYw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTFA1TEhOZnoyZmhaaExsdUxvaWhkTmdxNWZMRl8teDEyVlQyb2phd3MxNEsxeFVlMk1VQ3JRMnc0TDU5RWVnUmNZZFQybzQ2R3I5RDZKYXF30gFPQVVfeXFMTVpXYW5SdWc4d19kOEpvMm",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ダイヤモンド・オンラインがインターンシップ人気企業ランキングを発表、上位企業の研究ガイド記事を紹介。",
+    "true_intent": "ダイヤモンド・オンラインへの誘導と、上位企業（特に広告主）への宣伝効果を狙う。就活市場における影響力強化が目的。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ソニー",
+    "action_required": true,
+    "category": "出版/広告/メディア",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。ソニーの本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: 多岐にわたる事業ポートフォリオと、それを支える高度な技術力。エンタメ、イメージング、金融など、各分野で圧倒的なブランド力を持つことが強み。\n2.  **26-27卒への温度感**: ポテンシャル重視の採用を継続。多様なバックグラウンドを持つ人材を積極的に採用し、グローバルな視点と専門性を期待。\n3.  **EGO適性**: データドリブンな意思決定を重視し、AI活用も推進。構造的思考力とテクノロジーへの感度が高い人材は活躍しやすい。\n4.  **裏の弱点**: 組織が巨大で縦割り構造が残存。部門間の連携が課題となる場合も。変化のスピードが遅いと感じる可能性も考慮すべき。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   Sony Japan official website.\n*   Products, support available.\n*   Meta descriptions mention VAIO and other product categories.\n*   Website uses scripts and stylesheets for functionality and appearance.\n*   Tracking via Tealium.\n\n**Structured Summary:**\n\n*   **Overview:** Sony Japan website for product information, online store, and support.\n*   **Content:** Product listings, support resources.\n*   **Technical:** Utilizes JavaScript, CSS, and tracking technologies.\n\n**Gap Analysis:**\n\n*   Character encoding inconsistencies (shift_jis).\n*   Lack of specific product details in provided extracts.\n*   Missing context about current promotions or key focus areas."
+  },
+  "critical_analysis": {
+    "true_intent": "ダイヤモンド・オンラインへの誘導と、上位企業（特に広告主）への宣伝効果を狙う。就活市場における影響力強化が目的。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:49:58.542515",
+  "source": "Active:ソニー"
+}

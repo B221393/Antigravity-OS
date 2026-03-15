@@ -1,0 +1,22 @@
+{
+  "title": "英企業、来年の賃上げ3％予定 ＡＩによる雇用減懸念も - R",
+  "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNVBKNGMwQlNSUzdHYkNla3QxQlNMWllYbFA0cmxSdFVUWVk5MmFCS3hocjhKY3R0WWpoMnlQdlBDY3ZIQllpdEVCRVh6U0IyWWx1TFF4eGxtR0x5UU1QR19KMENYUmU0dW9LNHpFU1FveFo1X09QbVhlS2ZjNG1CMQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxQNVBKNGMwQlNSUzdHYkNla3QxQlNMWllYbFA0cmxSdFVUWVk5MmFCS3hocjhKY3R0WWpoMnlQdlBDY3ZIQllpdEVCRVh6U0IyWWx1TFF4eGxtR0x5UU1QR19KMENYUmU0dW9LNHpFU1",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "英企業が来年3%賃上げ予定。AI雇用減懸念あり。",
+    "true_intent": "AI導入による雇用削減への批判を緩和しつつ、賃上げによって企業イメージ向上を図る意図が見える。株主や投資家へのアピールも兼ねている可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "AI導入による雇用削減への批判を緩和しつつ、賃上げによって企業イメージ向上を図る意図が見える。株主や投資家へのアピールも兼ねている可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:29:35.762855",
+  "source": "ロイター 企業ニュース"
+}

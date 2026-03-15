@@ -1,0 +1,26 @@
+Feature_ID,Feature_Name,Category,Status,Priority,User_Benefit,Implementation_Method,Entry_Point,Dependencies,Estimated_Effort,Completion_Date
+F001,統合LLMシステム,Core,✅ Complete,High,複数LLMの統一管理・自動フォールバック,Python module (unified_llm.py),create_llm_client(),"requests, google-generativeai, groq",8 hours,2026-01-11
+F002,Gemini統合,LLM Provider,✅ Complete,Medium,Google Gemini API利用,UnifiedLLM class,llm.generate(provider='gemini'),google-generativeai,2 hours,2026-01-11
+F003,Ollama統合,LLM Provider,✅ Complete,High,ローカルLLM・完全無料,UnifiedLLM class,llm.generate(provider='ollama'),requests,3 hours,2026-01-11
+F004,Groq統合,LLM Provider,✅ Complete,Low,高速推論API,UnifiedLLM class,llm.generate(provider='groq'),groq,2 hours,2026-01-11
+F005,Phi-3統合,LLM Provider,✅ Complete,Medium,軽量ローカルLLM,UnifiedLLM class,llm.generate(provider='phi3'),requests,2 hours,2026-01-11
+F006,自動フォールバック,LLM Feature,✅ Complete,High,API障害時の自動切替,Fallback logic in UnifiedLLM,config: auto_fallback,N/A,3 hours,2026-01-11
+F007,大西o24配列管理,Input Method,✅ Complete,High,効率的な日本語入力,Python module (keyboard_layout.py),get_layout_manager(),json,4 hours,2026-01-11
+F008,大西配列トグル,Input Method,✅ Complete,High,QWERTY⇔大西の簡単切替,KeyboardLayoutManager.toggle(),MAGI HUD / Control Center,keyboard_layout.py,2 hours,2026-01-11
+F009,キーマップ表示,UI Feature,✅ Complete,Medium,3行で全キーマップ視覚表示,Tkinter label update,MAGI HUD,tkinter,3 hours,2026-01-11
+F010,MAGI HUD強化,UI Component,✅ Complete,High,右下ステータス＋大西配列インジケーター,Tkinter app (hud.py),00_MAGI_HUD.bat,tkinter,5 hours,2026-01-11
+F011,Control Center,UI Component,✅ Complete,High,iPhone風設定パネル,HTML/CSS/JS,09_Control_Center.bat,localStorage,6 hours,2026-01-11
+F012,Knowledge Network,UI Component,✅ Complete,Medium,Physics-based 3D可視化,HTML Canvas + Physics,10_Knowledge_Network.bat,Canvas API,8 hours,2026-01-11
+F013,Obsidian Vault,Storage,✅ Complete,Medium,日付ベースメモ管理,Python module (obsidian_vault.py),quick_note() / today_note(),pathlib,5 hours,2026-01-11
+F014,使用統計記録,Analytics,✅ Complete,High,ランチャー使用回数自動記録,launcher_manager.py record,各.batファイル,"json, datetime",4 hours,2026-01-11
+F015,自動リナンバリング,Automation,✅ Complete,High,使用頻度ベースの番号最適化,launcher_manager.py reorder,REORDER_LAUNCHERS.bat,launcher_manager.py,4 hours,2026-01-11
+F016,使用統計表示,Analytics,✅ Complete,Medium,視覚的な使用状況確認,launcher_manager.py stats,SHOW_USAGE_STATS.bat,launcher_manager.py,2 hours,2026-01-11
+F017,トラッキング一括追加,Setup,✅ Complete,Medium,既存ランチャーへ統計機能追加,add_tracking_to_all.py,SETUP_TRACKING.bat,pathlib,3 hours,2026-01-11
+F018,クイックメニュー,Launcher,✅ Complete,High,全機能への統合アクセス,Interactive batch menu,QUICK_MENU.bat,All launchers,3 hours,2026-01-11
+F019,独立性チェック,Tool,✅ Complete,High,APIキー不要度の確認,Python check script,check_independence.py,"requests, json",3 hours,2026-01-11
+F020,完全独立化ガイド,Documentation,✅ Complete,High,API不要・オフライン運用手順,Markdown guide,INDEPENDENCE_GUIDE.md,N/A,4 hours,2026-01-11
+F021,統合README,Documentation,✅ Complete,High,全機能の統合ドキュメント,Markdown,README.md,N/A,3 hours,2026-01-11
+F022,簡易仕様書,Documentation,✅ Complete,Medium,システム概要・アーキテクチャ,Markdown,README_SPEC_SIMPLE.md,N/A,2 hours,2026-01-11
+F023,詳細仕様書,Documentation,✅ Complete,High,技術仕様・API・データモデル,Markdown,README_SPEC_DETAILED.md,N/A,5 hours,2026-01-11
+F024,実装完了レポート,Documentation,✅ Complete,Medium,全実装内容のサマリー,Markdown,IMPLEMENTATION_COMPLETE.md,N/A,2 hours,2026-01-11
+F025,設定ファイル,Configuration,✅ Complete,High,全システム設定の一元管理,JSON,config/llm_config.json,N/A,1 hour,2026-01-11

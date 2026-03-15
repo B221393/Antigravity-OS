@@ -1,0 +1,65 @@
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+lib/
+share/
+Include/
+Scripts/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.tox/
+*.egg-info/
+dist/
+build/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Rust
+target/
+Cargo.lock
+
+# macOS / Windows / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.bak
+*.swo
+*~
+
+# Build artifacts and logs
+*.log
+*.tmp
+*.exe
+*.pdb
+*.dll
+dist/
+build/
+.next/
+
+# Sensitive/Private Data (NOT IN GIT)
+personal/
+archives/
+_config/.env
+_config/cookie.json
+_config/credentials.json
+
+# Nested git repos
+**/.git/

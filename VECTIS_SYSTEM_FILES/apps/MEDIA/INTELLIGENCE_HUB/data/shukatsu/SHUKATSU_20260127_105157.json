@@ -1,0 +1,22 @@
+{
+  "title": "新たな科学技術が社会に受容されるには？－神戸大学のELSI研",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1ia1NkWmxwc2pkTEFMVVVWU2FSbnp3cUhDTXh6YW9neFdkUllMQVN1VDZnZ2NpUnlXSmFzbENVblJxZ09kNGdwLVUtakIzdEpRTVAxRXpxM3ViX1JOaUgxTkkzLVRWMkk?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1ia1NkWmxwc2pkTEFMVVVWU2FSbnp3cUhDTXh6YW9neFdkUllMQVN1VDZnZ2NpUnlXSmFzbENVblJxZ09kNGdwLVUtakIzdEpRTVAxRXpxM3ViX1JOaUgxTkkzLVRWMkk?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "このニュースは、科学技術の社会への受容の難しい課題を指摘しています。特に、新技術がどのように社会に受け込まれ、そしてどのように利用されるかを正確に判断するための仕組みや体制が構築されていないことが指摘されています。",
+    "true_intent": "このニュースは、科学技術の社会への受容の難しい課題を指摘していることを批判的に分析しています。",
+    "bias_warning": "ポジショントークであり、特定の企業や技術への偏りのあるか特定されます。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "このニュースは、科学技術の社会への受容の難しい課題を指摘していることを批判的に分析しています。",
+    "bias_warning": "ポジショントークであり、特定の企業や技術への偏りのあるか特定されます。"
+  },
+  "collected_at": "2026-01-27T10:51:57.582900",
+  "source": "科学技術 社会論"
+}

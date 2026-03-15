@@ -1,0 +1,23 @@
+{
+  "title": "ビジョン・戦略 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE1KQUN6YW1FYktjMGRabGVSd201VUtxbXE4NVlEYlBRNkMwdnZ1MHVwZEtuWV9KN2kzeHpXcUVQckx1dw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQkFVX3lxTE1KQUN6YW1FYktjMGRabGVSd201VUtxbXE4NVlEYlBRNkMwdnZ1MHVwZEtuWV9KN2kzeHpXcUVQckx1dw?oc=5\" target=\"_blank\">ビジョン・戦略</a>&nbsp;&nbsp;<font color=\"#",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIは、 ビジョン・戦略を企画・開発・実行するためのためのフレームワークとして、戦略的かつ効率的なプロジェクト管理を支援する機能を開発したと報じている。",
+    "true_intent": "KDDIは、プロジェクトの成功率を向上させるためのフレームワークを提供することで、KDDIの事業展開や事業の全体的な戦略を明確にすることができる。",
+    "bias_warning": "ポジショントークの可能性が高い。戦略的なプロジェクトを成功させるためのフレームワークと機能は、複数のプロジェクトを同時に管理するための効率性を高めるため、KDDIの競争力に影響を与える可能性がある.",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "company_profile": "- **事業の強み・特徴**: KDDIは、日本をデジタル社会へと展開する企業で、情報技術、通信、消費関連の分野で業績を拡大しています。\n\n- **社風・カルチャー**: KDDIは、社員のチャレンジ精神と創造性を重視し、自由型職場やチームワークを重視した社風です。\n\n- **求める人物像の推測**: KDDIは、技術的な知識だけでなく、コミュニケーション能力やチームワーク、創造性を兼ね備えた人材が求めています。"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIは、プロジェクトの成功率を向上させるためのフレームワークを提供することで、KDDIの事業展開や事業の全体的な戦略を明確にすることができる。",
+    "bias_warning": "ポジショントークの可能性が高い。戦略的なプロジェクトを成功させるためのフレームワークと機能は、複数のプロジェクトを同時に管理するための効率性を高めるため、KDDIの競争力に影響を与える可能性がある."
+  },
+  "collected_at": "2026-01-26T19:30:00.316628",
+  "source": "KDDI 事業戦略"
+}

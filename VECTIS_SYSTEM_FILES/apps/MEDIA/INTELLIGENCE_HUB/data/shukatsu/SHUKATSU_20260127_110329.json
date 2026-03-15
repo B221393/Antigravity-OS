@@ -1,0 +1,22 @@
+{
+  "title": "マクロスコープ：日本企業の採用意欲、ＡＩ普及でじわり低下 求",
+  "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNemJoWklQZzFtZzZscnRXU3FXeWFxdV9YdDg0T3g0bW1lcWxfYW9oaUVvbjB0bUc1WnRRTTQ0LVBYbGlRQlByVW0zaUdQcTZaNDFQN0FKekc1d090QTdvZ09aRk1PQXVmZ1ZJeEk0ZDYtRi11d3RGR0IwTWhPc2lXMWZn?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxNemJoWklQZzFtZzZscnRXU3FXeWFxdV9YdDg0T3g0bW1lcWxfYW9oaUVvbjB0bUc1WnRRTTQ0LVBYbGlRQlByVW0zaUdQcTZaNDFQN0FKekc1d090QTdvZ09aRk1PQXVmZ1ZJeEk0ZD",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "AI普及で日本企業の採用意欲が低下、求人件数に異変。27卒への影響大。",
+    "true_intent": "AI導入推進側のポジショントークの可能性。人件費削減を正当化し、AI関連投資を促進。採用抑制による企業収益向上を狙う。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "AI導入推進側のポジショントークの可能性。人件費削減を正当化し、AI関連投資を促進。採用抑制による企業収益向上を狙う。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:03:29.043826",
+  "source": "ロイター 企業ニュース"
+}

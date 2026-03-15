@@ -1,0 +1,32 @@
+{
+  "title": "ソニー、PlayStationの2025年戦略を概説 - G",
+  "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPbTYyZU9Jc1hiM3d0MVd5VDBtODBIdGZqUEZ3dUtJemtZSlpQN29UWXpsTWNuTVpWWXRtb25oODZ4WTIwRk5KaDF3Q2tySlp6dnFoQlRMNlFCd0pEX0JHZWNGZFhvZFhxZnljcE9UYVJseXhUdU1hX0xCbFRZUVI1bGJFN0tfYllBMTZnOHFlc1JZX1J4SVZEb1M5QjVPb3RRVmRKME5oMjdvUmFqdzk5RlJzeDBoNDR3aVNWQ1ZjVndjb1BYMGV4VmZ3QQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiywFBVV95cUxPbTYyZU9Jc1hiM3d0MVd5VDBtODBIdGZqUEZ3dUtJemtZSlpQN29UWXpsTWNuTVpWWXRtb25oODZ4WTIwRk5KaDF3Q2tySlp6dnFoQlRMNlFCd0pEX0JHZWNGZFhvZFhxZnljcE9UYV",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ソニーがPSの2025年戦略を発表。今後の展開を示唆。",
+    "true_intent": "競合他社牽制、投資家へのアピール、PSプラットフォームへの期待感醸成。ゲーム開発者への方向性提示と囲い込み。GAM3S.GGへの情報提供による関係強化。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ソニー",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## ソニー 本質的価値と27卒が狙うべき理由\n\n1. **主要武器**: 多様性と技術力が生む「感動」。エレクトロニクス、エンタメ、金融を融合、唯一無二の体験価値創出が強み。\n\n2. **26-27卒への温度感**: ポテンシャル重視。多様なバックグラウンドを歓迎し、グローバルリーダー育成に注力。\n\n3. **EGO適性**: 論理的思考は必須。AI/データ活用推進中だが、部門による温度差あり。変革期を楽しめる人材を求める。\n\n4. **裏の弱点**: 縦割り組織の弊害、意思決定の遅さ。部門間連携の課題がイノベーションの足かせになる可能性も。\n",
+    "deep_web_intel": "Okay, I've processed the data. Here's a summary, gap analysis, and key points:\n\n**Key Points & Structured Summary:**\n\n*   **Sony Japan (sony.jp):**  This appears to be the primary Japanese product information and online store site.  It uses older encoding (shift\\_jis) and includes links to various JavaScript and CSS files for functionality and styling. Contains links for RSS feed.\n*   **Sony Corporation (sony.co.jp):** This is the corporate website for Sony in Japan. It focuses on company information, news, sustainability, and investor relations. Uses newer technologies and scripts.\n\n**Gap Analysis:**\n\n*   **Encoding:** The product information site uses `shift_jis` encoding, which is older. The corporate site uses UTF-8.\n*   **Technology Stack:** The product site refers to `/share5/` directory, while the corporate site uses template directories like `/template/2022/v50/ja/`. This indicates different platforms or versions of the website framework.\n*   **Content Focus:** The `sony.jp` site is product-oriented, while `sony.co.jp` is corporate-oriented.\n*   **Missing Data:** The `sony.com/ja` site is inaccessible (HTTP 403 Forbidden), which leaves a gap in understanding Sony's global Japanese-language portal.\n\n**Minimal Text Summary:**\n\n*   `sony.jp`: Product information, online store, older tech.\n*   `sony.co.jp`: Corporate information, news, modern tech.\n*   `sony.com/ja`: Inaccessible."
+  },
+  "critical_analysis": {
+    "true_intent": "競合他社牽制、投資家へのアピール、PSプラットフォームへの期待感醸成。ゲーム開発者への方向性提示と囲い込み。GAM3S.GGへの情報提供による関係強化。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:37:22.247457",
+  "source": "Active:ソニー"
+}可)         | 不明               |\n\n**ギャップ分析**\n\n*   `sony.com/ja/` へのアクセスが拒否されているため、グループ全体のポータルサイトとしての役割を把握できていない。\n*   `sony.jp` は製品販売に特化、 `sony.co.jp` は企業情報提供に特化している。\n*   グローバルサイト（アクセス不可）の情報が不足している。"
+  },
+  "critical_analysis": {
+    "true_intent": "中国市場での競争激化、コスト増が原因か。撤退報道によるブランドイメージ低下を抑えたい意図も。競合他社（中国メーカー）のシェア拡大をアシスト。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:37:22.244967",
+  "source": "Active:ソニー"
+}

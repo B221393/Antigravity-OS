@@ -1,0 +1,22 @@
+{
+  "title": "日系ＥＶに中国の技術…トヨタはファーウェイのＯＳ採用、ホンダ",
+  "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5DbEt4dWN6NmZlTXVMTElDaXlITEZVUm1OSEwzSGw0OGQxZ2R5UDNLdzBaOF90VmVBS3pnTkhGODYxSm52Q2RwellCWXRQd3ZzU20yREFyZXo1WDVfWmlER0FqNHc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZEFVX3lxTE5DbEt4dWN6NmZlTXVMTElDaXlITEZVUm1OSEwzSGw0OGQxZ2R5UDNLdzBaOF90VmVBS3pnTkhGODYxSm52Q2RwellCWXRQd3ZzU20yREFyZXo1WDVfWmlER0FqNHc?oc=5\" target=\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "このニュースは、日系EVの技術の導入と中国への展開について注目する内容ですが、その背景には Chinaの技術の独占や技術競争の強化への懸念があることが推測されます。",
+    "true_intent": "中国の技術の利用に意図的に投資し、日本の技術競争を弱めることを、このニュースが示す可能性があります。",
+    "bias_warning": "ポジショントークの可能性があり、中国の技術の完全独占を推測するものではありません。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "技術/IT",
+    "target_year": 2027
+  },
+  "critical_analysis": {
+    "true_intent": "中国の技術の利用に意図的に投資し、日本の技術競争を弱めることを、このニュースが示す可能性があります。",
+    "bias_warning": "ポジショントークの可能性があり、中国の技術の完全独占を推測するものではありません。"
+  },
+  "collected_at": "2026-01-26T17:42:12.858619",
+  "source": "トヨタ自動車 戦略"
+}

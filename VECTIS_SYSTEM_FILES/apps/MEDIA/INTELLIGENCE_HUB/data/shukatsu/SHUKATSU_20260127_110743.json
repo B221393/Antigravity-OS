@@ -1,0 +1,24 @@
+{
+  "title": "トヨタ、中国で新型EV「bZ7」を発表 ファーウェイ技術採用",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9UWTdoaVRpSUFIeURSRDJtTkhqR2otSk50c2R0SWNsTkhSck9OamJ1eXpFWDRmZHNYZWp0ZzFhVllIbmYxaEUzWHdidnBSZUdPRTZ5Y1JFMjdzTUk1Wl84YlNraGNxSWJPOE5vLQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE9UWTdoaVRpSUFIeURSRDJtTkhqR2otSk50c2R0SWNsTkhSck9OamJ1eXpFWDRmZHNYZWp0ZzFhVllIbmYxaEUzWHdidnBSZUdPRTZ5Y1JFMjdzTUk1Wl84YlNraGNxSWJPOE5vLQ?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トヨタが中国でファーウェイ技術採用の新型EV「bZ7」を発表。中国市場強化の戦略。",
+    "true_intent": "中国市場での競争力維持のため、技術提携をアピール。技術供与による将来的な依存関係構築の可能性も考慮する必要がある。日米からの批判をかわす意図も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "トヨタ",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。トヨタ自動車の本質的価値と27卒が狙うべき理由を、以下の通り構造化します。\n\n1.  **主要武器**: 長年の技術蓄積と改善文化による高品質・高効率なモノづくり体制。グローバルな販売網とサプライチェーンも強固。\n2.  **26-27卒への温度感**: CASE領域を強化するため、高度な専門知識を持つ人材を積極的に採用。多様なバックグラウンドを持つ人材を重視。\n3.  **EGO適性**: 構造的思考は必須。AI活用は推進中だが、現場レベルでは改善文化が根強く、柔軟な対応力も重要視される。\n4.  **裏の弱点**: 伝統的な企業体質が残存し、意思決定の遅さや変化への抵抗感がある。新規事業の成功事例はまだ少ない。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Toyota.jp:** Official site, new car info, services (test drive, dealer search, etc.).\n*   **Global.toyota:** Corporate site, investor relations, news, mobility, sustainability, recruitment.\n*   **Toyota Mobi Tokyo:** Tokyo dealer site, new and used cars.\n\n**Structured Summary:**\n\n*   **Toyota.jp:**  Consumer-focused product and service portal.\n*   **Global.toyota:**  Corporate information and broader initiatives.\n*   **Toyota Mobi Tokyo:** Regional dealer, sales focus.\n\n**Gap Analysis:**\n\n*   Missing: Financial performance, technology innovation, manufacturing details, social responsibility details (beyond sustainability), detailed product specifications."
+  },
+  "critical_analysis": {
+    "true_intent": "中国市場での競争力維持のため、技術提携をアピール。技術供与による将来的な依存関係構築の可能性も考慮する必要がある。日米からの批判をかわす意図も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:07:43.679674",
+  "source": "Active:トヨタ自動車"
+}

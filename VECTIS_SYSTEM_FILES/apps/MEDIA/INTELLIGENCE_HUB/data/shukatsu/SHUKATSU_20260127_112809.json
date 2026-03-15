@@ -1,0 +1,25 @@
+{
+  "title": "【やさしく解説】トランプ関税、世界で何が起きているのか？◆「",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5sYlVVYlFxdmlrNU9qMkV1eUZWRXd0ZHJxQ1NFZDhqS1RvVDlWWGFJRVpTWkJ4S3hDbHZHNHJMRjVJQm1XUkdPalNYOWdPX2lRcmlFNWlCQm5oeUJKamc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE5sYlVVYlFxdmlrNU9qMkV1eUZWRXd0ZHJxQ1NFZDhqS1RvVDlWWGFJRVpTWkJ4S3hDbHZHNHJMRjVJQm1XUkdPalNYOWdPX2lRcmlFNWlCQm5oeUJKamc?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トランプ関税の影響を解説。日本への影響甚大の可能性も示唆。",
+    "true_intent": "貿易戦争の危険性を強調し、国内産業保護の必要性や、特定の貿易政策（例：TPP再加入）への誘導を狙っている可能性。報道機関の立ち位置による偏向も考慮。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "時事ドットコム",
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。時事ドットコムの本質的価値と27卒が狙うべき理由を下記にまとめます。\n\n1.  **主要武器**: 共同通信のニュースソースを基盤とした、速報性と正確性。官公庁や企業への情報提供で培った信頼性。\n2.  **26-27卒への温度感**: デジタル部門強化のため、データ分析やシステム開発経験者を積極的に採用する傾向。\n3.  **EGO適性**: ニュースの構造化やAIによる記事生成に意欲的。論理的思考力と技術への関心は高く評価される。\n4.  **裏の弱点**: 伝統的な報道体質が残存し、新規事業やスピード感のある改革には抵抗がある可能性も。\n",
+    "deep_web_intel": "**時事ドットコム (jiji.com):**\n\n*   **概要:** 時事通信社運営のニュースサイト。政治、経済、社会、国際、スポーツ、エンタメ等のニュースと特集。\n*   **メタ情報:**\n    *   キーワード: ニュース, 時事ドットコム, 時事通信社\n    *   OGP: og:type = article\n    *   Twitter: card = summary\n    *   robots: noarchive\n\n**最新ニュース記事一覧 (jiji.com/jc/list?g=news):**\n\n*   **概要:** 最新ニュース記事のリスト表示。\n*   **メタ情報:** robots: noarchive\n*   **構造化データ:** Schema.orgのBreadcrumbList と ItemListを使用。ItemListで最新ニュース記事のURLを列挙。\n\n**政治ニュース (jiji.com/jc/c?g=pol):**\n\n*   **概要:** 政治ニュース記事のリスト表示。\n*   **メタ情報:** robots: noarchive\n*   **構造化データ:** Schema.orgのBreadcrumbList と ItemListを使用。ItemListで政治ニュース記事のURLを列挙。\n\n**ギャップ分析:**\n\n*   各ページで構造化データ(Schema.org)のItemListを使用し、記事URLを列挙.\n*   トップページは\"WebSite\"タイプ。\n*   記事一覧ページは、BreadcrumbListとItemList.\n*   meta robots 全てnoarchive.",
+    "academic_deep_dive": "---\n\nトランプ関税は、保護主義の歴史的潮流の現代版と言える。1930年代の世界恐慌時のスムート・ホーリー法を想起させるように、自国産業保護を名目に貿易障壁を高める政策は、しばしば報復合戦を招き、世界経済の停滞を招いてきた。\n\n現代において、グローバルサプライチェーンが高度化する中、関税は単なる貿易問題に留まらず、地政学的リスクを高め、国際協調を阻害する。社会構造への影響としては、消費者の負担増、企業の競争力低下、そして雇用の不安定化が挙げられる。\n\nしかし、自由貿易至上主義への批判的視点も重要だ。グローバル化の恩恵が一部に偏り、国内産業の空洞化や格差拡大を招いた側面も否定できない。トランプ関税は、自由貿易の歪みを是正する試みとも解釈できるが、その手法はあまりにも粗雑であり、持続可能な解決策とは言い難い。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "貿易戦争の危険性を強調し、国内産業保護の必要性や、特定の貿易政策（例：TPP再加入）への誘導を狙っている可能性。報道機関の立ち位置による偏向も考慮。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:28:09.337575",
+  "source": "歴史的背景 ニュース"
+}

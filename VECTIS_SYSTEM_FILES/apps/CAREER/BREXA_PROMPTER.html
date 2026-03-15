@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BREXA 戦略プロンプター - 最適化（Optimizer）</title>
+    <style>
+        :root {
+            --bg: rgba(5, 10, 20, 0.95);
+            --accent: #00ffcc;
+            --sub-accent: #00d4ff;
+            --text: #ffffff;
+            --dim: #888888;
+            --danger: #ff4757;
+        }
+        body {
+            background: #000;
+            color: var(--text);
+            font-family: 'Segoe UI', 'Meiryo', sans-serif;
+            margin: 0;
+            padding: 10px;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: var(--bg);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            padding: 15px;
+            width: 95%;
+            height: 95%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+        .title {
+            color: var(--accent);
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .identity-tags {
+            display: flex;
+            gap: 10px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .tag { border: 1px solid var(--sub-accent); padding: 2px 6px; border-radius: 3px; color: var(--sub-accent); }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+            flex-grow: 1;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--accent);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 5px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        .time { font-size: 10px; color: var(--dim); }
+        .content { font-size: 13px; line-height: 1.5; }
+        .keyword { color: var(--sub-accent); font-weight: bold; }
+
+        .brexa-core {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px dashed var(--sub-accent);
+            border-radius: 4px;
+        }
+        .brexa-grid {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            font-size: 11px;
+        }
+        .brexa-item b { display: block; color: var(--accent); font-size: 13px; }
+
+        .footer {
+            margin-top: 10px;
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 8px;
+        }
+        .final-message {
+            font-size: 15px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 8px var(--accent);
+        }
+        .warning { font-size: 9px; color: var(--danger); margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">BREXA 戦略プロンプター</div>
+            <div class="identity-tags">
+                <span class="tag">最適化（Optimizer）</span>
+                <span class="tag">統合思考OS「EGO」</span>
+                <span class="tag">体育会馬術部</span>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <!-- 1. オープニングと学業 -->
+            <div class="section">
+                <div class="section-title">導入 / 学業背景 <span class="time">0-15分</span></div>
+                <div class="content">
+                    ・軸：<span class="keyword">泥臭い現場力 × デジタル最適化</span><br>
+                    ・実習：<span class="keyword">ハードウェアの痛み</span>（旋盤で金属を削る重み）<br>
+                    ・転換：物理的制約から、<span class="keyword">1時間に100回試行錯誤</span>できるITの世界へ
+                </div>
+            </div>
+
+            <!-- 2. 部活動 -->
+            <div class="section">
+                <div class="section-title">核心：馬術部での4年間 <span class="time">15-35分</span></div>
+                <div class="content">
+                    ・規律：<span class="keyword">4年間無遅刻無欠勤</span>（朝5時開始の肉体労働）<br>
+                    ・対話：馬の呼吸や緊張を読む<span class="keyword">非言語ニーズ</span>の把握力<br>
+                    ・決断：予測不能な事態での<span class="keyword">状況判断と最適解の実行</span>
+                </div>
+            </div>
+
+            <!-- 3. 技術と哲学 -->
+            <div class="section">
+                <div class="section-title">技術：OS「EGO」開発 <span class="time">35-50分</span></div>
+                <div class="content">
+                    ・自走：自身の思考を拡張するための<span class="keyword">仕組みを自作</span>する執念<br>
+                    ・哲学：馬術の「現場力」× コードの「論理」 = <span class="keyword">最適化の両輪</span><br>
+                    ・手法：<span class="keyword">NotebookLM</span>等を活用した知的生産の自動化
+                </div>
+            </div>
+
+            <!-- 4. BREXAへのビジョン -->
+            <div class="section">
+                <div class="section-title">結び：なぜBREXAか？ <span class="time">50-60分</span></div>
+                <div class="content">
+                    ・変革：<span class="keyword">グローバルHRプラットフォーム</span>への進化に貢献<br>
+                    ・価値：<span class="keyword">「現場の痛み」を知り、かつ「コードで解決」できる</span>人材<br>
+                    ・共鳴：Break / Expand（限界突破と拡張）の体現者
+                </div>
+            </div>
+        </div>
+
+        <div class="brexa-core">
+            <div class="brexa-grid">
+                <div class="brexa-item"><b>Break</b>限界突破</div>
+                <div class="brexa-item"><b>Expand</b>能力拡張</div>
+                <div class="brexa-item"><b>Ability</b>人の可能性</div>
+                <div class="brexa-item"><b>EXA</b>無限の広がり</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="final-message">「油の匂い」が分かるエンジニアとして、BREXAの基盤を創る。</div>
+            <div class="warning">※ 固有名詞禁止：統合思考OS / 某国立大学 / 大手小売店 / 馬術部（固有名詞NG）</div>
+        </div>
+    </div>
+</body>
+</html>

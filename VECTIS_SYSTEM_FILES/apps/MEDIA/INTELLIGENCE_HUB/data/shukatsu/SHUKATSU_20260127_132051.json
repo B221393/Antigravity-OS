@@ -1,0 +1,24 @@
+{
+  "title": "【27卒就活生が選ぶ】「インターン人気企業」ランキング！ 2",
+  "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5Va29qNFhHamxXME1Yd0JDajdYWFYwN1BuQmprT3h6X1FrRE9tZXZuTFdaeXA3M3dnR0w0UWc5RUszb0szd1dWUVlPNTJaVTVobWRuNjNzUVRXLUFZYTBzWGlVMXNwUQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTE5Va29qNFhHamxXME1Yd0JDajdYWFYwN1BuQmprT3h6X1FrRE9tZXZuTFdaeXA3M3dnR0w0UWc5RUszb0szd1dWUVlPNTJaVTVobWRuNjNzUVRXLUFZYTBzWGlVMXNwUQ?oc=5\" targe",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "27卒インターン人気企業ランキング、ANAが2位、1位は不明。就活生向け情報。",
+    "true_intent": "ねとらぼの就職・転職サービスへの誘導、ランキング掲載企業の宣伝。ランキング作成企業との連携によるデータ販売の可能性も考慮。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "全日本空輸（ANA）, ねとらぼ",
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "## 全日本空輸（ANA）\n\n1.  **主要武器**: 安全運航を基盤とした顧客体験設計力と、それを支える社員のホスピタリティ精神。\n2.  **26-27卒への温度感**: 採用数抑制から回復傾向。多様な人材を求める姿勢。\n3.  **EGO適性**: 業務効率化・顧客体験向上のためデータ分析やAI活用に積極的。適性◎。\n4.  **裏の弱点**: 外部環境（燃油価格高騰、感染症）に業績が左右されやすい。\n\n## ねとらぼ\n\n1.  **主要武器**: ネット文化を熟知した編集力と、SNSを駆使した情報拡散力。\n2.  **26-27卒への温度感**: 即戦力となる企画・編集能力を持つ人材を重視。\n3.  **EGO適性**: トレンド分析やデータに基づいた記事作成が求められ、適性◎。\n4.  **裏の弱点**: 広告収入に依存しており、ネット広告市場の変化に影響を受けやすい。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   The provided HTML snippets are from the Japanese National Tax Agency's website for the Qualified Invoice Issuer System.\n*   The site allows searching for registered businesses.\n*   It provides information about the registration number and related topics.\n*   The website offers accessibility features like text resizing and screen reader compatibility.\n\n**Structured Summary:**\n\n*   **Purpose:** Official website for Japan's Qualified Invoice Issuer System.\n*   **Functionality:** Allows searching for registered businesses by registration number. Provides information about the system and registration.\n*   **Features:** Accessibility options, sitemap, and navigation.\n\n**Gap Analysis:**\n\n*   The provided snippets are limited to HTML structure and lack actual data regarding ANA or Netolabo.\n*   To fulfill the original request, the website needs to be scraped using the search function for \"全日本空輸（ANA）\" and \"ねとらぼ\"\n*   The scraped information from the website needs to be parsed."
+  },
+  "critical_analysis": {
+    "true_intent": "ねとらぼの就職・転職サービスへの誘導、ランキング掲載企業の宣伝。ランキング作成企業との連携によるデータ販売の可能性も考慮。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:20:51.954268",
+  "source": "Active:伊藤忠商事"
+}

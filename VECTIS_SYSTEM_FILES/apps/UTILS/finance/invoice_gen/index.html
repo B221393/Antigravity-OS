@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator - VECTIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .form-section h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #f093fb;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .items-section {
+            margin: 20px 0;
+        }
+
+        .item-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr auto;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: end;
+        }
+
+        .remove-item {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .add-item {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 147, 251, 0.4);
+        }
+
+        .total-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .total-row.grand {
+            font-size: 24px;
+            font-weight: 700;
+            padding-top: 10px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        #preview {
+            background: white;
+            padding: 40px;
+            margin: 20px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            display: none;
+        }
+
+        #preview.show {
+            display: block;
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #f093fb;
+        }
+
+        .invoice-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #f093fb;
+        }
+
+        .invoice-details {
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .invoice-table th {
+            background: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .invoice-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .invoice-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .form-section,
+            button {
+                display: none;
+            }
+
+            #preview {
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>💰 Invoice Generator</h1>
+        <p class="subtitle">Create professional invoices instantly</p>
+
+        <div class="form-section">
+            <h3>📋 Invoice Information</h3>
+            <div class="form-grid">
+                <div>
+                    <label>Invoice Number</label>
+                    <input type="text" id="invoiceNumber" value="INV-001" placeholder="INV-001">
+                </div>
+                <div>
+                    <label>Date</label>
+                    <input type="date" id="invoiceDate">
+                </div>
+                <div>
+                    <label>Due Date</label>
+                    <input type="date" id="dueDate">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>👤 From (Your Info)</h3>
+            <div class="form-grid">
+                <div>
+                    <label>Name / Company</label>
+                    <input type="text" id="fromName" placeholder="Your Name/Company">
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" id="fromEmail" placeholder="your@email.com">
+                </div>
+            </div>
+            <div>
+                <label>Address</label>
+                <textarea id="fromAddress" placeholder="Your address..."></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>🏢 Bill To (Client Info)</h3>
+            <div class="form-grid">
+                <div>
+                    <label>Name / Company</label>
+                    <input type="text" id="toName" placeholder="Client Name/Company">
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" id="toEmail" placeholder="client@email.com">
+                </div>
+            </div>
+            <div>
+                <label>Address</label>
+                <textarea id="toAddress" placeholder="Client address..."></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>📦 Items</h3>
+            <div id="itemsList">
+                <div class="item-row">
+                    <div>
+                        <label>Description</label>
+                        <input type="text" class="item-desc" placeholder="Service/Product">
+                    </div>
+                    <div>
+                        <label>Quantity</label>
+                        <input type="number" class="item-qty" value="1" min="1" onchange="calculateTotal()">
+                    </div>
+                    <div>
+                        <label>Price</label>
+                        <input type="number" class="item-price" value="0" min="0" step="0.01"
+                            onchange="calculateTotal()">
+                    </div>
+                    <div>
+                        <label>Total</label>
+                        <input type="text" class="item-total" readonly value="¥0">
+                    </div>
+                    <button class="remove-item" onclick="removeItem(this)" style="display:none;">🗑️</button>
+                </div>
+            </div>
+            <button class="add-item" onclick="addItem()">➕ Add Item</button>
+        </div>
+
+        <div class="total-section">
+            <div class="total-row">
+                <span>Subtotal:</span>
+                <span id="subtotal">¥0</span>
+            </div>
+            <div class="total-row">
+                <span>Tax (10%):</span>
+                <span id="tax">¥0</span>
+            </div>
+            <div class="total-row grand">
+                <span>Total:</span>
+                <span id="grandTotal">¥0</span>
+            </div>
+        </div>
+
+        <button onclick="generateInvoice()">📄 Generate Invoice</button>
+
+        <div id="preview">
+            <div class="invoice-header">
+                <div>
+                    <div class="invoice-title">INVOICE</div>
+                    <div id="previewFromInfo"></div>
+                </div>
+                <div class="invoice-details" id="previewDetails"></div>
+            </div>
+            <div>
+                <h4>Bill To:</h4>
+                <div id="previewToInfo"></div>
+            </div>
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th class="text-right">Total</th>
+                    </tr>
+                </thead>
+                <tbody id="previewItems"></tbody>
+            </table>
+            <div class="total-section">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="previewSubtotal"></span>
+                </div>
+                <div class="total-row">
+                    <span>Tax (10%):</span>
+                    <span id="previewTax"></span>
+                </div>
+                <div class="total-row grand">
+                    <span>TOTAL:</span>
+                    <span id="previewGrandTotal"></span>
+                </div>
+            </div>
+            <button onclick="window.print()">🖨️ Print Invoice</button>
+        </div>
+    </div>
+
+    <script>
+        // Set today's date
+        document.getElementById('invoiceDate').valueAsDate = new Date();
+        const due = new Date();
+        due.setDate(due.getDate() + 30);
+        document.getElementById('dueDate').valueAsDate = due;
+
+        function addItem() {
+            const itemsList = document.getElementById('itemsList');
+            const newRow = document.createElement('div');
+            newRow.className = 'item-row';
+            newRow.innerHTML = `
+                <div>
+                    <input type="text" class="item-desc" placeholder="Service/Product">
+                </div>
+                <div>
+                    <input type="number" class="item-qty" value="1" min="1" onchange="calculateTotal()">
+                </div>
+                <div>
+                    <input type="number" class="item-price" value="0" min="0" step="0.01" onchange="calculateTotal()">
+                </div>
+                <div>
+                    <input type="text" class="item-total" readonly value="¥0">
+                </div>
+                <button class="remove-item" onclick="removeItem(this)">🗑️</button>
+            `;
+            itemsList.appendChild(newRow);
+        }
+
+        function removeItem(btn) {
+            btn.closest('.item-row').remove();
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const rows = document.querySelectorAll('.item-row');
+            let subtotal = 0;
+
+            rows.forEach(row => {
+                const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+                const price = parseFloat(row.querySelector('.item-price').value) || 0;
+                const total = qty * price;
+                row.querySelector('.item-total').value = `¥${total.toLocaleString()}`;
+                subtotal += total;
+            });
+
+            const tax = subtotal * 0.1;
+            const grand = subtotal + tax;
+
+            document.getElementById('subtotal').textContent = `¥${subtotal.toLocaleString()}`;
+            document.getElementById('tax').textContent = `¥${tax.toLocaleString()}`;
+            document.getElementById('grandTotal').textContent = `¥${grand.toLocaleString()}`;
+        }
+
+        function generateInvoice() {
+            const rows = document.querySelectorAll('.item-row');
+            let subtotal = 0;
+            let itemsHtml = '';
+
+            rows.forEach(row => {
+                const desc = row.querySelector('.item-desc').value;
+                const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+                const price = parseFloat(row.querySelector('.item-price').value) || 0;
+                const total = qty * price;
+
+                if (desc) {
+                    itemsHtml += `
+                        <tr>
+                            <td>${desc}</td>
+                            <td>${qty}</td>
+                            <td>¥${price.toLocaleString()}</td>
+                            <td class="text-right">¥${total.toLocaleString()}</td>
+                        </tr>
+                    `;
+                    subtotal += total;
+                }
+            });
+
+            const tax = subtotal * 0.1;
+            const grand = subtotal + tax;
+
+            document.getElementById('previewFromInfo').innerHTML = `
+                <strong>${document.getElementById('fromName').value || 'Your Name'}</strong><br>
+                ${document.getElementById('fromEmail').value || 'your@email.com'}<br>
+                ${document.getElementById('fromAddress').value.replace(/\n/g, '<br>') || 'Your Address'}
+            `;
+
+            document.getElementById('previewDetails').innerHTML = `
+                <strong>Invoice #${document.getElementById('invoiceNumber').value}</strong><br>
+                Date: ${document.getElementById('invoiceDate').value}<br>
+                Due: ${document.getElementById('dueDate').value}
+            `;
+
+            document.getElementById('previewToInfo').innerHTML = `
+                <strong>${document.getElementById('toName').value || 'Client Name'}</strong><br>
+                ${document.getElementById('toEmail').value || 'client@email.com'}<br>
+                ${document.getElementById('toAddress').value.replace(/\n/g, '<br>') || 'Client Address'}
+            `;
+
+            document.getElementById('previewItems').innerHTML = itemsHtml;
+            document.getElementById('previewSubtotal').textContent = `¥${subtotal.toLocaleString()}`;
+            document.getElementById('previewTax').textContent = `¥${tax.toLocaleString()}`;
+            document.getElementById('previewGrandTotal').textContent = `¥${grand.toLocaleString()}`;
+
+            document.getElementById('preview').classList.add('show');
+            document.getElementById('preview').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        calculateTotal();
+    </script>
+</body>
+
+</html>

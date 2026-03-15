@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 EGO Fun Zone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 3s ease infinite;
+        }
+
+        @keyframes rainbow {
+
+            0%,
+            100% {
+                filter: hue-rotate(0deg);
+            }
+
+            50% {
+                filter: hue-rotate(30deg);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #ff6b6b;
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #aaa;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: #1a1a2e;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .result {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            padding: 15px;
+            min-height: 100px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .result img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .input::placeholder {
+            color: #666;
+        }
+
+        .joke {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .punchline {
+            color: #feca57;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .avatar {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            float: left;
+            margin-right: 15px;
+        }
+
+        .nasa-img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .trivia-q {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .trivia-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .trivia-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .trivia-btn.correct {
+            background: #27ae60 !important;
+        }
+
+        .trivia-btn.wrong {
+            background: #e74c3c !important;
+        }
+
+        .cat-fact {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .yoda {
+            font-style: italic;
+            color: #48dbfb;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>🎮 EGO Fun Zone</h1>
+        <p style="color:#888;margin-top:10px">楽しいAPIで遊ぼう！全て無料・認証不要</p>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <!-- Joke API -->
+            <div class="card">
+                <h3>😂 JokeAPI</h3>
+                <p>ランダムなジョークを取得</p>
+                <button class="btn" onclick="getJoke()">ジョークを聞く</button>
+                <div class="result" id="jokeResult"><span class="joke">ボタンを押すとジョークが表示されます</span></div>
+            </div>
+
+            <!-- Random User -->
+            <div class="card">
+                <h3>👤 Random User</h3>
+                <p>架空のユーザープロフィールを生成</p>
+                <button class="btn" onclick="getRandomUser()">ユーザー生成</button>
+                <div class="result" id="userResult">架空のプロフィールを生成します</div>
+            </div>
+
+            <!-- NASA APOD -->
+            <div class="card">
+                <h3>🚀 NASA 今日の宇宙写真</h3>
+                <p>Astronomy Picture of the Day</p>
+                <button class="btn" onclick="getNASA()">宇宙写真を取得</button>
+                <div class="result" id="nasaResult" style="max-height:300px;overflow-y:auto">NASAの美しい宇宙写真を表示します</div>
+            </div>
+
+            <!-- Trivia -->
+            <div class="card">
+                <h3>🧠 Trivia Quiz</h3>
+                <p>ランダムなクイズに挑戦</p>
+                <button class="btn" onclick="getTrivia()">クイズ出題</button>
+                <div class="result" id="triviaResult">クイズを取得します</div>
+            </div>
+
+            <!-- Cat Facts -->
+            <div class="card">
+                <h3>🐱 Cat Facts</h3>
+                <p>猫に関する豆知識</p>
+                <button class="btn" onclick="getCatFact()">猫トリビアを取得</button>
+                <div class="result" id="catResult"><span class="cat-fact">猫の豆知識が表示されます</span></div>
+            </div>
+
+            <!-- Random Advice -->
+            <div class="card">
+                <h3>💡 Advice Slip</h3>
+                <p>ランダムなアドバイス</p>
+                <button class="btn" onclick="getAdvice()">アドバイスを聞く</button>
+                <div class="result" id="adviceResult">人生のアドバイスが表示されます</div>
+            </div>
+
+            <!-- Yoda Translator -->
+            <div class="card">
+                <h3>🟢 Yoda翻訳</h3>
+                <p>英語をヨーダ風に変換</p>
+                <input type="text" class="input" id="yodaInput" placeholder="英語を入力..." value="I am learning to code">
+                <button class="btn" onclick="translateYoda()">ヨーダ語に翻訳</button>
+                <div class="result" id="yodaResult"><span class="yoda">ヨーダ風の英語が表示されます</span></div>
+            </div>
+
+            <!-- Robot Avatar -->
+            <div class="card">
+                <h3>🤖 RoboHash</h3>
+                <p>テキストからロボットアバター生成</p>
+                <input type="text" class="input" id="roboInput" placeholder="名前やテキスト" value="EGO">
+                <button class="btn" onclick="getRobot()">ロボット生成</button>
+                <div class="result" id="roboResult" style="text-align:center">ロボットアバターが表示されます</div>
+            </div>
+
+            <!-- DiceBear Avatar -->
+            <div class="card">
+                <h3>🎭 アバター生成</h3>
+                <p>テキストからユニークなアバター</p>
+                <input type="text" class="input" id="avatarInput" placeholder="名前" value="Yuto">
+                <select class="input" id="avatarStyle">
+                    <option value="adventurer">Adventurer</option>
+                    <option value="avataaars">Avataaars</option>
+                    <option value="bottts">Bottts</option>
+                    <option value="pixel-art">Pixel Art</option>
+                    <option value="lorelei">Lorelei</option>
+                </select>
+                <button class="btn" onclick="getAvatar()">アバター生成</button>
+                <div class="result" id="avatarResult" style="text-align:center">アバターが表示されます</div>
+            </div>
+
+            <!-- Universities -->
+            <div class="card">
+                <h3>🎓 大学検索</h3>
+                <p>国ごとの大学リスト</p>
+                <input type="text" class="input" id="uniCountry" placeholder="国名（英語）" value="Japan">
+                <button class="btn" onclick="getUniversities()">大学検索</button>
+                <div class="result" id="uniResult" style="max-height:150px;overflow-y:auto">大学リストを取得します</div>
+            </div>
+
+            <!-- Facts -->
+            <div class="card">
+                <h3>📜 Useless Facts</h3>
+                <p>役に立たない豆知識</p>
+                <button class="btn" onclick="getUselessFact()">雑学を取得</button>
+                <div class="result" id="factResult">面白い雑学が表示されます</div>
+            </div>
+
+            <!-- Insult Generator -->
+            <div class="card">
+                <h3>😈 Evil Insult</h3>
+                <p>悪口ジェネレーター（ジョーク用）</p>
+                <button class="btn" onclick="getInsult()">悪口生成</button>
+                <div class="result" id="insultResult" style="color:#ff6b6b">⚠️ お遊び用です</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Joke API
+        async function getJoke() {
+            const r = document.getElementById('jokeResult');
+            r.innerHTML = '<span class="joke">読み込み中...</span>';
+            try {
+                const res = await fetch('https://v2.jokeapi.dev/joke/Any?safe-mode');
+                const data = await res.json();
+                if (data.type === 'single') {
+                    r.innerHTML = `<span class="joke">${data.joke}</span>`;
+                } else {
+                    r.innerHTML = `<span class="joke">${data.setup}</span><div class="punchline">${data.delivery}</div>`;
+                }
+            } catch (e) { r.innerHTML = '<span style="color:#ff6b6b">エラー</span>'; }
+        }
+
+        // Random User
+        async function getRandomUser() {
+            const r = document.getElementById('userResult');
+            r.innerHTML = '読み込み中...';
+            try {
+                const res = await fetch('https://randomuser.me/api/');
+                const data = await res.json();
+                const u = data.results[0];
+                r.innerHTML = `
+                    <img src="${u.picture.large}" class="avatar">
+                    <strong>${u.name.first} ${u.name.last}</strong><br>
+                    📍 ${u.location.city}, ${u.location.country}<br>
+                    📧 ${u.email}<br>
+                    🎂 ${u.dob.age}歳
+                `;
+            } catch (e) { r.innerHTML = '<span style="color:#ff6b6b">エラー</span>'; }
+        }
+
+        // NASA APOD (Demo mode without API key)
+        async function getNASA() {
+            const r = document.getElementById('nasaResult');
+            r.innerHTML = '読み込み中...';
+            try {
+                // Using demo key
+                const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY');
+                const data = await res.json();
+                r.innerHTML = `
+                    <img src="${data.url}" class="nasa-img">
+                    <strong>${data.title}</strong><br>
+                    <small>${data.date}</small><br><br>
+                    ${data.explanation.substring(0, 200)}...
+                `;
+            } catch (e) { r.innerHTML = 'NASA APIは制限があるため、後でお試しください'; }
+        }
+
+        // Trivia
+        let currentTrivia = null;
+        async function getTrivia() {
+            const r = document.getElementById('triviaResult');
+            r.innerHTML = '読み込み中...';
+            try {
+                const res = await fetch('https://opentdb.com/api.php?amount=1&type=multiple');
+                const data = await res.json();
+                const q = data.results[0];
+                currentTrivia = q;
+
+                const answers = [...q.incorrect_answers, q.correct_answer].sort(() => Math.random() - 0.5);
+                r.innerHTML = `
+                    <div class="trivia-q">${decodeHTML(q.question)}</div>
+                    ${answers.map((a, i) => `<button class="trivia-btn" onclick="checkAnswer(${i}, '${encodeURIComponent(a)}')">${decodeHTML(a)}</button>`).join('')}
+                `;
+            } catch (e) { r.innerHTML = '<span style="color:#ff6b6b">エラー</span>'; }
+        }
+
+        function checkAnswer(idx, answer) {
+            const btns = document.querySelectorAll('.trivia-btn');
+            btns.forEach((btn, i) => {
+                const a = decodeURIComponent(answer);
+                if (decodeHTML(btn.textContent) === decodeHTML(currentTrivia.correct_answer)) {
+                    btn.classList.add('correct');
+                } else if (i === idx) {
+                    btn.classList.add('wrong');
+                }
+                btn.disabled = true;
+            });
+        }
+
+        function decodeHTML(html) {
+            const txt = document.createElement('textarea');
+            txt.innerHTML = html;
+            return txt.value;
+        }
+
+        // Cat Facts
+        async function getCatFact() {
+            const r = document.getElementById('catResult');
+            r.innerHTML = '読み込み中...';
+            try {
+                const res = await fetch('https://catfact.ninja/fact');
+                const data = await res.json();
+                r.innerHTML = `<span class="cat-fact">🐱 ${data.fact}</span>`;
+            } catch (e) { r.innerHTML = '<span style="color:#ff6b6b">エラー</span>'; }
+        }
+
+        // Advice
+        async function getAdvice() {
+            const r = document.getElementById('adviceResult');
+            r.innerHTML = '読み込み中...';
+            try {
+                const res = await fetch('https://api.adviceslip.com/advice');
+                const data = await res.json();
+                r.innerHTML = `💡 "${data.slip.advice}"`;
+            } catch (e) { r.innerHTML = '<span style="color:#ff6b6b">エラー</span>'; }
+        }
+
+        // Yoda (using fallback)
+        function translateYoda() {
+            const input = document.getElementById('yodaInput').value;
+            const r = document.getElementById('yodaResult');
+            // Simple Yoda-ification (API has CORS issues)
+            const words = input.split(' ');
+            const rearranged = [...words.slice(-2), ...words.slice(0, -2)].join(' ');
+            r.innerHTML = `<span class="yoda">"${rearranged}, you must."</span>`;
+        }
+
+        // RoboHash
+        function getRobot() {
+            const text = document.getElementById('roboInput').value;
+            document.getElementById('roboResult').innerHTML = `<img src="https://robohash.org/${encodeURIComponent(text)}.png?size=150x150" style="border-radius:10px">`;
+        }
+
+        // DiceBear Avatar
+        function getAvatar() {
+            const text = document.getElementById('avatarInput').value;
+            const style = document.getElementById('avatarStyle').value;
+            document.getElementById('avatarResult').innerHTML = `<img src="https://api.dicebear.com/7.x/${style}/svg?seed=${encodeURIComponent(text)}" style="width:120px;height:120px">`;
+        }
+
+        // Universities
+        async function getUniversities() {
+            const country = document.getElementById('uniCountry').value;
+            const r = document.getElementById('uniResult');
+            r.innerHTML = '読み込み中...';
+            try {
+                const res = await fetch(`http://universities.hipolabs.com/search?country=${country}`);
+                const data = await res.json();
+                const list = data.slice(0, 10).map(u => `🎓 ${u.name}`).join('<br>');
+                r.innerHTML = list || '大学が見つかりません';
+            } catch (e) { r.innerHTML = 'HTTPSのみサポート'; }
+        }
+
+        // Useless Facts
+        async function getUselessFact() {
+            const r = document.getElementById('factResult');
+            r.innerHTML = '読み込み中...';
+            try {
+                const res = await fetch('https://uselessfacts.jsph.pl/api/v2/facts/random');
+                const data = await res.json();
+                r.innerHTML = `📜 ${data.text}`;
+            } catch (e) { r.innerHTML = '<span style="color:#ff6b6b">エラー</span>'; }
+        }
+
+        // Evil Insult
+        async function getInsult() {
+            const r = document.getElementById('insultResult');
+            r.innerHTML = '読み込み中...';
+            try {
+                const res = await fetch('https://evilinsult.com/generate_insult.php?lang=en&type=json');
+                const data = await res.json();
+                r.innerHTML = `😈 ${data.insult}`;
+            } catch (e) { r.innerHTML = '<span style="color:#ff6b6b">エラー</span>'; }
+        }
+
+        // 初期表示
+        getJoke();
+    </script>
+</body>
+
+</html>

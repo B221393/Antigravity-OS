@@ -1,0 +1,54 @@
+{
+    "columns": [
+        "Drafting",
+        "Review",
+        "Submitted",
+        "Interview",
+        "Offer",
+        "Rejected"
+    ],
+    "tasks": [
+        {
+            "id": "sample_2",
+            "company": "KDDI",
+            "status": "Drafting",
+            "deadline": "2026-02-15",
+            "notes": "Waiting for results."
+        },
+        {
+            "id": "20260127101304",
+            "company": "Toyota Motor",
+            "status": "Drafting",
+            "deadline": "2026-01-27",
+            "notes": "Industry: Automotive\nReason: Global top manufacturer, massive R&D budget, stable.\n[Added from Recs]"
+        },
+        {
+            "id": "20260127101438",
+            "company": "Sony Group",
+            "status": "Drafting",
+            "deadline": "2026-01-27",
+            "notes": "Industry: Conglomerate\nReason: Diverse portfolio (Game, Image Sensor, Finance, Music). Creative culture.\n[Added from Recs]"
+        },
+        {
+            "id": "20260127101441",
+            "company": "Mitsubishi Corp",
+            "status": "Drafting",
+            "deadline": "2026-01-27",
+            "notes": "Industry: Trading\nReason: Top Sogo Shosha. Energy, Retail (Lawson), wide global reach.\n[Added from Recs]"
+        },
+        {
+            "id": "20260127101443",
+            "company": "Itochu",
+            "status": "Drafting",
+            "deadline": "2026-01-27",
+            "notes": "Industry: Trading\nReason: Strong in non-resource sectors (Textile, Food, IT). Morning-focused work style.\n[Added from Recs]"
+        },
+        {
+            "id": "20260127101445",
+            "company": "Hitachi",
+            "status": "Drafting",
+            "deadline": "2026-01-27",
+            "notes": "Industry: IT/Infrastructure\nReason: Social Innovation leader. IoT (Lumada) & heavy machinery.\n[Added from Recs]"
+        }
+    ]
+}

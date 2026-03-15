@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 Password Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #00d4ff;
+        }
+
+        .password-display {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Consolas', monospace;
+            font-size: 1.3em;
+            text-align: center;
+            margin-bottom: 20px;
+            word-break: break-all;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .strength-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .strength-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .strength-text {
+            text-align: center;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+        }
+
+        .option-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .option-label {
+            font-size: 0.95em;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slider {
+            width: 150px;
+            height: 6px;
+            border-radius: 3px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #00d4ff;
+            cursor: pointer;
+        }
+
+        .toggle {
+            width: 50px;
+            height: 26px;
+            border-radius: 13px;
+            background: rgba(255, 255, 255, 0.2);
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle.active {
+            background: #00d4ff;
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #fff;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+        }
+
+        .toggle.active::after {
+            transform: translateX(24px);
+        }
+
+        .length-value {
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .history {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .history h4 {
+            margin-bottom: 10px;
+            color: #888;
+        }
+
+        .history-item {
+            font-family: 'Consolas', monospace;
+            font-size: 0.85em;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .history-item:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #27ae60;
+            padding: 10px 25px;
+            border-radius: 25px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔐 Password Generator</h1>
+
+        <div class="password-display" id="password">Click Generate</div>
+
+        <div class="strength-bar">
+            <div class="strength-fill" id="strengthFill" style="width:0%;background:#ff6b6b"></div>
+        </div>
+        <div class="strength-text" id="strengthText">強度: ---</div>
+
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="generate()">🔄 生成</button>
+            <button class="btn btn-secondary" onclick="copyPassword()">📋 コピー</button>
+        </div>
+
+        <div class="option-row">
+            <span class="option-label">パスワード長</span>
+            <div class="slider-container">
+                <input type="range" class="slider" id="length" min="4" max="64" value="16" oninput="updateLength()">
+                <span class="length-value" id="lengthValue">16</span>
+            </div>
+        </div>
+
+        <div class="option-row">
+            <span class="option-label">大文字 (A-Z)</span>
+            <div class="toggle active" id="uppercase" onclick="toggleOption(this)"></div>
+        </div>
+
+        <div class="option-row">
+            <span class="option-label">小文字 (a-z)</span>
+            <div class="toggle active" id="lowercase" onclick="toggleOption(this)"></div>
+        </div>
+
+        <div class="option-row">
+            <span class="option-label">数字 (0-9)</span>
+            <div class="toggle active" id="numbers" onclick="toggleOption(this)"></div>
+        </div>
+
+        <div class="option-row">
+            <span class="option-label">記号 (!@#$%...)</span>
+            <div class="toggle active" id="symbols" onclick="toggleOption(this)"></div>
+        </div>
+
+        <div class="history">
+            <h4>📜 履歴</h4>
+            <div id="historyList"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">コピーしました！</div>
+
+    <script>
+        const chars = {
+            uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            lowercase: 'abcdefghijklmnopqrstuvwxyz',
+            numbers: '0123456789',
+            symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+        };
+
+        let history = [];
+
+        function getOptions() {
+            return {
+                length: parseInt(document.getElementById('length').value),
+                uppercase: document.getElementById('uppercase').classList.contains('active'),
+                lowercase: document.getElementById('lowercase').classList.contains('active'),
+                numbers: document.getElementById('numbers').classList.contains('active'),
+                symbols: document.getElementById('symbols').classList.contains('active')
+            };
+        }
+
+        function generate() {
+            const opts = getOptions();
+            let charset = '';
+            if (opts.uppercase) charset += chars.uppercase;
+            if (opts.lowercase) charset += chars.lowercase;
+            if (opts.numbers) charset += chars.numbers;
+            if (opts.symbols) charset += chars.symbols;
+
+            if (!charset) {
+                document.getElementById('password').textContent = 'オプションを選択してください';
+                return;
+            }
+
+            let password = '';
+            const array = new Uint32Array(opts.length);
+            crypto.getRandomValues(array);
+            for (let i = 0; i < opts.length; i++) {
+                password += charset[array[i] % charset.length];
+            }
+
+            document.getElementById('password').textContent = password;
+            updateStrength(password);
+            addToHistory(password);
+        }
+
+        function updateStrength(password) {
+            let score = 0;
+            if (password.length >= 8) score++;
+            if (password.length >= 12) score++;
+            if (password.length >= 16) score++;
+            if (/[A-Z]/.test(password)) score++;
+            if (/[a-z]/.test(password)) score++;
+            if (/[0-9]/.test(password)) score++;
+            if (/[^A-Za-z0-9]/.test(password)) score++;
+
+            const percent = (score / 7) * 100;
+            const fill = document.getElementById('strengthFill');
+            const text = document.getElementById('strengthText');
+
+            fill.style.width = percent + '%';
+
+            if (score <= 2) {
+                fill.style.background = '#ff6b6b';
+                text.innerHTML = '強度: <span style="color:#ff6b6b">弱い ⚠️</span>';
+            } else if (score <= 4) {
+                fill.style.background = '#feca57';
+                text.innerHTML = '強度: <span style="color:#feca57">普通 🔶</span>';
+            } else if (score <= 5) {
+                fill.style.background = '#48dbfb';
+                text.innerHTML = '強度: <span style="color:#48dbfb">強い 💪</span>';
+            } else {
+                fill.style.background = '#1dd1a1';
+                text.innerHTML = '強度: <span style="color:#1dd1a1">最強 🔒</span>';
+            }
+        }
+
+        function copyPassword() {
+            const password = document.getElementById('password').textContent;
+            if (password && password !== 'Click Generate') {
+                navigator.clipboard.writeText(password);
+                const toast = document.getElementById('toast');
+                toast.style.display = 'block';
+                setTimeout(() => toast.style.display = 'none', 1500);
+            }
+        }
+
+        function toggleOption(el) {
+            el.classList.toggle('active');
+        }
+
+        function updateLength() {
+            document.getElementById('lengthValue').textContent = document.getElementById('length').value;
+        }
+
+        function addToHistory(password) {
+            history.unshift(password);
+            if (history.length > 5) history.pop();
+
+            const list = document.getElementById('historyList');
+            list.innerHTML = history.map(p =>
+                `<div class="history-item" onclick="copyFromHistory('${p}')">${p}</div>`
+            ).join('');
+        }
+
+        function copyFromHistory(password) {
+            navigator.clipboard.writeText(password);
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 1500);
+        }
+
+        // Generate on load
+        generate();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "title": "サイバーAI責任者が語る、起死回生の一手 「自動生成」が広告",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5wdkhqRXFWQVNieVJ4V3RBRWR2V2hoSUxBZ1JZYmJfZ0xHdWFLNVhFc0FrN3dxVHhyakJ4OW9zeWxhcldVM09FUTMtVjNVZXBmdGx1TzhYdlMzM3ZVUzJJLUl2QlVMeFhRY0Z3SQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE5wdkhqRXFWQVNieVJ4V3RBRWR2V2hoSUxBZ1JZYmJfZ0xHdWFLNVhFc0FrN3dxVHhyakJ4OW9zeWxhcldVM09FUTMtVjNVZXBmdGx1TzhYdlMzM3ZVUzJJLUl2QlVMeFhRY0Z3SQ?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "サイバーAI責任者が広告自動生成を推進。広告業界の変革を主張。",
+    "true_intent": "AI広告自動生成の普及による自社技術の優位性PR。広告主への導入促進。AI開発企業、プラットフォーム企業が利益を得る。中小広告代理店の淘汰加速も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "サイバーエージェント(推測)",
+    "action_required": true,
+    "category": "広告/AI",
+    "target_year": "2027",
+    "company_profile": "## サイバーエージェント(推測) 本質分析\n\n1. **主要武器**: 徹底的な成果主義と、変化を恐れず新規事業に挑戦する企業文化。人材育成への投資も惜しまない。\n2. **26-27卒への温度感**: 積極採用継続。ポテンシャル重視で、若手の早期戦力化を図る傾向。\n3. **EGO適性**: データドリブンな意思決定を重視し、AI活用も推進。構造的思考力は必須。\n4. **裏の弱点**: 成果主義故のプレッシャー、部署ごとの文化差、事業の浮き沈みが激しい点。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **CyberAgent:** \"21世紀を代表する会社を創る\"をビジョン。\n*   **事業:** ABEMA運営、インターネット広告事業(国内トップシェア)、新規事業創出。\n*   **企業情報:** 会社概要、アクセス、役員、制度、企業文化。\n*   **投資家向け:** 財務、IR情報、事業の競争優位性。\n\n**Structured Summary:**\n\nCyberAgent aims to be a leading 21st-century company. Core businesses include ABEMA and internet advertising (dominant market share). Focus on new business development. Publicly available, company overview and investor information.\n\n**Gap Analysis:**\n\nData primarily focuses on marketing and investor relations content. Operational details, technology stack, and employee perspectives are missing."
+  },
+  "critical_analysis": {
+    "true_intent": "AI広告自動生成の普及による自社技術の優位性PR。広告主への導入促進。AI開発企業、プラットフォーム企業が利益を得る。中小広告代理店の淘汰加速も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:02:41.834422",
+  "source": "広告業界"
+}

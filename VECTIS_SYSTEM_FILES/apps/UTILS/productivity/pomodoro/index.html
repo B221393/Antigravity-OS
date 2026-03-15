@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧘 Focus Timer (Pomodoro)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #ff6b6b;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .timer-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(#ff6b6b var(--progress, 0%), rgba(255, 255, 255, 0.1) 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .timer-inner {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timer-display {
+            font-size: 4em;
+            font-weight: 300;
+            font-family: 'Consolas', monospace;
+        }
+
+        .timer-label {
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #ff6b6b;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .modes {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .mode-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mode-btn.active {
+            background: #ff6b6b;
+            color: #fff;
+        }
+
+        .sessions {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .session-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .dot.completed {
+            background: #ff6b6b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🧘 Focus Timer</h1>
+        <p class="subtitle">ポモドーロテクニックで集中力アップ</p>
+
+        <div class="modes">
+            <button class="mode-btn active" onclick="setMode('focus')">🎯 集中 25分</button>
+            <button class="mode-btn" onclick="setMode('short')">☕ 小休憩 5分</button>
+            <button class="mode-btn" onclick="setMode('long')">🌴 長休憩 15分</button>
+        </div>
+
+        <div class="timer-circle" id="timerCircle">
+            <div class="timer-inner">
+                <div class="timer-display" id="timerDisplay">25:00</div>
+                <div class="timer-label" id="timerLabel">集中タイム</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" id="startBtn" onclick="toggleTimer()">▶ スタート</button>
+            <button class="btn btn-secondary" onclick="resetTimer()">↺ リセット</button>
+        </div>
+
+        <div class="sessions">
+            今日のセッション
+            <div class="session-dots" id="sessionDots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modes = {
+            focus: { time: 25 * 60, label: '集中タイム', color: '#ff6b6b' },
+            short: { time: 5 * 60, label: '小休憩', color: '#48dbfb' },
+            long: { time: 15 * 60, label: '長休憩', color: '#1dd1a1' }
+        };
+
+        let currentMode = 'focus';
+        let timeLeft = modes.focus.time;
+        let totalTime = modes.focus.time;
+        let isRunning = false;
+        let interval = null;
+        let completedSessions = 0;
+
+        function setMode(mode) {
+            currentMode = mode;
+            timeLeft = modes[mode].time;
+            totalTime = modes[mode].time;
+            isRunning = false;
+            clearInterval(interval);
+
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('timerLabel').textContent = modes[mode].label;
+            document.querySelector('h1').style.color = modes[mode].color;
+            document.querySelector('.btn-primary').style.background = modes[mode].color;
+
+            updateDisplay();
+            document.getElementById('startBtn').textContent = '▶ スタート';
+        }
+
+        function updateDisplay() {
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            document.getElementById('timerDisplay').textContent =
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+            const progress = ((totalTime - timeLeft) / totalTime) * 100;
+            document.getElementById('timerCircle').style.setProperty('--progress', `${progress}%`);
+        }
+
+        function toggleTimer() {
+            if (isRunning) {
+                clearInterval(interval);
+                document.getElementById('startBtn').textContent = '▶ スタート';
+            } else {
+                interval = setInterval(() => {
+                    timeLeft--;
+                    updateDisplay();
+
+                    if (timeLeft <= 0) {
+                        clearInterval(interval);
+                        isRunning = false;
+                        onComplete();
+                    }
+                }, 1000);
+                document.getElementById('startBtn').textContent = '⏸ 一時停止';
+            }
+            isRunning = !isRunning;
+        }
+
+        function resetTimer() {
+            clearInterval(interval);
+            isRunning = false;
+            timeLeft = modes[currentMode].time;
+            document.getElementById('startBtn').textContent = '▶ スタート';
+            updateDisplay();
+        }
+
+        function onComplete() {
+            if (currentMode === 'focus') {
+                completedSessions++;
+                updateSessionDots();
+                // Notify
+                if (Notification.permission === 'granted') {
+                    new Notification('🎉 集中タイム終了！', { body: '休憩を取りましょう' });
+                }
+                alert('🎉 集中タイム完了！休憩を取りましょう');
+            } else {
+                alert('☕ 休憩終了！次の集中タイムを始めましょう');
+            }
+            document.getElementById('startBtn').textContent = '▶ スタート';
+        }
+
+        function updateSessionDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('completed', i < completedSessions);
+            });
+        }
+
+        // Request notification permission
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+
+        updateDisplay();
+    </script>
+</body>
+
+</html>

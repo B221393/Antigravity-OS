@@ -1,0 +1,24 @@
+{
+  "title": "広がる科学、羽ばたく少女たち / Science Agora",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5jTUc2RDFJN2tNbjZRaC1WWXBPUlhONFJkcmZ3UzN0U3QyUFdKUzA5UUs0TWpLNzZzaXk2Q05oTVNIbkpaZDdQNGF0cUtuVFc2UHZMckpLV09kczRrR0hvaXE2ZG0xMXRkSUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE5jTUc2RDFJN2tNbjZRaC1WWXBPUlhONFJkcmZ3UzN0U3QyUFdKUzA5UUs0TWpLNzZzaXk2Q05oTVNIbkpaZDdQNGF0cUtuVFc2UHZMckpLV09kczRrR0hvaXE2ZG0xMXRkSUE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "Science Agora 2025で女子学生の科学分野進出を促進するイベント開催。",
+    "true_intent": "JSTの広報活動。科学技術分野におけるジェンダーギャップ解消をアピールし、予算獲得や組織の正当性強化を狙う可能性。企業による人材青田買いの場ともなりうる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "JST",
+    "action_required": false,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "## JST (科学技術振興機構) 本質的価値と27卒が狙うべき理由\n\n1. **主要武器**: 日本の科学技術立国を支える「知のインフラ」。研究資金配分、成果展開、人材育成までを担う、唯一無二のプラットフォーム。\n2. **26-27卒への温度感**: 採用数は絞られているが、多様なバックグラウンドを持つ人材を求める傾向。専門性だけでなく、俯瞰的視野とコミュニケーション能力を重視。\n3. **EGO適性**: 研究データ管理・分析の高度化を目指しており、AI活用やデータサイエンスの素養がある人材は歓迎される。構造的思考は必須。\n4. **裏の弱点**: 官僚的な組織文化が残存。スピード感や柔軟性に課題があり、変革を厭わない人材でなければ適応は難しい。\n",
+    "academic_deep_dive": "1. **歴史的背景:** 女性の科学分野への進出は、長らく抑圧されてきた歴史を持つ。啓蒙思想以降、理性は男性的なものとされ、女性は感情や家庭に結び付けられた。キュリー夫人などの例外はあったが、構造的な差別は根強く残った。過去の類似事例としては、女性科学者のネットワーク形成や、女性向けの理系教育プログラムなどが挙げられる。\n\n2. **現代的意義:** ジェンダーギャップ指数が示すように、現代社会においても科学分野における女性の割合は依然として低い。これは、社会の多様性を損ない、科学の進歩を阻害する。女性の視点が加わることで、新たな発想や問題解決が生まれる可能性があり、SDGsの達成にも貢献する。ロールモデルの提示やメンター制度の充実が急務である。\n\n3. **批判的視座:** 「羽ばたく少女たち」という表現は、無意識のうちに少女たちを「保護対象」と見なしていないか？科学分野におけるジェンダー平等は、単に女性の数を増やすだけでなく、既存の科学のあり方、評価基準、研究文化そのものを問い直す必要がある。男性中心的な価値観に染まった科学を、どのように変革していくかが重要である。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "JSTの広報活動。科学技術分野におけるジェンダーギャップ解消をアピールし、予算獲得や組織の正当性強化を狙う可能性。企業による人材青田買いの場ともなりうる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:30:20.124067",
+  "source": "科学技術 社会論"
+}

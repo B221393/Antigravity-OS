@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>EGO Interview Command Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg: #08080d;
+            --s1: #0e0e18;
+            --s2: #151525;
+            --s3: #1c1c30;
+            --bd: #252545;
+            --ac: #7c6cf0;
+            --ac2: #a89eff;
+            --ac3: #00d4c8;
+            --ac4: #ff6b9d;
+            --tx: #e8e8f0;
+            --tx2: #7878a0;
+            --tx3: #50506a;
+            --ok: #2ecc71;
+            --warn: #f39c12;
+            --err: #e74c3c
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Hiragino Sans', sans-serif;
+            background: var(--bg);
+            color: var(--tx);
+            height: 100vh;
+            overflow: hidden
+        }
+
+        .app {
+            display: flex;
+            height: 100vh
+        }
+
+        .sb {
+            width: 240px;
+            background: var(--s1);
+            border-right: 1px solid var(--bd);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0
+        }
+
+        .sb-h {
+            padding: 20px 16px;
+            border-bottom: 1px solid var(--bd);
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .sb-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--ac), var(--ac3));
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .sb-logo svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff
+        }
+
+        .sb-h div h1 {
+            font-size: 13px;
+            color: var(--ac2);
+            letter-spacing: 1.5px;
+            font-weight: 600
+        }
+
+        .sb-h div p {
+            font-size: 10px;
+            color: var(--tx2)
+        }
+
+        .nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px
+        }
+
+        .ni {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            color: var(--tx2);
+            transition: all .15s;
+            margin-bottom: 1px;
+            border: 1px solid transparent
+        }
+
+        .ni:hover {
+            background: var(--s2);
+            color: var(--tx)
+        }
+
+        .ni.on {
+            background: linear-gradient(135deg, rgba(124, 108, 240, .12), rgba(0, 212, 200, .06));
+            color: var(--ac2);
+            border-color: rgba(124, 108, 240, .25)
+        }
+
+        .ni svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+            opacity: .7
+        }
+
+        .ni.on svg {
+            opacity: 1;
+            fill: var(--ac2)
+        }
+
+        .mn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden
+        }
+
+        .tb {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--bd);
+            background: rgba(14, 14, 24, .8);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .sb-x {
+            position: relative;
+            flex: 1
+        }
+
+        .sb-x input {
+            width: 100%;
+            padding: 9px 14px 9px 36px;
+            background: var(--s2);
+            border: 1px solid var(--bd);
+            border-radius: 8px;
+            color: var(--tx);
+            font-size: 12px;
+            outline: none;
+            transition: all .2s
+        }
+
+        .sb-x input:focus {
+            border-color: var(--ac);
+            box-shadow: 0 0 0 3px rgba(124, 108, 240, .1)
+        }
+
+        .sb-x svg {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            fill: var(--tx2)
+        }
+
+        .ct {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            scroll-behavior: smooth
+        }
+
+        .sec {
+            display: none
+        }
+
+        .sec.on {
+            display: block;
+            animation: fi .25s ease
+        }
+
+        @keyframes fi {
+            from {
+                opacity: 0;
+                transform: translateY(6px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .cd {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all .2s
+        }
+
+        .cd:hover {
+            border-color: rgba(124, 108, 240, .3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .3)
+        }
+
+        .cd h3 {
+            font-size: 13px;
+            color: var(--ac2);
+            margin-bottom: 6px;
+            font-weight: 600
+        }
+
+        .cd p,
+        .cd li {
+            font-size: 12px;
+            line-height: 1.7;
+            color: var(--tx)
+        }
+
+        .bg {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            margin-right: 3px
+        }
+
+        .bg-s {
+            background: rgba(231, 76, 60, .15);
+            color: var(--err)
+        }
+
+        .bg-a {
+            background: rgba(243, 156, 18, .15);
+            color: var(--warn)
+        }
+
+        .bg-b {
+            background: rgba(46, 204, 113, .15);
+            color: var(--ok)
+        }
+
+        .bg-r {
+            background: rgba(124, 108, 240, .15);
+            color: var(--ac2)
+        }
+
+        .bg-o {
+            background: rgba(80, 80, 106, .2);
+            color: var(--tx2)
+        }
+
+        .sg {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px
+        }
+
+        .sc {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            transition: all .3s
+        }
+
+        .sc:hover {
+            border-color: var(--ac);
+            transform: translateY(-2px)
+        }
+
+        .sc .n {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--ac), var(--ac3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .sc .l {
+            font-size: 10px;
+            color: var(--tx2);
+            margin-top: 2px
+        }
+
+        .pb {
+            height: 3px;
+            background: var(--s3);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 6px
+        }
+
+        .pb .f {
+            height: 100%;
+            background: linear-gradient(90deg, var(--ac), var(--ac3));
+            border-radius: 2px;
+            transition: width .5s
+        }
+
+        .sa {
+            background: var(--s2);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 14px
+        }
+
+        .sq {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 14px
+        }
+
+        .sh {
+            background: rgba(0, 212, 200, .06);
+            border-left: 3px solid var(--ac3);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 10px;
+            font-size: 11px;
+            color: var(--tx2);
+            display: none
+        }
+
+        .san {
+            background: rgba(124, 108, 240, .06);
+            border-left: 3px solid var(--ac);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            font-size: 12px;
+            line-height: 1.8;
+            display: none
+        }
+
+        .btn {
+            padding: 7px 14px;
+            border-radius: 7px;
+            border: 1px solid var(--bd);
+            background: var(--s2);
+            color: var(--tx);
+            font-size: 11px;
+            cursor: pointer;
+            transition: all .15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px
+        }
+
+        .btn:hover {
+            border-color: var(--ac);
+            background: rgba(124, 108, 240, .1)
+        }
+
+        .btn svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor
+        }
+
+        .btn-p {
+            background: linear-gradient(135deg, var(--ac), var(--ac2));
+            border: none;
+            color: #fff;
+            font-weight: 600
+        }
+
+        .btn-p:hover {
+            opacity: .9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(124, 108, 240, .3)
+        }
+
+        .bg-f {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 10px
+        }
+
+        .tm {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ac3);
+            font-variant-numeric: tabular-nums
+        }
+
+        .ct-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            cursor: pointer;
+            margin: 0 3px 6px 0;
+            background: var(--s2);
+            border: 1px solid var(--bd);
+            color: var(--tx2);
+            transition: all .15s
+        }
+
+        .ct-tab:hover {
+            border-color: var(--ac)
+        }
+
+        .ct-tab.on {
+            background: rgba(124, 108, 240, .15);
+            border-color: var(--ac);
+            color: var(--ac2)
+        }
+
+        .ct-tab svg {
+            width: 10px;
+            height: 10px;
+            fill: currentColor
+        }
+
+        .dc {
+            border-left: 2px solid var(--bd);
+            padding-left: 14px;
+            margin: 10px 0 0 6px
+        }
+
+        .dq {
+            margin-bottom: 10px
+        }
+
+        .dq-q {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--warn);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color .15s
+        }
+
+        .dq-q:hover {
+            color: var(--ac2)
+        }
+
+        .dq-q svg {
+            width: 10px;
+            height: 10px;
+            fill: currentColor;
+            transition: transform .2s
+        }
+
+        .dq-a {
+            font-size: 11px;
+            color: var(--tx);
+            line-height: 1.7;
+            margin-top: 4px;
+            display: none;
+            padding: 8px 10px;
+            background: rgba(124, 108, 240, .04);
+            border-radius: 6px
+        }
+
+        .hl {
+            background: rgba(243, 156, 18, .25);
+            padding: 0 2px;
+            border-radius: 2px
+        }
+
+        h2 {
+            font-size: 17px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        h2 svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--ac2)
+        }
+
+        .sub {
+            font-size: 11px;
+            color: var(--tx2);
+            margin-bottom: 14px
+        }
+
+        ul {
+            padding-left: 18px
+        }
+
+        li {
+            margin-bottom: 3px;
+            font-size: 12px
+        }
+
+        .co-hd {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px
+        }
+
+        .co-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <div class="sb">
+            <div class="sb-h">
+                <div class="sb-logo"><svg viewBox="0 0 24 24">
+                        <path d="M13 3L4 14h7l-2 7 9-11h-7l2-7z" />
+                    </svg></div>
+                <div>
+                    <h1>INTERVIEW HQ</h1>
+                    <p>EGO Command Center</p>
+                </div>
+            </div>
+            <div class="nav" id="nav">
+                <div class="ni on" data-s="dash"><svg viewBox="0 0 24 24">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+                    </svg>ダッシュボード</div>
+                <div class="ni" data-s="sim"><svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+                        <path d="M12 6v6l4 2" />
+                    </svg>シミュレーター</div>
+                <div class="ni" data-s="deep"><svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>深掘り特訓</div>
+                <div class="ni" data-s="scripts"><svg viewBox="0 0 24 24">
+                        <path
+                            d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                    </svg>回答スクリプト</div>
+                <div class="ni" data-s="co"><svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
+                    </svg>企業別対策</div>
+                <div class="ni" data-s="search"><svg viewBox="0 0 24 24">
+                        <path
+                            d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                    </svg>全文検索</div>
+            </div>
+        </div>
+        <div class="mn">
+            <div class="tb">
+                <div class="sb-x"><svg viewBox="0 0 24 24">
+                        <path
+                            d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                    </svg>
+                    <input type="text" id="gs" placeholder="質問・キーワードで横断検索 (Ctrl+K)" autocomplete="off">
+                </div>
+            </div>
+            <div class="ct" id="ct"></div>
+        </div>
+    </div>
+    <script>
+        const I = {
+            dash: '<svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>',
+            sim: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2"/></svg>',
+            deep: '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>',
+            fire: '<svg viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67z"/></svg>',
+            chev: '<svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>',
+            check: '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>'
+        };
+        const DB = {
+            questions: [
+                { id: 1, cat: "自己紹介", q: "1分程度で自己紹介をお願いします。", diff: "B", time: 60, req: true, a: "広島大学工学部第二類（機械系）の下村優斗です。大学では機械工学を専攻し、旋盤等の工作機械を用いた金属加工実習に没頭しました。同時に、独学でプログラミングを学び、日々の学習と情報管理を一元化する自作のAIシステムを構築しています。また、体育会馬術部に4年間在籍し、毎朝5時からの早朝作業を無遅刻で継続しました。『未知を恐れず学び続ける探求心』と『泥臭い現場で粘り強くやり抜く力』が私の武器です。", hints: ["機械×IT×馬術の三本柱", "1分=約300字", "結論→根拠→意欲"], deepdive: [{ q: "なぜ機械工学を選んだ？", a: "モノづくりへの純粋な興味。実際に手を動かして形にする過程に魅力を感じました。" }, { q: "馬術部に入ったきっかけは？", a: "全く未知の分野への好奇心。言葉の通じない生き物と向き合う経験が自分を成長させると直感しました。" }] },
+                { id: 2, cat: "強み・弱み", q: "最大の強みと弱みを教えてください。", diff: "B", time: 90, req: true, a: "強みは『未知への探求心と構造化能力』。複雑な情報を整理し、自ら課題を設定して解決策を実装する力があります。自作システムをPythonで構築しました。弱みは『過集中』。没頭すると周囲が見えなくなりますが、タスク管理システムで時間を区切り定期的に俯瞰する習慣で対処しています。", hints: ["弱みは克服の仕組みとセット", "具体エピソードで証明"], deepdive: [{ q: "構造化能力の具体例は？", a: "45社以上の企業情報を業界別・選考段階別にマークダウンで構造化し比較分析できるDBを自作しました。" }, { q: "過集中で困った経験は？", a: "個人開発に没頭し睡眠を削って体調を崩した経験があり、以降作業時間に上限ルールを課しています。" }] },
+                { id: 3, cat: "ガクチカ", q: "学生時代に最も力を入れたことは？", diff: "B", time: 90, req: true, a: "体育会馬術部にて4年間一日も欠かさず早朝5時からの作業・練習に取り組みました。馬の個体ごとに接し方を変え、怖がりな馬には穏やかに、サボり癖のある馬には強い指示を出すなど『入力インターフェース』を個体仕様に合わせました。この経験で『相手の僅かな反応を察知する観察力』と『どんな環境でもやり遂げるタフネス』を獲得しました。", hints: ["STAR構造", "馬=非言語コミュニケーション訓練", "個別最適化"], deepdive: [{ q: "なぜ4年間辞めなかった？", a: "『分からないからこそもっと知りたい』という好奇心。根性論ではなく未知の対象への面白さが原動力。" }, { q: "馬術がエンジニアにどう活きる？", a: "現場ごとに文化も技術も異なる環境への適応力。馬の個体ごとに接し方を変えたように、コミュニケーションチャンネルを切り替える力。" }, { q: "具体的にどう接し方を変えた？", a: "怖がりな馬は手綱を強く引くとパニック、サボる馬は強い指示が必要。『このシステムにどういう信号を送れば最良の反応を返すか』を分析しました。" }] },
+                { id: 4, cat: "挫折経験", q: "最大の挫折と乗り越え方を教えてください。", diff: "A", time: 90, req: true, a: "大学院入試断念とメンタル不調です。研究室で背伸びし続けた結果心身のバランスを崩しました。同時にAIの急速発展に『自分の技術は代替されるのでは』と虚無感に。しかし療養中に『AIに使われる側→使いこなす側』とパラダイム転換。実際にAIを束ねるシステムを自作し『AIは敵ではなく最強の味方』と腹落ちして復活できました。", hints: ["挫折→気づき→行動→成長", "AIへの恐怖→道具として制御"], deepdive: [{ q: "また同じ状況になったら？", a: "早期にアラートを出し構造的に解決します。なぜ辛いのかを分析し仕組みで対処。" }, { q: "うつ状態をどう捉えている？", a: "あの経験がなければ精神論を捨てシステムで勝負する今の自分はいません。最大の転機でした。" }] },
+                { id: 5, cat: "志望動機", q: "なぜ当社を志望しますか？", diff: "B", time: 90, req: true, a: "日本の製造業が直面する『質の高いエンジニア不足』に対し『生涯プロエンジニア®』の理念で応える貴社の社会的意義に強く惹かれました。独自の研修制度（692講座）でプロを輩出し続ける姿勢は、この課題への『解』そのものです。機械工学とITの両方を経験した私は、多様な業界の最前線で技術を磨ける貴社で成長したいと考えています。", hints: ["結論先行", "社会的意義→自己成長の2段", "なぜ同業他社でなくここか"], deepdive: [{ q: "テクノプロ等ではなくなぜメイテック？", a: "上流特化・技術料金No.1。『量で稼ぐ』ではなく『質で勝つ』戦略。リーマンショック時リストラゼロが理念の本気度の証。" }, { q: "給料や安定も動機では？", a: "惹かれたのは安定そのものではなく、盤石な基盤を『技術追求の土台として活かす』姿勢です。" }] },
+                { id: 6, cat: "IT転換", q: "機械工学からなぜITへ？", diff: "A", time: 90, req: true, a: "『物理的制約の重さ』を痛感したから。旋盤で0.1mm削りすぎたら戻せない。しかしソフトウェアなら1時間に100回失敗してリファクタできる。『思考した瞬間に形になり何度でも改善できる』ITの柔軟性が、試行錯誤を追求する私に完全に合致しました。", hints: ["物理制約vs仮想の柔軟性", "実体験ベースの気づき"], deepdive: [{ q: "情報系に最初から行けば？", a: "プログラミング基礎では劣るが『油の匂い』と『現場の痛み』を知っている。泥臭い現場がわかるからこそ本当に喜ばれるデジタル効率化を提案できる架け橋になれます。" }] },
+                { id: 7, cat: "自作システム", q: "既存ツールでなく自作した理由は？", diff: "A", time: 60, req: false, a: "『未知の技術を自分で触って理解したい』という探求心。『裏側はどう動くのか？自分で作ったらどこまでできるのか？』という知的好奇心が原動力。手を動かし未知の領域を形にすることで座学では得られない生きた知識を学べました。", hints: ["探求心が原動力", "実践主義"], deepdive: [{ q: "具体的に何を作った？", a: "Python/RustのCLIツール、学習管理ダッシュボード、複数LLM API統合のマルチAIエージェントシステム。" }, { q: "仕事で使えるレベル？", a: "個人利用ですが、設計思想（モジュール化・エラーハンドリング・API抽象化）は実務レベルを意識しています。" }] },
+                { id: 8, cat: "労働観", q: "『働く』とは何ですか？", diff: "S", time: 60, req: true, a: "『自分の探求心を社会に接続すること』。未知の技術や課題に触れるとワクワクします。その好奇心を個人の趣味に留めず、組織のリソースと掛け合わせてより大きな課題を解決し社会に価値を届ける。それが働くことです。", hints: ["抽象的すぎず具体的すぎず", "60秒で簡潔に"], deepdive: [{ q: "10億円あっても働く？", a: "はい。一人では到達できない大規模課題に組織で挑戦したいからです。" }] },
+                { id: 9, cat: "キャリアビジョン", q: "5年後・10年後のビジョンは？", diff: "A", time: 60, req: true, a: "【1-3年】研修で基礎固め、素直に聞いて貪欲に吸収。【3-7年】自動運転やIoT制御など「ハード×ソフト融合」で専門性を確立。【7年〜】ノウハウを後輩へ共有し技術コミュニティに貢献。生涯プロエンジニアとして学び続けます。", hints: ["段階的に具体化", "会社の制度名を出す"], deepdive: [{ q: "希望外の部署なら？", a: "どの現場にも最適化の余地がある。馬術部で個体に合わせたように、その環境ならではの技術を吸収するチャンスと捉えます。" }] },
+                { id: 10, cat: "AI見解", q: "AIに仕事を奪われる未来への備えは？", diff: "A", time: 60, req: false, a: "『使われる側→使いこなす側（指揮者）』に立つこと。コード作業はAIがやるが『何を解決するためにどうAIを組み合わせるか』という構想力は人間にしかできない。実際にAIを束ねるシステムを組み、AIは敵ではなく最強の味方だと腹落ちしました。", hints: ["恐怖→道具への転換", "実体験ベース"], deepdive: [] },
+                { id: 11, cat: "周囲の評価", q: "周囲からどんな人だと言われますか？", diff: "B", time: 60, req: true, a: "『静かだけど実は一番熱い』と言われます。普段は穏やかですが、興味のある技術の話になると目の色が変わると。馬術部では『一番地味だけど一番信頼できる』と評されました。派手さはなくても、黙々と継続する姿勢が周囲の信頼に繋がったと考えています。", hints: ["ギャップを強調", "第三者の具体的な言葉"], deepdive: [] },
+                { id: 12, cat: "最後のアピール", q: "採用すべき唯一無二の理由を教えてください。", diff: "A", time: 60, req: true, a: "『ハードの現場の痛みがわかるソフトウェアエンジニア』は希少です。旋盤で油まみれになった経験と、AIシステムを自作した技術力。そして馬術で鍛えた粘り強さ。この三つを併せ持つ人材は、貴社の多様な現場で『現場の言葉がわかるエンジニア』として即座に信頼を獲得できます。", hints: ["自信を持って断言", "具体的スキルの掛け合わせ"], deepdive: [] }
+            ],
+            companies: {
+                "メイテック": { c: "#7c6cf0", k: ["生涯プロエンジニア®", "上流特化", "技術料金No.1", "692講座", "無借金経営", "リストラゼロ"], rq: ["20年以上現役の方の共通する学習習慣は？", "キャリア設計への自己提案の反映度は？", "リーマン時のリストラゼロの経営判断の背景は？", "勉強会で盛り上がっているテーマは？", "現場の人間関係に馴染む工夫は？"] },
+                "SHIFT": { c: "#00d4c8", k: ["標準化・属人化排除", "ロジカルさ重視", "テスト市場5.5兆円", "M&A拡大", "AI活用テスト自動化"], rq: ["新技術キャッチアップの習慣化された方法は？", "AI進化後に最重要なスキルは？", "グループ内のキャリアパスの広がりは？"] },
+                "Brexa": { c: "#f39c12", k: ["KENスクール連携研修", "幅広い業界", "未経験→成長", "多種多様プロジェクト"], rq: ["研修の具体的カリキュラムは？", "最短でPLになった事例は？"] },
+                "テクノプロ": { c: "#e74c3c", k: ["国内最大級の技術系人材", "7領域カバー", "グローバル展開", "テクノプロ・デザイン社の設計力"], rq: ["配属業界の決定プロセスは？", "グループ間異動の実績は？", "海外プロジェクトへの参画方法は？"] },
+                "トヨタ自動車": { c: "#2ecc71", k: ["ウーブン・シティ", "CASE革命", "TPS（トヨタ生産方式）", "モビリティカンパニー", "水素エンジン"], rq: ["CASEの中で最も注力している領域は？", "新卒がウーブンシティに関われる可能性は？", "『改善』文化を新人が実践する具体例は？"] },
+                "ソフトバンク": { c: "#ff6b9d", k: ["AI・ロボット投資", "SBG投資先技術活用", "Beyond Carrier", "半導体（Arm）", "次世代通信"], rq: ["AI事業における新卒エンジニアの役割は？", "投資先企業との技術連携の実例は？"] },
+                "NEC": { c: "#3498db", k: ["生体認証世界No.1", "デジタルガバメント", "海底ケーブル", "宇宙事業", "DX for Industries"], rq: ["生体認証技術の次なる応用領域は？", "社会ソリューション事業での若手の活躍例は？"] },
+                "富士通": { c: "#9b59b6", k: ["Uvance（社会課題起点事業）", "量子コンピュータ", "コンバージドDX", "グローバルIT企業"], rq: ["Uvanceが従来SI事業と異なる点は？", "DXコンサルとSIの境界が曖昧化する中でのエンジニアの役割は？"] },
+                "デジタルハーツ": { c: "#e67e22", k: ["ゲームデバッグ最大手", "エンタープライズ拡大", "AGEST（高度QA）", "テスター数に強み"], rq: ["ゲームQAからエンタープライズへの転換の背景は？", "エンジニアとテスターのキャリアパスの違いは？"] },
+                "三菱重工": { c: "#1abc9c", k: ["陸海空宇宙", "国防事業", "H3ロケット", "原子力", "GTCCガスタービン"], rq: ["新卒が宇宙事業に携われるルートは？", "総合力を活かした複合プロジェクトの例は？"] },
+                "関西電力": { c: "#f1c40f", k: ["AIファースト宣言", "再エネ拡大", "原子力", "送配電デジタル化", "データセンター事業"], rq: ["AIファーストの具体的な取り組みは？", "エネルギー×IT融合の配属先は？"] }
+            }
+        };
+
+        let S = { sec: 'dash', p: JSON.parse(localStorage.getItem('p') || '{}'), si: 0, ti: null, tv: 0, cs: 'メイテック' };
+        const $ = id => document.getElementById(id);
+        function R() {
+            document.querySelectorAll('.ni').forEach(n => n.classList.toggle('on', n.dataset.s === S.sec));
+            const c = $('ct'); c.innerHTML = '';
+            ({ dash: rDash, sim: rSim, deep: rDeep, scripts: rScr, co: rCo, search: rSch })[S.sec](c);
+        }
+        function rDash(c) {
+            const t = DB.questions.length, d = Object.keys(S.p).length, rq = DB.questions.filter(q => q.req), rd = rq.filter(q => S.p[q.id]).length;
+            c.innerHTML = `<h2>${I.dash} ダッシュボード</h2>
+<div class="sg"><div class="sc"><div class="n">${d}/${t}</div><div class="l">練習済み</div><div class="pb"><div class="f" style="width:${d / t * 100}%"></div></div></div>
+<div class="sc"><div class="n">${rd}/${rq.length}</div><div class="l">必須クリア</div><div class="pb"><div class="f" style="width:${rd / rq.length * 100}%"></div></div></div>
+<div class="sc"><div class="n">${DB.questions.filter(q => q.diff === 'S').length}</div><div class="l">S難度</div></div>
+<div class="sc"><div class="n">${Object.keys(DB.companies).length}</div><div class="l">企業対策</div></div></div>
+<div class="sub">未練習の必須質問</div>
+${rq.filter(q => !S.p[q.id]).map(q => `<div class="cd" style="cursor:pointer" onclick="S.sec='sim';S.si=${DB.questions.indexOf(q)};R()">
+<span class="bg bg-${q.diff.toLowerCase()}">${q.diff}</span><span class="bg bg-r">REQUIRED</span>
+<h3>${q.cat}</h3><p>${q.q}</p></div>`).join('') || '<div class="cd"><p style="color:var(--ok)">全必須質問を練習済み</p></div>'}`;
+        }
+        function rSim(c) {
+            const q = DB.questions[S.si];
+            c.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+<h2>${I.sim} シミュレーター</h2>
+<div style="display:flex;align-items:center;gap:10px"><span class="tm" id="tm">0:00</span><span style="font-size:10px;color:var(--tx2)">目安 ${q.time}s</span></div></div>
+<div style="display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap">${DB.questions.map((qq, i) => `<div class="ct-tab ${i === S.si ? 'on' : ''}" onclick="S.si=${i};R()" style="${S.p[qq.id] ? 'border-color:var(--ok)' : ''}">
+${S.p[qq.id] ? I.check : ''}${i + 1}</div>`).join('')}</div>
+<div class="sa"><div style="margin-bottom:6px"><span class="bg bg-${q.diff.toLowerCase()}">${q.diff}</span>${q.req ? '<span class="bg bg-r">REQUIRED</span>' : '<span class="bg bg-o">OPTIONAL</span>'}</div>
+<div class="sq">${q.q}</div>
+<div class="bg-f">
+<button class="btn" onclick="tT()"><svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2"/></svg> Timer</button>
+<button class="btn" onclick="rT()">Reset</button>
+<button class="btn" onclick="$('sh').style.display='block'">Hint</button>
+<button class="btn btn-p" onclick="$('sa').style.display='block';mP(${q.id})">Answer</button></div></div>
+<div class="sh" id="sh"><b>Hints:</b><ul>${q.hints.map(h => `<li>${h}</li>`).join('')}</ul></div>
+<div class="san" id="sa"><b>模範回答:</b><p style="margin-top:6px">${q.a}</p><div class="cd meta" style="margin-top:8px;font-size:10px;color:var(--tx2)">${q.a.length}字 ≈ ${Math.round(q.a.length / 5)}秒</div>
+${q.deepdive.length ? `<div style="margin-top:12px"><b style="color:var(--warn);font-size:11px">想定深掘り:</b><div class="dc">${q.deepdive.map(d => `<div class="dq"><div class="dq-q" onclick="let a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';this.querySelector('svg').style.transform=a.style.display==='block'?'rotate(90deg)':''">
+${I.chev} ${d.q}</div><div class="dq-a">${d.a}</div></div>`).join('')}</div></div>` : ''}</div>
+<div style="display:flex;justify-content:space-between;margin-top:14px">
+<button class="btn" onclick="S.si=Math.max(0,S.si-1);R()" ${S.si === 0 ? 'disabled' : ''}>← Prev</button>
+<button class="btn btn-p" onclick="S.si=Math.min(DB.questions.length-1,S.si+1);R()">Next →</button></div>`;
+        }
+        function rDeep(c) {
+            c.innerHTML = `<h2>${I.fire} 深掘り特訓</h2><div class="sub">面接官の「Why」に対する切り返し訓練。クリックで回答表示。</div>
+${DB.questions.filter(q => q.deepdive.length).map(q => `<div class="cd"><span class="bg bg-${q.diff.toLowerCase()}">${q.diff}</span>
+<h3>${q.cat}: ${q.q}</h3><div class="dc" style="margin-top:10px">${q.deepdive.map(d => `<div class="dq">
+<div class="dq-q" onclick="let a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';this.querySelector('svg').style.transform=a.style.display==='block'?'rotate(90deg)':''">
+${I.chev} ${d.q}</div><div class="dq-a">${d.a}</div></div>`).join('')}</div></div>`).join('')}`;
+        }
+        function rScr(c) {
+            c.innerHTML = `<h2>${I.deep} 回答スクリプト</h2><div class="sub">全問の模範回答リファレンス</div>
+${DB.questions.map(q => `<div class="cd"><div style="display:flex;justify-content:space-between;align-items:center">
+<div><span class="bg bg-${q.diff.toLowerCase()}">${q.diff}</span>${q.req ? '<span class="bg bg-r">REQ</span>' : '<span class="bg bg-o">OPT</span>'}<span style="font-size:10px;color:var(--tx3);margin-left:6px">${q.time}s</span></div>
+${S.p[q.id] ? '<span style="color:var(--ok);font-size:10px;display:flex;align-items:center;gap:3px">' + I.check + ' Done</span>' : ''}</div>
+<h3 style="margin-top:6px">${q.cat}: ${q.q}</h3>
+<p style="margin-top:6px;padding:10px;background:var(--s2);border-radius:6px;font-size:11px;line-height:1.8">${q.a}</p>
+<div style="font-size:9px;color:var(--tx3);margin-top:4px">${q.a.length}字 ≈ ${Math.round(q.a.length / 5)}秒</div></div>`).join('')}`;
+        }
+        function rCo(c) {
+            const cos = Object.keys(DB.companies);
+            const co = DB.companies[S.cs];
+            c.innerHTML = `<h2><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:var(--ac2)"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg> 企業別対策 <span style="font-size:11px;color:var(--tx2)">(${cos.length}社)</span></h2>
+<div style="margin-bottom:14px;display:flex;flex-wrap:wrap">${cos.map(n => `<div class="ct-tab ${n === S.cs ? 'on' : ''}" onclick="S.cs='${n}';R()" style="${n === S.cs ? `border-color:${DB.companies[n].c};color:${DB.companies[n].c}` : ''}">
+<div class="co-dot" style="background:${DB.companies[n].c}"></div>${n}</div>`).join('')}</div>
+<div class="cd" style="border-color:${co.c}"><div class="co-hd"><div class="co-dot" style="background:${co.c};width:12px;height:12px"></div><h3 style="color:${co.c}">${S.cs}</h3></div>
+<div class="sub" style="margin-bottom:6px">Key Points</div>
+<ul>${co.k.map(p => `<li>${p}</li>`).join('')}</ul></div>
+<div class="cd"><h3>逆質問リスト</h3><ol style="margin-top:8px">${co.rq.map(q => `<li style="margin-bottom:6px">${q}</li>`).join('')}</ol></div>`;
+        }
+        function rSch(c) {
+            const q = $('gs').value;
+            c.innerHTML = `<h2><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:var(--ac2)"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> 全文検索</h2>
+<div class="sub">質問・回答・深掘り・企業情報を横断検索</div>
+<div id="sr">${q ? doS(q) : '<div class="cd"><p style="color:var(--tx2)">検索バーにキーワードを入力</p></div>'}</div>`;
+        }
+        function doS(query) {
+            if (!query) return ''; const q = query.toLowerCase(); let r = [];
+            DB.questions.forEach(it => {
+                let m = [];
+                if (it.q.toLowerCase().includes(q)) m.push({ f: '質問', t: it.q });
+                if (it.a.toLowerCase().includes(q)) m.push({ f: '回答', t: it.a });
+                it.hints.forEach(h => { if (h.toLowerCase().includes(q)) m.push({ f: 'ヒント', t: h }) });
+                it.deepdive.forEach(d => { if (d.q.toLowerCase().includes(q)) m.push({ f: '深掘Q', t: d.q }); if (d.a.toLowerCase().includes(q)) m.push({ f: '深掘A', t: d.a }) });
+                if (m.length) r.push({ ty: 'q', it, m })
+            });
+            Object.entries(DB.companies).forEach(([n, co]) => {
+                let m = [];
+                if (n.toLowerCase().includes(q)) m.push({ f: '企業', t: n });
+                co.k.forEach(p => { if (p.toLowerCase().includes(q)) m.push({ f: 'Key', t: p }) });
+                co.rq.forEach(x => { if (x.toLowerCase().includes(q)) m.push({ f: '逆質問', t: x }) });
+                if (m.length) r.push({ ty: 'c', n, m })
+            });
+            if (!r.length) return `<div class="cd"><p>「${esc(query)}」の結果なし</p></div>`;
+            return `<div class="sub">${r.length}件</div>` + r.map(x => {
+                if (x.ty === 'q') return `<div class="cd"><span class="bg bg-${x.it.diff.toLowerCase()}">${x.it.diff}</span><h3>${x.it.cat}: ${x.it.q}</h3>${x.m.map(m => `<p style="margin-top:3px;font-size:11px"><span style="color:var(--ac3)">[${m.f}]</span> ${hl(m.t, query)}</p>`).join('')}</div>`;
+                return `<div class="cd"><h3 style="color:var(--ac3)">${x.n}</h3>${x.m.map(m => `<p style="margin-top:3px;font-size:11px"><span style="color:var(--ac3)">[${m.f}]</span> ${hl(m.t, query)}</p>`).join('')}</div>`;
+            }).join('');
+        }
+        function hl(t, q) { return esc(t).replace(new RegExp('(' + eR(q) + ')', 'gi'), '<span class="hl">$1</span>') }
+        function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') }
+        function eR(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') }
+        function mP(id) { S.p[id] = Date.now(); localStorage.setItem('p', JSON.stringify(S.p)) }
+        let tR = false;
+        function tT() { if (tR) { clearInterval(S.ti); tR = false } else { S.ti = setInterval(() => { S.tv++; const e = $('tm'); if (e) { e.textContent = Math.floor(S.tv / 60) + ':' + String(S.tv % 60).padStart(2, '0'); if (S.tv > DB.questions[S.si].time) e.style.color = 'var(--err)' } }, 1000); tR = true } }
+        function rT() { clearInterval(S.ti); tR = false; S.tv = 0; const e = $('tm'); if (e) { e.textContent = '0:00'; e.style.color = 'var(--ac3)' } }
+        document.querySelectorAll('.ni').forEach(n => n.addEventListener('click', () => { S.sec = n.dataset.s; rT(); R() }));
+        $('gs').addEventListener('input', () => { if (S.sec !== 'search') { S.sec = 'search'; document.querySelectorAll('.ni').forEach(n => n.classList.toggle('on', n.dataset.s === 'search')) } R() });
+        document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); $('gs').focus() } });
+        R();
+    </script>
+</body>
+
+</html>

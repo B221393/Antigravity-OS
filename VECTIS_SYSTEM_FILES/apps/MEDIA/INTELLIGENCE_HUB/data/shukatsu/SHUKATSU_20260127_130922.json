@@ -1,0 +1,24 @@
+{
+  "title": "Shizen Connect、JERA Crossのリソース",
+  "link": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE1SYXhKUllXUGoxODUwNzFheWwwYWdfMHpBUU9nSnNhOUxwcWRmQ1VibmRNbmtuRXAwUWFNcUNjSDJ0VHBub0Fv?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiR0FVX3lxTE1SYXhKUllXUGoxODUwNzFheWwwYWdfMHpBUU9nSnNhOUxwcWRmQ1VibmRNbmtuRXAwUWFNcUNjSDJ0VHBub0Fv?oc=5\" target=\"_blank\">Shizen Connect、JERA Crossのリソースア",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "Shizen ConnectがJERA Crossのリソースアグリゲーションシステムに採用。",
+    "true_intent": "Shizen Connectの技術力のアピールと、JERA Crossのスマートエネルギーへの取り組みを宣伝。再エネ関連事業における両社の連携強化を示唆。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "Shizen Connect",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## Shizen Connect 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 地域活性化を軸とした多角的な事業展開。再生可能エネルギー事業で培ったノウハウを、地域課題解決に横展開する実行力と、地域との深い信頼関係が強み。\n2.  **26-27卒への温度感**: 採用意欲は高く、特に地域創生への熱意と多様なスキルを持つ人材を重視。インターンシップ等で早期接点を持つ傾向。\n3.  **EGO適性**: データに基づいた意思決定を重視し、AI活用にも積極的。論理的思考力と課題解決能力は高く評価される。\n4.  **裏の弱点**: 事業拡大のスピードに対して、組織体制や人材育成が追いついていない可能性。地方勤務の覚悟と、変化への柔軟性が求められる。\n",
+    "deep_web_intel": "**Shizen Connect Summary:**\n\n*   **Focus:** IoT/AI solutions for distributed energy resources (DERs) like batteries, EVs, heat pump water heaters. EnergyTech solutions.\n*   **Services:** Control systems for solar-plus-storage, VPP (Virtual Power Plant) solutions for capacity markets.\n*   **Partners:** Tokyo Gas.\n*   **Parent Company:** Shizen Energy.\n\n**Gap Analysis:**\n\n*   Limited detail on specific AI/IoT tech.\n*   Missing customer case studies.\n*   Lacks specific solution benefits."
+  },
+  "critical_analysis": {
+    "true_intent": "Shizen Connectの技術力のアピールと、JERA Crossのスマートエネルギーへの取り組みを宣伝。再エネ関連事業における両社の連携強化を示唆。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:09:22.299232",
+  "source": "JERA"
+}

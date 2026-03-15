@@ -1,0 +1,16 @@
+TYPE:FRACTAL_NODE
+TERM:1. 分治法 (Divide and Conquer)
+SRC:Derived from 該当なし
+DEPTH:3
+TIME:2026-01-11 21:22
+---BODY---
+## 分治法 (Divide and Conquer)
+
+【定義】問題分割征服之術（問題分割、征服の術）
+【構造】
+*   問題分割：小問題化
+*   递归解決：各個撃破
+*   結果結合：集成大成
+【意義】化繁為簡，高效解難（複雑を簡潔にし、効率的に難題を解く）
+【関連】递归 (Recursion)、算法 (Algorithm)、动态规划 (Dynamic Programming)
+

@@ -1,0 +1,23 @@
+{
+  "title": "エムスリー、「従業員エンゲージメントと健康経営」をテーマとし",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9oVW5OQWpjYVdnMkxXUFcyUWllcjZ0UW5XSmVvd1VaeXJvaGdXRDFEU0wyMGxPYWZVSjA5SnhSY01uM2ZnQmVpcFdHWVRrRHYtVlBxQV9GZVBnOHlrOU4zVmVZVmFkODZ1dkE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE9oVW5OQWpjYVdnMkxXUFcyUWllcjZ0UW5XSmVvd1VaeXJvaGdXRDFEU0wyMGxPYWZVSjA5SnhSY01uM2ZnQmVpcFdHWVRrRHYtVlBxQV9GZVBnOHlrOU4zVmVZVmFkODZ1dkE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "エムスリーが従業員エンゲージメントと健康経営に関するオンラインセミナーを開催。",
+    "true_intent": "エムスリーの健康経営ソリューションの宣伝。顧客獲得と企業イメージ向上を狙う。医療業界への影響力拡大も視野か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "エムスリー",
+    "action_required": false,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。エムスリーの本質的価値と27卒が狙うべき理由を、以下の通り構造化します。\n\n1.  **主要武器**: 医師プラットフォーム。圧倒的な医師会員数と、そこから生まれるデータ・ネットワーク効果が強み。製薬マーケティングの効率化に貢献。\n\n2.  **26-27卒への温度感**: 採用意欲は高い。事業拡大に伴い、多様な専門性を持つ人材を積極的に採用。グローバル展開も視野に。\n\n3.  **EGO適性**: 高い。データドリブンな意思決定を重視し、AI活用にも積極的。論理的思考力とテクノロジーへの関心は必須。\n\n4.  **裏の弱点**: 医師への依存度が高い。規制変更や競合参入による影響を受けやすい。急成長ゆえの組織の硬直化リスクも。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "エムスリーの健康経営ソリューションの宣伝。顧客獲得と企業イメージ向上を狙う。医療業界への影響力拡大も視野か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:05:13.741781",
+  "source": "Active:サイバーエージェント"
+}

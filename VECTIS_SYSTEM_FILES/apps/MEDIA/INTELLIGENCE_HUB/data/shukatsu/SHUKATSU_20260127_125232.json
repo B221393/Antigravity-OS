@@ -1,0 +1,24 @@
+{
+  "title": "三井物産とKDDI、AI・人流分析で都市DXを推進する新会社",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9EbDF4aGUyUFR0Q2xEckhvS1pSZ1Y2c3VpNmlPRlVvVmsxYlNPSURvam9FbjYyRzZOdW5YS3JQM1k1cVpuZDd4SHZfMG0weVRWemppQ0RNS0k1VE56TElGLVdkakVUeTlqTzhF?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTE9EbDF4aGUyUFR0Q2xEckhvS1pSZ1Y2c3VpNmlPRlVvVmsxYlNPSURvam9FbjYyRzZOdW5YS3JQM1k1cVpuZDd4SHZfMG0weVRWemppQ0RNS0k1VE56TElGLVdkakVUeTlqTzhF?oc=5\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "三井物産とKDDIが人流分析AI新会社GEOTRA設立。都市DX推進、スマートシティ貢献。",
+    "true_intent": "都市OSの覇権争いの一環。データ収集・分析による都市開発への影響力強化、関連事業への参入促進、投資回収と収益最大化が狙い。個人情報利用への懸念も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "三井物産、KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## 三井物産\n\n1.  **主要武器**: グローバルネットワークと多様な事業投資。資源、エネルギー、食糧等の「生活必需インフラ」を握る影響力。\n2.  **26-27卒への温度感**: 採用数維持。多様な人材を求めるが、リーダーシップと事業創造への強い意欲を重視。\n3.  **EGO適性**: 高い。複雑な情報を分析し、構造的に捉える能力は必須。AI活用も推進中。\n4.  **裏の弱点**: 資源価格変動に業績が左右されやすい。旧態依然とした商社体質が残存する可能性も。\n\n## KDDI\n\n1.  **主要武器**: 通信インフラを基盤とした、生活に根ざしたサービス展開。au経済圏の拡大と、企業DX支援。\n2.  **26-27卒への温度感**: デジタル人材獲得競争激化。データサイエンス、エンジニアリング領域に注力。\n3.  **EGO適性**: 非常に高い。データドリブンな意思決定と、AIを活用した新規事業開発を重視。\n4.  **裏の弱点**: 通信事業の寡占化による規制リスク。新規事業の成功確率は不透明。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   Request involves extracting information about \"三井物産\" (Mitsui & Co.) and \"KDDI\".\n*   Web scraping attempts on insurance regulations resulted in SSL certificate verification errors.\n\n**Structured Summary:**\n\n*   **Request:** Information extraction on specific companies.\n*   **Data Retrieval:** Attempted scraping from legal websites failed due to SSL issues.\n*   **Error Type:** SSL certificate verification failure.\n\n**Gap Analysis:**\n\n*   Missing: Actual data/information about 三井物産 and KDDI.\n*   Problem: SSL certificate issues prevent data retrieval."
+  },
+  "critical_analysis": {
+    "true_intent": "都市OSの覇権争いの一環。データ収集・分析による都市開発への影響力強化、関連事業への参入促進、投資回収と収益最大化が狙い。個人情報利用への懸念も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:52:32.858394",
+  "source": "Active:三井物産"
+}

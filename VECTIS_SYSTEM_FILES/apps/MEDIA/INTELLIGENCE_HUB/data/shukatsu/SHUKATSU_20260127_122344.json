@@ -1,0 +1,24 @@
+{
+  "title": "「健康経営銘柄2025」及び「Nextなでしこ 共働き・共育",
+  "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1uOWtpNW9ZRWplT0pkbDFGYjlMdWhiNFRHcDB0YTlPQWdubV9nMThyZVdjX3gtbVBERGNtTWZyS3F2STBCQWdzU0o4clZiYmc1TmlBSTdieW03WWgwMEJ2d0ZvQlU?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZEFVX3lxTE1uOWtpNW9ZRWplT0pkbDFGYjlMdWhiNFRHcDB0YTlPQWdubV9nMThyZVdjX3gtbVBERGNtTWZyS3F2STBCQWdzU0o4clZiYmc1TmlBSTdieW03WWgwMEJ2d0ZvQlU?oc=5\" target=\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "伊藤忠商事が「健康経営銘柄2025」「Nextなでしこ」に選定。企業イメージ向上を狙う。",
+    "true_intent": "優秀な人材獲得競争激化の中、働きがいのある企業としてPRし、採用ブランディングを強化。政府の政策に沿うことで、企業イメージ向上と税制優遇などの恩恵を期待。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "伊藤忠商事",
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。伊藤忠商事の本質的価値と27卒が狙うべき理由を下記に要約します。\n\n1.  **主要武器**: 現場主義と多様なビジネスを束ねる総合力。個々の事業投資判断の確かさと、それをグループ全体でシナジーを生み出す力。\n2.  **26-27卒への温度感**: 優秀層の囲い込みを強化。海外経験や特定分野への高い専門性を持つ学生を積極的に採用する傾向。\n3.  **EGO適性**: データドリブン経営を推進しており、構造的思考力とAI活用に高い関心を持つ人材を歓迎する文化。\n4.  **裏の弱点**: 資源価格変動や地政学リスクに業績が左右されやすい。組織が巨大なため、個人の裁量権が制限される可能性も。\n",
+    "deep_web_intel": "```json\n{\n  \"company\": \"伊藤忠商事\",\n  \"description\": \"大手総合商社。幅広いビジネスをグローバルに展開。繊維、機械、金属、エネルギー、化学品、食料、住生活、情報、金融等の分野で事業を行う。\",\n  \"stock_code\": \"8001\",\n  \"key_points\": [\n    \"幅広いビジネス分野\",\n    \"グローバル展開\",\n    \"大手総合商社\"\n  ],\n  \"summary\": \"伊藤忠商事は、多岐にわたる分野でグローバルに事業を展開する大手総合商社。\",\n  \"gap_analysis\": \"Wikipediaデータ取得エラー\"\n}\n```"
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材獲得競争激化の中、働きがいのある企業としてPRし、採用ブランディングを強化。政府の政策に沿うことで、企業イメージ向上と税制優遇などの恩恵を期待。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:23:44.809949",
+  "source": "Active:伊藤忠商事"
+}

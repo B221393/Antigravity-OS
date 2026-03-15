@@ -1,0 +1,22 @@
+{
+  "title": "就職四季報 企業研究・インターンシップ版2027年版 - 東",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "企業の経済状況や人事動向に関する情報が中心に含まれていますが、利権構造や意図は不明確な点があります",
+    "true_intent": "企業の経済状況や人事動向に関する情報を分析し、企業の利益や競争力に関する情報を推測する可能性があると考えられます",
+    "bias_warning": "ポジショントークの可能性があり、企業の利権構造や意図が特定される可能性があります",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "情報",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "企業の経済状況や人事動向に関する情報を分析し、企業の利益や競争力に関する情報を推測する可能性があると考えられます",
+    "bias_warning": "ポジショントークの可能性があり、企業の利権構造や意図が特定される可能性があります"
+  },
+  "collected_at": "2026-01-26T20:28:42.998044",
+  "source": "インターン (Google)"
+}

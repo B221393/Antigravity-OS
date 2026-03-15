@@ -1,0 +1,24 @@
+{
+  "title": "KDDI Open Innovation Fund 3号、エ",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9MUXRjN0dSbU1kb3ZiV21QODRjemJXNGJ4ZDBZQmxuc0xsU2M5NmZOT0RnMWc2NnpHc1B0Ynp6WHZnMjVmaEUxRFRkcFhpSGpEMGJ2QU82RlppYkFTQXZVTmoxanhQR1RnSWotRg?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE9MUXRjN0dSbU1kb3ZiV21QODRjemJXNGJ4ZDBZQmxuc0xsU2M5NmZOT0RnMWc2NnpHc1B0Ynp6WHZnMjVmaEUxRFRkcFhpSGpEMGJ2QU82RlppYkFTQXZVTmoxanhQR1RnSWotRg?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIがエンジニア採用支援のファインディに追加出資。エンジニア獲得競争激化を示唆。",
+    "true_intent": "エンジニア獲得競争の激化を背景に、自社グループのエンジニア採用強化と、ファインディとの連携による採用コスト削減を狙う。スタートアップ支援というCSRアピールも含む。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## KDDI 本質的価値と27卒が狙うべき理由\n\n1. **主要武器**: 通信インフラ基盤とau経済圏の顧客データ。生活に根ざしたサービス展開で、社会課題解決に繋がる事業創出が強み。\n2. **26-27卒への温度感**: 多様な人材を求める傾向。通信知識だけでなく、データ分析・AI・ビジネス開発など、幅広いスキルを持つ学生に期待。\n3. **EGO適性**: デジタル変革を推進しており、構造的思考やAI活用を重視する文化。EGO人材は活躍しやすい。\n4. **裏の弱点**: 大企業特有の意思決定の遅さ。新規事業のスピード感や、既存事業との連携に課題が残る可能性も。\n",
+    "deep_web_intel": "No search results found to analyze."
+  },
+  "critical_analysis": {
+    "true_intent": "エンジニア獲得競争の激化を背景に、自社グループのエンジニア採用強化と、ファインディとの連携による採用コスト削減を狙う。スタートアップ支援というCSRアピールも含む。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T14:02:16.175263",
+  "source": "Active:KDDI"
+}

@@ -1,0 +1,37 @@
+{
+    "company": "KDDI",
+    "vision": "KDDI VISION 2030 (誰もが思いを実現できる社会)",
+    "strategy": "サテライト成長戦略 (5G, Starlink, Beyond 5G)",
+    "focus_areas": [
+        {
+            "area": "Connected Experience",
+            "details": "通信の物理的な接続を超えた、心理的・情緒的な価値の創出。",
+            "keywords": [
+                "CX",
+                "ライフデザイン",
+                "aU",
+                "Web3",
+                "メタバース"
+            ]
+        },
+        {
+            "area": "AI-Driven Transformation",
+            "details": "全事業へのAI実装によるDX加速。",
+            "keywords": [
+                "LLM",
+                "データ利活用",
+                "意思決定の高度化"
+            ]
+        },
+        {
+            "area": "Agile/Naiseika",
+            "details": "ベンダー依存からの脱却、開発の内製化とスクラム開発の徹底。",
+            "keywords": [
+                "自律型エンジニア",
+                "内製開発センター",
+                "キャリア自律"
+            ]
+        }
+    ],
+    "intelligence_updates": []
+}

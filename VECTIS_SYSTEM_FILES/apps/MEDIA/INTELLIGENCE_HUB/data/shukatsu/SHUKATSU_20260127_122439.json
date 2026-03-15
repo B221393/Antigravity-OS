@@ -1,0 +1,24 @@
+{
+  "title": "「デンソーの最高機密」はこうして中国人の手に渡った…パソコン",
+  "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBwRjNnT3A1bVdzTXV0T1FfRWZGVEpnZUFSQ3FJUUJFLVU3QVV0VUpIR3Izbi1KWkR0VVhkZHNXd1l3eDNUb1BwbkV5eGJycWh6b3dGNE5n0gFPQVVfeXFMTjhETXlCOHo3YnpRZDZRVGg4QkRQWjZOOTlNcF8yY3JtaElfeFI0ckJTWmM4MWF4THVFQmtKUGlSclNSd1VyckNWV0g5MzdlUQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTFBwRjNnT3A1bVdzTXV0T1FfRWZGVEpnZUFSQ3FJUUJFLVU3QVV0VUpIR3Izbi1KWkR0VVhkZHNXd1l3eDNUb1BwbkV5eGJycWh6b3dGNE5n0gFPQVVfeXFMTjhETXlCOHo3YnpRZDZRVG",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "デンソー機密情報漏洩事件を報道。中国への技術流出リスクを強調。",
+    "true_intent": "技術流出への危機感喚起と、セキュリティ対策の重要性訴求。デンソーやセキュリティ関連企業のPRの可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "デンソー",
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "## デンソー：就活生向け本質的解剖\n\n1.  **主要武器**: トヨタグループの技術力と、自動車部品で培った高品質・高信頼性。CASE領域への積極投資と多角化推進による、未来への布石。\n2.  **26-27卒への温度感**: 新卒採用は継続。CASE領域強化に向け、情報系・AI人材獲得に注力。従来の機械系に加え、多様なバックグラウンドを歓迎。\n3.  **EGO適性**: プロセス重視の文化だが、近年はアジャイル開発やAI活用を推進。構造的思考力に加え、変化への柔軟性も重視される。\n4.  **裏の弱点**: 自動車産業の変革期における、既存事業からの脱却。新規事業の収益化と、組織文化の変革が急務。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Denso (6902.T):** Stock information available on Yahoo! Finance.\n*   **Yahoo! Finance:** Provides stock prices, charts, news, and board.\n\n**Structured Summary:**\n\n*   **Company:** Denso (Ticker: 6902.T)\n*   **Data Source:** Yahoo! Finance.\n*   **Content:** Stock data (price, charts, news).\n\n**Gap Analysis:**\n\n*   **Missing:** Detailed company information (beyond stock data), business activities, history, financials.\n*   **Website Unavailable:** Denso official website is blocked (HTTP 403).\n*   **Wikipedia Error:** Wikipedia page access failed (encoding error)."
+  },
+  "critical_analysis": {
+    "true_intent": "技術流出への危機感喚起と、セキュリティ対策の重要性訴求。デンソーやセキュリティ関連企業のPRの可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:24:39.728082",
+  "source": "Active:デンソー"
+}

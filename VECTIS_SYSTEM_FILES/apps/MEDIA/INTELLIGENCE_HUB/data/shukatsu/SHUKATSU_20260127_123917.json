@@ -1,0 +1,23 @@
+{
+  "title": "DGFTとauフィナンシャルサービスの共同開発による KDD",
+  "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1mRUphN2hQck9VaEhiYnJQVmxEaHJFdTIxMlBiTDVadVk2YXQwZmNLcUJuN0hsT2U5N2pjMGJteFp0eWVxd3NQWFVEOHJwOHJQSEs4NG1IRWI?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTE1mRUphN2hQck9VaEhiYnJQVmxEaHJFdTIxMlBiTDVadVk2YXQwZmNLcUJuN0hsT2U5N2pjMGJteFp0eWVxd3NQWFVEOHJwOHJQSEs4NG1IRWI?oc=5\" target=\"_blank\">DGFTとauフ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "KDDIグループの次世代決済プラットフォーム「NESTA」が通信料金決済に導入。",
+    "true_intent": "KDDIグループの金融事業強化と、DGの決済プラットフォーム技術の宣伝。囲い込み戦略とデータ収集の強化が目的。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "デジタルガレージ",
+    "action_required": false,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## デジタルガレージ 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: シード投資と事業共創による、国内外スタートアップへの深い知見とネットワーク。決済事業を柱に、多様な事業ポートフォリオを形成する**「総合スタートアップ支援企業」**。\n\n2.  **26-27卒への温度感**: 新卒採用は少数精鋭。求めるレベルは高く、**自ら課題を見つけ、事業を推進できる人材**を重視。アントレプレナーシップ育成に積極的。\n\n3.  **EGO適性**: データドリブンな意思決定を重視し、AI技術の活用にも積極的。**構造的思考力とテクノロジーへの感度が高い人材**は活躍しやすい環境。\n\n4.  **裏の弱点**: 多角的な事業展開ゆえに、**個々の事業規模は必ずしも大きくない**。大企業のような安定性や福利厚生を求める層には不向き。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIグループの金融事業強化と、DGの決済プラットフォーム技術の宣伝。囲い込み戦略とデータ収集の強化が目的。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:39:17.780997",
+  "source": "KDDI 採用 Deep Dive"
+}

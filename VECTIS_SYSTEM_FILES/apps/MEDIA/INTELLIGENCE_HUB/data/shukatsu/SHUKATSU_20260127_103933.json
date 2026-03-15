@@ -1,0 +1,23 @@
+{
+  "title": "新たな科学技術が社会に受容されるには？－神戸大学のELSI研",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1ia1NkWmxwc2pkTEFMVVVWU2FSbnp3cUhDTXh6YW9neFdkUllMQVN1VDZnZ2NpUnlXSmFzbENVblJxZ09kNGdwLVUtakIzdEpRTVAxRXpxM3ViX1JOaUgxTkkzLVRWMkk?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1ia1NkWmxwc2pkTEFMVVVWU2FSbnp3cUhDTXh6YW9neFdkUllMQVN1VDZnZ2NpUnlXSmFzbENVblJxZ09kNGdwLVUtakIzdEpRTVAxRXpxM3ViX1JOaUgxTkkzLVRWMkk?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "このニュースは、科学技術の社会への受容状況について議論するニュースで、特に神戸大学のELSI研究との関連性が高いことが注目されます。",
+    "true_intent": "ELSI研究の成果が、社会への受容状況に関与していると考えられます。特に、科学技術は社会への影響は非常に大きく、ELSI研究がその影響を分析するための重要なツールとなる可能性があります。",
+    "bias_warning": "ELSI研究は、特定の分野の研究であり、その成果を他の分野に適用するための拡張可能性は限定的なと考えられます。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "academic_deep_dive": "## 新たな科学技術の社会への受容\n\n**1. 歴史的背景 (Historical Context)**\n\n新しい科学技術の社会への受容は、歴史的に様々な文脈で記述されています。文明の起源から、科学技術は人類の文明にとって重要な進歩であり、生活質の向上や疾病診断の向上など、社会的な影響が大きいことが指摘されています。また、現代では科学技術の進歩により、新たな技術が開発され、既存技術をより効率的に運用するための可能性が高くなっています。\n\n**2. 現代的意義 (Modern Relevance)**\n\n新しい科学技術の社会への受容は、社会構造への影響を大きく表しています。例えば、医療技術の進歩は医療従事者の確保や疾病予防の向上を支援します。また、情報技術の活用は、知識の共有やコミュニケーションの促進など、社会的な相互理解の向上に役立ちます。\n\n**3. 批判的視座 (Critical Perspective)**\n\n新しい科学技術の社会への受容には、いくつかの批判的視座も指摘されています。例えば、社会間への差別やテクノ・ bepaルの支配などの懸念が挙げられます。また、環境的な影響や倫理的な問題も指摘されています。"
+  },
+  "critical_analysis": {
+    "true_intent": "ELSI研究の成果が、社会への受容状況に関与していると考えられます。特に、科学技術は社会への影響は非常に大きく、ELSI研究がその影響を分析するための重要なツールとなる可能性があります。",
+    "bias_warning": "ELSI研究は、特定の分野の研究であり、その成果を他の分野に適用するための拡張可能性は限定的なと考えられます。"
+  },
+  "collected_at": "2026-01-27T10:39:33.139954",
+  "source": "科学技術 社会論"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "【株式会社コクリコ】地方旧帝大/国立大など27卒 1000名",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFB4X3FkY0dlU3VUazBBRXgtLTk1ZjdtYzlBRHBsOEVXQ2g2TGI1RzlzbWN3S1lTRnFxNHBfcXVEUnFwTHJRNjIwLXIwU180c1d5aW40U1o5TDd6dWFWZmF2dU5rZHBPVHIyTkE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTFB4X3FkY0dlU3VUazBBRXgtLTk1ZjdtYzlBRHBsOEVXQ2g2TGI1RzlzbWN3S1lTRnFxNHBfcXVEUnFwTHJRNjIwLXIwU180c1d5aW40U1o5TDd6dWFWZmF2dU5rZHBPVHIyTkE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "コクリコが地方旧帝大生向け大規模オンライン採用イベント開催。早期囲い込みか。",
+    "true_intent": "優秀な地方学生の早期囲い込みによる採用競争優位性の確立。コクリコの企業ブランディング向上と、採用コンサルティング事業の潜在顧客獲得が狙い。地方創生への貢献を謳いながらも、人材流出を加速させる可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "株式会社コクリコ",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## 株式会社コクリコ 本質的価値分析 (27卒向け)\n\n1. **主要武器**: 顧客体験を重視した独自のマーケティング戦略と、データ分析に基づくPDCAサイクルによる継続的な改善。顧客との深いエンゲージメントが強み。\n\n2. **26-27卒への温度感**: 積極採用傾向。特に、データ分析やデジタルマーケティングに強い人材を求めている。インターンシップからの採用も活発。\n\n3. **EGO適性**: 構造的思考は必須。AI活用はまだ発展途上だが、データドリブンな文化であり、積極的に取り組む姿勢が評価される。\n\n4. **裏の弱点**: 急成長に伴う組織体制の未整備。部署間の連携不足や、トップダウンの意思決定が課題となる可能性も。\n",
+    "deep_web_intel": "**REQ:** 株式会社コクリコ (Kabushiki-gaisha Kokuriko)\n\n**Key Pts (Inferred):**\n\n*   \"株式会社\" (Kabushiki-gaisha) is a common type of Japanese company.\n*   The provided search results indicate that understanding the meaning and usage of \"株式会社\" in Japanese company names is a topic of interest.\n\n**Structured Summary (Inferred):**\n\nThe request seeks information about 株式会社コクリコ. Key information likely involves:\n\n1.  The meaning of \"株式会社\" as a corporate designation in Japan.\n2.  The significance of using \"株式会社\" as a suffix in Japanese company names.\n3.  Potentially, the type of company denoted by \"株式会社\" and alternative company structures in Japan.\n\n**Gap Analysis:**\n\n*   The provided search results are inaccessible (HTTP 403 errors).\n*   The specific business of \"コクリコ\" is unknown.\n*   Detailed information about Japanese company types and the legal implications of \"株式会社\" is missing."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な地方学生の早期囲い込みによる採用競争優位性の確立。コクリコの企業ブランディング向上と、採用コンサルティング事業の潜在顧客獲得が狙い。地方創生への貢献を謳いながらも、人材流出を加速させる可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:32:31.870666",
+  "source": "Active:KDDI"
+}

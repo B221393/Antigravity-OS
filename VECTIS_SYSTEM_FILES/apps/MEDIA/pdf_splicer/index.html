@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Splicer - EGO</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .tool-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .tool-section h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .file-input {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: white;
+            border: 2px dashed #11998e;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .file-input:hover {
+            border-color: #38ef7d;
+            background: #f0fff4;
+        }
+
+        .file-input input {
+            display: none;
+        }
+
+        .page-range {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .page-range input {
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .page-range input:focus {
+            outline: none;
+            border-color: #11998e;
+        }
+
+        button {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(17, 153, 142, 0.4);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .file-list {
+            margin: 15px 0;
+        }
+
+        .file-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        .file-name {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .file-pages {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .remove-btn {
+            background: #ff4444;
+            padding: 6px 12px;
+            font-size: 12px;
+            width: auto;
+        }
+
+        .remove-btn:hover {
+            background: #cc0000;
+        }
+
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .feature-desc {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📄 PDF Splicer</h1>
+        <p class="subtitle">Merge, split, and extract PDF pages with ease</p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✂️</div>
+                <div class="feature-title">Split Pages</div>
+                <div class="feature-desc">Extract specific pages</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📎</div>
+                <div class="feature-title">Merge PDFs</div>
+                <div class="feature-desc">Combine multiple files</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔀</div>
+                <div class="feature-title">Reorder</div>
+                <div class="feature-desc">Arrange pages freely</div>
+            </div>
+        </div>
+
+        <!-- Split PDF -->
+        <div class="tool-section">
+            <h3>✂️ Split PDF (Extract Pages)</h3>
+            <label class="file-input">
+                <input type="file" id="splitFile" accept=".pdf" onchange="handleSplitFile(event)">
+                <div>📁 Click to select PDF file</div>
+            </label>
+            <div id="splitInfo" class="hidden">
+                <div class="page-range">
+                    <input type="number" id="startPage" placeholder="Start page (e.g., 1)" min="1">
+                    <input type="number" id="endPage" placeholder="End page (e.g., 5)" min="1">
+                </div>
+                <button onclick="splitPDF()">✂️ Extract Pages</button>
+            </div>
+        </div>
+
+        <!-- Merge PDFs -->
+        <div class="tool-section">
+            <h3>📎 Merge Multiple PDFs</h3>
+            <label class="file-input">
+                <input type="file" id="mergeFiles" accept=".pdf" multiple onchange="handleMergeFiles(event)">
+                <div>📁 Click to select multiple PDF files</div>
+            </label>
+            <div class="file-list" id="mergeFileList"></div>
+            <button id="mergeBtn" onclick="mergePDFs()" disabled>📎 Merge All PDFs</button>
+        </div>
+
+        <div id="status" class="status hidden"></div>
+    </div>
+
+    <script>
+        const { PDFDocument } = PDFLib;
+        let splitPdfDoc = null;
+        let mergeFiles = [];
+
+        async function handleSplitFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                splitPdfDoc = await PDFDocument.load(arrayBuffer);
+                const pageCount = splitPdfDoc.getPageCount();
+
+                document.getElementById('splitInfo').classList.remove('hidden');
+                document.getElementById('startPage').max = pageCount;
+                document.getElementById('endPage').max = pageCount;
+                document.getElementById('endPage').value = pageCount;
+
+                showStatus(`✅ Loaded: ${file.name} (${pageCount} pages)`, 'info');
+            } catch (error) {
+                showStatus('❌ Error loading PDF: ' + error.message, 'error');
+            }
+        }
+
+        async function splitPDF() {
+            if (!splitPdfDoc) {
+                showStatus('❌ Please select a PDF file first', 'error');
+                return;
+            }
+
+            const start = parseInt(document.getElementById('startPage').value || 1);
+            const end = parseInt(document.getElementById('endPage').value);
+
+            if (!end || start > end) {
+                showStatus('❌ Invalid page range', 'error');
+                return;
+            }
+
+            try {
+                const newPdf = await PDFDocument.create();
+                const pageCount = splitPdfDoc.getPageCount();
+
+                if (start < 1 || end > pageCount) {
+                    showStatus(`❌ Page range must be between 1 and ${pageCount}`, 'error');
+                    return;
+                }
+
+                for (let i = start - 1; i < end; i++) {
+                    const [copiedPage] = await newPdf.copyPages(splitPdfDoc, [i]);
+                    newPdf.addPage(copiedPage);
+                }
+
+                const pdfBytes = await newPdf.save();
+                downloadPDF(pdfBytes, `extracted_pages_${start}-${end}.pdf`);
+                showStatus(`✅ Extracted pages ${start}-${end}`, 'success');
+            } catch (error) {
+                showStatus('❌ Error: ' + error.message, 'error');
+            }
+        }
+
+        function handleMergeFiles(event) {
+            const files = Array.from(event.target.files);
+            mergeFiles = files;
+
+            const listHtml = files.map((f, i) => `
+                <div class="file-item">
+                    <div>
+                        <div class="file-name">📄 ${f.name}</div>
+                    </div>
+                    <button class="remove-btn" onclick="removeFile(${i})">🗑️</button>
+                </div>
+            `).join('');
+
+            document.getElementById('mergeFileList').innerHTML = listHtml;
+            document.getElementById('mergeBtn').disabled = files.length < 2;
+        }
+
+        function removeFile(index) {
+            mergeFiles.splice(index, 1);
+            const dt = new DataTransfer();
+            mergeFiles.forEach(file => dt.items.add(file));
+            document.getElementById('mergeFiles').files = dt.files;
+            handleMergeFiles({ target: { files: mergeFiles } });
+        }
+
+        async function mergePDFs() {
+            if (mergeFiles.length < 2) {
+                showStatus('❌ Please select at least 2 PDF files', 'error');
+                return;
+            }
+
+            try {
+                showStatus('🔄 Merging PDFs...', 'info');
+
+                const mergedPdf = await PDFDocument.create();
+
+                for (const file of mergeFiles) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await PDFDocument.load(arrayBuffer);
+                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                    copiedPages.forEach(page => mergedPdf.addPage(page));
+                }
+
+                const pdfBytes = await mergedPdf.save();
+                downloadPDF(pdfBytes, 'merged_document.pdf');
+                showStatus(`✅ Successfully merged ${mergeFiles.length} PDFs`, 'success');
+            } catch (error) {
+                showStatus('❌ Error merging: ' + error.message, 'error');
+            }
+        }
+
+        function downloadPDF(pdfBytes, filename) {
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            status.classList.remove('hidden');
+
+            if (type === 'success') {
+                setTimeout(() => status.classList.add('hidden'), 5000);
+            }
+        }
+    </script>
+</body>
+
+</html>

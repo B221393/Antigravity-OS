@@ -1,0 +1,22 @@
+{
+  "title": "非管理職の平均給与者、ジョブ型で月額最大約8.5万円の賃上げ",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5hVGpsODNYY0FXNHJoTUdENDJDR0ZIMU1nbDh1M19RQWNBOERsdzVrWFpjc0R3aExzeE53NjlSZ2E4dm90OVdSaU9oSzF3dVZoakpIakVLd0pqOEx0RzdHaVVhc083SHRPTUprbA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE5hVGpsODNYY0FXNHJoTUdENDJDR0ZIMU1nbDh1M19RQWNBOERsdzVrWFpjc0R3aExzeE53NjlSZ2E4dm90OVdSaU9oSzF3dVZoakpIakVLd0pqOEx0RzdHaVVhc083SHRPTUprbA?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "この情報は、ジョブ型 non-management職の平均給与額に関するニュースであり、その背後にある思惑や利権構造を推測するための重要な指標となる可能性があります。",
+    "true_intent": "この情報の裏にある意図や、誰が得をするか（利権・宣伝色）を分析し、利権構造を推測するための可能性があります。",
+    "bias_warning": "この情報は、 employer の利権や宣伝目的を暗示する可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図や、誰が得をするか（利権・宣伝色）を分析し、利権構造を推測するための可能性があります。",
+    "bias_warning": "この情報は、 employer の利権や宣伝目的を暗示する可能性があります。"
+  },
+  "collected_at": "2026-01-26T17:06:48.946192",
+  "source": "KDDI 採用 Deep Dive"
+}

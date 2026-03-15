@@ -1,0 +1,23 @@
+{
+  "title": "サイバー攻撃を乗り越えたのはニコニコだけじゃない KADOK",
+  "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9TenA5THZYMXdIUks0X0Vsa2hac2FUMzJmZ0FqdDM0N2hhQW9zZ0U0N0lXVGRnQTVCWkJuNTQ5MEdHVk5LMDYwR25GX2JfcVM4WTRkZE1TQ1ZfTzM3N3Vvcko5M0tlX0dBcXlQM09OUnpjMGxoRVRpUlp3c010SnM?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMif0FVX3lxTE9TenA5THZYMXdIUks0X0Vsa2hac2FUMzJmZ0FqdDM0N2hhQW9zZ0U0N0lXVGRnQTVCWkJuNTQ5MEdHVk5LMDYwR25GX2JfcVM4WTRkZE1TQ1ZfTzM3N3Vvcko5M0tlX0dBcXlQM09OUn",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "KADOKAWAのサイバー攻撃後のデータ基盤移行事例紹介。ニコニコ以外も復旧。",
+    "true_intent": "KADOKAWAの技術力アピール。セキュリティ対策と復旧能力の高さを示し、企業イメージ向上を狙う。DX推進の文脈で投資を呼び込みたい思惑も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KADOKAWA",
+    "action_required": false,
+    "category": "出版/メディア/IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。KADOKAWAの本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: 多様なIP（知的財産）群と、それを多角的に展開するメディアミックス戦略。出版に留まらず、アニメ、ゲーム、イベント等、幅広い領域で収益化する能力が強み。\n2.  **26-27卒への温度感**: デジタル戦略強化に伴い、エンジニアやデータサイエンティスト等の技術職採用を積極的に拡大中。コンテンツ企画・編集職も依然として重要視。\n3.  **EGO適性**: 組織構造改革を進めており、データドリブンな意思決定やAI活用に意欲的。構造的思考力と変化への対応力は高く評価される。\n4.  **裏の弱点**: メディアミックス戦略の成否が業績を左右。ヒット作に依存する傾向があり、安定的な収益基盤の確立が課題。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "KADOKAWAの技術力アピール。セキュリティ対策と復旧能力の高さを示し、企業イメージ向上を狙う。DX推進の文脈で投資を呼び込みたい思惑も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T18:10:08.547808",
+  "source": "Active:KADOKAWA"
+}

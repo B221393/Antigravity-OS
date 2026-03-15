@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGO OS - SPATIAL NEXUS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f1015;
+            --text-light: #ffffff;
+            --highlight: #00e6e6;
+            /* Cyan focus */
+            --highlight-dim: rgba(0, 230, 230, 0.3);
+            --card-bg: rgba(25, 27, 35, 0.9);
+            --connection-line: #00e6e6;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Abstract Background */
+        .ambient-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0, 230, 230, 0.05) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Top Bar */
+        .system-bar {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 10;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .title-display {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Horizontal Carousel Setup */
+        .carousel-viewport {
+            flex: 1;
+            position: relative;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1200px;
+        }
+
+        /* The Neon Connection Line */
+        .horizontal-nexus-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--connection-line);
+            box-shadow: 0 0 15px var(--connection-line), 0 0 5px var(--connection-line);
+            transform: translateY(-50%);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 15vh;
+            /* Spacing between apps */
+            padding: 0 50vw;
+            /* Padding so active card is centered */
+            align-items: center;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* Individual App Card */
+        .app-card {
+            width: 65vw;
+            height: 70vh;
+            flex-shrink: 0;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            transform: scale(0.85);
+            /* Inactive scale */
+            opacity: 0.4;
+        }
+
+        /* Active App State */
+        .app-card.active {
+            transform: scale(1);
+            opacity: 1;
+            border-color: var(--highlight);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px var(--highlight-dim);
+            z-index: 10;
+        }
+
+        /* Card Header with transparent keyboard key symbol */
+        .card-header {
+            height: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 15px;
+        }
+
+        .keyboard-key {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            color: var(--highlight);
+            box-shadow: 0 4px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .app-card.active .keyboard-key {
+            background: var(--highlight);
+            color: #000;
+            border-color: #fff;
+            box-shadow: 0 4px 0 rgba(0, 150, 150, 1), 0 0 10px var(--highlight);
+            transform: translateY(2px);
+            /* Physical key press effect */
+        }
+
+        .card-title {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 2px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sys-badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        /* Card Content Area */
+        .card-body {
+            flex: 1;
+            position: relative;
+            background: #ffffff;
+            /* White background for iframes */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Native App Mock Screen */
+        .card-body.native-app {
+            background: #000;
+            font-family: monospace;
+            color: #ccc;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Protect iframe from stealing focus while navigating */
+        .iframe-shield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        .app-card.active .iframe-shield {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        /* "Enter to interact" state */
+        .app-card.interactive .iframe-shield {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .interact-prompt {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--highlight);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--highlight);
+            font-size: 12px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Input / Router Dashboard */
+        .keyboard-dashboard {
+            height: 90px;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            gap: 20px;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .router-context {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--highlight);
+            border-right: 2px solid rgba(255, 255, 255, 0.2);
+            padding-right: 20px;
+            min-width: 200px;
+            text-align: right;
+            text-transform: uppercase;
+        }
+
+        .os-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 15px;
+            color: #fff;
+            font-size: 16px;
+            font-family: monospace;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .os-input:focus {
+            background: rgba(0, 230, 230, 0.05);
+            border-color: var(--highlight);
+            box-shadow: 0 0 15px rgba(0, 230, 230, 0.2);
+        }
+
+        .controls-hint {
+            position: absolute;
+            bottom: 100px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 11px;
+            color: #888;
+            font-weight: 600;
+            letter-spacing: 3px;
+            z-index: 10;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-bg"></div>
+
+    <div class="system-bar">
+        <div class="title-display">EGO OS - SPATIAL NEXUS</div>
+        <div id="clock" style="font-weight: 800;">00:00</div>
+    </div>
+
+    <!-- Controls Hint -->
+    <div class="controls-hint">
+        [←] [→] SWITCH APP &nbsp;|&nbsp; [ENTER] MOUNT/INTERACT &nbsp;|&nbsp; [ESC] RETURN TO OS HUB &nbsp;|&nbsp; PRESS
+        [KEY] TO JUMP
+    </div>
+
+    <!-- The Horizontal Space -->
+    <div class="carousel-viewport">
+        <div class="horizontal-nexus-line"></div>
+        <div class="carousel-track" id="track">
+            <!-- App Cards injected here -->
+        </div>
+    </div>
+
+    <!-- Unified Input Router at bottom -->
+    <div class="keyboard-dashboard">
+        <div class="router-context" id="router-ctx">SEND DATA TO:<br />> TASK PROCESSOR</div>
+        <input type="text" class="os-input" id="os-input"
+            placeholder="Type data here or use global AI routing... (Alt+Left/Right to switch workspace)">
+    </div>
+
+    <script>
+        // Start Clock
+        setInterval(() => {
+            document.getElementById('clock').innerText = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }, 1000);
+
+        // App Definitions (Spatial Order)
+        const APPS = [
+            { id: "task", key: "T", name: "TASK PROCESSOR", route: "../../UTILS/todo/app.py", type: "native", icon: "☑️" },
+            { id: "schedule", key: "S", name: "CALENDAR DB", route: "../../UTILS/scheduler/index.html", type: "html", icon: "📅" },
+            { id: "job", key: "J", name: "CAREER TRACK", route: "../../UTILS/job_hunting/index.html", type: "html", icon: "💼" },
+            { id: "knowledge", key: "K", name: "KNOWLEDGE BASE", route: "../knowledge_cards/control_center.html", type: "html", icon: "🧠" },
+            { id: "news", key: "N", name: "NEWS PATROL", route: "../../MEDIA/news_aggregator/app.py", type: "native", icon: "📰" },
+            { id: "youtube", key: "Y", name: "YOUTUBE MONITOR", route: "../../MEDIA/youtube_channel/app.py", type: "native", icon: "📺" },
+            { id: "racing", key: "R", name: "RACING AI", route: "../racing_game/racing_game.html", type: "html", icon: "🏎️" },
+            { id: "shogi", key: "G", name: "SHOGI DOJO", route: "../shogi_dojo/app.py", type: "native", icon: "♟️" }
+        ];
+
+        let currentIndex = 0;
+        let isInteracting = false;
+        const track = document.getElementById('track');
+
+        function renderApps() {
+            APPS.forEach((app, idx) => {
+                const card = document.createElement('div');
+                card.className = "app-card";
+                card.id = `card-${idx}`;
+
+                // Content generation
+                let bodyContent = "";
+                if (app.type === 'html') {
+                    bodyContent = `
+                        <iframe src="${app.route}" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+                        <div class="iframe-shield" onclick="mountApp(${idx})">
+                            <div class="interact-prompt">PRESS [ENTER] TO INTERACT</div>
+                        </div>
+                    `;
+                } else {
+                    bodyContent = `
+                        <div class="card-body native-app" style="width: 100%; height: 100%;">
+                            <div class="interact-prompt" style="font-size: 14px; color: #fff; border: none; background: transparent; text-align: center; margin-bottom: 20px;">[ ${app.route} ]</div>
+                            <div style="opacity:0.5; margin-bottom: 30px; text-align: center;">PYTHON NATIVE SUBSYSTEM</div>
+                            <div class="iframe-shield" onclick="mountApp(${idx})">
+                                <div class="interact-prompt" style="border-color: #fff; color: #fff;">[ENTER] EXECUTE TERMINAL</div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="keyboard-key">${app.key}</div>
+                        <div class="card-title">${app.icon} ${app.name}</div>
+                        <div class="sys-badge">${app.type.toUpperCase()} NODE</div>
+                    </div>
+                    <div class="card-body ${app.type === 'native' ? 'native-app' : ''}">
+                        ${bodyContent}
+                    </div>
+                `;
+
+                track.appendChild(card);
+            });
+
+            updateCarousel();
+            // Initial positioning using exact geometry
+            setTimeout(updateCarousel, 100);
+        }
+
+        // Horizontal Movement Logic
+        function updateCarousel() {
+            // Unfocus old
+            document.querySelectorAll('.app-card').forEach(c => c.classList.remove('active', 'interactive'));
+            isInteracting = false;
+
+            // Set new active
+            const activeCard = document.getElementById(`card-${currentIndex}`);
+            if (activeCard) activeCard.classList.add('active');
+
+            // Shift Track horizontally precisely to center the active card
+            const itemWidth = window.innerWidth * 0.65; // 65vw
+            const gapWidth = window.innerHeight * 0.15; // 15vh gap
+            const totalWidthPerItem = itemWidth + gapWidth;
+
+            const pxShift = - (currentIndex * totalWidthPerItem);
+
+            // To properly center the first item:
+            // The track container has padding-left 50vw. So x=0 is the exact center of screen.
+            // Since the top-left corner of the item is placed at x=0, to center the item itself,
+            // we must shift it left by 50% of the item's width.
+            const centerOffset = - (itemWidth / 2);
+
+            track.style.transform = `translateX(${pxShift + centerOffset}px)`;
+
+            // Update Input router context
+            document.getElementById('router-ctx').innerHTML = `SEND DATA TO:<br/>> ${APPS[currentIndex].name}`;
+        }
+
+        function mountApp(idx) {
+            if (idx !== currentIndex) {
+                currentIndex = idx;
+                updateCarousel();
+                return;
+            }
+
+            const activeCard = document.getElementById(`card-${currentIndex}`);
+            const app = APPS[currentIndex];
+
+            if (app.type === 'html') {
+                activeCard.classList.add('interactive');
+                isInteracting = true;
+                // Focus the iframe interior so keyboard events go to the embedded app
+                const iframe = activeCard.querySelector('iframe');
+                if (iframe) iframe.focus();
+            } else {
+                alert(`[EGO OS] Booting Python Application via Terminal:\n${app.route}`);
+            }
+        }
+
+        function unmountApp() {
+            if (isInteracting) {
+                isInteracting = false;
+                const activeCard = document.getElementById(`card-${currentIndex}`);
+                if (activeCard) activeCard.classList.remove('interactive');
+                // Defocus iframe by focusing OS input to capture keys again
+                document.getElementById('os-input').focus({ preventScroll: true });
+            }
+        }
+
+        // Setup the Environment
+        renderApps();
+        // Recalculate physical sizes on resize to fix centering
+        window.addEventListener('resize', updateCarousel);
+
+        // Keyboard "Direct Brain Routing"
+        document.addEventListener('keydown', (e) => {
+
+            // If we are fully mounted inside an iframe, let the iframe have complete control
+            // UNLESS user presses ESC (handled below)
+            if (isInteracting && e.key !== 'Escape') return;
+
+            // Global OS Hotkey: ESC to unmount HTML interactions
+            if (e.key === 'Escape') {
+                unmountApp();
+                return;
+            }
+
+            const focusedEl = document.activeElement;
+            const isTypingInOsInput = (focusedEl && focusedEl.id === 'os-input');
+
+            // Quick App Jumps (using letters if not typing)
+            if (!isTypingInOsInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                const char = e.key.toUpperCase();
+                const targetIdx = APPS.findIndex(a => a.key === char);
+                if (targetIdx !== -1) {
+                    currentIndex = targetIdx;
+                    updateCarousel();
+                    return; // Switched app!
+                }
+            }
+
+            // Left/Right Navigation
+            if (e.key === 'ArrowLeft') {
+                // Allow if not typing OR if pressing Alt+Left
+                if (!isTypingInOsInput || e.altKey) {
+                    currentIndex = Math.max(0, currentIndex - 1);
+                    updateCarousel();
+                }
+            } else if (e.key === 'ArrowRight') {
+                if (!isTypingInOsInput || e.altKey) {
+                    currentIndex = Math.min(APPS.length - 1, currentIndex + 1);
+                    updateCarousel();
+                }
+            }
+
+            // Enter to Mount / Send data
+            if (e.key === 'Enter') {
+                if (isTypingInOsInput && document.getElementById('os-input').value.trim() !== '') {
+                    // Send text routing data to currently focused app
+                    const text = document.getElementById('os-input').value;
+                    alert(`[EGO OS] Routed successfully to ${APPS[currentIndex].name}:\nData: "${text}"`);
+                    document.getElementById('os-input').value = '';
+                } else if (!isTypingInOsInput) {
+                    // Mount the app if just pressing enter on the dashboard
+                    mountApp(currentIndex);
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

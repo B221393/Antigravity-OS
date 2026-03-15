@@ -1,0 +1,337 @@
+{
+    "global_launcher": [
+        {
+            "keys": "Ctrl + Alt + V",
+            "desc": "Launch Visual Coder",
+            "command": "c:\\Users\\Yuto\\Desktop\\Visual_Coder_Sketch.bat"
+        },
+        {
+            "keys": "Ctrl + Alt + G",
+            "desc": "Launch Gallery",
+            "command": "c:\\Users\\Yuto\\Desktop\\app\\VECTIS_SYSTEM_FILES\\apps\\MEDIA\\kawai_gallery_remake\\LAUNCH_GALLERY.bat"
+        },
+        {
+            "keys": "Ctrl + Alt + H",
+            "desc": "Launch HUD",
+            "command": "c:\\Users\\Yuto\\Desktop\\app\\VECTIS_SYSTEM_FILES\\apps\\AI_LAB\\vibe_overlay\\RUN_HUD.bat"
+        }
+    ],
+    "default": {
+        "name": "SYSTEM",
+        "color": "#00FFFF",
+        "shortcuts": [
+            {
+                "keys": "Ctrl + C",
+                "desc": "Copy"
+            },
+            {
+                "keys": "Ctrl + V",
+                "desc": "Paste"
+            },
+            {
+                "keys": "Ctrl + X",
+                "desc": "Cut"
+            },
+            {
+                "keys": "Ctrl + Z",
+                "desc": "Undo"
+            },
+            {
+                "keys": "Ctrl + Y",
+                "desc": "Redo"
+            },
+            {
+                "keys": "Ctrl + A",
+                "desc": "Select All"
+            },
+            {
+                "keys": "Ctrl + S",
+                "desc": "Save"
+            },
+            {
+                "keys": "Ctrl + F",
+                "desc": "Find"
+            },
+            {
+                "keys": "Ctrl + H",
+                "desc": "Replace"
+            },
+            {
+                "keys": "Ctrl + N",
+                "desc": "New"
+            },
+            {
+                "keys": "Ctrl + O",
+                "desc": "Open"
+            },
+            {
+                "keys": "Ctrl + P",
+                "desc": "Print"
+            },
+            {
+                "keys": "Win + E",
+                "desc": "Explorer"
+            },
+            {
+                "keys": "Win + R",
+                "desc": "Run"
+            },
+            {
+                "keys": "Win + D",
+                "desc": "Desktop"
+            },
+            {
+                "keys": "Alt + F4",
+                "desc": "Close"
+            },
+            {
+                "keys": "Win + Shift + S",
+                "desc": "Screenshot"
+            },
+            {
+                "keys": "Ctrl + Shift + Esc",
+                "desc": "Task Mgr"
+            },
+            {
+                "keys": "Ctrl + Shift + N",
+                "desc": "New Folder"
+            },
+            {
+                "keys": "Ctrl + Alt + V",
+                "desc": "Launch Visual Coder",
+                "command": "c:\\Users\\Yuto\\Desktop\\Visual_Coder_Native.bat"
+            },
+            {
+                "keys": "Ctrl + Alt + R",
+                "desc": "Restart HUD",
+                "command": "c:\\Users\\Yuto\\Desktop\\app\\VECTIS_SYSTEM_FILES\\apps\\AI_LAB\\vibe_overlay\\RUN_HUD.bat"
+            }
+        ]
+    },
+    "visual_studio_code": {
+        "process": [
+            "code.exe"
+        ],
+        "title_keyword": [
+            "Visual Studio Code",
+            "VSCode"
+        ],
+        "name": "VS CODE",
+        "color": "#007ACC",
+        "shortcuts": [
+            {
+                "keys": "Ctrl + Shift + P",
+                "desc": "Command Palette"
+            },
+            {
+                "keys": "Ctrl + P",
+                "desc": "Go to File"
+            },
+            {
+                "keys": "Ctrl + `",
+                "desc": "Terminal"
+            },
+            {
+                "keys": "Ctrl + B",
+                "desc": "Sidebar"
+            },
+            {
+                "keys": "Ctrl + /",
+                "desc": "Toggle Line Comment"
+            },
+            {
+                "keys": "Alt + Click",
+                "desc": "Multi Cursor"
+            },
+            {
+                "keys": "Shift + Alt + F",
+                "desc": "Format"
+            }
+        ]
+    },
+    "explorer": {
+        "process": [
+            "explorer.exe"
+        ],
+        "title_keyword": [
+            "Explorer",
+            "File Explorer"
+        ],
+        "name": "EXPLORER",
+        "color": "#E8D825",
+        "shortcuts": [
+            {
+                "keys": "Alt + D",
+                "desc": "Address Bar"
+            },
+            {
+                "keys": "Ctrl + Shift + N",
+                "desc": "New Folder"
+            },
+            {
+                "keys": "Alt + Enter",
+                "desc": "Properties"
+            },
+            {
+                "keys": "F2",
+                "desc": "Rename"
+            },
+            {
+                "keys": "Alt + Up",
+                "desc": "Up Directory"
+            }
+        ]
+    },
+    "visual_coder": {
+        "name": "VISUAL CODER",
+        "process": [
+            "python.exe",
+            "pythonw.exe"
+        ],
+        "title_keyword": [
+            "Visual Coder Native"
+        ],
+        "color": "#A020F0",
+        "shortcuts": [
+            {
+                "keys": "Ctrl + F",
+                "desc": "Find Node"
+            },
+            {
+                "keys": "Ctrl + N",
+                "desc": "New Flow"
+            },
+            {
+                "keys": "Ctrl + S",
+                "desc": "Save Node"
+            },
+            {
+                "keys": "Ctrl + D",
+                "desc": "Duplicate"
+            },
+            {
+                "keys": "Ctrl + Z",
+                "desc": "Undo"
+            },
+            {
+                "keys": "Ctrl + Y",
+                "desc": "Redo"
+            },
+            {
+                "keys": "Ctrl + Enter",
+                "desc": "Run Code"
+            },
+            {
+                "keys": "F5",
+                "desc": "Debug Flow"
+            },
+            {
+                "keys": "Del",
+                "desc": "Delete Node"
+            },
+            {
+                "keys": "Ctrl + B",
+                "desc": "Toggle Sidebar"
+            }
+        ]
+    },
+    "gallery": {
+        "name": "KAWAI GALLERY",
+        "process": [
+            "chrome.exe",
+            "msedge.exe",
+            "python.exe"
+        ],
+        "title_keyword": [
+            "Gallery",
+            "5052"
+        ],
+        "color": "#FF69B4",
+        "shortcuts": [
+            {
+                "keys": "Right",
+                "desc": "Next Item"
+            },
+            {
+                "keys": "Left",
+                "desc": "Prev Item"
+            },
+            {
+                "keys": "Space",
+                "desc": "Select"
+            }
+        ]
+    },
+    "code.exe": {
+        "name": "VS CODE",
+        "color": "#007ACC",
+        "shortcuts": [
+            {
+                "keys": "Ctrl + Shift + P",
+                "desc": "Command Palette"
+            },
+            {
+                "keys": "Ctrl + P",
+                "desc": "Go to File"
+            },
+            {
+                "keys": "Ctrl + `",
+                "desc": "Terminal"
+            },
+            {
+                "keys": "F5",
+                "desc": "Debug"
+            }
+        ]
+    },
+    "chrome.exe": {
+        "name": "CHROME",
+        "color": "#FFCC00",
+        "shortcuts": [
+            {
+                "keys": "Ctrl + T",
+                "desc": "New Tab"
+            },
+            {
+                "keys": "Ctrl + W",
+                "desc": "Close Tab"
+            },
+            {
+                "keys": "Ctrl + Shift + T",
+                "desc": "Reopen Closed Tab"
+            }
+        ]
+    },
+    "obsidian.exe": {
+        "name": "OBSIDIAN",
+        "color": "#7E3794",
+        "shortcuts": [
+            {
+                "keys": "Ctrl + O",
+                "desc": "Open File"
+            },
+            {
+                "keys": "Ctrl + E",
+                "desc": "Switch Mode"
+            }
+        ]
+    },
+    "explorer.exe": {
+        "name": "EXPLORER",
+        "color": "#F2C811",
+        "shortcuts": [
+            {
+                "keys": "Ctrl + T",
+                "desc": "New Tab"
+            },
+            {
+                "keys": "Alt + D",
+                "desc": "Address Bar"
+            },
+            {
+                "keys": "Ctrl + Alt + V",
+                "desc": "Launch Visual Coder"
+            }
+        ]
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "title": "博報堂ＤＹグループ「AIメンタリング」制度を導入 | 博報堂",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5lQnFuUUFnUEo5X1AxQXVpcmZscmJXODB2ZFREdjRIMmtaZXNBd2NoOFBTamRkbmQyTXFocGh2aFB1NTZ4V2dDSl9tT3piN1ZYbWlZUlJKMFhXTE1pRFhFNG94cHhGNXNTLUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE5lQnFuUUFnUEo5X1AxQXVpcmZscmJXODB2ZFREdjRIMmtaZXNBd2NoOFBTamRkbmQyTXFocGh2aFB1NTZ4V2dDSl9tT3piN1ZYbWlZUlJKMFhXTE1pRFhFNG94cHhGNXNTLUE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "博報堂DYグループがAIメンタリング制度を導入。社員の育成と効率化を目指す。",
+    "true_intent": "表向きは社員育成だが、コスト削減、データ収集、AI技術の広告効果検証、ひいてはAI人材育成の遅れを補完する狙いか。博報堂DYグループとAIベンダーが得をする。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "博報堂DYホールディングス",
+    "action_required": true,
+    "category": "広告",
+    "target_year": "2027",
+    "company_profile": "## 博報堂DYホールディングスの本質 (27卒向け)\n\n1. **主要武器**: 総合的なマーケティング力と、多様な専門性を持つ人材。メディア、クリエイティブ、デジタルを融合し、企業の課題解決に深くコミットする点が強み。\n2. **26-27卒への温度感**: デジタル・データ領域に強い人材を積極採用。総合職に加え、専門職採用も強化し、多様なバックグラウンドを持つ学生に門戸を開放。\n3. **EGO適性**: 構造的思考は必須。データ分析力、AI活用への関心も重視。変化に対応し、新たな価値創造を担える人材を求めている。\n4. **裏の弱点**: 組織の縦割り構造が残存し、連携に時間がかかる場合も。意思決定の遅さや、変化への抵抗感が課題となる可能性あり。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **博報堂DYホールディングス:** 広告グループ持株会社. 子会社: 博報堂、大広、読売広告社.\n*   **IR情報:** 決算短信、業績・財務データ、説明会資料を提供.\n*   **会社概要:** 会社情報.\n\n**Structured Summary:**\n\n*   **博報堂DYホールディングス (HD):**\n    *   持株会社 (広告グループ).\n    *   主要子会社: 博報堂, 大広, 読売広告社.\n*   **機能:**\n    *   WebサイトでIR情報公開.\n    *   会社概要情報提供.\n\n**Gap Analysis:**\n\n*   **詳細情報不足:** 事業内容、経営戦略、組織体制に関する詳細な記述は抽出できず。\n*   **財務情報:** 具体的な財務データは未抽出.\n*   **IR情報:** 最新のIR情報、アナリスト向け情報に関する記述なし.\n*   **会社概要:** 役員、事業所等の詳細情報が不足。"
+  },
+  "critical_analysis": {
+    "true_intent": "表向きは社員育成だが、コスト削減、データ収集、AI技術の広告効果検証、ひいてはAI人材育成の遅れを補完する狙いか。博報堂DYグループとAIベンダーが得をする。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:22:19.338152",
+  "source": "Active:博報堂"
+}

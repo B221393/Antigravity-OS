@@ -1,0 +1,59 @@
+{
+    "last_updated": "2026-01-30",
+    "universal_keywords": {
+        "engineer": [
+            "内製化",
+            "アジャイル",
+            "DX",
+            "クラウドネイティブ",
+            "CI/CD",
+            "自律性"
+        ],
+        "management": [
+            "ビジネス視点",
+            "合意形成",
+            "価値創造",
+            "プロフェッショナル"
+        ]
+    },
+    "industries": {
+        "telecommunication": {
+            "trends": [
+                "5G/6G",
+                "衛星通信",
+                "Beyond 5G",
+                "通信の民主化"
+            ],
+            "competitors": [
+                "KDDI",
+                "NTT",
+                "SoftBank",
+                "Rakuten"
+            ]
+        },
+        "automotive": {
+            "trends": [
+                "CASE",
+                "自動運転",
+                "SDV",
+                "カーボンニュートラル"
+            ],
+            "competitors": [
+                "Toyota",
+                "Honda",
+                "Nissan"
+            ]
+        }
+    },
+    "company_specific": {
+        "KDDI": {
+            "vision": "KDDI VISION 2030",
+            "special_keywords": [
+                "Connected Experience",
+                "サテライト成長戦略",
+                "αU",
+                "Starlink"
+            ]
+        }
+    }
+}

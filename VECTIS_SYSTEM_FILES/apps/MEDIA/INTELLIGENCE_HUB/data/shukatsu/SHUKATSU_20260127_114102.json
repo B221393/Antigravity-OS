@@ -1,0 +1,24 @@
+{
+  "title": "ZenX、旧帝大・早慶100名の27卒就職活動動向レポートを",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1UNUY0MHVpNzVDZmJEYnY3c0UwUldXREFPcmZ6eGtMOUE2US0tNGJCQS1kLXloUHlfb0hxRHp4SklOT1hBajlaZ0ZOUjBqWHhJZ3RDUkl1b2J5MnNaN2VrbkpWY1pWSzRDY0E?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE1UNUY0MHVpNzVDZmJEYnY3c0UwUldXREFPcmZ6eGtMOUE2US0tNGJCQS1kLXloUHlfb0hxRHp4SklOT1hBajlaZ0ZOUjBqWHhJZ3RDUkl1b2J5MnNaN2VrbkpWY1pWSzRDY0E?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ZenXが旧帝大・早慶生の就活レポート公開。早期化、多社併願の実態を明示。",
+    "true_intent": "ZenXのブランドイメージ向上と、就活サービス(おそらくコンサルティングや情報提供)への誘導が目的。上位層データに特化することで、学生の焦燥感を煽り、サービス利用を促進する意図も考えられる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ZenX",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。ZenXの本質的価値と27卒が狙うべき理由を以下の通り構造化します。\n\n1.  **主要武器**: データ分析基盤と高度なAI技術。顧客課題解決に特化し、成果を出すことで信頼を獲得。（45字）\n2.  **26-27卒への温度感**: 採用数増加傾向。特に技術職とコンサルタント職に積極的。ポテンシャル重視の選考。（40字）\n3.  **EGO適性**: 構造的思考は必須。AI活用を推進しており、自ら学び、応用できる人材を高く評価。（45字）\n4.  **裏の弱点**: 急成長ゆえの組織体制の脆弱性。個人の裁量が大きい反面、教育制度が追いついていない可能性。（70字）\n",
+    "deep_web_intel": "**Key Points:**\n\n*   User needs Blackberry Connect for Exchange email access due to company restrictions.\n*   Current device (Dash) is failing.\n*   User is trying to use BB Connect on a Wing device.\n*   Error: \"blackberry connect was unable to connect with your device (returned PIN 0)\"\n\n**Structured Summary:**\n\n| Issue                                                     | Context                                                                      | Solution Attempt                               | Error                                                                   |\n| :-------------------------------------------------------- | :--------------------------------------------------------------------------- | :--------------------------------------------- | :---------------------------------------------------------------------- |\n| Need Blackberry Connect for corporate Exchange email. | Company policy restricts wireless Exchange access; current device failing. | Trying to use Blackberry Connect on a Wing. | \"Unable to connect with your device (returned PIN 0)\". |\n\n**Gap Analysis:**\n\n*   The specific reason for the \"PIN 0\" error is unknown.\n*   Troubleshooting steps taken (if any) are not mentioned.\n*   The version of Blackberry Connect is not specified.\n*   The operating system of the Wing device is not stated."
+  },
+  "critical_analysis": {
+    "true_intent": "ZenXのブランドイメージ向上と、就活サービス(おそらくコンサルティングや情報提供)への誘導が目的。上位層データに特化することで、学生の焦燥感を煽り、サービス利用を促進する意図も考えられる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:41:02.947501",
+  "source": "Active:電通"
+}

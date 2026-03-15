@@ -1,0 +1,22 @@
+{
+  "title": "採用情報 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5\" target=\"_blank\">採用情報</a>&nbsp;&nbsp;<font color=\"#6f",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIが採用情報を公開し、採用意図や利権構造を分析。",
+    "true_intent": "KDDIは、2027年卒業者の進路を特定するための採用情報を公開することで、その意図を分析する可能性がある。また、利権構造は、採用者や企業双方に影響を与える可能性がある。",
+    "bias_warning": "ポジショントークの可能性がある。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIは、2027年卒業者の進路を特定するための採用情報を公開することで、その意図を分析する可能性がある。また、利権構造は、採用者や企業双方に影響を与える可能性がある。",
+    "bias_warning": "ポジショントークの可能性がある。"
+  },
+  "collected_at": "2026-01-27T11:48:30.605162",
+  "source": "KDDI 採用 Deep Dive"
+}

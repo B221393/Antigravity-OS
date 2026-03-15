@@ -1,0 +1,9 @@
+{
+    "title": "Physical AI (Embodied AI)",
+    "genre": "Technology",
+    "rarity": "Legendary",
+    "content": "【Physical AIとは】\nデジタル空間だけでなく、現実世界の物理法則を理解し、ロボットなどの「身体」を通じて行動するAI。\n\n【2025年のトレンド】\n- **NVIDIA Project GR00T**: ヒューマノイドロボット向けの基盤モデル。\n- **物理チューリングテスト**: 「AIが物理世界で人間と区別つかないほど自然に振る舞えるか」という概念。\n- **Simulation-First**: 物理法則を再現した仮想空間（Omniverse等）で学習してから、現実のロボットに実装する流れが主流に。\n\n【出版業界との関連】\n「身体性」を持つAIが描く物語や、物理的な書店・流通でのロボット活用（物流2025年問題解決の鍵）として注目。",
+    "source": "NVIDIA, Gartner Trends 2025",
+    "visual_seed": "robot hand holding a book",
+    "timestamp": "2025-12-31 17:55"
+}

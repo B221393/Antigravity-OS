@@ -1,0 +1,23 @@
+{
+  "title": "集英社に連載漫画家向け執筆サポートサービス「集英社WELBO",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBfa2hPREJaSlRKWUhjWXpWM2czazZoZ1hZejFuRTBIdEtadEtpMjhDMk9ZUnRBTm1qVlhaNzk2ekIzYkdsV2tIU1hpeHZSV3ptcVN4X08tVExVR1NDN2tMQ3ZhLWlhdVp5eHc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTFBfa2hPREJaSlRKWUhjWXpWM2czazZoZ1hZejFuRTBIdEtadEtpMjhDMk9ZUnRBTm1qVlhaNzk2ekIzYkdsV2tIU1hpeHZSV3ptcVN4X08tVExVR1NDN2tMQ3ZhLWlhdVp5eHc?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "集英社が漫画家向けに福利厚生サービス「集英社WELBOX」を導入。イーウェルが提供。",
+    "true_intent": "漫画家の執筆環境改善を謳いつつ、優秀な人材の囲い込みと、福利厚生サービス提供企業(イーウェル)との連携強化が目的。集英社の企業イメージ向上にも貢献。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "集英社/イーウェル",
+    "action_required": false,
+    "category": "出版/福利厚生",
+    "target_year": "2027",
+    "company_profile": "## 集英社/イーウェルの本質と27卒が狙うべき理由\n\n**集英社**\n\n1.  **主要武器**: 圧倒的IP創出力と編集力。コンテンツを多角的に展開するビジネスモデル。\n2.  **26-27卒への温度感**: デジタルシフトを加速。データ分析や新規事業開発に意欲的な人材を求める。\n3.  **EGO適性**: 編集者は勘と経験重視だが、事業部門はデータドリブン。構造的思考は評価される。\n4.  **裏の弱点**: 伝統的な組織体質。変化への抵抗勢力も存在。\n\n**イーウェル**\n\n1.  **主要武器**: 業界トップシェアの福利厚生アウトソーシング事業。顧客基盤とデータが強み。\n2.  **26-27卒への温度感**: ヘルスケア領域強化。データ分析やシステム開発スキルを持つ人材を積極採用。\n3.  **EGO適性**: データ活用志向は高いが、AI活用は発展途上。提案力と実行力が重視される。\n4.  **裏の弱点**: 大手企業向けサービス依存。新規事業の創出が課題。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "漫画家の執筆環境改善を謳いつつ、優秀な人材の囲い込みと、福利厚生サービス提供企業(イーウェル)との連携強化が目的。集英社の企業イメージ向上にも貢献。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:30:35.472295",
+  "source": "Active:集英社"
+}

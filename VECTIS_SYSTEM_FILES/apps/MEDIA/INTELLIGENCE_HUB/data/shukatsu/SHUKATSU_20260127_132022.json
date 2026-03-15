@@ -1,0 +1,22 @@
+{
+  "title": "米10月求人件数、1.2万件増 経済の不透明感から採用は減 ",
+  "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNZmY2QlRwUS1ldUhldGFiRzZQdWY2V1JnSkVpYmVXOXhsbDN3S2k2YXdHbEZNWmlTelYzWl9LdDhoeTM2ZElEbUhGRDdLbG5lNFdwZkV2UUtKQzdtQ2ZtOHRtd3FwM0IxTFJIWmdXNGtyOGJVQjJnWGtRc2hzRi1LYQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxNZmY2QlRwUS1ldUhldGFiRzZQdWY2V1JnSkVpYmVXOXhsbDN3S2k2YXdHbEZNWmlTelYzWl9LdDhoeTM2ZElEbUhGRDdLbG5lNFdwZkV2UUtKQzdtQ2ZtOHRtd3FwM0IxTFJIWmdXNG",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "米10月求人微増も採用減。経済不透明感で企業慎重姿勢。",
+    "true_intent": "景気後退懸念を煽り、金融引き締め政策の正当化を図る意図か。採用抑制による人件費削減を正当化する企業側の意図も考えられる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "景気後退懸念を煽り、金融引き締め政策の正当化を図る意図か。採用抑制による人件費削減を正当化する企業側の意図も考えられる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:20:22.571503",
+  "source": "ロイター 企業ニュース"
+}

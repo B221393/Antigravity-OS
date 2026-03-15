@@ -1,0 +1,42 @@
+{
+  "title": "採用情報 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5\" target=\"_blank\">採用情報</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">KDDI</font>",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "KDDIの採用情報",
+    "strategic_analysis": {
+      "true_intent": "KDDIは採用を増やすことで、DXや5Gなどの分野で優位性を高めたい思惑がある",
+      "swot": {
+        "strength": "通信インフラの豊富さや、DX分野での先進性",
+        "weakness": "従業員の平均年齢が高く、若手エンジニアの育成が課題",
+        "opportunity": "通信技術やDXの進化に伴う新卒エンジニアの需要増加",
+        "threat": "競合他社との差別化が難しくなる可能性"
+      },
+      "writing_technique": "",
+      "action_plan": "YutoはKDDIの採用情報を調べ、DXや5Gに関する知識を深めて、ESや面接での話題として活用できるようにする。さらに、KDDIの社風や文化についてOB訪問で確認すべき点として、若手エンジニアの成長支援策や、コミュニティへの関与度を聞く"
+    },
+    "bias_warning": "KDDIの採用情報は自社の魅力をアピールする狙いがある可能性",
+    "company": "KDDI",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 6,
+    "company_profile": "KDDIの「本質的価値」と「27卒が狙うべき理由」を以下に構造化します。\n\n1. **主要武器**: ネットワーク技術とサービス提供の強み\n2. **26-27卒への温度感**: デジタル化とAI技術への積極的な取り組み\n3. **EGO適性**: イノベーションとテクノロジーへの挑戦を重視\n4. **裏の弱点**: 大手企業としての変化の遅れと競争の激化\n\n27卒がKDDIを狙うべき理由は、デジタル化とAI技術への取り組みが活き、イノベーションを重視する企業文化です。ただし、大手企業としての変化の遅れや競争の激化への対応が必要です。"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIは採用を増やすことで、DXや5Gなどの分野で優位性を高めたい思惑がある",
+    "swot": {
+      "strength": "通信インフラの豊富さや、DX分野での先進性",
+      "weakness": "従業員の平均年齢が高く、若手エンジニアの育成が課題",
+      "opportunity": "通信技術やDXの進化に伴う新卒エンジニアの需要増加",
+      "threat": "競合他社との差別化が難しくなる可能性"
+    },
+    "writing_technique": "",
+    "action_plan": "YutoはKDDIの採用情報を調べ、DXや5Gに関する知識を深めて、ESや面接での話題として活用できるようにする。さらに、KDDIの社風や文化についてOB訪問で確認すべき点として、若手エンジニアの成長支援策や、コミュニティへの関与度を聞く"
+  },
+  "deep_strategic_dossier": "",
+  "bias": "KDDIの採用情報は自社の魅力をアピールする狙いがある可能性",
+  "collected_at": "2026-02-05T10:51:38.526117",
+  "source": "KDDI 採用 Deep Dive",
+  "score": 6
+}

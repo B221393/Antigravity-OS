@@ -1,0 +1,14 @@
+{
+  "title": "Client Meeting for Project X",
+  "content": "Meeting with client regarding Project X tomorrow at 10am",
+  "routing": {
+    "cat": "Note",
+    "icon": "📝"
+  },
+  "ai_analysis": {
+    "title": "Client Meeting for Project X",
+    "category": "Job",
+    "summary": "Client meet, Proj. X"
+  },
+  "created_at": "2026-01-20T01:31:25.496Z"
+}

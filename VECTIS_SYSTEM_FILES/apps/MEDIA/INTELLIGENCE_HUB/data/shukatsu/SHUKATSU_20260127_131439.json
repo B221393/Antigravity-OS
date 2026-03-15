@@ -1,0 +1,24 @@
+{
+  "title": "新卒採用 インターン・イベント情報 ｜ 事技職採用 ｜ 採用",
+  "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFAtUG40R1lQbTRhVVo3Uk9kTlgzcDJSU041bFB5RzdGNy0xM0VpU3ZVanNBM2VNT2pNMFQxZnNDYWxJMXh0X09pVzFnRGN4Vm10b1FRSTY1cjBQVWlmck5Rc216b3gzWEY4S0Q2VEhn?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTFAtUG40R1lQbTRhVVo3Uk9kTlgzcDJSU041bFB5RzdGNy0xM0VpU3ZVanNBM2VNT2pNMFQxZnNDYWxJMXh0X09pVzFnRGN4Vm10b1FRSTY1cjBQVWlmck5Rc216b3gzWEY4S0Q2VEhn?o",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "デンソーが2027卒向けインターン・イベント情報を公開。早期選考への誘導が予想される。",
+    "true_intent": "優秀な学生の早期囲い込み。自動車業界の競争激化を背景に、将来の技術者・研究者を確保し、企業競争力を維持・向上させる狙い。広報活動による企業イメージ向上も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "DENSO",
+    "action_required": true,
+    "category": "広告",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。DENSOの本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: トヨタグループの技術力を背景にした、自動車部品の高度な開発・製造力。電動化・自動運転分野への積極投資と、先行開発体制。\n2.  **26-27卒への温度感**: 新領域への挑戦を加速させるため、多様な専門性を持つ人材を積極的に採用。特にソフトウェア・AI人材への期待が高い。\n3.  **EGO適性**: データドリブンな意思決定を重視し、AI・シミュレーション技術を積極的に活用。構造的思考力と、変化への対応力が求められる。\n4.  **裏の弱点**: 自動車産業全体の変革期において、既存事業への依存からの脱却が課題。組織の硬直性や、意思決定の遅さも懸念される。\n",
+    "deep_web_intel": "**Key Points (from available data):**\n\n*   Denso is a Japanese company (implied).\n*   Zhihu articles related to Denso are often blocked (HTTP 403 Forbidden).\n*   Zhihu's security verification is triggered when trying to access some Denso-related Zhihu pages.\n\n**Structured Summary:**\n\n| Aspect         | Description                                                                                                        |\n| -------------- | ------------------------------------------------------------------------------------------------------------------ |\n| Company        | Denso (Japanese, implied)                                                                                          |\n| Data Access    | Zhihu articles are primary source but inaccessible due to HTTP 403 errors.  Security verification is triggered. |\n\n**Gap Analysis:**\n\n*   Missing information about what it is like to work at Denso.\n*   Missing background information about Denso's industry, products, services, or overall role.\n*   Unable to gather insights from Zhihu user experiences/opinions."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な学生の早期囲い込み。自動車業界の競争激化を背景に、将来の技術者・研究者を確保し、企業競争力を維持・向上させる狙い。広報活動による企業イメージ向上も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:14:39.112156",
+  "source": "Active:デンソー"
+}

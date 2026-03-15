@@ -1,0 +1,98 @@
+{
+    "modes": {
+        "general": {
+            "name": "汎用モード",
+            "description": "幅広いトピックを網羅的に収集",
+            "keywords": [
+                "AI",
+                "人工知能",
+                "ロボティクス",
+                "フィジカルAI",
+                "哲学",
+                "教養",
+                "経済",
+                "テクノロジー",
+                "サイエンス",
+                "メディアリテラシー"
+            ],
+            "sources": [
+                "arXiv",
+                "Nature",
+                "TechCrunch",
+                "Wikipedia",
+                "YouTube"
+            ]
+        },
+        "shukatsu": {
+            "name": "就活特化モード",
+            "description": "27卒就職活動に必要な情報を優先収集",
+            "keywords": [
+                "27卒",
+                "インターン",
+                "ES",
+                "エントリーシート",
+                "面接対策",
+                "SPI",
+                "Webテスト",
+                "OB訪問",
+                "企業研究",
+                "自己分析",
+                "ガクチカ",
+                "志望動機",
+                "業界研究",
+                "新卒採用"
+            ],
+            "sources": [
+                "マイナビ",
+                "リクナビ",
+                "ONE CAREER",
+                "外資就活",
+                "Goodfind"
+            ]
+        },
+        "tech": {
+            "name": "技術トレンドモード",
+            "description": "最先端のソフトウェア・AI技術動向を追跡",
+            "keywords": [
+                "LLM",
+                "RAG",
+                "エージェント",
+                "Transformer",
+                "Diffusion",
+                "Rust",
+                "Go",
+                "Kubernetes",
+                "WASM",
+                "量子コンピュータ"
+            ],
+            "sources": [
+                "Hacker News",
+                "arXiv",
+                "GitHub Trending",
+                "Dev.to"
+            ]
+        },
+        "philosophy": {
+            "name": "教養・哲学モード",
+            "description": "深い思考のための教養コンテンツを収集",
+            "keywords": [
+                "哲学",
+                "倫理学",
+                "認識論",
+                "形而上学",
+                "論理学",
+                "プラトン",
+                "アリストテレス",
+                "カント",
+                "ニーチェ",
+                "ウィトゲンシュタイン"
+            ],
+            "sources": [
+                "Stanford Encyclopedia of Philosophy",
+                "Wikipedia",
+                "青空文庫"
+            ]
+        }
+    },
+    "active_mode": "general"
+}

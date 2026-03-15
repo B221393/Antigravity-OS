@@ -1,0 +1,23 @@
+{
+  "title": "企業の成長に欠かせない「規模」「密度」「ネットワーク」の経済",
+  "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNenJSQVFxRUN4a2NkeUJfTE9JSUdScmxNcHQ5UGJGN2s3QzRYY25WSlZXeWJwcG5DZGU0NWZKM3RhaXdYX0Fhb3BvcXpvelZydGQ2bEhtQURSUjRpNHB3UXdud29ocDlBWUNQNTJKc0hGWTlZZFh4ejJmOU0xMzN6bFZ1U283ZnliZHV3UA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMijAFBVV95cUxNenJSQVFxRUN4a2NkeUJfTE9JSUdScmxNcHQ5UGJGN2s3QzRYY25WSlZXeWJwcG5DZGU0NWZKM3RhaXdYX0Fhb3BvcXpvelZydGQ2bEhtQURSUjRpNHB3UXdud29ocDlBWUNQNTJKc0",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "企業の成長には規模・密度・ネットワークが重要という日経ビジネスの記事。就活生は鵜呑みにせず批判的に検討を。",
+    "true_intent": "大企業や都市部への集中を正当化し、地方創生や中小企業軽視を助長する可能性。日経ビジネスの購読促進や、大手企業への就職誘導が目的か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "日本経済新聞社",
+    "action_required": true,
+    "category": "出版/メディア",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。日本経済新聞社の「本質的価値」と「27卒が狙うべき理由」を下記にまとめます。\n\n1.  **主要武器**: 経済報道の信頼性と独自データ。意思決定層への影響力とブランド力が強み。\n2.  **26-27卒への温度感**: デジタル戦略を担う人材獲得に積極的。多様なバックグラウンドを重視。\n3.  **EGO適性**: データ分析基盤は強固。AI活用は模索段階だが、構造的思考は必須。\n4.  **裏の弱点**: 伝統的組織体質からの脱却の遅れ。デジタル部門と編集部門の連携が課題。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "大企業や都市部への集中を正当化し、地方創生や中小企業軽視を助長する可能性。日経ビジネスの購読促進や、大手企業への就職誘導が目的か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:29:30.031787",
+  "source": "Nikkei ビジネス"
+}

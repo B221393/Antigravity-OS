@@ -1,0 +1,24 @@
+{
+  "title": "ＲＡＶ４、６年ぶり新型車 トヨタ、自社ソフトを初採用 - 朝",
+  "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8ySDNzRjZTTkNKUWU0NE9HZXRBaW0wZ1AxRHZrcVg3bHlmMHg1Q3RHb2k2aXBSdmJtYUpMcHR4cUQ5bFh0clJlSFVLekV4b25lTHl5eEp3R1o4dDg3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXEFVX3lxTE8ySDNzRjZTTkNKUWU0NE9HZXRBaW0wZ1AxRHZrcVg3bHlmMHg1Q3RHb2k2aXBSdmJtYUpMcHR4cUQ5bFh0clJlSFVLekV4b25lTHl5eEp3R1o4dDg3?oc=5\" target=\"_blank\">ＲＡＶ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トヨタRAV4が6年ぶりにモデルチェンジ、自社開発ソフトを初搭載。",
+    "true_intent": "トヨタの技術力をアピールし、株価上昇や販売促進を狙う。サプライヤーとの力関係の変化、自動車業界のソフトウエア覇権争いを示唆。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "トヨタ自動車",
+    "action_required": true,
+    "category": "自動車",
+    "target_year": "2027",
+    "company_profile": "## トヨタ自動車 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 長期的な視点と改善文化が生む圧倒的な品質とブランド力。サプライチェーン全体を巻き込む強固な組織力こそ源泉。\n2.  **26-27卒への温度感**: CASE領域強化に向け、多様な専門性を持つ人材を積極採用中。グローバルリーダー育成にも注力。\n3.  **EGO適性**: 構造的思考は必須。AI活用は推進中だが、現場レベルでの浸透には課題も。変革期ゆえ、提案の余地あり。\n4.  **裏の弱点**: 伝統的企業体質ゆえ、意思決定の遅さや硬直性も。変革を担うには、相応の突破力と根回し力が求められる。\n",
+    "deep_web_intel": "**Structured Summary of Toyota Website Data**\n\n*   **Home Page (toyota.jp):**\n    *   Official website of Toyota Motor Corporation.\n    *   Provides information on new Toyota vehicles.\n    *   Offers services: test drive search, store search, quote simulation, catalog request.\n    *   Meta descriptions highlight brand vehicles.\n\n*   **Car Lineup (toyota.jp/carlineup/):**\n    *   Showcases Toyota's car lineup.\n    *   Categories: compact, minivan, sedan, wagon, SUV, sports, mini cars, business cars.\n    *   Meta descriptions target finding desired vehicle.\n\n*   **Car Comparison (toyota.jp/carlineup/compare/):**\n    *   Allows comparison of Toyota vehicles.\n    *   Comparison factors: styling (exterior/interior), size, fuel economy, safety performance, specs.\n    *   Meta description focuses on comparing vehicle specifications.\n\n**Key Points**\n\n*   Comprehensive website for Toyota.\n*   Range of services: information, search, simulation, requests.\n*   Car lineup section categorized.\n*   Vehicle comparison tool for detailed analysis.\n\n**Gap Analysis**\n\n*   Data only covers website structure and meta descriptions.\n*   Lacks specific vehicle details, pricing, or technologies.\n*   No information on company mission, history, or investor relations.\n*   Absence of data about manufacturing, sustainability, or global operations."
+  },
+  "critical_analysis": {
+    "true_intent": "トヨタの技術力をアピールし、株価上昇や販売促進を狙う。サプライヤーとの力関係の変化、自動車業界のソフトウエア覇権争いを示唆。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:35:14.987115",
+  "source": "Active:トヨタ自動車"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "FP＆Aの原点は稲盛和夫の「アメーバ経営」 KDDIが挑む“",
+  "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1Xc004MjZ2YnphY2pZSmpEcTBNNFlwV19fMXE3SlJUQTZXMTlodXp4cHRsNkwzQzEzM1NsQ0pMV3Ayb01XY3RMVEFENWViUVpKT0RBeVN3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTE1Xc004MjZ2YnphY2pZSmpEcTBNNFlwV19fMXE3SlJUQTZXMTlodXp4cHRsNkwzQzEzM1NsQ0pMV3Ayb01XY3RMVEFENWViUVpKT0RBeVN3?oc=5\" target=\"_blank\">FP＆Aの原点は稲盛和",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "このニュースは、KDDIが「バケツリレー」や「匠の技」などのサービスの採算管理を改善するための手段として「FP＆Aの原点」を分析しています。",
+    "true_intent": "このニュースは、KDDIがFP＆Aというサービスで、コストを大幅に削減するための方法を特定するための取り組みであることを暗示しています。",
+    "bias_warning": "この情報は、KDDIが特定企業の利益に関係している可能性があることを暗示しています。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": 2027
+  },
+  "critical_analysis": {
+    "true_intent": "このニュースは、KDDIがFP＆Aというサービスで、コストを大幅に削減するための方法を特定するための取り組みであることを暗示しています。",
+    "bias_warning": "この情報は、KDDIが特定企業の利益に関係している可能性があることを暗示しています。"
+  },
+  "collected_at": "2026-01-26T17:57:52.021502",
+  "source": "KDDI 事業戦略"
+}

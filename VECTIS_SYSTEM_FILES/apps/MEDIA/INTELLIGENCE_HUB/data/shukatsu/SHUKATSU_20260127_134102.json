@@ -1,0 +1,24 @@
+{
+  "title": "経営戦略インターンシップ - cyberagent.co.j",
+  "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1scHB3V0prRmxpYktpcHVzTUdnbW1MQ3ROY1BMOHBybU50cW5odkdoMEVCbUVJS3NITXV6M2ZDRmFuakRmN3JGRndwdG1OQktUWTk4Z0VqNVRGbjVXRmpGRnduYWhiQnVvd1lxZDFVMWtCeEV3UGc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMidkFVX3lxTE1scHB3V0prRmxpYktpcHVzTUdnbW1MQ3ROY1BMOHBybU50cW5odkdoMEVCbUVJS3NITXV6M2ZDRmFuakRmN3JGRndwdG1OQktUWTk4Z0VqNVRGbjVXRmpGRnduYWhiQnVvd1lxZDFVMW",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "サイバーエージェントが経営戦略インターンシップを開催。27卒向け。",
+    "true_intent": "優秀な学生の早期囲い込み。高待遇を示唆し、競合他社からの人材獲得を狙う。企業イメージ向上と、将来の幹部候補育成も目的。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "CyberAgent",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## CyberAgent 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 徹底的な「人」への投資と、変化を恐れず常に新しい市場に挑戦するアメーバ経営が生み出す、事業創造力と高い成長力。\n2.  **26-27卒への温度感**: 優秀層の獲得競争激化。早期選考ルート拡充、インターンシップ経由での採用増加と、熱意ある学生を積極的に採用する姿勢。\n3.  **EGO適性**: データドリブンな意思決定とAI技術活用を推進。論理的思考力とテクノロジーへの関心が高い人材を求める傾向。\n4.  **裏の弱点**: 成果主義が強く、部署や個人の成績によってはプレッシャーが大きい。組織再編が頻繁で、安定志向の学生には不向きな面も。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **CyberAgent:** Aims to \"create a 21st-century representative company.\"\n*   **Business:** Internet advertising, \"ABEMA\" (future TV), and new ventures.\n*   **Meta Data:** Includes descriptions, URLs, images, and social media links for SEO.\n*   **Tracking:** Uses Google Tag Manager and OneTrust for cookies.\n*   **Subsidiaries:** Media & IP, advertising, and gaming.\n\n**Structured Summary:**\n\nCyberAgent is a Japanese company focused on internet advertising, media (ABEMA), and new business creation. The company uses comprehensive SEO metadata and tracking tools. It has subsidiaries in media, advertising, and gaming.\n\n**Gap Analysis:**\n\nThe provided data is metadata from the CyberAgent website, offering limited information on financials, leadership, or specific strategies."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な学生の早期囲い込み。高待遇を示唆し、競合他社からの人材獲得を狙う。企業イメージ向上と、将来の幹部候補育成も目的。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:41:02.272241",
+  "source": "Active:サイバーエージェント"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "独自動車部品大手ボッシュが日本で新給与体系を導入・東大、京大",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE42bjJHQzdxMW5JNVVpR3BmaHIwUEt0Mk96ZnFRemZOZXJZUDg5cmd5YXJHUkJTenV6a0hoYkQzUWtwb2g2enczV25jY2XSAU9BVV95cUxQTkhGX0RUang3elBteTNyM0ZkWTZ0TEptdTNpa3hOU2dLSDNLNHhxTUs2a3RJaldEZnhURE9IdXJLOUU4N2lSdnJNY243SWFz?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTE42bjJHQzdxMW5JNVVpR3BmaHIwUEt0Mk96ZnFRemZOZXJZUDg5cmd5YXJHUkJTenV6a0hoYkQzUWtwb2g2enczV25jY2XSAU9BVV95cUxQTkhGX0RUang3elBteTNyM0ZkWTZ0TEptdT",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ボッシュ新給与体系導入、上位大コンサル就職者数公開、ダイニーがリストラ後リファラル採用強化。",
+    "true_intent": "優秀な学生の獲得競争激化を示唆。ボッシュは優秀層囲い込み、コンサル就職数公開は大学のブランド力向上、ダイニーは採用コスト削減と社員の忠誠心向上を狙う。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ボッシュ, ダイニー",
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "## ボッシュ & ダイニー 本質的価値と27卒が狙うべき理由\n\n**ボッシュ**\n\n1.  **主要武器**: ドイツ品質の技術力とグローバル規模。多様な事業領域がリスク分散と成長機会を両立。\n2.  **26-27卒への温度感**: デジタル人材獲得に積極的。多様なバックグラウンドを持つ学生を歓迎。\n3.  **EGO適性**: データドリブンな意思決定を重視。AI/IoT活用プロジェクト多数。構造的思考力必須。\n4.  **裏の弱点**: 組織規模が大きく、意思決定の遅さや縦割り文化が残存する可能性。\n\n**ダイニー**\n\n1.  **主要武器**: 高度な技術力と顧客密着型ソリューション。ニッチ市場で圧倒的なシェア。\n2.  **26-27卒への温度感**: 少数精鋭採用。専門性を重視し、自律的に動ける人材を求める。\n3.  **EGO適性**: 論理的思考と問題解決能力重視。AI活用は発展途上だが、将来性は高い。\n4.  **裏の弱点**: 特定業界への依存度が高く、景気変動の影響を受けやすい。\n",
+    "deep_web_intel": "**ボッシュ (Bosch)**\n\n*   **概要:** 革新的な製品とサービスで生活の質を向上。\n*   **事業:** 電動工具（プロ用）。\n\n**データソースのギャップ**\n\n*   ダイニーに関する情報が不足。Wikipediaからの情報取得に失敗。"
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な学生の獲得競争激化を示唆。ボッシュは優秀層囲い込み、コンサル就職数公開は大学のブランド力向上、ダイニーは採用コスト削減と社員の忠誠心向上を狙う。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:33:36.818774",
+  "source": "Active:伊藤忠商事"
+}

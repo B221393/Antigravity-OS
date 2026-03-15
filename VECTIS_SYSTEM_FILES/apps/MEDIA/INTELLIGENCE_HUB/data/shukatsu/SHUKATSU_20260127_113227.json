@@ -1,0 +1,24 @@
+{
+  "title": "27卒インターンシップ人気企業ランキングを発表！ITエンジニ",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9IRTZPOXhCMnM0aG1mYmZuQmNWQ0RLTXBjczN4b0drT01WWmhfbXRoUmpSM0tyOEszNWxLRmFfcGV6MXFqRnVheWZGd2I?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTE9IRTZPOXhCMnM0aG1mYmZuQmNWQ0RLTXBjczN4b0drT01WWmhfbXRoUmpSM0tyOEszNWxLRmFfcGV6MXFqRnVheWZGd2I?oc=5\" target=\"_blank\">27卒インターンシップ人気企業ランキングを発表！",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "27卒向けインターンシップ人気企業ランキング発表。ITエンジニア志望学生の動向調査。",
+    "true_intent": "ランキング形式で特定企業の露出を増やし、採用活動を支援。FNNプライムオンライン自体のアクセス数向上も狙い。企業からの広告収入や、人材紹介ビジネスへの誘導も考えられる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "FNNプライムオンライン",
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "## FNNプライムオンライン 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: テレビ局の取材力と速報性を活かした、一次情報に基づいた信頼性の高いニュース配信。既存メディアのブランド力とデジタル展開の融合が強み。\n2.  **26-27卒への温度感**: 即戦力採用傾向。デジタルネイティブ世代の視点とスキルを求めている。\n3.  **EGO適性**: データ分析に基づいたコンテンツ改善やAIによる効率化に積極的。構造的思考力とAI活用スキルは高く評価される。\n4.  **裏の弱点**: テレビ局主導の組織体制による意思決定の遅さ。デジタル部門の独立性と裁量権の低さが課題。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   FNNプライムオンライン：フジテレビ系FNN28局のニュースサイト\n*   Google Tag Manager implemented.\n*   Uses \"Tagsmith\" for A/B testing.\n*   Data layer includes genre, category, special, station, program, reporter, etc.\n\n**Structured Summary:**\n\nFNN Prime Online is a news website operated by Fuji News Network. The site utilizes Google Tag Manager for analytics and \"Tagsmith\" for A/B testing different versions of the website.  A data layer is implemented to track article attributes.\n\n**Gap Analysis:**\n\n*   The provided snippets are primarily related to site infrastructure and analytics setup, not content.\n*   No actual news content, article titles, or specific features are included.\n*   Impossible to assess content strategy, article focus, or competitive positioning based solely on provided HTML snippets."
+  },
+  "critical_analysis": {
+    "true_intent": "ランキング形式で特定企業の露出を増やし、採用活動を支援。FNNプライムオンライン自体のアクセス数向上も狙い。企業からの広告収入や、人材紹介ビジネスへの誘導も考えられる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:32:27.284688",
+  "source": "Active:KDDI"
+}

@@ -1,0 +1,417 @@
+from __future__ import annotations
+# AnimaWorks - Digital Anima Framework
+# Copyright (C) 2026 AnimaWorks Authors
+# SPDX-License-Identifier: Apache-2.0
+
+import asyncio
+import json
+import logging
+import secrets
+import time
+from dataclasses import dataclass, field
+from typing import Any
+
+logger = logging.getLogger("animaworks.stream_registry")
+
+
+# ── Data Models ──────────────────────────────────────────
+
+
+@dataclass
+class SSEEvent:
+    """A single buffered SSE event."""
+
+    seq: int
+    event: str
+    payload: dict[str, Any]
+    event_id: str  # "{response_id}:{seq}"
+
+
+MAX_EVENTS = 2000
+
+
+@dataclass
+class ResponseStream:
+    """Per-response stream state and event buffer."""
+
+    response_id: str
+    anima_name: str
+    from_person: str = "human"
+    created_at: float = field(default_factory=time.time)
+    events: list[SSEEvent] = field(default_factory=list)
+    complete: bool = False
+    full_text: str = ""
+    active_tool: str | None = None
+    tool_history: list[dict[str, Any]] = field(default_factory=list)
+    emotion: str | None = None
+    done: bool = False                                      # True if Anima finished normally
+    producer_task: asyncio.Task | None = field(default=None, repr=False)  # Background producer task
+    _seq_counter: int = field(default=0, repr=False)
+    _new_event: asyncio.Event = field(
+        default_factory=asyncio.Event, repr=False,
+    )
+    _notify_seq: int = field(default=0, repr=False)
+
+    def add_event(self, event: str, payload: dict[str, Any]) -> SSEEvent:
+        """Append an event to the buffer and return it."""
+        seq = self._seq_counter
+        self._seq_counter += 1
+        event_id = f"{self.response_id}:{seq}"
+
+        sse_event = SSEEvent(
+            seq=seq,
+            event=event,
+            payload=payload,
+            event_id=event_id,
+        )
+        self.events.append(sse_event)
+
+        # Evict oldest events if buffer exceeds limit
+        if len(self.events) > MAX_EVENTS:
+            logger.info(
+                "[SSE-BUF] evict oldest events stream=%s buffer=%d->%d",
+                self.response_id, len(self.events), MAX_EVENTS,
+            )
+            self.events = self.events[-MAX_EVENTS:]
+
+        # Track accumulated state
+        if event == "text_delta":
+            self.full_text += payload.get("text", "")
+        elif event == "tool_start":
+            self.active_tool = payload.get("tool_name")
+            self.tool_history.append({
+                "tool_name": payload.get("tool_name", ""),
+                "tool_id": payload.get("tool_id", ""),
+                "started_at": int(time.time() * 1000),
+            })
+        elif event == "tool_detail":
+            tid = payload.get("tool_id", "")
+            for entry in reversed(self.tool_history):
+                if entry.get("tool_id") == tid and not entry.get("completed"):
+                    entry["detail"] = payload.get("detail", "")
+                    break
+        elif event == "tool_end":
+            self.active_tool = None
+            tid = payload.get("tool_id", "")
+            for entry in reversed(self.tool_history):
+                if entry.get("tool_id") == tid and not entry.get("completed"):
+                    entry["completed"] = True
+                    entry["duration_ms"] = int(time.time() * 1000) - entry["started_at"]
+                    if payload.get("result_summary"):
+                        entry["result_summary"] = payload["result_summary"]
+                    if payload.get("input_summary"):
+                        entry["input_summary"] = payload["input_summary"]
+                    if payload.get("is_error"):
+                        entry["is_error"] = True
+                    break
+        elif event == "done":
+            self.complete = True
+            self.emotion = payload.get("emotion")
+            summary = payload.get("summary")
+            if summary:
+                self.full_text = summary
+
+        # Log every event added (non-text_delta at INFO, text_delta at DEBUG to avoid flood)
+        if event != "text_delta":
+            logger.info(
+                "[SSE-BUF] add_event stream=%s seq=%d event=%s buf_size=%d",
+                self.response_id, seq, event, len(self.events),
+            )
+        else:
+            logger.debug(
+                "[SSE-BUF] add_event stream=%s seq=%d event=text_delta delta_len=%d total_text=%d",
+                self.response_id, seq, len(payload.get("text", "")), len(self.full_text),
+            )
+
+        # Notify waiters — increment seq THEN set event (waiter checks seq)
+        self._notify_seq += 1
+        self._new_event.set()
+        self._new_event.clear()
+
+        return sse_event
+
+    def events_after(self, after_seq: int) -> list[SSEEvent]:
+        """Return all events with seq > after_seq."""
+        result = [e for e in self.events if e.seq > after_seq]
+        if result:
+            logger.info(
+                "[SSE-BUF] events_after stream=%s after_seq=%d found=%d",
+                self.response_id, after_seq, len(result),
+            )
+        return result
+
+    @property
+    def current_seq(self) -> int:
+        """The sequence number of the most recent event, or -1 if empty."""
+        return self._seq_counter - 1 if self.events else -1
+
+    async def wait_new_event(self, timeout: float = 30.0) -> bool:
+        """Wait for a new event. Returns False on timeout.
+
+        Uses a sequence counter to avoid the race where set()+clear()
+        fires before the waiter's await runs.  Even if the Event is
+        already cleared, the changed ``_notify_seq`` tells us a new
+        event arrived.
+        """
+        logger.info(
+            "[SSE-WAIT] wait_new_event stream=%s timeout=%.1fs complete=%s seq=%d",
+            self.response_id, timeout, self.complete, self._seq_counter - 1,
+        )
+        seen_seq = self._notify_seq
+        deadline = asyncio.get_event_loop().time() + timeout
+        try:
+            while self._notify_seq == seen_seq:
+                remaining = deadline - asyncio.get_event_loop().time()
+                if remaining <= 0:
+                    logger.info(
+                        "[SSE-WAIT] timeout stream=%s after=%.1fs complete=%s",
+                        self.response_id, timeout, self.complete,
+                    )
+                    return False
+                await asyncio.wait_for(self._new_event.wait(), timeout=remaining)
+            logger.info(
+                "[SSE-WAIT] got_event stream=%s new_seq=%d",
+                self.response_id, self._seq_counter - 1,
+            )
+            return True
+        except asyncio.TimeoutError:
+            logger.info(
+                "[SSE-WAIT] timeout stream=%s after=%.1fs complete=%s",
+                self.response_id, timeout, self.complete,
+            )
+            return False
+
+    @property
+    def last_event_id(self) -> str | None:
+        """The event ID of the most recent event, or None."""
+        if not self.events:
+            return None
+        return self.events[-1].event_id
+
+    @property
+    def event_count(self) -> int:
+        return len(self.events)
+
+    @property
+    def status(self) -> str:
+        return "complete" if self.complete else "streaming"
+
+
+# ── StreamRegistry ───────────────────────────────────────
+
+
+class StreamRegistry:
+    """In-memory registry of active and recently completed response streams.
+
+    Stores per-response event buffers for SSE replay and progress polling.
+    Entries are kept for TTL seconds after creation, then cleaned up.
+    """
+
+    TTL = 3600  # 1 hour
+
+    def __init__(self) -> None:
+        self._streams: dict[str, ResponseStream] = {}
+        self._anima_active: dict[str, dict[str, str]] = {}  # anima_name -> {thread_id: response_id}
+        self._cleanup_task: asyncio.Task[None] | None = None
+
+    def register(
+        self, anima_name: str, *, from_person: str = "human",
+        thread_id: str = "default",
+    ) -> ResponseStream:
+        """Create a new ResponseStream and register it."""
+        response_id = secrets.token_urlsafe(24)
+        stream = ResponseStream(
+            response_id=response_id,
+            anima_name=anima_name,
+            from_person=from_person,
+        )
+        self._streams[response_id] = stream
+        if anima_name not in self._anima_active:
+            self._anima_active[anima_name] = {}
+        self._anima_active[anima_name][thread_id] = response_id
+        logger.info(
+            "[SSE-REG] register stream=%s anima=%s thread=%s from=%s total_streams=%d",
+            response_id, anima_name, thread_id, from_person, len(self._streams),
+        )
+        return stream
+
+    def get(self, response_id: str) -> ResponseStream | None:
+        """Look up a stream by response ID."""
+        return self._streams.get(response_id)
+
+    def get_active(
+        self, anima_name: str, thread_id: str | None = None,
+    ) -> ResponseStream | None:
+        """Return the most recent (possibly still active) stream for an anima.
+
+        If *thread_id* is given, only that thread's stream is returned.
+        Otherwise falls back to the "default" thread, then any thread.
+        """
+        threads = self._anima_active.get(anima_name)
+        if not threads:
+            logger.info("[SSE-REG] get_active anima=%s -> no active stream", anima_name)
+            return None
+
+        if thread_id is not None:
+            response_id = threads.get(thread_id)
+        else:
+            response_id = threads.get("default") or next(iter(threads.values()), None)
+
+        if response_id is None:
+            logger.info(
+                "[SSE-REG] get_active anima=%s thread=%s -> no matching stream",
+                anima_name, thread_id,
+            )
+            return None
+
+        stream = self._streams.get(response_id)
+        if stream:
+            logger.info(
+                "[SSE-REG] get_active anima=%s thread=%s -> stream=%s status=%s events=%d",
+                anima_name, thread_id, response_id, stream.status, stream.event_count,
+            )
+        return stream
+
+    def mark_complete(self, response_id: str, *, done: bool = True) -> None:
+        """Mark a stream as complete."""
+        stream = self._streams.get(response_id)
+        if stream:
+            stream.complete = True
+            stream.done = done
+            logger.info(
+                "[SSE-REG] mark_complete stream=%s anima=%s events=%d text_len=%d done=%s",
+                response_id, stream.anima_name, stream.event_count,
+                len(stream.full_text), done,
+            )
+            # Clear the active mapping if this is still the active stream
+            threads = self._anima_active.get(stream.anima_name, {})
+            for tid, rid in list(threads.items()):
+                if rid == response_id:
+                    del threads[tid]
+                    break
+            if not threads:
+                self._anima_active.pop(stream.anima_name, None)
+        else:
+            logger.info(
+                "[SSE-REG] mark_complete stream=%s NOT_FOUND", response_id,
+            )
+
+    def set_producer_task(self, response_id: str, task: asyncio.Task) -> None:
+        """Register a producer task for a stream."""
+        stream = self._streams.get(response_id)
+        if stream:
+            stream.producer_task = task
+            task.add_done_callback(lambda t: self._on_producer_done(response_id, t))
+            logger.info("[SSE-REG] set_producer_task stream=%s", response_id)
+
+    def _on_producer_done(self, response_id: str, task: asyncio.Task) -> None:
+        """Callback when producer task finishes — log exceptions."""
+        if task.cancelled():
+            logger.info("[PRODUCER] cancelled stream=%s", response_id)
+        elif task.exception():
+            logger.error(
+                "[PRODUCER] exception stream=%s: %s",
+                response_id, task.exception(),
+            )
+        else:
+            logger.info("[PRODUCER] completed stream=%s", response_id)
+
+    def cancel_producer(self, response_id: str) -> None:
+        """Cancel producer task for a specific stream."""
+        stream = self._streams.get(response_id)
+        if stream and stream.producer_task and not stream.producer_task.done():
+            stream.producer_task.cancel()
+            logger.info("[SSE-REG] cancel_producer stream=%s", response_id)
+
+    def cancel_all_producers(self) -> None:
+        """Cancel all running producer tasks (for server shutdown)."""
+        cancelled = 0
+        for rid, stream in self._streams.items():
+            if stream.producer_task and not stream.producer_task.done():
+                stream.producer_task.cancel()
+                cancelled += 1
+        if cancelled:
+            logger.info(
+                "[SSE-REG] cancel_all_producers cancelled=%d", cancelled,
+            )
+
+    async def await_all_producers(self, timeout: float = 5.0) -> None:
+        """Wait for all running producer tasks to finish (for graceful shutdown)."""
+        tasks = [
+            s.producer_task for s in self._streams.values()
+            if s.producer_task and not s.producer_task.done()
+        ]
+        if tasks:
+            logger.info("[SSE-REG] await_all_producers count=%d timeout=%.1f", len(tasks), timeout)
+            await asyncio.wait(tasks, timeout=timeout)
+
+    def cleanup(self) -> int:
+        """Remove expired streams. Returns count of removed entries."""
+        now = time.time()
+        expired = [
+            rid for rid, s in self._streams.items()
+            if now - s.created_at > self.TTL
+        ]
+        for rid in expired:
+            stream = self._streams.pop(rid, None)
+            if stream:
+                if stream.producer_task and not stream.producer_task.done():
+                    stream.producer_task.cancel()
+                threads = self._anima_active.get(stream.anima_name, {})
+                for tid, active_rid in list(threads.items()):
+                    if active_rid == rid:
+                        del threads[tid]
+                        break
+                if not threads:
+                    self._anima_active.pop(stream.anima_name, None)
+        if expired:
+            logger.info("Cleaned up %d expired stream(s)", len(expired))
+        return len(expired)
+
+    async def start_cleanup_loop(self, interval: float = 300) -> None:
+        """Background loop that periodically cleans up expired streams."""
+        async def _loop() -> None:
+            while True:
+                await asyncio.sleep(interval)
+                try:
+                    self.cleanup()
+                except Exception:
+                    logger.exception("Stream cleanup error")
+
+        self._cleanup_task = asyncio.create_task(_loop())
+
+    async def stop_cleanup_loop(self) -> None:
+        """Stop the background cleanup loop."""
+        if self._cleanup_task:
+            self._cleanup_task.cancel()
+            try:
+                await self._cleanup_task
+            except asyncio.CancelledError:
+                pass
+            self._cleanup_task = None
+
+    def format_sse(
+        self,
+        stream: ResponseStream,
+        event: str,
+        payload: dict[str, Any],
+    ) -> str:
+        """Add an event to the stream buffer and return the formatted SSE frame."""
+        sse_event = stream.add_event(event, payload)
+        frame = format_sse_with_id(event, payload, sse_event.event_id)
+        if event != "text_delta":
+            logger.info(
+                "[SSE-FRAME] yield stream=%s event=%s id=%s frame_len=%d",
+                stream.response_id, event, sse_event.event_id, len(frame),
+            )
+        return frame
+
+
+def format_sse_with_id(
+    event: str,
+    payload: dict[str, Any],
+    event_id: str,
+) -> str:
+    """Format a single SSE frame with id field."""
+    data = json.dumps(payload, ensure_ascii=False, default=str)
+    return f"id: {event_id}\nevent: {event}\ndata: {data}\n\n"

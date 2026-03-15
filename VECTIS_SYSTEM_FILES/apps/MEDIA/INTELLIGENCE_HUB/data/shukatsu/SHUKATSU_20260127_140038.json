@@ -1,0 +1,24 @@
+{
+  "title": "新型RAV4、25年度発売 車載OS「アリーン」初採用：ニュ",
+  "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFByak9vczRYUjA4R0tIMmx6RnBEcXhHclo5UXh4ZDRjWkJpTVZaSm8wcnNtX2g4VmowbUFtV0xzRUlqSTB1LWpNV25pNjRwSVRybjBTQlVpT0ZUSEppZlpZ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTFByak9vczRYUjA4R0tIMmx6RnBEcXhHclo5UXh4ZDRjWkJpTVZaSm8wcnNtX2g4VmowbUFtV0xzRUlqSTB1LWpNV25pNjRwSVRybjBTQlVpT0ZUSEppZlpZ?oc=5\" target=\"_blank\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トヨタRAV4が2025年度に新型発売。車載OS「アリーン」を初採用。",
+    "true_intent": "トヨタによるアリーンOS採用アピール。サプライヤー関係強化、技術革新の印象操作、競合他社への牽制が目的か。自動車業界におけるOS覇権争いの先駆け。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "トヨタ自動車",
+    "action_required": true,
+    "category": "自動車/IT",
+    "target_year": "2027",
+    "company_profile": "## トヨタ自動車 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 長期的な視点と改善文化が生む圧倒的な品質・生産性。電動化戦略へのシフトも加速。\n2.  **26-27卒への温度感**: グローバルリーダー育成を重視。多様なバックグラウンドを持つ人材を積極的に採用。\n3.  **EGO適性**: 改善文化は構造的思考と親和性◎。AI・データ活用人材のニーズも高まり、適性あり。\n4.  **裏の弱点**: 伝統的な企業体質が、革新的なアイデアの実現を阻害する可能性も。\n",
+    "deep_web_intel": "Okay, I will extract key points, create a structured summary, and identify gap analysis based on the provided data. Due to the error fetching Wikipedia data, that source will be excluded.\n\n**Structured Summary of Toyota Motor Corporation (based on the provided web snippets):**\n\n*   **Core Business:** Automobile manufacturing and related services (evident from website descriptions focused on vehicles, services, and information).\n*   **Online Presence:**\n    *   **Customer-facing website (toyota.jp):** Focuses on providing information about Toyota vehicles, search functions (test drives, dealerships), online tools (estimation, catalog requests), and general customer services.\n    *   **Corporate website (global.toyota):** Provides corporate information, investor relations, news, information about mobility, sustainability initiatives, and career opportunities.\n*   **Keywords (Meta-data):**\n    *   **Customer site:** new cars, test drive search, store search, estimation simulation, catalog request.\n    *   **Corporate site:** corporate information, investor information, newsroom, mobility, sustainability, recruitment.\n*   **Technology:** Uses JavaScript, CSS, and various libraries (jQuery, potentially others through bundled scripts). Has tracking mechanisms (dmp\\_r2\\_tags, web beacons).\n*   **Global Reach:** The existence of a separate \"global.toyota\" site suggests a multinational operation with a need to present information to an international audience.\n*   **Branding:** Consistent use of \"TOYOTA MOTOR CORPORATION\" in meta-data suggests a strong emphasis on brand identity.\n\n**Key Points:**\n\n*   Toyota has a distinct online strategy with separate websites for customer engagement and corporate affairs.\n*   The company invests in online services and information resources for customers.\n*   Corporate website highlights focus on investors, sustainability and mobility.\n\n**Gap Analysis:**\n\n*   **Missing Financial Data:** The provided snippets lack any financial information (revenue, profit, market share, etc.).\n*   **Missing Organizational Structure:** No details about the internal structure of the company (divisions, leadership, etc.).\n*   **Missing Product Details:**  While the customer-facing website is mentioned, there are no specific product details in these snippets (specific car models, technologies, etc.).\n*   **Missing Market Information:** No mention of target markets, sales figures by region, or competitive landscape.\n*   **Missing Historical context:** The provided data lacks historical background, like founding date, key milestones, or evolution.\n*   **Missing Manufacturing/Supply chain information:** No details about manufacturing locations, supply chain management, or key suppliers.\n*   **Wikipedia Data:** The absence of Wikipedia data represents a significant gap, as it would typically provide a broad overview and historical context.\n\n**Minimal Text Summary:**\n\nToyota: Auto manufacturer. Customer website (toyota.jp) focuses on vehicles/services. Corporate website (global.toyota) focuses on investors, sustainability, mobility, and recruitment. Data lacks financials, structure, specific product information, market information, history, and supply chain details."
+  },
+  "critical_analysis": {
+    "true_intent": "トヨタによるアリーンOS採用アピール。サプライヤー関係強化、技術革新の印象操作、競合他社への牽制が目的か。自動車業界におけるOS覇権争いの先駆け。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T14:00:38.592486",
+  "source": "Active:トヨタ自動車"
+}

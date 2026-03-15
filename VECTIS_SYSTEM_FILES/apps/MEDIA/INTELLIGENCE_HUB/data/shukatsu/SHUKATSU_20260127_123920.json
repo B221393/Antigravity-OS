@@ -1,0 +1,22 @@
+{
+  "title": "「ガチ勢エンジニア」は通用しなくなる？IT・通信、自動車業界",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBScjM1QWxSWExxSXRrTHFCdWV0Y3M5dzBSb0ROS2RoWGkteHd1V3lWdW1Pd2txMjFnMVJGbEM4VFQ2eUwxRk9YR3VYVFjSAU9BVV95cUxPbWJQYmtEeDNDYWR3eTJVcWJmeEdBRU9pd05QZGdoRklsNGlWVTJsbE1hWmFjRHVsQzRLVER4bTdCOVlrRkZqeHRWUDhyaW80?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTFBScjM1QWxSWExxSXRrTHFCdWV0Y3M5dzBSb0ROS2RoWGkteHd1V3lWdW1Pd2txMjFnMVJGbEM4VFQ2eUwxRk9YR3VYVFjSAU9BVV95cUxPbWJQYmtEeDNDYWR3eTJVcWJmeEdBRU9pd0",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "特定エンジニア像の賞賛記事。企業が求める人材像の変化を示唆し、就活戦略に影響を与えうる。",
+    "true_intent": "企業側の求める人材像の変化を喧伝し、記事広告の可能性。人材紹介会社や教育機関が、記事に沿ったサービスを売り込む動機がある。企業は低コストで多様な人材を確保したい意図。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "企業側の求める人材像の変化を喧伝し、記事広告の可能性。人材紹介会社や教育機関が、記事に沿ったサービスを売り込む動機がある。企業は低コストで多様な人材を確保したい意図。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:39:20.435803",
+  "source": "通信業界 トレンド"
+}

@@ -1,0 +1,738 @@
+/* ============================================
+   Assets Management — Gallery, Modal, Progress
+   ============================================ */
+
+/* ── Custom Properties ──────────────────────── */
+
+:root {
+  --assets-primary: var(--aw-color-accent);
+  --assets-primary-hover: var(--aw-color-accent-hover);
+  --assets-bg: var(--aw-color-bg-subtle);
+  --assets-card-bg: var(--aw-color-bg-primary);
+  --assets-card-radius: 10px;
+  --assets-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --assets-border: var(--aw-color-border);
+  --assets-text: var(--aw-color-text-primary);
+  --assets-text-muted: var(--aw-color-text-secondary);
+  --assets-text-faint: var(--aw-color-text-faint);
+  --assets-success: var(--aw-color-success);
+  --assets-error: var(--aw-color-error);
+  --assets-transition: 0.15s ease;
+}
+
+/* ── Anima Selector ────────────────────────── */
+
+.assets-anima-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.assets-anima-btn {
+  padding: 8px 16px;
+  background: var(--assets-card-bg);
+  color: var(--assets-text);
+  border: 1px solid var(--assets-border);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--assets-transition),
+              border-color var(--assets-transition),
+              color var(--assets-transition);
+}
+
+.assets-anima-btn:hover,
+.assets-anima-btn:active {
+  background: var(--assets-bg);
+  border-color: var(--aw-color-text-placeholder);
+}
+
+.assets-anima-btn--active {
+  background: var(--assets-primary);
+  color: var(--aw-color-bg-primary);
+  border-color: var(--assets-primary);
+}
+
+.assets-anima-btn--active:hover,
+.assets-anima-btn--active:active {
+  background: var(--assets-primary-hover);
+  border-color: var(--assets-primary-hover);
+}
+
+/* ── Gallery Grid ───────────────────────────── */
+
+.assets-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+/* ── Thumbnail Card ─────────────────────────── */
+
+.assets-thumb-card {
+  background: var(--assets-card-bg);
+  border-radius: var(--assets-card-radius);
+  box-shadow: var(--assets-card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  position: relative;
+  transition: box-shadow var(--assets-transition),
+              transform var(--assets-transition);
+}
+
+.assets-thumb-card:hover,
+.assets-thumb-card:active {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.assets-thumb-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  background: var(--aw-color-bg-secondary);
+  border-radius: 6px;
+}
+
+.assets-thumb-placeholder {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--aw-color-bg-secondary);
+  border-radius: 6px;
+  color: var(--assets-text-faint);
+  font-size: 0.85rem;
+}
+
+.assets-thumb-empty {
+  color: var(--assets-text-faint);
+  font-size: 0.82rem;
+}
+
+.assets-thumb-label {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--assets-text);
+  text-align: center;
+}
+
+/* ── Badge ──────────────────────────────────── */
+
+.assets-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  background: var(--aw-color-accent-bg);
+  color: var(--aw-color-info-text);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.assets-badge-icon {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--assets-text-faint);
+}
+
+/* ============================================
+   Remake Modal
+   ============================================ */
+
+/* ── Overlay ────────────────────────────────── */
+
+.assets-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.assets-modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+  animation: assets-fade-in 0.2s ease;
+}
+
+/* ── Modal ──────────────────────────────────── */
+
+.assets-modal {
+  background: var(--assets-card-bg);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.08);
+  max-width: 900px;
+  width: 92%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Modal Header ───────────────────────────── */
+
+.assets-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--assets-border);
+  flex-shrink: 0;
+}
+
+.assets-modal-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--assets-text);
+  margin: 0;
+}
+
+.assets-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.3rem;
+  color: var(--assets-text-muted);
+  cursor: pointer;
+  transition: background var(--assets-transition), color var(--assets-transition);
+}
+
+.assets-modal-close:hover,
+.assets-modal-close:active {
+  background: var(--aw-color-bg-hover);
+  color: var(--assets-text);
+}
+
+/* ── Modal Body ─────────────────────────────── */
+
+.assets-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  min-height: 0;
+}
+
+/* ── Comparison Layout ──────────────────────── */
+
+.assets-modal-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.assets-modal-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.assets-modal-col-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--assets-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.assets-modal-preview-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  background: var(--aw-color-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--assets-border);
+}
+
+.assets-modal-preview-placeholder {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--aw-color-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--assets-border);
+  color: var(--assets-text-faint);
+  font-size: 0.88rem;
+  padding: 16px;
+}
+
+/* ── Controls ───────────────────────────────── */
+
+.assets-modal-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.assets-modal-control-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.assets-modal-label {
+  flex-shrink: 0;
+  min-width: 140px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--assets-text);
+}
+
+.assets-modal-select {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--aw-color-border-input);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: var(--assets-text);
+  background: var(--assets-card-bg);
+  outline: none;
+  transition: border-color var(--assets-transition);
+}
+
+.assets-modal-select:focus {
+  border-color: var(--assets-primary);
+}
+
+.assets-modal-range {
+  flex: 1;
+  accent-color: var(--assets-primary);
+}
+
+/* ── Action Buttons ─────────────────────────── */
+
+.assets-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   Progress Section
+   ============================================ */
+
+.assets-progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 1px solid var(--assets-border);
+  margin-top: 12px;
+}
+
+.assets-progress-header {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--assets-text);
+}
+
+.assets-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.assets-progress-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.assets-progress-item-label {
+  flex-shrink: 0;
+  min-width: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--assets-text);
+}
+
+.assets-progress-bar-track {
+  flex: 1;
+  height: 6px;
+  background: var(--aw-color-border-separator);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.assets-progress-bar-fill {
+  height: 100%;
+  background: var(--assets-primary);
+  border-radius: 3px;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+.assets-progress-pct {
+  flex-shrink: 0;
+  min-width: 40px;
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--assets-text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.assets-progress-item--done .assets-progress-pct {
+  color: var(--assets-success);
+}
+
+.assets-progress-item--done .assets-progress-bar-fill {
+  background: var(--assets-success);
+}
+
+.assets-progress-item--error .assets-progress-pct {
+  color: var(--assets-error);
+}
+
+.assets-progress-item--error .assets-progress-bar-fill {
+  background: var(--assets-error);
+}
+
+.assets-progress-complete {
+  padding: 8px 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--assets-success);
+}
+
+/* ── Error / Spinner ────────────────────────── */
+
+.assets-error {
+  color: var(--assets-error);
+  font-size: 0.88rem;
+  padding: 8px 0;
+}
+
+.assets-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--aw-color-border-separator);
+  border-top-color: var(--assets-primary);
+  border-radius: 50%;
+  animation: assets-spin 0.8s linear infinite;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes assets-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes assets-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+
+/* ── Secondary Gallery (Small Thumbnails) ──── */
+
+.assets-thumb-card--small {
+  max-width: 120px;
+}
+
+.assets-thumb-card--small .assets-thumb-img {
+  height: 100px;
+}
+
+.assets-thumb-card--small .assets-thumb-placeholder {
+  height: 100px;
+}
+
+.assets-badge--exists {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--aw-color-success-text, #166534);
+  background: var(--aw-color-success-bg, #dcfce7);
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 4px;
+}
+
+.assets-badge--missing {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--aw-color-text-muted, #888);
+  background: var(--aw-color-bg-tertiary, #e5e5e5);
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 4px;
+}
+
+/* ============================================
+   Preview History Navigation
+   ============================================ */
+
+.assets-preview-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.assets-preview-counter {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--assets-text-muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* ============================================
+   Confirm Dialog
+   ============================================ */
+
+.assets-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.assets-confirm-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.assets-confirm-dialog {
+  background: var(--assets-card-bg);
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  padding: 24px 28px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.assets-confirm-dialog p {
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+  color: var(--assets-text);
+  line-height: 1.5;
+}
+
+.assets-confirm-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* ============================================
+   Status Text (replaces Complete button)
+   ============================================ */
+
+.assets-status-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--assets-success);
+  padding: 8px 0;
+}
+
+/* ============================================
+   Action Buttons 3-Zone Layout
+   ============================================ */
+
+.assets-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 0;
+  flex-wrap: wrap;
+}
+
+.assets-modal-actions-left,
+.assets-modal-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ============================================
+   Slider Disabled State
+   ============================================ */
+
+.assets-control-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ============================================
+   Expression Grid
+   ============================================ */
+
+.assets-expression-section {
+  border-top: 1px solid var(--assets-border);
+  padding-top: 16px;
+}
+
+.assets-expression-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.assets-expression-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.assets-expression-card {
+  background: var(--assets-card-bg);
+  border-radius: 8px;
+  box-shadow: var(--assets-card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--assets-transition);
+}
+
+.assets-expression-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.assets-expression-img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  background: var(--aw-color-bg-secondary);
+}
+
+.assets-expression-placeholder {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--aw-color-bg-secondary);
+  color: var(--assets-text-faint);
+  font-size: 0.75rem;
+}
+
+.assets-expression-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+}
+
+.assets-expression-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--assets-text);
+}
+
+.assets-expression-regen-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: var(--aw-color-bg-hover);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--assets-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--assets-transition), color var(--assets-transition);
+}
+
+.assets-expression-regen-btn:hover {
+  background: var(--assets-primary);
+  color: var(--aw-color-bg-primary);
+}
+
+.assets-expression-regen-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ── Small button variant ──────────────────── */
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 0.78rem;
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .assets-modal-overlay.active {
+    animation: none;
+  }
+  .assets-spinner {
+    animation: none;
+  }
+  .assets-thumb-card {
+    transition: none;
+  }
+  .assets-progress-bar-fill {
+    transition: none;
+  }
+  .assets-confirm-overlay {
+    transition: none;
+  }
+  .assets-expression-card {
+    transition: none;
+  }
+}

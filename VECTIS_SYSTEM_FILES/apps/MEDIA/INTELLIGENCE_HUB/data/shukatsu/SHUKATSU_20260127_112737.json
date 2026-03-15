@@ -1,0 +1,23 @@
+{
+  "title": "科学と社会の課題を炙り出す推理ゲーム『nocobon』とは？",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE50cmU3b1FfS2M3TjZraWs5b0pfZlA3bU5JNFhwSEpGZnFzSnZHcG5iRTZjVGpYQV80OG8xOXhYMjVZTkNHQ1ItNXRLZ3h3TVlzM3N3SXlKNW0zTm80NmU3WENuRjA5MnYyTGs2Qw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE50cmU3b1FfS2M3TjZraWs5b0pfZlA3bU5JNFhwSEpGZnFzSnZHcG5iRTZjVGpYQV80OG8xOXhYMjVZTkNHQ1ItNXRLZ3h3TVlzM3N3SXlKNW0zTm80NmU3WENuRjA5MnYyTGs2Qw?oc=",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "東大研究者開発の社会課題を扱う推理ゲーム『nocobon』紹介記事。",
+    "true_intent": "研究活動広報、研究費獲得のための実績アピール、ゲームを通じた啓蒙活動推進。東大のブランド力向上も狙いか。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "出版",
+    "target_year": "2027",
+    "academic_deep_dive": "1. **歴史的背景:** 科学と社会の接点をゲームで探求する試みは、科学啓蒙運動や科学コミュニケーションの歴史と連動する。過去には、科学技術の進歩が常に社会の幸福に繋がると信じられた時代もあったが、原発事故や遺伝子組み換え食品問題などを経て、科学技術と倫理、社会への影響を総合的に考慮する必要性が高まった。類似の事例としては、シミュレーションゲームを用いた政策立案や、倫理的ジレンマを体験させる教育プログラムなどが挙げられる。\n\n2. **現代的意義:** 『nocobon』は、科学技術の進歩がもたらす複雑な問題群を可視化し、市民が主体的に議論に参加するきっかけを提供する点で重要である。現代社会は、AI、気候変動、バイオテクノロジーなど、高度な科学技術に依存しており、その恩恵とリスクを理解し、適切な政策を選択するためには、科学リテラシーの向上が不可欠である。ゲームを通じて、異なる価値観を持つ人々が対話する場を創出することは、社会の分断を乗り越え、合意形成を促進する上で意義深い。\n\n3. **批判的視座:** ゲームはあくまでシミュレーションであり、現実の複雑さを完全に再現することはできない。また、ゲームデザイン自体が、特定の価値観やバイアスを内包している可能性もある。重要なのは、ゲームを「答え」ではなく、「問い」を生み出すためのツールとして捉え、批判的思考を養うことである。本当に問うべきは、科学技術の進歩を誰がコントロールし、その恩恵とリスクをどのように分配するのか、という権力構造の問題ではないだろうか。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "研究活動広報、研究費獲得のための実績アピール、ゲームを通じた啓蒙活動推進。東大のブランド力向上も狙いか。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:27:37.492761",
+  "source": "科学技術 社会論"
+}

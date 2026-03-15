@@ -1,0 +1,43 @@
+{
+  "title": "ほかの社員インタビュー - tokyo-gas.co.jp",
+  "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1oR1l2TjVmZUJMU2ljYVI5TmhuMkVDQkdWdk1HN3oyVzFBTExUS20waHFDUElpcWUzV2NGeWN0NFdCZ3Z6ZW5tUDBPM190WDNXSDlhNmdrN1A1QXdwZWFrNnlmaWVhQTZoMWFxSDdjUkhXbjY1Tkw5UURCWQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE1oR1l2TjVmZUJMU2ljYVI5TmhuMkVDQkdWdk1HN3oyVzFBTExUS20waHFDUElpcWUzV2NGeWN0NFdCZ3Z6ZW5tUDBPM190WDNXSDlhNmdrN1A1QXdwZWFrNnlmaWVhQTZoMWFxSDdjUkhXbjY1Tkw5UURCWQ?oc=5\" target=\"_blank\">ほかの社員インタビュー</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">tokyo-gas.co.jp</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "東京ガスの社員インタビュー",
+    "strategic_analysis": {
+      "true_intent": "東京ガスが社員インタビューを公開することで、企業イメージを向上させ、若者にアピールすることを目的としている。就職活動における企業のブランディング戦略の一環と考えられる。",
+      "swot": {
+        "strength": "東京ガス社員の多様性と企業文化の魅力",
+        "weakness": "企業の内部問題や課題が表沙汰になっていない",
+        "opportunity": "東京ガス社員の経験談や企業文化を知ることで、就職活動における企業とのマッチング率の向上",
+        "threat": "東京ガス社員の意見が企業全体を代表していない可能性"
+      },
+      "writing_technique": "",
+      "action_plan": "東京ガス社員インタビューを参考に、東京ガスへの就職活動の際に、企業文化や社員の経験談に関する質問を準備し、企業とのマッチング率を高める。OB訪問の際にも、社員インタビューでの内容を基に、具体的な質問をして企業文化を深く理解する。"
+    },
+    "bias_warning": "東京ガス社員インタビューは、企業のイメージを向上させるために公開された可能性があり、偏向報道の可能性がある。",
+    "company": "東京ガス",
+    "category": "エネルギー",
+    "target_year": "2027",
+    "priority_score": 8,
+    "company_profile": "東京ガスを構造化してみました。\n\n1. **主要武器**: エネルギー需給の安定供給と革新への対応力\n2. **26-27卒への温度感**: デジタル化とサステナビリティへの取り組みを重視\n3. **EGO適性**: イノベーションと多様な視点の取り入れを推進\n4. **裏の弱点**: 業界の変化への適応速度と新技術への投資効率",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "東京ガスが社員インタビューを公開することで、企業イメージを向上させ、若者にアピールすることを目的としている。就職活動における企業のブランディング戦略の一環と考えられる。",
+    "swot": {
+      "strength": "東京ガス社員の多様性と企業文化の魅力",
+      "weakness": "企業の内部問題や課題が表沙汰になっていない",
+      "opportunity": "東京ガス社員の経験談や企業文化を知ることで、就職活動における企業とのマッチング率の向上",
+      "threat": "東京ガス社員の意見が企業全体を代表していない可能性"
+    },
+    "writing_technique": "",
+    "action_plan": "東京ガス社員インタビューを参考に、東京ガスへの就職活動の際に、企業文化や社員の経験談に関する質問を準備し、企業とのマッチング率を高める。OB訪問の際にも、社員インタビューでの内容を基に、具体的な質問をして企業文化を深く理解する。"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "東京ガス社員インタビューは、企業のイメージを向上させるために公開された可能性があり、偏向報道の可能性がある。",
+  "collected_at": "2026-02-06T09:47:45.600809",
+  "source": "東京ガス",
+  "score": 8
+}

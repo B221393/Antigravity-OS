@@ -1,0 +1,2756 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自分ステーション | 自分だけの放送局</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ============================================
+           自分ステーション - レトロTV放送局テーマ
+           Inspired by nob-sakuma.com
+           ============================================ */
+
+        :root {
+            /* メインカラーパレット */
+            --neon-lime: #CCFF00;
+            --neon-lime-glow: rgba(204, 255, 0, 0.4);
+            --electric-blue: #00AAFF;
+            --electric-blue-glow: rgba(0, 170, 255, 0.3);
+            --hot-pink: #FF00AA;
+            --hot-pink-glow: rgba(255, 0, 170, 0.3);
+            --sunset-orange: #FF9900;
+            --sunset-orange-glow: rgba(255, 153, 0, 0.3);
+
+            /* 背景系 */
+            --dark-charcoal: #0a0a0a;
+            --dark-gray: #141414;
+            --mid-gray: #1a1a1a;
+
+            /* テキスト */
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --text-dim: #555555;
+
+            /* フォント */
+            --font-main: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif;
+            --font-mono: 'Share Tech Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-charcoal);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           走査線エフェクト（レトロTV感）
+           ============================================ */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.03) 2px,
+                    rgba(0, 0, 0, 0.03) 4px);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ============================================
+           グリッチ & アニメーション
+           ============================================ */
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        @keyframes flicker {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            92% {
+                opacity: 1;
+            }
+
+            93% {
+                opacity: 0.8;
+            }
+
+            94% {
+                opacity: 1;
+            }
+
+            97% {
+                opacity: 0.9;
+            }
+
+            98% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse-neon {
+
+            0%,
+            100% {
+                text-shadow: 0 0 5px var(--neon-lime), 0 0 10px var(--neon-lime), 0 0 20px var(--neon-lime-glow);
+            }
+
+            50% {
+                text-shadow: 0 0 10px var(--neon-lime), 0 0 20px var(--neon-lime), 0 0 40px var(--neon-lime-glow);
+            }
+        }
+
+        @keyframes slide-in {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* ============================================
+           更新中バナー（テロップ風）
+           ============================================ */
+        .update-banner {
+            background: linear-gradient(90deg, var(--hot-pink), #ff3366, var(--hot-pink));
+            background-size: 200% 100%;
+            animation: gradient-shift 3s ease infinite;
+            color: white;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .update-banner .marquee-text {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .update-banner .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* ============================================
+           ヘッダー / ナビゲーション
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95) 0%, transparent 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+
+        .header.solid {
+            background: rgba(10, 10, 10, 0.98);
+            border-bottom: 1px solid rgba(204, 255, 0, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--neon-lime);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            animation: flicker 4s infinite;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--neon-lime);
+            letter-spacing: 2px;
+            font-family: var(--font-mono);
+        }
+
+        .on-air-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff3333;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #ff3333;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: flicker 2s infinite;
+        }
+
+        .on-air-badge::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: #ff3333;
+            border-radius: 50%;
+            animation: pulse-dot 1s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-lime);
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-lime);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ============================================
+           ヒーローセクション
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 100px 40px;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(204, 255, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(0, 170, 255, 0.05) 0%, transparent 50%),
+                var(--dark-charcoal);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(204, 255, 0, 0.1);
+            border: 1px solid var(--neon-lime);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--neon-lime);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            animation: slide-in 0.6s ease-out;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            animation: slide-in 0.6s ease-out 0.1s backwards;
+        }
+
+        .hero-title .highlight {
+            color: var(--neon-lime);
+            display: inline-block;
+            animation: pulse-neon 3s infinite;
+        }
+
+        .hero-title .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title .glitch:hover {
+            animation: glitch 0.3s infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slide-in 0.6s ease-out 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: slide-in 0.6s ease-out 0.3s backwards;
+        }
+
+        .btn-primary {
+            background: var(--neon-lime);
+            color: var(--dark-charcoal);
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-weight: 900;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            border: 2px solid var(--neon-lime);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--neon-lime);
+            box-shadow: 0 0 30px var(--neon-lime-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--electric-blue);
+            color: var(--electric-blue);
+        }
+
+        /* ============================================
+           セクション共通
+           ============================================ */
+        .section {
+            padding: 80px 40px;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 100%;
+            background: var(--neon-lime);
+            border-radius: 2px;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(204, 255, 0, 0.3), transparent);
+        }
+
+        .section-dots {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* ============================================
+           アプリグリッド
+           ============================================ */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .app-card {
+            background: var(--dark-gray);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .app-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .app-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(204, 255, 0, 0.05) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .app-card:hover {
+            border-color: var(--neon-lime);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--neon-lime-glow);
+        }
+
+        .app-card:hover::before {
+            opacity: 1;
+        }
+
+        .app-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .app-icon-wrapper {
+            width: 55px;
+            height: 55px;
+            background: rgba(204, 255, 0, 0.1);
+            border: 2px solid rgba(204, 255, 0, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .app-card:hover .app-icon-wrapper {
+            background: rgba(204, 255, 0, 0.2);
+            border-color: var(--neon-lime);
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .app-channel-tag {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--neon-lime);
+            background: rgba(204, 255, 0, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .app-name {
+            font-size: 1.3rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+
+        .app-name-sub {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .app-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .app-card-footer {
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .app-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        .status-dot.dev {
+            background: #ffaa00;
+        }
+
+        .app-arrow {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            transition: all 0.3s;
+        }
+
+        .app-card:hover .app-arrow {
+            color: var(--neon-lime);
+            transform: translateX(5px);
+        }
+
+        /* カラーバリエーション */
+        .app-card[data-color="blue"] .app-icon-wrapper {
+            background: rgba(0, 170, 255, 0.1);
+            border-color: rgba(0, 170, 255, 0.3);
+        }
+
+        .app-card[data-color="blue"]:hover {
+            border-color: var(--electric-blue);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--electric-blue-glow);
+        }
+
+        .app-card[data-color="blue"] .app-channel-tag {
+            color: var(--electric-blue);
+            background: rgba(0, 170, 255, 0.1);
+        }
+
+        .app-card[data-color="pink"] .app-icon-wrapper {
+            background: rgba(255, 0, 170, 0.1);
+            border-color: rgba(255, 0, 170, 0.3);
+        }
+
+        .app-card[data-color="pink"]:hover {
+            border-color: var(--hot-pink);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--hot-pink-glow);
+        }
+
+        .app-card[data-color="pink"] .app-channel-tag {
+            color: var(--hot-pink);
+            background: rgba(255, 0, 170, 0.1);
+        }
+
+        .app-card[data-color="orange"] .app-icon-wrapper {
+            background: rgba(255, 153, 0, 0.1);
+            border-color: rgba(255, 153, 0, 0.3);
+        }
+
+        .app-card[data-color="orange"]:hover {
+            border-color: var(--sunset-orange);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--sunset-orange-glow);
+        }
+
+        .app-card[data-color="orange"] .app-channel-tag {
+            color: var(--sunset-orange);
+            background: rgba(255, 153, 0, 0.1);
+        }
+
+        /* ============================================
+           フッター
+           ============================================ */
+        .footer {
+            padding: 60px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            color: var(--neon-lime);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .footer-text a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-text a:hover {
+            color: var(--neon-lime);
+        }
+
+        /* ============================================
+           レスポンシブ
+           ============================================ */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .update-banner {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 更新中バナー -->
+    <div class="update-banner">
+        <span class="blink">●</span>&nbsp;
+        ただいま絶賛アップデート中！新機能を順次追加しています
+        &nbsp;<span class="blink">●</span>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header" id="header">
+        <div class="logo">
+            <div class="logo-icon">📺</div>
+            <span class="logo-text">自分STATION</span>
+        </div>
+        <div class="on-air-badge">ON AIR</div>
+        <nav class="nav-links">
+            <a href="#study" class="nav-link">学習</a>
+            <a href="#job" class="nav-link">就活</a>
+            <a href="#tools" class="nav-link">ツール</a>
+            <a href="#fun" class="nav-link">お楽しみ</a>
+        </nav>
+    </header>
+
+    <!-- ヒーロー -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🎬</span>
+                PERSONAL BROADCAST SYSTEM v2.1
+            </div>
+            <h1 class="hero-title">
+                <span class="glitch">自分だけの</span><br>
+                <span class="highlight">放送局</span>へようこそ
+            </h1>
+            <p class="hero-subtitle">
+                TOEICから就活まで、あなたの成長をAIがサポート。<br>
+                すべてのチャンネルは、未来への道。
+            </p>
+            <div class="hero-buttons">
+                <a href="http://localhost:8502" class="btn-primary">
+                    <span>▶</span> 英語道場を開く
+                </a>
+                <a href="#study" class="btn-secondary">
+                    チャンネル一覧
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学習チャンネル -->
+    <section class="section section-dots" id="study">
+        <div class="section-header">
+            <h2 class="section-title">学習チャンネル</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="apps-grid">
+            <!-- 英語道場 -->
+            <div class="app-card" onclick="window.location.href='http://localhost:8502'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎯</div>
+                    <span class="app-channel-tag">CH.01</span>
+                </div>
+                <div class="app-name">英語道場</div>
+                <div class="app-name-sub">TOEIC MASTERY</div>
+                <div class="app-desc">990点を目指す本気の特訓。AIが苦手を分析し最適な問題を出題。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- 大西道場 -->
+            <div class="app-card" data-color="blue" onclick="window.location.href='http://localhost:8501?mode=onishi'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">⌨️</div>
+                    <span class="app-channel-tag">CH.02</span>
+                </div>
+                <div class="app-name">大西道場</div>
+                <div class="app-name-sub">ONISHI TYPING</div>
+                <div class="app-desc">大西配列でタイピング練習。オリジナル配列をマスターしよう。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- 教養チャンネル -->
+            <div class="app-card" data-color="orange" onclick="window.location.href='http://localhost:8505'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🏛️</div>
+                    <span class="app-channel-tag">CH.03</span>
+                </div>
+                <div class="app-name">教養チャンネル</div>
+                <div class="app-name-sub">HISTORY MASTER</div>
+                <div class="app-desc">日本史、世界史、一般常識。社会人の土台を楽しく学ぶ。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- 雑学王 -->
+            <div class="app-card" data-color="pink" onclick="window.location.href='http://localhost:8516'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧠</div>
+                    <span class="app-channel-tag">CH.04</span>
+                </div>
+                <div class="app-name">雑学王</div>
+                <div class="app-name-sub">TRIVIA</div>
+                <div class="app-desc">知っておきたい雑学・豆知識。会話のネタを増やそう。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+        
+
+            <!-- Generated App: book_keeper -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Book Keeper...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌊</div>
+                    <span class="app-channel-tag">APP.006</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Book Keeper</div>
+                <div class="app-name-sub">BOOK_KEEPER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: book_log -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Book Log...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">⚡</div>
+                    <span class="app-channel-tag">APP.007</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Book Log</div>
+                <div class="app-name-sub">BOOK_LOG</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: history -->
+            <div class="app-card"  onclick="alert('Launching History...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎨</div>
+                    <span class="app-channel-tag">APP.036</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">History</div>
+                <div class="app-name-sub">HISTORY</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: kanji_num -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Kanji Num...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎹</div>
+                    <span class="app-channel-tag">APP.046</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Kanji Num</div>
+                <div class="app-name-sub">KANJI_NUM</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: memory -->
+            <div class="app-card"  onclick="alert('Launching Memory...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎹</div>
+                    <span class="app-channel-tag">APP.057</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Memory</div>
+                <div class="app-name-sub">MEMORY</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: memory_bank -->
+            <div class="app-card"  onclick="alert('Launching Memory Bank...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📊</div>
+                    <span class="app-channel-tag">APP.058</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Memory Bank</div>
+                <div class="app-name-sub">MEMORY_BANK</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: memory_viewer -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Memory Viewer...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🛡️</div>
+                    <span class="app-channel-tag">APP.059</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Memory Viewer</div>
+                <div class="app-name-sub">MEMORY_VIEWER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: random_wiki -->
+            <div class="app-card"  onclick="alert('Launching Random Wiki...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎹</div>
+                    <span class="app-channel-tag">APP.073</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Random Wiki</div>
+                <div class="app-name-sub">RANDOM_WIKI</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: toeic -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Toeic...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧪</div>
+                    <span class="app-channel-tag">APP.091</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Toeic</div>
+                <div class="app-name-sub">TOEIC</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: toeic_analytics -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Toeic Analytics...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🚀</div>
+                    <span class="app-channel-tag">APP.092</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Toeic Analytics</div>
+                <div class="app-name-sub">TOEIC_ANALYTICS</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: toeic_mastery -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Toeic Mastery...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌊</div>
+                    <span class="app-channel-tag">APP.093</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Toeic Mastery</div>
+                <div class="app-name-sub">TOEIC_MASTERY</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: toeic_pro -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Toeic Pro...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📊</div>
+                    <span class="app-channel-tag">APP.094</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Toeic Pro</div>
+                <div class="app-name-sub">TOEIC_PRO</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: wiki_lite -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Wiki Lite...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">⚡</div>
+                    <span class="app-channel-tag">APP.102</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Wiki Lite</div>
+                <div class="app-name-sub">WIKI_LITE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <!-- 就活チャンネル -->
+    <section class="section" id="job">
+        <div class="section-header">
+            <h2 class="section-title">就活・自分管理チャンネル</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="apps-grid">
+            <!-- 就活司令部 -->
+            <div class="app-card" onclick="window.location.href='http://localhost:8501'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎖️</div>
+                    <span class="app-channel-tag">CH.00</span>
+                </div>
+                <div class="app-name">就活司令部</div>
+                <div class="app-name-sub">JOB HQ</div>
+                <div class="app-desc">進捗管理、企業プロフィール、面接対策を一元管理。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- 自分ペディア -->
+            <div class="app-card" data-color="orange" onclick="window.location.href='http://localhost:5173'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📖</div>
+                    <span class="app-channel-tag">CH.02</span>
+                </div>
+                <div class="app-name">自分ペディア</div>
+                <div class="app-name-sub">YOUTUBE SUMMARIZER</div>
+                <div class="app-desc">YouTube動画を要約し、自分だけの知識ベースへ継ぎ足し保存。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- エゴ・ペルソナ -->
+            <div class="app-card" data-color="pink" onclick="window.location.href='http://localhost:8510'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">👤</div>
+                    <span class="app-channel-tag">CH.04</span>
+                </div>
+                <div class="app-name">エゴ・ペルソナ</div>
+                <div class="app-name-sub">EGO PERSONA</div>
+                <div class="app-desc">自分の思考特性やスキルツリーを可視化・分析。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- ユーティリティ・ハブ -->
+            <div class="app-card" data-color="blue" onclick="window.location.href='http://localhost:8522'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧰</div>
+                    <span class="app-channel-tag">CH.100</span>
+                </div>
+                <div class="app-name">便利ツール集</div>
+                <div class="app-name-sub">UTILITY HUB</div>
+                <div class="app-desc">ストップウォッチ、テキストクリーナー、システムモニター等。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+
+    <!-- ツールチャンネル -->
+    <section class="section section-dots" id="tools">
+        <div class="section-header">
+            <h2 class="section-title">ツール・チャンネル</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="apps-grid">
+            <!-- 今日のひとくち -->
+            <div class="app-card" data-color="pink" onclick="window.location.href='http://localhost:8503'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📓</div>
+                    <span class="app-channel-tag">TOOL.01</span>
+                </div>
+                <div class="app-name">今日のひとくち</div>
+                <div class="app-name-sub">NEURAL DIGEST</div>
+                <div class="app-desc">Geminiとの会話を噛み砕き知識カードに変換。日々の学びを蓄積。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- 動画かみくだき -->
+            <div class="app-card" onclick="window.location.href='http://localhost:8511'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📺</div>
+                    <span class="app-channel-tag">TOOL.02</span>
+                </div>
+                <div class="app-name">動画かみくだき</div>
+                <div class="app-name-sub">YOUTUBE STREAM</div>
+                <div class="app-desc">YouTube動画を自動解析、要約。時間を節約して知識を吸収。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- 思い出マップ -->
+            <div class="app-card" data-color="blue" onclick="window.location.href='http://localhost:8512'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌌</div>
+                    <span class="app-channel-tag">TOOL.03</span>
+                </div>
+                <div class="app-name">思い出マップ</div>
+                <div class="app-name-sub">MEMORY 3D</div>
+                <div class="app-desc">日記とメモを3D空間に配置。記憶を視覚的に探索。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- カード工房 -->
+            <div class="app-card" data-color="orange" onclick="window.location.href='http://localhost:8507'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🪄</div>
+                    <span class="app-channel-tag">TOOL.04</span>
+                </div>
+                <div class="app-name">カード工房</div>
+                <div class="app-name-sub">CREATOR</div>
+                <div class="app-desc">知識カードを新規作成・編集。自分だけのデータベースを構築。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- システム監視 -->
+            <div class="app-card" onclick="window.location.href='http://localhost:8504'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📊</div>
+                    <span class="app-channel-tag">TOOL.05</span>
+                </div>
+                <div class="app-name">システム監視</div>
+                <div class="app-name-sub">MONITOR</div>
+                <div class="app-desc">APIコスト、サーバー状態、音声コマンドログをリアルタイム監視。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- 利用分析 -->
+            <div class="app-card" data-color="blue" onclick="window.location.href='http://localhost:8510'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📈</div>
+                    <span class="app-channel-tag">TOOL.06</span>
+                </div>
+                <div class="app-name">利用分析</div>
+                <div class="app-name-sub">STATS</div>
+                <div class="app-desc">学習時間、知識蓄積量、成長グラフを可視化。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- スマホ遠隔 -->
+            <div class="app-card" data-color="pink" onclick="window.location.href='http://localhost:8514'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📱</div>
+                    <span class="app-channel-tag">TOOL.07</span>
+                </div>
+                <div class="app-name">スマホ遠隔</div>
+                <div class="app-name-sub">MOBILE</div>
+                <div class="app-desc">Mobile MCPを通じてスマートフォンを自動操作。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- 操作ガイド -->
+            <div class="app-card" onclick="window.location.href='http://localhost:8508'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">❓</div>
+                    <span class="app-channel-tag">TOOL.08</span>
+                </div>
+                <div class="app-name">操作ガイド</div>
+                <div class="app-name-sub">HELP</div>
+                <div class="app-desc">システムの使い方、ショートカット、FAQ。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>閲覧可能</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+        
+
+            <!-- Generated App: abstract_writer -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Abstract Writer...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📝</div>
+                    <span class="app-channel-tag">APP.001</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Abstract Writer</div>
+                <div class="app-name-sub">ABSTRACT_WRITER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: base64_loom -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Base64 Loom...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧬</div>
+                    <span class="app-channel-tag">APP.004</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Base64 Loom</div>
+                <div class="app-name-sub">BASE64_LOOM</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: base_master -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Base Master...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎹</div>
+                    <span class="app-channel-tag">APP.005</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Base Master</div>
+                <div class="app-name-sub">BASE_MASTER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: calendar -->
+            <div class="app-card"  onclick="alert('Launching Calendar...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">⚡</div>
+                    <span class="app-channel-tag">APP.008</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Calendar</div>
+                <div class="app-name-sub">CALENDAR</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: color_alchemy -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Color Alchemy...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔮</div>
+                    <span class="app-channel-tag">APP.009</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Color Alchemy</div>
+                <div class="app-name-sub">COLOR_ALCHEMY</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: color_picker -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Color Picker...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔭</div>
+                    <span class="app-channel-tag">APP.010</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Color Picker</div>
+                <div class="app-name-sub">COLOR_PICKER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: corpus_map -->
+            <div class="app-card"  onclick="alert('Launching Corpus Map...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📊</div>
+                    <span class="app-channel-tag">APP.011</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Corpus Map</div>
+                <div class="app-name-sub">CORPUS_MAP</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: creator -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Creator...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧪</div>
+                    <span class="app-channel-tag">APP.012</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Creator</div>
+                <div class="app-name-sub">CREATOR</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: csv_pivot -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Csv Pivot...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📊</div>
+                    <span class="app-channel-tag">APP.013</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Csv Pivot</div>
+                <div class="app-name-sub">CSV_PIVOT</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: data_lake -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Data Lake...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🚀</div>
+                    <span class="app-channel-tag">APP.014</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Data Lake</div>
+                <div class="app-name-sub">DATA_LAKE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: decision_matrix -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Decision Matrix...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔥</div>
+                    <span class="app-channel-tag">APP.015</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Decision Matrix</div>
+                <div class="app-name-sub">DECISION_MATRIX</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: deep_search -->
+            <div class="app-card"  onclick="alert('Launching Deep Search...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌟</div>
+                    <span class="app-channel-tag">APP.016</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Deep Search</div>
+                <div class="app-name-sub">DEEP_SEARCH</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: desktop_hud -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Desktop Hud...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">⚡</div>
+                    <span class="app-channel-tag">APP.017</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Desktop Hud</div>
+                <div class="app-name-sub">DESKTOP_HUD</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: diary -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Diary...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎨</div>
+                    <span class="app-channel-tag">APP.018</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Diary</div>
+                <div class="app-name-sub">DIARY</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: diff_eye -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Diff Eye...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📡</div>
+                    <span class="app-channel-tag">APP.019</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Diff Eye</div>
+                <div class="app-name-sub">DIFF_EYE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: digital-twin -->
+            <div class="app-card"  onclick="alert('Launching Digital-Twin...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔮</div>
+                    <span class="app-channel-tag">APP.020</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Digital-Twin</div>
+                <div class="app-name-sub">DIGITAL-TWIN</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: discord_bot -->
+            <div class="app-card"  onclick="alert('Launching Discord Bot...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌊</div>
+                    <span class="app-channel-tag">APP.021</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Discord Bot</div>
+                <div class="app-name-sub">DISCORD_BOT</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: ego_engine -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Ego Engine...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">⚡</div>
+                    <span class="app-channel-tag">APP.022</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Ego Engine</div>
+                <div class="app-name-sub">EGO_ENGINE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: ego_evolution -->
+            <div class="app-card"  onclick="alert('Launching Ego Evolution...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎹</div>
+                    <span class="app-channel-tag">APP.023</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Ego Evolution</div>
+                <div class="app-name-sub">EGO_EVOLUTION</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: ego_persona -->
+            <div class="app-card"  onclick="alert('Launching Ego Persona...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">💎</div>
+                    <span class="app-channel-tag">APP.024</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Ego Persona</div>
+                <div class="app-name-sub">EGO_PERSONA</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: era_gengo -->
+            <div class="app-card"  onclick="alert('Launching Era Gengo...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔮</div>
+                    <span class="app-channel-tag">APP.026</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Era Gengo</div>
+                <div class="app-name-sub">ERA_GENGO</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: fill_21_39 -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Fill 21 39...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔥</div>
+                    <span class="app-channel-tag">APP.028</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Fill 21 39</div>
+                <div class="app-name-sub">FILL_21_39</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: flash_count -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Flash Count...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📡</div>
+                    <span class="app-channel-tag">APP.029</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Flash Count</div>
+                <div class="app-name-sub">FLASH_COUNT</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: flash_grep -->
+            <div class="app-card"  onclick="alert('Launching Flash Grep...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧬</div>
+                    <span class="app-channel-tag">APP.030</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Flash Grep</div>
+                <div class="app-name-sub">FLASH_GREP</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: hash_temple -->
+            <div class="app-card"  onclick="alert('Launching Hash Temple...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">⚡</div>
+                    <span class="app-channel-tag">APP.033</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Hash Temple</div>
+                <div class="app-name-sub">HASH_TEMPLE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: headcount_calc -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Headcount Calc...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">💎</div>
+                    <span class="app-channel-tag">APP.034</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Headcount Calc</div>
+                <div class="app-name-sub">HEADCOUNT_CALC</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: help -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Help...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎨</div>
+                    <span class="app-channel-tag">APP.035</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Help</div>
+                <div class="app-name-sub">HELP</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: idea_flow -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Idea Flow...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔭</div>
+                    <span class="app-channel-tag">APP.037</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Idea Flow</div>
+                <div class="app-name-sub">IDEA_FLOW</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: image_diet -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Image Diet...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">💻</div>
+                    <span class="app-channel-tag">APP.038</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Image Diet</div>
+                <div class="app-name-sub">IMAGE_DIET</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: jarvis_hud -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Jarvis Hud...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">💎</div>
+                    <span class="app-channel-tag">APP.040</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Jarvis Hud</div>
+                <div class="app-name-sub">JARVIS_HUD</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: journal_plus -->
+            <div class="app-card"  onclick="alert('Launching Journal Plus...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎮</div>
+                    <span class="app-channel-tag">APP.044</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Journal Plus</div>
+                <div class="app-name-sub">JOURNAL_PLUS</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: json_smith -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Json Smith...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎮</div>
+                    <span class="app-channel-tag">APP.045</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Json Smith</div>
+                <div class="app-name-sub">JSON_SMITH</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: keyword_mixer -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Keyword Mixer...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔮</div>
+                    <span class="app-channel-tag">APP.047</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Keyword Mixer</div>
+                <div class="app-name-sub">KEYWORD_MIXER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: knowledge_cards -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Knowledge Cards...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🛸</div>
+                    <span class="app-channel-tag">APP.048</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Knowledge Cards</div>
+                <div class="app-name-sub">KNOWLEDGE_CARDS</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: link -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Link...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📝</div>
+                    <span class="app-channel-tag">APP.051</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Link</div>
+                <div class="app-name-sub">LINK</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: log_scanner -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Log Scanner...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">⚡</div>
+                    <span class="app-channel-tag">APP.052</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Log Scanner</div>
+                <div class="app-name-sub">LOG_SCANNER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: mark_live -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Mark Live...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌟</div>
+                    <span class="app-channel-tag">APP.054</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Mark Live</div>
+                <div class="app-name-sub">MARK_LIVE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: market_watch -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Market Watch...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📊</div>
+                    <span class="app-channel-tag">APP.055</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Market Watch</div>
+                <div class="app-name-sub">MARKET_WATCH</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: meeting_cost -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Meeting Cost...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧪</div>
+                    <span class="app-channel-tag">APP.056</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Meeting Cost</div>
+                <div class="app-name-sub">MEETING_COST</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: mind_alchemy -->
+            <div class="app-card"  onclick="alert('Launching Mind Alchemy...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔥</div>
+                    <span class="app-channel-tag">APP.060</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Mind Alchemy</div>
+                <div class="app-name-sub">MIND_ALCHEMY</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: mobile -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Mobile...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📡</div>
+                    <span class="app-channel-tag">APP.061</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Mobile</div>
+                <div class="app-name-sub">MOBILE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: news_aggregator -->
+            <div class="app-card"  onclick="alert('Launching News Aggregator...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">💎</div>
+                    <span class="app-channel-tag">APP.062</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">News Aggregator</div>
+                <div class="app-name-sub">NEWS_AGGREGATOR</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: onishi -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Onishi...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌟</div>
+                    <span class="app-channel-tag">APP.063</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Onishi</div>
+                <div class="app-name-sub">ONISHI</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: panic_button -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Panic Button...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">💎</div>
+                    <span class="app-channel-tag">APP.064</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Panic Button</div>
+                <div class="app-name-sub">PANIC_BUTTON</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: pareto_plot -->
+            <div class="app-card"  onclick="alert('Launching Pareto Plot...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌟</div>
+                    <span class="app-channel-tag">APP.065</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Pareto Plot</div>
+                <div class="app-name-sub">PARETO_PLOT</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: password_forge -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Password Forge...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌊</div>
+                    <span class="app-channel-tag">APP.066</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Password Forge</div>
+                <div class="app-name-sub">PASSWORD_FORGE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: pdf_splicer -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Pdf Splicer...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎹</div>
+                    <span class="app-channel-tag">APP.067</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Pdf Splicer</div>
+                <div class="app-name-sub">PDF_SPLICER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: process_killer -->
+            <div class="app-card"  onclick="alert('Launching Process Killer...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎹</div>
+                    <span class="app-channel-tag">APP.069</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Process Killer</div>
+                <div class="app-name-sub">PROCESS_KILLER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: python_dojo -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Python Dojo...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔮</div>
+                    <span class="app-channel-tag">APP.070</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Python Dojo</div>
+                <div class="app-name-sub">PYTHON_DOJO</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: quick_qr -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Quick Qr...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔥</div>
+                    <span class="app-channel-tag">APP.071</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Quick Qr</div>
+                <div class="app-name-sub">QUICK_QR</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: quote_bank -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Quote Bank...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔭</div>
+                    <span class="app-channel-tag">APP.072</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Quote Bank</div>
+                <div class="app-name-sub">QUOTE_BANK</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: regex_dojo -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Regex Dojo...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎮</div>
+                    <span class="app-channel-tag">APP.074</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Regex Dojo</div>
+                <div class="app-name-sub">REGEX_DOJO</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: retro_board -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Retro Board...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔭</div>
+                    <span class="app-channel-tag">APP.075</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Retro Board</div>
+                <div class="app-name-sub">RETRO_BOARD</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: risk_register -->
+            <div class="app-card"  onclick="alert('Launching Risk Register...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🚀</div>
+                    <span class="app-channel-tag">APP.076</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Risk Register</div>
+                <div class="app-name-sub">RISK_REGISTER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: rust_matcher -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Rust Matcher...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎨</div>
+                    <span class="app-channel-tag">APP.077</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Rust Matcher</div>
+                <div class="app-name-sub">RUST_MATCHER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: scout -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Scout...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">⚡</div>
+                    <span class="app-channel-tag">APP.079</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Scout</div>
+                <div class="app-name-sub">SCOUT</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: shift_maker -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Shift Maker...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🚀</div>
+                    <span class="app-channel-tag">APP.080</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Shift Maker</div>
+                <div class="app-name-sub">SHIFT_MAKER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: skill_tree -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Skill Tree...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎨</div>
+                    <span class="app-channel-tag">APP.081</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Skill Tree</div>
+                <div class="app-name-sub">SKILL_TREE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: snippet_hub -->
+            <div class="app-card"  onclick="alert('Launching Snippet Hub...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎹</div>
+                    <span class="app-channel-tag">APP.082</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Snippet Hub</div>
+                <div class="app-name-sub">SNIPPET_HUB</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: stats -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Stats...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📊</div>
+                    <span class="app-channel-tag">APP.083</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Stats</div>
+                <div class="app-name-sub">STATS</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: stream -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Stream...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">💎</div>
+                    <span class="app-channel-tag">APP.084</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Stream</div>
+                <div class="app-name-sub">STREAM</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: system_config -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching System Config...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">💎</div>
+                    <span class="app-channel-tag">APP.085</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">System Config</div>
+                <div class="app-name-sub">SYSTEM_CONFIG</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: system_doctor -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching System Doctor...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌟</div>
+                    <span class="app-channel-tag">APP.086</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">System Doctor</div>
+                <div class="app-name-sub">SYSTEM_DOCTOR</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: system_monitor -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching System Monitor...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧪</div>
+                    <span class="app-channel-tag">APP.087</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">System Monitor</div>
+                <div class="app-name-sub">SYSTEM_MONITOR</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: time_zone_mate -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Time Zone Mate...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">⚡</div>
+                    <span class="app-channel-tag">APP.089</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Time Zone Mate</div>
+                <div class="app-name-sub">TIME_ZONE_MATE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: todo -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Todo...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🛸</div>
+                    <span class="app-channel-tag">APP.090</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Todo</div>
+                <div class="app-name-sub">TODO</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: trivia -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Trivia...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📱</div>
+                    <span class="app-channel-tag">APP.095</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Trivia</div>
+                <div class="app-name-sub">TRIVIA</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: tube_stats -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Tube Stats...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌟</div>
+                    <span class="app-channel-tag">APP.096</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Tube Stats</div>
+                <div class="app-name-sub">TUBE_STATS</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: ultimate_launcher -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Ultimate Launcher...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📡</div>
+                    <span class="app-channel-tag">APP.097</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Ultimate Launcher</div>
+                <div class="app-name-sub">ULTIMATE_LAUNCHER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: unit_master -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Unit Master...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">💎</div>
+                    <span class="app-channel-tag">APP.098</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Unit Master</div>
+                <div class="app-name-sub">UNIT_MASTER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: url_keeper -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Url Keeper...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧬</div>
+                    <span class="app-channel-tag">APP.099</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Url Keeper</div>
+                <div class="app-name-sub">URL_KEEPER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: uuid_forge -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Uuid Forge...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎹</div>
+                    <span class="app-channel-tag">APP.100</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Uuid Forge</div>
+                <div class="app-name-sub">UUID_FORGE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: vectis_core -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Vectis Core...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📡</div>
+                    <span class="app-channel-tag">APP.101</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Vectis Core</div>
+                <div class="app-name-sub">VECTIS_CORE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: world_capitals -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching World Capitals...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧬</div>
+                    <span class="app-channel-tag">APP.103</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">World Capitals</div>
+                <div class="app-name-sub">WORLD_CAPITALS</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: zen_focus -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Zen Focus...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">💎</div>
+                    <span class="app-channel-tag">APP.106</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Zen Focus</div>
+                <div class="app-name-sub">ZEN_FOCUS</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <!-- お楽しみチャンネル -->
+    <section class="section" id="fun">
+        <div class="section-header">
+            <h2 class="section-title">お楽しみチャンネル</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="apps-grid">
+            <!-- アニメ物理計算 -->
+            <div class="app-card" data-color="orange" onclick="window.location.href='http://localhost:8515'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎬</div>
+                    <span class="app-channel-tag">FUN.01</span>
+                </div>
+                <div class="app-name">アニメ物理計算</div>
+                <div class="app-name-sub">ANIME PHYSICS</div>
+                <div class="app-desc">アニメ・漫画の物理現象をリアルに計算。必殺技の威力を数値化！</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>稼働中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- つながりゲーム -->
+            <div class="app-card" data-color="pink" onclick="window.location.href='http://localhost:8513'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🔗</div>
+                    <span class="app-channel-tag">FUN.02</span>
+                </div>
+                <div class="app-name">つながりゲーム</div>
+                <div class="app-name-sub">LINK GAME</div>
+                <div class="app-desc">すべてはすべてである。知識と知識をつなげるパズルゲーム。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>プレイ可能</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+
+            <!-- Discord遠隔 -->
+            <div class="app-card" data-color="blue" onclick="window.location.href='http://localhost:8520'">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🤖</div>
+                    <span class="app-channel-tag">FUN.03</span>
+                </div>
+                <div class="app-name">Discord遠隔</div>
+                <div class="app-name-sub">DISCORD BOT</div>
+                <div class="app-desc">Discordから遠隔でPCを操作。日記追加やタスク管理も。</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot dev"></span>開発中</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+        
+
+            <!-- Generated App: anime-physics-scaler -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Anime-Physics-Scaler...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🚀</div>
+                    <span class="app-channel-tag">APP.002</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Anime-Physics-Scaler</div>
+                <div class="app-name-sub">ANIME-PHYSICS-SCALER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: ascii_artist -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Ascii Artist...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🎨</div>
+                    <span class="app-channel-tag">APP.003</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Ascii Artist</div>
+                <div class="app-name-sub">ASCII_ARTIST</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: ego_voice -->
+            <div class="app-card" data-color="blue" onclick="alert('Launching Ego Voice...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🛸</div>
+                    <span class="app-channel-tag">APP.025</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Ego Voice</div>
+                <div class="app-name-sub">EGO_VOICE</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: fx_soundboard -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Fx Soundboard...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📝</div>
+                    <span class="app-channel-tag">APP.031</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Fx Soundboard</div>
+                <div class="app-name-sub">FX_SOUNDBOARD</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: invoice_gen -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Invoice Gen...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🚀</div>
+                    <span class="app-channel-tag">APP.039</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Invoice Gen</div>
+                <div class="app-name-sub">INVOICE_GEN</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: life_rpg -->
+            <div class="app-card"  onclick="alert('Launching Life Rpg...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧬</div>
+                    <span class="app-channel-tag">APP.050</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Life Rpg</div>
+                <div class="app-name-sub">LIFE_RPG</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: mandala_chart -->
+            <div class="app-card" data-color="orange" onclick="alert('Launching Mandala Chart...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🌟</div>
+                    <span class="app-channel-tag">APP.053</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Mandala Chart</div>
+                <div class="app-name-sub">MANDALA_CHART</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: youtube_channel -->
+            <div class="app-card"  onclick="alert('Launching Youtube Channel...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">📊</div>
+                    <span class="app-channel-tag">APP.104</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Youtube Channel</div>
+                <div class="app-name-sub">YOUTUBE_CHANNEL</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+
+            <!-- Generated App: youtube_summarizer -->
+            <div class="app-card" data-color="pink" onclick="alert('Launching Youtube Summarizer...')">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">🧪</div>
+                    <span class="app-channel-tag">APP.105</span>
+                </div>
+                <div class="app-name" style="font-size: 1.1rem;">Youtube Summarizer</div>
+                <div class="app-name-sub">YOUTUBE_SUMMARIZER</div>
+                <div class="app-desc">VECTIS Application Module. Auto-generated entry.</div>
+                <div class="app-card-footer">
+                    <div class="app-status"><span class="status-dot"></span>Installed</div>
+                    <span class="app-arrow">→</span>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-logo">自分STATION</div>
+        <p class="footer-text">
+            Powered by AI × Human Creativity<br>
+            <span style="font-size: 0.75rem; color: #444;">Last Updated: 2025.01.07</span>
+        </p>
+    </footer>
+
+    <script>
+        // スクロール時のヘッダー固定
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('solid');
+            } else {
+                header.classList.remove('solid');
+            }
+        });
+
+        // カードのスクロールアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const cards = document.querySelectorAll('.app-card');
+                    const cardIndex = Array.from(cards).indexOf(entry.target);
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, (cardIndex % 6) * 80);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.app-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // グリッチエフェクト
+        const glitchElements = document.querySelectorAll('.glitch');
+        glitchElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.animation = 'glitch 0.3s infinite';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.animation = 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

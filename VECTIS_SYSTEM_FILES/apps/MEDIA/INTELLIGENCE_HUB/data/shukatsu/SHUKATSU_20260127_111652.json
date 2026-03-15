@@ -1,0 +1,24 @@
+{
+  "title": "日産、ホンダとの統合撤回報道に「報道の事実も含めさまざまな議",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE51YXhBdTNZWDJ0THhpVmZHeTdwOXdrZEVkd1N0R3YxNXNfNGlYY0gwY1NsV3hjcHUxOTdWS0p5bWJXUm0xU052WWlVNFpXc3NldUFDVXcwaENvRWV6MDBFdWdPYmx2V01JTnR6LQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE51YXhBdTNZWDJ0THhpVmZHeTdwOXdrZEVkd1N0R3YxNXNfNGlYY0gwY1NsV3hjcHUxOTdWS0p5bWJXUm0xU052WWlVNFpXc3NldUFDVXcwaENvRWV6MDBFdWdPYmx2V01JTnR6LQ?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "日産・ホンダ統合撤回報道を両社が否定せず、議論継続を示唆。2月中旬に方針決定。",
+    "true_intent": "報道を否定しないことで、統合交渉のカードを維持し、サプライヤーや株価への影響をコントロールしようとしている。交渉決裂時の責任回避も視野か。",
+    "bias_warning": "あり",
+    "deadline": "2024-02-15",
+    "company": "日産自動車, 本田技研工業",
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "## 日産自動車\n\n1.  **主要武器**: ルノー・三菱とのアライアンスによるグローバル規模と、電動化技術への先行投資。\n2.  **26-27卒への温度感**: 変革期を担う人材を積極採用。多様性重視。\n3.  **EGO適性**: データドリブンな開発推進。AI活用に積極的だが、部門による温度差あり。\n4.  **裏の弱点**: 組織の硬直性と、アライアンス依存による意思決定の遅さ。\n\n## 本田技研工業\n\n1.  **主要武器**: 創業以来の技術力とブランド力。二輪事業の圧倒的な強み。\n2.  **26-27卒への温度感**: 挑戦的な若手を育成。専門性重視の採用。\n3.  **EGO適性**: 独自の技術開発を重視。AI活用は模索段階。論理的思考を重視。\n4.  **裏の弱点**: 新規事業の立ち上げの遅さと、内向きな企業文化。\n",
+    "deep_web_intel": "**Key Points**\n\n*   **ジモティー (Jmty.jp):** Free online classifieds. Used for buying/selling used goods, job postings. Focus on local community.\n*   **株式会社ジモティー (Jmty.co.jp):** Corporate website of ジモティー.\n*   **Note.com (Tenshi\\_saikou):** Guide on how to use ジモティー, including registration, transactions, and safety tips.\n\n**Structured Summary**\n\n1.  **ジモティー Platform:** A free online classifieds platform (Jmty.jp).\n2.  **Content:** Facilitates local transactions for used goods, jobs, etc.\n3.  **Corporate Presence:** ジモティー operates an official company website (Jmty.co.jp).\n4.  **Usage Guides:** Tutorials exist explaining how to use the platform (Note.com).\n\n**Gap Analysis**\n\n*   No mention of Nissan or Honda in the provided HTML snippets. The request cannot be fulfilled."
+  },
+  "critical_analysis": {
+    "true_intent": "報道を否定しないことで、統合交渉のカードを維持し、サプライヤーや株価への影響をコントロールしようとしている。交渉決裂時の責任回避も視野か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:16:52.661606",
+  "source": "Active:ホンダ"
+}

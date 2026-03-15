@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meitec Interview Simulator - Vtuber Style</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="character-area">
+            <img id="character-avatar" src="スクリーンショット 2026-02-09 170244.png" alt="面接官アバター">
+        </div>
+        <div class="dialog-area">
+            <div class="speaker">面接官</div>
+            <div id="question-display" class="speech-bubble">
+                <p>準備中です。開始までお待ちください。</p>
+            </div>
+            <div id="feedback-display" class="feedback-bubble">
+                <p></p>
+            </div>
+        </div>
+        <div class="input-area">
+            <textarea id="user-response-input" placeholder="ここに回答が入力されます。音声入力後に編集も可能です。" rows="5"></textarea>
+            <div class="button-group">
+                <button id="voice-input-btn">🎤 音声入力</button>
+                <button id="submit-response-btn">回答を送信</button>
+            </div>
+            <div id="recognition-status" class="recognition-status"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "title": "外資系が\"新卒採用はお得\"と考えるワケ \"一括採用\"見直しの",
+  "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE03Y1RwQWM3NkhnR2w2bUdIVFhnZUdkaHlteVhzeEN2TGJXNVJ6OXAybzRpMXRVQ01TM25mYmowNzBjYlNZYk1FdWJoS2V0VzZGNWFnN1JJMA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTE03Y1RwQWM3NkhnR2w2bUdIVFhnZUdkaHlteVhzeEN2TGJXNVJ6OXAybzRpMXRVQ01TM25mYmowNzBjYlNZYk1FdWJoS2V0VzZGNWFnN1JJMA?oc=5\" target=\"_blank\">外資系が\"新卒採用",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "外資系は新卒採用を重視、国内企業の一括採用見直しと対照的。コスト対効果を重視する姿勢。",
+    "true_intent": "外資系企業の採用戦略をアピールし、優秀な学生の応募を促すことが目的。国内企業への批判を含むことで、外資系企業の優位性を強調している可能性がある。人材獲得競争激化の煽り。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "外資系企業の採用戦略をアピールし、優秀な学生の応募を促すことが目的。国内企業への批判を含むことで、外資系企業の優位性を強調している可能性がある。人材獲得競争激化の煽り。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:48:59.767640",
+  "source": "外資メーカー"
+}

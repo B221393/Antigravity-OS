@@ -1,0 +1,24 @@
+{
+  "title": "航空機ができる過程を間近で見られる環境に惹かれた - khi",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBwYWlkVHFKekxsRm5rX1lzTjF3bEpYdlIxNFpMNnRUWkNEak5Zd2ZkU2hwRzZDMno4dkloMXA4NE43UFNQN2ZDTEwxSWlqZXFMSk1Wb3Z0MlpvSkgzbDFpN3hGQy1wYklMYkxaeA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTFBwYWlkVHFKekxsRm5rX1lzTjF3bEpYdlIxNFpMNnRUWkNEak5Zd2ZkU2hwRzZDMno4dkloMXA4NE43UFNQN2ZDTEwxSWlqZXFMSk1Wb3Z0MlpvSkgzbDFpN3hGQy1wYklMYkxaeA?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "川崎重工が航空機製造現場見学の魅力をアピール。",
+    "true_intent": "27卒を含む学生への企業イメージ向上と採用促進。航空機産業への興味喚起による将来的な人材確保を狙う広報戦略。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "川崎重工業",
+    "action_required": true,
+    "category": "広告",
+    "target_year": "2027",
+    "company_profile": "## 川崎重工業：就活メンター視点\n\n1.  **主要武器**: 多岐にわたる事業領域（陸海空、エネルギー、環境）と、それらを支える高度な技術力。顧客ニーズに合わせたオーダーメイド対応力が強み。\n2.  **26-27卒への温度感**: 積極的に多様な人材を求めている。特に技術系、海外経験、主体性を持つ学生を重視。\n3.  **EGO適性**: 伝統的な重工企業だが、DX推進を加速。構造的思考やデータ分析、AI活用に意欲的な人材は活躍できるチャンス大。\n4.  **裏の弱点**: 組織の硬直性、意思決定の遅さ。縦割り構造がイノベーションの足かせになる可能性も。変革を担う気概が必要。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Financials (vs. Mitsubishi Heavy Industries & IHI):** 2024, Mitsubishi Heavy Industries performed well. Kawasaki Heavy Industries (KHI) and IHI reported losses related to aircraft engine issues. KHI profits declined, IHI posted a loss.\n*   **Location:** KHI is not related to Kawasaki City in Kanagawa. Founded by a person named Kawasaki.\n*   **Employment:** KHI's Gifu factory hires from technical high schools.\n\n**Structured Summary:**\n\n*   **Finances:** Mitsubishi > KHI, IHI. KHI & IHI suffered losses.\n*   **Origin:** Company name originates from founder, not Kawasaki City.\n*   **Hiring:** KHI hires from technical high schools (e.g., Gifu factory).\n\n**Gap Analysis:**\n\n*   Missing specifics on KHI's core business areas beyond aircraft engines and railway.\n*   Insufficient financial details (revenue, profit margins, debt) to assess KHI's overall health.\n*   Lack of details on KHI's future strategies and competitive advantages."
+  },
+  "critical_analysis": {
+    "true_intent": "27卒を含む学生への企業イメージ向上と採用促進。航空機産業への興味喚起による将来的な人材確保を狙う広報戦略。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:07:11.544046",
+  "source": "川崎重工 採用"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "神戸企業インタビュー - city.kobe.lg.jp",
+  "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPS1FXTkZFLVNtV2p5VGtaRU9mYzl2UGtUYXZOb3AxSWNWZ1QycE5FQW9fQmZlUWl6VWtUS1RFajlQYXJoODl1dkRSczU2UDctZmF6N091c2xtUTFVNjBJVDhRTlZoQ3NDUEhNRUtvb1djTFR3V3g3SGJJaTdic3haeEhFMlZzQzFYbVBjMFJBTnZnUVFhLVVHX1hR?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxPS1FXTkZFLVNtV2p5VGtaRU9mYzl2UGtUYXZOb3AxSWNWZ1QycE5FQW9fQmZlUWl6VWtUS1RFajlQYXJoODl1dkRSczU2UDctZmF6N091c2xtUTFVNjBJVDhRTlZoQ3NDUEhNRUtvb1",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "神戸市が地元企業を紹介。就活生向け情報提供。",
+    "true_intent": "神戸市の企業誘致・定着促進、地元就職率向上。中小企業の人材確保支援。情報発信による神戸市のイメージ向上。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "神戸市の企業誘致・定着促進、地元就職率向上。中小企業の人材確保支援。情報発信による神戸市のイメージ向上。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:19:02.491449",
+  "source": "フェリシモ 採用"
+}

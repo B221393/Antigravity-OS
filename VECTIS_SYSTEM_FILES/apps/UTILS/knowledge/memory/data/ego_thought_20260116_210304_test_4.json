@@ -1,0 +1,17 @@
+{
+  "type": "thought",
+  "category": "日記・メモ",
+  "timestamp": "2026-01-16T21:03:04.377415",
+  "content": "毎日コツコツ努力することが大切だと思う。小さな積み重ねが大きな成果になる。",
+  "context": {
+    "source": "ego_system_test",
+    "auto_captured": false,
+    "note": "価値観と信念",
+    "routed_category": "日記・メモ"
+  },
+  "metadata": {
+    "length": 37,
+    "has_keywords": true,
+    "test_memory": true
+  }
+}

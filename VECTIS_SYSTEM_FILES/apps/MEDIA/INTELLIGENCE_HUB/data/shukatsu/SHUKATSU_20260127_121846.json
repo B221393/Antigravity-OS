@@ -1,0 +1,23 @@
+{
+  "title": "KDDIが中期経営計画を発表、「通信とライフデザインの融合」",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "KDDIが中期経営計画を発表。通信とライフデザイン融合を推進。",
+    "true_intent": "通信事業の成長鈍化を、ライフデザイン領域での囲い込みで補完する狙い。au経済圏拡大による収益多角化、株主へのアピール。競争激化の中で生き残りを図る。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。KDDIの本質的価値と27卒が狙うべき理由を、以下の通り構造化します。\n\n1.  **主要武器**: 通信インフラ基盤とau経済圏。顧客接点とデータ活用による新規事業創出力が強み。通信キャリアの安定性と、挑戦できる環境が魅力。\n2.  **26-27卒への温度感**: デジタル人材獲得に積極的。多様なバックグラウンドを持つ学生を歓迎する姿勢。インターンシップからの採用も強化。\n3.  **EGO適性**: 構造的思考は必須。AI/データ活用推進しており、親和性高い人材は活躍のチャンス大。\n4.  **裏の弱点**: 通信事業依存からの脱却が課題。新規事業の成功は道半ば。官僚的な側面も残存し、スピード感に課題も。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "通信事業の成長鈍化を、ライフデザイン領域での囲い込みで補完する狙い。au経済圏拡大による収益多角化、株主へのアピール。競争激化の中で生き残りを図る。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:18:46.950383",
+  "source": "KDDI 事業戦略"
+}

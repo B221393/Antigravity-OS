@@ -1,0 +1,24 @@
+{
+  "title": "ダイムラートラック、三菱ふそう、日野、トヨタ、三菱ふそうと日",
+  "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1xUU5EeGdjcWkteHFYbGhEd0lvWnF2SHRDV1VLMjVHVnF4UUQzVlBhS3VQbTZZZmVpekVZdmZQaXRaRXoxNjlyU2p2RHlkWWx1SFlKMlpRUnA3bW1ick1hazBRaTNtSy1m?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE1xUU5EeGdjcWkteHFYbGhEd0lvWnF2SHRDV1VLMjVHVnF4UUQzVlBhS3VQbTZZZmVpekVZdmZQaXRaRXoxNjlyU2p2RHlkWWx1SFlKMlpRUnA3bW1ick1hazBRaTNtSy1m?oc=5\" tar",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ダイムラートラック、三菱ふそう、日野、トヨタが統合で最終合意。業界再編加速か。",
+    "true_intent": "CASE（コネクテッド、自動運転、シェアリング、電動化）対応加速、国際競争力強化が目的。トヨタ主導権強化、日野不正隠蔽の幕引き、ダイムラーの日本市場撤退準備の可能性も考慮すべき。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "トヨタ自動車",
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。トヨタ自動車の本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: 世界トップレベルの生産効率と品質管理。圧倒的な資金力とブランド力。技術革新への積極投資。\n2.  **26-27卒への温度感**: 採用数維持。CASE領域強化のため、理系・情報系人材を積極採用。多様性重視。\n3.  **EGO適性**: 伝統的企業だが、DX推進中。データドリブンな思考とAI活用スキルは高く評価される。\n4.  **裏の弱点**: 意思決定の遅さ。年功序列の色濃さ。変化への抵抗感。\n",
+    "deep_web_intel": "## Toyota Motor Corporation - Key Points Summary\n\n**Core Business:** Automobile manufacturing and sales.\n\n**Website Focus:**\n\n*   **Brand Promotion:** Showcasing Toyota brand and vehicles.\n*   **Customer Service:** Providing online services (test drive booking, store locator, quotations, catalogs).\n*   **Vehicle Information:** Detailed information on new models and car lineup.\n*   **Car Comparison:** Tools for comparing models based on various specs.\n\n**Website Tech:**\n\n*   **Framework:** Utilizes a CMS system.\n*   **Libraries:** jQuery.\n*   **Tag Management:** R2 data for tag management.\n\n**SEO:**\n\n*   Keywords in meta tags for search optimization.\n*   Canonical URLs for content clarity.\n\n**Gap Analysis:**\n\n*   **Limited specific details:** The provided HTML snippets offer a general overview but lack specific details about the company's current strategies, financial performance, or specific products/services.\n*   **No sentiment analysis:** The data doesn't allow for gauging public sentiment or brand perception.\n*   **Missing structured data:** Lack of machine-readable structured data (e.g., schema.org) for enhanced search engine understanding."
+  },
+  "critical_analysis": {
+    "true_intent": "CASE（コネクテッド、自動運転、シェアリング、電動化）対応加速、国際競争力強化が目的。トヨタ主導権強化、日野不正隠蔽の幕引き、ダイムラーの日本市場撤退準備の可能性も考慮すべき。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:08:03.568182",
+  "source": "Active:トヨタ自動車"
+}

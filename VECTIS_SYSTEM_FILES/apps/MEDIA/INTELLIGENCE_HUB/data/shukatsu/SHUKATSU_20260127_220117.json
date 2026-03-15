@@ -1,0 +1,24 @@
+{
+  "title": "KDDI、シャープ堺工場跡地でAIデータセンター稼働開始 “",
+  "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9tcWtWUVRDSEU2cE9WR3U4bHFXcmVyVFpZd0NuTXY4WWVkSzlPMXFWWUszMUREM2RuTjU2VW9RMXVJY2FEaXdYOWhZSFdPRktjNS1BOUxCcWRLa0ZKODJJVWlxRjYtSUVjVGxMZXhQT25ES1p2?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE9tcWtWUVRDSEU2cE9WR3U4bHFXcmVyVFpZd0NuTXY4WWVkSzlPMXFWWUszMUREM2RuTjU2VW9RMXVJY2FEaXdYOWhZSFdPRktjNS1BOUxCcWRLa0ZKODJJVWlxRjYtSUVjVGxMZXhQT2",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIがシャープ堺工場跡地にAIデータセンター開設、オンプレ版GeminiでAI活用支援。",
+    "true_intent": "AI需要の高まりに乗じたデータセンター事業拡大と、Googleとの連携強化のアピール。シャープの経営難を利用した土地取得と見られる側面も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI, シャープ, Google",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## KDDI, シャープ, Google の本質と27卒が狙うべき理由\n\n**KDDI**\n\n1.  **主要武器**: 通信インフラ基盤と多様な顧客接点。生活に根ざしたサービス展開力。\n2.  **26-27卒への温度感**: デジタル人材獲得に積極的。新規事業創出への期待大。\n3.  **EGO適性**: データドリブンな意思決定を重視。AI/IoT活用推進中。\n4.  **裏の弱点**: 縦割り組織と保守的な企業文化。新規事業の成功率に課題。\n\n**シャープ**\n\n1.  **主要武器**: 技術力とブランド力。親会社傘下で経営基盤安定。\n2.  **26-27卒への温度感**: 若手育成に注力。技術革新への意欲を重視。\n3.  **EGO適性**: 技術開発部門は構造的思考を重視。AIoT戦略を推進。\n4.  **裏の弱点**: 意思決定の遅さと官僚的な体質。海外市場での競争力強化が課題。\n\n**Google**\n\n1.  **主要武器**: 革新的な技術力と圧倒的なブランド力。世界中の優秀な人材。\n2.  **26-27卒への温度感**: 高度な専門性と創造性を重視。多様なバックグラウンドを歓迎。\n3.  **EGO適性**: 構造的思考、データ分析、AI活用は必須。自律性と挑戦を推奨。\n4.  **裏の弱点**: 競争激化と規制強化のリスク。成果主義によるプレッシャー。\n",
+    "deep_web_intel": "No search results found to analyze."
+  },
+  "critical_analysis": {
+    "true_intent": "AI需要の高まりに乗じたデータセンター事業拡大と、Googleとの連携強化のアピール。シャープの経営難を利用した土地取得と見られる側面も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T22:01:17.536616",
+  "source": "Active:KDDI"
+}

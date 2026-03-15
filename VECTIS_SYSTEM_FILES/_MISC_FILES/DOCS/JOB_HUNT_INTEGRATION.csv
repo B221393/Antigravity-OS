@@ -1,0 +1,13 @@
+Feature_ID,Feature_Name,Category,Integration_Status,Components,Description
+JH001,就活ダッシュボード,Core,✅ Complete,"dashboard.py, JOB_HUNT_DASHBOARD.bat",統合就活管理システム - 企業・ES・スケジュール・AI
+JH002,企業管理,Feature,✅ Complete,companies.json,企業情報登録・編集・削除・フィルタリング
+JH003,ES管理,Feature,✅ Complete,es_progress.json,ES作成・保存・進捗管理・Obsidian連携
+JH004,AI添削,Feature,✅ Complete,Unified LLM,ES自動添削・改善提案・論理チェック
+JH005,Personal Core統合,Integration,✅ Complete,personal_core.md,自己分析データの表示・キーフレーズ抽出
+JH006,K-Cards統合,Integration,✅ Complete,*.kcard files,知識データベース検索・ES活用
+JH007,Obsidian統合,Integration,✅ Complete,obsidian_vault module,ES/添削結果の自動保存
+JH008,Job HQ連携,Integration,⏳ Ready,job_hq/app.py,ES Dojo RLシステムとの連携準備完了
+JH009,締切アラート,Feature,✅ Complete,Dashboard,締切日ベースの自動リマインダー
+JH010,進捗可視化,Feature,✅ Complete,Streamlit Charts,選考ステージ分布グラフ
+JH011,使用統計記録,Analytics,✅ Complete,launcher_manager.py,ダッシュボード使用回数自動記録
+JH012,LLM統合,Core,✅ Complete,unified_llm.py,Ollama/Gemini/Groq対応AI機能

@@ -1,0 +1,22 @@
+{
+  "title": "職員採用／採用サポーター制度 - pref.hyogo.lg",
+  "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYY0twMy1mYTdBN3E3SGo2V3hZTHJqM2xGZkxQRGFCX0dTSzBDTGR5NGtIMDN2MFBtd1RYaEdQaVFlZEU1eDZMUVdjZmpHOURrb0dEblRxR200TXh0dk5pbElSV0ZnQQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYY0twMy1mYTdBN3E3SGo2V3hZTHJqM2xGZkxQRGFCX0dTSzBDTGR5NGtIMDN2MFBtd1RYaEdQaVFlZEU1eDZMUVdjZmpHOURrb0dEblRxR200TXh0dk5pbElSV0ZnQQ?oc=5\" targe",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "兵庫県が職員採用と採用サポーター制度を告知。27卒も対象となる可能性あり。",
+    "true_intent": "優秀な人材の早期囲い込み、採用広報の強化。県庁のイメージ向上と、採用コスト削減（サポーター制度）。関連企業への利益誘導の可能性も視野に入れる必要あり。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材の早期囲い込み、採用広報の強化。県庁のイメージ向上と、採用コスト削減（サポーター制度）。関連企業への利益誘導の可能性も視野に入れる必要あり。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:17:24.369909",
+  "source": "兵庫県庁 採用"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "ほかの社員インタビュー - tokyo-gas.co.jp",
+  "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5Fb2lpSzZnX0ZaQ3RRMFhxRUtFYlFjZWJiVkF0dHFDTlY0dlQ4R1RhZUIwdWVELTM5Q0xPZzJqRFNaZUxUY0dYRldKTkJjWGwwdHBxemxYNjVUaE5VN2lmT3NyUzFXNVl2ZUQtNjFuZzhIWmQ1eFJ2MnJ5MA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE5Fb2lpSzZnX0ZaQ3RRMFhxRUtFYlFjZWJiVkF0dHFDTlY0dlQ4R1RhZUIwdWVELTM5Q0xPZzJqRFNaZUxUY0dYRldKTkJjWGwwdHBxemxYNjVUaE5VN2lmT3NyUzFXNVl2ZUQtNjFuZz",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "東京ガス社員インタビュー",
+    "true_intent": "東京ガスへの就職を誘致するための宣伝",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "東京ガス",
+    "action_required": false,
+    "category": "広告",
+    "target_year": "2027",
+    "company_profile": "東京ガスは、以下のような特徴を持つ企業です。\n\n1. **主要武器**: エネルギー業界での長年の経験とノウハウ、多様なエネルギー事業への進出。\n2. **26-27卒への温度感**: 新しい事業への挑戦に積極的で、若手採用に力を入れている。\n3. **EGO適性**: デジタル化やAIの活用を推進しており、構造的思考を重視する文化。\n4. **裏の弱点**: エネルギー業界の変化に迅速に対応する必要性、従来のビジネスモデルの転換リスク。"
+  },
+  "critical_analysis": {
+    "true_intent": "東京ガスへの就職を誘致するための宣伝",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:45:10.624783",
+  "source": "東京ガス"
+}

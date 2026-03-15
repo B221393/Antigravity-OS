@@ -1,0 +1,22 @@
+{
+  "title": "【27卒】アナウンサーインターンの募集を開始しました！～受付",
+  "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBqaUxoMC1qMWhXRUdyS3NmTUJRMVYxcjhyVThMcTc2RTF6QnZ5UDhxRUtkTDJkNVlkVUV3d2txMHo1VUZ4Wmdoa2w3YWJKOUdOM2NJOFdQSUxYUVVCVE1JdV9R?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTFBqaUxoMC1qMWhXRUdyS3NmTUJRMVYxcjhyVThMcTc2RTF6QnZ5UDhxRUtkTDJkNVlkVUV3d2txMHo1VUZ4Wmdoa2w3YWJKOUdOM2NJOFdQSUxYUVVCVE1JdV9R?oc=5\" target=\"_bl",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "この情報は、アナウンサーの就職を支援するための募集であることが確認されます。",
+    "true_intent": "この情報の裏にある意図は、アナウンサーの就職を支援するための募集である可能性があります。",
+    "bias_warning": "この情報は、特定の企業や職業への指向性が高いため、業界の進歩や職業価値の評価に影響を与える可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図は、アナウンサーの就職を支援するための募集である可能性があります。",
+    "bias_warning": "この情報は、特定の企業や職業への指向性が高いため、業界の進歩や職業価値の評価に影響を与える可能性があります。"
+  },
+  "collected_at": "2026-01-27T12:38:03.518515",
+  "source": "ES締切 (Google)"
+}

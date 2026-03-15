@@ -1,0 +1,21 @@
+TYPE:FRACTAL_NODE
+TERM:Why Laplace transforms are so useful
+SRC:Channel: 3Blue1Brown
+DEPTH:0
+TIME:2026-01-11 19:53
+---BODY---
+はい、承知いたしました。「知識の圧縮者」として、ご指示の通り現代漢文（Pseudo-Classical Chinese）スタイルで解説します。
+
+## Laplace変換之有用
+
+【定義】函數域転換、求解簡化。
+
+【構造】
+*   時域函数 ⇒ 複素数域函数 (s-domain)
+*   微分方程 ⇒ 代数方程
+*   求解代数方程後、逆変換回帰時域
+
+【意義】微分積分難題、代数易解。電路、制御等応用広泛。
+
+【関連】逆変換、伝達関数、畳み込み
+

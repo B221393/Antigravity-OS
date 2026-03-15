@@ -1,0 +1,42 @@
+{
+  "title": "２０２７年卒業の大学生・大学院生の内々定率は４８.５% １月末では過去最高 文理の差が大きく - au Webポータル",
+  "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5MT0YwWG90Q3E4Skk0QUUxTUJwV2Voc2hWc3VmZEh1bmFITThTX2ZXU0l4Z0JaN2x6VC1PZjlva2VzdWFfeUFwS1RDSWFWMHUxNW1CWmVTN0J2c29mQy1JdnowSVF3bWdqRzJkbzRmY2tTYnQzc3F0SWVsNA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE5MT0YwWG90Q3E4Skk0QUUxTUJwV2Voc2hWc3VmZEh1bmFITThTX2ZXU0l4Z0JaN2x6VC1PZjlva2VzdWFfeUFwS1RDSWFWMHUxNW1CWmVTN0J2c29mQy1JdnowSVF3bWdqRzJkbzRmY2tTYnQzc3F0SWVsNA?oc=5\" target=\"_blank\">２０２７年卒業の大学生・大学院生の内々定率は４８.５% １月末では過去最高 文理の差が大きく</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">au Webポータル</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "2027卒の内々定率48.5%",
+    "strategic_analysis": {
+      "true_intent": "就職市場の状況を把握するためのデータ公開",
+      "swot": {
+        "strength": "就職市場の状況を把握し、大学生・大学院生の就職支援を強化できる",
+        "weakness": "文理の差が大きく、文系の学生が不利になる可能性",
+        "opportunity": "就職支援サービスや教育機関が就職市場のニーズに応える機会",
+        "threat": "就職市場の変化が企業の採用戦略に影響を与える可能性"
+      },
+      "writing_technique": "",
+      "action_plan": "就職支援サービスや教育機関に就職市場の状況を確認し、文系の学生の支援を強化する計画を立てる"
+    },
+    "bias_warning": "就職市場の状況を把握するために公表されたデータであり、特に偏向報道の可能性は低い",
+    "company": "null",
+    "category": "その他",
+    "target_year": "2027",
+    "priority_score": 8,
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "就職市場の状況を把握するためのデータ公開",
+    "swot": {
+      "strength": "就職市場の状況を把握し、大学生・大学院生の就職支援を強化できる",
+      "weakness": "文理の差が大きく、文系の学生が不利になる可能性",
+      "opportunity": "就職支援サービスや教育機関が就職市場のニーズに応える機会",
+      "threat": "就職市場の変化が企業の採用戦略に影響を与える可能性"
+    },
+    "writing_technique": "",
+    "action_plan": "就職支援サービスや教育機関に就職市場の状況を確認し、文系の学生の支援を強化する計画を立てる"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "就職市場の状況を把握するために公表されたデータであり、特に偏向報道の可能性は低い",
+  "collected_at": "2026-02-04T20:27:12.958557",
+  "source": "就活ニュース (Google)",
+  "score": 8
+}

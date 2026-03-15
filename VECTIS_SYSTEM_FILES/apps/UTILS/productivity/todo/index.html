@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS TODO</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+            --accent: #38bdf8;
+            --done: #22c55e;
+            --del: #ef4444;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            background: var(--card);
+            color: white;
+            outline: none;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border-radius: 6px;
+            border: none;
+            background: var(--accent);
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: var(--card);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            animation: slideIn 0.3s ease;
+        }
+
+        li.completed span {
+            text-decoration: line-through;
+            color: #64748b;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-icon {
+            background: none;
+            color: #94a3b8;
+            padding: 5px;
+            font-size: 18px;
+        }
+
+        .btn-icon:hover {
+            color: white;
+        }
+
+        .btn-done:hover {
+            color: var(--done);
+        }
+
+        .btn-del:hover {
+            color: var(--del);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>
+            📝 TODO TASK
+            <span style="font-size: 14px; color: #94a3b8; align-self: flex-end;" id="status">Reading
+                LocalStorage...</span>
+        </h1>
+
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="新しいタスクを入力..." onkeypress="if(event.key==='Enter') addTask()">
+            <button onclick="addTask()">ADD</button>
+        </div>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        // LocalStorage Key
+        const STORAGE_KEY = 'vectis_todo_v1';
+
+        // Load
+        let tasks = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        render();
+
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            tasks.unshift({
+                id: Date.now(),
+                text: text,
+                done: false,
+                date: new Date().toLocaleDateString()
+            });
+
+            save();
+            render();
+            input.value = '';
+        }
+
+        function toggle(id) {
+            const t = tasks.find(x => x.id === id);
+            if (t) t.done = !t.done;
+            save(); render();
+        }
+
+        function remove(id) {
+            tasks = tasks.filter(x => x.id !== id);
+            save(); render();
+        }
+
+        function save() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+            document.getElementById('status').textContent = 'Saved locally.';
+            setTimeout(() => document.getElementById('status').textContent = tasks.length + ' Tasks', 2000);
+        }
+
+        function render() {
+            const list = document.getElementById('taskList');
+            list.innerHTML = '';
+
+            tasks.sort((a, b) => (a.done === b.done) ? 0 : a.done ? 1 : -1);
+
+            tasks.forEach(t => {
+                const li = document.createElement('li');
+                li.className = t.done ? 'completed' : '';
+                li.innerHTML = `
+                <span onclick="toggle(${t.id})" style="cursor: pointer; flex: 1;">${t.text}</span>
+                <div class="actions">
+                    <button class="btn-icon btn-done" onclick="toggle(${t.id})">✔</button>
+                    <button class="btn-icon btn-del" onclick="remove(${t.id})">✖</button>
+                </div>
+            `;
+                list.appendChild(li);
+            });
+            document.getElementById('status').textContent = tasks.length + ' Tasks';
+        }
+    </script>
+</body>
+
+</html>

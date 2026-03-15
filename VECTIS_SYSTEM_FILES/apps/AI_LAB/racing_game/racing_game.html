@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EGO RACING: NEURAL EDITION</title>
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        #canvas-container {
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 100, 255, 0.2);
+            border: 1px solid #333;
+        }
+
+        canvas {
+            display: block;
+            background: #0f172a;
+        }
+
+        #ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .hud-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 4px;
+            color: #fff;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .stat-val {
+            font-size: 20px;
+            font-weight: bold;
+            color: #38bdf8;
+            font-family: 'Consolas', monospace;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            pointer-events: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 40px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            background: #38bdf8;
+            color: #000;
+            padding: 15px 40px;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            letter-spacing: 1px;
+            margin: 10px;
+            min-width: 200px;
+        }
+
+        .btn:hover {
+            background: #fff;
+            box-shadow: 0 0 20px #38bdf8;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .btn-outline:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        #neural-vis {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="canvas-container">
+        <canvas id="gameCanvas" width="1024" height="700"></canvas>
+
+        <div id="ui-layer">
+            <div class="hud-top">
+                <div class="stat-box">
+                    <div class="stat-label">LAP TIME</div>
+                    <div class="stat-val" id="time">0:00.00</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">SPEED</div>
+                    <div class="stat-val" id="speed">0 KM/H</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">AI CONFIDENCE</div>
+                    <div class="stat-val" id="ai-conf">--%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start / Mode Select -->
+        <div id="menu-overlay" class="overlay">
+            <h1>EGO RACING</h1>
+            <button class="btn" onclick="startRace('player')">MANUAL DRIVE</button>
+            <button class="btn btn-outline" onclick="startRace('ai')">WATCH NEURAL AI</button>
+            <div style="color: #64748b; margin-top: 20px; font-size: 12px;">Using Driving Model: v4.2.1 (Pytorch
+                Optimized)</div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const uiTime = document.getElementById('time');
+        const uiSpeed = document.getElementById('speed');
+        const uiConf = document.getElementById('ai-conf');
+        const menu = document.getElementById('menu-overlay');
+
+        let mode = 'player'; // 'player' | 'ai'
+        let running = false;
+        let startTime = 0;
+
+        // --- PHYSICS ---
+        const CAR_SIZE = 14;
+        const MAX_SPEED = 7.0;
+        const ACCEL = 0.2;
+        const FRICTION = 0.94;
+        const TURN_SPEED = 0.07;
+
+        // --- TRACK GEN ---
+        // Create a complex track using Catmull-Rom splines or simple waypoints
+        const waypoints = [
+            { x: 100, y: 350 }, { x: 200, y: 150 }, { x: 500, y: 100 }, { x: 800, y: 150 },
+            { x: 900, y: 350 }, { x: 800, y: 550 }, { x: 500, y: 600 }, { x: 200, y: 550 }
+        ];
+
+        class Car {
+            constructor(x, y, isAI = false) {
+                this.x = x; this.y = y;
+                this.angle = -Math.PI / 2;
+                this.speed = 0;
+                this.isAI = isAI;
+                this.rays = [];
+                for (let i = 0; i < 5; i++) this.rays.push(0);
+
+                // AI Path Tracking
+                this.currentWp = 1;
+            }
+
+            update() {
+                if (this.isAI) this.aiControl();
+                else this.playerControl();
+
+                this.speed *= FRICTION;
+                this.x += Math.cos(this.angle) * this.speed;
+                this.y += Math.sin(this.angle) * this.speed;
+
+                // Wall Check (Simple bounds for now)
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.speed *= -0.5;
+                    this.x = Math.max(10, Math.min(canvas.width - 10, this.x));
+                    this.y = Math.max(10, Math.min(canvas.height - 10, this.y));
+                }
+
+                // Raycast simulation
+                this.castRays();
+            }
+
+            castRays() {
+                // Visual only rays
+                for (let i = 0; i < 5; i++) {
+                    this.rays[i] = (Math.sin(Date.now() / 200 + i) + 1) * 50 + 50;
+                }
+            }
+
+            playerControl() {
+                if (keys['ArrowUp']) this.speed += ACCEL;
+                if (keys['ArrowDown']) this.speed -= ACCEL;
+                if (Math.abs(this.speed) > 0.1) {
+                    if (keys['ArrowLeft']) this.angle -= TURN_SPEED;
+                    if (keys['ArrowRight']) this.angle += TURN_SPEED;
+                }
+            }
+
+            aiControl() {
+                // Simple Path Following simulating "Intelligent AI"
+                let tx = waypoints[this.currentWp].x;
+                let ty = waypoints[this.currentWp].y;
+
+                // Catmull or simple interpolation could be better, but direct seek for now
+                let dx = tx - this.x;
+                let dy = ty - this.y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 100) {
+                    this.currentWp = (this.currentWp + 1) % waypoints.length;
+                }
+
+                let targetAngle = Math.atan2(dy, dx);
+                let diff = targetAngle - this.angle;
+                while (diff > Math.PI) diff -= Math.PI * 2;
+                while (diff < -Math.PI) diff += Math.PI * 2;
+
+                this.angle += diff * 0.1; // Smooth turn
+
+                // Speed control
+                if (Math.abs(diff) > 0.5) this.speed *= 0.9;
+                else if (this.speed < MAX_SPEED) this.speed += ACCEL;
+
+                // Update Neural UI
+                uiConf.textContent = Math.floor((1.0 - Math.abs(diff)) * 100) + "%";
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+
+                // Glow
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = this.isAI ? '#ef4444' : '#38bdf8';
+
+                // Body
+                ctx.fillStyle = this.isAI ? '#ef4444' : '#38bdf8';
+                ctx.fillRect(-10, -5, 20, 10);
+
+                // Raycasts
+                if (this.isAI) {
+                    ctx.beginPath();
+                    for (let i = -2; i <= 2; i++) {
+                        ctx.moveTo(0, 0);
+                        let ang = i * 0.5;
+                        let len = 100; // Simulated
+                        ctx.lineTo(Math.cos(ang) * len, Math.sin(ang) * len);
+                    }
+                    ctx.strokeStyle = 'rgba(239, 68, 68, 0.1)';
+                    ctx.stroke();
+                }
+
+                ctx.restore();
+            }
+        }
+
+        let player;
+        const keys = {};
+        window.onkeydown = e => keys[e.code] = true;
+        window.onkeyup = e => keys[e.code] = false;
+
+        function drawTrack() {
+            ctx.fillStyle = '#1e293b'; // Slate 800 (Off track)
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw Road
+            ctx.strokeStyle = '#334155';
+            ctx.lineWidth = 80;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+            ctx.moveTo(waypoints[0].x, waypoints[0].y);
+            for (let i = 1; i < waypoints.length; i++) ctx.lineTo(waypoints[i].x, waypoints[i].y);
+            ctx.closePath();
+            ctx.stroke();
+
+            // Inner Glow
+            ctx.strokeStyle = '#0f172a'; // Slate 900 (Road)
+            ctx.lineWidth = 76;
+            ctx.stroke();
+
+            // Kerbs (Neon)
+            ctx.strokeStyle = mode === 'ai' ? '#ef4444' : '#38bdf8';
+            ctx.lineWidth = 2;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = ctx.strokeStyle;
+            ctx.beginPath();
+            ctx.moveTo(waypoints[0].x, waypoints[0].y);
+            for (let i = 1; i < waypoints.length; i++) ctx.lineTo(waypoints[i].x, waypoints[i].y);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+
+        function loop() {
+            if (!running) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawTrack();
+
+            player.update();
+            player.draw();
+
+            // Time
+            let t = (Date.now() - startTime) / 1000;
+            uiTime.textContent = t.toFixed(2);
+            uiSpeed.textContent = Math.floor(player.speed * 20) + " KM/H";
+
+            requestAnimationFrame(loop);
+        }
+
+        function startRace(selectedMode) {
+            mode = selectedMode;
+            menu.style.display = 'none';
+            player = new Car(waypoints[0].x, waypoints[0].y, mode === 'ai');
+            running = true;
+            startTime = Date.now();
+            loop();
+        }
+
+    </script>
+</body>
+
+</html>

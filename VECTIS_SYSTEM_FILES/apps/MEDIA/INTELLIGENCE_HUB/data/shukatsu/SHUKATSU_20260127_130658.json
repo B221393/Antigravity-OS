@@ -1,0 +1,22 @@
+{
+  "title": "職員採用／よくある質問Q&A - pref.hyogo.lg",
+  "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9oaFlCUmdDQm80T2RHdkprM000RjVHVk9RVUpLbFpyVlZhQVIyQmxYWXVoRjdrcTM4aTNvcEY4TmNpM0VHMFZGTEZxUzFvVFI1R3RLcnZNWFpUQXJ5eklnc1pHWQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE9oaFlCUmdDQm80T2RHdkprM000RjVHVk9RVUpLbFpyVlZhQVIyQmxYWXVoRjdrcTM4aTNvcEY4TmNpM0VHMFZGTEZxUzFvVFI1R3RLcnZNWFpUQXJ5eklnc1pHWQ?oc=5\" target=\"_",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "兵庫県職員採用FAQ。採用プロセスや待遇に関する疑問に答える。",
+    "true_intent": "優秀な人材確保のための情報公開。県職員の魅力をアピールし、応募者数を増やしたい。安定志向の学生に訴求。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材確保のための情報公開。県職員の魅力をアピールし、応募者数を増やしたい。安定志向の学生に訴求。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:06:58.887516",
+  "source": "兵庫県庁 採用"
+}

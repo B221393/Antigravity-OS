@@ -1,0 +1,43 @@
+{
+  "title": "シリコンバレーを席巻中、AIエージェント「Moltbot」とは - WIRED.jp",
+  "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBzRUotbDREYWVrcldmdHRteFVnMGs0LU9qVmV4bS03UElGVmN6b1BHdUVvUkllRXZoZGVQaWRreF85eldBMGpyV2x5SHZvcWFwX3Z0ZDl0SXA2bkVLVWlNeVNOdWU5Z1d6OTNpd2tB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTFBzRUotbDREYWVrcldmdHRteFVnMGs0LU9qVmV4bS03UElGVmN6b1BHdUVvUkllRXZoZGVQaWRreF85eldBMGpyV2x5SHZvcWFwX3Z0ZDl0SXA2bkVLVWlNeVNOdWU5Z1d6OTNpd2tB?oc=5\" target=\"_blank\">シリコンバレーを席巻中、AIエージェント「Moltbot」とは</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WIRED.jp</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "シリコンバレーで注目されるAIエージェント「Moltbot」",
+    "strategic_analysis": {
+      "true_intent": "Moltbotの普及により、AIエージェントの需要が高まり、関連企業が得をする可能性がある",
+      "swot": {
+        "strength": "革新的なAIエージェント技術",
+        "weakness": "まだ普及が限られていること",
+        "opportunity": "AI関連企業への就職や、Moltbotを活用した新規ビジネスの創出",
+        "threat": "従来の産業構造への混乱や、AIの誤用による社会への影響"
+      },
+      "writing_technique": "",
+      "action_plan": "Moltbotの技術的詳細や、シリコンバレーでの活用事例を調査し、AIエージェントの将来性について質問を準備する"
+    },
+    "bias_warning": "シリコンバレーのテクノロジー企業への偏見や、AIエージェントの過大評価の可能性",
+    "company": "Moltbot",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 8,
+    "company_profile": "Moltbotの本質的価値と27卒が狙うべき理由を以下に構造化します。\n\n1. **主要武器**: AI技術とデータ分析の融合による革新的なソリューション開発。\n2. **26-27卒への温度感**: 高度なテクノロジーへの投資と人材育成への強い注目。\n3. **EGO適性**: 構造的思考とAI活用を重視する文化で、革新的なアイデアを奨励。\n4. **裏の弱点**: テクノロジーへの依存度が高く、迅速な市場変化への対応が求められる。",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "Moltbotの普及により、AIエージェントの需要が高まり、関連企業が得をする可能性がある",
+    "swot": {
+      "strength": "革新的なAIエージェント技術",
+      "weakness": "まだ普及が限られていること",
+      "opportunity": "AI関連企業への就職や、Moltbotを活用した新規ビジネスの創出",
+      "threat": "従来の産業構造への混乱や、AIの誤用による社会への影響"
+    },
+    "writing_technique": "",
+    "action_plan": "Moltbotの技術的詳細や、シリコンバレーでの活用事例を調査し、AIエージェントの将来性について質問を準備する"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "シリコンバレーのテクノロジー企業への偏見や、AIエージェントの過大評価の可能性",
+  "collected_at": "2026-02-04T19:16:32.068785",
+  "source": "WIRED JP (Ideas)",
+  "score": 8
+}

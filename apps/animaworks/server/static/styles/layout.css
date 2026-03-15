@@ -1,0 +1,35 @@
+/* ============================================
+   Layout — App Shell
+   ============================================ */
+
+.app-shell {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 24px;
+  background: var(--aw-color-bg-secondary);
+}
+
+/* Chat page needs bottom flush layout without shell padding gap. */
+.main-content:has(.chat-page-layout) {
+  padding-top: 0;
+  padding-bottom: 10px;
+}
+
+/* ── Page-level error ────────────────────────── */
+
+.page-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--aw-color-error);
+  font-size: 1rem;
+}

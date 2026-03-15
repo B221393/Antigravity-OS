@@ -1,0 +1,43 @@
+{
+  "title": "「Adobe Animate」終了へ 「Flash Pro」後継も幕引き ユーザーは「困る」と悲鳴 - ITmedia",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBaeDFPcW9HWGJJcC1vOUpxcTNyekVXWUJWTkxWUUtkcWtDYW9OazhUYm9WcGlzZEN6V012Q0V1eHJJUFJUNVhjeGNPcDc1Z3pTSWliam9NZFNPelhsZG44MTZZRnU0UFlXM2dfZQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTFBaeDFPcW9HWGJJcC1vOUpxcTNyekVXWUJWTkxWUUtkcWtDYW9OazhUYm9WcGlzZEN6V012Q0V1eHJJUFJUNVhjeGNPcDc1Z3pTSWliam9NZFNPelhsZG44MTZZRnU0UFlXM2dfZQ?oc=5\" target=\"_blank\">「Adobe Animate」終了へ 「Flash Pro」後継も幕引き ユーザーは「困る」と悲鳴</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ITmedia</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "Adobe Animate終了、ユーザー困る",
+    "strategic_analysis": {
+      "true_intent": "AdobeがFlash Proの後継であるAdobe Animateを終了することで、ユーザーが困る状況を作り出している。Adobeは新しいサービスへの移行を促すことで、自社の利益を守りたいと考えている。",
+      "swot": {
+        "strength": "Adobeのソフトウェアの広範なユーザー基盤",
+        "weakness": "ユーザーへのサービス終了による不満",
+        "opportunity": "新しいサービスやツールの開発機会",
+        "threat": "競合他社による新しいサービスへの移行"
+      },
+      "writing_technique": "",
+      "action_plan": "ユーザーがAdobe Animateを使用していた場合、代替サービスを検討する。新しいサービスへの移行を促す企業の戦略を分析し、自社のビジネス戦略への応用を考える。"
+    },
+    "bias_warning": "ITmediaの記事は、ユーザーの視点からAdobeの決定を批判的にとらえている。Adobeの公式発表やその他の視点も考慮する必要がある。",
+    "company": "Adobe",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 8,
+    "company_profile": "以下は、Adobe の「本質的価値」と「27卒が狙うべき理由」を構造化した内容です。\n\n1. **主要武器**: クリエイティブツールの市場リーダーシップとデジタルエクスペリエンスの強み。\n2. **26-27卒への温度感**: デジタルスキルの高まりに伴い、優秀な人材を積極的に採用している。\n3. **EGO適性**: デザイン、テクノロジー、イノベーションを重視する文化であり、構造的思考とAI活用を好む。\n4. **裏の弱点**: 急激な成長に伴う組織的な課題と、市場競争の激化によるリスク。",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "AdobeがFlash Proの後継であるAdobe Animateを終了することで、ユーザーが困る状況を作り出している。Adobeは新しいサービスへの移行を促すことで、自社の利益を守りたいと考えている。",
+    "swot": {
+      "strength": "Adobeのソフトウェアの広範なユーザー基盤",
+      "weakness": "ユーザーへのサービス終了による不満",
+      "opportunity": "新しいサービスやツールの開発機会",
+      "threat": "競合他社による新しいサービスへの移行"
+    },
+    "writing_technique": "",
+    "action_plan": "ユーザーがAdobe Animateを使用していた場合、代替サービスを検討する。新しいサービスへの移行を促す企業の戦略を分析し、自社のビジネス戦略への応用を考える。"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "ITmediaの記事は、ユーザーの視点からAdobeの決定を批判的にとらえている。Adobeの公式発表やその他の視点も考慮する必要がある。",
+  "collected_at": "2026-02-04T19:06:31.418099",
+  "source": "ITmedia ニュース",
+  "score": 8
+}

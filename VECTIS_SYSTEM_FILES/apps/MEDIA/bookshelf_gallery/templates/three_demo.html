@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS // 3D CORE DEMO</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #canvas-container {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+        }
+
+        #ui-layer {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00f3ff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        p {
+            font-size: 0.8rem;
+            color: #888;
+            max-width: 300px;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 5px 10px;
+            border: 1px solid #333;
+            background: rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            font-size: 0.7rem;
+            color: #00f3ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ui-layer">
+        <h1>Three.js // Core Demo</h1>
+        <p>This is a real-time 3D scene rendered in the browser using WebGL. Python (Tkinter) cannot do this natively
+            without a web view.</p>
+        <div class="status">STATUS: ONLINE // RENDERER: ACTIVE</div>
+    </div>
+    <div id="canvas-container"></div>
+
+    <!-- Import Three.js from a CDN -->
+    <script type="module">
+        import * as THREE from 'https://cdn.skypack.dev/three@0.136.0';
+
+        // 1. Scene Setup
+        const scene = new THREE.Scene();
+        // Add some subtle fog for depth
+        scene.fog = new THREE.FogExp2(0x050505, 0.05);
+
+        // 2. Camera Setup
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // 3. Renderer Setup
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // 4. Geometry (The Object)
+        // Icosahedron is a cool "sci-fi" shape
+        const geometry = new THREE.IcosahedronGeometry(1.5, 0);
+
+        // Wireframe Material (Techno look)
+        const material = new THREE.MeshBasicMaterial({
+            color: 0x00f3ff,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.8
+        });
+
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        // Add a secondary inner shape for complexity
+        const innerGeo = new THREE.IcosahedronGeometry(0.8, 1);
+        const innerMat = new THREE.MeshBasicMaterial({
+            color: 0xff0055,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+        });
+        const core = new THREE.Mesh(innerGeo, innerMat);
+        scene.add(core);
+
+        // Add some particles
+        const particlesGeo = new THREE.BufferGeometry();
+        const particlesCount = 500;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 20;
+        }
+
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMat = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.5
+        });
+        const particles = new THREE.Points(particlesGeo, particlesMat);
+        scene.add(particles);
+
+        // 5. Animation Loop
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const elapsedTime = clock.getElapsedTime();
+
+            // Rotate objects
+            cube.rotation.x += 0.005;
+            cube.rotation.y += 0.005;
+
+            core.rotation.x -= 0.01;
+            core.rotation.y -= 0.01;
+
+            // Rotate particles slowly
+            particles.rotation.y = elapsedTime * 0.05;
+
+            // Pulse effect
+            const scale = 1 + Math.sin(elapsedTime * 2) * 0.05;
+            core.scale.set(scale, scale, scale);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // 6. Handle Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+
+</html>

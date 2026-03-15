@@ -1,0 +1,22 @@
+{
+  "title": "米小売業の求人、10月は前年比16％減 年末商戦の消費に暗雲",
+  "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPblhJYXhYMTlwQzQ5UVhPVVVzZVd5YWpfNDlMT3R4RTN3Yl9ZcW4ycWlzS282MWR5ZXBtdjVBMzY0ZGE3MHVqVDZ3aFMzTHFrTXNFYWVlVm5OTGpZZEFqbng3ME92YlpwX2g5cl9meVRPN1N1TTdPa3RpX0c3dTh4ZA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxPblhJYXhYMTlwQzQ5UVhPVVVzZVd5YWpfNDlMT3R4RTN3Yl9ZcW4ycWlzS282MWR5ZXBtdjVBMzY0ZGE3MHVqVDZ3aFMzTHFrTXNFYWVlVm5OTGpZZEFqbng3ME92YlpwX2g5cl9meV",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "米小売業求人10月16%減。年末商戦の消費低迷を示唆。",
+    "true_intent": "消費低迷を強調し、FRBの利上げペース鈍化を促す狙いか。または、特定の小売セクターの不振を隠蔽するため全体像をぼかしている可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "消費低迷を強調し、FRBの利上げペース鈍化を促す狙いか。または、特定の小売セクターの不振を隠蔽するため全体像をぼかしている可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:10:14.425221",
+  "source": "ロイター 企業ニュース"
+}

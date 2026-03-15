@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VECTIS Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f9fafb;
+            --text: #1f2937;
+            --border: #e5e7eb;
+            --accent: #2563eb;
+            --msg-user: #dbeafe;
+            --msg-bot: #f3f4f6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        header span {
+            font-size: 18px;
+        }
+
+        #chat {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .msg {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .msg.user {
+            align-self: flex-end;
+            background: var(--accent);
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+
+        .msg.bot {
+            align-self: flex-start;
+            background: var(--msg-bot);
+            color: var(--text);
+            border-bottom-left-radius: 4px;
+        }
+
+        .msg .action-btn {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 12px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        #inputBox {
+            display: flex;
+            border-top: 1px solid var(--border);
+            background: #fff;
+        }
+
+        #inputBox textarea {
+            flex: 1;
+            border: none;
+            padding: 12px;
+            resize: none;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        #inputBox button {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        #inputBox button:hover {
+            opacity: 0.9;
+        }
+
+        .typing {
+            color: #888;
+            font-style: italic;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <span>🤖</span> VECTIS Assistant
+    </header>
+    <div id="chat">
+        <div class="msg bot">こんにちは！何かお手伝いできることはありますか？<br>例：「ニュースを見せて」「スケジュールを開いて」</div>
+    </div>
+    <div id="inputBox">
+        <textarea id="msgInput" rows="1" placeholder="指示や質問を入力…"
+            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+        <button onclick="sendMessage()">送信</button>
+    </div>
+
+    <script>
+        // ============ アプリレジストリ ============
+        const APP_REGISTRY = {
+            "racing": { path: "AI_LAB/racing_game/racing_game.html", type: "html", name: "Racing AI", keywords: ["レース", "運転", "ドライブ", "車", "racing", "drive"] },
+            "driving": { path: "AI_LAB/driving_3d/driving_3d.html", type: "html", name: "Driving 3D", keywords: ["3d", "運転"] },
+            "shogi": { path: "AI_LAB/shogi_dojo/app.py", type: "python", name: "Shogi Dojo", keywords: ["将棋", "shogi", "対局"] },
+            "youtube": { path: "MEDIA/youtube_channel/run_cli.py", type: "python", name: "YouTube Monitor", keywords: ["youtube", "動画", "チャンネル"] },
+            "news": { path: "MEDIA/news_aggregator/app.py", type: "python", name: "News Patrol", keywords: ["ニュース", "news", "情報", "記事"] },
+            "todo": { path: "UTILS/todo/app.py", type: "python", name: "Todo List", keywords: ["todo", "タスク", "やること"] },
+            "schedule": { path: "UTILS/schedule/index.html", type: "html", name: "Calendar", keywords: ["スケジュール", "予定", "カレンダー", "schedule", "calendar"] },
+            "todo": { path: "UTILS/todo/index.html", type: "html", name: "TodoList", keywords: ["todo", "task", "list", "メモ", "やる", "タスク"] },
+            "job": { path: "UTILS/job_hunting/index.html", type: "html", name: "Job Tracker", keywords: ["就活", "job", "仕事", "キャリア"] },
+            "knowledge": { path: "AI_LAB/knowledge_cards/control_center.html", type: "html", name: "Knowledge Base", keywords: ["知識", "百科事典", "wiki", "検索", "knowledge"] },
+            "router": { path: "AI_LAB/text_router/index.html", type: "html", name: "Global Router", keywords: ["ルーター", "振り分け"] }
+        };
+
+        const chatBox = document.getElementById('chat');
+
+        function addMessage(content, from = 'bot', actionBtn = null) {
+            const div = document.createElement('div');
+            div.className = `msg ${from}`;
+            div.innerHTML = content;
+            if (actionBtn) {
+                const btn = document.createElement('button');
+                btn.className = 'action-btn';
+                btn.textContent = actionBtn.label;
+                btn.onclick = actionBtn.action;
+                div.appendChild(btn);
+            }
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function showTyping() {
+            const t = document.createElement('div');
+            t.id = 'typing';
+            t.className = 'typing';
+            t.textContent = '考え中...';
+            chatBox.appendChild(t);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+        function hideTyping() {
+            const t = document.getElementById('typing');
+            if (t) t.remove();
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('msgInput');
+            const txt = input.value.trim();
+            if (!txt) return;
+
+            addMessage(txt, 'user');
+            input.value = '';
+            showTyping();
+
+            // ========== 1. ローカルキーワードマッチ（高速） ==========
+            const lower = txt.toLowerCase();
+            for (const [key, app] of Object.entries(APP_REGISTRY)) {
+                if (app.keywords.some(kw => lower.includes(kw))) {
+                    hideTyping();
+                    addMessage(`「${app.name}」を起動しますか？`, 'bot', {
+                        label: `${app.name} を開く 🚀`,
+                        action: () => launchApp(key)
+                    });
+                    return;
+                }
+            }
+
+            // ========== 2. AI に問い合わせ（gemma:2b） ==========
+            try {
+                const res = await fetch('/api/ai', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ model: "gemma:2b", prompt: txt })
+                });
+                const data = await res.json();
+                hideTyping();
+
+                let json = data.response || '';
+                if (json.includes('```json')) json = json.split('```json')[1].split('```')[0];
+                else if (json.includes('```')) json = json.split('```')[1].split('```')[0];
+
+                const ai = JSON.parse(json.trim());
+
+                // ルーティング・アクションの処理
+                if (ai.action === 'launch' && APP_REGISTRY[ai.target_app]) {
+                    const app = APP_REGISTRY[ai.target_app];
+                    addMessage(ai.reply, 'bot', {
+                        label: `${app.name} を開く 🚀`,
+                        action: () => launchApp(ai.target_app)
+                    });
+                } else if (ai.action === 'ask_route' || (ai.target_app && ai.item_data)) {
+                    // 具体的な宛先がある場合
+                    const appNameMap = { todo: "Todoリスト", schedule: "カレンダー", knowledge: "知識ベース", shukatsu: "就活トラッカー" };
+                    const name = appNameMap[ai.target_app] || ai.target_app;
+
+                    addMessage(ai.reply, 'bot', {
+                        label: `${name} に送る (仕分け) 📥`,
+                        action: () => saveDataToApp(ai.target_app, ai.item_data)
+                    });
+                } else {
+                    addMessage(ai.reply, 'bot');
+                }
+
+            } catch (e) {
+                hideTyping();
+                console.error(e);
+                addMessage('⚠️ AI 解析に失敗しました。', 'bot');
+            }
+        }
+
+        async function saveDataToApp(appId, item) {
+            addMessage(`「${item.title}」を ${appId} へ転送中...`, 'bot');
+
+            let path = "";
+            let content = null;
+
+            // アプリごとの保存先とフォーマット
+            if (appId === 'todo') {
+                path = "data/task_inbox.json"; // 共通のタスク受信箱
+                content = { title: item.title, details: item.details, status: "pending", created_at: new Date().toISOString() };
+            } else if (appId === 'schedule') {
+                path = "data/precog_schedules.json";
+                content = { Date: item.date || new Date().toISOString().split('T')[0], Event: item.title, details: item.details, Type: "GEN" };
+            } else if (appId === 'knowledge') {
+                path = "apps/MEDIA/youtube_channel/data/universe.json";
+                // 実際には既存の配列にappendする必要があるが、Bridgeの/api/saveは上書きなので注意
+                // ここでは簡易的に「仕分け済みログ」として保存する
+                path = `apps/AI_LAB/text_router/logs/ROUTED_${Date.now()}.json`;
+                content = item;
+            }
+
+            try {
+                // Bridge経由で保存（サーバー側でappendする処理がないため、現状は新規ファイル作成に近い挙動）
+                const res = await fetch('/api/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ path: path, content: content })
+                });
+                const d = await res.json();
+                if (d.status === 'success') {
+                    addMessage(`✅ ${appId} への仕分けが完了しました。`, 'bot');
+                } else {
+                    addMessage(`❌ 保存エラー: ${d.message}`, 'bot');
+                }
+            } catch (e) {
+                addMessage(`❌ 通信エラーが発生しました。`, 'bot');
+            }
+        }
+
+        function launchApp(key) {
+            const app = APP_REGISTRY[key];
+            if (!app) return;
+
+            if (app.type === 'html') {
+                window.parent.postMessage({ type: 'SWITCH_APP', path: 'apps/' + app.path }, '*');
+                addMessage(`🚀 ${app.name} を表示します。`, 'bot');
+            } else {
+                fetch('/api/launch', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ path: app.path, type: app.type })
+                })
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.status === 'success') {
+                            addMessage(`🚀 ${app.name} をバックグラウンドで起動しました。`, 'bot');
+                        }
+                    });
+            }
+        }
+    </script>
+</body>
+
+</html>

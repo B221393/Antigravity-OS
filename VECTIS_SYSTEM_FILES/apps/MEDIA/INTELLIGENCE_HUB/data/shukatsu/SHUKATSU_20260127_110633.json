@@ -1,0 +1,22 @@
+{
+  "title": "NTTドコモ一人負け決算にみるKDDIとソフトバンクの戦略転",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE40eGxpS2Y4VVQzcVFkMjM1UjBnenAwX095ekFUeHl0VEhhdHp2Sk5yRWRzUE1lOHN6ekJ1U0YxV3FZN1NEZTJ4ZVczbWxIUkVYNExXN1RmMzhpd2M4WWE5WXh6TzdQVDN6Zlk3cg?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE40eGxpS2Y4VVQzcVFkMjM1UjBnenAwX095ekFUeHl0VEhhdHp2Sk5yRWRzUE1lOHN6ekJ1U0YxV3FZN1NEZTJ4ZVczbWxIUkVYNExXN1RmMzhpd2M4WWE5WXh6TzdQVDN6Zlk3cg?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ドコモ決算不調報道。KDDIとSBの戦略転換を強調し、競争激化を示唆。",
+    "true_intent": "ドコモの株価下落を誘い、KDDIとSBの優位性を示したい意図。競争を煽り、政府への規制緩和要求を狙う可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "IT/メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "ドコモの株価下落を誘い、KDDIとSBの優位性を示したい意図。競争を煽り、政府への規制緩和要求を狙う可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:06:33.481634",
+  "source": "Active:NTT"
+}

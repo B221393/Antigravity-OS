@@ -1,0 +1,22 @@
+{
+  "title": "職員採用／採用サポーター制度 - pref.hyogo.lg",
+  "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYY0twMy1mYTdBN3E3SGo2V3hZTHJqM2xGZkxQRGFCX0dTSzBDTGR5NGtIMDN2MFBtd1RYaEdQaVFlZEU1eDZMUVdjZmpHOURrb0dEblRxR200TXh0dk5pbElSV0ZnQQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYY0twMy1mYTdBN3E3SGo2V3hZTHJqM2xGZkxQRGFCX0dTSzBDTGR5NGtIMDN2MFBtd1RYaEdQaVFlZEU1eDZMUVdjZmpHOURrb0dEblRxR200TXh0dk5pbElSV0ZnQQ?oc=5\" targe",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "採用制度のあり方について質問する記事。しかし、採用方法や利権構造は明記されていないため、真相は特定できない。",
+    "true_intent": "この記事は、採用制度の運営方法や利権構造に関する情報提供ではなく、企業の利益を優先させる意図で書かれたと考えられる。",
+    "bias_warning": "ポジショントークの可能性がある。企業が採用制度を構築するための費用や、採用者への特典について特定した情報は提供されていないことが、この情報が企業の利権アップに繋がる可能性がある。",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "政治/社会/経済",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この記事は、採用制度の運営方法や利権構造に関する情報提供ではなく、企業の利益を優先させる意図で書かれたと考えられる。",
+    "bias_warning": "ポジショントークの可能性がある。企業が採用制度を構築するための費用や、採用者への特典について特定した情報は提供されていないことが、この情報が企業の利権アップに繋がる可能性がある。"
+  },
+  "collected_at": "2026-01-27T12:43:36.226025",
+  "source": "兵庫県庁 採用"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "経営戦略がわかる - 日経BOOKプラス",
+  "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5ERHJmWXdrRThBZVl6clhfNFE0THFOUWhvUUlMQnAzX3dpWW9xdlpRTHozYTVCMUxCd0dzYUNqWElUYnlxQ01keVBMa0JSY3ZnakUydHJtOVluMnFsV0N3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE5ERHJmWXdrRThBZVl6clhfNFE0THFOUWhvUUlMQnAzX3dpWW9xdlpRTHozYTVCMUxCd0dzYUNqWElUYnlxQ01keVBMa0JSY3ZnakUydHJtOVluMnFsV0N3?oc=5\" target=\"_blank\"",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "日経BOOKプラスで経営戦略本を紹介。就活生にビジネス知識をアピールさせる意図か。",
+    "true_intent": "日経BP社の書籍販売促進。就活生に「意識高い系」を演じさせ、選考で有利に働くと錯覚させることで購買意欲を刺激。就活市場への影響力拡大も狙い。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "日経BP",
+    "action_required": false,
+    "category": "出版/メディア",
+    "target_year": "2027",
+    "company_profile": "## 日経BP 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 専門性とブランド力。経済・テクノロジー分野の深い知見と、日経新聞グループの信頼性が強み。独自取材とデータ分析に基づく質の高い情報発信が源泉。\n2.  **26-27卒への温度感**: デジタル人材獲得に注力。編集・企画だけでなく、データ分析やマーケティングスキルを持つ人材を積極的に採用する傾向。\n3.  **EGO適性**: 構造的思考は必須。AI活用は模索段階だが、データドリブンな意思決定を重視しており、親和性は高い。\n4.  **裏の弱点**: 既存メディアの構造改革の遅れ。デジタルシフトへの対応が急務であり、新規事業開発の推進が課題。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "日経BP社の書籍販売促進。就活生に「意識高い系」を演じさせ、選考で有利に働くと錯覚させることで購買意欲を刺激。就活市場への影響力拡大も狙い。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:04:12.066755",
+  "source": "Nikkei ビジネス"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "職員採用／建築職 - pref.hyogo.lg.jp",
+  "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFByekNGVzNXblFUcmhoMnFkYlpJSVdVS3gzMVVSVGIxaE5FVmFWTzdOU056QUlNZ21mM3FwczJOazF3bWFtZ0ZWTUtzNmtBZTlPcVIyM2pVaGREMVpJV1RncTF0RQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTFByekNGVzNXblFUcmhoMnFkYlpJSVdVS3gzMVVSVGIxaE5FVmFWTzdOU056QUlNZ21mM3FwczJOazF3bWFtZ0ZWTUtzNmtBZTlPcVIyM2pVaGREMVpJV1RncTF0RQ?oc=5\" target=\"_",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "兵庫県が建築職の職員採用情報を公開。2027卒向け情報か不明。",
+    "true_intent": "県職員の補充。建設業界の人材不足を背景に、優秀な人材を確保したい思惑。特定の業者との癒着がないか注意。",
+    "bias_warning": "なし",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "県職員の補充。建設業界の人材不足を背景に、優秀な人材を確保したい思惑。特定の業者との癒着がないか注意。",
+    "bias_warning": "なし"
+  },
+  "collected_at": "2026-01-27T11:02:46.424648",
+  "source": "兵庫県庁 採用"
+}

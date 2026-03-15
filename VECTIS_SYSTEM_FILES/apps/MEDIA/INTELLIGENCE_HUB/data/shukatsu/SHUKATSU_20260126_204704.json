@@ -1,0 +1,22 @@
+{
+  "title": "東大からMARCHまでの「難関大の新卒者」を多く採用している",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9qNGc3MHlpMDhEdDFuNktNR0d5MXpITXk1YjVVRzYtbXZweC1Ta3ZGNC0wZGUxcXVpaXFlYm5sRm1QMlZvT19pTUNobTnSAU9BVV95cUxQNTU3aGN0ZTFlbjRtY1lRR1ctOWswMFVESEFyZmlkQWFtVXJLYkU3Zy1TaHRRbkJ0dDdnUUlzWjJGWFJtdEt3cUlXVWdTSklB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTE9qNGc3MHlpMDhEdDFuNktNR0d5MXpITXk1YjVVRzYtbXZweC1Ta3ZGNC0wZGUxcXVpaXFlYm5sRm1QMlZvT19pTUNobTnSAU9BVV95cUxQNTU3aGN0ZTFlbjRtY1lRR1ctOWswMFVESE",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "企業が難関大の新卒者を採用することで、競争力や雇用機会を拡大する狙いがあることが分析されます。",
+    "true_intent": "この情報の裏にある意図は、企業が競争力を高めるために、難関大の新卒者を採用することで、競争力の強化を目指すことを示す可能性があることが推測されます。",
+    "bias_warning": "ポジショントークの可能性が高いと、この情報は企業が特定の大学や分野に有利な学生を採用していることを暗示する可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": 2027
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図は、企業が競争力を高めるために、難関大の新卒者を採用することで、競争力の強化を目指すことを示す可能性があることが推測されます。",
+    "bias_warning": "ポジショントークの可能性が高いと、この情報は企業が特定の大学や分野に有利な学生を採用していることを暗示する可能性があります。"
+  },
+  "collected_at": "2026-01-26T20:47:04.904016",
+  "source": "ソニーグループ 戦略"
+}

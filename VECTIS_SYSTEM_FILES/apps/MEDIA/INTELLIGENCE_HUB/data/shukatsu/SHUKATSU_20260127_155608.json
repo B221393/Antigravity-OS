@@ -1,0 +1,24 @@
+{
+  "title": "「総合モビリティカンパニー」へ実力主義を強化、ホンダの人事戦",
+  "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9lNzlQdnkwclZhOGJXN04zeG9vMTM2ejhxYWpfT0M1N0pUb0dnMGRkbUVSSnI5ekljNUdMQjZ4dTdrblVPUVBSM0V5WW9DZm44bm1BRFZwR01LWDR0WGpoblpncDdmLW1DeTRwWEVwWQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMib0FVX3lxTE9lNzlQdnkwclZhOGJXN04zeG9vMTM2ejhxYWpfT0M1N0pUb0dnMGRkbUVSSnI5ekljNUdMQjZ4dTdrblVPUVBSM0V5WW9DZm44bm1BRFZwR01LWDR0WGpoblpncDdmLW1DeTRwWEVwWQ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ホンダが「総合モビリティカンパニー」への転換を図り、人事戦略で実力主義を強化する。",
+    "true_intent": "電気自動車（EV）シフトを見据え、旧来の年功序列型組織から脱却し、競争力のある人材を確保・育成したい。コスト削減と効率化も目的か。ブランドイメージ向上も狙い。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ホンダ",
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027",
+    "company_profile": "## ホンダ：就活メンター視点\n\n1. **主要武器**: 創業以来の「技術力」と「挑戦精神」。既存事業の殻を破り、電動化・空飛ぶクルマなど新規事業に果敢に挑む姿勢が強み。\n2. **26-27卒への温度感**: 採用数は安定。多様なバックグラウンドを持つ人材を積極的に採用し、変革期を担う次世代リーダー育成に注力。\n3. **EGO適性**: データドリブンな意思決定を重視し、AI活用も推進。論理的思考力と柔軟性を持ち、新しい価値創造に貢献できる人材を求める。\n4. **裏の弱点**: 伝統的な企業体質が残存し、新規事業のスピード感や意思決定の遅さが課題。変革を推進できる人材が求められる。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Honda Official (honda.co.jp):** Car lineup, pricing, specs. Corporate info.\n*   **carview! (carview.yahoo.co.jp):** New car info, catalogs, rankings, models.\n*   **Honda Global (global.honda/jp):** Corporate info, sustainability, investor relations, news, careers.\n\n**Structured Summary:**\n\nHonda has official sites for car sales, corporate info, investor news. Carview provides new car data, reviews, rankings.\n\n**Gap Analysis:**\n\n*   Lack of model details from Honda's site (trim levels, features).\n*   Absence of user reviews on official Honda.\n*   No direct link between official Honda car lineup and corporate site."
+  },
+  "critical_analysis": {
+    "true_intent": "電気自動車（EV）シフトを見据え、旧来の年功序列型組織から脱却し、競争力のある人材を確保・育成したい。コスト削減と効率化も目的か。ブランドイメージ向上も狙い。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T15:56:08.025790",
+  "source": "Active:ホンダ"
+}

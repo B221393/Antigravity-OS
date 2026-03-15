@@ -1,0 +1,22 @@
+{
+  "title": "就職四季報 企業研究・インターンシップ版2027年版 - 東",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "企業の競争力を強化するための戦略を分析する記事である可能性が高い。また、インターンシッププログラムが企業との競争力を強化するための影響も分析される可能性がある。",
+    "true_intent": "この記事は、企業の競争力を強化するための戦略やインターンシッププログラムに関する分析を行うことを目的としていると考えられる。",
+    "bias_warning": "ポジショントークが記載されている可能性があり、企業の利益や競争力を分析する可能性がある。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "企業",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この記事は、企業の競争力を強化するための戦略やインターンシッププログラムに関する分析を行うことを目的としていると考えられる。",
+    "bias_warning": "ポジショントークが記載されている可能性があり、企業の利益や競争力を分析する可能性がある。"
+  },
+  "collected_at": "2026-01-27T11:44:49.902171",
+  "source": "インターン (Google)"
+}

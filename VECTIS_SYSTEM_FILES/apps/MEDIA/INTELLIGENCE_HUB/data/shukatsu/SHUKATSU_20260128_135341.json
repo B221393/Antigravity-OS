@@ -1,0 +1,17 @@
+{
+  "title": "自動車業界初、プログラミング言語「Rust」を使用可能に…ドイツのVectorとHighTec - レスポンス（Response.jp）",
+  "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHd2t2ekdVdGlUNUdsT3JaWGVSbmRWUTBYQkItNTVIUG1YV2VVNHRJWDRLUUtBUmV6UnVad0ZSRmkybTNDcUhyd0RSazZzQVZodWhYaHlZanZQT3NwcFJj?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHd2t2ekdVdGlUNUdsT3JaWGVSbmRWUTBYQkItNTVIUG1YV2VVNHRJWDRLUUtBUmV6UnVad0ZSRmkybTNDcUhyd0RSazZzQVZodWhYaHlZanZQT3NwcFJj?oc=5\" target=\"_blank\">自動車業界初、プログラミング言語「Rust」を使用可能に…ドイツのVectorとHighTec</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">レスポンス（Response.jp）</font>",
+  "ai_analysis": {
+    "strength": "Rust対応の先駆者としての技術力とブランドイメージ。自動車ECU開発ツール市場における競争優位性。",
+    "weakness": "Rustに関するノウハウや人材が不足している企業への導入障壁。既存のC/C++環境からの移行コスト。",
+    "opportunity": "Rustエンジニアのニーズの高まり。安全性、信頼性が求められる自動運転、ADAS開発分野への参入。",
+    "threat": "他社コンパイラベンダーのRust対応による競争激化。Rustの成熟度や自動車業界での標準化の遅れ。"
+  },
+  "critical_analysis": {},
+  "deep_strategic_dossier": "",
+  "bias": "",
+  "collected_at": "2026-01-28T13:53:41.198334",
+  "source": "Active:Toyota",
+  "score": 5
+}

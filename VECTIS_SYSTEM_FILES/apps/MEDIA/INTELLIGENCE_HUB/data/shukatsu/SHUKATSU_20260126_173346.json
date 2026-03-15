@@ -1,0 +1,23 @@
+{
+  "title": "インタビュー - トヨタ車体",
+  "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HQmdQaGJWUWlsVHhZN0xzajNfcTlSa2pjVUxuMzRrT2ltS2NZeWd4d0pwOUJoVHUzUFJxRE1vQXFFTlFJQWVaSVNHVktFZW4zWE9wTklLRnNONlpmSVFiV3dWamx0U2tuV0lyQkRPQU1GcnVoWWc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMidkFVX3lxTE5HQmdQaGJWUWlsVHhZN0xzajNfcTlSa2pjVUxuMzRrT2ltS2NZeWd4d0pwOUJoVHUzUFJxRE1vQXFFTlFJQWVaSVNHVktFZW4zWE9wTklLRnNONlpmSVFiV3dWamx0U2tuV0lyQkRPQU",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トヨタの未来戦略に関するインタビュー記事を分析し、背後にある思惑や利権構造を推測します。",
+    "true_intent": "この記事は、トヨタが今後どのように展開していくかを調査するために、さまざまな視点からの分析を提供する意図 likelyです。",
+    "bias_warning": "ポジショントークの可能性があり、トヨタが特定企業や製品に対する支援や投資を表明している可能性があります。",
+    "deadline": "2023-10-26",
+    "company": "トヨタ",
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027",
+    "company_profile": "- **事業の強み・特徴**: トヨタは、自動車製造と販売を主軸とする多角的な企業であり、その製品の品質と信頼性を重視しています。\n- **社風・カルチャー**: トヨタは、スポーツとスポーツ関連の事業も重要な分野であり、社員はスポーツとスポーツ関連のイベントやプロジェクトに参加します。\n- **求める人物像の推測**: トヨタは、技術的な企業であり、入職者にはプログラミングやソフトウェア開発などの技術的なスキルを必要とします。また、コミュニケーション能力やコミュニケーション力を求められるため、チームワークも大切です。"
+  },
+  "critical_analysis": {
+    "true_intent": "この記事は、トヨタが今後どのように展開していくかを調査するために、さまざまな視点からの分析を提供する意図 likelyです。",
+    "bias_warning": "ポジショントークの可能性があり、トヨタが特定企業や製品に対する支援や投資を表明している可能性があります。"
+  },
+  "collected_at": "2026-01-26T17:33:46.358393",
+  "source": "トヨタ自動車 戦略"
+}

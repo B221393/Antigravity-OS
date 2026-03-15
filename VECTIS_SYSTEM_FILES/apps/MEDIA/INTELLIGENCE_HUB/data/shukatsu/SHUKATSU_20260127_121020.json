@@ -1,0 +1,24 @@
+{
+  "title": "株式会社ワールドコーポレーション、株式会社タクマと連携し、プ",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE0tVnplaV82LXZFcURfWDg2VV92VFNTajVOUjZna3RRbFMxaS03Z20yOXNBV1Z6dGRabXdpZUVWdTRBVzZmZVNwUmJ0ZWNpTTVycGtyZXJVOW1jelY0dnR3TEtPVzdZYjlsZUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE0tVnplaV82LXZFcURfWDg2VV92VFNTajVOUjZna3RRbFMxaS03Z20yOXNBV1Z6dGRabXdpZUVWdTRBVzZmZVNwUmJ0ZWNpTTVycGtyZXJVOW1jelY0dnR3TEtPVzdZYjlsZUE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ワールドコーポレーションがタクマと連携し、ネパール人新卒3名をプラント施工管理として派遣。",
+    "true_intent": "人手不足の深刻さをアピールしつつ、外国人労働者の活用を促進する狙い。低賃金労働力確保、企業イメージ向上、政府へのアピールも考えられる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ワールドコーポレーション, タクマ",
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027",
+    "company_profile": "## ワールドコーポレーション & タクマ 就活戦略 (27卒向け)\n\n**ワールドコーポレーション**\n\n1.  **主要武器**: 独立系SIerとしての顧客密着型ソリューション提供力。特定分野に偏らない技術力と柔軟性が強み。\n2.  **26-27卒への温度感**: 積極採用継続。人物重視でポテンシャルを評価する傾向。\n3.  **EGO適性**: 案件によるが、変化に強い人材を求めるため、構造的思考は必須。AI活用は発展途上。\n4.  **裏の弱点**: 大手SIerと比較して、福利厚生や給与水準で見劣りする可能性。\n\n**タクマ**\n\n1.  **主要武器**: 環境プラント(ごみ焼却発電)分野における圧倒的な技術力と実績。社会貢献性の高さ。\n2.  **26-27卒への温度感**: 専門知識を持つ人材を重視。環境問題への関心の高さも評価。\n3.  **EGO適性**: プラント設計・運用において論理的思考力は必須。AI活用はデータ分析等で推進中。\n4.  **裏の弱点**: 環境プラント市場の成長鈍化リスク。事業領域の多角化が課題。\n",
+    "deep_web_intel": "**Structured Summary:**\n\n*   **ワールド オンラインストア:** ファッション通販サイト。アンタイトル、インディヴィ、タケオキクチなど取扱。\n*   **ワールド (企業):** ファッション関連企業。\n*   **ワールドゴルフクラブ:** 千葉県佐倉市のゴルフ練習場。\n\n**Gap Analysis:**\n\n*   ワールド(企業)の事業内容の詳細は不明。\n*   ワールドゴルフクラブの料金や設備などの詳細な情報は未抽出。"
+  },
+  "critical_analysis": {
+    "true_intent": "人手不足の深刻さをアピールしつつ、外国人労働者の活用を促進する狙い。低賃金労働力確保、企業イメージ向上、政府へのアピールも考えられる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:10:20.114230",
+  "source": "ワールド 採用"
+}

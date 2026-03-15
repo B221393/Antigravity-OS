@@ -1,0 +1,124 @@
+﻿Loading .env from: C:\Users\Yuto\Desktop\app\.env
+Mapped GEMINI_API_KEY to GOOGLE_API_KEY
+Starting Agent Team run for topic: Meitec Corporation: Business model, strengths in engineering staffing, and future outlook
++-[CrewAIEventsBus] Sync 
+handler error in 
+on_crew_started: 'cp932' 
+codec can't encode 
+character '\U0001f680' in
+position 1: illegal 
+multibyte sequence
++-[CrewAIEventsBus] Sync 
+handler error in 
+on_task_started: 'cp932' 
+codec can't encode 
+character '\U0001f680' in
+position 1: illegal 
+multibyte sequence
++-[CrewAIEventsBus] Sync 
+handler error in 
+on_agent_logs_started: 
+'cp932' codec can't 
+encode character 
+'\U0001f680' in position 
+1: illegal multibyte 
+sequence
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
++----[CrewAIEventsBus] Sync 
+handler error in 
+on_llm_call_failed: 
+'cp932' codec can't 
+encode character '\u274c'
+in position 1: illegal 
+multibyte sequence
++----[CrewAIEventsBus] Sync 
+handler error in 
+on_agent_logs_started: 
+'cp932' codec can't 
+encode character '\u274c'
+in position 1: illegal 
+multibyte sequence
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
++-[CrewAIEventsBus] Sync 
+handler error in 
+on_llm_call_failed: 
+'cp932' codec can't 
+encode character 
+'\U0001f680' in position 
+1: illegal multibyte 
+sequence
++-[CrewAIEventsBus] Sync 
+handler error in 
+on_agent_logs_started: 
+'cp932' codec can't 
+encode character 
+'\U0001f680' in position 
+1: illegal multibyte 
+sequence
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
+[CrewAIEventsBus] 
+Warning: Event pairing 
+mismatch. 'task_failed' 
+closed 
+'agent_execution_started'
+(expected 'task_started')
++----+-[CrewAIEventsBus] Sync 
+handler error in 
+on_llm_call_failed: 
+'cp932' codec can't 
+encode character '\u274c'
+in position 1: illegal 
+multibyte sequence
+[CrewAIEventsBus][ Sync 
+handler error in 
+on_task_failed: 'cp932'CrewAIEventsBus] 
+Warning: Event pairing 
+mismatch. 
+'crew_kickoff_failed' 
+closed 
+'agent_execution_started'
+(expected 
+'crew_kickoff_started')
+ 
+codec can't encode 
+character '\U0001f680' in
+position 1: illegal 
+multibyte sequence
++---- Crew Failure -----+
+|                       |
+|  Crew Execution       |
+|  Failed               |
+|  Name:                Error during execution: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+|
+|  crew                 |
+|  ID:                  |
+|  df7fa68d-8ca1-4f2c-  |
+|  8716-71d6f9941d33    |
+|                       |
+|                       |
++-----------------------+
+
++--- Tracing Status ----+
+|                       |
+|  Info: Tracing is     |
+|  disabled.            |
+|                       |
+|  To enable tracing,   |
+|  do any one of        |
+|  these:               |
+|  [CrewAIEventsBus] Sync 
+handler error in 
+on_crew_failed: 'cp932' 
+codec can't encode 
+character '\u2022' in 
+position 0: illegal 
+multibyte sequence

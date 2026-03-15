@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>✅ タスク | VECTIS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header / Status Bar -->
+        <header class="status-bar">
+            <div class="time-widget" id="clock">00:00</div>
+            <div class="battery-widget"><i class="fas fa-bolt"></i> VECTIS ONLINE</div>
+        </header>
+
+        <!-- Main Home Grid -->
+        <main class="home-grid">
+
+            <!-- Voice Input Widget (Large) -->
+            <div class="widget voice-widget glow-border" id="voiceWidget">
+                <div class="voice-visualizer" id="visualizer">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <button id="recordBtn" class="record-btn">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <div class="voice-status" id="voiceStatus">🎙️ タップで音声入力</div>
+            </div>
+
+            <!-- Stats Widget -->
+            <div class="widget stats-widget">
+                <div class="stat-item">
+                    <span class="stat-value" id="taskCount">0</span>
+                    <span class="stat-label">残り</span>
+                </div>
+                <div class="stat-separation"></div>
+                <div class="stat-item">
+                    <span class="stat-value success-text" id="doneCount">0</span>
+                    <span class="stat-label">完了</span>
+                </div>
+            </div>
+
+            <!-- Task List Widget (Scrollable) -->
+            <div class="widget list-widget">
+                <div class="list-header">
+                    <h3>🎯 今日やること</h3>
+                    <button class="icon-btn" id="clearDoneBtn"><i class="fas fa-trash-can"></i></button>
+                </div>
+                <ul id="taskList" class="task-list">
+                    <!-- Tasks injected here -->
+                </ul>
+            </div>
+
+        </main>
+
+        <!-- Bottom Nav (optional integration) -->
+        <nav class="bottom-nav">
+            <a href="/" class="nav-item"><i class="fas fa-home"></i></a>
+            <a href="#" class="nav-item active"><i class="fas fa-calendar-check"></i></a>
+            <a href="#" class="nav-item"><i class="fas fa-cog"></i></a>
+        </nav>
+    </div>
+
+    <!-- Celebration Overlay -->
+    <div id="celebration" class="celebration-overlay">
+        <div class="confetti"></div>
+        <div class="mission-complete">✨ 完了！</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

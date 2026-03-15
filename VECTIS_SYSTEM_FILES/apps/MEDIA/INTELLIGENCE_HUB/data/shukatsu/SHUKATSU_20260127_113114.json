@@ -1,0 +1,22 @@
+{
+  "title": "【内閣官房国土強靱化推進室 主催】国土強靱化に向けた防災・減",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE04RFNBMzhCLTktN3BzNUd2TnJfZTM5ODBRM2hHcmg3Q2ZwbHBVWWZpWmdqeVMyUTBwRXhwa1VOREVYTXFfQlprTERRS0pNSDVRUmJYaGYwdlJBS0JEaVgwY2wtcGxIUGxSaXc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE04RFNBMzhCLTktN3BzNUd2TnJfZTM5ODBRM2hHcmg3Q2ZwbHBVWWZpWmdqeVMyUTBwRXhwa1VOREVYTXFfQlprTERRS0pNSDVRUmJYaGYwdlJBS0JEaVgwY2wtcGxIUGxSaXc?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "内閣官房が紀宝町で国土強靱化ワークショップ開催。防災・減災がテーマ。",
+    "true_intent": "国土強靱化政策の推進アピール。地方創生、関連業界への投資誘導、内閣支持率向上を狙う可能性。ワークショップの実効性に疑問符。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "国土強靱化政策の推進アピール。地方創生、関連業界への投資誘導、内閣支持率向上を狙う可能性。ワークショップの実効性に疑問符。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:31:14.507053",
+  "source": "Active:NTT"
+}

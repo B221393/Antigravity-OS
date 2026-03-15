@@ -1,0 +1,23 @@
+{
+  "title": "科学と社会の課題を炙り出す推理ゲーム『nocobon』とは？",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE50cmU3b1FfS2M3TjZraWs5b0pfZlA3bU5JNFhwSEpGZnFzSnZHcG5iRTZjVGpYQV80OG8xOXhYMjVZTkNHQ1ItNXRLZ3h3TVlzM3N3SXlKNW0zTm80NmU3WENuRjA5MnYyTGs2Qw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE50cmU3b1FfS2M3TjZraWs5b0pfZlA3bU5JNFhwSEpGZnFzSnZHcG5iRTZjVGpYQV80OG8xOXhYMjVZTkNHQ1ItNXRLZ3h3TVlzM3N3SXlKNW0zTm80NmU3WENuRjA5MnYyTGs2Qw?oc=",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "東大江間氏開発の推理ゲーム『nocobon』紹介記事。科学と社会の課題をゲームで可視化。",
+    "true_intent": "東大の研究ブランディング、江間氏個人の知名度向上、研究資金獲得の可能性。ゲームを通じた啓蒙活動のアピール。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "出版/教育/研究",
+    "target_year": "2027",
+    "academic_deep_dive": "## 『nocobon』と科学・社会の交差点：リベラルアーツ的考察\n\n1. **歴史的背景:** 科学技術と社会の乖離は古くから存在する。産業革命以降、技術進歩は社会構造を大きく変えてきたが、その恩恵は必ずしも平等ではない。過去には、原子力の開発や遺伝子組み換え技術など、科学技術の倫理的・社会的な影響が議論を呼んだ事例が多数存在する。科学技術の進歩と社会の調和を模索する試みは、科学啓蒙運動や科学哲学の領域で長年続けられてきた。\n\n2. **現代的意義:** 『nocobon』の意義は、科学技術の進歩が加速する現代において、その倫理的・社会的な課題を「ゲーム」というインタラクティブな形式で可視化し、議論の活性化を促す点にある。AI、バイオテクノロジー、気候変動など、複雑化する現代社会の課題を、専門家だけでなく一般市民も主体的に考え、意思決定に参加する必要性が高まっている。これは、民主主義の成熟度を測る試金石とも言える。\n\n3. **批判的視座:** 『nocobon』のような試みは、科学と社会の対話を促進する有効な手段となり得る一方、ゲームという形式の限界も考慮する必要がある。簡略化されたシナリオやルールは、現実の複雑さを十分に反映できない可能性があり、ステレオタイプな認識を強化するリスクも孕んでいる。重要なのは、ゲームを単なるエンターテイメントとして消費するのではなく、そこから得られた気づきを現実世界における批判的思考へと繋げることである。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "東大の研究ブランディング、江間氏個人の知名度向上、研究資金獲得の可能性。ゲームを通じた啓蒙活動のアピール。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:39:50.725305",
+  "source": "科学技術 社会論"
+}

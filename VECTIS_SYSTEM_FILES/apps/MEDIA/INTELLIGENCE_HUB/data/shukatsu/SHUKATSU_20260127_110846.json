@@ -1,0 +1,24 @@
+{
+  "title": "SHIFT急成長 キーエンス元社長から警察官まで集う異形のI",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9XX2VyNmFoSWQ4Y0wyaGhXUDNobEZyQTkyVUl5a2dWUmxOM2sybXpUc2czWmV0X1plT0Roemotd3h6WFV0WWxPLW5MRDBCNGN3Zk4tMDdvR3FIMjdFLVZVTTVGS1Q5TUpjSC1MXw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE9XX2VyNmFoSWQ4Y0wyaGhXUDNobEZyQTkyVUl5a2dWUmxOM2sybXpUc2czWmV0X1plT0Roemotd3h6WFV0WWxPLW5MRDBCNGN3Zk4tMDdvR3FIMjdFLVZVTTVGS1Q5TUpjSC1MXw?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "SHIFTが急成長。異業種人材を集め躍進するIT企業。",
+    "true_intent": "SHIFTの企業イメージ向上と採用ブランディングが目的。優秀な異業種人材獲得競争激化を示唆し、SHIFTへの応募を促す狙い。キーエンス元社長の名前は箔付け。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "SHIFT",
+    "action_required": true,
+    "category": "IT/メディア",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。SHIFTの本質的価値と27卒が狙うべき理由を下記にまとめます。\n\n1. **主要武器**: 徹底的な品質保証とテスト技術。顧客のDX推進を支える、技術力とコンサルティング能力の高さ。\n\n2. **26-27卒への温度感**: 採用意欲は高く、ポテンシャル重視。技術力だけでなく、成長意欲とコミュニケーション能力を重視する傾向。\n\n3. **EGO適性**: 論理的思考は必須。AI活用にも積極的で、効率化や高度化に貢献できる人材を求める。\n\n4. **裏の弱点**: 急成長ゆえの組織体制の脆弱性。プロジェクトによっては長時間労働の可能性も。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Issue 1:** Shift key failing to switch input language from English to Chinese.\n*   **Issue 2:** `pandas.shift(1)` functionality (likely moves data).\n*   **Issue 3:** Definition/function of Shift and Alt keys.\n\n**Structured Summary:**\n\nThe provided data references three distinct queries related to \"shift\": a problem with input language switching, a pandas function, and a general keyboard key explanation.\n\n**Gap Analysis:**\n\nThe data suffers from failed web requests, severely limiting content extraction. The summaries are based solely on titles, inferring the topics. Detailed explanations and solutions are missing."
+  },
+  "critical_analysis": {
+    "true_intent": "SHIFTの企業イメージ向上と採用ブランディングが目的。優秀な異業種人材獲得競争激化を示唆し、SHIFTへの応募を促す狙い。キーエンス元社長の名前は箔付け。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:08:46.616664",
+  "source": "Active:キーエンス"
+}

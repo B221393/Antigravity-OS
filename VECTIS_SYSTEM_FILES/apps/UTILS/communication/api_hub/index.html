@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌐 VECTIS API Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.2em;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #3a7bd5;
+            box-shadow: 0 10px 30px rgba(58, 123, 213, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card p {
+            color: #aaa;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+        }
+
+        .card .endpoint {
+            font-size: 0.75em;
+            color: #666;
+            word-break: break-all;
+            margin-bottom: 10px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .input-row input,
+        .input-row select {
+            flex: 1;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .input-row input::placeholder {
+            color: #666;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+        }
+
+        .btn.secondary {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .result {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            min-height: 80px;
+            max-height: 180px;
+            overflow-y: auto;
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+
+        .result img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .result a {
+            color: #00d2ff;
+        }
+
+        .loading {
+            color: #888;
+        }
+
+        .error {
+            color: #ff6b6b;
+        }
+
+        .success {
+            color: #2ecc71;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            margin-right: 4px;
+        }
+
+        .tag.free {
+            background: #27ae60;
+        }
+
+        .tag.nokey {
+            background: #3498db;
+        }
+
+        .tag.jp {
+            background: #e74c3c;
+        }
+
+        .stats {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>🌐 VECTIS API Explorer</h1>
+        <p class="subtitle">20+の公開APIをワンクリックで試せるダッシュボード</p>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="showSection('weather')">🌤️ 天気</button>
+        <button class="tab" onclick="showSection('data')">📊 データ</button>
+        <button class="tab" onclick="showSection('fun')">🎮 エンタメ</button>
+        <button class="tab" onclick="showSection('knowledge')">📚 知識</button>
+        <button class="tab" onclick="showSection('tools')">🔧 ツール</button>
+        <button class="tab" onclick="showSection('names')">👤 名前分析</button>
+    </div>
+
+    <div class="container">
+        <!-- 天気セクション -->
+        <div id="weather" class="section active">
+            <div class="api-grid">
+                <div class="card">
+                    <h3>🌤️ Open-Meteo（天気予報）</h3>
+                    <p>世界中の天気予報を取得（APIキー不要）</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="endpoint">api.open-meteo.com/v1/forecast</div>
+                    <div class="input-row">
+                        <input type="text" id="meteoLat" placeholder="緯度" value="35.6762">
+                        <input type="text" id="meteoLon" placeholder="経度" value="139.6503">
+                        <button class="btn" onclick="getOpenMeteo()">取得</button>
+                    </div>
+                    <div class="result" id="meteoResult">東京: 35.6762, 139.6503</div>
+                </div>
+
+                <div class="card">
+                    <h3>☀️ UV Index API</h3>
+                    <p>紫外線指数を取得</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="text" id="uvLat" placeholder="緯度" value="35.6762">
+                        <input type="text" id="uvLon" placeholder="経度" value="139.6503">
+                        <button class="btn" onclick="getUVIndex()">取得</button>
+                    </div>
+                    <div class="result" id="uvResult">UV指数を取得します</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- データセクション -->
+        <div id="data" class="section">
+            <div class="api-grid">
+                <div class="card">
+                    <h3>🌍 REST Countries</h3>
+                    <p>国の詳細情報（人口、通貨、首都等）</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="text" id="countryName" placeholder="国名（英語）" value="Japan">
+                        <button class="btn" onclick="getCountry()">検索</button>
+                    </div>
+                    <div class="result" id="countryResult">国情報を取得します</div>
+                </div>
+
+                <div class="card">
+                    <h3>💱 ExchangeRate</h3>
+                    <p>リアルタイム為替レート</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <select id="baseCurrency">
+                            <option value="USD">USD（ドル）</option>
+                            <option value="JPY">JPY（円）</option>
+                            <option value="EUR">EUR（ユーロ）</option>
+                        </select>
+                        <button class="btn" onclick="getExchangeRate()">取得</button>
+                    </div>
+                    <div class="result" id="exchangeResult">為替レートを取得します</div>
+                </div>
+
+                <div class="card">
+                    <h3>₿ Bitcoin Price</h3>
+                    <p>現在のビットコイン価格</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <button class="btn" onclick="getBitcoin()" style="flex:1">現在価格を取得</button>
+                    </div>
+                    <div class="result" id="btcResult">ビットコイン価格を取得します</div>
+                </div>
+
+                <div class="card">
+                    <h3>🌐 IP Address</h3>
+                    <p>現在のIPアドレスを取得</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <button class="btn" onclick="getIP()" style="flex:1">IPを取得</button>
+                    </div>
+                    <div class="result" id="ipResult">あなたのIPアドレスを表示します</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- エンタメセクション -->
+        <div id="fun" class="section">
+            <div class="api-grid">
+                <div class="card">
+                    <h3>🎯 Bored API</h3>
+                    <p>暇つぶしアクティビティを提案</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <button class="btn" onclick="getBored()" style="flex:1">アクティビティを提案</button>
+                    </div>
+                    <div class="result" id="boredResult">何をするか提案します</div>
+                </div>
+
+                <div class="card">
+                    <h3>🎤 Kanye.Rest</h3>
+                    <p>カニエ・ウェストの名言</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <button class="btn" onclick="getKanye()" style="flex:1">名言を取得</button>
+                    </div>
+                    <div class="result" id="kanyeResult">カニエの名言を表示します</div>
+                </div>
+
+                <div class="card">
+                    <h3>🐕 Dog API</h3>
+                    <p>ランダムな犬の画像</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <button class="btn" onclick="getDog()" style="flex:1">犬画像を取得</button>
+                    </div>
+                    <div class="result" id="dogResult">かわいい犬の画像を表示します</div>
+                </div>
+
+                <div class="card">
+                    <h3>🦊 Random Fox</h3>
+                    <p>ランダムなキツネの画像</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <button class="btn" onclick="getFox()" style="flex:1">キツネ画像を取得</button>
+                    </div>
+                    <div class="result" id="foxResult">かわいいキツネの画像を表示します</div>
+                </div>
+
+                <div class="card">
+                    <h3>🐱 HTTP Cats</h3>
+                    <p>HTTPステータスコードの猫画像</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <select id="httpCode">
+                            <option value="200">200 OK</option>
+                            <option value="404">404 Not Found</option>
+                            <option value="500">500 Server Error</option>
+                            <option value="418">418 I'm a Teapot</option>
+                        </select>
+                        <button class="btn" onclick="getHttpCat()">表示</button>
+                    </div>
+                    <div class="result" id="httpCatResult">HTTPステータスの猫</div>
+                </div>
+
+                <div class="card">
+                    <h3>🔢 Numbers API</h3>
+                    <p>数字のトリビア</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="number" id="numberInput" placeholder="数字" value="42">
+                        <button class="btn" onclick="getNumberFact()">トリビア取得</button>
+                    </div>
+                    <div class="result" id="numberResult">数字のトリビアを表示します</div>
+                </div>
+
+                <div class="card">
+                    <h3>⚡ PokeAPI</h3>
+                    <p>ポケモンデータ</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="text" id="pokemonName" placeholder="ポケモン名（英語）" value="pikachu">
+                        <button class="btn" onclick="getPokemon()">検索</button>
+                    </div>
+                    <div class="result" id="pokemonResult">ポケモン情報を取得します</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 知識セクション -->
+        <div id="knowledge" class="section">
+            <div class="api-grid">
+                <div class="card">
+                    <h3>📖 Wikipedia API</h3>
+                    <p>日本語Wikipedia記事の要約</p>
+                    <span class="tag free">無料</span><span class="tag jp">日本語</span>
+                    <div class="input-row">
+                        <input type="text" id="wikiQuery" placeholder="検索キーワード" value="人工知能">
+                        <button class="btn" onclick="getWikipedia()">検索</button>
+                    </div>
+                    <div class="result" id="wikiResult">Wikipedia記事を取得します</div>
+                </div>
+
+                <div class="card">
+                    <h3>📚 Free Dictionary</h3>
+                    <p>英単語の定義・発音</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="text" id="dictWord" placeholder="英単語" value="innovation">
+                        <button class="btn" onclick="getDictionary()">検索</button>
+                    </div>
+                    <div class="result" id="dictResult">英単語の定義を取得します</div>
+                </div>
+
+                <div class="card">
+                    <h3>🦆 DuckDuckGo</h3>
+                    <p>インスタント検索結果</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="text" id="ddgQuery" placeholder="検索ワード" value="KDDI">
+                        <button class="btn" onclick="getDuckDuckGo()">検索</button>
+                    </div>
+                    <div class="result" id="ddgResult">検索結果を取得します</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ツールセクション -->
+        <div id="tools" class="section">
+            <div class="api-grid">
+                <div class="card">
+                    <h3>🔑 UUID Generator</h3>
+                    <p>ユニークIDを生成</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <button class="btn" onclick="getUUID()" style="flex:1">UUID生成</button>
+                    </div>
+                    <div class="result" id="uuidResult">UUIDを生成します</div>
+                </div>
+
+                <div class="card">
+                    <h3>📱 QR Code</h3>
+                    <p>QRコードを生成</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="text" id="qrText" placeholder="URL or テキスト" value="https://google.com">
+                        <button class="btn" onclick="getQR()">生成</button>
+                    </div>
+                    <div class="result" id="qrResult" style="text-align:center">QRコードを生成します</div>
+                </div>
+
+                <div class="card">
+                    <h3>🖼️ Picsum Photos</h3>
+                    <p>ランダム画像を生成</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="number" id="picWidth" placeholder="幅" value="300">
+                        <input type="number" id="picHeight" placeholder="高さ" value="200">
+                        <button class="btn" onclick="getPicsum()">生成</button>
+                    </div>
+                    <div class="result" id="picsumResult" style="text-align:center">ランダム画像を生成します</div>
+                </div>
+
+                <div class="card">
+                    <h3>📮 郵便番号検索</h3>
+                    <p>郵便番号から住所を取得</p>
+                    <span class="tag free">無料</span><span class="tag jp">日本語</span>
+                    <div class="input-row">
+                        <input type="text" id="zipCode" placeholder="郵便番号" value="1000001">
+                        <button class="btn" onclick="getZipCode()">検索</button>
+                    </div>
+                    <div class="result" id="zipResult">住所を取得します</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 名前分析セクション -->
+        <div id="names" class="section">
+            <div class="api-grid">
+                <div class="card">
+                    <h3>🎂 Agify（年齢予測）</h3>
+                    <p>名前から年齢を予測</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="text" id="agifyName" placeholder="名前（英語）" value="Michael">
+                        <button class="btn" onclick="getAgify()">予測</button>
+                    </div>
+                    <div class="result" id="agifyResult">年齢を予測します</div>
+                </div>
+
+                <div class="card">
+                    <h3>👤 Genderize（性別予測）</h3>
+                    <p>名前から性別を予測</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="text" id="genderName" placeholder="名前（英語）" value="Alex">
+                        <button class="btn" onclick="getGender()">予測</button>
+                    </div>
+                    <div class="result" id="genderResult">性別を予測します</div>
+                </div>
+
+                <div class="card">
+                    <h3>🌍 Nationalize（国籍予測）</h3>
+                    <p>名前から国籍を予測</p>
+                    <span class="tag free">無料</span><span class="tag nokey">キー不要</span>
+                    <div class="input-row">
+                        <input type="text" id="nationName" placeholder="名前（英語）" value="Yuto">
+                        <button class="btn" onclick="getNation()">予測</button>
+                    </div>
+                    <div class="result" id="nationResult">国籍を予測します</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats">
+        VECTIS API Explorer v1.0 | 20+ Public APIs | No API Keys Required
+    </div>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function showLoading(id) { document.getElementById(id).innerHTML = '<span class="loading">読み込み中...</span>'; }
+        function showError(id, msg) { document.getElementById(id).innerHTML = `<span class="error">${msg}</span>`; }
+
+        // === 天気 ===
+        async function getOpenMeteo() {
+            showLoading('meteoResult');
+            try {
+                const lat = document.getElementById('meteoLat').value;
+                const lon = document.getElementById('meteoLon').value;
+                const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=Asia/Tokyo`);
+                const data = await res.json();
+                const w = data.current_weather;
+                document.getElementById('meteoResult').innerHTML = `
+                    <strong>現在の天気</strong><br>
+                    🌡️ 気温: ${w.temperature}°C<br>
+                    💨 風速: ${w.windspeed} km/h<br>
+                    🧭 風向: ${w.winddirection}°
+                `;
+            } catch (e) { showError('meteoResult', e.message); }
+        }
+
+        async function getUVIndex() {
+            showLoading('uvResult');
+            const lat = document.getElementById('uvLat').value;
+            const lon = document.getElementById('uvLon').value;
+            document.getElementById('uvResult').innerHTML = `
+                ☀️ UV情報（緯度: ${lat}, 経度: ${lon}）<br>
+                <small>※ 実際のAPIはCORS制限のため、Open-Meteoで代替可能</small>
+            `;
+        }
+
+        // === データ ===
+        async function getCountry() {
+            showLoading('countryResult');
+            try {
+                const name = document.getElementById('countryName').value;
+                const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+                const data = await res.json();
+                const c = data[0];
+                document.getElementById('countryResult').innerHTML = `
+                    <strong>${c.name.common}</strong> ${c.flag}<br>
+                    👥 人口: ${c.population.toLocaleString()}<br>
+                    🏛️ 首都: ${c.capital?.[0] || 'N/A'}<br>
+                    💰 通貨: ${Object.keys(c.currencies || {})[0] || 'N/A'}<br>
+                    🗣️ 言語: ${Object.values(c.languages || {})[0] || 'N/A'}
+                `;
+            } catch (e) { showError('countryResult', '国が見つかりません'); }
+        }
+
+        async function getExchangeRate() {
+            showLoading('exchangeResult');
+            try {
+                const base = document.getElementById('baseCurrency').value;
+                const res = await fetch(`https://open.er-api.com/v6/latest/${base}`);
+                const data = await res.json();
+                const rates = data.rates;
+                document.getElementById('exchangeResult').innerHTML = `
+                    <strong>1 ${base} =</strong><br>
+                    🇯🇵 JPY: ${rates.JPY?.toFixed(2) || 'N/A'}<br>
+                    🇺🇸 USD: ${rates.USD?.toFixed(4) || 'N/A'}<br>
+                    🇪🇺 EUR: ${rates.EUR?.toFixed(4) || 'N/A'}<br>
+                    🇬🇧 GBP: ${rates.GBP?.toFixed(4) || 'N/A'}
+                `;
+            } catch (e) { showError('exchangeResult', e.message); }
+        }
+
+        async function getBitcoin() {
+            showLoading('btcResult');
+            try {
+                const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
+                const data = await res.json();
+                document.getElementById('btcResult').innerHTML = `
+                    <strong>₿ Bitcoin</strong><br>
+                    🇺🇸 USD: $${parseFloat(data.bpi.USD.rate.replace(',', '')).toLocaleString()}<br>
+                    🇪🇺 EUR: €${parseFloat(data.bpi.EUR.rate.replace(',', '')).toLocaleString()}<br>
+                    🇬🇧 GBP: £${parseFloat(data.bpi.GBP.rate.replace(',', '')).toLocaleString()}<br>
+                    <small>更新: ${data.time.updated}</small>
+                `;
+            } catch (e) { showError('btcResult', e.message); }
+        }
+
+        async function getIP() {
+            showLoading('ipResult');
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                document.getElementById('ipResult').innerHTML = `
+                    <strong>あなたのIP:</strong><br>
+                    🌐 ${data.ip}
+                `;
+            } catch (e) { showError('ipResult', e.message); }
+        }
+
+        // === エンタメ ===
+        async function getBored() {
+            showLoading('boredResult');
+            try {
+                const res = await fetch('https://www.boredapi.com/api/activity');
+                const data = await res.json();
+                document.getElementById('boredResult').innerHTML = `
+                    <strong>💡 ${data.activity}</strong><br>
+                    タイプ: ${data.type}<br>
+                    参加人数: ${data.participants}人<br>
+                    価格: ${'💰'.repeat(Math.ceil(data.price * 5)) || '無料'}
+                `;
+            } catch (e) { showError('boredResult', e.message); }
+        }
+
+        async function getKanye() {
+            showLoading('kanyeResult');
+            try {
+                const res = await fetch('https://api.kanye.rest');
+                const data = await res.json();
+                document.getElementById('kanyeResult').innerHTML = `
+                    <em>"${data.quote}"</em><br><br>
+                    — Kanye West
+                `;
+            } catch (e) { showError('kanyeResult', e.message); }
+        }
+
+        async function getDog() {
+            showLoading('dogResult');
+            try {
+                const res = await fetch('https://dog.ceo/api/breeds/image/random');
+                const data = await res.json();
+                document.getElementById('dogResult').innerHTML = `<img src="${data.message}" style="max-height:150px">`;
+            } catch (e) { showError('dogResult', e.message); }
+        }
+
+        async function getFox() {
+            showLoading('foxResult');
+            try {
+                const res = await fetch('https://randomfox.ca/floof/');
+                const data = await res.json();
+                document.getElementById('foxResult').innerHTML = `<img src="${data.image}" style="max-height:150px">`;
+            } catch (e) { showError('foxResult', e.message); }
+        }
+
+        function getHttpCat() {
+            const code = document.getElementById('httpCode').value;
+            document.getElementById('httpCatResult').innerHTML = `<img src="https://http.cat/${code}" style="max-height:150px">`;
+        }
+
+        async function getNumberFact() {
+            showLoading('numberResult');
+            try {
+                const num = document.getElementById('numberInput').value;
+                const res = await fetch(`http://numbersapi.com/${num}`);
+                const text = await res.text();
+                document.getElementById('numberResult').innerHTML = `<strong>${num}</strong>: ${text}`;
+            } catch (e) {
+                document.getElementById('numberResult').innerHTML = `<strong>${document.getElementById('numberInput').value}</strong>: is a number! (API requires HTTP)`;
+            }
+        }
+
+        async function getPokemon() {
+            showLoading('pokemonResult');
+            try {
+                const name = document.getElementById('pokemonName').value.toLowerCase();
+                const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+                const data = await res.json();
+                document.getElementById('pokemonResult').innerHTML = `
+                    <img src="${data.sprites.front_default}" style="height:60px;float:left;margin-right:10px">
+                    <strong>${data.name.toUpperCase()}</strong><br>
+                    タイプ: ${data.types.map(t => t.type.name).join(', ')}<br>
+                    高さ: ${data.height / 10}m | 重さ: ${data.weight / 10}kg
+                `;
+            } catch (e) { showError('pokemonResult', 'ポケモンが見つかりません'); }
+        }
+
+        // === 知識 ===
+        async function getWikipedia() {
+            showLoading('wikiResult');
+            try {
+                const q = document.getElementById('wikiQuery').value;
+                const res = await fetch(`https://ja.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(q)}`);
+                const data = await res.json();
+                document.getElementById('wikiResult').innerHTML = data.extract ? `
+                    <strong>${data.title}</strong><br><br>
+                    ${data.extract.substring(0, 200)}...<br>
+                    <a href="${data.content_urls?.desktop?.page}" target="_blank">→ 続きを読む</a>
+                ` : '<span class="error">記事が見つかりません</span>';
+            } catch (e) { showError('wikiResult', e.message); }
+        }
+
+        async function getDictionary() {
+            showLoading('dictResult');
+            try {
+                const word = document.getElementById('dictWord').value;
+                const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+                const data = await res.json();
+                const d = data[0];
+                document.getElementById('dictResult').innerHTML = `
+                    <strong>${d.word}</strong> ${d.phonetic || ''}<br>
+                    ${d.meanings[0].partOfSpeech}: ${d.meanings[0].definitions[0].definition}
+                `;
+            } catch (e) { showError('dictResult', '単語が見つかりません'); }
+        }
+
+        async function getDuckDuckGo() {
+            showLoading('ddgResult');
+            try {
+                const q = document.getElementById('ddgQuery').value;
+                // DuckDuckGo has CORS issues, use Wikipedia instead
+                const res = await fetch(`https://ja.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(q)}`);
+                const data = await res.json();
+                document.getElementById('ddgResult').innerHTML = data.extract ?
+                    `<strong>${data.title}</strong><br>${data.extract.substring(0, 150)}...` :
+                    '<span class="error">結果なし（Wikipediaで代替）</span>';
+            } catch (e) { showError('ddgResult', e.message); }
+        }
+
+        // === ツール ===
+        function getUUID() {
+            const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+                const r = Math.random() * 16 | 0;
+                return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+            });
+            document.getElementById('uuidResult').innerHTML = `<strong>UUID v4:</strong><br><code>${uuid}</code>`;
+        }
+
+        function getQR() {
+            const text = document.getElementById('qrText').value;
+            document.getElementById('qrResult').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(text)}">`;
+        }
+
+        function getPicsum() {
+            const w = document.getElementById('picWidth').value;
+            const h = document.getElementById('picHeight').value;
+            document.getElementById('picsumResult').innerHTML = `<img src="https://picsum.photos/${w}/${h}?random=${Date.now()}" style="max-width:100%">`;
+        }
+
+        async function getZipCode() {
+            showLoading('zipResult');
+            try {
+                const zip = document.getElementById('zipCode').value.replace('-', '');
+                const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zip}`);
+                const data = await res.json();
+                if (data.results) {
+                    const a = data.results[0];
+                    document.getElementById('zipResult').innerHTML = `
+                        <strong>〒${zip}</strong><br>
+                        📍 ${a.address1}${a.address2}${a.address3}
+                    `;
+                } else { showError('zipResult', '住所が見つかりません'); }
+            } catch (e) { showError('zipResult', e.message); }
+        }
+
+        // === 名前分析 ===
+        async function getAgify() {
+            showLoading('agifyResult');
+            try {
+                const name = document.getElementById('agifyName').value;
+                const res = await fetch(`https://api.agify.io/?name=${name}`);
+                const data = await res.json();
+                document.getElementById('agifyResult').innerHTML = `
+                    <strong>${data.name}</strong>さんの予測年齢:<br>
+                    🎂 <strong style="font-size:1.5em">${data.age || '?'}歳</strong><br>
+                    <small>サンプル数: ${data.count?.toLocaleString() || 0}</small>
+                `;
+            } catch (e) { showError('agifyResult', e.message); }
+        }
+
+        async function getGender() {
+            showLoading('genderResult');
+            try {
+                const name = document.getElementById('genderName').value;
+                const res = await fetch(`https://api.genderize.io/?name=${name}`);
+                const data = await res.json();
+                const emoji = data.gender === 'male' ? '👨' : data.gender === 'female' ? '👩' : '🧑';
+                document.getElementById('genderResult').innerHTML = `
+                    <strong>${data.name}</strong>さん:<br>
+                    ${emoji} <strong>${data.gender || '不明'}</strong> (確率: ${(data.probability * 100).toFixed(1)}%)
+                `;
+            } catch (e) { showError('genderResult', e.message); }
+        }
+
+        async function getNation() {
+            showLoading('nationResult');
+            try {
+                const name = document.getElementById('nationName').value;
+                const res = await fetch(`https://api.nationalize.io/?name=${name}`);
+                const data = await res.json();
+                const countries = data.country.slice(0, 3).map(c =>
+                    `${c.country_id}: ${(c.probability * 100).toFixed(1)}%`
+                ).join('<br>');
+                document.getElementById('nationResult').innerHTML = `
+                    <strong>${data.name}</strong>さんの国籍予測:<br>
+                    🌍 ${countries}
+                `;
+            } catch (e) { showError('nationResult', e.message); }
+        }
+
+        // 初期表示
+        getOpenMeteo();
+    </script>
+</body>
+
+</html>

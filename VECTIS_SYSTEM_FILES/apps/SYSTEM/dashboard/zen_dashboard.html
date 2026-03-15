@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS | Knowledge OS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* 
+         * VECTIS Zen Dashboard
+         * Design: Minimalist, Time-Aware, Content-First
+         */
+
+        :root {
+            /* Transitions */
+            --transition-speed: 0.8s;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
+            /* Day (Admin Mode) - Clean, Productive, Crisp */
+            --admin-bg: #f5f5f7;
+            --admin-surface: #ffffff;
+            --admin-text: #1d1d1f;
+            --admin-text-secondary: #86868b;
+            --admin-border: #d2d2d7;
+            --admin-accent: #0066cc;
+            --admin-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+            /* Night (Focus Mode) - Deep, Philosophical, OLED Black */
+            --focus-bg: #000000;
+            --focus-surface: #121212;
+            --focus-text: #e5e5e7;
+            --focus-text-secondary: #86868b;
+            --focus-border: #333333;
+            --focus-accent: #ffffff;
+            --focus-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+
+            /* Default to Admin */
+            --bg: var(--admin-bg);
+            --surface: var(--admin-surface);
+            --text-main: var(--admin-text);
+            --text-sub: var(--admin-text-secondary);
+            --border: var(--admin-border);
+            --accent: var(--admin-accent);
+            --shadow: var(--admin-shadow);
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            transition: background-color var(--transition-speed) var(--ease-out-expo), color var(--transition-speed);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Mode Classes */
+        body.admin-mode {
+            /* Inherits default variables */
+        }
+
+        body.focus-mode {
+            --bg: var(--focus-bg);
+            --surface: var(--focus-surface);
+            --text-main: var(--focus-text);
+            --text-sub: var(--focus-text-secondary);
+            --border: var(--focus-border);
+            --accent: var(--focus-accent);
+            --shadow: var(--focus-shadow);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            opacity: 0.8;
+        }
+
+        .header-logo {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-sub);
+        }
+
+        .date-display {
+            font-size: 14px;
+            color: var(--text-sub);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-bottom: 60px;
+            position: relative;
+        }
+
+        /* 
+           Comp: Modes 
+           We use absolute positioning to fade between them seamlessly, 
+           or simple display toggling if we don't mind a hard cut.
+           For "Drastic UI improvement", we want smooth fading.
+        */
+        .view-layer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 1200px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+            padding: 0 40px;
+        }
+
+        .view-layer.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Admin Mode (Grid) */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .col-4 {
+            grid-column: span 4;
+        }
+
+        .col-6 {
+            grid-column: span 6;
+        }
+
+        .col-8 {
+            grid-column: span 8;
+        }
+
+        .col-12 {
+            grid-column: span 12;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* App Links */
+        .app-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 12px;
+            transition: background 0.2s;
+            margin-bottom: 8px;
+        }
+
+        .app-link:hover {
+            background: rgba(128, 128, 128, 0.05);
+        }
+
+        .app-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--text-main);
+            color: var(--bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        /* Focus Mode (Centered, Typography) */
+        .focus-container {
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .zen-quote {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 28px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: var(--text-main);
+        }
+
+        .zen-sub {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 14px;
+            color: var(--text-sub);
+            margin-bottom: 60px;
+        }
+
+        .zen-menu {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .zen-btn {
+            background: transparent;
+            border: 1px solid var(--text-sub);
+            color: var(--text-main);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .zen-btn:hover {
+            border-color: var(--text-main);
+            background: var(--text-main);
+            color: var(--bg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .admin-grid {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .col-4,
+            .col-8,
+            .col-6 {
+                width: 100%;
+            }
+        }
+
+        /* Mode Toggle (Hidden but usable for dev) */
+        .mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+
+        .mode-toggle:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="admin-mode">
+
+    <div class="container">
+        <header>
+            <div class="header-logo">VECTIS OS</div>
+            <div class="date-display" id="clock">00:00</div>
+        </header>
+
+        <main>
+            <!-- ADMIN MODE: Day / Work / Management -->
+            <div class="view-layer" id="admin-view">
+                <div class="admin-grid">
+
+                    <!-- ALL APPS (Categorized) -->
+                    <div class="card col-4" style="max-height: 500px; overflow-y: auto;">
+                        <div class="card-header">
+                            <div class="card-title">App Library</div>
+                        </div>
+
+                        <!-- AI LAB -->
+                        <details open style="margin-bottom:10px;">
+                            <summary style="cursor:pointer; font-weight:600; color:var(--text-sub); margin-bottom:8px;">
+                                AI & Neural</summary>
+                            <div class="app-link"
+                                onclick="launchApp('apps/AI_LAB/knowledge_cards/control_center.html')">
+                                <span class="app-icon">🧠</span>
+                                <div>
+                                    <div style="font-weight:500;">Knowledge Cards</div>
+                                    <div style="font-size:12px; color:var(--text-sub);">Neural Map</div>
+                                </div>
+                            </div>
+                            <div class="app-link" onclick="launchApp('apps/AI_LAB/vectis_omni/app.py')">
+                                <span class="app-icon">🔮</span>
+                                <div>
+                                    <div style="font-weight:500;">Vectis Omni</div>
+                                    <div style="font-size:12px; color:var(--text-sub);">Central Intelligence</div>
+                                </div>
+                            </div>
+                            <div class="app-link" onclick="launchApp('apps/AI_LAB/es_assistant/START.bat')">
+                                <span class="app-icon">📝</span>
+                                <div>
+                                    <div style="font-weight:500;">ES Assistant</div>
+                                    <div style="font-size:12px; color:var(--text-sub);">Entry Sheet AI</div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!-- MEDIA -->
+                        <details open style="margin-bottom:10px;">
+                            <summary style="cursor:pointer; font-weight:600; color:var(--text-sub); margin-bottom:8px;">
+                                Media & Content</summary>
+                            <div class="app-link" onclick="launchApp('apps/MEDIA/youtube_channel/START_GUI.bat')">
+                                <span class="app-icon">📺</span>
+                                <div>
+                                    <div style="font-weight:500;">Intelligence Patrol</div>
+                                    <div style="font-size:12px; color:var(--text-sub);">YouTube & RSS</div>
+                                </div>
+                            </div>
+                            <div class="app-link"
+                                onclick="launchApp('apps/MEDIA/bookshelf_gallery_gui/START_NATIVE_GALLERY.bat')">
+                                <span class="app-icon">📚</span>
+                                <div>
+                                    <div style="font-weight:500;">3D Bookshelf</div>
+                                    <div style="font-size:12px; color:var(--text-sub);">Gallery Viewer</div>
+                                </div>
+                            </div>
+                            <div class="app-link" onclick="window.open('http://localhost:8502', '_blank')">
+                                <span class="app-icon">📊</span>
+                                <div>
+                                    <div style="font-weight:500;">Watcher Web</div>
+                                    <div style="font-size:12px; color:var(--text-sub);">Streamlit UI</div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!-- UTILITIES -->
+                        <details style="margin-bottom:10px;">
+                            <summary style="cursor:pointer; font-weight:600; color:var(--text-sub); margin-bottom:8px;">
+                                Utilities</summary>
+                            <div class="app-link"
+                                onclick="window.location.href='../../../apps/UTILS/scheduler/index.html'">
+                                <span class="app-icon">📅</span>
+                                <div>
+                                    <div style="font-weight:500;">Scheduler</div>
+                                    <div style="font-size:12px; color:var(--text-sub);">Task & Time</div>
+                                </div>
+                            </div>
+                            <div class="app-link" onclick="launchApp('apps/UTILS/toeic_pro/index.html')">
+                                <span class="app-icon">Aa</span>
+                                <div>
+                                    <div style="font-weight:500;">TOEIC Pro</div>
+                                    <div style="font-size:12px; color:var(--text-sub);">English Training</div>
+                                </div>
+                            </div>
+                            <div class="app-link" onclick="launchApp('01_大西配列を開始する.bat')">
+                                <span class="app-icon">⌨️</span>
+                                <div>
+                                    <div style="font-weight:500;">Onishi Layout</div>
+                                    <div style="font-size:12px; color:var(--text-sub);">Keyboard Mod</div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!-- SYSTEM -->
+                        <details>
+                            <summary style="cursor:pointer; font-weight:600; color:var(--text-sub); margin-bottom:8px;">
+                                System</summary>
+                            <div class="app-link"
+                                onclick="window.location.href='../../../apps/SYSTEM/dashboard/index_v2.html'">
+                                <span class="app-icon">🕹️</span>
+                                <div>
+                                    <div style="font-weight:500;">Retro Dashboard</div>
+                                    <div style="font-size:12px; color:var(--text-sub);">Legacy UI</div>
+                                </div>
+                            </div>
+                        </details>
+
+                    </div>
+
+                    <!-- Status / Todos -->
+                    <div class="card col-8">
+                        <div class="card-header">
+                            <div class="card-title">System Status</div>
+                            <div style="font-size:12px; color:var(--text-sub);">Running on Localhost</div>
+                        </div>
+                        <iframe src="http://localhost:8502/?embedded=true"
+                            style="width:100%; height:300px; border:none; border-radius:8px; opacity:0.8; pointer-events:none;"></iframe>
+                        <div style="margin-top:10px; font-size:12px; color:var(--text-sub); text-align:center;">
+                            *Preview of YouTube Watcher (if running)
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card col-12" style="margin-top:24px;">
+                        <div class="card-header">
+                            <div class="card-title">Quick Actions</div>
+                        </div>
+                        <div style="display:flex; gap:12px;">
+                            <button class="zen-btn" style="border-radius:8px; padding:8px 16px;"
+                                onclick="window.location.href='../../../apps/SYSTEM/dashboard/index_v2.html'">Retro
+                                Dashboard</button>
+                            <button class="zen-btn" style="border-radius:8px; padding:8px 16px;"
+                                onclick="toggleMode()">Force Focus Mode</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- FOCUS MODE: Night / Philosophy / Deep Work -->
+            <div class="view-layer" id="focus-view">
+                <div class="focus-container">
+                    <div class="zen-quote">
+                        "Learning without thought is labor lost;<br>
+                        thought without learning is perilous."
+                    </div>
+                    <div class="zen-sub">
+                        Current Focus: Philosophy & Logic Structure
+                    </div>
+
+                    <div class="zen-menu">
+                        <a href="../../../apps/AI_LAB/knowledge_cards/knowledge_network.html" class="zen-btn">Enter
+                            Neural Network</a>
+                        <a href="#" class="zen-btn" onclick="toggleMode()">Return to Admin</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Dev Toggle -->
+    <div class="mode-toggle" onclick="toggleMode()">🌓</div>
+
+    <script>
+        // API: Launch App Helper
+        async function launchApp(targetPath) {
+            // Give user immediate feedback
+            const originalCursor = document.body.style.cursor;
+            document.body.style.cursor = 'wait';
+
+            try {
+                // Encode target for URL
+                const url = `/run_app?target=${encodeURIComponent(targetPath)}`;
+                console.log("Requesting launch:", url);
+
+                const response = await fetch(url);
+                const text = await response.text();
+
+                if (response.ok) {
+                    console.log("Launch Success:", text);
+                } else {
+                    alert(`Error launching app: ${text}`);
+                }
+            } catch (err) {
+                alert(`Connection Error: ${err}`);
+            } finally {
+                document.body.style.cursor = originalCursor;
+            }
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('clock').textContent = timeStr;
+
+            // Auto-Mode Switching (Only if not manually overridden in this session)
+            // 6:00 - 19:59 = Admin, 20:00 - 05:59 = Focus
+            // This logic runs once or checks plain time.
+            const hour = now.getHours();
+            const shouldBeFocus = (hour >= 20 || hour < 6);
+
+            // Note: In a real app we might want to respect manual toggle. 
+            // Here we just set class if body doesn't have a manual flag.
+            if (!document.body.dataset.manualOverride) {
+                if (shouldBeFocus) {
+                    setMode('focus');
+                } else {
+                    setMode('admin');
+                }
+            }
+        }
+
+        function setMode(mode) {
+            const adminView = document.getElementById('admin-view');
+            const focusView = document.getElementById('focus-view');
+
+            if (mode === 'focus') {
+                document.body.classList.remove('admin-mode');
+                document.body.classList.add('focus-mode');
+                adminView.classList.remove('active');
+                focusView.classList.add('active');
+            } else {
+                document.body.classList.remove('focus-mode');
+                document.body.classList.add('admin-mode');
+                focusView.classList.remove('active');
+                adminView.classList.add('active');
+            }
+        }
+
+        function toggleMode() {
+            document.body.dataset.manualOverride = "true";
+            if (document.body.classList.contains('focus-mode')) {
+                setMode('admin');
+            } else {
+                setMode('focus');
+            }
+        }
+
+        // Init
+        updateClock();
+        setInterval(updateClock, 60000); // Every minute
+    </script>
+</body>
+
+</html>

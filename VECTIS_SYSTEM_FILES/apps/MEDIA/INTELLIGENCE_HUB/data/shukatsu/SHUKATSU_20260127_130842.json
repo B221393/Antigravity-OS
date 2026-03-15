@@ -1,0 +1,24 @@
+{
+  "title": "ノーリツがハイブリッド給湯器新型 自然冷媒R290採用でCO",
+  "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5GeTFYY25ncWwxUFJ3MTNZMXRJWjRfOTNRRHpIaEQ1b1I4cHRaV0gwTGVEbnlCa3hUakN2WXpTQWsyeks4T0lQYlhIZ09fZHE4dlE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiUkFVX3lxTE5GeTFYY25ncWwxUFJ3MTNZMXRJWjRfOTNRRHpIaEQ1b1I4cHRaV0gwTGVEbnlCa3hUakN2WXpTQWsyeks4T0lQYlhIZ09fZHE4dlE?oc=5\" target=\"_blank\">ノーリツがハイブリッド給湯器新型",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ノーリツがR290採用ハイブリッド給湯器発表。CO₂削減と省エネ性能をアピール。",
+    "true_intent": "環境意識の高まりを背景に、競合他社に対する技術的優位性と企業イメージ向上を図る。補助金制度利用促進による販売促進も狙いか。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ノーリツ",
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。ノーリツの本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: 給湯器国内トップシェアと、長年培われた高い技術力。省エネ・IoT技術による差別化が強み。\n2.  **26-27卒への温度感**: デジタル人材やグローバル人材を積極的に採用。事業変革期であり、若手の活躍に期待。\n3.  **EGO適性**: 既存事業の効率化と新規事業開発にAI活用を推進中。論理的思考力とデータ分析力のある人材を重視。\n4.  **裏の弱点**: 既存事業への依存度が高く、新規事業の収益化に時間がかかる可能性。組織の硬直化も懸念材料。\n",
+    "deep_web_intel": "```json\n{\n  \"company_name\": \"ノーリツ\",\n  \"summary\": \"株式会社ノーリツのホームページでは、商品情報やキャンペーン、お役立ち情報を提供しています。創業の原点である「お風呂は人を幸せにする」という思いのもと、皆さまの「暮し」の領域で感動をお届けしたいという思いや活動を紹介しています。\",\n  \"key_points\": [\n    \"商品情報\",\n    \"キャンペーン\",\n    \"お役立ち情報\",\n    \"「お風呂は人を幸せにする」という創業の原点\",\n    \"「暮し」の領域で感動をお届けしたい\"\n  ],\n  \"gap_analysis\": {\n    \"missing_information\": [\n      \"沿革\",\n      \"事業内容\",\n      \"財務情報\",\n      \"組織体制\",\n      \"関連会社\"\n    ]\n  }\n}\n```"
+  },
+  "critical_analysis": {
+    "true_intent": "環境意識の高まりを背景に、競合他社に対する技術的優位性と企業イメージ向上を図る。補助金制度利用促進による販売促進も狙いか。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:08:42.272781",
+  "source": "ノーリツ 採用"
+}

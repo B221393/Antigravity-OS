@@ -1,0 +1,54 @@
+/* ============================================
+   Digital Anima — Anima Avatar Styles
+   ============================================ */
+
+.anima-avatar-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.anima-avatar-img {
+  display: var(--aw-avatar-display);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--aw-color-avatar-border);
+}
+
+.anima-avatar-placeholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--aw-color-avatar-placeholder-bg);
+  color: var(--aw-color-avatar-placeholder-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+/* ── Initial Icon (fallback when no avatar image) ── */
+.anima-avatar-initial {
+  display: var(--aw-avatar-initial-display);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--aw-color-bg-primary);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Show initial when avatar container has no image */
+.anima-avatar-container:not(:has(.anima-avatar-img)) .anima-avatar-initial {
+  display: flex;
+}

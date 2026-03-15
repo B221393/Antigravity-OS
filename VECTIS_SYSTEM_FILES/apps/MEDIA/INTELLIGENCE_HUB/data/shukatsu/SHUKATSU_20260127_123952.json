@@ -1,0 +1,24 @@
+{
+  "title": "広がる科学、羽ばたく少女たち / Science Agora",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5jTUc2RDFJN2tNbjZRaC1WWXBPUlhONFJkcmZ3UzN0U3QyUFdKUzA5UUs0TWpLNzZzaXk2Q05oTVNIbkpaZDdQNGF0cUtuVFc2UHZMckpLV09kczRrR0hvaXE2ZG0xMXRkSUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE5jTUc2RDFJN2tNbjZRaC1WWXBPUlhONFJkcmZ3UzN0U3QyUFdKUzA5UUs0TWpLNzZzaXk2Q05oTVNIbkpaZDdQNGF0cUtuVFc2UHZMckpLV09kczRrR0hvaXE2ZG0xMXRkSUE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "Science Agora 2025開催。少女の科学分野への進出促進がテーマ。",
+    "true_intent": "JSTの活動広報。ジェンダーギャップ解消をアピールし、研究費獲得や組織イメージ向上を狙う。将来の研究者層確保も視野。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "JST",
+    "action_required": false,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "## JST (科学技術振興機構) 本質的価値と27卒が狙うべき理由\n\n1. **主要武器**: 日本の科学技術立国を支える「知のプラットフォーム」。研究資金配分、成果の社会実装、人材育成を担う、国の科学技術政策の中核機関。\n2. **26-27卒への温度感**: 事務系・技術系ともに採用意欲は高く、多様なバックグラウンドを持つ人材を求めている。近年はデジタル人材育成にも注力。\n3. **EGO適性**: 研究データ分析やAI活用を推進しており、論理的思考力やデータ分析スキルは高く評価される。政策立案には構造的思考が不可欠。\n4. **裏の弱点**: 官僚的な組織体質が残存。スピード感や柔軟性に欠ける面も。研究成果の社会実装における評価指標の曖昧さも課題。\n",
+    "academic_deep_dive": "## 広がる科学、羽ばたく少女たち：学術的・思想的考察\n\n1. **歴史的背景:** 女性の科学分野への進出は、長らく男性中心だった学術界への挑戦の歴史そのもの。啓蒙思想以降、知識へのアクセスは拡大したが、女性は家庭という私的領域に閉じ込められがちだった。キュリー夫人などの例外を除き、組織的な女性科学者育成は20世紀後半まで遅れた。過去の事例として、19世紀の女子教育機関設立運動が挙げられる。\n\n2. **現代的意義:** ジェンダーギャップ指数が示すように、依然として科学分野における女性の割合は低い。これは、才能の潜在的な損失であり、社会全体の発展を阻害する。STEM分野における女性の活躍推進は、多様性の促進、イノベーションの加速、そしてより公平な社会構造の構築に不可欠である。\n\n3. **批判的視座:** 単なる「女性活躍」のスローガンに終始せず、構造的な問題への対処が必要。社会通念、教育制度、研究環境、キャリアパスなど、複合的な要因が女性の進出を阻んでいる。真に必要なのは、表面的な数値目標達成ではなく、誰もが才能を発揮できる真に公正な科学コミュニティの実現である。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "JSTの活動広報。ジェンダーギャップ解消をアピールし、研究費獲得や組織イメージ向上を狙う。将来の研究者層確保も視野。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:39:52.325560",
+  "source": "科学技術 社会論"
+}

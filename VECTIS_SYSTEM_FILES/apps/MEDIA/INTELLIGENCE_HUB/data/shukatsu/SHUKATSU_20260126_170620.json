@@ -1,0 +1,22 @@
+{
+  "title": "VARIETASの「AI面接官」がKDDI新卒採用に導入され",
+  "link": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE9lMFBUR21SenlZdEVHR25tbFB3NGtnVWNzYlM4UkZvTUxVendqOVlVd3FYeU4wdWhNaW1KbTJGZHlLLUpXZXhZ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiR0FVX3lxTE9lMFBUR21SenlZdEVHR25tbFB3NGtnVWNzYlM4UkZvTUxVendqOVlVd3FYeU4wdWhNaW1KbTJGZHlLLUpXZXhZ?oc=5\" target=\"_blank\">VARIETASの「AI面接官」がKDDI新卒採用に導入され、",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "AI面接官導入とKDDI採用の新展開、利権分析、偏向報道可能性",
+    "true_intent": "AI面接官は、KDDI新卒採用を効率化するための新しい技術として注目され、その導入が利権化可能性があります。しかし、採用者との差別化や偏向的な結果を与える可能性も指摘されています。",
+    "bias_warning": "高 likelyhood",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "AI面接官は、KDDI新卒採用を効率化するための新しい技術として注目され、その導入が利権化可能性があります。しかし、採用者との差別化や偏向的な結果を与える可能性も指摘されています。",
+    "bias_warning": "高 likelyhood"
+  },
+  "collected_at": "2026-01-26T17:06:20.416774",
+  "source": "KDDI 採用 Deep Dive"
+}

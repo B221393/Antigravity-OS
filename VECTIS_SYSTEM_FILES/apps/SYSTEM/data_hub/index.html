@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS Data Hub - 統合データダッシュボード</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            color: #aaa;
+            font-size: 18px;
+        }
+
+        .sync-bar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sync-status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sync-icon {
+            font-size: 32px;
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .sync-info strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .sync-time {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .sync-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .data-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .data-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-count {
+            background: rgba(102, 126, 234, 0.3);
+            padding: 5px 15px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        .data-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .data-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid;
+            transition: all 0.3s;
+        }
+
+        .data-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .data-item.reading {
+            border-color: #667eea;
+        }
+
+        .data-item.job {
+            border-color: #4CAF50;
+        }
+
+        .data-item.vocab {
+            border-color: #ff9800;
+        }
+
+        .data-item.intel {
+            border-color: #e91e63;
+        }
+
+        .item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item-meta {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+
+        .item-preview {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .cross-ref {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .cross-ref-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .ref-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            opacity: 0.5;
+        }
+
+        .sync-log {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: 'Consolas', monospace;
+            font-size: 12px;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+        }
+
+        .log-success {
+            color: #4CAF50;
+        }
+
+        .log-error {
+            color: #f44336;
+        }
+
+        .log-info {
+            color: #2196F3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 VECTIS Data Hub</h1>
+            <p class="tagline">統合データダッシュボード - リアルタイム同期システム</p>
+        </header>
+
+        <div class="sync-bar">
+            <div class="sync-status">
+                <div class="sync-icon">🔄</div>
+                <div class="sync-info">
+                    <strong>自動同期: <span id="syncStatus">有効</span></strong>
+                    <div class="sync-time">最終同期: <span id="lastSyncTime">未実行</span></div>
+                </div>
+            </div>
+            <div class="sync-controls">
+                <button class="btn btn-primary" onclick="syncNow()">🔄 今すぐ同期</button>
+                <button class="btn btn-success" onclick="exportAll()">📥 全データエクスポート</button>
+                <button class="btn btn-warning" onclick="importData()">📤 データインポート</button>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalItems">0</div>
+                <div class="stat-label">総データ数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="readingCount">0</div>
+                <div class="stat-label">読書記録</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="jobCount">0</div>
+                <div class="stat-label">就活応募</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="vocabCount">0</div>
+                <div class="stat-label">学習進捗</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="intelCount">0</div>
+                <div class="stat-label">Intelligence</div>
+            </div>
+        </div>
+
+        <div class="data-sections">
+            <!-- Reading Log -->
+            <div class="data-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        📚 Reading Log
+                    </div>
+                    <div class="section-count" id="readingCountBadge">0</div>
+                </div>
+                <div class="data-list" id="readingList"></div>
+            </div>
+
+            <!-- Job Applications -->
+            <div class="data-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        💼 Job Applications
+                    </div>
+                    <div class="section-count" id="jobCountBadge">0</div>
+                </div>
+                <div class="data-list" id="jobList"></div>
+            </div>
+
+            <!-- Vocabulary Progress -->
+            <div class="data-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        📖 Vocabulary Progress
+                    </div>
+                    <div class="section-count" id="vocabCountBadge">0</div>
+                </div>
+                <div class="data-list" id="vocabList"></div>
+            </div>
+
+            <!-- Intelligence Hub -->
+            <div class="data-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        🧠 Intelligence
+                    </div>
+                    <div class="section-count" id="intelCountBadge">0</div>
+                </div>
+                <div class="data-list" id="intelList"></div>
+            </div>
+        </div>
+
+        <div class="sync-log">
+            <strong>📝 Sync Log</strong>
+            <div id="syncLog"></div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEYS = {
+            reading: 'vectis_reading_log',
+            job: 'vectis_job_applications',
+            vocab: 'vectis_vocab_progress',
+            intel: 'vectis_intelligence_hub',
+            knowledge: 'vectis_knowledge_sync'
+        };
+
+        const UNIFIED_STORAGE = 'vectis_unified_data';
+        let syncInterval;
+
+        function log(message, type = 'info') {
+            const logEl = document.getElementById('syncLog');
+            const timestamp = new Date().toLocaleTimeString('ja-JP');
+            const className = `log-${type}`;
+            logEl.innerHTML = `<div class="log-entry ${className}">[${timestamp}] ${message}</div>` + logEl.innerHTML;
+
+            // Keep only last 20 entries
+            const entries = logEl.querySelectorAll('.log-entry');
+            if (entries.length > 20) {
+                entries[entries.length - 1].remove();
+            }
+        }
+
+        function loadAllData() {
+            const data = {
+                reading: JSON.parse(localStorage.getItem(STORAGE_KEYS.reading) || '[]'),
+                job: JSON.parse(localStorage.getItem(STORAGE_KEYS.job) || '[]'),
+                vocab: JSON.parse(localStorage.getItem(STORAGE_KEYS.vocab) || '{"studied":[],"mastered":[]}'),
+                intel: JSON.parse(localStorage.getItem(STORAGE_KEYS.intel) || '{"job":[],"youtube":[],"news":[]}'),
+                knowledge: JSON.parse(localStorage.getItem(STORAGE_KEYS.knowledge) || '{"nodes":[]}')
+            };
+
+            return data;
+        }
+
+        function updateStats() {
+            const data = loadAllData();
+
+            const readingCount = data.reading.length;
+            const jobCount = data.job.length;
+            const vocabCount = (data.vocab.studied?.length || 0) + (data.vocab.mastered?.length || 0);
+            const intelCount = (data.intel.job?.length || 0) + (data.intel.youtube?.length || 0) + (data.intel.news?.length || 0);
+
+            const total = readingCount + jobCount + vocabCount + intelCount;
+
+            document.getElementById('totalItems').textContent = total;
+            document.getElementById('readingCount').textContent = readingCount;
+            document.getElementById('jobCount').textContent = jobCount;
+            document.getElementById('vocabCount').textContent = vocabCount;
+            document.getElementById('intelCount').textContent = intelCount;
+
+            document.getElementById('readingCountBadge').textContent = readingCount;
+            document.getElementById('jobCountBadge').textContent = jobCount;
+            document.getElementById('vocabCountBadge').textContent = vocabCount;
+            document.getElementById('intelCountBadge').textContent = intelCount;
+        }
+
+        function renderData() {
+            const data = loadAllData();
+
+            // Reading Log
+            renderList('readingList', data.reading.slice(0, 5), 'reading');
+
+            // Job Applications
+            renderList('jobList', data.job.slice(0, 5), 'job');
+
+            // Vocabulary (convert to display format)
+            const vocabDisplay = [
+                { title: `学習済み単語: ${data.vocab.studied?.length || 0}件`, preview: '進捗を継続中' },
+                { title: `マスター単語: ${data.vocab.mastered?.length || 0}件`, preview: '完全習得済み' }
+            ];
+            renderList('vocabList', vocabDisplay, 'vocab');
+
+            // Intelligence
+            const intelDisplay = [
+                ...(data.intel.job || []).slice(0, 3),
+                ...(data.intel.youtube || []).slice(0, 2)
+            ];
+            renderList('intelList', intelDisplay, 'intel');
+
+            updateStats();
+            log('データ読み込み完了', 'success');
+        }
+
+        function renderList(containerId, items, type) {
+            const container = document.getElementById(containerId);
+
+            if (!items || items.length === 0) {
+                container.innerHTML = '<div class="empty-state">データがありません</div>';
+                return;
+            }
+
+            container.innerHTML = items.map(item => {
+                const title = item.title || item.company || item.word || 'No Title';
+                const preview = item.notes || item.position || item.preview || item.ja || '';
+                const meta = item.date || item.appliedDate || 'N/A';
+
+                // Cross-reference detection
+                const refs = detectCrossReferences(item);
+                const refHtml = refs.length > 0 ? `
+                    <div class="cross-ref">
+                        <div class="cross-ref-title">🔗 関連:</div>
+                        ${refs.map(r => `<span class="ref-tag">${r}</span>`).join('')}
+                    </div>
+                ` : '';
+
+                return `
+                    <div class="data-item ${type}">
+                        <div class="item-title">${escapeHtml(title)}</div>
+                        <div class="item-meta">📅 ${meta}</div>
+                        <div class="item-preview">${escapeHtml(preview.substring(0, 100))}</div>
+                        ${refHtml}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function detectCrossReferences(item) {
+            const refs = [];
+            const text = JSON.stringify(item).toLowerCase();
+
+            if (text.includes('toeic') || text.includes('英語')) refs.push('TOEIC');
+            if (text.includes('job') || text.includes('就活')) refs.push('就活');
+            if (text.includes('ai') || text.includes('機械学習')) refs.push('AI');
+            if (text.includes('python') || text.includes('プログラミング')) refs.push('プログラミング');
+
+            return refs;
+        }
+
+        function syncNow() {
+            log('同期開始...', 'info');
+
+            try {
+                const data = loadAllData();
+
+                // Unified storageに保存
+                const unified = {
+                    timestamp: new Date().toISOString(),
+                    data: data
+                };
+
+                localStorage.setItem(UNIFIED_STORAGE, JSON.stringify(unified));
+
+                // JSON形式でダウンロード可能にする
+                createSyncFile(unified);
+
+                document.getElementById('lastSyncTime').textContent = new Date().toLocaleTimeString('ja-JP');
+                log('同期完了 ✓', 'success');
+
+                renderData();
+            } catch (error) {
+                log(`同期エラー: ${error.message}`, 'error');
+            }
+        }
+
+        function createSyncFile(data) {
+            // JSONファイルとして保存可能な形式を作成
+            const jsonStr = JSON.stringify(data, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+
+            // Note: 実際のファイル書き込みはWebではできないため、
+            // ダウンロードリンクを生成するか、サーバーサイドスクリプトが必要
+            log('同期データ準備完了（エクスポートで保存可能）', 'info');
+        }
+
+        function exportAll() {
+            const data = loadAllData();
+            const unified = {
+                timestamp: new Date().toISOString(),
+                version: '2.0',
+                data: data
+            };
+
+            const jsonStr = JSON.stringify(unified, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `vectis_data_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            log('全データをエクスポートしました', 'success');
+        }
+
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    try {
+                        const imported = JSON.parse(event.target.result);
+
+                        if (imported.data) {
+                            // Restore to individual storage keys
+                            Object.keys(STORAGE_KEYS).forEach(key => {
+                                if (imported.data[key]) {
+                                    localStorage.setItem(STORAGE_KEYS[key], JSON.stringify(imported.data[key]));
+                                }
+                            });
+
+                            log('データインポート完了', 'success');
+                            renderData();
+                        }
+                    } catch (error) {
+                        log(`インポートエラー: ${error.message}`, 'error');
+                    }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Auto-sync every 30 seconds
+        syncInterval = setInterval(() => {
+            syncNow();
+        }, 30000);
+
+        // Initial load
+        log('VECTIS Data Hub起動', 'success');
+        renderData();
+        syncNow();
+    </script>
+</body>
+
+</html>

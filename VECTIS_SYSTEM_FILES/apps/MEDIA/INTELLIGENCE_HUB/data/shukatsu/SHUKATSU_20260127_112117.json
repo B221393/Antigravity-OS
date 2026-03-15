@@ -1,0 +1,24 @@
+{
+  "title": "「デンソーの最高機密」はこうして中国人の手に渡った…パソコン",
+  "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBwRjNnT3A1bVdzTXV0T1FfRWZGVEpnZUFSQ3FJUUJFLVU3QVV0VUpIR3Izbi1KWkR0VVhkZHNXd1l3eDNUb1BwbkV5eGJycWh6b3dGNE5n0gFPQVVfeXFMTjhETXlCOHo3YnpRZDZRVGg4QkRQWjZOOTlNcF8yY3JtaElfeFI0ckJTWmM4MWF4THVFQmtKUGlSclNSd1VyckNWV0g5MzdlUQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTFBwRjNnT3A1bVdzTXV0T1FfRWZGVEpnZUFSQ3FJUUJFLVU3QVV0VUpIR3Izbi1KWkR0VVhkZHNXd1l3eDNUb1BwbkV5eGJycWh6b3dGNE5n0gFPQVVfeXFMTjhETXlCOHo3YnpRZDZRVG",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "デンソー機密情報漏洩事件を報道。中国への技術流出リスクを強調。",
+    "true_intent": "日本の技術力低下への警鐘、安全保障上の脅威の強調。国内製造業への危機感喚起、または特定企業（セキュリティ関連企業？）の宣伝。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "デンソー",
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "## デンソー：本質と27卒が狙うべき理由\n\n1.  **主要武器**: トヨタグループの技術開発中核。自動車部品で培った高い技術力と、異分野への応用力こそが強み。\n2.  **26-27卒への温度感**: CASE領域強化で積極採用継続。特にソフト・AI人材への期待大。学歴フィルターは緩和傾向。\n3.  **EGO適性**: 構造的思考は必須。AI活用も推進中だが、部門による温度差あり。自ら課題を見つけ、改善提案できる人材が求められる。\n4.  **裏の弱点**: 自動車産業依存からの脱却が急務。新規事業の柱が確立されていない点がリスク。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Name:** 株式会社デンソー (KK Denso).\n*   **Content:** Company overview, organization chart, and history.\n*   **Meta Description:** Company overview and organization chart, you can check the history.\n*   **Website:** kk-denso.co.jp\n\n**Gap Analysis:**\n\n*   The main DENSO website (denso.com/jp/ja/) returned a 403 Forbidden error.\n*   The Wikipedia page had encoding issues.\n*   Only the KK Denso (kk-denso.co.jp) website provided usable data. More data is needed from primary sources."
+  },
+  "critical_analysis": {
+    "true_intent": "日本の技術力低下への警鐘、安全保障上の脅威の強調。国内製造業への危機感喚起、または特定企業（セキュリティ関連企業？）の宣伝。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:21:17.661026",
+  "source": "Active:デンソー"
+}

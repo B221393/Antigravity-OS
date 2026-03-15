@@ -1,0 +1,24 @@
+{
+  "title": "【株式会社コクリコ】地方旧帝大/国立大など27卒 1000名",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFB4X3FkY0dlU3VUazBBRXgtLTk1ZjdtYzlBRHBsOEVXQ2g2TGI1RzlzbWN3S1lTRnFxNHBfcXVEUnFwTHJRNjIwLXIwU180c1d5aW40U1o5TDd6dWFWZmF2dU5rZHBPVHIyTkE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTFB4X3FkY0dlU3VUazBBRXgtLTk1ZjdtYzlBRHBsOEVXQ2g2TGI1RzlzbWN3S1lTRnFxNHBfcXVEUnFwTHJRNjIwLXIwU180c1d5aW40U1o5TDd6dWFWZmF2dU5rZHBPVHIyTkE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "コクリコが地方旧帝大生向け大規模オンライン採用イベント開催。早期囲い込みの可能性。",
+    "true_intent": "優秀な地方大学生の早期囲い込みによる採用コスト削減と、企業イメージ向上を狙う。地方創生への貢献を謳い文句にする可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "株式会社コクリコ",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## 株式会社コクリコ 本質的価値と27卒が狙うべき理由\n\n1. **主要武器**: 顧客課題への深い共感と、それを具現化するデザイン思考力。表層的なニーズだけでなく、潜在的な不満を解決する提案力が強み。\n2. **26-27卒への温度感**: 採用数は絞りつつ、ポテンシャル重視。インターンシップ等で早期から優秀層を囲い込む傾向。\n3. **EGO適性**: データに基づいた意思決定を重視。AIツール活用にも積極的で、構造的思考ができる人材を求める。\n4. **裏の弱点**: 急成長に伴う組織体制の脆弱性。個人の裁量が大きい反面、教育制度が追いついていない可能性あり。\n",
+    "deep_web_intel": "**REQ:** 株式会社コクリコ\n\n**DATA:** (Insufficient data due to fetch errors. Unable to provide a meaningful summary or gap analysis.)\n\n**Summary (Hypothetical):**  Assuming data were available, the summary would focus on defining \"株式会社\" within the Japanese corporate structure, its translation nuances (vs. \"股份有限公司\"), and any historical context (e.g., relation to Japanese occupation, if applicable).\n\n**Gap Analysis:**  Without fetched data, the gaps are significant:\n*   Definition and legal implications of \"株式会社\".\n*   Comparison to other Japanese company forms (e.g., 合同会社).\n*   Historical origins and evolution.\n*   Relevance to specific company \"株式会社コクリコ\" (industry, size, etc.)."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な地方大学生の早期囲い込みによる採用コスト削減と、企業イメージ向上を狙う。地方創生への貢献を謳い文句にする可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:22:41.388360",
+  "source": "Active:KDDI"
+}

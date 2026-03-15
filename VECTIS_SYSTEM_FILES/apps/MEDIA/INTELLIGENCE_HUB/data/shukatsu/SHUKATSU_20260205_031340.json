@@ -1,0 +1,42 @@
+{
+  "title": "採用情報 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5\" target=\"_blank\">採用情報</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">KDDI</font>",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "KDDIの採用情報",
+    "strategic_analysis": {
+      "true_intent": "KDDIが新卒エンジニアを募集し、自身の技術力を向上させたいと考えている。宣伝色が強いが、企業の成長意欲を示唆している",
+      "swot": {
+        "strength": "KDDIの技術力と業界のリーダーシップ",
+        "weakness": "急速な技術革新に対する対応の遅れ",
+        "opportunity": "新卒エンジニアとしてKDDIに入社し、最新技術を学び、キャリアを築くチャンス",
+        "threat": "DXの進化に伴う従来のビジネスモデルの衰退"
+      },
+      "writing_technique": "",
+      "action_plan": "KDDIの技術力と業界のリーダーシップを理解し、自身のスキルと興味を突き合わせて、エンジニアとしての潜在性をアピールする。OB訪問で、KDDIの技術力と業界のリーダーシップについて確認する"
+    },
+    "bias_warning": "KDDIの採用情報は宣伝色が強い可能性がある",
+    "company": "KDDI",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 6,
+    "company_profile": "以下は、KDDIの「本質的価値」と「27卒が狙うべき理由」を構造化した内容です。\n\n1. **主要武器**: テクノロジーとサービスにおける革新、ネットワークインフラの強み\n2. **26-27卒への温度感**: DX（デジタルトランスフォーメーション）推進による新卒採用の拡大\n3. **EGO適性**: データ分析、AI、クラウドテクノロジーを活用し、イノベーションを重視する文化\n4. **裏の弱点**: 伝統的な電気通信業界における変化に迅速に対応する必要性"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIが新卒エンジニアを募集し、自身の技術力を向上させたいと考えている。宣伝色が強いが、企業の成長意欲を示唆している",
+    "swot": {
+      "strength": "KDDIの技術力と業界のリーダーシップ",
+      "weakness": "急速な技術革新に対する対応の遅れ",
+      "opportunity": "新卒エンジニアとしてKDDIに入社し、最新技術を学び、キャリアを築くチャンス",
+      "threat": "DXの進化に伴う従来のビジネスモデルの衰退"
+    },
+    "writing_technique": "",
+    "action_plan": "KDDIの技術力と業界のリーダーシップを理解し、自身のスキルと興味を突き合わせて、エンジニアとしての潜在性をアピールする。OB訪問で、KDDIの技術力と業界のリーダーシップについて確認する"
+  },
+  "deep_strategic_dossier": "",
+  "bias": "KDDIの採用情報は宣伝色が強い可能性がある",
+  "collected_at": "2026-02-05T03:13:40.852759",
+  "source": "KDDI 採用 Deep Dive",
+  "score": 6
+}

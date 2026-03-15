@@ -1,0 +1,24 @@
+{
+  "title": "87%の社員が「働きがいがある」と答える環境を実現ーーCHO",
+  "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1IcjBXNUlxNHZoMGtZQzhJZU9BXzlIMDMzN0gwZGxnVUdLcGNGamRfbDhMeFgtQ3Vob3RkMU1CaVR6eGlSa2VCUktUb2JHTEFtVDVPX1dnemtaeFhsQ25PLVdDNA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE1IcjBXNUlxNHZoMGtZQzhJZU9BXzlIMDMzN0gwZGxnVUdLcGNGamRfbDhMeFgtQ3Vob3RkMU1CaVR6eGlSa2VCUktUb2JHTEFtVDVPX1dnemtaeFhsQ25PLVdDNA?oc=5\" target=\"_",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "サイバーエージェントCHO曽山氏がエンゲージメント向上の人事施策を語り、87%の社員が働きがいを感じていると発表。",
+    "true_intent": "優秀な人材獲得競争激化の中、高エンゲージメントをアピールし、新卒を含む求職者へ魅力的な企業イメージを植え付け、応募者数を増やすことが目的。離職率低下にも繋げたい思惑も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "サイバーエージェント",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## サイバーエージェント：就活メンター視点\n\n1.  **主要武器**: 徹底的な**個の尊重と成長機会**。新規事業創出を奨励し、若手にも裁量権を与え、成功/失敗から学ぶ文化が強み。\n2.  **26-27卒への温度感**: 採用意欲は高く、**即戦力とポテンシャル**を重視。多様なバックグラウンドを持つ人材を積極的に採用する傾向。\n3.  **EGO適性**: データドリブンな意思決定を重視し、**AI活用にも積極的**。構造的思考力と技術への興味は評価される。\n4.  **裏の弱点**: 成果主義の色が強く、**プレッシャーや競争が激しい**。部署や時期により、ワークライフバランスが取りにくい場合も。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **CyberAgent (CA):** Aims to \"create a company that represents the 21st century.\"\n*   **Business:** Operates ABEMA (future TV) and internet advertising (top market share in Japan). Diversifies with new businesses.\n*   **Yahoo! Finance:** Provides stock information for CyberAgent (ticker 4751), including real-time stock prices, charts, news, and bulletin boards.\n\n**Structured Summary:**\n\nCyberAgent is a diversified internet company with core businesses in online advertising and media (ABEMA). Yahoo! Finance tracks CyberAgent's stock performance.\n\n**Gap Analysis:**\n\n*   Wikipedia Fetch Error: Information from Wikipedia is missing due to encoding issues. This limits comprehensive understanding."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材獲得競争激化の中、高エンゲージメントをアピールし、新卒を含む求職者へ魅力的な企業イメージを植え付け、応募者数を増やすことが目的。離職率低下にも繋げたい思惑も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:31:57.179354",
+  "source": "Active:サイバーエージェント"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "KDDI〈前編〉 求めるのは「あるべき姿に向けて努力する」「",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9lTEtZRE1KcDlROUpsWTVNU2cyb09HRnFCUHpPUTRlMGxrQzI4a3k4a3pjTTh3ZEt3R0NIc0hwVGFWSXMzalF2T2Z3YnNZaGU0eFU3bVpxdXUwdHpaUnpWWGthT1VZWnFqOWFR?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTE9lTEtZRE1KcDlROUpsWTVNU2cyb09HRnFCUHpPUTRlMGxrQzI4a3k4a3pjTTh3ZEt3R0NIc0hwVGFWSXMzalF2T2Z3YnNZaGU0eFU3bVpxdXUwdHpaUnpWWGthT1VZWnFqOWFR?oc=5\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIが求める人材は「協調性があり、目標達成意欲の高い人材」。",
+    "true_intent": "KDDIの企業イメージ向上と、選考における応募者の足並みを揃えやすくする意図。協調性を重視することで、批判精神や多様性を排除しようとしている可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## KDDI 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 通信インフラ基盤×顧客接点。au経済圏を軸に、金融・エネルギー等生活インフラへ多角的に事業展開する総合力。\n2.  **26-27卒への温度感**: デジタル人材獲得に積極的。多様なバックグラウンドを持つ人材を求め、早期選考も実施。\n3.  **EGO適性**: データドリブン経営を推進。AI/データ分析人材は重宝される。構造的思考力は必須。\n4.  **裏の弱点**: 既存事業依存からの脱却が課題。新規事業の成功が、今後の成長を左右する。\n",
+    "deep_web_intel": "**Key Points**\n\n*   KDDI is a Japanese telecommunications carrier.\n*   Other major carriers in Japan: Softbank, Docomo.\n\n**Summary**\n\nKDDI is identified as a major telecom carrier in Japan, along with Softbank and Docomo.\n\n**Gap Analysis**\n\n*   The exact list of \"five major\" telecom carriers is not explicitly stated, although three are named.\n*   Specific network technologies/standards used by KDDI are not mentioned."
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIの企業イメージ向上と、選考における応募者の足並みを揃えやすくする意図。協調性を重視することで、批判精神や多様性を排除しようとしている可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:29:43.821829",
+  "source": "KDDI 採用 Deep Dive"
+}

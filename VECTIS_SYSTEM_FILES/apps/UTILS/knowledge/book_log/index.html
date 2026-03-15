@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Log - VECTIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .input-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .log-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .log-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .log-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .log-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .log-meta {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .log-notes {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .delete-btn {
+            background: #ff4444;
+            padding: 6px 12px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .delete-btn:hover {
+            background: #cc0000;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📚 Reading Log</h1>
+        <p class="subtitle">Track your reading journey</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalBooks">0</div>
+                <div class="stat-label">Total Books</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="thisMonth">0</div>
+                <div class="stat-label">This Month</div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <h3 style="margin-bottom: 15px;">📖 Add New Reading</h3>
+            <div class="input-group">
+                <label for="bookTitle">Book Title</label>
+                <input type="text" id="bookTitle" placeholder="Enter book title...">
+            </div>
+            <div class="input-group">
+                <label for="author">Author</label>
+                <input type="text" id="author" placeholder="Enter author name...">
+            </div>
+            <div class="input-group">
+                <label for="notes">Notes & Thoughts</label>
+                <textarea id="notes" placeholder="What did you learn? Key insights?"></textarea>
+            </div>
+            <button onclick="addLog()">➕ Add to Log</button>
+        </div>
+
+        <h3 style="margin-bottom: 15px;">📋 Reading History</h3>
+        <div class="log-list" id="logList">
+            <div class="empty-state">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                    <rect x="20" y="10" width="60" height="80" rx="4" stroke-width="2" />
+                    <line x1="30" y1="25" x2="70" y2="25" stroke-width="2" />
+                    <line x1="30" y1="35" x2="70" y2="35" stroke-width="2" />
+                    <line x1="30" y1="45" x2="60" y2="45" stroke-width="2" />
+                </svg>
+                <p>No reading logs yet. Start adding books!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // LocalStorage key
+        const STORAGE_KEY = 'vectis_reading_log';
+
+        // Load logs from localStorage
+        function loadLogs() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        // Save logs to localStorage
+        function saveLogs(logs) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(logs));
+        }
+
+        // Add new log
+        function addLog() {
+            const title = document.getElementById('bookTitle').value.trim();
+            const author = document.getElementById('author').value.trim();
+            const notes = document.getElementById('notes').value.trim();
+
+            if (!title) {
+                alert('Please enter a book title!');
+                return;
+            }
+
+            const logs = loadLogs();
+            const newLog = {
+                id: Date.now(),
+                title,
+                author,
+                notes,
+                date: new Date().toISOString()
+            };
+
+            logs.unshift(newLog);
+            saveLogs(logs);
+
+            // Clear inputs
+            document.getElementById('bookTitle').value = '';
+            document.getElementById('author').value = '';
+            document.getElementById('notes').value = '';
+
+            renderLogs();
+        }
+
+        // Delete log
+        function deleteLog(id) {
+            if (!confirm('Delete this log?')) return;
+
+            const logs = loadLogs();
+            const filtered = logs.filter(log => log.id !== id);
+            saveLogs(filtered);
+            renderLogs();
+        }
+
+        // Render logs
+        function renderLogs() {
+            const logs = loadLogs();
+            const container = document.getElementById('logList');
+
+            if (logs.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                            <rect x="20" y="10" width="60" height="80" rx="4" stroke-width="2"/>
+                            <line x1="30" y1="25" x2="70" y2="25" stroke-width="2"/>
+                            <line x1="30" y1="35" x2="70" y2="35" stroke-width="2"/>
+                            <line x1="30" y1="45" x2="60" y2="45" stroke-width="2"/>
+                        </svg>
+                        <p>No reading logs yet. Start adding books!</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = logs.map(log => {
+                    const date = new Date(log.date);
+                    const dateStr = date.toLocaleDateString('ja-JP', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                    });
+
+                    return `
+                        <div class="log-item">
+                            <div class="log-title">${escapeHtml(log.title)}</div>
+                            <div class="log-meta">
+                                ${log.author ? `👤 ${escapeHtml(log.author)} • ` : ''}
+                                📅 ${dateStr}
+                            </div>
+                            ${log.notes ? `<div class="log-notes">${escapeHtml(log.notes)}</div>` : ''}
+                            <button class="delete-btn" onclick="deleteLog(${log.id})">🗑️ Delete</button>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            updateStats();
+        }
+
+        // Update statistics
+        function updateStats() {
+            const logs = loadLogs();
+            document.getElementById('totalBooks').textContent = logs.length;
+
+            const thisMonth = logs.filter(log => {
+                const date = new Date(log.date);
+                const now = new Date();
+                return date.getMonth() === now.getMonth() &&
+                    date.getFullYear() === now.getFullYear();
+            }).length;
+
+            document.getElementById('thisMonth').textContent = thisMonth;
+        }
+
+        // Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Initialize
+        renderLogs();
+    </script>
+</body>
+
+</html>

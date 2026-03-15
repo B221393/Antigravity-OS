@@ -1,0 +1,26 @@
+Metric_ID,Metric_Name,Category,Component,Before_v2.0,After_v2.1,Unit,Improvement,Notes
+M001,LLMプロバイダー数,Capability,Unified LLM,1 (Gemini only),4 (Gemini/Ollama/Groq/Phi-3),providers,+300%,選択肢が増加
+M002,API依存度,Independence,System,100% (必須),0% (オプション),%,-100%,Ollama使用時
+M003,月間コスト,Cost,LLM,500-2000円 (API),0円 (Ollama),JPY,-100%,完全無料可能
+M004,レート制限,Performance,LLM,10 req/min (Gemini),無制限 (Ollama),requests/min,∞,ローカル処理
+M005,オフライン動作,Independence,System,不可,可能 (Ollama),boolean,✅→✅,完全独立可能
+M006,応答速度 (Gemini),Performance,LLM,2.0秒,2.0秒,seconds,変化なし,クラウドAPI
+M007,応答速度 (Ollama),Performance,LLM,N/A,3.2秒,seconds,新規,ローカル処理
+M008,応答速度 (Groq),Performance,LLM,N/A,1.0秒,seconds,新規,高速API
+M009,キーボード配列,Input,System,1 (QWERTY),2 (QWERTY/Onishi),layouts,+100%,効率化可能
+M010,MAGI HUDメモリ,Resource,UI,30MB,45MB,MB,+50%,機能追加分
+M011,MAGI HUDウィンドウサイズ,UI,MAGI HUD,180px,280px,pixels,+55%,キーマップ表示
+M012,キーマップ表示,UX,MAGI HUD,なし,3行 (30キー),keys,+∞,視認性向上
+M013,ランチャー最適化,Automation,Launcher,手動,自動 (使用統計ベース),method,自動化,効率改善
+M014,設定UI,UX,System,なし,iPhone風パネル,style,新規,直感的操作
+M015,知識可視化,Feature,Knowledge,2D静的,3D物理ベース,dimension,+50%,インタラクティブ
+M016,メモ管理,Feature,Storage,なし,Obsidian形式,system,新規,日付ベース整理
+M017,ドキュメント数,Documentation,System,5個,13個,documents,+160%,完全網羅
+M018,仕様書,Documentation,System,なし,3種類 (統合/簡易/詳細),types,新規,技術理解向上
+M019,自動記録機能,Analytics,Launcher,なし,使用統計自動記録,feature,新規,データ駆動型
+M020,ファイル総数,System,All,20個程度,50個以上,files,+150%,機能拡張
+M021,設定集約度,Configuration,System,分散,統合 (llm_config.json),files,統合化,管理簡素化
+M022,独立準備度,Independence,System,0%,100%,%, +100%,いつでも独立可
+M023,プライバシー保護,Security,System,クラウド送信,ローカル処理可,level,向上,Ollama時
+M024,API障害耐性,Reliability,System,なし,自動フォールバック,feature,新規,高可用性
+M025,将来拡張性,Maintainability,Architecture,モノリシック,モジュラー,design,改善,保守性向上

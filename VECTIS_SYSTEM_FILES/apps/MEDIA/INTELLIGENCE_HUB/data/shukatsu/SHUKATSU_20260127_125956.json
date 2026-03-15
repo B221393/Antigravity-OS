@@ -1,0 +1,22 @@
+{
+  "title": "ロジックだけの戦略は上手くいかない。 - ダイヤモンド・オン",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5nQ3k1SjBFYjhGNWhlamx1cGctQnVwb0JlZnhseW85OEJGLTg4bWJIY2pEMVlET0FRY1JUVmtSc096X2xXMkFjaWJFN2nSAU9BVV95cUxNVW1nbm14TlBmZHpiNm1BYkxQTlc2Y2hkWTY2dUZqdnpwRGpaRDdIdWVMSXNVRFlicHpndklWellHZmZwekRXMnpIeVF4QkpB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTE5nQ3k1SjBFYjhGNWhlamx1cGctQnVwb0JlZnhseW85OEJGLTg4bWJIY2pEMVlET0FRY1JUVmtSc096X2xXMkFjaWJFN2nSAU9BVV95cUxNVW1nbm14TlBmZHpiNm1BYkxQTlc2Y2hkWT",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "論理偏重の戦略は失敗する可能性を示唆。感情や人間関係の重要性を訴える。",
+    "true_intent": "ダイヤモンド・オンラインの記事への誘導、またはコンサルティングサービスへの誘導の可能性。属人的な要素の重要性を強調することで、特定のスキルや経験を持つコンサルタントの価値を高めようとしている可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "出版",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "ダイヤモンド・オンラインの記事への誘導、またはコンサルティングサービスへの誘導の可能性。属人的な要素の重要性を強調することで、特定のスキルや経験を持つコンサルタントの価値を高めようとしている可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:59:56.545887",
+  "source": "Active:P&G"
+}

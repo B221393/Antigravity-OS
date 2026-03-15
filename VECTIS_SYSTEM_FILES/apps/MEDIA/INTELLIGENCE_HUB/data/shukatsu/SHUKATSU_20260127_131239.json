@@ -1,0 +1,24 @@
+{
+  "title": "三井物産とKDDI、AI・人流分析で都市DXを推進する新会社",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9EbDF4aGUyUFR0Q2xEckhvS1pSZ1Y2c3VpNmlPRlVvVmsxYlNPSURvam9FbjYyRzZOdW5YS3JQM1k1cVpuZDd4SHZfMG0weVRWemppQ0RNS0k1VE56TElGLVdkakVUeTlqTzhF?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTE9EbDF4aGUyUFR0Q2xEckhvS1pSZ1Y2c3VpNmlPRlVvVmsxYlNPSURvam9FbjYyRzZOdW5YS3JQM1k1cVpuZDd4SHZfMG0weVRWemppQ0RNS0k1VE56TElGLVdkakVUeTlqTzhF?oc=5\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "三井物産とKDDIが人流分析AI企業GEOTRA設立。都市DXとスマートシティ推進。",
+    "true_intent": "都市OS構築の主導権争い。データ収集・分析基盤を握り、自治体への影響力拡大と新規ビジネス創出を狙う。個人情報利用の懸念も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "三井物産, KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## 三井物産 & KDDI の本質と27卒が狙うべき理由\n\n**三井物産**\n1.  **主要武器**: グローバルネットワークと多様な事業投資による「総合力」。リスク分散と収益機会の多角化が強み。\n2.  **26-27卒への温度感**: 依然高水準。多様な人材を求める傾向は継続。海外経験や特定分野の専門性を持つ人材を重視。\n3.  **EGO適性**: 高い。データドリブン経営を推進しており、構造的思考力とAI活用能力は必須。\n4.  **裏の弱点**: 資源価格変動や地政学リスクに左右されやすい。組織の硬直化や意思決定の遅さも懸念点。\n\n**KDDI**\n1.  **主要武器**: 通信インフラを基盤とした顧客基盤と、金融・エネルギー等への事業多角化による「生活プラットフォーム」戦略。\n2.  **26-27卒への温度感**: 積極採用。DX人材や新規事業開発を担える人材を強く求めている。\n3.  **EGO適性**: 非常に高い。アジャイル開発やデータ分析を重視し、AI活用にも積極的。\n4.  **裏の弱点**: 通信事業の競争激化と規制リスク。新規事業の収益化に時間がかかる可能性も。\n",
+    "deep_web_intel": "**REQ**: Summarize data about Mitsui & Co. and KDDI.\n\n**Key Points - Google Translate (Web)**:\n\n*   Provides translation services for text, handwriting, photos, and speech.\n*   Available on the web and as an app.\n\n**Key Points - Google Translate (App)**:\n\n*   App available on Google Play Store.\n\n**Gap Analysis**:\n\n*   The provided data is primarily HTML code from Google Translate web pages and app store listing.\n*   Lacks specific information about Mitsui & Co. and KDDI. It only relates to Google Translate itself."
+  },
+  "critical_analysis": {
+    "true_intent": "都市OS構築の主導権争い。データ収集・分析基盤を握り、自治体への影響力拡大と新規ビジネス創出を狙う。個人情報利用の懸念も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:12:39.266106",
+  "source": "Active:三井物産"
+}

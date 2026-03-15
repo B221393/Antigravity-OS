@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOS 勉強ページ</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>MOS 対策</h1>
+    </header>
+    <main>
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab(event, 'word')">Word</button>
+                <button class="tab-button" onclick="openTab(event, 'excel')">Excel</button>
+                <button class="tab-button" onclick="openTab(event, 'powerpoint')">PowerPoint</button>
+            </div>
+
+            <div id="word" class="tab-content active">
+                <h2>Word</h2>
+                <p>よく使うショートカットキーを覚えて効率を上げましょう。</p>
+                <ul>
+                    <li><strong>Ctrl + C:</strong> 選択範囲をコピー</li>
+                    <li><strong>Ctrl + V:</strong> 貼り付け</li>
+                    <li><strong>Ctrl + X:</strong> 切り取り</li>
+                    <li><strong>Ctrl + S:</strong> 上書き保存</li>
+                    <li><strong>Ctrl + B:</strong> 太字</li>
+                    <li><strong>Ctrl + I:</strong> 斜体</li>
+                </ul>
+            </div>
+
+            <div id="excel" class="tab-content">
+                <h2>Excel</h2>
+                <p>基本的な関数をマスターしましょう。</p>
+                <ul>
+                    <li><strong>SUM:</strong> 合計を求める (例: =SUM(A1:A10))</li>
+                    <li><strong>AVERAGE:</strong> 平均を求める (例: =AVERAGE(A1:A10))</li>
+                    <li><strong>IF:</strong> 条件によって表示を変える (例: =IF(A1>80, "合格", "不合格"))</li>
+                    <li><strong>COUNT:</strong> 数値データの個数を数える (例: =COUNT(A1:A10))</li>
+                </ul>
+            </div>
+
+            <div id="powerpoint" class="tab-content">
+                <h2>PowerPoint</h2>
+                <p>見やすいプレゼンテーション作成のコツです。</p>
+                <ul>
+                    <li>1スライド1メッセージを心がける</li>
+                    <li>文字を詰め込みすぎない</li>
+                    <li>グラフや図を効果的に使う</li>
+                    <li>統一感のあるデザイン（色、フォント）を意識する</li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            function openTab(evt, tabName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tab-content");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tab-button");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+        <br>
+        <a href="../index.html">トップに戻る</a>
+    </main>
+</body>
+</html>

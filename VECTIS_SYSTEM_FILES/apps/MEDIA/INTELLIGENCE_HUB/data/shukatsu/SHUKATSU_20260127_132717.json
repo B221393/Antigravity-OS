@@ -1,0 +1,23 @@
+{
+  "title": "健康経営 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1SbGtKY05pZXpXTmhGSmhlcmhZQ0ZZSmxoNXdJUGpvWFUwcFpPMC0zNUFGM29qUGtXREVrRTJNTHlDbUNLMjdFc1gwMFBZRTkySmFhb2d0Q2ZiUnFDOVRjNWZsQWZEcmNTZXpnaVR3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTE1SbGtKY05pZXpXTmhGSmhlcmhZQ0ZZSmxoNXdJUGpvWFUwcFpPMC0zNUFGM29qUGtXREVrRTJNTHlDbUNLMjdFc1gwMFBZRTkySmFhb2d0Q2ZiUnFDOVRjNWZsQWZEcmNTZXpnaVR3?o",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "KDDIが健康経営を推進しているという情報。具体的な内容は不明。",
+    "true_intent": "企業イメージ向上、従業員の生産性向上、採用活動におけるアピール。健康経営優良法人認定取得による税制優遇も視野か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。KDDIの本質的価値と27卒が狙うべき理由を、以下の通り構造化します。\n\n1.  **主要武器**: 通信インフラ基盤とau経済圏の融合。顧客データと多様な事業ポートフォリオを活用した、生活に根差した総合的な価値提供が強み。\n2.  **26-27卒への温度感**: デジタル人材獲得に注力。既存事業の変革と新規事業創出を担う人材を積極的に採用する傾向。\n3.  **EGO適性**: データドリブンな意思決定を重視。AI活用やアジャイル開発を推進しており、構造的思考力と技術への関心が高い人材を求める文化。\n4.  **裏の弱点**: 通信事業の寡占化による規制リスクと、新規事業の収益化の遅れ。意思決定の遅さや縦割り組織による連携不足も懸念材料。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "企業イメージ向上、従業員の生産性向上、採用活動におけるアピール。健康経営優良法人認定取得による税制優遇も視野か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:27:17.761783",
+  "source": "Active:KDDI"
+}

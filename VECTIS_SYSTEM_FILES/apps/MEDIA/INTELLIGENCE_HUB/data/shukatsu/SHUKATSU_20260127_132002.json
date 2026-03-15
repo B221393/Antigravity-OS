@@ -1,0 +1,24 @@
+{
+  "title": "東大・京大生の就職先ランキング【エネルギー24社】6位東電、",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5Gc2MxVl9abWM3Z0I4RjNhWmpUUk5uN0djRWdrVkplUEJ4WFNBTjJhUGdmWEJGRzdubkVIN2Z2YlVKbW9WZmQxRTkydUrSAU9BVV95cUxNVno0VnNBTzNRdTNpekNOajlqMGlSYk93S0V1Q3I4UFpTblZlSVVHYUlualhMeWZId1dTQ3FSSmxOczNFbklaeXNkWHM5d2VF?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTE5Gc2MxVl9abWM3Z0I4RjNhWmpUUk5uN0djRWdrVkplUEJ4WFNBTjJhUGdmWEJGRzdubkVIN2Z2YlVKbW9WZmQxRTkydUrSAU9BVV95cUxNVno0VnNBTzNRdTNpekNOajlqMGlSYk93S0",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "東大・京大生のエネルギー企業就職先ランキング記事。東電、東京ガスに注目。",
+    "true_intent": "エネルギー業界のイメージ向上と優秀な学生の囲い込み。ランキング形式で注目を集め、企業広報を有利に進めたい意図が見える。電力会社への批判軽減も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "東京電力, 東京ガス",
+    "action_required": true,
+    "category": "出版/メディア",
+    "target_year": "2027",
+    "company_profile": "## 東京電力・東京ガスの本質と27卒が狙うべき理由\n\n**東京電力**\n\n1.  **主要武器**: 圧倒的なインフラ資産と、電力安定供給の使命感。\n2.  **26-27卒への温度感**: 安定志向に加え、変革を担う人材を重視。\n3.  **EGO適性**: データ分析基盤構築中。構造的思考とAI活用スキルは歓迎。\n4.  **裏の弱点**: 福島第一原発事故の風評被害と、再生可能エネルギーへの転換の遅れ。\n\n**東京ガス**\n\n1.  **主要武器**: 都市ガス供給網と、エネルギーソリューション提案力。\n2.  **26-27卒への温度感**: 多様な事業展開を見据え、柔軟な発想を持つ人材を求める。\n3.  **EGO適性**: 新規事業開発に積極的。AIやデータ分析の知見は高く評価。\n4.  **裏の弱点**: 脱炭素化へのプレッシャーと、エネルギー価格高騰の影響。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Comparison:** Focus on electricity and gas rates between Tokyo Electric Power Company (TEPCO) and Tokyo Gas.\n*   **Bundling:** Examines the benefits of bundling electricity and gas services with either company.\n*   **Factors:** Considers household size and usage patterns in determining the most cost-effective option.\n*   **Fuel Costs:** Acknowledges the impact of fluctuating fuel prices on rates.\n*   **Target:** Aims to help users choose the best provider based on individual needs.\n\n**Structured Summary:**\n\n1.  **Objective:** Compare TEPCO and Tokyo Gas for electricity/gas.\n2.  **Scope:** Rates, bundling, usage, fuel costs.\n3.  **Goal:** Optimal provider selection.\n\n**Gap Analysis:**\n\n*   Limited detail on specific rate plans.\n*   No discussion of renewable energy options.\n*   Lack of real-time pricing updates."
+  },
+  "critical_analysis": {
+    "true_intent": "エネルギー業界のイメージ向上と優秀な学生の囲い込み。ランキング形式で注目を集め、企業広報を有利に進めたい意図が見える。電力会社への批判軽減も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:20:02.902701",
+  "source": "JERA"
+}

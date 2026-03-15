@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📏 Unit Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 8px;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            color: #fff;
+        }
+
+        .converter {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 8px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.2em;
+            text-align: center;
+            outline: none;
+        }
+
+        input:focus {
+            box-shadow: 0 0 0 2px #00d2ff;
+        }
+
+        select {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .swap-btn {
+            display: block;
+            margin: 15px auto;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .swap-btn:hover {
+            transform: rotate(180deg);
+        }
+
+        .result {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .result-value {
+            font-size: 2.5em;
+            font-weight: 300;
+            color: #00d2ff;
+        }
+
+        .result-unit {
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .formula {
+            text-align: center;
+            color: #666;
+            font-size: 0.85em;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>📏 Unit Converter</h1>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" onclick="setCategory('length')">📐 長さ</button>
+            <button class="tab" onclick="setCategory('weight')">⚖️ 重さ</button>
+            <button class="tab" onclick="setCategory('temperature')">🌡️ 温度</button>
+            <button class="tab" onclick="setCategory('area')">📏 面積</button>
+            <button class="tab" onclick="setCategory('volume')">🧪 体積</button>
+            <button class="tab" onclick="setCategory('speed')">🚗 速度</button>
+            <button class="tab" onclick="setCategory('data')">💾 データ</button>
+            <button class="tab" onclick="setCategory('time')">⏱️ 時間</button>
+        </div>
+
+        <div class="converter">
+            <div class="input-group">
+                <label>変換元</label>
+                <div class="input-row">
+                    <input type="number" id="fromValue" value="1" oninput="convert()">
+                    <select id="fromUnit" onchange="convert()"></select>
+                </div>
+            </div>
+
+            <button class="swap-btn" onclick="swapUnits()">⇅</button>
+
+            <div class="input-group">
+                <label>変換先</label>
+                <div class="input-row">
+                    <input type="number" id="toValue" readonly>
+                    <select id="toUnit" onchange="convert()"></select>
+                </div>
+            </div>
+
+            <div class="result">
+                <div class="result-value" id="resultValue">1</div>
+                <div class="result-unit" id="resultUnit">meter</div>
+            </div>
+
+            <div class="formula" id="formula">1 m = 100 cm</div>
+        </div>
+    </div>
+
+    <script>
+        const units = {
+            length: {
+                name: '長さ',
+                base: 'm',
+                units: {
+                    'km': { name: 'キロメートル', factor: 1000 },
+                    'm': { name: 'メートル', factor: 1 },
+                    'cm': { name: 'センチメートル', factor: 0.01 },
+                    'mm': { name: 'ミリメートル', factor: 0.001 },
+                    'mi': { name: 'マイル', factor: 1609.344 },
+                    'yd': { name: 'ヤード', factor: 0.9144 },
+                    'ft': { name: 'フィート', factor: 0.3048 },
+                    'in': { name: 'インチ', factor: 0.0254 }
+                }
+            },
+            weight: {
+                name: '重さ',
+                base: 'kg',
+                units: {
+                    't': { name: 'トン', factor: 1000 },
+                    'kg': { name: 'キログラム', factor: 1 },
+                    'g': { name: 'グラム', factor: 0.001 },
+                    'mg': { name: 'ミリグラム', factor: 0.000001 },
+                    'lb': { name: 'ポンド', factor: 0.453592 },
+                    'oz': { name: 'オンス', factor: 0.0283495 }
+                }
+            },
+            temperature: {
+                name: '温度',
+                base: 'C',
+                units: {
+                    'C': { name: '摂氏 (°C)', factor: 1 },
+                    'F': { name: '華氏 (°F)', factor: 1 },
+                    'K': { name: 'ケルビン', factor: 1 }
+                },
+                custom: true
+            },
+            area: {
+                name: '面積',
+                base: 'm2',
+                units: {
+                    'km2': { name: '平方キロメートル', factor: 1000000 },
+                    'ha': { name: 'ヘクタール', factor: 10000 },
+                    'm2': { name: '平方メートル', factor: 1 },
+                    'cm2': { name: '平方センチメートル', factor: 0.0001 },
+                    'ac': { name: 'エーカー', factor: 4046.86 },
+                    'ft2': { name: '平方フィート', factor: 0.092903 }
+                }
+            },
+            volume: {
+                name: '体積',
+                base: 'L',
+                units: {
+                    'm3': { name: '立方メートル', factor: 1000 },
+                    'L': { name: 'リットル', factor: 1 },
+                    'mL': { name: 'ミリリットル', factor: 0.001 },
+                    'gal': { name: 'ガロン(US)', factor: 3.78541 },
+                    'qt': { name: 'クォート', factor: 0.946353 },
+                    'cup': { name: 'カップ', factor: 0.236588 }
+                }
+            },
+            speed: {
+                name: '速度',
+                base: 'mps',
+                units: {
+                    'kmh': { name: 'km/h', factor: 0.277778 },
+                    'mps': { name: 'm/s', factor: 1 },
+                    'mph': { name: 'マイル/h', factor: 0.44704 },
+                    'kn': { name: 'ノット', factor: 0.514444 }
+                }
+            },
+            data: {
+                name: 'データ',
+                base: 'B',
+                units: {
+                    'TB': { name: 'テラバイト', factor: 1099511627776 },
+                    'GB': { name: 'ギガバイト', factor: 1073741824 },
+                    'MB': { name: 'メガバイト', factor: 1048576 },
+                    'KB': { name: 'キロバイト', factor: 1024 },
+                    'B': { name: 'バイト', factor: 1 },
+                    'bit': { name: 'ビット', factor: 0.125 }
+                }
+            },
+            time: {
+                name: '時間',
+                base: 's',
+                units: {
+                    'y': { name: '年', factor: 31536000 },
+                    'd': { name: '日', factor: 86400 },
+                    'h': { name: '時間', factor: 3600 },
+                    'min': { name: '分', factor: 60 },
+                    's': { name: '秒', factor: 1 },
+                    'ms': { name: 'ミリ秒', factor: 0.001 }
+                }
+            }
+        };
+
+        let currentCategory = 'length';
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const fromSelect = document.getElementById('fromUnit');
+            const toSelect = document.getElementById('toUnit');
+            const catUnits = units[cat].units;
+
+            fromSelect.innerHTML = '';
+            toSelect.innerHTML = '';
+
+            Object.entries(catUnits).forEach(([key, val], i) => {
+                fromSelect.innerHTML += `<option value="${key}" ${i === 0 ? 'selected' : ''}>${val.name}</option>`;
+                toSelect.innerHTML += `<option value="${key}" ${i === 1 ? 'selected' : ''}>${val.name}</option>`;
+            });
+
+            convert();
+        }
+
+        function convert() {
+            const fromVal = parseFloat(document.getElementById('fromValue').value) || 0;
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+            const cat = units[currentCategory];
+
+            let result;
+
+            if (currentCategory === 'temperature') {
+                result = convertTemperature(fromVal, fromUnit, toUnit);
+            } else {
+                const fromFactor = cat.units[fromUnit].factor;
+                const toFactor = cat.units[toUnit].factor;
+                result = (fromVal * fromFactor) / toFactor;
+            }
+
+            document.getElementById('toValue').value = formatNumber(result);
+            document.getElementById('resultValue').textContent = formatNumber(result);
+            document.getElementById('resultUnit').textContent = cat.units[toUnit].name;
+            document.getElementById('formula').textContent = `1 ${fromUnit} = ${formatNumber(result / fromVal || 0)} ${toUnit}`;
+        }
+
+        function convertTemperature(val, from, to) {
+            // Convert to Celsius first
+            let celsius;
+            if (from === 'C') celsius = val;
+            else if (from === 'F') celsius = (val - 32) * 5 / 9;
+            else celsius = val - 273.15;
+
+            // Convert from Celsius to target
+            if (to === 'C') return celsius;
+            if (to === 'F') return celsius * 9 / 5 + 32;
+            return celsius + 273.15;
+        }
+
+        function formatNumber(num) {
+            if (Math.abs(num) >= 1000000) return num.toExponential(4);
+            if (Math.abs(num) < 0.0001 && num !== 0) return num.toExponential(4);
+            return parseFloat(num.toPrecision(8));
+        }
+
+        function swapUnits() {
+            const fromSelect = document.getElementById('fromUnit');
+            const toSelect = document.getElementById('toUnit');
+            const temp = fromSelect.value;
+            fromSelect.value = toSelect.value;
+            toSelect.value = temp;
+            convert();
+        }
+
+        setCategory('length');
+    </script>
+</body>
+
+</html>

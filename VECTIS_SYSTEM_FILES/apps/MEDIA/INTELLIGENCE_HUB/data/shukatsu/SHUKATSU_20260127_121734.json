@@ -1,0 +1,24 @@
+{
+  "title": "米MSCI、株価指数に川崎重工と良品計画を採用 電通Gなど5",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0yLUk2M2luQjFMSGR1SEx3MVk5V3BaNEQ0eEVSZXhkVXlzT0FneHN3U2hLYW96bzdDdG9KODlsUmk4aHlBVkhFRlc2UjIxdlRVbkhDSXJyMVNuNWN3WUxheWZDQ2NHTm5QMjBGMw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE0yLUk2M2luQjFMSGR1SEx3MVk5V3BaNEQ0eEVSZXhkVXlzT0FneHN3U2hLYW96bzdDdG9KODlsUmk4aHlBVkhFRlc2UjIxdlRVbkhDSXJyMVNuNWN3WUxheWZDQ2NHTm5QMjBGMw?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "MSCIが川崎重工と良品計画を採用、電通Gなど除外。グローバル投資の指標変更。",
+    "true_intent": "MSCI指数の構成銘柄変更は、投資資金の流入・流出に直結。川崎重工と良品計画の株価上昇、電通Gの株価下落を誘導する意図が考えられる。MSCIの影響力拡大も目的か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "MSCI, 川崎重工業, 良品計画, 電通グループ",
+    "action_required": true,
+    "category": "金融",
+    "target_year": "2027",
+    "company_profile": "## 27卒向け 企業分析（本質と狙い目）\n\n**MSCI:**\n1. **主要武器**: 金融データと高度な分析力による業界標準指数。\n2. **26-27卒への温度感**: データサイエンティスト/エンジニア採用強化。高待遇。\n3. **EGO適性**: データドリブン文化。AI/自動化推進。\n4. **裏の弱点**: 金融市場依存度。代替指数サービス競争激化。\n\n**川崎重工業:**\n1. **主要武器**: 重工業技術の多角展開。水素エネルギー等の成長分野投資。\n2. **26-27卒への温度感**: デジタル人材/グローバル人材需要増。\n3. **EGO適性**: 伝統的だがDX推進中。改善提案歓迎。\n4. **裏の弱点**: 景気変動の影響大。組織硬直化リスク。\n\n**良品計画:**\n1. **主要武器**: シンプルで高品質なブランド力とサプライチェーン。\n2. **26-27卒への温度感**: 海外展開加速。多様な人材を求める。\n3. **EGO適性**: データ分析による商品開発/店舗運営。\n4. **裏の弱点**: 競合激化。価格競争力維持の課題。\n\n**電通グループ:**\n1. **主要武器**: 圧倒的な広告シェアとクリエイティブ力。\n2. **26-27卒への温度感**: デジタルマーケ/データドリブン人材を積極採用。\n3. **EGO適性**: 企画力重視。AI活用は発展途上。\n4. **裏の弱点**: 労働環境の改善。デジタル変革の遅れ。\n",
+    "deep_web_intel": "**MSCI:**\n\n*   Provides investment decision support tools.\n*   Offers indexes for various markets and factors (e.g., Japan Factor Index).\n\n**川崎重工業, 良品計画, 電通グループ:**\n\n*   Not mentioned in provided text snippets.\n\n**Gap Analysis:**\n\n*   No information about 川崎重工業, 良品計画, 電通グループ in provided sources."
+  },
+  "critical_analysis": {
+    "true_intent": "MSCI指数の構成銘柄変更は、投資資金の流入・流出に直結。川崎重工と良品計画の株価上昇、電通Gの株価下落を誘導する意図が考えられる。MSCIの影響力拡大も目的か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:17:34.979577",
+  "source": "川崎重工 採用"
+}

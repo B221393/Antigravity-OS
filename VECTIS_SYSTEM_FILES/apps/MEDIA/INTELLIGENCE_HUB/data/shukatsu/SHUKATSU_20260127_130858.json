@@ -1,0 +1,22 @@
+{
+  "title": "インターンシップ＜新卒採用＞ ： INFORMATION ：",
+  "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE14LVhqcEJ4RnpoaW1XT3ZnY3ZZS1hYRFFHZllxN19ITUUwUEEwcWRDU29YS081NjkzU0xyaW4zN18wZGdDeVFFMUtoQU9yUzdrNjRVcFZZcUc4YWVMSmFSVjBFU3FMQmN4dF9vand0WTlNZTQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMic0FVX3lxTE14LVhqcEJ4RnpoaW1XT3ZnY3ZZS1hYRFFHZllxN19ITUUwUEEwcWRDU29YS081NjkzU0xyaW4zN18wZGdDeVFFMUtoQU9yUzdrNjRVcFZZcUc4YWVMSmFSVjBFU3FMQmN4dF9vand0WT",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "この情報は、2027年新卒採用関連の情報であるため、関係性が高いと推測されます。",
+    "true_intent": "この情報は、2027年新卒採用関連の情報を提供するため、利権の獲得や宣伝の機会となる可能性があります。",
+    "bias_warning": "ポジショントークになり、新卒の就活への支援や情報不足への影響を懸念させる可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、2027年新卒採用関連の情報を提供するため、利権の獲得や宣伝の機会となる可能性があります。",
+    "bias_warning": "ポジショントークになり、新卒の就活への支援や情報不足への影響を懸念させる可能性があります。"
+  },
+  "collected_at": "2026-01-27T13:08:58.166402",
+  "source": "ES締切 (Google)"
+}

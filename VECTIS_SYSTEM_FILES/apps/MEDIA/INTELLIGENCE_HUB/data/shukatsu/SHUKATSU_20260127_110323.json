@@ -1,0 +1,24 @@
+{
+  "title": "The First Talk（総合職 採用担当との座談会） ",
+  "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBsRUN3ekR1MlRSSXlVdUkwVlVMOHJUc0tad0F5VXdjdkVlRmEwYmQ2a04zdWZLM0VkdFY3azlCTnNOTmpNZF9YU1lxeEZrQTZTQnJWMDRTX3lMcElCaTE3MVJNUnZhVlBNOWIwYXFYNWZlQl85YnNF?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMid0FVX3lxTFBsRUN3ekR1MlRSSXlVdUkwVlVMOHJUc0tad0F5VXdjdkVlRmEwYmQ2a04zdWZLM0VkdFY3azlCTnNOTmpNZF9YU1lxeEZrQTZTQnJWMDRTX3lMcElCaTE3MVJNUnZhVlBNOWIwYXFYNW",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "経産省が総合職採用担当者との座談会を告知。霞ヶ関の仕事を知る機会を提供。",
+    "true_intent": "優秀な学生を早期に囲い込み、省庁のイメージ向上を図る。官僚不足の解消、他省庁との人材獲得競争の可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "経済産業省",
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "## 経済産業省：就活攻略の裏側\n\n1.  **主要武器**: 日本経済を動かす「企画立案力」と「実行力」。霞が関ネットワークを駆使し、政策を現実にする影響力。\n2.  **26-27卒への温度感**: 優秀層獲得へ積極的。多様なバックグラウンドを持つ人材を求め、採用ルートも多様化。\n3.  **EGO適性**: データに基づいた政策立案を重視。AI活用も推進中で、論理的思考力とテクノロジーへの関心は必須。\n4.  **裏の弱点**: 激務と硬直的な組織文化。変化を嫌う保守的な面も残る。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **METI:** Japanese Ministry of Economy, Trade and Industry.\n*   **Website Content:** Organization, press releases, policies, regulations, budget, statistics, etc.\n*   **News Releases:** Dedicated section for press releases.\n*   **About METI:** Information on ministers, organization, departments, access, recruitment.\n\n**Structured Summary:**\n\nMETI's website provides information on various aspects of the ministry, including its structure, policies, news releases, and general information.\n\n**Gap Analysis:**\n\n*   The provided data focuses on the website's structure and available information rather than specific content or actions.\n*   There's no indication of the website's target audience or specific goals.\n*   No user interaction features (forms, downloads, etc.) are described."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な学生を早期に囲い込み、省庁のイメージ向上を図る。官僚不足の解消、他省庁との人材獲得競争の可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:03:23.599552",
+  "source": "経産省 採用"
+}

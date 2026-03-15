@@ -1,0 +1,25 @@
+Action_ID,Action_Name,Category,Status,When_To_Do,How_To_Do,Expected_Result,Time_Required,Notes
+A001,システム確認,Setup,🟢 Ready,今すぐ可能,QUICK_MENU.bat を実行,全機能が使える状態を確認,5分,初回起動確認
+A002,Control Center起動,Setup,🟢 Ready,今すぐ可能,09_Control_Center.bat を実行,設定UIが開く,1分,設定の確認・変更
+A003,MAGI HUD起動,Setup,🟢 Ready,今すぐ可能,00_MAGI_HUD.bat を実行,右下にHUDが表示される,1分,ステータス確認
+A004,Knowledge Network確認,Setup,🟢 Ready,今すぐ可能,10_Knowledge_Network.bat を実行,3D可視化が表示される,1分,インタラクティブ操作
+A005,使用統計セットアップ,Analytics,📝 準備完了,使いたいとき,SETUP_TRACKING.bat を実行,全ランチャーに統計機能追加,3分,初回のみ実行
+A006,1週間使用,Analytics,⏳ 待機中,1週間後,普通に使うだけ,使用データが蓄積,7日間,自動記録される
+A007,使用統計確認,Analytics,⏳ 待機中,統計有効化後,SHOW_USAGE_STATS.bat を実行,使用頻度ランキング表示,1分,統計セットアップ後
+A008,ランチャー最適化,Automation,⏳ 待機中,統計確認後,REORDER_LAUNCHERS.bat を実行,番号が使用頻度順に,2分,統計データ必要
+A009,Ollamaインストール,Independence,🔮 将来,独立化したいとき,https://ollama.ai/ からDL,Ollamaサービス起動,10分,完全独立化の第一歩
+A010,Ollamaモデル取得,Independence,🔮 将来,Ollama後,ollama pull llama3.2,ローカルLLMが使える,5-15分,インターネット必要
+A011,独立性チェック,Independence,🔮 将来,Ollama後,check_independence.py 実行,独立度が%で表示,1分,現状確認
+A012,設定変更（独立化）,Independence,🔮 将来,チェック後,llm_config.json 編集,Ollamaがデフォルトに,3分,ガイド参照
+A013,APIキー削除,Independence,🔮 将来,独立化完了後,.env ファイル削除or空に,APIキー完全不要に,1分,オプション
+A014,オフライン動作確認,Independence,🔮 将来,独立化後,Wi-Fi切断してテスト,完全オフラインで動作,2分,最終確認
+A015,定期メンテナンス,Maintenance,🔁 定期,月1回程度,ランチャー最適化実行,システムが常に最適,5分,継続的改善
+A016,Ollamaモデル更新,Maintenance,🔁 定期,月1回程度,ollama pull llama3.2,最新モデルに更新,10分,独立化後
+A017,統計レビュー,Analytics,🔁 定期,週1回程度,SHOW_USAGE_STATS.bat,使用傾向の把握,2分,習慣の可視化
+A018,設定カスタマイズ,Customization,🎨 任意,必要に応じて,Control Center で変更,好みの設定に,5分,いつでも変更可
+A019,大西配列練習,Input Method,🎓 学習,興味があれば,MAGI HUDでキーマップ確認,効率的な入力,継続的,段階的に
+A020,ドキュメント読む,Learning,📚 学習,時間があるとき,README.md など参照,全機能の理解,30-60分,必要に応じて
+A021,バックアップ,Safety,💾 推奨,重要作業前,VECTISフォルダをコピー,安全なロールバック,5分,重要な変更前
+A022,新機能テスト,Testing,🧪 任意,興味があるとき,各.batファイル実行,機能確認,変動,探索的
+A023,設定エクスポート,Backup,💾 推奨,設定変更後,llm_config.json コピー,設定のバックアップ,1分,復元用
+A024,統計リセット,Maintenance,🔧 任意,統計やり直し,launcher_stats.json 削除,統計をゼロから,30秒,必要時のみ

@@ -1,0 +1,22 @@
+{
+  "title": "ビジョン・戦略 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE1KQUN6YW1FYktjMGRabGVSd201VUtxbXE4NVlEYlBRNkMwdnZ1MHVwZEtuWV9KN2kzeHpXcUVQckx1dw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQkFVX3lxTE1KQUN6YW1FYktjMGRabGVSd201VUtxbXE4NVlEYlBRNkMwdnZ1MHVwZEtuWV9KN2kzeHpXcUVQckx1dw?oc=5\" target=\"_blank\">ビジョン・戦略</a>&nbsp;&nbsp;<font color=\"#",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "KDDIが未来を提案するビジョン・戦略について分析する",
+    "true_intent": "KDDIが2027年 wobecどのような課題や機会に対応するのかを想像するためのビジョン・戦略を提示する",
+    "bias_warning": "ポジショントークの可能性あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIが2027年 wobecどのような課題や機会に対応するのかを想像するためのビジョン・戦略を提示する",
+    "bias_warning": "ポジショントークの可能性あり"
+  },
+  "collected_at": "2026-01-26T20:45:53.953445",
+  "source": "KDDI 事業戦略"
+}

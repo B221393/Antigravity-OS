@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGO JAPAN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ego-red: #ff0033;
+            --link-blue: #1a0dab;
+            --text-main: #333;
+            --bg-gray: #f2f2f2;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: white;
+            color: var(--text-main);
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--link-blue);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* HEADER */
+        header {
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--ego-red);
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logo span {
+            color: #333;
+            font-weight: 400;
+            font-size: 18px;
+            margin-left: 5px;
+        }
+
+        .search-area {
+            flex: 1;
+            margin: 0 40px;
+            display: flex;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            border: 2px solid var(--ego-red);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-btn {
+            background: var(--ego-red);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .header-services {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        /* MAIN LAYOUT */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 200px 1fr 300px;
+            gap: 20px;
+            padding: 20px 10px;
+        }
+
+        /* LEFT SIDEBAR */
+        .left-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-group {
+            background: white;
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            color: #333;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background: #f5f5f5;
+            color: var(--ego-red);
+            text-decoration: none;
+        }
+
+        .nav-icon {
+            width: 24px;
+            text-align: center;
+        }
+
+        /* CENTER FEED */
+        .center-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .topics-box {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .topics-header {
+            background: #f9f9f9;
+            padding: 0 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            gap: 20px;
+        }
+
+        .tab-btn {
+            padding: 15px 5px;
+            cursor: pointer;
+            font-weight: bold;
+            border-bottom: 3px solid transparent;
+            color: #666;
+        }
+
+        .tab-btn.active {
+            border-bottom-color: var(--ego-red);
+            color: black;
+        }
+
+        .topics-content {
+            padding: 15px;
+            min-height: 300px;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: flex-start;
+        }
+
+        .news-thumb {
+            width: 80px;
+            height: 60px;
+            background: #eee;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .news-text h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+            line-height: 1.4;
+            color: var(--link-blue);
+        }
+
+        .news-meta {
+            font-size: 11px;
+            color: #888;
+            display: flex;
+            gap: 10px;
+        }
+
+        /* DENSITY MODES */
+        .feed-controls {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 15px;
+            font-size: 12px;
+            gap: 10px;
+            color: #666;
+            background: #fafafa;
+            border-bottom: 1px solid #eee;
+        }
+
+        .density-btn {
+            cursor: pointer;
+            padding: 2px 8px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+        }
+
+        .density-btn.active {
+            background: #e0e0e0;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Compact Mode Overrides */
+        .topics-box.compact .news-item {
+            padding: 5px 0;
+            border-bottom: 1px dotted #eee;
+        }
+
+        .topics-box.compact .news-thumb {
+            display: none;
+        }
+
+        .topics-box.compact .news-text h3 {
+            font-size: 13px;
+            color: var(--link-blue);
+        }
+
+        .topics-box.compact .news-text h3:hover {
+            text-decoration: underline;
+        }
+
+        .topics-box.compact .news-meta {
+            display: none;
+        }
+
+        /* Yahoo-style List Container for mixed content */
+        .trend-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .trend-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .trend-rank {
+            color: var(--ego-red);
+            font-weight: bold;
+            width: 15px;
+            text-align: center;
+        }
+
+        .trend-text {
+            color: var(--link-blue);
+            cursor: pointer;
+        }
+
+        .trend-text:hover {
+            text-decoration: underline;
+        }
+
+        /* RIGHT SIDEBAR */
+        .right-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .login-widget {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .utility-box {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .weather-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        /* AD / PROMO */
+        .promo-banner {
+            background: #fffbc9;
+            border: 1px solid #e0dba8;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .promo-banner h4 {
+            color: #d45500;
+            margin-bottom: 5px;
+        }
+
+        /* UTILS */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container" style="display:block; padding:0; margin:0 auto; max-width:1200px;">
+            <div class="header-services">
+                <span>EGO BB</span> <span>News</span> <span>Career</span> <span>Science</span> <span>Finance</span>
+                <span>Shopping</span>
+            </div>
+            <div class="header-top">
+                <div class="logo">EGO<span>JAPAN</span></div>
+                <div class="search-area">
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Search patrol data...">
+                        <button class="search-btn">検索</button>
+                    </div>
+                </div>
+                <div>
+                    <button
+                        style="padding:8px 15px; background:white; border:1px solid #ccc; border-radius:4px;">Premium</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- LEFT NAV -->
+        <div class="left-nav">
+            <div class="nav-group">
+                <div class="nav-item"
+                    onclick="apiAction('launch', 'VECTIS_SYSTEM_FILES/apps/MEDIA/bookshelf_gallery_gui/START_NATIVE_GALLERY.bat')">
+                    <span class="nav-icon">📚</span> Bookshelf
+                </div>
+                <div class="nav-item" onclick="apiAction('launch', 'apps/MEDIA/pdf_splicer/app.py')">
+                    <span class="nav-icon">📄</span> PDF Splicer
+                </div>
+                <div class="nav-item"
+                    onclick="apiAction('launch', 'VECTIS_SYSTEM_FILES/apps/MEDIA/virtual_ego/index.html')">
+                    <span class="nav-icon" style="color:#00ffff; text-shadow:0 0 5px #00ffff;">🌐</span> <strong>EGO
+                        Cyberspace</strong>
+                </div>
+                <!-- GAME ENGINE -->
+                <div class="nav-item"
+                    onclick="apiAction('launch', 'VECTIS_SYSTEM_FILES/apps/GAMES/logic_studio/index.html')">
+                    <span class="nav-icon" style="color:#ff00ff; text-shadow:0 0 5px #ff00ff;">🎮</span> <strong>Logic
+                        Studio</strong>
+                </div>
+                <!-- KIWIX INTEGRATION -->
+                <div class="nav-item"
+                    onclick="apiAction('launch', 'VECTIS_SYSTEM_FILES/apps/MEDIA/kiwix/manage_server.py start'); setTimeout(() => openAppInOverlay('http://localhost:9000', 'Kiwix Knowledge Base'), 3000);">
+                    <span class="nav-icon">🥝</span> Kiwix (Wiki)
+                </div>
+                <div class="nav-item"
+                    onclick="apiAction('launch', 'VECTIS_SYSTEM_FILES/apps/UTILS/toeic_pro/index.html')">
+                    <span class="nav-icon">🇬🇧</span> TOEIC Pro
+                </div>
+                <div class="nav-item" onclick="apiAction('launch', 'apps/UTILS/job_hunting/run.py')">
+                    <span class="nav-icon">💼</span> Job Hunt
+                </div>
+                <div class="nav-item"
+                    onclick="apiAction('launch', 'VECTIS_SYSTEM_FILES/apps/AI_LAB/vectis_omni/app.py')">
+                    <span class="nav-icon">🤖</span> AI Omni
+                </div>
+                <hr style="margin:10px 0; border:none; border-top:1px solid #eee;">
+                <div class="nav-item">
+                    <span class="nav-icon">📩</span> EGO Mail
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🌤️</span> Weather
+                </div>
+            </div>
+        </div>
+
+        <!-- CENTER FEED -->
+        <div class="center-feed">
+            <div class="topics-box" id="topicsBox">
+                <div class="topics-header">
+                    <div style="display:flex; gap:20px;">
+                        <div class="tab-btn active" onclick="switchTab('major')">主要</div>
+                        <div class="tab-btn" onclick="switchTab('career')">就活</div>
+                        <div class="tab-btn" onclick="switchTab('tech')">技術</div>
+                    </div>
+                    <div class="feed-controls">
+                        <span>表示:</span>
+                        <span class="density-btn active" onclick="setDensity('rich')">標準</span>
+                        <span class="density-btn" onclick="setDensity('compact')">一覧</span>
+                    </div>
+                </div>
+                <div id="feed-major" class="topics-content">
+                    <!-- Static Mock Data for Yahoo Feel -->
+                    <!-- REAL 2027 TRENDS HEADLINES -->
+                    <div class="news-item">
+                        <div class="news-thumb">Trend</div>
+                        <div class="news-text">
+                            <h3>27卒就活は「超早期化」が鮮明に インターン選考直結が常態化</h3>
+                            <div class="news-meta"><span>Trend</span> <span>Internship</span></div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb">Market</div>
+                        <div class="news-text">
+                            <h3>「売り手市場」でも広がる格差 専門性重視の採用戦略へ</h3>
+                            <div class="news-meta"><span>Market</span> <span>Tech</span></div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb">Meitec</div>
+                        <div class="news-text">
+                            <h3>メイテック応募ESの骨子が完成 「EGO」システムへの統合進む</h3>
+                            <div class="news-meta"><span>NEW</span> <span>EGO News</span></div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb" style="background:#222; color:white;">AI</div>
+                        <div class="news-text">
+                            <h3>話題の「UI-TARS」とは？ GUI操作エージェントの衝撃</h3>
+                            <div class="news-meta"><span>Tech</span> <span>UI-TARS</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad-like banner for internal tools -->
+            <div class="promo-banner"
+                style="background:#e3f2fd; border-color:#90caf9; text-align:left; padding:15px; display:flex; align-items:center; gap:15px;">
+                <div style="font-size:30px;">⏱️</div>
+                <div>
+                    <h4 style="color:#1565c0; margin:0;">Time is Efficiency</h4>
+                    <div style="font-size:12px; color:#555;">Pomodoro Timer is ready. Focus on your ES drafting now.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <div class="right-sidebar">
+            <div class="login-widget">
+                <div class="user-avatar">Y</div>
+                <div style="font-weight:bold; margin-bottom:5px;">Yuto</div>
+                <div style="font-size:12px; color:#666;">EGO ID: 994823</div>
+                <div style="display:flex; justify-content:center; gap:10px; margin-top:15px;">
+                    <button style="padding:5px 10px; font-size:11px; cursor:pointer;">PayPay</button>
+                    <button style="padding:5px 10px; font-size:11px; cursor:pointer;">Points</button>
+                </div>
+            </div>
+
+            <div class="utility-box">
+                <h4 style="font-size:13px; margin-bottom:10px; color:#333;">System Weather</h4>
+                <div class="weather-row">
+                    <span>CPU Load</span>
+                    <span style="font-weight:bold; color:green;">12%</span>
+                </div>
+                <div class="weather-row">
+                    <span>Memory</span>
+                    <span style="font-weight:bold; color:orange;">64%</span>
+                </div>
+                <div class="weather-row">
+                    <span>Patrol Status</span>
+                    <span style="font-weight:bold; color:var(--ego-red);">ACTIVE</span>
+                </div>
+            </div>
+
+            <div class="promo-banner"
+                onclick="apiAction('launch', 'c:\\Users\\Yuto\\Desktop\\app\\Meitec_ES_Draft.md')">
+                <h4>[PR] Meitec Application</h4>
+                <p style="font-size:12px;">Deadline approaching. Review your draft now.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Overlay (Hidden) -->
+    <iframe id="app-frame"
+        style="display:none; position:fixed; top:50px; left:50px; width:80%; height:80%; background:white; z-index:999; border:2px solid #333; box-shadow:0 0 50px rgba(0,0,0,0.5);"></iframe>
+    <div id="overlay-backdrop"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:998;"
+        onclick="closeApp()"></div>
+
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Mock Content Switch
+            const content = document.getElementById('feed-major');
+            if (tab === 'career') {
+                // Yahoo-style Link List (Compact by default)
+                content.innerHTML = `
+                    <div class="trend-list">
+                        <div style="background:#eee; padding:5px; font-weight:bold; margin-top:10px;">🏭 Manufacturer / Engineering</div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_Toyota_Research.md')">Toyota Motor Corp</span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_Hitachi_Research.md')">Hitachi Ltd</span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_Sony_Research.md')">Sony Group</span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_Keyence_Research.md')">Keyence</span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_Fanuc_Research.md')">FANUC</span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_Meitec_Research.md')">Meitec Corporation (First Choice)</span></div>
+
+                        <div style="background:#eee; padding:5px; font-weight:bold; margin-top:10px;">💻 IT / Web / Game</div>
+                        <div class="trend-item"><span class="trend-rank">★</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-04_Event_Photo_Log.md')"><strong>【保存版】就活イベントES攻略メモ</strong></span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-04_KoeiTecmo_Research.md')"><strong>KOEI TECMO (New Target)</strong></span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_CyberAgent_Research.md')">CyberAgent</span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_Rakuten_Research.md')">Rakuten Group</span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_LINEYahoo_Research.md')">LINE Yahoo</span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_Nintendo_Research.md')">Nintendo</span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-04_UI-TARS_Research.md')"><strong>UI-TARS (New Tech Research)</strong></span></div>
+
+                        <div style="background:#eee; padding:5px; font-weight:bold; margin-top:10px;">👔 Consulting / SIer</div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_Accenture_Research.md')">Accenture Japan</span></div>
+                        <div class="trend-item"><span class="trend-rank">▪</span> <span class="trend-text" onclick="apiAction('launch', 'c:\\\\Users\\\\Yuto\\\\Desktop\\\\app\\\\notes\\\\2026-02-03_NTTData_Research.md')">NTT Data</span></div>
+                    </div>
+                 `;
+            } else {
+                // Restore Rich Mock
+                content.innerHTML = `
+                    <div class="news-item">
+                        <div class="news-thumb">Meitec</div>
+                        <div class="news-text"><h3>メイテック応募ESの骨子が完成 「EGO」システムへの統合進む</h3><div class="news-meta"><span>NEW</span></div></div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb">System</div>
+                        <div class="news-text"><h3>フォルダーリネーム問題 解決の糸口は「再起動」か</h3><div class="news-meta"><span>Update</span></div></div>
+                    </div>
+                 `;
+            }
+        }
+
+        function setDensity(mode) {
+            const box = document.getElementById('topicsBox');
+            document.querySelectorAll('.density-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (mode === 'compact') {
+                box.classList.add('compact');
+            } else {
+                box.classList.remove('compact');
+            }
+        }
+
+        async function apiAction(actionType, target) {
+            console.log(`🔌 API Action: ${target}`);
+            try {
+                const url = `/api/${actionType}?target=${encodeURIComponent(target)}`;
+                await fetch(url);
+            } catch (e) {
+                console.error(e);
+                alert("Action dispatched: " + target);
+            }
+        }
+
+        function closeApp() {
+            document.getElementById('app-frame').style.display = 'none';
+            document.getElementById('overlay-backdrop').style.display = 'none';
+            document.getElementById('app-frame').src = "";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "title": "日々の感謝を記録することでワーク・エンゲイジメントが向上 |",
+  "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9NSkJoN1E2Z0xiT1FHRTk3YnlacXp2VzlZVjloa2FGSm05ZWVXTUx3VEo5MzJTdWJjQWNUMlFpWTVjSXJwOW0zRDJaT0hvMnRBUXV4d05EejVmU2FyQ3IxZkhB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTE9NSkJoN1E2Z0xiT1FHRTk3YnlacXp2VzlZVjloa2FGSm05ZWVXTUx3VEo5MzJTdWJjQWNUMlFpWTVjSXJwOW0zRDJaT0hvMnRBUXV4d05EejVmU2FyQ3IxZkhB?oc=5\" target=\"_bl",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "NTTデータストラテジーが感謝記録でワークエンゲイジメント向上を発表。効果検証サービスを提供へ。",
+    "true_intent": "自社サービス（感謝記録の効果検証）の宣伝。ワークエンゲイジメント向上を謳い、企業へのコンサルティング需要を喚起し、収益増を狙う。従業員の自己責任化を促す側面も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "NTTデータストラテジー",
+    "action_required": false,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## NTTデータストラテジー 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: NTTデータの圧倒的顧客基盤と最先端技術への投資力。国内大企業のDX戦略を上流から実行まで一気通貫で支援できる点が強み。\n\n2.  **26-27卒への温度感**: コンサル未経験者にも門戸を開放。多様なバックグラウンドを持つ人材を積極的に採用し、組織の活性化を図る傾向。\n\n3.  **EGO適性**: 論理的思考力は必須。AI活用への関心も高く評価されるが、顧客とのコミュニケーション能力も重視される。\n\n4.  **裏の弱点**: 親会社の影響力が強く、意思決定のスピード感に課題が残る可能性。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "自社サービス（感謝記録の効果検証）の宣伝。ワークエンゲイジメント向上を謳い、企業へのコンサルティング需要を喚起し、収益増を狙う。従業員の自己責任化を促す側面も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:38:43.293782",
+  "source": "Active:NTT"
+}

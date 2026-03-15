@@ -1,0 +1,24 @@
+{
+  "title": "27卒ITエンジニア学生が選ぶ人気企業ランキング！ NTTデ",
+  "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9aekFTZHZ2SUJRMzJ2VUlELUJTa2dBVlpvbE03dGRZR1lKYU5FRDkzY1ZMN3hIQmtRaHZsM3FzbG1OUnpjM0xpOFYzQ2x0WFJ3SGpNTU9wNHJnSTA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiW0FVX3lxTE9aekFTZHZ2SUJRMzJ2VUlELUJTa2dBVlpvbE03dGRZR1lKYU5FRDkzY1ZMN3hIQmtRaHZsM3FzbG1OUnpjM0xpOFYzQ2x0WFJ3SGpNTU9wNHJnSTA?oc=5\" target=\"_blank\">27卒I",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "27卒ITエンジニア人気企業ランキング、NTTデータとLINEヤフーが上位。サポーターズ調べ。",
+    "true_intent": "サポーターズ社のブランディングと、ランキング上位企業の採用広報。学生データを活用し、企業への人材紹介ビジネスを強化する狙いが見える。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "NTTデータ, LINEヤフー, サポーターズ",
+    "action_required": true,
+    "category": "IT, 広告, メディア",
+    "target_year": "2027",
+    "company_profile": "## 各社の本質と27卒が狙うべき理由\n\n**NTTデータ**\n\n1.  **主要武器**: 国の基幹システムを支える圧倒的信頼性と技術力、公共分野への深い知見。\n2.  **26-27卒への温度感**: デジタル人材育成に注力、若手への投資意欲が高い。\n3.  **EGO適性**: 構造的思考は必須。AI活用は推進中だが、実践レベルは部署による。\n4.  **裏の弱点**: 官僚的な体質が残存、変化への抵抗感がある。\n\n**LINEヤフー**\n\n1.  **主要武器**: 国内トップクラスのユーザー基盤とデータ、多様なサービス展開によるシナジー。\n2.  **26-27卒への温度感**: 積極的に優秀な若手を採用し、即戦力として期待。\n3.  **EGO適性**: データ分析基盤が充実、AI活用も積極的。論理的思考力は必須。\n4.  **裏の弱点**: 親会社の影響力、事業再編リスク、変化の激しさ。\n\n**サポーターズ**\n\n1.  **主要武器**: 学生と企業を繋ぐ独自のプラットフォーム、採用イベント企画力。\n2.  **26-27卒への温度感**: 若手の成長を重視、主体的なキャリア形成を支援。\n3.  **EGO適性**: 学生のニーズ分析にデータ活用。論理的思考力と共感力が重要。\n4.  **裏の弱点**: 競合激化、事業規模の限界、成長スピードへのプレッシャー。\n",
+    "deep_web_intel": "**NTTデータ:**\n\n*   **Description:** NTTグループ official website. Info on vision, strategy, sustainability, R&D, disaster response, social contributions, news, IR.\n*   **Key Points:** Corporate information, news releases.\n*   **Tech:** Google Tag Manager, mobile viewport settings.\n\n**LINEヤフー:** *No data provided.*\n\n**サポーターズ:** *No data provided.*\n\n**Gap Analysis:**\n\n*   Data only available for NTT. Missing information for LINEヤフー and サポーターズ."
+  },
+  "critical_analysis": {
+    "true_intent": "サポーターズ社のブランディングと、ランキング上位企業の採用広報。学生データを活用し、企業への人材紹介ビジネスを強化する狙いが見える。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:22:17.575291",
+  "source": "Active:博報堂"
+}

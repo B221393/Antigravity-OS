@@ -1,0 +1,24 @@
+{
+  "title": "トヨタとWaymo、自動運転の普及を加速する戦略的パートナー",
+  "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5fV1NNamZfY0oyQ2htWF95Zko3QTMwSXVicjhxbWdKS19MeTRaeXhXTGNPV045bUprTkRQRW1CLWtGVktsaGRZS21Db0p0d2UwN0E5MkN4NGgxY1FBZ1d1dlY2Z2FtemJ3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE5fV1NNamZfY0oyQ2htWF95Zko3QTMwSXVicjhxbWdKS19MeTRaeXhXTGNPV045bUprTkRQRW1CLWtGVktsaGRZS21Db0p0d2UwN0E5MkN4NGgxY1FBZ1d1dlY2Z2FtemJ3?oc=5\" tar",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トヨタとWaymoが自動運転普及に向け戦略的提携。技術開発と市場展開加速を目指す。",
+    "true_intent": "自動運転技術開発競争激化の中、両社の技術・資源を結集し、市場での優位性を確立したい意図。トヨタはソフト、Waymoはハードの弱点を補完。規制緩和への圧力も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "トヨタ自動車株式会社",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。トヨタ自動車の本質的価値と27卒が狙うべき理由を以下に要約します。\n\n1.  **主要武器**: 圧倒的な生産効率とサプライチェーン、徹底的な品質管理。現場主義を貫き、改善を積み重ねる組織力こそが源泉。\n\n2.  **26-27卒への温度感**: 新領域（CASE）への変革期で、多様な専門性を持つ人材を積極的に採用。即戦力とポテンシャルの両方を重視。\n\n3.  **EGO適性**: 構造的思考は必須。AI活用は推進中だが、現場の知見との融合が重視される。データ分析だけでなく、課題解決能力が重要。\n\n4.  **裏の弱点**: 組織の巨大さ故の意思決定の遅さ、年功序列制度の名残。変革への抵抗勢力も存在し、スピード感に課題が残る。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Company:** Toyota Motor Corporation\n*   **Website:** Official corporate site (global.toyota)\n*   **Content Focus:** Corporate information, investor relations, news, mobility, sustainability, careers\n*   **Company Profile**: Overview, management philosophy, history, facilities.\n\n**Structured Summary:**\n\nToyota's official website provides comprehensive information on its corporate activities, including investor and media relations. The site details company profile, core values, and history.\n\n**Gap Analysis:**\n\nThe provided data focuses on website metadata and structure.  Missing: Detailed financial performance, product information, specific initiatives in mobility/sustainability, and comprehensive employee data."
+  },
+  "critical_analysis": {
+    "true_intent": "自動運転技術開発競争激化の中、両社の技術・資源を結集し、市場での優位性を確立したい意図。トヨタはソフト、Waymoはハードの弱点を補完。規制緩和への圧力も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:35:12.393383",
+  "source": "Active:トヨタ自動車"
+}

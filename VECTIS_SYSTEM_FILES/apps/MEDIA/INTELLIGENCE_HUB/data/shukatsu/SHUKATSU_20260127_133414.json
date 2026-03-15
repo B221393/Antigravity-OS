@@ -1,0 +1,24 @@
+{
+  "title": "デンソー、「DX銘柄」に初選定 ｜ ニュースルーム ｜ ニュ",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBCR0p1VDliX2JTLV9oTDlOemZSeXNIeXBzdGdJUFNBSWIwb1MzU3JERFgxVXI1b01kMGJEUEg2d01DNTlZNDhEeXpZOGxJWGNmMUJJYjhBSEJqRVdmU3dJQV91SXZuSUd0dHN3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTFBCR0p1VDliX2JTLV9oTDlOemZSeXNIeXBzdGdJUFNBSWIwb1MzU3JERFgxVXI1b01kMGJEUEg2d01DNTlZNDhEeXpZOGxJWGNmMUJJYjhBSEJqRVdmU3dJQV91SXZuSUd0dHN3?oc=5\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "デンソーが「DX銘柄」に初選定。DX推進をアピール。",
+    "true_intent": "企業イメージ向上、投資家へのアピール、優秀な人材獲得が目的。DX推進の実態を伴っているか精査が必要。サプライチェーン全体でのDX化が課題か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "デンソー",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。デンソーの本質的価値と27卒が狙うべき理由を、以下の通り構造化します。\n\n1.  **主要武器**: 自動車部品で培った高度な技術力と、トヨタグループとの強固な連携。CASE領域への積極投資と多角的な事業展開が強み。\n2.  **26-27卒への温度感**: 採用数は増加傾向。特にソフトウェア、AI、電動化等の先端技術領域に強い人材を積極採用。\n3.  **EGO適性**: データドリブンな意思決定を重視。AI活用にも積極的で、構造的思考力は高く評価される。\n4.  **裏の弱点**: 自動車産業全体の変革期において、既存事業からの脱却と新規事業の収益化が課題。組織の硬直化も懸念点。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Company:** 株式会社デンソー (KK Denso).\n*   **Content:** Company overview, organization chart, history.\n*   **Website:** kk-denso.co.jp\n\n**Gap Analysis:**\n\n*   Source `denso.com` is forbidden.\n*   Wikipedia source has encoding errors.\n*   Only `kk-denso.co.jp` is accessible for basic information."
+  },
+  "critical_analysis": {
+    "true_intent": "企業イメージ向上、投資家へのアピール、優秀な人材獲得が目的。DX推進の実態を伴っているか精査が必要。サプライチェーン全体でのDX化が課題か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:34:14.332437",
+  "source": "Active:デンソー"
+}

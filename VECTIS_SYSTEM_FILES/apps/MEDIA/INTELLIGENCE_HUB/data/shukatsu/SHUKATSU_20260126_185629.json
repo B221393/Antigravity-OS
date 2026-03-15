@@ -1,0 +1,22 @@
+{
+  "title": "ビジネスコース新卒採用において6月6日から27卒向けインター",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE54cXEwTGhkRjJzbnd5WkNpQnMwYWRPU2tmQjRTTjBDTUlCYTFaSDFuM3pheXVXWXRldEFTcE8tcVB4LWVkNUJadHRKd01JVUR2NjRoSjZyenVHNnYzOHc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE54cXEwTGhkRjJzbnd5WkNpQnMwYWRPU2tmQjRTTjBDTUlCYTFaSDFuM3pheXVXWXRldEFTcE8tcVB4LWVkNUJadHRKd01JVUR2NjRoSjZyenVHNnYzOHc?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "この情報は、27卒へのインターンシップが、**ビジネスコース**への採用と関連した情報を含む可能性があります。",
+    "true_intent": "この情報は、27卒への**ビジネスコース**への採用への関連性や、**インターンシップ**の機会への期待を伝える可能性があります。",
+    "bias_warning": "ポジショントークの可能性があり、**ビジネスコース**に関する特定情報との関連性や、インターンシップへの期待に関連する内容が含まれている可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、27卒への**ビジネスコース**への採用への関連性や、**インターンシップ**の機会への期待を伝える可能性があります。",
+    "bias_warning": "ポジショントークの可能性があり、**ビジネスコース**に関する特定情報との関連性や、インターンシップへの期待に関連する内容が含まれている可能性があります。"
+  },
+  "collected_at": "2026-01-26T18:56:29.032694",
+  "source": "ES締切 (Google)"
+}

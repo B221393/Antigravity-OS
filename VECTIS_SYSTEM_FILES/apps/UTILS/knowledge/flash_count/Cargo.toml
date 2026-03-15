@@ -1,0 +1,10 @@
+[package]
+name = "flash_count"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rayon = "1.7"
+walkdir = "2.3"
+clap = { version = "4.3", features = ["derive"] }
+colored = "2.0"

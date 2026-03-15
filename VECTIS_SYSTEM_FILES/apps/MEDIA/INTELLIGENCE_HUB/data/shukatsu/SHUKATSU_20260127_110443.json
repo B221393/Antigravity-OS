@@ -1,0 +1,24 @@
+{
+  "title": "2025 ビジネスアップデート 説明概要 | Honda 企",
+  "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBPWThmZS1VVUZOVVh0NlREdzZTcWczMU1penNReFM4T1A3dnRYWFZRQm9VS1hOb3R2NklBcmphclRCWUdRTlRkTU91bmJnOFhnRy1EVTJ6ZktHUQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiWkFVX3lxTFBPWThmZS1VVUZOVVh0NlREdzZTcWczMU1penNReFM4T1A3dnRYWFZRQm9VS1hOb3R2NklBcmphclRCWUdRTlRkTU91bmJnOFhnRy1EVTJ6ZktHUQ?oc=5\" target=\"_blank\">2025 ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "Hondaが2025年の事業戦略を発表。電動化、ソフトウェア事業強化、新規事業探索などが中心。",
+    "true_intent": "株主や投資家へのアピール。電動化シフトの遅れを挽回し、未来への成長戦略を示すことで企業価値を維持・向上させたい。優秀な人材獲得も目的。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "Honda",
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。Hondaの本質的価値と27卒が狙うべき理由を構造化します。\n\n1.  **主要武器**: グローバルな開発・生産体制と、挑戦を是とするDNA。電動化・自動運転技術への積極投資と、二輪・航空機含む多角的な事業ポートフォリオが強み。\n\n2.  **26-27卒への温度感**: 採用数は安定。多様なバックグラウンドを持つ人材を積極的に採用し、早期から裁量権を与える傾向。技術系・事務系ともに門戸は広い。\n\n3.  **EGO適性**: データドリブンな意思決定を重視し、AI活用も推進。構造的思考力と、変化に柔軟に対応できる人材を求めている。\n\n4.  **裏の弱点**: 組織の硬直化と、意思決定の遅さ。電動化戦略における競争激化と、サプライチェーンの脆弱性が懸念材料。\n",
+    "deep_web_intel": "Okay, I have analyzed the provided data related to Honda. Here's a summary, gap analysis, and key points:\n\n**Key Points:**\n\n*   **Forum Discussions:** The data includes forum discussions from \"Quattroruote.it\" about specific Honda models:\n    *   **HRV:** Discussions around the new Honda HRV, including advice and concerns.\n    *   **Jazz:** Mentions a thread dedicated to the 2025 Honda Jazz.\n\n*   **Website Infrastructure:** The HTML code snippets reveal common website infrastructure elements:\n    *   **JavaScript Libraries:** Use of jQuery, Bootstrap, and custom scripts.\n    *   **Analytics & Tracking:** Integration with Webtrekk, Google Tag Manager, and potentially Selligent Marketing Cloud.\n    *   **Advertising:** Google AdSense integration.\n\n**Structured Summary:**\n\n| Category        | Description                                                                                                                                                                                                                                                                    |\n|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| **Forums**      | \"Quattroruote.it\" forum discussions focusing on specific Honda models (HRV, Jazz).                                                                                                                                                                                      |\n| **Website Tech**| Standard web technologies: HTML5, CSS, JavaScript (jQuery, Bootstrap).  Tracking and analytics (Webtrekk, GTM). Advertising platform integration (Google Adsense). Marketing automation platform integration (Selligent).                                                   |\n| **Models**      | Honda HRV, Honda Jazz (2025)                                                                                                                                                                                                                                              |\n\n**Gap Analysis:**\n\n*   **Content of Discussions:** The provided HTML only contains the page structure, not the actual content of the forum discussions.  We don't know what specific advice, concerns, or opinions are being shared about the HRV or Jazz.\n*   **Dealer Information:** The attempt to fetch dealer information from \"honda.auto.com.pl\" failed with a 403 Forbidden error.  Therefore, I have NO dealer data.\n*   **Specific Model Details:** Beyond the model names, there are no details on specifications, pricing, features, or availability for the HRV or Jazz.\n*   **User Sentiment:**  Without the actual forum content, I cannot determine the overall sentiment (positive, negative, neutral) towards these Honda models.\n\n**In summary, I have identified mentions of the Honda HRV and Jazz, and some technologies used on the \"Quattroruote.it\" website, but I lack specific details about the cars themselves, user opinions, or dealer information due to missing data.**"
+  },
+  "critical_analysis": {
+    "true_intent": "株主や投資家へのアピール。電動化シフトの遅れを挽回し、未来への成長戦略を示すことで企業価値を維持・向上させたい。優秀な人材獲得も目的。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:04:43.432445",
+  "source": "Active:ホンダ"
+}

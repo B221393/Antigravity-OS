@@ -1,0 +1,6 @@
+@echo off
+echo Cleaning .next cache...
+if exist ".next" rmdir /s /q ".next"
+echo Cache cleaned.
+echo Starting Visual Coder...
+npm run dev

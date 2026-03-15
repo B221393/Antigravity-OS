@@ -1,0 +1,17 @@
+{
+  "title": "Rust Tokyo 2024 開催レポート - gihyo.jp",
+  "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9rTzlFREg3alVqTEluR3JFZ1BvWnpObmlLMU42RzdidUZlanoyY1Z5NGNnQy1OUEVHLUdSMDhVQUZoYnB6M1RnWVhwcTR3M3ZUMFB3Zjk1LVdNa2E2N253em55MjlNZw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTE9rTzlFREg3alVqTEluR3JFZ1BvWnpObmlLMU42RzdidUZlanoyY1Z5NGNnQy1OUEVHLUdSMDhVQUZoYnB6M1RnWVhwcTR3M3ZUMFB3Zjk1LVdNa2E2N253em55MjlNZw?oc=5\" target=\"_blank\">Rust Tokyo 2024 開催レポート</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">gihyo.jp</font>",
+  "ai_analysis": {
+    "strength": "Rustの高いパフォーマンス、安全性、並行処理能力。活発なコミュニティとエコシステム。",
+    "weakness": "Rustの学習コストの高さ、コンパイラの厳しさ、人材不足。",
+    "opportunity": "Rustエンジニアの需要増加。セキュリティ、組み込み、WebAssembly分野での活躍の場。",
+    "threat": "他のモダン言語（Go, Kotlinなど）との競争。Rust技術者の獲得競争激化。"
+  },
+  "critical_analysis": {},
+  "deep_strategic_dossier": "",
+  "bias": "",
+  "collected_at": "2026-01-28T16:17:56.781696",
+  "source": "Active:NTT",
+  "score": 5
+}

@@ -1,0 +1,24 @@
+{
+  "title": "新卒採用情報 - 株式会社ラック",
+  "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9IaDlfODRCb0Q4NzVfbWc0Qjcza1llaUJ1eXNsaW51d2xsbjlySGhQcUlWdE13M21RcHAyVVk3bC1xNlViYjhoaF9DVU1WcThvdmQ5Mg?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiVEFVX3lxTE9IaDlfODRCb0Q4NzVfbWc0Qjcza1llaUJ1eXNsaW51d2xsbjlySGhQcUlWdE13M21RcHAyVVk3bC1xNlViYjhoaF9DVU1WcThvdmQ5Mg?oc=5\" target=\"_blank\">新卒採用情報</a>&nb",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ラックが2027年卒向け新卒採用情報を公開。サイバーセキュリティ人材需要の高まりが背景か。",
+    "true_intent": "優秀な学生の早期囲い込み。セキュリティ市場の成長を見込み、将来的な人材不足を解消し、競争優位性を確保したい意図。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "株式会社ラック",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## 株式会社ラック 本質的価値と27卒が狙うべき理由\n\n1. **主要武器**: 独立系セキュリティベンダーとしての長年の実績と、JSOC（Japan Security Operation Center）を核とした高度な分析・対応力。顧客の個別ニーズに合わせた柔軟なソリューション提供が強み。\n\n2. **26-27卒への温度感**: 積極採用継続。技術力だけでなく、顧客とのコミュニケーション能力や問題解決能力を重視。早期選考やインターンシップを通じて優秀な人材を確保する傾向。\n\n3. **EGO適性**: データ分析基盤「EGO」からもわかるように、構造的思考やデータドリブンなアプローチを重視。AI活用にも積極的で、新しい技術への関心が高い人材を歓迎する文化。\n\n4. **裏の弱点**: 大手SIerと比較して給与水準で見劣りする可能性。セキュリティ業界全体の慢性的な人材不足も懸念材料。\n",
+    "deep_web_intel": "**株式会社ラック (LAC Co., Ltd.) Summary:**\n\n*   **Core Business:** Cybersecurity and SI (System Integration), IT total solutions. Aims to build a \"trustworthy society\".\n*   **Services:** Security measures, security diagnostics, monitoring and operation, security education, information leak investigation, Home renovation and after-care.\n*   **Keywords:** Security, IT solutions, risk management.\n\n**Gap Analysis:**\n\n*   Multiple companies exist with the name \"ラック\", including a home renovation/construction company (T-Luck).\n*   Wikipedia fetch error."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な学生の早期囲い込み。セキュリティ市場の成長を見込み、将来的な人材不足を解消し、競争優位性を確保したい意図。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:22:37.811638",
+  "source": "Active:KDDI"
+}

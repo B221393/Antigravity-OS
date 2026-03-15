@@ -1,0 +1,18 @@
+[
+  {
+    "date": "2026-01-07",
+    "japanese": "円周率πは無理数であり、その小数点以下は無限に続く。しかし面白いことに、πの中には私たちの誕生日や電話番号など、あらゆる数字の並びが含まれていると考えられている。",
+    "english": "Pi is an irrational number with infinite decimal places. Interestingly, it's believed that pi contains every possible sequence of numbers, including your birthday and phone number.",
+    "source": "3Blue1Brown",
+    "category": "数学",
+    "generated_at": "2026-01-07T17:39:14.558023"
+  },
+  {
+    "date": "2026-01-06",
+    "japanese": "宇宙の年齢は約138億年だが、観測可能な宇宙の直径は約930億光年もある。これは宇宙の膨張速度が光速を超えることができるため。",
+    "english": "The universe is about 13.8 billion years old, yet the observable universe spans about 93 billion light-years. This is because the expansion of space can exceed the speed of light.",
+    "source": "Kurzgesagt",
+    "category": "科学",
+    "generated_at": "2026-01-06T09:05:14.935270"
+  }
+]

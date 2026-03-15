@@ -1,0 +1,24 @@
+{
+  "title": "ホンダ、米新興Helm.aiのE2E自動運転ソフトを採用 2",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBiV18wWmlTNXBkSWNtSFBlR3R4VHZHVmlGZUxaRmduXzNxVGdOWjRvN2swd0pCMFRJUmFhWmx3X2xiTVVuOFpxa1BoNnQyd2RiUkpkMW1pdnM4N1BvQm9vcUp4U1hUM1k?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBiV18wWmlTNXBkSWNtSFBlR3R4VHZHVmlGZUxaRmduXzNxVGdOWjRvN2swd0pCMFRJUmFhWmx3X2xiTVVuOFpxa1BoNnQyd2RiUkpkMW1pdnM4N1BvQm9vcUp4U1hUM1k?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ホンダがHelm.aiのE2E自動運転ソフトを2027年量産車に採用。自動運転技術競争激化。",
+    "true_intent": "ホンダの技術力アピールと、Helm.aiの市場認知度向上。自動運転開発競争での優位性確保と、関連株価上昇を狙う可能性。",
+    "bias_warning": "あり",
+    "deadline": "2027-01-01",
+    "company": "ホンダ",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## ホンダ：就活メンターが見抜く本質と狙い目ポイント\n\n1.  **主要武器**: 強固な技術力とチャレンジ精神。既存事業の安定性と、EV・宇宙など新規領域への積極投資の両立が強み。\n2.  **26-27卒への温度感**: 多様性重視。専門性だけでなく、変化への対応力や主体性を重視する傾向。\n3.  **EGO適性**: データドリブンな意思決定を推進。AI活用にも積極的で、構造的思考を持つ人材を高く評価。\n4.  **裏の弱点**: 既存事業の電動化遅延リスク。新規事業の収益化には時間がかかる可能性も。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Honda Official Site (Car Lineup):** Lists Honda's car models.\n*   **carview! (Yahoo!):**  Provides new car info/catalog for Honda (models, rankings, fuel efficiency).\n*   **Honda Global (Corporate):**  Official corporate website (company info, sustainability, investor relations).\n\n**Structured Summary:**\n\n*   **Car Models:** Honda official site, carview!\n*   **Corporate Info:** Honda global site.\n\n**Gap Analysis:**\n\n*   Detailed model specs, pricing (beyond \"car lineup\") might be limited on the Honda official site."
+  },
+  "critical_analysis": {
+    "true_intent": "ホンダの技術力アピールと、Helm.aiの市場認知度向上。自動運転開発競争での優位性確保と、関連株価上昇を狙う可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T18:17:10.284261",
+  "source": "Active:ホンダ"
+}

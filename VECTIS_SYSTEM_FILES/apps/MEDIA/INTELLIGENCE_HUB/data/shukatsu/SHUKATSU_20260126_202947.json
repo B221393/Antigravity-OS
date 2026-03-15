@@ -1,0 +1,22 @@
+{
+  "title": "ニデックのEVモーター「99％中国製」で価格競争を勝ち抜く－",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBQbjB6eGozb01DSjl5M1VZT2V6YS1qSXpnYmx1SDFlSEJ1ZTRIUWJWZWxuQjdXRkE1N1JoNDFRdVdJOFp1MEgzWEdzQThnTVoycTgyLTBLd3RfU2JJeUQ2dUpWU3JOdUk?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBQbjB6eGozb01DSjl5M1VZT2V6YS1qSXpnYmx1SDFlSEJ1ZTRIUWJWZWxuQjdXRkE1N1JoNDFRdVdJOFp1MEgzWEdzQThnTVoycTgyLTBLd3RfU2JJeUQ2dUpWU3JOdUk?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ニデックのEVモーターは、中国製と明示的に記述されていますが、その起源や製造地は不明であることが指摘されています。また、この情報は、トヨタも初採用することなど、利権構造が複雑な可能性があります.",
+    "true_intent": "この情報は、ニデックの EVモーターが中国製であることを暗示する可能性があります。また、この情報は、トヨタも初採用することで利潤を得る可能性があります.",
+    "bias_warning": "不明",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": 2027
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、ニデックの EVモーターが中国製であることを暗示する可能性があります。また、この情報は、トヨタも初採用することで利潤を得る可能性があります.",
+    "bias_warning": "不明"
+  },
+  "collected_at": "2026-01-26T20:29:47.631139",
+  "source": "トヨタ自動車 戦略"
+}

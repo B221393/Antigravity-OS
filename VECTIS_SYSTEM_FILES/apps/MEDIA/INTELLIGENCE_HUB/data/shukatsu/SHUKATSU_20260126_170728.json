@@ -1,0 +1,22 @@
+{
+  "title": "KDDIが月額最大「約8.5万円」の賃上げ、初任給は「30.",
+  "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8xdnNIdnRQTzdidG81bWF5U3RJMUliVDhVTHhON21vZVIyUVlDV3Ffb21vRFlQeEJ1OFJlN1ZhNDVvV21HV1NIVmtoaENyWWMzSHZYbndqa2lQd25Q?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXEFVX3lxTE8xdnNIdnRQTzdidG81bWF5U3RJMUliVDhVTHhON21vZVIyUVlDV3Ffb21vRFlQeEJ1OFJlN1ZhNDVvV21HV1NIVmtoaENyWWMzSHZYbndqa2lQd25Q?oc=5\" target=\"_blank\">KDD",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": " KDDIが月額最大「約8.5万円」の賃上げ、初任給は「30.5万円以上」に。ベースアップや特別昇給など、非管理職平均“約6％”アップ。この情報は、 KDDIが従業員の賃金を大幅に上げるための戦略や、利権や宣伝色である可能性があります。",
+    "true_intent": "この情報は、 KDDIが従業員の賃金を大幅に上げるための戦略や、利権や宣伝色である可能性があります。",
+    "bias_warning": "利権構造の可能性。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、 KDDIが従業員の賃金を大幅に上げるための戦略や、利権や宣伝色である可能性があります。",
+    "bias_warning": "利権構造の可能性。"
+  },
+  "collected_at": "2026-01-26T17:07:28.108292",
+  "source": "KDDI 採用 Deep Dive"
+}

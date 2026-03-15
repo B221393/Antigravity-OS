@@ -1,0 +1,15 @@
+{
+  "type": "thought",
+  "category": "就活・ES関連",
+  "timestamp": "2026-01-20T10:18:30.567746",
+  "content": "何ができるの？",
+  "context": {
+    "source": "text_router",
+    "auto_captured": true,
+    "routed_category": "就活・ES関連"
+  },
+  "metadata": {
+    "length": 7,
+    "has_keywords": true
+  }
+}

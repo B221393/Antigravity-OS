@@ -1,0 +1,23 @@
+{
+  "title": "AVD を採用して短期間でリモートワーク環境を構築した講談社",
+  "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5kV01TNC1nallNTUdWMHJLUVRGTlFjYnJFS2hZeWRfR0N4cUFsak15ZEhuU2FtNlJJeVRIWkdQOHBHYzZxU25DZnJtZVVyOWI5RV9RTUsxYVVOOFhDRmM4SW1VTTZPQjhQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE5kV01TNC1nallNTUdWMHJLUVRGTlFjYnJFS2hZeWRfR0N4cUFsak15ZEhuU2FtNlJJeVRIWkdQOHBHYzZxU25DZnJtZVVyOWI5RV9RTUsxYVVOOFhDRmM4SW1VTTZPQjhQ?oc=5\" tar",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "講談社がAVDでリモートワーク環境を構築。FastTrack for Azureの支援が成功要因。",
+    "true_intent": "Microsoft AzureとFastTrackの導入事例アピール。講談社の成功を例に、Azure導入を検討する企業への営業促進が目的。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "講談社, Microsoft",
+    "action_required": false,
+    "category": "出版/IT",
+    "target_year": "2027",
+    "company_profile": "## 講談社/Microsoft 本質的価値と27卒が狙うべき理由\n\n**講談社**\n\n1.  **主要武器**: 多様なIP創出力とブランド力。紙媒体の基盤とデジタル展開の融合。\n2.  **26-27卒への温度感**: デジタルシフトを担う人材を積極採用。編集/事業開発の両輪を重視。\n3.  **EGO適性**: 編集者は不要な構造的思考は求めないが、データ分析に基づいた企画立案は重要視。AI活用は模索中。\n4.  **裏の弱点**: 出版不況による収益源の多角化の遅れ。縦割り組織による意思決定の遅さ。\n\n**Microsoft**\n\n1.  **主要武器**: クラウド技術(Azure)とAI技術(Copilot)の圧倒的優位性。グローバル規模での事業展開力。\n2.  **26-27卒への温度感**: AI/クラウド人材を積極採用。多様なバックグラウンドを持つ人材を重視。\n3.  **EGO適性**: 論理的思考力/データ分析力は必須。AI活用は前提。\n4.  **裏の弱点**: 巨大組織ゆえの意思決定の遅さ。成果主義によるプレッシャー。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "Microsoft AzureとFastTrackの導入事例アピール。講談社の成功を例に、Azure導入を検討する企業への営業促進が目的。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:49:36.345938",
+  "source": "Active:講談社"
+}

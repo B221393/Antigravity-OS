@@ -1,0 +1,23 @@
+{
+  "title": "中期経営計画 (2020年3月期～2022年3月期) - K",
+  "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNVGZfSWdOQ3JyazZlaW96bGJTX3BhWDBVQTk3SDdDWGRHWUJfNkx2d0R4WmpEQWk1azV5Ylk0dGk5NUJOZk5iSnhoLTFqQ3c5Y0daVGZmYmtDM0lJamNPV1lrVmNQSWNDTXNMRDA4ZEdydjhRSU5WOEFzeC1jemYxNjZmYlN4bXd5RjZN?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiiwFBVV95cUxNVGZfSWdOQ3JyazZlaW96bGJTX3BhWDBVQTk3SDdDWGRHWUJfNkx2d0R4WmpEQWk1azV5Ylk0dGk5NUJOZk5iSnhoLTFqQ3c5Y0daVGZmYmtDM0lJamNPV1lrVmNQSWNDTXNMRDA4ZE",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "KDDIが2020-2022年の中期経営計画を発表。5G投資、新規事業、顧客基盤強化が柱。",
+    "true_intent": "過去の計画であり、実績のアピールと将来への期待感を醸成。株主や投資家への安心感提供、優秀な人材獲得を狙う広報戦略。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": false,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## KDDI 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 通信基盤×多角化戦略。通信を軸に、金融・エネルギー・エンタメ等、生活インフラ全体をカバーする事業ポートフォリオが強み。\n2.  **26-27卒への温度感**: DX人材獲得に積極的。ビジネス職に加え、データサイエンティスト等の専門職採用も強化。\n3.  **EGO適性**: 構造的思考は必須。AI活用にも積極投資しており、提案・実装能力があれば活躍のチャンス大。\n4.  **裏の弱点**: 多角化ゆえの意思決定の遅さ。縦割り組織も残存し、スピード感に課題が残る。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "過去の計画であり、実績のアピールと将来への期待感を醸成。株主や投資家への安心感提供、優秀な人材獲得を狙う広報戦略。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:06:40.039884",
+  "source": "KDDI 事業戦略"
+}

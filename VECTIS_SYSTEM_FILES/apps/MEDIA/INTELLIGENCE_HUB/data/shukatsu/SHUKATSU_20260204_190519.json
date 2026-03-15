@@ -1,0 +1,43 @@
+{
+  "title": "AIデータ社、“音づくりの匠の技と感性を、AIで未来へつなぐ” 「AI MusicCraft on IDX」リリース 〜 楽器製造の品質・工程・技術継承・輸出対応を一元AI化 〜 - PR TIMES",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE94N1JPTGxIcThUTUNZOWtycDZIbm1IbUhXOHFySl9INWN6UUlGN2hEWlk2OG1nRV9La3U3M1hsQ0owUmhwbkM4bHJETFdwdzlmUE03U3ZuMUFUNWxlUXVhMzhvU2JyZW5uWEE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE94N1JPTGxIcThUTUNZOWtycDZIbm1IbUhXOHFySl9INWN6UUlGN2hEWlk2OG1nRV9La3U3M1hsQ0owUmhwbkM4bHJETFdwdzlmUE03U3ZuMUFUNWxlUXVhMzhvU2JyZW5uWEE?oc=5\" target=\"_blank\">AIデータ社、“音づくりの匠の技と感性を、AIで未来へつなぐ” 「AI MusicCraft on IDX」リリース 〜 楽器製造の品質・工程・技術継承・輸出対応を一元AI化 〜</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PR TIMES</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "AIデータ社が楽器製造の品質・工程・技術継承・輸出対応を一元AI化する「AI MusicCraft on IDX」をリリース",
+    "strategic_analysis": {
+      "true_intent": "AIデータ社が楽器製造業界にAI技術を導入し、市場シェアを拡大することを目的としている。宣伝色が強いが、実際の利益は企業と業界全体にもたらされる",
+      "swot": {
+        "strength": "AI技術の導入により、楽器製造の品質と効率が向上する",
+        "weakness": "従来の楽器製造の工程や技術がAIに置き換えられ、従業員の雇用が脅かされる可能性",
+        "opportunity": "就活生がAI技術を学び、楽器製造業界で活躍するチャンス",
+        "threat": "楽器製造業界がAI技術の導入に伴う大きな変化に適応しなければならない"
+      },
+      "writing_technique": "",
+      "action_plan": "就活生はAI技術の基礎を学び、楽器製造業界でのAIの応用について調査し、面接でその知識をアピールする"
+    },
+    "bias_warning": "この記事はAIデータ社のPR TIMESであり、宣伝色が強い",
+    "company": "AIデータ社",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 8,
+    "company_profile": "1. **主要武器**: データ分析とAI技術の融合による革新的な解決策を提供する能力\n2. **26-27卒への温度感**: 高度な技術力を求める傾向が強まり、AI関連のスキルを持つ新卒を積極的に採用\n3. **EGO適性**: 構造的思考とAI活用を重視する文化で、イノベーションを推進する環境\n4. **裏の弱点**: 技術の進化に伴う急速な変化への対応が求められ、適応性と学習意欲が重要となる",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "AIデータ社が楽器製造業界にAI技術を導入し、市場シェアを拡大することを目的としている。宣伝色が強いが、実際の利益は企業と業界全体にもたらされる",
+    "swot": {
+      "strength": "AI技術の導入により、楽器製造の品質と効率が向上する",
+      "weakness": "従来の楽器製造の工程や技術がAIに置き換えられ、従業員の雇用が脅かされる可能性",
+      "opportunity": "就活生がAI技術を学び、楽器製造業界で活躍するチャンス",
+      "threat": "楽器製造業界がAI技術の導入に伴う大きな変化に適応しなければならない"
+    },
+    "writing_technique": "",
+    "action_plan": "就活生はAI技術の基礎を学び、楽器製造業界でのAIの応用について調査し、面接でその知識をアピールする"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "この記事はAIデータ社のPR TIMESであり、宣伝色が強い",
+  "collected_at": "2026-02-04T19:05:19.092774",
+  "source": "PR TIMES (AI/DX)",
+  "score": 8
+}

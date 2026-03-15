@@ -1,0 +1,22 @@
+{
+  "title": "ほかの社員インタビュー - tokyo-gas.co.jp",
+  "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5Fb2lpSzZnX0ZaQ3RRMFhxRUtFYlFjZWJiVkF0dHFDTlY0dlQ4R1RhZUIwdWVELTM5Q0xPZzJqRFNaZUxUY0dYRldKTkJjWGwwdHBxemxYNjVUaE5VN2lmT3NyUzFXNVl2ZUQtNjFuZzhIWmQ1eFJ2MnJ5MA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE5Fb2lpSzZnX0ZaQ3RRMFhxRUtFYlFjZWJiVkF0dHFDTlY0dlQ4R1RhZUIwdWVELTM5Q0xPZzJqRFNaZUxUY0dYRldKTkJjWGwwdHBxemxYNjVUaE5VN2lmT3NyUzFXNVl2ZUQtNjFuZz",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "この情報は、企業が他の社員との競争力を確保するために、彼らの採用や育成に意図的に利用されている可能性があることを指摘する可能性があります。",
+    "true_intent": "この情報は、企業が他の社員との競争力を確保するために、彼らの採用や育成に意図的に利用される可能性があることを指摘する可能性があります。",
+    "bias_warning": "肯定的、企業が他の社員との競争力を確保するために、彼らの採用や育成に意図的に利用される可能性がある可能性があることを指摘する可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、企業が他の社員との競争力を確保するために、彼らの採用や育成に意図的に利用される可能性があることを指摘する可能性があります。",
+    "bias_warning": "肯定的、企業が他の社員との競争力を確保するために、彼らの採用や育成に意図的に利用される可能性がある可能性があることを指摘する可能性があります。"
+  },
+  "collected_at": "2026-01-27T12:20:24.877439",
+  "source": "東京ガス"
+}

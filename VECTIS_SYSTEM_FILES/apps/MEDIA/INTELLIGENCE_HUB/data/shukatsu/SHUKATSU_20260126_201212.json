@@ -1,0 +1,22 @@
+{
+  "title": "ビジョン・戦略 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE1KQUN6YW1FYktjMGRabGVSd201VUtxbXE4NVlEYlBRNkMwdnZ1MHVwZEtuWV9KN2kzeHpXcUVQckx1dw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQkFVX3lxTE1KQUN6YW1FYktjMGRabGVSd201VUtxbXE4NVlEYlBRNkMwdnZ1MHVwZEtuWV9KN2kzeHpXcUVQckx1dw?oc=5\" target=\"_blank\">ビジョン・戦略</a>&nbsp;&nbsp;<font color=\"#",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIのビジョン・戦略に関する記事を分析した結果、企業の利権化や宣伝を暗示する可能性があります。",
+    "true_intent": "KDDIは、2027年より未来的な技術やサービスを開発・提供することで、新たな顧客基盤を獲得することを目的に設定している可能性があります。",
+    "bias_warning": "利権化可能性や宣伝の利便性の分析は、特定の分野や顧客群への影響を調査する必要があり、明確な結論は難しい可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIは、2027年より未来的な技術やサービスを開発・提供することで、新たな顧客基盤を獲得することを目的に設定している可能性があります。",
+    "bias_warning": "利権化可能性や宣伝の利便性の分析は、特定の分野や顧客群への影響を調査する必要があり、明確な結論は難しい可能性があります。"
+  },
+  "collected_at": "2026-01-26T20:12:12.547390",
+  "source": "KDDI 事業戦略"
+}

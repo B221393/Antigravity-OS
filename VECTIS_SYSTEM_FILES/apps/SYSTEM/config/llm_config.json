@@ -1,0 +1,4 @@
+{
+    "ollama_model": "phi4:latest",
+    "keep_alive": 0
+}

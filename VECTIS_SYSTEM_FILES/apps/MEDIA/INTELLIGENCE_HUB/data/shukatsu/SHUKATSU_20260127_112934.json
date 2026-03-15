@@ -1,0 +1,22 @@
+{
+  "title": "マクロスコープ：日本企業の採用意欲、ＡＩ普及でじわり低下 求",
+  "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNemJoWklQZzFtZzZscnRXU3FXeWFxdV9YdDg0T3g0bW1lcWxfYW9oaUVvbjB0bUc1WnRRTTQ0LVBYbGlRQlByVW0zaUdQcTZaNDFQN0FKekc1d090QTdvZ09aRk1PQXVmZ1ZJeEk0ZDYtRi11d3RGR0IwTWhPc2lXMWZn?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxNemJoWklQZzFtZzZscnRXU3FXeWFxdV9YdDg0T3g0bW1lcWxfYW9oaUVvbjB0bUc1WnRRTTQ0LVBYbGlRQlByVW0zaUdQcTZaNDFQN0FKekc1d090QTdvZ09aRk1PQXVmZ1ZJeEk0ZD",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "AI普及で日本企業の採用意欲が低下傾向、求人件数に変化が生じているとの報道。",
+    "true_intent": "AI導入によるコスト削減効果の宣伝。企業側の採用抑制を正当化し、政府のAI推進政策を後押しする意図が考えられる。人材派遣業界にはマイナス。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "AI導入によるコスト削減効果の宣伝。企業側の採用抑制を正当化し、政府のAI推進政策を後押しする意図が考えられる。人材派遣業界にはマイナス。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:29:34.000658",
+  "source": "ロイター 企業ニュース"
+}

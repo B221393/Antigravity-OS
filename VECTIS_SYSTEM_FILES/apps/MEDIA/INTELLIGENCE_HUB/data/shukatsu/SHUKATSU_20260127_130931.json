@@ -1,0 +1,24 @@
+{
+  "title": "マクロスコープ：日本企業の採用意欲、ＡＩ普及でじわり低下 求",
+  "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNemJoWklQZzFtZzZscnRXU3FXeWFxdV9YdDg0T3g0bW1lcWxfYW9oaUVvbjB0bUc1WnRRTTQ0LVBYbGlRQlByVW0zaUdQcTZaNDFQN0FKekc1d090QTdvZ09aRk1PQXVmZ1ZJeEk0ZDYtRi11d3RGR0IwTWhPc2lXMWZn?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxNemJoWklQZzFtZzZscnRXU3FXeWFxdV9YdDg0T3g0bW1lcWxfYW9oaUVvbjB0bUc1WnRRTTQ0LVBYbGlRQlByVW0zaUdQcTZaNDFQN0FKekc1d090QTdvZ09aRk1PQXVmZ1ZJeEk0ZD",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "AI普及で日本企業の採用意欲が低下、求人件数に異変。今後の就活に影響か。",
+    "true_intent": "AIベンダーの競争激化、人材派遣会社の危機感、企業の人件費削減意欲などが背景にある可能性。採用市場の構造変化を煽り、自社のサービス利用を促す意図も考えられる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "Reuters",
+    "action_required": true,
+    "category": "出版/メディア",
+    "target_year": "2027",
+    "company_profile": "## Reuters 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 170年超の歴史と世界最大級の取材網。中立・正確な報道で信頼を確立し、金融情報プラットフォーム「Refinitiv」で高収益を誇る。\n\n2.  **26-27卒への温度感**: デジタルジャーナリズム強化のため、データ分析・エンジニアリングスキルを持つ人材を積極的に採用。\n\n3.  **EGO適性**: データドリブンな意思決定を重視。AIを活用したニュース配信、ファクトチェックを推進しており、適性高。\n\n4.  **裏の弱点**: 伝統的組織ゆえ、変革スピードは緩慢。報道部門と金融情報部門の連携不足が課題。\n",
+    "deep_web_intel": "No search results found to analyze."
+  },
+  "critical_analysis": {
+    "true_intent": "AIベンダーの競争激化、人材派遣会社の危機感、企業の人件費削減意欲などが背景にある可能性。採用市場の構造変化を煽り、自社のサービス利用を促す意図も考えられる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:09:31.614515",
+  "source": "ロイター 企業ニュース"
+}

@@ -1,0 +1,17 @@
+{
+  "type": "thought",
+  "category": "英語・TOEIC",
+  "timestamp": "2026-01-16T21:03:04.480079",
+  "content": "TOEICで800点を目指している。毎日30分は英語に触れる習慣をつけたい。",
+  "context": {
+    "source": "ego_system_test",
+    "auto_captured": false,
+    "note": "学習目標",
+    "routed_category": "英語・TOEIC"
+  },
+  "metadata": {
+    "length": 38,
+    "has_keywords": true,
+    "test_memory": true
+  }
+}

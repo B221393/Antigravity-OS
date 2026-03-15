@@ -1,0 +1,22 @@
+{
+  "title": "財務省本省（一般職 大卒程度）採用情報 - mof.go.j",
+  "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9WRlQ2MkxFR2syU3h6SE5nM3gxOFl5V1docDQ3aHRZbVQtdXUwV0d0OHl3NUdLS1FkeHljTmZINDdoREl3WmVTaW5MT2dXazk4RGQ0VVkxTG5KLXVHNmo3Wll3SGloVTlYVzY0emtR?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTE9WRlQ2MkxFR2syU3h6SE5nM3gxOFl5V1docDQ3aHRZbVQtdXUwV0d0OHl3NUdLS1FkeHljTmZINDdoREl3WmVTaW5MT2dXazk4RGQ0VVkxTG5KLXVHNmo3Wll3SGloVTlYVzY0emtR?o",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "財務省が一般職大卒採用情報を公開。堅実なキャリアをアピール。",
+    "true_intent": "優秀な人材の確保。霞が関のイメージ向上と、官僚機構の維持を図る。安定志向の学生をターゲットに、優秀層の民間企業への流出を抑制。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材の確保。霞が関のイメージ向上と、官僚機構の維持を図る。安定志向の学生をターゲットに、優秀層の民間企業への流出を抑制。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:09:06.614575",
+  "source": "財務省 採用"
+}

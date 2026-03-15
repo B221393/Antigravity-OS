@@ -1,0 +1,22 @@
+{
+  "title": "就職四季報 企業研究・インターンシップ版2027年版 - 東",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "2027年版 就職情報から、企業との利権構造や情報提供の意図を推測します。",
+    "true_intent": "この情報は、企業が就職者への情報提供や、利権獲得の意図を暗示しています。",
+    "bias_warning": "ポジショントークが使用されている可能性があり、企業が特定企業や業界への影響力を示す可能性があります.",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、企業が就職者への情報提供や、利権獲得の意図を暗示しています。",
+    "bias_warning": "ポジショントークが使用されている可能性があり、企業が特定企業や業界への影響力を示す可能性があります."
+  },
+  "collected_at": "2026-01-26T20:11:42.457814",
+  "source": "インターン (Google)"
+}

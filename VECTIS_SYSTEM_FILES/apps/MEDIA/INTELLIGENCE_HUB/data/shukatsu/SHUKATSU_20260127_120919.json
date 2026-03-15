@@ -1,0 +1,22 @@
+{
+  "title": "職員採用／採用サポーター制度 - pref.hyogo.lg",
+  "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYY0twMy1mYTdBN3E3SGo2V3hZTHJqM2xGZkxQRGFCX0dTSzBDTGR5NGtIMDN2MFBtd1RYaEdQaVFlZEU1eDZMUVdjZmpHOURrb0dEblRxR200TXh0dk5pbElSV0ZnQQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYY0twMy1mYTdBN3E3SGo2V3hZTHJqM2xGZkxQRGFCX0dTSzBDTGR5NGtIMDN2MFBtd1RYaEdQaVFlZEU1eDZMUVdjZmpHOURrb0dEblRxR200TXh0dk5pbElSV0ZnQQ?oc=5\" targe",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "兵庫県庁が採用サポーター制度を導入し、職員採用を強化。",
+    "true_intent": "優秀な人材確保による県政の活性化を謳いつつ、採用実績をアピールし、県庁のイメージ向上を図る。OB/OG人脈の活用も視野か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材確保による県政の活性化を謳いつつ、採用実績をアピールし、県庁のイメージ向上を図る。OB/OG人脈の活用も視野か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:09:19.452938",
+  "source": "兵庫県庁 採用"
+}

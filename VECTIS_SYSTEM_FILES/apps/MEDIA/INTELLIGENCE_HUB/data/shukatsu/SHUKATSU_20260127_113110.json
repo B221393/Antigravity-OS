@@ -1,0 +1,24 @@
+{
+  "title": "27卒ITエンジニア学生が選ぶ人気企業ランキング！ NTTデ",
+  "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9aekFTZHZ2SUJRMzJ2VUlELUJTa2dBVlpvbE03dGRZR1lKYU5FRDkzY1ZMN3hIQmtRaHZsM3FzbG1OUnpjM0xpOFYzQ2x0WFJ3SGpNTU9wNHJnSTA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiW0FVX3lxTE9aekFTZHZ2SUJRMzJ2VUlELUJTa2dBVlpvbE03dGRZR1lKYU5FRDkzY1ZMN3hIQmtRaHZsM3FzbG1OUnpjM0xpOFYzQ2x0WFJ3SGpNTU9wNHJnSTA?oc=5\" target=\"_blank\">27卒I",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "サポーターズ調査で27卒ITエンジニア人気企業ランキング発表。NTTデータ、LINEヤフーが上位。",
+    "true_intent": "サポーターズの自社サービス（就活支援）の宣伝。上位企業は優秀な学生の応募を増やしたい。ランキング上位企業からの広告収入も期待できる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "NTTデータ, LINEヤフー, サポーターズ",
+    "action_required": true,
+    "category": "IT/広告/メディア",
+    "target_year": "2027",
+    "company_profile": "## 各社の本質的価値と27卒が狙うべき理由\n\n**NTTデータ**\n\n1.  **主要武器**: 官公庁・金融など社会インフラを支える圧倒的信頼と、グローバル規模でのシステム構築力。\n2.  **26-27卒への温度感**: デジタル人材獲得に積極的。多様なバックグラウンドを持つ人材を求めている。\n3.  **EGO適性**: 構造的思考は必須。AI活用も推進中だが、部門による差あり。\n4.  **裏の弱点**: 大企業病による意思決定の遅さ、年功序列によるキャリアパスの不明瞭さ。\n\n**LINEヤフー**\n\n1.  **主要武器**: 国内最大級のユーザー基盤と、多様なサービス展開によるデータ活用力。\n2.  **26-27卒への温度感**: エンジニア・デザイナーを中心に即戦力となる人材を積極的に採用。\n3.  **EGO適性**: 構造的思考、AI活用は不可欠。データドリブンな文化が根強い。\n4.  **裏の弱点**: 親会社との関係性、変化の激しい業界での競争激化。\n\n**サポーターズ**\n\n1.  **主要武器**: 成長意欲の高い学生と企業を繋ぐ独自のプラットフォームと、手厚いキャリアサポート。\n2.  **26-27卒への温度感**: 若手の成長を重視。ポテンシャル採用に積極的。\n3.  **EGO適性**: 論理的思考力は重要視される。AI活用は発展途上。\n4.  **裏の弱点**: 競合他社の参入、事業規模の拡大に伴う組織の複雑化。\n",
+    "deep_web_intel": "**NTTデータ**\n\n*   **Overview:** NTTグループ公式ホームページ. ビジョン、経営戦略、サステナビリティ、研究開発、災害対策、社会貢献、IR情報等.\n*   **Key Pages:** 会社案内(概要、トップメッセージ、組織図、沿革), ニュース.\n*   **Tech:** Google Tag Manager, JavaScript, CSS. Mobile-friendly.\n\n**Gap Analysis:**\n\n*   LINEヤフー, サポーターズの情報は提供データに存在しない."
+  },
+  "critical_analysis": {
+    "true_intent": "サポーターズの自社サービス（就活支援）の宣伝。上位企業は優秀な学生の応募を増やしたい。ランキング上位企業からの広告収入も期待できる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:31:10.998386",
+  "source": "Active:NTT"
+}

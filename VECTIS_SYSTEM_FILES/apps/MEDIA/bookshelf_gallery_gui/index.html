@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Visual Archive - EGO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .gallery-container {
+            width: 100%;
+            height: 100vh;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            left: 50%;
+            top: 50%;
+            margin-left: -150px;
+            margin-top: -200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .card-category {
+            font-size: 14px;
+            opacity: 0.8;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .card-count {
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .mode-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .mode-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .mode-btn:hover,
+        .mode-btn.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .info-panel {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>📚 EGO VISUAL ARCHIVE</h1>
+        <div class="mode-toggle">
+            <div class="mode-btn active" onclick="setMode('books')">Books</div>
+            <div class="mode-btn" onclick="setMode('apps')">Apps</div>
+        </div>
+    </div>
+
+    <div class="gallery-container">
+        <div class="carousel" id="carousel"></div>
+    </div>
+
+    <div class="info-panel">
+        <div class="info-item">
+            <div class="info-label">Current Position</div>
+            <div class="info-value" id="currentPos">1 / 10</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Category</div>
+            <div class="info-value" id="currentCategory">Books</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Total Items</div>
+            <div class="info-value" id="totalItems">10</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="nav-btn" onclick="rotateCarousel(-1)">◀</div>
+        <div class="nav-btn" onclick="rotateCarousel(1)">▶</div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        let currentMode = 'books';
+        let items = [];
+
+        const bookItems = [
+            { icon: '📘', title: 'AI & Machine Learning', category: 'Technology', count: 15 },
+            { icon: '📗', title: 'Philosophy & Ethics', category: 'Philosophy', count: 23 },
+            { icon: '📕', title: 'Business Strategy', category: 'Business', count: 18 },
+            { icon: '📙', title: 'Psychology', category: 'Science', count: 12 },
+            { icon: '📔', title: 'History & Culture', category: 'History', count: 20 },
+            { icon: '📓', title: 'Self Development', category: 'Personal', count: 25 },
+            { icon: '📒', title: 'Economics', category: 'Economics', count: 14 },
+            { icon: '📚', title: 'Literature', category: 'Arts', count: 30 },
+            { icon: '📖', title: 'Science & Nature', category: 'Science', count: 17 },
+            { icon: '📕', title: 'Languages', category: 'Education', count: 22 }
+        ];
+
+        const appItems = [
+            { icon: '🎨', title: 'Creative Suite', category: 'Apps', count: 8 },
+            { icon: '💻', title: 'Development Tools', category: 'Apps', count: 12 },
+            { icon: '📊', title: 'Data Analysis', category: 'Apps', count: 6 },
+            { icon: '🎯', title: 'Productivity', category: 'Apps', count: 15 },
+            { icon: '🎮', title: 'AI Experiments', category: 'Apps', count: 10 },
+            { icon: '📱', title: 'Utilities', category: 'Apps', count: 20 },
+            { icon: '🌐', title: 'Web Apps', category: 'Apps', count: 14 },
+            { icon: '🤖', title: 'AI Lab', category: 'Apps', count: 9 }
+        ];
+
+        function setMode(mode) {
+            currentMode = mode;
+            items = mode === 'books' ? bookItems : appItems;
+            currentIndex = 0;
+
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('currentCategory').textContent = mode === 'books' ? 'Books' : 'Apps';
+            document.getElementById('totalItems').textContent = items.length;
+
+            createCarousel();
+        }
+
+        function createCarousel() {
+            const carousel = document.getElementById('carousel');
+            carousel.innerHTML = '';
+
+            const angleStep = 360 / items.length;
+            const radius = 400;
+
+            items.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const angle = angleStep * index;
+                const x = Math.sin(angle * Math.PI / 180) * radius;
+                const z = Math.cos(angle * Math.PI / 180) * radius;
+
+                card.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${-angle}deg)`;
+
+                card.innerHTML = `
+                    <div class="card-icon">${item.icon}</div>
+                    <div class="card-title">${item.title}</div>
+                    <div class="card-category">${item.category}</div>
+                    <div class="card-count">${item.count} items</div>
+                `;
+
+                card.addEventListener('click', () => {
+                    alert(`Opening: ${item.title}\n${item.count} items available`);
+                });
+
+                carousel.appendChild(card);
+            });
+
+            updateCarousel();
+        }
+
+        function rotateCarousel(direction) {
+            currentIndex = (currentIndex + direction + items.length) % items.length;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const carousel = document.getElementById('carousel');
+            const angleStep = 360 / items.length;
+            const rotation = -angleStep * currentIndex;
+
+            carousel.style.transform = `rotateY(${rotation}deg)`;
+
+            document.getElementById('currentPos').textContent = `${currentIndex + 1} / ${items.length}`;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') rotateCarousel(-1);
+            if (e.key === 'ArrowRight') rotateCarousel(1);
+        });
+
+        // Create floating particles
+        function createParticles() {
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 3 + 's';
+                particle.style.animation = 'float 3s infinite ease-in-out';
+                document.body.appendChild(particle);
+            }
+        }
+
+        // Initialize
+        items = bookItems;
+        createCarousel();
+        createParticles();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "title": "ZenX、旧帝大・早慶など大学生100名への調査による「企業",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9aSFRtWDFVM3ZTMENCa09JOS02OURNY2UxUVBPb1phYzJEWVh2eHVNQkQxQkhId3JWaG1CSEs2ZlI3Z0FibzhHWjNXTWJ3NnpBN1E2OWptQkl5d1J0T3BMaXRxT1lySnB6YUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE9aSFRtWDFVM3ZTMENCa09JOS02OURNY2UxUVBPb1phYzJEWVh2eHVNQkQxQkhId3JWaG1CSEs2ZlI3Z0FibzhHWjNXTWJ3NnpBN1E2OWptQkl5d1J0T3BMaXRxT1lySnB6YUE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ZenXが旧帝大・早慶生100名の企業選びレポート公開。業界別に重視点が異なる。",
+    "true_intent": "ZenXのブランドイメージ向上と、就活生向けサービス（キャリア相談、情報提供等）への誘導。高学歴層のデータ獲得と、企業へのレポート販売も視野か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ZenX",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。ZenXの本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: 業界トップクラスの技術力と、それを活かした独自の顧客体験設計。データ分析に基づいたパーソナライズ戦略が強み。\n2.  **26-27卒への温度感**: 採用数増加傾向。特に技術職とデータ分析職に注力。インターンシップからの採用が鍵。\n3.  **EGO適性**: 構造的思考は必須。AI活用を推進しており、積極的な学習意欲と応用力が求められる。\n4.  **裏の弱点**: 急成長に伴う組織体制の脆弱性。部署間の連携不足や、人材育成の遅れが懸念される。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   User experiencing issues with Blackberry Connect.\n*   Error: \"unable to connect with your device (returned PIN 0).\"\n*   Company requires Blackberry for Exchange server email access due to no wireless access.\n*   User currently using BB Connect on a \"Dash\" device, which is failing.\n*   User has a \"Wing\" device.\n\n**Structured Summary:**\n\n| Problem                        | Context                                                      | Cause/Error                                  | User Info                      | Device Info    |\n| :----------------------------- | :----------------------------------------------------------- | :------------------------------------------- | :----------------------------- | :------------- |\n| BB Connect connection failure | Company policy requires Blackberry for email access, no wifi | \"unable to connect with your device (returned PIN 0)\" | Currently using BB Connect | Failing \"Dash\" |\n|                                |                                                              |                                              |                                | Has a \"Wing\" |\n\n**Gap Analysis:**\n\n*   Root cause of the PIN 0 error not identified.\n*   Whether the \"Wing\" device is experiencing the same issue is unknown.\n*   Solutions/troubleshooting steps are not included in the excerpt.\n*   Server-side troubleshooting has not been addressed."
+  },
+  "critical_analysis": {
+    "true_intent": "ZenXのブランドイメージ向上と、就活生向けサービス（キャリア相談、情報提供等）への誘導。高学歴層のデータ獲得と、企業へのレポート販売も視野か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:14:57.650416",
+  "source": "Active:電通"
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 White Noise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #0f0f1a);
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #a29bfe
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px
+        }
+
+        .sounds {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto 40px
+        }
+
+        .sound-btn {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, .05);
+            border: 2px solid rgba(255, 255, 255, .1);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .sound-btn:hover {
+            background: rgba(162, 155, 254, .1);
+            border-color: #a29bfe
+        }
+
+        .sound-btn.active {
+            background: rgba(162, 155, 254, .2);
+            border-color: #a29bfe;
+            box-shadow: 0 0 30px rgba(162, 155, 254, .3)
+        }
+
+        .sound-btn .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px
+        }
+
+        .sound-btn .name {
+            font-size: .9em;
+            color: #888
+        }
+
+        .sound-btn.active .name {
+            color: #a29bfe
+        }
+
+        .volume {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px
+        }
+
+        .volume input {
+            width: 200px;
+            height: 6px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, .2);
+            border-radius: 3px
+        }
+
+        .volume input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #a29bfe;
+            cursor: pointer
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎵 White Noise</h1>
+        <p class="subtitle">集中・リラックス・睡眠</p>
+        <div class="sounds">
+            <div class="sound-btn" onclick="toggle('rain')">
+                <div class="icon">🌧️</div>
+                <div class="name">Rain</div>
+            </div>
+            <div class="sound-btn" onclick="toggle('ocean')">
+                <div class="icon">🌊</div>
+                <div class="name">Ocean</div>
+            </div>
+            <div class="sound-btn" onclick="toggle('forest')">
+                <div class="icon">🌲</div>
+                <div class="name">Forest</div>
+            </div>
+            <div class="sound-btn" onclick="toggle('fire')">
+                <div class="icon">🔥</div>
+                <div class="name">Fire</div>
+            </div>
+            <div class="sound-btn" onclick="toggle('wind')">
+                <div class="icon">💨</div>
+                <div class="name">Wind</div>
+            </div>
+            <div class="sound-btn" onclick="toggle('white')">
+                <div class="icon">📻</div>
+                <div class="name">White</div>
+            </div>
+        </div>
+        <div class="volume"><span>🔈</span><input type="range" id="vol" min="0" max="100" value="50"
+                oninput="setVol(this.value)"><span>🔊</span></div>
+    </div>
+    <script>
+        let ctx = null, nodes = {};
+        function getCtx() { if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)(); return ctx }
+        function makeNoise() { const c = getCtx(), sz = 2 * c.sampleRate, buf = c.createBuffer(1, sz, c.sampleRate), out = buf.getChannelData(0); let last = 0; for (let i = 0; i < sz; i++) { const w = Math.random() * 2 - 1; out[i] = (last + .02 * w) / 1.02; last = out[i]; out[i] *= 3.5 } const src = c.createBufferSource(); src.buffer = buf; src.loop = true; const g = c.createGain(); g.gain.value = document.getElementById('vol').value / 100; src.connect(g); g.connect(c.destination); return { s: src, g: g } }
+        function toggle(t) { const btn = event.target.closest('.sound-btn'); if (nodes[t]) { nodes[t].s.stop(); delete nodes[t]; btn.classList.remove('active') } else { const n = makeNoise(); n.s.start(); nodes[t] = n; btn.classList.add('active') } }
+        function setVol(v) { Object.values(nodes).forEach(n => n.g.gain.value = v / 100) }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+{
+  "title": "TechCrunch Japan｜『LIFULL・ゼンリンなどが不動産ID発行システム試用版の公開に向け開発・運営協議会を設立』 - 株式会社GA technologies - ジーエーテクノロジーズ",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBaejdxUVozeEhtRzRGRVNOaC1OWXU4SUV1TkxkeWhMb1ZkZ204VjdVNWU1Tkg2VlI5RXNBYkRqaTFTallQRy1xNVdYUUM?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTFBaejdxUVozeEhtRzRGRVNOaC1OWXU4SUV1TkxkeWhMb1ZkZ204VjdVNWU1Tkg2VlI5RXNBYkRqaTFTallQRy1xNVdYUUM?oc=5\" target=\"_blank\">TechCrunch Japan｜『LIFULL・ゼンリンなどが不動産ID発行システム試用版の公開に向け開発・運営協議会を設立』</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">株式会社GA technologies - ジーエーテクノロジーズ</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "LIFULL・ゼンリンなどが不動産ID発行システム試用版の公開に向け開発・運営協議会を設立",
+    "strategic_analysis": {
+      "true_intent": "不動産業界のデジタル化を推進し、各企業の事業拡大を狙っている。特に、LIFULLやゼンリンは不動産情報サービスで強みを持つ",
+      "swot": {
+        "strength": "不動産業界でのデジタル化の先駆者的存在感",
+        "weakness": "新規参入企業による市場シェアの奪われ可能性",
+        "opportunity": "不動産ID発行システムの開発・運営に携われることで、デジタル化の先頭に立つことができる",
+        "threat": "業界全体のデジタル化の遅れによる競争力低下"
+      },
+      "writing_technique": "",
+      "action_plan": "不動産ID発行システムの開発・運営について、LIFULLやゼンリンの担当者に直接聞き、具体的な取り組みや将来の展望について質問する。さらに、自分がどのように貢献できるかを考える"
+    },
+    "bias_warning": "不動産業界でのデジタル化の必要性を強調し、LIFULLやゼンリンの事業を宣伝する可能性",
+    "company": "LIFULL・ゼンリン",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 8,
+    "company_profile": "以下の通り「表向きの顔」ではなく「本質的価値」と「27卒が狙うべき理由」を構造化しました。\n\n* **企業名**: LIFULL・ゼンリン\n* **主要武器**: 不動産・地図情報の強み\n* **26-27卒への温度感**: デジタル化推進の影響で、ITスキルを重視\n* **EGO適性**: 構造的思考やAI活用を推進\n* **裏の弱点**: 業界の変化への対応の遅れのリスク",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "不動産業界のデジタル化を推進し、各企業の事業拡大を狙っている。特に、LIFULLやゼンリンは不動産情報サービスで強みを持つ",
+    "swot": {
+      "strength": "不動産業界でのデジタル化の先駆者的存在感",
+      "weakness": "新規参入企業による市場シェアの奪われ可能性",
+      "opportunity": "不動産ID発行システムの開発・運営に携われることで、デジタル化の先頭に立つことができる",
+      "threat": "業界全体のデジタル化の遅れによる競争力低下"
+    },
+    "writing_technique": "",
+    "action_plan": "不動産ID発行システムの開発・運営について、LIFULLやゼンリンの担当者に直接聞き、具体的な取り組みや将来の展望について質問する。さらに、自分がどのように貢献できるかを考える"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "不動産業界でのデジタル化の必要性を強調し、LIFULLやゼンリンの事業を宣伝する可能性",
+  "collected_at": "2026-02-04T19:15:53.792425",
+  "source": "TechCrunch JP (Archive)",
+  "score": 8
+}

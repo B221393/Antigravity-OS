@@ -1,0 +1,24 @@
+{
+  "title": "産経新聞社×ワークス・ジャパン「27卒学生が選ぶ就職人気企業",
+  "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1FbGh5QjJDN2hpTHN6UHFmdFIzcHB5b0h0TjRUMDJvOWFNRTFlN0RUVmVWMEZTUnoydFNaUHNTcURYN1UzUTVMODBiWmpsbjBaUkRzcTFncG1KZzA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiW0FVX3lxTE1FbGh5QjJDN2hpTHN6UHFmdFIzcHB5b0h0TjRUMDJvOWFNRTFlN0RUVmVWMEZTUnoydFNaUHNTcURYN1UzUTVMODBiWmpsbjBaUkRzcTFncG1KZzA?oc=5\" target=\"_blank\">産経新聞",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "産経新聞とワークス・ジャパンが27卒向け就職人気企業ランキングを発表。",
+    "true_intent": "産経新聞とワークス・ジャパンのブランド価値向上、ランキング掲載企業からの広告収入、ワークス・ジャパンの就活イベント集客。学生の企業選択誘導。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "産経新聞社, ワークス・ジャパン",
+    "action_required": false,
+    "category": "出版/広告/メディア",
+    "target_year": "2027",
+    "company_profile": "## 産経新聞社\n\n1.  **主要武器**: 保守論壇での強い影響力と、独自取材力に基づく質の高い報道。\n2.  **26-27卒への温度感**: デジタルシフトを加速させるため、意欲的な若手人材を積極的に採用。\n3.  **EGO適性**: 保守的な社風が残るものの、データ分析やAI活用への関心は高まりつつある。\n4.  **裏の弱点**: 読者層の高齢化と、デジタル化の遅れによる収益基盤の脆弱性。\n\n## ワークス・ジャパン\n\n1.  **主要武器**: 採用コンサルティングの豊富な実績と、独自のネットワーク。\n2.  **26-27卒への温度感**: コンサルタントとして成長したい意欲の高い学生を歓迎。\n3.  **EGO適性**: ロジカルシンキングとデータ分析を重視する文化。AI活用にも積極的。\n4.  **裏の弱点**: 成果主義が強く、プレッシャーを感じやすい環境。離職率が高い傾向も。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Gmail:** Email, chat, video, phone integration. Available on web and mobile (Google Play, Apple App Store).\n*   **Google Analytics:** Tracking user behavior on Gmail help pages.\n\n**Structured Summary:**\n\n*   **Gmail Functionality:**  Beyond email, integrates communication methods.\n*   **Accessibility:** Web and mobile apps.\n*   **Analytics:** Google tracks user data on Gmail help pages for analysis.\n\n**Gap Analysis:**\n\n*   No specific details on partnerships are present.\n*   Mentioned companies \"産経新聞社\" and \"ワークス・ジャパン\" are not referred in these sources."
+  },
+  "critical_analysis": {
+    "true_intent": "産経新聞とワークス・ジャパンのブランド価値向上、ランキング掲載企業からの広告収入、ワークス・ジャパンの就活イベント集客。学生の企業選択誘導。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:36:24.369536",
+  "source": "Active:三菱商事"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "トヨタ、戦略投資子会社「トヨタ・インベンション・パートナーズ",
+  "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ZazNGa2xyRXhocmROQ3dJdTQyREZ4UlBzdVN2TnI3dWZZQ2ZMYmVHRTk3dndvNHROQk12WW1ZUTdyUXpyRzFTOU82UWtfcFNNcFNPYnh6WHZXaWVnQkFvcTFmVExfWlc3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ZazNGa2xyRXhocmROQ3dJdTQyREZ4UlBzdVN2TnI3dWZZQ2ZMYmVHRTk3dndvNHROQk12WW1ZUTdyUXpyRzFTOU82UWtfcFNNcFNPYnh6WHZXaWVnQkFvcTFmVExfWlc3?oc=5\" tar",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トヨタが戦略投資子会社と2号ファンド設立。モビリティ変革加速を目指す。",
+    "true_intent": "モビリティ変革の主導権掌握と新規事業育成をアピール。ベンチャー投資による技術獲得と囲い込み、企業イメージ向上も狙い。系列サプライヤーへの牽制も含まれる可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "トヨタ自動車",
+    "action_required": true,
+    "category": "IT/その他",
+    "target_year": "2027",
+    "company_profile": "## トヨタ自動車：就活メンターが見る本質\n\n1.  **主要武器**: 長期的な視点と現場主義に基づく、世界最高の品質管理とサプライチェーン。技術革新への投資余力も強み。\n2.  **26-27卒への温度感**: 変化を恐れず、多様な価値観を持つ人材を積極的に採用。特に、ソフトウェア・AI領域の強化に注力。\n3.  **EGO適性**: 構造的思考は必須。AI活用は推進中だが、現場との連携重視で、机上論に偏らないバランス感覚が重要。\n4.  **裏の弱点**: 意思決定の遅さと、伝統的な企業文化が革新を阻害する可能性。年功序列制度も一部残存。\n",
+    "deep_web_intel": "**Structured Summary of Toyota Website Data:**\n\n*   **General:**\n    *   Official website for Toyota Motor Corporation.\n    *   Provides information on new Toyota vehicles.\n    *   Offers services: test drive search, store search, quote simulations, and catalog requests.\n    *   Mobile-friendly design.\n*   **Car Lineup:**\n    *   Showcases Toyota's diverse car lineup.\n    *   Includes: compact cars, minivans, sedans, wagons, SUVs, sports cars, light vehicles, and commercial vehicles.\n*   **Car Comparison:**\n    *   Allows users to compare vehicle specifications.\n    *   Comparison includes styling, size, fuel efficiency, and safety features.\n\n**Key Points:**\n\n*   Focus on providing comprehensive information & services.\n*   Emphasis on vehicle variety.\n*   Tools for comparing models.\n\n**Gap Analysis:**\n\n*   The provided data snippets are primarily HTML metadata. This limits the ability to extract specifics on products, services, or company performance.\n*   Lacks information on specific car models, pricing, technologies, or company news.\n*   No indication of Toyota's mission, values, or corporate social responsibility initiatives from these snippets."
+  },
+  "critical_analysis": {
+    "true_intent": "モビリティ変革の主導権掌握と新規事業育成をアピール。ベンチャー投資による技術獲得と囲い込み、企業イメージ向上も狙い。系列サプライヤーへの牽制も含まれる可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:39:03.831495",
+  "source": "Active:トヨタ自動車"
+}

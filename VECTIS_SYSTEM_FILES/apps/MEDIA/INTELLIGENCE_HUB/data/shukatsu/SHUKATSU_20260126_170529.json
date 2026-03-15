@@ -1,0 +1,23 @@
+{
+  "title": "KDDI 新卒採用の一部コース（パーソナル事業本部）にVAR",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFB5SzdHZ3dCZ0IxT0NITkc3RHNVd0JSR0ZtbGFVR05TbFV1YjBCRWI5OEt2d0VwWHhzVVdpTE9MM2RfS3JXTnY2Y0xqU1JkZ2IzbUtwOE0ySDJLaXdDQzVYSjdDWDQzV1RDNUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTFB5SzdHZ3dCZ0IxT0NITkc3RHNVd0JSR0ZtbGFVR05TbFV1YjBCRWI5OEt2d0VwWHhzVVdpTE9MM2RfS3JXTnY2Y0xqU1JkZ2IzbUtwOE0ySDJLaXdDQzVYSjdDWDQzV1RDNUE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "VARIETASのAI面接官導入は、企業への利権獲得に繋がる可能性があります。",
+    "true_intent": "VARIETASは、採用関連の AI 技術を開発しており、新卒採用などの業務に活用することを期待しています。",
+    "bias_warning": "利権獲得の懸念が示されている可能性があります",
+    "deadline": null,
+    "company": "VARIETAS",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "- VARIETASは、健康生活と健康技術の分野で業界首位である企業です。\n-社風は、挑戦的でチームワークが重視され、成績を追求する環境です。\n- 求める人物像は、スポーツや健康関連のスキルを有した学生が適していると考えられます。"
+  },
+  "critical_analysis": {
+    "true_intent": "VARIETASは、採用関連の AI 技術を開発しており、新卒採用などの業務に活用することを期待しています。",
+    "bias_warning": "利権獲得の懸念が示されている可能性があります"
+  },
+  "collected_at": "2026-01-26T17:05:29.969021",
+  "source": "KDDI 採用 Deep Dive"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "科学と社会の課題を炙り出す推理ゲーム『nocobon』とは？",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE50cmU3b1FfS2M3TjZraWs5b0pfZlA3bU5JNFhwSEpGZnFzSnZHcG5iRTZjVGpYQV80OG8xOXhYMjVZTkNHQ1ItNXRLZ3h3TVlzM3N3SXlKNW0zTm80NmU3WENuRjA5MnYyTGs2Qw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE50cmU3b1FfS2M3TjZraWs5b0pfZlA3bU5JNFhwSEpGZnFzSnZHcG5iRTZjVGpYQV80OG8xOXhYMjVZTkNHQ1ItNXRLZ3h3TVlzM3N3SXlKNW0zTm80NmU3WENuRjA5MnYyTGs2Qw?oc=",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "東大江間氏開発の推理ゲーム『nocobon』。科学と社会の課題をゲームで可視化。",
+    "true_intent": "東大発ベンチャーの宣伝、研究ブランディング。科学コミュニケーション分野での地位確立、資金調達、研究成果の社会実装の足がかりか。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "その他",
+    "target_year": "2027",
+    "academic_deep_dive": "1. **歴史的背景:** 科学技術と社会の関係を問う試みは、古くはメアリー・シェリーの『フランケンシュタイン』に遡る。原子力開発後の科学技術に対する倫理的責任の議論、レイチェル・カーソンの『沈黙の春』に代表される環境問題への警鐘など、科学の進歩と社会への影響は常に論争の的だった。『nocobon』は、これらの系譜に連なり、ゲームというインタラクティブな形式で、より参加型の議論を促す。\n\n2. **現代的意義:** AI、遺伝子編集、気候変動など、現代社会は複雑な科学技術的課題に直面しており、専門家だけでなく市民レベルでの理解と議論が不可欠だ。『nocobon』は、専門知識の有無に関わらず、ゲームを通じて課題を疑似体験し、多様な視点から考察する機会を提供する。民主的な意思決定において、科学リテラシーの向上と公共圏における議論の活性化に貢献する点で重要である。\n\n3. **批判的視座:** ゲームは、現実を単純化し、特定の価値観を内在化させる可能性がある。『nocobon』も、提示されるシナリオや選択肢に制約があり、プレイヤーの思考を誘導する側面は否定できない。重要なのは、ゲームを絶対的な真実として捉えるのではなく、議論の出発点として活用すること。ゲームを通じて得られた知見を、現実の複雑な問題に適用する際には、常に批判的な視点を持つ必要がある。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "東大発ベンチャーの宣伝、研究ブランディング。科学コミュニケーション分野での地位確立、資金調達、研究成果の社会実装の足がかりか。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:15:42.488106",
+  "source": "科学技術 社会論"
+}

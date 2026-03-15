@@ -1,0 +1,23 @@
+{
+  "title": "KDDIが中期経営計画を発表、「通信とライフデザインの融合」",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIは通信とライフデザインの統合を目指している可能性が高いことが推測されます。",
+    "true_intent": "KDDIは、通信とライフデザインを統合することで、より効率的なサービス提供を行うことを目的にしています。",
+    "bias_warning": "この情報は、KDDIが通信とライフデザインの統合を推進する目的で実施した情報であることを意味します。",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "company_profile": "- **事業の強み・特徴**: KDDIは、コンテンツ開発やデジタル広告などのエンゲージメント事業で有名で、顧客との距離を縮めることを目的としています。\n- **社風・カルチャー**: KDDIは、スポーツやスポーツ関連の事業にも積極的に参入しており、社員はスポーツとスポーツ文化に関わり、チームワークも重視しています。\n- **求める人物像の推測**: KDDIは、スポーツやスポーツ関連の知識と経験が要件な職種と考えるでしょう。"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIは、通信とライフデザインを統合することで、より効率的なサービス提供を行うことを目的にしています。",
+    "bias_warning": "この情報は、KDDIが通信とライフデザインの統合を推進する目的で実施した情報であることを意味します。"
+  },
+  "collected_at": "2026-01-26T18:49:07.358140",
+  "source": "KDDI 事業戦略"
+}

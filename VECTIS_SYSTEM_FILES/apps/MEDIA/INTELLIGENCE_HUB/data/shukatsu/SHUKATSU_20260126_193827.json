@@ -1,0 +1,22 @@
+{
+  "title": "ビジョン・戦略 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE1KQUN6YW1FYktjMGRabGVSd201VUtxbXE4NVlEYlBRNkMwdnZ1MHVwZEtuWV9KN2kzeHpXcUVQckx1dw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQkFVX3lxTE1KQUN6YW1FYktjMGRabGVSd201VUtxbXE4NVlEYlBRNkMwdnZ1MHVwZEtuWV9KN2kzeHpXcUVQckx1dw?oc=5\" target=\"_blank\">ビジョン・戦略</a>&nbsp;&nbsp;<font color=\"#",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIが ビジョン・戦略を「KDDI 2027戦略」として発表したと、顧客との差別化と競争強化を目指す可能性があります。",
+    "true_intent": "KDDIが顧客との差別化と競争強化を目指すために、KDDI 2027戦略を開発した可能性があります。",
+    "bias_warning": "ポジショントークの可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIが顧客との差別化と競争強化を目指すために、KDDI 2027戦略を開発した可能性があります。",
+    "bias_warning": "ポジショントークの可能性があります。"
+  },
+  "collected_at": "2026-01-26T19:38:27.081055",
+  "source": "KDDI 事業戦略"
+}

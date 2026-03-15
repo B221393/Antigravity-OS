@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面接シミュレーター</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg: #08080d;
+            --s1: #0e0e18;
+            --s2: #151525;
+            --s3: #1c1c30;
+            --bd: #252545;
+            --ac: #7c6cf0;
+            --ac2: #a89eff;
+            --ac3: #00d4c8;
+            --tx: #e8e8f0;
+            --tx2: #7878a0;
+            --tx3: #50506a;
+            --ok: #2ecc71;
+            --warn: #f39c12;
+            --err: #e74c3c
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Hiragino Sans', sans-serif;
+            background: var(--bg);
+            color: var(--tx);
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            background-image: radial-gradient(circle at 30% 20%, rgba(124, 58, 237, .06) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0, 212, 200, .06) 0%, transparent 50%)
+        }
+
+        /* Header */
+        header {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--bd);
+            background: rgba(14, 14, 24, .85);
+            backdrop-filter: blur(16px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10
+        }
+
+        .logo {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            background: linear-gradient(90deg, var(--ac), var(--ac3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .logo svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--ac2)
+        }
+
+        .hdr-r {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .hdr-meta {
+            font-size: 11px;
+            color: var(--tx2);
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .progress-mini {
+            width: 100px;
+            height: 4px;
+            background: var(--s3);
+            border-radius: 2px;
+            overflow: hidden
+        }
+
+        .progress-mini div {
+            height: 100%;
+            background: linear-gradient(90deg, var(--ac), var(--ac3));
+            transition: width .3s;
+            border-radius: 2px
+        }
+
+        .btn {
+            padding: 7px 14px;
+            border-radius: 7px;
+            border: 1px solid var(--bd);
+            background: var(--s2);
+            color: var(--tx);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px
+        }
+
+        .btn:hover {
+            border-color: var(--ac);
+            background: rgba(124, 108, 240, .1)
+        }
+
+        .btn svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor
+        }
+
+        .btn-p {
+            background: linear-gradient(135deg, var(--ac), var(--ac3));
+            border: none;
+            color: #fff;
+            font-weight: 700
+        }
+
+        .btn-p:hover {
+            opacity: .9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(124, 108, 240, .3)
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0;
+            background: var(--s1);
+            border-bottom: 1px solid var(--bd);
+            padding: 0 20px
+        }
+
+        .tab {
+            padding: 10px 18px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--tx2);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all .15s
+        }
+
+        .tab:hover {
+            color: var(--tx)
+        }
+
+        .tab.on {
+            color: var(--ac2);
+            border-bottom-color: var(--ac)
+        }
+
+        /* Main Layout */
+        .app {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column
+        }
+
+        .panel {
+            display: none;
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px
+        }
+
+        .panel.on {
+            display: block
+        }
+
+        /* === SIM Panel === */
+        .sim {
+            display: none;
+            flex: 1;
+            overflow: hidden
+        }
+
+        .sim.on {
+            display: flex;
+            gap: 16px;
+            padding: 20px
+        }
+
+        .sim-side {
+            width: 220px;
+            flex-shrink: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4px
+        }
+
+        .sim-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            overflow-y: auto;
+            min-width: 0
+        }
+
+        .q-item {
+            padding: 8px 10px;
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 7px;
+            cursor: pointer;
+            transition: all .15s;
+            font-size: 10px;
+            line-height: 1.5;
+            color: var(--tx2);
+            display: flex;
+            gap: 6px;
+            align-items: flex-start
+        }
+
+        .q-item:hover {
+            border-color: rgba(124, 108, 240, .25);
+            color: var(--tx)
+        }
+
+        .q-item.active {
+            background: rgba(124, 108, 240, .1);
+            border-color: rgba(124, 108, 240, .3);
+            color: var(--ac2)
+        }
+
+        .q-item.done {
+            border-color: rgba(46, 204, 113, .2)
+        }
+
+        .q-item.done::after {
+            content: '✓';
+            color: var(--ok);
+            font-weight: 700;
+            font-size: 9px;
+            margin-left: auto;
+            flex-shrink: 0
+        }
+
+        .q-num {
+            font-size: 8px;
+            font-weight: 700;
+            color: var(--tx3);
+            min-width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--s3);
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-top: 1px
+        }
+
+        .q-item.active .q-num {
+            background: var(--ac);
+            color: #fff
+        }
+
+        /* Question card */
+        .q-card {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .q-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--ac), var(--ac3))
+        }
+
+        .interviewer {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start
+        }
+
+        .avatar {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--ac), var(--ac3));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0
+        }
+
+        .speech {
+            flex: 1
+        }
+
+        .speech-label {
+            font-size: 9px;
+            color: var(--tx3);
+            margin-bottom: 4px;
+            font-weight: 500
+        }
+
+        .speech-text {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.7
+        }
+
+        /* Controls */
+        .ctrl {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            padding: 18px
+        }
+
+        .timer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px
+        }
+
+        .timer {
+            font-size: 32px;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            font-family: 'Consolas', monospace
+        }
+
+        .rec {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--err);
+            opacity: 0;
+            transition: opacity .2s
+        }
+
+        .rec.on {
+            opacity: 1
+        }
+
+        .rec-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--err);
+            border-radius: 50%;
+            animation: blink .8s infinite
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .2
+            }
+        }
+
+        .ideal-t {
+            font-size: 9px;
+            color: var(--tx3)
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        /* Feedback */
+        .feedback {
+            margin-top: 14px;
+            padding: 12px;
+            border-radius: 7px;
+            border-left: 3px solid var(--warn);
+            background: rgba(243, 156, 18, .08);
+            font-size: 11px;
+            line-height: 1.7;
+            display: none
+        }
+
+        .feedback.fb-ok {
+            border-left-color: var(--ok);
+            background: rgba(46, 204, 113, .08)
+        }
+
+        .feedback.fb-warn {
+            border-left-color: var(--warn);
+            background: rgba(243, 156, 18, .08)
+        }
+
+        .feedback.fb-err {
+            border-left-color: var(--err);
+            background: rgba(231, 76, 60, .08)
+        }
+
+        /* Hint */
+        .hint-box {
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 7px;
+            border: 1px dashed var(--bd);
+            background: var(--s2);
+            font-size: 11px;
+            line-height: 1.8;
+            color: var(--tx2);
+            display: none;
+            white-space: pre-wrap
+        }
+
+        .hint-label {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--ac2);
+            margin-bottom: 4px
+        }
+
+        /* Results */
+        .results {
+            background: var(--s1);
+            border: 1px solid var(--ok);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            display: none
+        }
+
+        .results h2 {
+            font-size: 16px;
+            color: var(--ok);
+            margin-bottom: 12px
+        }
+
+        .res-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            max-width: 360px;
+            margin: 0 auto
+        }
+
+        .res-item {
+            background: var(--s2);
+            border-radius: 7px;
+            padding: 10px;
+            text-align: center
+        }
+
+        .res-item .rv {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--ac2)
+        }
+
+        .res-item .rl {
+            font-size: 9px;
+            color: var(--tx2);
+            margin-top: 2px
+        }
+
+        /* === CORE Panel === */
+        .core-section {
+            margin-bottom: 20px
+        }
+
+        .core-section h3 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ac2);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .core-section h3 svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--ac2)
+        }
+
+        .core-card {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 8px
+        }
+
+        .core-card label {
+            display: block;
+            font-size: 10px;
+            color: var(--tx2);
+            font-weight: 600;
+            margin-bottom: 4px
+        }
+
+        .core-card textarea,
+        .core-card input {
+            width: 100%;
+            padding: 8px 10px;
+            background: var(--s2);
+            border: 1px solid var(--bd);
+            border-radius: 6px;
+            color: var(--tx);
+            font-size: 12px;
+            font-family: inherit;
+            line-height: 1.7;
+            resize: vertical;
+            outline: none;
+            transition: border-color .2s
+        }
+
+        .core-card textarea:focus,
+        .core-card input:focus {
+            border-color: var(--ac);
+            box-shadow: 0 0 0 2px rgba(124, 108, 240, .1)
+        }
+
+        .core-card textarea {
+            min-height: 60px
+        }
+
+        .core-card .char-count {
+            font-size: 9px;
+            color: var(--tx3);
+            text-align: right;
+            margin-top: 2px
+        }
+
+        .core-tip {
+            font-size: 10px;
+            color: var(--tx3);
+            line-height: 1.6;
+            margin-top: 4px;
+            padding: 6px 8px;
+            background: rgba(124, 108, 240, .05);
+            border-radius: 4px
+        }
+
+        /* === SHEETS Panel === */
+        .sheets-info {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            font-size: 12px;
+            line-height: 1.8
+        }
+
+        .sheets-info h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ac2);
+            margin-bottom: 8px
+        }
+
+        .sheets-info code {
+            background: var(--s3);
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 11px;
+            color: var(--ac3)
+        }
+
+        .sheets-url {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px
+        }
+
+        .sheets-url input {
+            flex: 1
+        }
+
+        .sheets-status {
+            margin-top: 10px;
+            font-size: 11px;
+            padding: 8px;
+            border-radius: 6px
+        }
+
+        .sheets-status.ok {
+            background: rgba(46, 204, 113, .1);
+            color: var(--ok);
+            border: 1px solid rgba(46, 204, 113, .2)
+        }
+
+        .sheets-status.err {
+            background: rgba(231, 76, 60, .1);
+            color: var(--err);
+            border: 1px solid rgba(231, 76, 60, .2)
+        }
+
+        pre.gas-code {
+            background: var(--s2);
+            border: 1px solid var(--bd);
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 10px;
+            overflow-x: auto;
+            color: var(--ac3);
+            line-height: 1.6;
+            margin-top: 8px;
+            white-space: pre-wrap
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--s2);
+            border: 1px solid var(--ok);
+            color: var(--ok);
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity .25s;
+            pointer-events: none;
+            z-index: 999
+        }
+
+        .toast.show {
+            opacity: 1
+        }
+
+        @media(max-width:768px) {
+            .sim.on {
+                flex-direction: column
+            }
+
+            .sim-side {
+                width: 100%;
+                flex-direction: row;
+                overflow-x: auto;
+                gap: 4px
+            }
+
+            .q-item {
+                min-width: 160px;
+                flex-shrink: 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
+            </svg>
+            面接シミュレーター
+        </div>
+        <div class="hdr-r">
+            <div class="hdr-meta" id="simMeta" style="display:none">
+                <span id="progressLabel">Q1 / 10</span>
+                <div class="progress-mini">
+                    <div id="progressBar" style="width:10%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="tabs">
+        <div class="tab on" data-tab="sim">🎤 シミュレーション</div>
+        <div class="tab" data-tab="core">📝 コア回答</div>
+        <div class="tab" data-tab="sheets">📊 シート連携</div>
+    </div>
+
+    <div class="app">
+        <!-- ===== SIM TAB ===== -->
+        <div class="sim on" id="tab-sim">
+            <div class="sim-side" id="questionList"></div>
+            <div class="sim-main">
+                <div class="q-card">
+                    <div class="interviewer">
+                        <div class="avatar">👨‍💼</div>
+                        <div class="speech">
+                            <div class="speech-label">面接官</div>
+                            <div class="speech-text" id="questionDisplay">質問を読み込んでいます...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ctrl">
+                    <div class="timer-row">
+                        <div>
+                            <div class="timer" id="timer">00:00</div>
+                            <div class="ideal-t" id="idealTime">目安: 60秒</div>
+                        </div>
+                        <div class="rec" id="recDot">
+                            <div class="rec-dot"></div>REC
+                        </div>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn" onclick="speakQ()"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                            </svg>読み上げ</button>
+                        <button class="btn" onclick="toggleHint()"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z" />
+                            </svg>ヒント</button>
+                        <button class="btn btn-p" id="btnStart" onclick="startAns()"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+                            </svg>回答開始</button>
+                        <button class="btn" id="btnStop"
+                            style="display:none;background:var(--err);border:none;color:#fff" onclick="stopAns()"><svg
+                                viewBox="0 0 24 24">
+                                <path d="M6 6h12v12H6z" />
+                            </svg>回答終了</button>
+                        <button class="btn" id="btnNext"
+                            style="display:none;background:var(--ok);border:none;color:#fff" onclick="nextQ()"><svg
+                                viewBox="0 0 24 24">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                            </svg>次へ</button>
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                    <div class="hint-box" id="hintBox">
+                        <div class="hint-label">💡 ヒント・コア回答</div>
+                        <div id="hintText"></div>
+                    </div>
+                </div>
+                <div class="results" id="results">
+                    <h2>🎉 シミュレーション完了！</h2>
+                    <div class="res-grid" id="resGrid"></div>
+                    <button class="btn btn-p" onclick="startSim()" style="margin-top:14px"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+                        </svg>もう一度</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CORE TAB ===== -->
+        <div class="panel" id="tab-core">
+            <div style="max-width:700px;margin:0 auto">
+                <div class="core-section">
+                    <h3><svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>コア回答（全企業共通）</h3>
+                    <p style="font-size:11px;color:var(--tx2);margin-bottom:12px">ここで編集した内容がシミュレーション時のヒントに反映されます。企業名は
+                        <code
+                            style="background:var(--s3);padding:1px 4px;border-radius:3px;color:var(--ac3)">{company}</code>
+                        で自動置換されます。</p>
+                </div>
+
+                <div class="core-card">
+                    <label>就活の軸</label>
+                    <textarea id="core-axis" oninput="saveCore()">「現場の泥臭さ」と「デジタルの効率」を繋ぐこと。
+手段：①仕組みでの解決、②対話と共感（独りよがりなDXにしない）。</textarea>
+                </div>
+
+                <div class="core-card">
+                    <label>自己PR（強み）</label>
+                    <textarea id="core-pr" oninput="saveCore()">強み：「情報の構造化」と「現場での対話力」。
+エピソード：自作AI（仕組み力）＋アルバイト/馬術部（相手の意図を察し、わかりやすく伝える）。技術だけでなく現場で解決できる。</textarea>
+                </div>
+
+                <div class="core-card">
+                    <label>ガクチカ</label>
+                    <textarea id="core-gakuchika" oninput="saveCore()">馬術部での活動。「言葉の通じない馬」との意思疎通。
+工夫：①個別最適化（チャンネル変換）、②決断力（時に厳しく）。
+→ STAR形式で具体的に。根気強さと使い分け。</textarea>
+                </div>
+
+                <div class="core-card">
+                    <label>挫折経験と克服</label>
+                    <textarea id="core-setback" oninput="saveCore()">挫折：大学院入試の断念とメンタル不調。原因は「背伸び」と「軸の喪失」。
+克服：AI時代だからこそ「意志」が重要と気づく。療養中に自作AIシステムを開発し、自信を取り戻した。
+→ 乗り越えた「プロセス」を重視。</textarea>
+                </div>
+
+                <div class="core-card">
+                    <label>志望動機テンプレート</label>
+                    <textarea id="core-motivation" oninput="saveCore()">{company}の「多様な現場」で「最適化」を届けたい。
+馬術部で馬ごとに対応を変えたように、異なる環境で最適なソリューションを提供したい。
+→ 企業固有の強みに触れてカスタマイズ。</textarea>
+                    <div class="core-tip">💡 <code>{company}</code> は面接対象企業名に自動置換されます</div>
+                </div>
+
+                <div class="core-card">
+                    <label>最近の学習・取り組み</label>
+                    <textarea id="core-learning" oninput="saveCore()">NotebookLMを活用した「Second Brain」の構築。
+知識の暗記ではなく、「情報をどう整理し成果に繋げるか」というメタスキル（構造化能力）を鍛えている。</textarea>
+                </div>
+
+                <div class="core-card">
+                    <label>大学での勉強</label>
+                    <textarea id="core-study" oninput="saveCore()">座学（4力学）に加え、創成実習での「目覚まし時計製作」が印象深い。
+旋盤加工を通じて、モノづくりの喜びと「現場の泥臭さ・物理的制約」を肌で学んだ。</textarea>
+                </div>
+
+                <div class="core-card">
+                    <label>なぜ機械系→IT？</label>
+                    <textarea id="core-whyit"
+                        oninput="saveCore()">実習で「物理的制約」の重さを知った。ソフトは「思考即実装」が可能で、試行錯誤好きの自分に合っている。物理とデジタルの架け橋になりたい。</textarea>
+                </div>
+
+                <div class="core-card">
+                    <label>ストレス対処</label>
+                    <textarea id="core-stress"
+                        oninput="saveCore()">①早期アラート（抱え込まない）、②構造的解決（根性論ではなく分析→ツール等で解決）。大学院の失敗を教訓にしている。</textarea>
+                </div>
+
+                <div class="core-card">
+                    <label>逆質問ストック</label>
+                    <textarea id="core-reverse" oninput="saveCore()">「活躍しているエンジニアに共通するスタンスは？」
+「配属までに学ぶべき『現場特有の知識』は？」
+→ YES/NOで答えられない質問を。成長意欲と現場リスペクト。</textarea>
+                </div>
+
+                <div class="core-card">
+                    <label>面接対象の企業名（空欄で「御社」）</label>
+                    <input type="text" id="core-company" oninput="saveCore()" placeholder="例: Brexa Technology">
+                </div>
+
+                <div style="text-align:center;margin-top:16px">
+                    <button class="btn btn-p" onclick="saveCore();showToast('コア回答を保存しました')">💾 保存</button>
+                    <button class="btn" onclick="if(confirm('デフォルトに戻しますか？'))resetCore()">↺ リセット</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SHEETS TAB ===== -->
+        <div class="panel" id="tab-sheets">
+            <div style="max-width:700px;margin:0 auto">
+                <div class="sheets-info">
+                    <h3>📊 Google Spreadsheet 連携</h3>
+                    <p>Google Apps Script (GAS) を使って、スプレッドシートから質問データを取得できます。</p>
+                    <p style="margin-top:8px"><strong>設定手順:</strong></p>
+                    <ol style="margin-left:20px;margin-top:6px;color:var(--tx2)">
+                        <li>Google Spreadsheet を作成し、下記フォーマットで入力</li>
+                        <li>「拡張機能」→「Apps Script」を開く</li>
+                        <li>下記の GAS コードを貼り付け</li>
+                        <li>「デプロイ」→「新しいデプロイ」→「ウェブアプリ」として公開</li>
+                        <li>生成された URL をここに貼り付け</li>
+                    </ol>
+
+                    <p style="margin-top:12px"><strong>スプレッドシートの形式:</strong></p>
+                    <div style="font-size:11px;color:var(--tx2);margin-top:4px;overflow-x:auto">
+                        <table style="border-collapse:collapse;width:100%;margin-top:6px">
+                            <tr style="background:var(--s3)">
+                                <th style="padding:4px 8px;border:1px solid var(--bd);text-align:left;font-size:10px">
+                                    質問テキスト</th>
+                                <th style="padding:4px 8px;border:1px solid var(--bd);text-align:left;font-size:10px">
+                                    ヒント</th>
+                                <th style="padding:4px 8px;border:1px solid var(--bd);text-align:left;font-size:10px">
+                                    目安秒数</th>
+                            </tr>
+                            <tr>
+                                <td style="padding:4px 8px;border:1px solid var(--bd);font-size:10px">自己紹介を...</td>
+                                <td style="padding:4px 8px;border:1px solid var(--bd);font-size:10px">軸を30秒で</td>
+                                <td style="padding:4px 8px;border:1px solid var(--bd);font-size:10px">60</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <p style="margin-top:12px"><strong>GAS コード（コピペ用）:</strong></p>
+                    <pre class="gas-code">function doGet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName("質問");
+  const data = sheet.getDataRange().getValues();
+  const headers = data[0];
+  const questions = [];
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][0]) {
+      questions.push({
+        text: data[i][0],
+        hint: data[i][1] || "",
+        ideal: parseInt(data[i][2]) || 60
+      });
+    }
+  }
+  return ContentService
+    .createTextOutput(JSON.stringify({ questions }))
+    .setMimeType(ContentService.MimeType.JSON);
+}</pre>
+                </div>
+
+                <div class="core-card">
+                    <label>GAS デプロイ URL</label>
+                    <div class="sheets-url">
+                        <input type="text" id="gasUrl" class="form-c"
+                            style="flex:1;padding:8px 10px;background:var(--s2);border:1px solid var(--bd);border-radius:6px;color:var(--tx);font-size:12px;outline:none"
+                            placeholder="https://script.google.com/macros/s/xxx/exec">
+                        <button class="btn btn-p" onclick="fetchFromSheets()">取得</button>
+                    </div>
+                    <div class="sheets-status" id="sheetsStatus" style="display:none"></div>
+                </div>
+
+                <div class="core-card" style="margin-top:12px">
+                    <label>取得した質問データ</label>
+                    <textarea id="sheetsPreview"
+                        style="width:100%;min-height:100px;padding:8px 10px;background:var(--s2);border:1px solid var(--bd);border-radius:6px;color:var(--tx2);font-size:10px;font-family:monospace;line-height:1.5;resize:vertical"
+                        readonly placeholder="GAS URLを設定して「取得」を押すと、ここにプレビューが表示されます"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ===== Storage =====
+        const CORE_KEY = 'interview_sim_core';
+        const GAS_KEY = 'interview_sim_gas_url';
+        const CUSTOM_Q_KEY = 'interview_sim_custom_q';
+
+        // ===== Default Core Answers =====
+        const DEFAULT_CORE = {
+            axis: `「現場の泥臭さ」と「デジタルの効率」を繋ぐこと。\n手段：①仕組みでの解決、②対話と共感（独りよがりなDXにしない）。`,
+            pr: `強み：「情報の構造化」と「現場での対話力」。\nエピソード：自作AI（仕組み力）＋アルバイト/馬術部（相手の意図を察し、わかりやすく伝える）。技術だけでなく現場で解決できる。`,
+            gakuchika: `馬術部での活動。「言葉の通じない馬」との意思疎通。\n工夫：①個別最適化（チャンネル変換）、②決断力（時に厳しく）。\n→ STAR形式で具体的に。根気強さと使い分け。`,
+            setback: `挫折：大学院入試の断念とメンタル不調。原因は「背伸び」と「軸の喪失」。\n克服：AI時代だからこそ「意志」が重要と気づく。療養中に自作AIシステムを開発し、自信を取り戻した。\n→ 乗り越えた「プロセス」を重視。`,
+            motivation: `{company}の「多様な現場」で「最適化」を届けたい。\n馬術部で馬ごとに対応を変えたように、異なる環境で最適なソリューションを提供したい。\n→ 企業固有の強みに触れてカスタマイズ。`,
+            learning: `NotebookLMを活用した「Second Brain」の構築。\n知識の暗記ではなく、「情報をどう整理し成果に繋げるか」というメタスキル（構造化能力）を鍛えている。`,
+            study: `座学（4力学）に加え、創成実習での「目覚まし時計製作」が印象深い。\n旋盤加工を通じて、モノづくりの喜びと「現場の泥臭さ・物理的制約」を肌で学んだ。`,
+            whyit: `実習で「物理的制約」の重さを知った。ソフトは「思考即実装」が可能で、試行錯誤好きの自分に合っている。物理とデジタルの架け橋になりたい。`,
+            stress: `①早期アラート（抱え込まない）、②構造的解決（根性論ではなく分析→ツール等で解決）。大学院の失敗を教訓にしている。`,
+            reverse: `「活躍しているエンジニアに共通するスタンスは？」\n「配属までに学ぶべき『現場特有の知識』は？」\n→ YES/NOで答えられない質問を。成長意欲と現場リスペクト。`,
+            company: ''
+        };
+
+        let core = JSON.parse(localStorage.getItem(CORE_KEY)) || { ...DEFAULT_CORE };
+
+        function loadCoreUI() {
+            Object.keys(DEFAULT_CORE).forEach(k => {
+                const el = document.getElementById('core-' + k);
+                if (el) el.value = core[k] || '';
+            });
+        }
+        function saveCore() {
+            Object.keys(DEFAULT_CORE).forEach(k => {
+                const el = document.getElementById('core-' + k);
+                if (el) core[k] = el.value;
+            });
+            localStorage.setItem(CORE_KEY, JSON.stringify(core));
+        }
+        function resetCore() {
+            core = { ...DEFAULT_CORE };
+            localStorage.setItem(CORE_KEY, JSON.stringify(core));
+            loadCoreUI();
+            showToast('デフォルトに戻しました');
+        }
+
+        // ===== Questions (core-linked) =====
+        function getCompany() { return core.company || '御社'; }
+        function r(text) { return text.replace(/\{company\}/g, getCompany()); }
+
+        function getDefaultQuestions() {
+            return [
+                { text: "自己紹介と、あなたの「就活の軸」を教えてください。", coreKey: 'axis', ideal: 60 },
+                { text: "あなたの強み（自己PR）は何ですか？", coreKey: 'pr', ideal: 60 },
+                { text: "学生時代に最も力を入れたこと（ガクチカ）を教えてください。", coreKey: 'gakuchika', ideal: 90 },
+                { text: "これまでの最大の挫折体験と、それをどう乗り越えたか？", coreKey: 'setback', ideal: 90 },
+                { text: `なぜ${getCompany()}を志望するのですか？`, coreKey: 'motivation', ideal: 60 },
+                { text: "最近の学習や取り組みについて教えてください。", coreKey: 'learning', ideal: 60 },
+                { text: "大学での研究や勉強について教えてください。", coreKey: 'study', ideal: 60 },
+                { text: "なぜ機械系出身なのにIT業界を目指すのですか？", coreKey: 'whyit', ideal: 60 },
+                { text: "入社後、辛いことやストレスを感じた時の対処法は？", coreKey: 'stress', ideal: 45 },
+                { text: "最後に、何か質問はありますか？（逆質問）", coreKey: 'reverse', ideal: 30 }
+            ];
+        }
+
+        let questions = [];
+        let customQuestions = JSON.parse(localStorage.getItem(CUSTOM_Q_KEY)) || null;
+
+        function loadQuestions() {
+            questions = customQuestions || getDefaultQuestions();
+        }
+
+        // ===== Simulation =====
+        let curIdx = 0, timerInt, startTime, isAns = false, results = [];
+
+        function startSim() {
+            loadQuestions();
+            results = [];
+            document.getElementById('simMeta').style.display = 'flex';
+            document.getElementById('results').style.display = 'none';
+            loadQ(0);
+        }
+
+        function renderQList() {
+            document.getElementById('questionList').innerHTML = questions.map((q, i) => {
+                const t = q.text.length > 24 ? q.text.slice(0, 22) + '…' : q.text;
+                return `<div class="q-item${i === curIdx ? ' active' : ''}${results[i] ? ' done' : ''}" onclick="jumpQ(${i})"><span class="q-num">${i + 1}</span>${t}</div>`;
+            }).join('');
+        }
+
+        function jumpQ(i) { if (!isAns) loadQ(i); }
+
+        function loadQ(i) {
+            curIdx = i;
+            const q = questions[i];
+            const displayText = q.text.replace(/\{company\}/g, getCompany());
+            document.getElementById('questionDisplay').textContent = displayText;
+            document.getElementById('timer').textContent = '00:00';
+            document.getElementById('timer').style.color = 'var(--tx)';
+            document.getElementById('idealTime').textContent = `目安: ${q.ideal}秒`;
+            document.getElementById('recDot').classList.remove('on');
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('hintBox').style.display = 'none';
+            // Build hint from core or custom
+            const hint = q.coreKey ? r(core[q.coreKey] || '') : (q.hint || '');
+            document.getElementById('hintText').textContent = hint;
+            document.getElementById('btnStart').style.display = 'inline-flex';
+            document.getElementById('btnStop').style.display = 'none';
+            document.getElementById('btnNext').style.display = 'none';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('progressLabel').textContent = `Q${i + 1} / ${questions.length}`;
+            document.getElementById('progressBar').style.width = `${((i + 1) / questions.length) * 100}%`;
+            renderQList();
+            speakQ();
+        }
+
+        function speakQ() {
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(questions[curIdx].text.replace(/\{company\}/g, getCompany()));
+            u.lang = 'ja-JP'; u.rate = 0.95;
+            window.speechSynthesis.speak(u);
+        }
+
+        function toggleHint() {
+            const el = document.getElementById('hintBox');
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function startAns() {
+            isAns = true; startTime = Date.now();
+            document.getElementById('recDot').classList.add('on');
+            document.getElementById('btnStart').style.display = 'none';
+            document.getElementById('btnStop').style.display = 'inline-flex';
+            document.getElementById('timer').style.color = 'var(--err)';
+            timerInt = setInterval(() => {
+                const e = Math.floor((Date.now() - startTime) / 1000);
+                document.getElementById('timer').textContent = `${String(Math.floor(e / 60)).padStart(2, '0')}:${String(e % 60).padStart(2, '0')}`;
+            }, 200);
+        }
+
+        function stopAns() {
+            isAns = false; clearInterval(timerInt);
+            document.getElementById('recDot').classList.remove('on');
+            document.getElementById('btnStop').style.display = 'none';
+            document.getElementById('btnNext').style.display = 'inline-flex';
+            document.getElementById('timer').style.color = 'var(--tx)';
+            const elapsed = (Date.now() - startTime) / 1000;
+            const ideal = questions[curIdx].ideal;
+            results[curIdx] = { elapsed, ideal };
+            const fb = document.getElementById('feedback');
+            fb.style.display = 'block'; fb.className = 'feedback';
+            if (elapsed < 10) { fb.innerHTML = '⚠️ <strong>短すぎます！</strong>（10秒未満）<br>「なぜなら〜」と理由を付け加えましょう。'; fb.classList.add('fb-err'); }
+            else if (elapsed < ideal * 0.5) { fb.innerHTML = '⚠️ <strong>ややあっさり。</strong><br>具体的なエピソード（STAR）を盛り込みましょう。'; fb.classList.add('fb-warn'); }
+            else if (elapsed > ideal * 2) { fb.innerHTML = '⚠️ <strong>長すぎます！</strong><br>結論ファーストで簡潔に。'; fb.classList.add('fb-err'); }
+            else { fb.innerHTML = '✅ <strong>Good Time!</strong><br>適切な長さです。ハキハキと。'; fb.classList.add('fb-ok'); }
+            renderQList();
+        }
+
+        function nextQ() {
+            if (curIdx < questions.length - 1) loadQ(curIdx + 1);
+            else showResults();
+        }
+
+        function showResults() {
+            document.getElementById('results').style.display = 'block';
+            const answered = results.filter(Boolean);
+            const avg = answered.reduce((a, r) => a + r.elapsed, 0) / answered.length;
+            const good = answered.filter(r => r.elapsed >= r.ideal * 0.5 && r.elapsed <= r.ideal * 2).length;
+            document.getElementById('resGrid').innerHTML = `
+                <div class="res-item"><div class="rv">${answered.length}</div><div class="rl">回答数</div></div>
+                <div class="res-item"><div class="rv">${Math.round(avg)}s</div><div class="rl">平均時間</div></div>
+                <div class="res-item"><div class="rv">${Math.round((good / answered.length) * 100)}%</div><div class="rl">適切率</div></div>`;
+        }
+
+        // ===== Sheets =====
+        function fetchFromSheets() {
+            const url = document.getElementById('gasUrl').value.trim();
+            if (!url) { showStatus('URLを入力してください', 'err'); return; }
+            localStorage.setItem(GAS_KEY, url);
+            showStatus('取得中...', '');
+            fetch(url)
+                .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+                .then(data => {
+                    if (data.questions && Array.isArray(data.questions) && data.questions.length > 0) {
+                        customQuestions = data.questions;
+                        localStorage.setItem(CUSTOM_Q_KEY, JSON.stringify(customQuestions));
+                        document.getElementById('sheetsPreview').value = JSON.stringify(data.questions, null, 2);
+                        showStatus(`✅ ${data.questions.length}件の質問を取得しました`, 'ok');
+                        loadQuestions();
+                        startSim();
+                    } else {
+                        showStatus('⚠️ 質問データが見つかりません。フォーマットを確認してください。', 'err');
+                    }
+                })
+                .catch(e => {
+                    showStatus(`❌ 取得エラー: ${e.message}\nCORS制限の場合、GASデプロイ設定で「全員」にアクセスを許可してください。`, 'err');
+                });
+        }
+        function showStatus(msg, cls) {
+            const el = document.getElementById('sheetsStatus');
+            el.textContent = msg; el.className = 'sheets-status ' + cls; el.style.display = 'block';
+        }
+
+        // ===== Tabs =====
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+                tab.classList.add('on');
+                const target = tab.dataset.tab;
+                document.querySelectorAll('.sim,.panel').forEach(p => { p.classList.remove('on'); });
+                document.getElementById('tab-' + target).classList.add('on');
+                document.getElementById('simMeta').style.display = target === 'sim' ? 'flex' : 'none';
+            });
+        });
+
+        // ===== Toast =====
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg; t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
+        }
+
+        // ===== Init =====
+        loadCoreUI();
+        const savedGas = localStorage.getItem(GAS_KEY);
+        if (savedGas) document.getElementById('gasUrl').value = savedGas;
+        if (customQuestions) document.getElementById('sheetsPreview').value = JSON.stringify(customQuestions, null, 2);
+        loadQuestions();
+        startSim();
+    </script>
+</body>
+
+</html>

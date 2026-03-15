@@ -1,0 +1,43 @@
+{
+  "title": "2027年卒の就活生に異変 生成AI常用者の51％が志望業界を変更する理由 - Forbes JAPAN",
+  "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5EUzVkUlpWck5HWTFyamRxMUJ6dGpJRmV2Z0RjZy1tdXNnUm0zdS10LWVCZ3kyd0FwSXRkUWszWUNWbE9iV05yZHRZTWtTM1BNN0d3S0JTMHk?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTE5EUzVkUlpWck5HWTFyamRxMUJ6dGpJRmV2Z0RjZy1tdXNnUm0zdS10LWVCZ3kyd0FwSXRkUWszWUNWbE9iV05yZHRZTWtTM1BNN0d3S0JTMHk?oc=5\" target=\"_blank\">2027年卒の就活生に異変 生成AI常用者の51％が志望業界を変更する理由</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Forbes JAPAN</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "2027年卒の就活生に異変、生成AI常用者の51％が志望業界を変更",
+    "strategic_analysis": {
+      "true_intent": "この情報は、生成AIの普及により就活生の志望業界が変化していることを示唆しており、企業や教育機関がこれに対応する必要性を強調している。得をするのは、AI関連技術を提供する企業や、AIを活用した教育サービスを提供する学校などである。",
+      "swot": {
+        "strength": "生成AIの活用による業界の変化を先に見通した企業や教育機関の強み",
+        "weakness": "生成AIの活用に遅れる企業や教育機関の弱み",
+        "opportunity": "就活生が生成AIの活用を学び、業界の変化に対応する機会",
+        "threat": "生成AIの普及により、従来の業界や職種が変化する可能性"
+      },
+      "writing_technique": "",
+      "action_plan": "Yutoは、生成AIの活用を学び、業界の変化に対応するために、AI関連技術を提供する企業や、AIを活用した教育サービスを提供する学校を調査し、訪問する。さらに、面接で生成AIの活用に関する質問に答えるための準備をし、逆質問として「どのように生成AIを活用しているか」と問い、企業のAI戦略に興味を持つ姿勢を見せる。"
+    },
+    "bias_warning": "この情報は、Forbes JAPANの記事であり、一定の偏向報道の可能性がある。特に、AI関連技術の普及を推進している企業や教育機関の視点が強く出ている。",
+    "company": "null",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 8,
+    "company_profile": "**本質的価値**:\n\n* **創造性**: 新しい製品やサービスの開発で貢献する。\n* **創造性**: 顧客との差別化を図る。\n* **競争力**: 既存製品やサービスをより優位にする。\n\n**27卒への温度感**:\n\n* **高度な創造性**: 複雑な製品やサービスの開発に適している。\n* **問題解決能力**: 懸念事項や challenges を解決する才能が求められます。\n* **チームワーク**: 異なる人々に働けるチームワークが重要です。\n\n**EGO適性**:\n\n* **創造的な思考**: 新しいアイデアや解決方法を生成する。\n* **柔軟性**: 変化に適応できる優れたコミュニケーション能力が求められます。\n* **創造的な作業方法**: 効率的な解決方法や手順を構築する。",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、生成AIの普及により就活生の志望業界が変化していることを示唆しており、企業や教育機関がこれに対応する必要性を強調している。得をするのは、AI関連技術を提供する企業や、AIを活用した教育サービスを提供する学校などである。",
+    "swot": {
+      "strength": "生成AIの活用による業界の変化を先に見通した企業や教育機関の強み",
+      "weakness": "生成AIの活用に遅れる企業や教育機関の弱み",
+      "opportunity": "就活生が生成AIの活用を学び、業界の変化に対応する機会",
+      "threat": "生成AIの普及により、従来の業界や職種が変化する可能性"
+    },
+    "writing_technique": "",
+    "action_plan": "Yutoは、生成AIの活用を学び、業界の変化に対応するために、AI関連技術を提供する企業や、AIを活用した教育サービスを提供する学校を調査し、訪問する。さらに、面接で生成AIの活用に関する質問に答えるための準備をし、逆質問として「どのように生成AIを活用しているか」と問い、企業のAI戦略に興味を持つ姿勢を見せる。"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "この情報は、Forbes JAPANの記事であり、一定の偏向報道の可能性がある。特に、AI関連技術の普及を推進している企業や教育機関の視点が強く出ている。",
+  "collected_at": "2026-02-05T05:56:00.008596",
+  "source": "就活ニュース (Google)",
+  "score": 8
+}

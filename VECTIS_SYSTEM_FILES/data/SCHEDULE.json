@@ -1,0 +1,19 @@
+{
+    "tasks": [
+        {
+            "date": "2026-01-24",
+            "title": "ES Draft Review",
+            "type": "deadline"
+        },
+        {
+            "date": "2026-01-25",
+            "title": "Online Interview",
+            "type": "event"
+        },
+        {
+            "date": "2026-01-23",
+            "title": "Racing AI Update",
+            "type": "task"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+  "title": "新たな科学技術が社会に受容されるには？－神戸大学のELSI研",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1ia1NkWmxwc2pkTEFMVVVWU2FSbnp3cUhDTXh6YW9neFdkUllMQVN1VDZnZ2NpUnlXSmFzbENVblJxZ09kNGdwLVUtakIzdEpRTVAxRXpxM3ViX1JOaUgxTkkzLVRWMkk?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1ia1NkWmxwc2pkTEFMVVVWU2FSbnp3cUhDTXh6YW9neFdkUllMQVN1VDZnZ2NpUnlXSmFzbENVblJxZ09kNGdwLVUtakIzdEpRTVAxRXpxM3ViX1JOaUgxTkkzLVRWMkk?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "神戸大学ELSI研究、新技術の社会受容を考察。",
+    "true_intent": "大学の研究成果広報による研究費獲得アピール。ELSI研究の重要性訴求による関連予算の確保、研究機関としてのプレゼンス向上を狙う。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "出版",
+    "target_year": "2027",
+    "academic_deep_dive": "## 新たな科学技術の社会受容：ELSI研究を深掘りする\n\n1. **歴史的背景**: 技術受容の歴史は、常に光と影を伴う。産業革命におけるラッダイト運動は、技術革新が社会構造や雇用を脅かす可能性を示唆した。原子力開発も同様で、当初は夢のエネルギー源として期待されたが、事故を経て倫理的・社会的課題が浮き彫りになった。ELSI研究は、こうした過去の教訓を踏まえ、技術の導入前に潜在的なリスクを評価する試みと言える。\n\n2. **現代的意義**: AI、ゲノム編集、気候変動対策技術など、現代の科学技術は社会を根底から変革する力を持つ。これらの技術は、格差拡大、プライバシー侵害、環境破壊といった新たな倫理的ジレンマを生み出す可能性がある。ELSI研究は、技術開発者、政策立案者、市民が対話し、合意形成を図るための基盤を提供する点で重要である。\n\n3. **批判的視座**: ELSI研究は、技術受容の「遅延」要因と見なされる場合がある。しかし、本当に問うべきは、技術の「受容」ではなく、「制御」のあり方ではないか。技術は中立ではなく、特定の価値観や権力構造を反映する。ELSI研究は、技術の民主的な制御を可能にするための議論の場を提供すべきである。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "大学の研究成果広報による研究費獲得アピール。ELSI研究の重要性訴求による関連予算の確保、研究機関としてのプレゼンス向上を狙う。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:01:55.903634",
+  "source": "科学技術 社会論"
+}

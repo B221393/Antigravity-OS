@@ -1,0 +1,22 @@
+{
+  "title": "KDDI〈前編〉 求めるのは「あるべき姿に向けて努力する」「",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9lTEtZRE1KcDlROUpsWTVNU2cyb09HRnFCUHpPUTRlMGxrQzI4a3k4a3pjTTh3ZEt3R0NIc0hwVGFWSXMzalF2T2Z3YnNZaGU0eFU3bVpxdXUwdHpaUnpWWGthT1VZWnFqOWFR?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTE9lTEtZRE1KcDlROUpsWTVNU2cyb09HRnFCUHpPUTRlMGxrQzI4a3k4a3pjTTh3ZEt3R0NIc0hwVGFWSXMzalF2T2Z3YnNZaGU0eFU3bVpxdXUwdHpaUnpWWGthT1VZWnFqOWFR?oc=5\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIが求めるのは、周囲の人を強く意識したコミュニケーションや目標達成に向けて努力するメッセージである可能性があります。",
+    "true_intent": "この情報は、KDDIが求めるのは、周囲の人を意識したコミュニケーションや支援を通じて、顧客との信頼関係を構築することで、企業の目標達成に繋がる可能性があると考えられます。",
+    "bias_warning": "ポジショントーク可能性があるため、この情報は企業の利権や宣伝目的によるものではありませんが、周囲の人を意識したコミュニケーションが企業の成功に繋がる可能性は否定できません。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "人事/コミュニケーション",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、KDDIが求めるのは、周囲の人を意識したコミュニケーションや支援を通じて、顧客との信頼関係を構築することで、企業の目標達成に繋がる可能性があると考えられます。",
+    "bias_warning": "ポジショントーク可能性があるため、この情報は企業の利権や宣伝目的によるものではありませんが、周囲の人を意識したコミュニケーションが企業の成功に繋がる可能性は否定できません。"
+  },
+  "collected_at": "2026-01-27T11:48:18.422047",
+  "source": "KDDI 採用 Deep Dive"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "NTT、KDDI、ソフトバンク、楽天モバイルの宇宙戦略を解説",
+  "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9pUHRLYTlJYkZ4S2NUeHViZUFhb05FVmJKWWtMcEZ0OEdvRzZjSVZzZC1JRzN5ZkEyNk1pMlFRSE82a3NfV210MW11WjNtd0FBcDNkWkotVDN5UUpETHdfX1owYlRrV2cyU3hkNUp4WnBienl2ZVdVcHBfTXhFLUU?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMif0FVX3lxTE9pUHRLYTlJYkZ4S2NUeHViZUFhb05FVmJKWWtMcEZ0OEdvRzZjSVZzZC1JRzN5ZkEyNk1pMlFRSE82a3NfV210MW11WjNtd0FBcDNkWkotVDN5UUpETHdfX1owYlRrV2cyU3hkNUp4Wn",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "大手通信キャリア4社の宇宙戦略を解説。衛星通信や空飛ぶ基地局で圏外解消を目指す。",
+    "true_intent": "通信キャリア各社の宇宙戦略の宣伝。未来技術への投資アピールで企業イメージ向上を図り、株価上昇や人材獲得につなげたい思惑が見える。国家プロジェクトへの関与も視野か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "NTT, KDDI, ソフトバンク, 楽天モバイル",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## 通信キャリア4社の本質と27卒が狙うべき理由\n\n**NTT:**\n1. **主要武器:** 圧倒的なインフラと研究開発力。国策企業としての安定感。\n2. **26-27卒への温度感:** 幅広い分野で積極採用。多様な人材を求める傾向。\n3. **EGO適性:** 構造的思考は必須。AI活用も推進中だが、部署による。\n4. **裏の弱点:** 官僚的な体質。意思決定の遅さ。\n\n**KDDI:**\n1. **主要武器:** au経済圏の拡大。顧客基盤と多角的な事業展開。\n2. **26-27卒への温度感:** 成長分野への積極投資に伴い、意欲的な人材を重視。\n3. **EGO適性:** データ分析に基づいた戦略立案を重視。AI活用も積極的。\n4. **裏の弱点:** 通信事業依存からの脱却の遅れ。競争激化への対応。\n\n**ソフトバンク:**\n1. **主要武器:** 投資力とスピード感。AI・テクノロジー分野への積極投資。\n2. **26-27卒への温度感:** 即戦力となる人材を求める傾向。高い成長意欲が必須。\n3. **EGO適性:** 論理的思考力とAI知識は必須。変化への対応力も重要。\n4. **裏の弱点:** 投資リスクの高さ。グループ全体の経営戦略への依存。\n\n**楽天モバイル:**\n1. **主要武器:** 革新的な技術と低価格戦略。グループシナジーの可能性。\n2. **26-27卒への温度感:** 新規事業拡大に伴い、チャレンジ精神旺盛な人材を求める。\n3. **EGO適性:** データ分析とAI活用は必須。柔軟な発想力と実行力も重要。\n4. **裏の弱点:** 基地局整備の遅れ。収益性の改善が急務。\n",
+    "deep_web_intel": "**NTT**\n\n*   **Description:** NTT Group official website. Information on vision, strategy, sustainability, R&D, disaster response, social contribution, IR.\n*   **Key Sections:** Corporate information, News releases.\n*   **Tech:** Google Tag Manager, OGP."
+  },
+  "critical_analysis": {
+    "true_intent": "通信キャリア各社の宇宙戦略の宣伝。未来技術への投資アピールで企業イメージ向上を図り、株価上昇や人材獲得につなげたい思惑が見える。国家プロジェクトへの関与も視野か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:01:38.960789",
+  "source": "Active:KDDI"
+}

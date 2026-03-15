@@ -1,0 +1,22 @@
+{
+  "title": "2027卒向け夏インターンの募集を開始しました！！～受付を終",
+  "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9FR2cxeTMtenZwQkJxaVJqdnBQWjVvQnQwb251bDFsdjZiMVhobTFUbzB4QmpBUGhMX0dLaXNiY1hHOXRXQkEtZU5nZDlFaUtEYlRlUUFWWDFzWEJ1WjQxNVl3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTE9FR2cxeTMtenZwQkJxaVJqdnBQWjVvQnQwb251bDFsdjZiMVhobTFUbzB4QmpBUGhMX0dLaXNiY1hHOXRXQkEtZU5nZDlFaUtEYlRlUUFWWDFzWEJ1WjQxNVl3?oc=5\" target=\"_bl",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "この情報は、就職活動に関係した情報であり、 potential employer が参加する機会を確保するためのキャンペーンである可能性が高い。",
+    "true_intent": "この情報は、2027年 graduating 27卒向け夏のインターンの募集を開始する情報を表している可能性が高い。",
+    "bias_warning": "ポジショントークの可能性があり、企業が特定の企業や業界への投資や支援を表明する可能性がある。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "就職/就活/キャリアサポート",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、2027年 graduating 27卒向け夏のインターンの募集を開始する情報を表している可能性が高い。",
+    "bias_warning": "ポジショントークの可能性があり、企業が特定の企業や業界への投資や支援を表明する可能性がある。"
+  },
+  "collected_at": "2026-01-27T12:19:43.995286",
+  "source": "インターン (Google)"
+}

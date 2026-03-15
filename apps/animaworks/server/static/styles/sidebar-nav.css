@@ -1,0 +1,143 @@
+/* ============================================
+   Sidebar Navigation
+   ============================================ */
+
+.sidebar-nav {
+  width: 220px;
+  min-width: 220px;
+  background: var(--aw-color-sidebar-bg);
+  color: var(--aw-color-sidebar-text);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-shrink: 0;
+  transition: width 0.18s ease, min-width 0.18s ease;
+}
+
+/* ── Brand ───────────────────────────────────── */
+
+.sidebar-brand {
+  padding: 20px 20px 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--aw-color-accent-light);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Nav List ────────────────────────────────── */
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  flex: 1;
+}
+
+.nav-list li {
+  margin: 0;
+}
+
+/* ── Nav Item ────────────────────────────────── */
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  color: var(--aw-color-sidebar-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+
+.nav-item:hover,
+.nav-item:active {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--aw-color-sidebar-hover-bg);
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid var(--aw-color-accent-light);
+  outline-offset: -2px;
+}
+
+.nav-item.active {
+  background: var(--aw-color-sidebar-active-bg, rgba(37, 99, 235, 0.15));
+  color: var(--aw-color-sidebar-active-text);
+  border-left-color: var(--aw-color-accent);
+}
+
+/* ── Nav Icon ────────────────────────────────── */
+
+.nav-icon {
+  font-size: 1.1rem;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nav-emoji { display: var(--aw-emoji-display); }
+.nav-lucide { display: var(--aw-icon-display); }
+
+/* ── External Link ───────────────────────────── */
+
+.nav-external {
+  opacity: 0.75;
+}
+
+.nav-external:hover,
+.nav-external:active {
+  opacity: 1;
+}
+
+/* ── Divider ─────────────────────────────────── */
+
+.nav-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 8px 16px;
+}
+
+/* ── Theme Picker ────────────── */
+.theme-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--aw-color-sidebar-muted);
+}
+
+.theme-select {
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--aw-color-sidebar-muted);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 12px;
+  cursor: pointer;
+  max-width: 110px;
+}
+
+.theme-select:focus {
+  outline: 1px solid var(--aw-color-accent-light);
+}
+
+.theme-select option {
+  background: var(--aw-color-sidebar-bg);
+  color: var(--aw-color-sidebar-text);
+}
+
+@media (min-width: 769px) {
+  body.sidebar-collapsed .sidebar-nav {
+    width: 0;
+    min-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+}

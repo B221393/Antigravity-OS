@@ -1,0 +1,22 @@
+{
+  "title": "AI普及で不要になる？「若者」と「オフィスワーカー」 雇用へ",
+  "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQTVhWQ1VMUVlsTldLZ0xkdUhKWTdlVUpydWs3MnplbHNZbTk2YVpTa1VOTXBNb2FzbXpLWjkxY09sWTJpenBsSnhZSmlOVFdDZUFBc0JZb3dtQl9OZl82cEZ3ZGNMSEl3cnRuQ3N1ZllXckFhU0lIQUdMTV92aUFac0RHaEtOOVNy?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxQTVhWQ1VMUVlsTldLZ0xkdUhKWTdlVUpydWs3MnplbHNZbTk2YVpTa1VOTXBNb2FzbXpLWjkxY09sWTJpenBsSnhZSmlOVFdDZUFBc0JZb3dtQl9OZl82cEZ3ZGNMSEl3cnRuQ3N1Zl",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "AI普及で若者とオフィスワーカーの雇用が危機？影響を多角的に分析。",
+    "true_intent": "AI導入推進派による危機感の煽り？AI関連ビジネスの需要喚起、人材育成市場への誘導、企業側のコスト削減正当化が目的か。不安を煽り、AIリテラシー向上を促す意図も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "AI導入推進派による危機感の煽り？AI関連ビジネスの需要喚起、人材育成市場への誘導、企業側のコスト削減正当化が目的か。不安を煽り、AIリテラシー向上を促す意図も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:00:39.900666",
+  "source": "Active:NTT"
+}

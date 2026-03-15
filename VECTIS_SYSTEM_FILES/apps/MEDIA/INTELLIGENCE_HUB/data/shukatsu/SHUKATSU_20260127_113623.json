@@ -1,0 +1,23 @@
+{
+  "title": "関西電力の蓄電池オンサイト導入サービスで蓄電システムが採用 ",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBsYlRIeE5VanBVb1UyejV4UTdYdmF5SjRLZW83bWgyMHM0dmtROXV5MmhyZ2RSRjgycmU5OVhFOHBiZVF2YzdwaXk4VXY2T2Nod3hoVnhvdklzNURSd0txcTMzZGdnUXJuSHFZ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTFBsYlRIeE5VanBVb1UyejV4UTdYdmF5SjRLZW83bWgyMHM0dmtROXV5MmhyZ2RSRjgycmU5OVhFOHBiZVF2YzdwaXk4VXY2T2Nod3hoVnhvdklzNURSd0txcTMzZGdnUXJuSHFZ?oc=5\"",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "関電の蓄電池オンサイト導入サービスに蓄電システム採用。詳細不明。",
+    "true_intent": "関電による再生可能エネルギー導入促進のアピール。蓄電池関連企業との連携強化、及び自社のエネルギー事業拡大が目的か。電力価格高騰対策とイメージ向上を図る狙いも。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "関西電力",
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。関西電力の本質的価値と27卒が狙うべき理由を以下の通り構造化します。\n\n1.  **主要武器**: 関西圏の電力インフラ独占と、原子力発電技術。安定基盤と技術力が強み。\n2.  **26-27卒への温度感**: 安定志向の学生を重視しつつ、新規事業推進に向けた多様な人材を模索中。\n3.  **EGO適性**: 保守的な面もあるが、近年DX推進に注力。データ分析やAI活用人材のニーズは高まっている。\n4.  **裏の弱点**: 原発依存体質、再エネへの遅れ、電力自由化による競争激化。将来的な収益構造転換が課題。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "関電による再生可能エネルギー導入促進のアピール。蓄電池関連企業との連携強化、及び自社のエネルギー事業拡大が目的か。電力価格高騰対策とイメージ向上を図る狙いも。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:36:23.527193",
+  "source": "関西電力"
+}

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS Neural Map</title>
+    <script src="https://unpkg.com/3d-force-graph"></script>
+    <script src="https://unpkg.com/three"></script>
+    <script src="https://unpkg.com/three-spritetext"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        #graph {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* UI Overlays */
+        .overlay {
+            position: absolute;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .header {
+            top: 30px;
+            left: 30px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #fff, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 5px 0 0 0;
+        }
+
+        .node-info {
+            bottom: 30px;
+            left: 30px;
+            width: 320px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            transform: translateY(120%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: all;
+        }
+
+        .node-info.active {
+            transform: translateY(0);
+        }
+
+        .node-category {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+
+        .node-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .node-summary {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+
+        .btn-deep {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #fff;
+            color: #000;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn-deep:hover {
+            background: #38bdf8;
+            color: #fff;
+        }
+
+        /* Stats Overlay */
+        .stats {
+            top: 30px;
+            right: 30px;
+            text-align: right;
+        }
+
+        .stat-item {
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+        }
+
+        /* Full Article Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 900px;
+            height: 85vh;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .modal-body {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            line-height: 1.8;
+            font-size: 17px;
+            color: #d1d5db;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .close-modal:hover {
+            color: #fff;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="graph"></div>
+
+    <div class="overlay header">
+        <h1>VECTIS NEURAL MAP</h1>
+        <p>Interactive Autonomous Discovery Graph</p>
+    </div>
+
+    <div class="overlay stats">
+        <div class="stat-item">
+            <div class="stat-value" id="nodeCount">-</div>
+            <div class="stat-label">Neural Nodes</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="edgeCount">-</div>
+            <div class="stat-label">Syntactic Weights</div>
+        </div>
+    </div>
+
+    <div class="node-info" id="nodeInfo">
+        <div class="node-category" id="infoCategory">CATEGORY</div>
+        <div class="node-title" id="infoTitle">Node Title</div>
+        <div class="node-summary" id="infoSummary">This is a summary of the neural node. Hover or click to explore deep
+            layers of intelligence.</div>
+        <div class="btn-deep" id="btnDeep">Dive Into Deep Knowledge</div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-header">
+                <div class="node-category" id="modalCategory">CATEGORY</div>
+                <h2 id="modalTitle" style="margin:0; font-size: 28px;">Title</h2>
+            </div>
+            <div class="modal-body" id="modalBody">
+                Content
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let graphData = { nodes: [], links: [] };
+        let deepKnowledge = {};
+        const Graph = ForceGraph3D()(document.getElementById('graph'));
+
+        async function init() {
+            try {
+                // Fetch Data
+                const universeRes = await fetch('../youtube_channel/data/universe.json');
+                const universe = await universeRes.json();
+
+                const deepRes = await fetch('../youtube_channel/data/deep_knowledge.json');
+                const deep = await deepRes.json();
+
+                // Process Deep Knowledge for lookup
+                deep.chapters.forEach(ch => {
+                    deepKnowledge[ch.id] = ch;
+                    // Also map by title hash or fuzzy title match if needed, but ID is best
+                });
+
+                // Generate Graph
+                const nodes = universe.nodes.map(n => ({
+                    id: n.id,
+                    name: n.title,
+                    val: (n.importance || 5) * 2,
+                    category: n.group || 'Default',
+                    summary: n.summary,
+                    timestamp: n.timestamp
+                }));
+
+                // Auto-connect nodes in the same group or with related keywords
+                const links = [];
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        // Connection by group
+                        if (nodes[i].category === nodes[j].category) {
+                            if (Math.random() > 0.7) { // Sparse connections
+                                links.push({ source: nodes[i].id, target: nodes[j].id });
+                            }
+                        }
+                        // Chronological link (next node)
+                        if (j === i + 1 && Math.random() > 0.5) {
+                            links.push({ source: nodes[i].id, target: nodes[j].id });
+                        }
+                    }
+                }
+
+                document.getElementById('nodeCount').innerText = nodes.length;
+                document.getElementById('edgeCount').innerText = links.length;
+
+                const colorPalette = {
+                    'Research': '#38bdf8',
+                    'Business Strategy': '#fbbf24',
+                    'Cybernetics': '#f87171',
+                    'Software Development': '#4ade80',
+                    '出版業界': '#a78bfa',
+                    '健康管理': '#f472b6',
+                    '数学': '#2dd4bf',
+                    '投資戦略': '#fb923c',
+                    '政治': '#94a3b8'
+                };
+
+                Graph
+                    .graphData({ nodes, links })
+                    .nodeLabel('name')
+                    .nodeAutoColorBy('category')
+                    .nodeThreeObject(node => {
+                        const sprite = new SpriteText(node.name);
+                        sprite.color = colorPalette[node.category] || '#fff';
+                        sprite.textHeight = 8;
+                        sprite.padding = [4, 2];
+                        sprite.backgroundColor = 'rgba(0,0,0,0.5)';
+                        sprite.borderRadius = 4;
+                        return sprite;
+                    })
+                    .onNodeClick(node => {
+                        showInfo(node);
+                        // Aim at node
+                        const distance = 100;
+                        const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
+                        Graph.cameraPosition(
+                            { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
+                            node,
+                            3000
+                        );
+                    })
+                    .linkWidth(0.5)
+                    .linkDirectionalParticles(2)
+                    .linkDirectionalParticleSpeed(d => Math.random() * 0.01)
+                    .backgroundColor('#000000');
+
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function showInfo(node) {
+            const panel = document.getElementById('nodeInfo');
+            document.getElementById('infoCategory').innerText = node.category;
+            document.getElementById('infoTitle').innerText = node.name;
+            document.getElementById('infoSummary').innerText = node.summary;
+
+            // Re-style category
+            const colorPalette = {
+                'Research': '#38bdf8',
+                'Business Strategy': '#fbbf24',
+                'Cybernetics': '#f87171'
+            };
+            document.getElementById('infoCategory').style.color = colorPalette[node.category] || '#fff';
+
+            panel.classList.add('active');
+
+            // Find deep knowledge
+            let deep = Object.values(deepKnowledge).find(ch =>
+                ch.title.includes(node.name) || node.name.includes(ch.title)
+            );
+
+            const btn = document.getElementById('btnDeep');
+            if (deep) {
+                btn.innerText = "Dive Into Deep Knowledge (10k+ chars)";
+                btn.style.opacity = "1";
+                btn.onclick = () => openModal(deep);
+            } else {
+                btn.innerText = "Deep Layer Not Yet Discovered";
+                btn.style.opacity = "0.5";
+                btn.onclick = null;
+            }
+        }
+
+        function openModal(deep) {
+            document.getElementById('modalTitle').innerText = deep.title;
+            document.getElementById('modalCategory').innerText = deep.category;
+
+            let content = deep.full_text || "";
+            // Basic Markdown to HTML
+            content = content.replace(/^## (.*$)/gim, '<h2 style="color:#fff; margin-top: 40px; border-bottom: 1px solid #333; padding-bottom: 10px;">$1</h2>');
+            content = content.replace(/\n\n/g, '<p style="margin-bottom: 20px;">');
+
+            document.getElementById('modalBody').innerHTML = content;
+            document.getElementById('modalOverlay').style.display = 'flex';
+        }
+
+        document.getElementById('closeModal').onclick = () => {
+            document.getElementById('modalOverlay').style.display = 'none';
+        };
+
+        window.addEventListener('click', (e) => {
+            if (e.target.id === 'modalOverlay') {
+                document.getElementById('modalOverlay').style.display = 'none';
+            }
+        });
+
+        init();
+    </script>
+</body>
+
+</html>

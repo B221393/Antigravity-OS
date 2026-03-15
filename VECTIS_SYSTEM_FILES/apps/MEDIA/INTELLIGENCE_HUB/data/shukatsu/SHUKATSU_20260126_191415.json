@@ -1,0 +1,23 @@
+{
+  "title": "KDDIが中期経営計画を発表、「通信とライフデザインの融合」",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIが中期経営計画を発表し、通信とライフデザインの融合を表明したことを分析。これは、KDDIが通信とライフデザインを統合することで、競争性を高める可能性があることを暗示している可能性があります。",
+    "true_intent": "KDDIが通信とライフデザインの統合を目的として、中期経営計画を策定した可能性があることを分析している可能性があります。",
+    "bias_warning": "ポジショントークの可能性があるため、この情報の正確性には疑問がある可能性があります。",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "company_profile": "- **事業の強み・特徴**: KDDIは日本の通信会社で、テレビ放送、インターネット、モバイル通信などの事業を展開しています。\n- **社風・カルチャー**: KDDIは非常にスポーツとスポーツ関連の企業であり、社員はスポーツチームに応援するなど、スポーツに対する熱意が非常に高いです。\n- **求める人物像の推測**: KDDIは、スポーツとスポーツ関連の知識やスキルを必要とする分野への就職が非常に高いと推測されます。"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIが通信とライフデザインの統合を目的として、中期経営計画を策定した可能性があることを分析している可能性があります。",
+    "bias_warning": "ポジショントークの可能性があるため、この情報の正確性には疑問がある可能性があります。"
+  },
+  "collected_at": "2026-01-26T19:14:15.389555",
+  "source": "KDDI 事業戦略"
+}

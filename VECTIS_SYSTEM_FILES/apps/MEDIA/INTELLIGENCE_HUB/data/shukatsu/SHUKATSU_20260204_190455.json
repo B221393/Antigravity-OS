@@ -1,0 +1,43 @@
+{
+  "title": "グロービスが挑む、「AI×教育」――全社AI活用を可能にした組織変革と、研究・実践から描く人材育成の未来 - PR TIMES",
+  "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE41dzNaTy04V0g4T1FSTFh5anJMT2M4cnJhNWg3V1dnTTFzSy1ldGtIdjV4SDdDdXBvbE9XNzJFMHBtb082WFNVYXU1TWxMVzdpWENPaVR3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTE41dzNaTy04V0g4T1FSTFh5anJMT2M4cnJhNWg3V1dnTTFzSy1ldGtIdjV4SDdDdXBvbE9XNzJFMHBtb082WFNVYXU1TWxMVzdpWENPaVR3?oc=5\" target=\"_blank\">グロービスが挑む、「AI×教育」――全社AI活用を可能にした組織変革と、研究・実践から描く人材育成の未来</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PR TIMES</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "グロービスがAI×教育に挑戦",
+    "strategic_analysis": {
+      "true_intent": "グロービスがAI活用を推進する中で、教育事業にも注力する意図が見える。宣伝色はあるが、企業のDXへの取り組みをアピールする狙いもある",
+      "swot": {
+        "strength": "AI活用の組織変革を実現しており、教育事業にもそれを生かすことができる",
+        "weakness": "既存の教育システムとの兼ね合いを考えると、変革に伴うコストや抵抗がある可能性",
+        "opportunity": "就活生にとっては、AI関連のスキルを身につける機会や、教育分野での新しいビジネスモデルの創出が期待できる",
+        "threat": "教育分野でのAI活用は、従来の教育システムを脅かしかねない"
+      },
+      "writing_technique": "",
+      "action_plan": "グロービスへの内定が取れたら、AI活用をどのように教育事業に取り入れるかを具体的に問いただす。OB訪問で、組織変革の実態や、AI関連のスキルを身につけるための教育内容を確認する"
+    },
+    "bias_warning": "グロービスが自社のAI活用をアピールするため、ポジショントークの要素が含まれている可能性",
+    "company": "グロービス",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 8,
+    "company_profile": "以下がグロービスの分析結果です。\n\n1. **主要武器**: グローバルな視点とネットワーク、ビジネススクールとしての実践的な経営学。\n2. **26-27卒への温度感**: グローバル人材の育成に注力しており、国際的な視点を持つ若者に人気。\n3. **EGO適性**: 構造的思考とAI活用を重視し、デジタル時代のリーダーを育成する文化。\n4. **裏の弱点**: 高度な専門知識を要求されるため、多大な学習負担があり、適応に苦労する新入社員もいる。",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "グロービスがAI活用を推進する中で、教育事業にも注力する意図が見える。宣伝色はあるが、企業のDXへの取り組みをアピールする狙いもある",
+    "swot": {
+      "strength": "AI活用の組織変革を実現しており、教育事業にもそれを生かすことができる",
+      "weakness": "既存の教育システムとの兼ね合いを考えると、変革に伴うコストや抵抗がある可能性",
+      "opportunity": "就活生にとっては、AI関連のスキルを身につける機会や、教育分野での新しいビジネスモデルの創出が期待できる",
+      "threat": "教育分野でのAI活用は、従来の教育システムを脅かしかねない"
+    },
+    "writing_technique": "",
+    "action_plan": "グロービスへの内定が取れたら、AI活用をどのように教育事業に取り入れるかを具体的に問いただす。OB訪問で、組織変革の実態や、AI関連のスキルを身につけるための教育内容を確認する"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "グロービスが自社のAI活用をアピールするため、ポジショントークの要素が含まれている可能性",
+  "collected_at": "2026-02-04T19:04:55.171685",
+  "source": "PR TIMES (AI/DX)",
+  "score": 8
+}

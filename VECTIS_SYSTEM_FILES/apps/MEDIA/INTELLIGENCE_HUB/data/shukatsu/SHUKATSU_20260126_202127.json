@@ -1,0 +1,23 @@
+{
+  "title": "KDDIが中期経営計画を発表、「通信とライフデザインの融合」",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": " KDDIが中期経営計画を発表、通信とライフデザインの融合を目標としています。",
+    "true_intent": " KDDIは、通信とライフデザインの融合を、新たな事業展開や収益増加を目的としています。",
+    "bias_warning": "不明",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "company_profile": "- **事業の強み・特徴**: KDDIは、通信技術を基盤とする高度な情報技術企業です。デジタルコンテンツの制作・配信や技術サービスの開発など、様々な事業展開で活躍しています。\n- **社風・カルチャー**: KDDIは、スポーツやスポーツ関連の団体や事業を支援する非公開団体を運営することで、スポーツとの関わりが積極的に展開されています。また、オープンな環境で働くチームワークのカルチャーが特徴です。\n- **求める人物像の推測**: KDDIは、技術、コミュニケーション、創造性などの分野に強い求職者を求めることが特徴です。"
+  },
+  "critical_analysis": {
+    "true_intent": " KDDIは、通信とライフデザインの融合を、新たな事業展開や収益増加を目的としています。",
+    "bias_warning": "不明"
+  },
+  "collected_at": "2026-01-26T20:21:27.277658",
+  "source": "KDDI 事業戦略"
+}

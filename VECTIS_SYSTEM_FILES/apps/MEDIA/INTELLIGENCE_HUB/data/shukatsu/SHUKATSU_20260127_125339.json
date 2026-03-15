@@ -1,0 +1,22 @@
+{
+  "title": "進む早期化。「本選考を受けた」が早くも6割を超える - PR",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5TaGF2dTUzelUxQ1A2dENvczVNMHZNNnRJTEJkWHFLWXVfVkdySjFBUi13LVFNZFA1WE5MdkkyVW9XYXlnWE9SNEdaQ3NkZTlfclBlejFUTE9kczYtWXpMS1B2RWtFTDk0bmc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE5TaGF2dTUzelUxQ1A2dENvczVNMHZNNnRJTEJkWHFLWXVfVkdySjFBUi13LVFNZFA1WE5MdkkyVW9XYXlnWE9SNEdaQ3NkZTlfclBlejFUTE9kczYtWXpMS1B2RWtFTDk0bmc?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "「本選考を受けた」が早くも6割を超える、企業の利権や宣伝の機会を分析します。",
+    "true_intent": "この情報の裏にある意図や、誰が得をするか（利権・宣伝色）を分析し、企業の利権や宣伝への影響を推測します。",
+    "bias_warning": "ある企業に、この情報に関する影響を与える可能性があり、より詳細な調査が必要とします。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図や、誰が得をするか（利権・宣伝色）を分析し、企業の利権や宣伝への影響を推測します。",
+    "bias_warning": "ある企業に、この情報に関する影響を与える可能性があり、より詳細な調査が必要とします。"
+  },
+  "collected_at": "2026-01-27T12:53:39.466225",
+  "source": "就活ニュース (Google)"
+}

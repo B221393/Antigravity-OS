@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就活トラッカー - Career Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg: #08080d;
+            --s1: #0e0e18;
+            --s2: #151525;
+            --s3: #1c1c30;
+            --bd: #252545;
+            --ac: #7c6cf0;
+            --ac2: #a89eff;
+            --ac3: #00d4c8;
+            --tx: #e8e8f0;
+            --tx2: #7878a0;
+            --tx3: #50506a;
+            --ok: #2ecc71;
+            --warn: #f39c12;
+            --err: #e74c3c;
+            --info: #3498db;
+            --es: #8b5cf6;
+            --s1st: #3b82f6;
+            --s2nd: #0ea5e9;
+            --sfin: #eab308;
+            --soffer: #22c55e;
+            --srej: #ef4444
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Hiragino Sans', sans-serif;
+            background: var(--bg);
+            color: var(--tx);
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 15% 50%, rgba(124, 58, 237, .06) 0%, transparent 50%), radial-gradient(circle at 85% 30%, rgba(0, 212, 200, .06) 0%, transparent 50%)
+        }
+
+        /* Header */
+        header {
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--bd);
+            background: rgba(14, 14, 24, .85);
+            backdrop-filter: blur(16px);
+            position: sticky;
+            top: 0;
+            z-index: 100
+        }
+
+        .logo {
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            background: linear-gradient(90deg, var(--ac), var(--ac3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .logo svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--ac2)
+        }
+
+        .hdr-actions {
+            display: flex;
+            gap: 8px
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--bd);
+            background: var(--s2);
+            color: var(--tx);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .btn:hover {
+            border-color: var(--ac);
+            background: rgba(124, 108, 240, .1)
+        }
+
+        .btn svg {
+            width: 13px;
+            height: 13px;
+            fill: currentColor
+        }
+
+        .btn-p {
+            background: linear-gradient(135deg, var(--ac), var(--ac3));
+            border: none;
+            color: #fff
+        }
+
+        .btn-p:hover {
+            opacity: .9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(124, 108, 240, .3)
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 10px;
+            padding: 16px 24px;
+            flex-wrap: wrap
+        }
+
+        .stat {
+            flex: 1;
+            min-width: 110px;
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            padding: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: transform .2s, border-color .2s
+        }
+
+        .stat:hover {
+            transform: translateY(-3px);
+            border-color: rgba(124, 108, 240, .3)
+        }
+
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px
+        }
+
+        .stat.t-all::before {
+            background: linear-gradient(90deg, var(--ac), var(--ac3))
+        }
+
+        .stat.t-es::before {
+            background: var(--es)
+        }
+
+        .stat.t-1st::before {
+            background: var(--s1st)
+        }
+
+        .stat.t-2nd::before {
+            background: var(--s2nd)
+        }
+
+        .stat.t-fin::before {
+            background: var(--sfin)
+        }
+
+        .stat.t-offer::before {
+            background: var(--soffer)
+        }
+
+        .stat-v {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1;
+            font-variant-numeric: tabular-nums
+        }
+
+        .stat-l {
+            color: var(--tx2);
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-top: 4px
+        }
+
+        /* Board */
+        .board {
+            display: flex;
+            gap: 12px;
+            padding: 0 24px 24px;
+            overflow-x: auto;
+            align-items: flex-start;
+            flex: 1;
+            scroll-behavior: smooth
+        }
+
+        .board::-webkit-scrollbar {
+            height: 6px
+        }
+
+        .board::-webkit-scrollbar-track {
+            background: transparent
+        }
+
+        .board::-webkit-scrollbar-thumb {
+            background: var(--bd);
+            border-radius: 3px
+        }
+
+        /* Columns */
+        .col {
+            min-width: 260px;
+            max-width: 260px;
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0
+        }
+
+        .col-h {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--bd);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600
+        }
+
+        .col-h .tag {
+            font-size: 10px;
+            background: rgba(255, 255, 255, .08);
+            padding: 1px 8px;
+            border-radius: 10px;
+            font-weight: 500
+        }
+
+        .col.c-es .col-h {
+            border-top: 3px solid var(--es);
+            border-radius: 10px 10px 0 0
+        }
+
+        .col.c-1st .col-h {
+            border-top: 3px solid var(--s1st);
+            border-radius: 10px 10px 0 0
+        }
+
+        .col.c-2nd .col-h {
+            border-top: 3px solid var(--s2nd);
+            border-radius: 10px 10px 0 0
+        }
+
+        .col.c-fin .col-h {
+            border-top: 3px solid var(--sfin);
+            border-radius: 10px 10px 0 0
+        }
+
+        .col.c-offer .col-h {
+            border-top: 3px solid var(--soffer);
+            border-radius: 10px 10px 0 0
+        }
+
+        .col.c-rej .col-h {
+            border-top: 3px solid var(--srej);
+            border-radius: 10px 10px 0 0
+        }
+
+        .card-list {
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-height: 80px;
+            transition: background .2s
+        }
+
+        .card-list.drag-over {
+            background: rgba(124, 108, 240, .05);
+            border-radius: 0 0 10px 10px
+        }
+
+        /* Cards */
+        .card {
+            background: var(--s2);
+            border: 1px solid rgba(255, 255, 255, .04);
+            border-radius: 8px;
+            padding: 10px 12px;
+            cursor: grab;
+            transition: all .15s;
+            position: relative
+        }
+
+        .card:hover {
+            border-color: rgba(124, 108, 240, .25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+            transform: translateY(-1px)
+        }
+
+        .card:active {
+            cursor: grabbing;
+            transform: scale(.98)
+        }
+
+        .card.dragging {
+            opacity: .4
+        }
+
+        .card-co {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .card-pos {
+            color: var(--ac2);
+            font-size: 11px;
+            margin-bottom: 6px
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--tx3);
+            font-size: 10px
+        }
+
+        .card-meta svg {
+            width: 10px;
+            height: 10px;
+            fill: currentColor;
+            flex-shrink: 0
+        }
+
+        .card-note {
+            font-size: 10px;
+            color: var(--tx2);
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px dashed var(--bd);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden
+        }
+
+        .card-actions {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            display: flex;
+            gap: 2px;
+            opacity: 0;
+            transition: opacity .15s
+        }
+
+        .card:hover .card-actions {
+            opacity: 1
+        }
+
+        .card-actions button {
+            background: transparent;
+            border: none;
+            color: var(--tx3);
+            cursor: pointer;
+            padding: 3px;
+            border-radius: 4px;
+            transition: all .1s
+        }
+
+        .card-actions button:hover {
+            color: var(--tx);
+            background: rgba(255, 255, 255, .05)
+        }
+
+        .card-actions button.del:hover {
+            color: var(--err)
+        }
+
+        .card-actions button svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor
+        }
+
+        /* Priority badges */
+        .badge {
+            font-size: 8px;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .5px
+        }
+
+        .badge-high {
+            background: rgba(239, 68, 60, .15);
+            color: var(--err)
+        }
+
+        .badge-mid {
+            background: rgba(243, 156, 18, .15);
+            color: var(--warn)
+        }
+
+        .badge-low {
+            background: rgba(80, 80, 106, .2);
+            color: var(--tx3)
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .6);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        .modal {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 12px;
+            width: 92%;
+            max-width: 480px;
+            padding: 24px;
+            transform: translateY(15px);
+            transition: transform .2s;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .5)
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0)
+        }
+
+        .modal-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px
+        }
+
+        .modal-hdr h2 {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .modal-hdr h2 svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--ac2)
+        }
+
+        .modal-hdr button {
+            background: transparent;
+            border: none;
+            color: var(--tx2);
+            cursor: pointer;
+            padding: 4px
+        }
+
+        .modal-hdr button svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor
+        }
+
+        .form-g {
+            margin-bottom: 14px
+        }
+
+        .form-g label {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--tx2);
+            font-size: 11px;
+            font-weight: 500
+        }
+
+        .form-c {
+            width: 100%;
+            padding: 9px 12px;
+            background: var(--s2);
+            border: 1px solid var(--bd);
+            border-radius: 7px;
+            color: var(--tx);
+            font-size: 13px;
+            font-family: inherit;
+            transition: border-color .2s, box-shadow .2s;
+            outline: none
+        }
+
+        .form-c:focus {
+            border-color: var(--ac);
+            box-shadow: 0 0 0 2px rgba(124, 108, 240, .15)
+        }
+
+        .form-c::placeholder {
+            color: var(--tx3)
+        }
+
+        select.form-c {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%237878a0' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center
+        }
+
+        select.form-c option {
+            background: var(--s1);
+            color: var(--tx)
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px
+        }
+
+        .form-row .form-g {
+            flex: 1
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 20px
+        }
+
+        /* Empty state */
+        .empty {
+            padding: 20px;
+            text-align: center;
+            color: var(--tx3);
+            font-size: 11px
+        }
+
+        .empty svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--tx3);
+            margin-bottom: 6px
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--s2);
+            border: 1px solid var(--ok);
+            color: var(--ok);
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity .25s;
+            pointer-events: none;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .toast.show {
+            opacity: 1
+        }
+
+        .toast svg {
+            width: 13px;
+            height: 13px;
+            fill: currentColor
+        }
+
+        /* Kbd */
+        kbd {
+            font-size: 9px;
+            background: var(--s3);
+            border: 1px solid var(--bd);
+            border-radius: 3px;
+            padding: 1px 4px;
+            color: var(--tx2);
+            font-family: inherit
+        }
+
+        @media(max-width:768px) {
+            .stats {
+                gap: 6px
+            }
+
+            .stat {
+                min-width: 80px;
+                padding: 10px
+            }
+
+            .stat-v {
+                font-size: 20px
+            }
+
+            .col {
+                min-width: 220px;
+                max-width: 220px
+            }
+        }
+
+        @keyframes fi {
+            from {
+                opacity: 0;
+                transform: translateY(5px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .board .col {
+            animation: fi .2s ease
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+            </svg>
+            就活トラッカー
+        </div>
+        <div class="hdr-actions">
+            <button class="btn" onclick="exportData()"><svg viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                </svg>エクスポート</button>
+            <button class="btn btn-p" onclick="openModal()"><svg viewBox="0 0 24 24">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                </svg>新規追加</button>
+        </div>
+    </header>
+
+    <div class="stats" id="statsBar"></div>
+
+    <div class="board" id="board"></div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="appModal">
+        <div class="modal">
+            <div class="modal-hdr">
+                <h2><svg viewBox="0 0 24 24">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                    </svg><span id="modalTitle">新規追加</span></h2>
+                <button onclick="closeModal()"><svg viewBox="0 0 24 24">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                    </svg></button>
+            </div>
+            <form id="appForm" onsubmit="saveApp(event)">
+                <input type="hidden" id="appId">
+                <div class="form-g">
+                    <label>企業名 *</label>
+                    <input type="text" id="company" class="form-c" required placeholder="例: Brexa Technology">
+                </div>
+                <div class="form-row">
+                    <div class="form-g">
+                        <label>職種</label>
+                        <input type="text" id="position" class="form-c" placeholder="例: SE / 技術職">
+                    </div>
+                    <div class="form-g">
+                        <label>優先度</label>
+                        <select id="priority" class="form-c">
+                            <option value="high">🔴 高（第一志望群）</option>
+                            <option value="mid" selected>🟡 中</option>
+                            <option value="low">⚪ 低（滑り止め）</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-g">
+                        <label>ステータス</label>
+                        <select id="status" class="form-c">
+                            <option value="es">ES提出済み</option>
+                            <option value="1st">1次面接</option>
+                            <option value="2nd">2次面接</option>
+                            <option value="final">最終面接</option>
+                            <option value="offer">内定</option>
+                            <option value="rejected">不採用/辞退</option>
+                        </select>
+                    </div>
+                    <div class="form-g">
+                        <label>日付</label>
+                        <input type="date" id="appDate" class="form-c" required>
+                    </div>
+                </div>
+                <div class="form-g">
+                    <label>次のアクション / 締切</label>
+                    <input type="text" id="nextAction" class="form-c" placeholder="例: 2/25 2次面接 14:00〜">
+                </div>
+                <div class="form-g">
+                    <label>メモ</label>
+                    <textarea id="notes" class="form-c" rows="2" placeholder="面接の感触、質問内容、注意事項など..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" onclick="closeModal()">キャンセル</button>
+                    <button type="submit" class="btn btn-p">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"><svg viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+        </svg><span id="toastMsg">保存しました</span></div>
+
+    <script>
+        const STORAGE_KEY = 'vectis_career_tracker_v3';
+        const COLUMNS = [
+            { key: 'es', label: 'ES提出', cls: 'c-es' },
+            { key: '1st', label: '1次面接', cls: 'c-1st' },
+            { key: '2nd', label: '2次面接', cls: 'c-2nd' },
+            { key: 'final', label: '最終面接', cls: 'c-fin' },
+            { key: 'offer', label: '内定', cls: 'c-offer' },
+            { key: 'rejected', label: '不採用/辞退', cls: 'c-rej' }
+        ];
+
+        // Migrate from old storage
+        const oldV2 = localStorage.getItem('vectis_job_applications_v2');
+        const oldV1 = localStorage.getItem('vectis_job_applications');
+        if (!localStorage.getItem(STORAGE_KEY)) {
+            const old = oldV2 || oldV1;
+            if (old) {
+                try {
+                    const oldApps = JSON.parse(old);
+                    const migrated = oldApps.map(a => ({
+                        ...a,
+                        status: a.status === 'applied' ? 'es' : a.status === 'interview' ? '1st' : a.status,
+                        priority: a.priority || 'mid',
+                        nextAction: a.nextAction || '',
+                        appDate: a.appliedDate || a.appDate || new Date().toISOString().split('T')[0]
+                    }));
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+                } catch (e) { }
+            }
+        }
+
+        let apps = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        let draggedId = null;
+
+        function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(apps)); }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
+        }
+
+        function renderStats() {
+            const stats = document.getElementById('statsBar');
+            const counts = { all: apps.length };
+            COLUMNS.forEach(c => counts[c.key] = apps.filter(a => a.status === c.key).length);
+            stats.innerHTML = `
+                <div class="stat t-all"><div class="stat-v">${counts.all}</div><div class="stat-l">合計</div></div>
+                <div class="stat t-es"><div class="stat-v">${counts.es}</div><div class="stat-l">ES提出</div></div>
+                <div class="stat t-1st"><div class="stat-v">${counts['1st']}</div><div class="stat-l">1次</div></div>
+                <div class="stat t-2nd"><div class="stat-v">${counts['2nd']}</div><div class="stat-l">2次</div></div>
+                <div class="stat t-fin"><div class="stat-v">${counts.final}</div><div class="stat-l">最終</div></div>
+                <div class="stat t-offer"><div class="stat-v">${counts.offer}</div><div class="stat-l">内定</div></div>
+            `;
+        }
+
+        function renderBoard() {
+            const board = document.getElementById('board');
+            board.innerHTML = COLUMNS.map(col => {
+                const colApps = apps.filter(a => a.status === col.key)
+                    .sort((a, b) => {
+                        const p = { high: 0, mid: 1, low: 2 };
+                        return (p[a.priority] || 1) - (p[b.priority] || 1);
+                    });
+                return `
+                <div class="col ${col.cls}" data-status="${col.key}">
+                    <div class="col-h"><span>${col.label}</span><span class="tag">${colApps.length}</span></div>
+                    <div class="card-list" data-status="${col.key}">
+                        ${colApps.length ? colApps.map(a => renderCard(a)).join('') : `<div class="empty"><svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg><div>ドロップで追加</div></div>`}
+                    </div>
+                </div>`;
+            }).join('');
+            // Attach drag events
+            board.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('dragstart', e => {
+                    draggedId = card.dataset.id;
+                    card.classList.add('dragging');
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+                card.addEventListener('dragend', () => {
+                    card.classList.remove('dragging');
+                    board.querySelectorAll('.card-list').forEach(l => l.classList.remove('drag-over'));
+                });
+            });
+            board.querySelectorAll('.card-list').forEach(list => {
+                list.addEventListener('dragover', e => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; });
+                list.addEventListener('dragenter', e => { e.preventDefault(); list.classList.add('drag-over'); });
+                list.addEventListener('dragleave', e => { if (!list.contains(e.relatedTarget)) list.classList.remove('drag-over'); });
+                list.addEventListener('drop', e => {
+                    e.preventDefault();
+                    list.classList.remove('drag-over');
+                    const newStatus = list.dataset.status;
+                    if (draggedId) {
+                        const idx = apps.findIndex(a => a.id == draggedId);
+                        if (idx > -1 && apps[idx].status !== newStatus) {
+                            apps[idx].status = newStatus;
+                            save(); render();
+                            showToast(`${apps[idx].company} → ${COLUMNS.find(c => c.key === newStatus).label}`);
+                        }
+                        draggedId = null;
+                    }
+                });
+            });
+        }
+
+        function renderCard(a) {
+            const date = new Date(a.appDate).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' });
+            const priBadge = a.priority === 'high' ? '<span class="badge badge-high">第一志望</span>' :
+                a.priority === 'low' ? '<span class="badge badge-low">滑り止め</span>' : '';
+            return `
+            <div class="card" draggable="true" data-id="${a.id}">
+                <div class="card-actions">
+                    <button onclick="editApp(${a.id})" title="編集"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></button>
+                    <button class="del" onclick="deleteApp(${a.id})" title="削除"><svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></button>
+                </div>
+                <div class="card-co">${esc(a.company)} ${priBadge}</div>
+                ${a.position ? `<div class="card-pos">${esc(a.position)}</div>` : ''}
+                <div class="card-meta">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>${date}
+                    ${a.nextAction ? `<span style="color:var(--warn)">▸ ${esc(a.nextAction)}</span>` : ''}
+                </div>
+                ${a.notes ? `<div class="card-note">${esc(a.notes)}</div>` : ''}
+            </div>`;
+        }
+
+        function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+        function render() { renderStats(); renderBoard(); }
+
+        // Modal
+        function openModal(id) {
+            const m = document.getElementById('appModal');
+            const f = document.getElementById('appForm');
+            f.reset();
+            document.getElementById('appDate').valueAsDate = new Date();
+            if (id) {
+                document.getElementById('modalTitle').textContent = '編集';
+                const a = apps.find(x => x.id == id);
+                if (a) {
+                    document.getElementById('appId').value = a.id;
+                    document.getElementById('company').value = a.company;
+                    document.getElementById('position').value = a.position || '';
+                    document.getElementById('priority').value = a.priority || 'mid';
+                    document.getElementById('status').value = a.status;
+                    document.getElementById('appDate').value = a.appDate;
+                    document.getElementById('nextAction').value = a.nextAction || '';
+                    document.getElementById('notes').value = a.notes || '';
+                }
+            } else {
+                document.getElementById('modalTitle').textContent = '新規追加';
+                document.getElementById('appId').value = '';
+            }
+            m.classList.add('active');
+            setTimeout(() => document.getElementById('company').focus(), 100);
+        }
+        function closeModal() { document.getElementById('appModal').classList.remove('active'); }
+        function saveApp(e) {
+            e.preventDefault();
+            const id = document.getElementById('appId').value;
+            const data = {
+                company: document.getElementById('company').value.trim(),
+                position: document.getElementById('position').value.trim(),
+                priority: document.getElementById('priority').value,
+                status: document.getElementById('status').value,
+                appDate: document.getElementById('appDate').value,
+                nextAction: document.getElementById('nextAction').value.trim(),
+                notes: document.getElementById('notes').value.trim()
+            };
+            if (id) {
+                const idx = apps.findIndex(a => a.id == id);
+                if (idx > -1) apps[idx] = { ...apps[idx], ...data };
+            } else {
+                apps.push({ id: Date.now(), ...data, createdAt: new Date().toISOString() });
+            }
+            save(); render(); closeModal();
+            showToast(id ? '更新しました' : '追加しました');
+        }
+        function editApp(id) { openModal(id); }
+        function deleteApp(id) {
+            const a = apps.find(x => x.id == id);
+            if (confirm(`「${a?.company}」を削除しますか？`)) {
+                apps = apps.filter(x => x.id != id);
+                save(); render();
+                showToast('削除しました');
+            }
+        }
+
+        // Export
+        function exportData() {
+            const lines = ['企業名,職種,優先度,ステータス,日付,次のアクション,メモ'];
+            const statusMap = {};
+            COLUMNS.forEach(c => statusMap[c.key] = c.label);
+            const priMap = { high: '高', mid: '中', low: '低' };
+            apps.forEach(a => {
+                lines.push([a.company, a.position, priMap[a.priority] || '中', statusMap[a.status] || a.status, a.appDate, a.nextAction, a.notes].map(v => `"${(v || '').replace(/"/g, '""')}"`).join(','));
+            });
+            const blob = new Blob(['\ufeff' + lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url; link.download = `就活トラッカー_${new Date().toISOString().slice(0, 10)}.csv`;
+            link.click(); URL.revokeObjectURL(url);
+            showToast('CSVエクスポート完了');
+        }
+
+        // Keyboard
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'n' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'SELECT') {
+                e.preventDefault(); openModal();
+            }
+        });
+        document.getElementById('appModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+
+        render();
+    </script>
+</body>
+
+</html>

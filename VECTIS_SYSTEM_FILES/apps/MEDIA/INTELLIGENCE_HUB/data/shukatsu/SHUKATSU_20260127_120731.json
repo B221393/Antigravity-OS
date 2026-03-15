@@ -1,0 +1,23 @@
+{
+  "title": "科学と社会の課題を炙り出す推理ゲーム『nocobon』とは？",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE50cmU3b1FfS2M3TjZraWs5b0pfZlA3bU5JNFhwSEpGZnFzSnZHcG5iRTZjVGpYQV80OG8xOXhYMjVZTkNHQ1ItNXRLZ3h3TVlzM3N3SXlKNW0zTm80NmU3WENuRjA5MnYyTGs2Qw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE50cmU3b1FfS2M3TjZraWs5b0pfZlA3bU5JNFhwSEpGZnFzSnZHcG5iRTZjVGpYQV80OG8xOXhYMjVZTkNHQ1ItNXRLZ3h3TVlzM3N3SXlKNW0zTm80NmU3WENuRjA5MnYyTGs2Qw?oc=",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "東大江間氏開発の推理ゲーム『nocobon』は科学と社会の課題を可視化。",
+    "true_intent": "研究成果の広報、江間氏と東大のブランディング、および研究資金獲得の可能性。ゲームを通じた社会啓発という大義名分を利用。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "その他",
+    "target_year": "2027",
+    "academic_deep_dive": "1. **歴史的背景:** 科学と社会の相互作用をゲームで表現する試みは、SF文学やシミュレーションゲームの歴史に根ざしている。例えば、冷戦時代の核戦争シミュレーションゲームは、科学技術の進歩がもたらす倫理的ジレンマを可視化しようとした。nocobonは、これらの系譜を受け継ぎつつ、より複雑な現代科学の課題を扱う点で進化している。\n\n2. **現代的意義:** 今、科学技術は気候変動、パンデミック、AIなど、社会全体を揺るがす問題と密接に関わっている。nocobonは、これらの問題解決における科学者の役割、不確実性への対処、そして民主的な意思決定の重要性をゲーミフィケーションを通じて体験的に学べる。社会構造への影響としては、科学リテラシーの向上と、科学に対する批判的思考の促進が期待される。\n\n3. **批判的視座:** nocobonは、科学技術と社会の課題を「推理ゲーム」というフレームワークに落とし込むことで、問題を単純化しすぎている可能性はないだろうか？ 複雑な問題の構造を理解させる一方で、ゲームのクリアという目的が、倫理的な熟慮を軽視させる危険性も孕んでいる。ゲームの制作者自身も、その限界を認識し、常に批判的な視点を持つ必要がある。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "研究成果の広報、江間氏と東大のブランディング、および研究資金獲得の可能性。ゲームを通じた社会啓発という大義名分を利用。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:07:31.996774",
+  "source": "科学技術 社会論"
+}

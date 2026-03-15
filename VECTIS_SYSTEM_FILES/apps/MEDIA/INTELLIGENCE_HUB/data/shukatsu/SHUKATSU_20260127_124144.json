@@ -1,0 +1,22 @@
+{
+  "title": "職員採用／よくある質問Q&A - pref.hyogo.lg",
+  "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9oaFlCUmdDQm80T2RHdkprM000RjVHVk9RVUpLbFpyVlZhQVIyQmxYWXVoRjdrcTM4aTNvcEY4TmNpM0VHMFZGTEZxUzFvVFI1R3RLcnZNWFpUQXJ5eklnc1pHWQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE9oaFlCUmdDQm80T2RHdkprM000RjVHVk9RVUpLbFpyVlZhQVIyQmxYWXVoRjdrcTM4aTNvcEY4TmNpM0VHMFZGTEZxUzFvVFI1R3RLcnZNWFpUQXJ5eklnc1pHWQ?oc=5\" target=\"_",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "兵庫県職員採用FAQ。採用情報を開示し応募を促進。",
+    "true_intent": "優秀な人材確保による組織活性化。県民サービス向上を謳いつつ、組織の維持・拡大を図る意図。地方公務員の安定性をアピール。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材確保による組織活性化。県民サービス向上を謳いつつ、組織の維持・拡大を図る意図。地方公務員の安定性をアピール。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:41:44.620562",
+  "source": "兵庫県庁 採用"
+}

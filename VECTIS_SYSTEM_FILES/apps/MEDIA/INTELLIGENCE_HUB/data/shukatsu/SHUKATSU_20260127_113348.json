@@ -1,0 +1,23 @@
+{
+  "title": "女子寮新設について - itochu.co.jp",
+  "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5PZ3pfRWlqSU04cS1QM2d5MXZlM2lJZUFuS3lHb1JveXliVDJaSnhqRkhocU9UZ1N4OGJLMU5nT3d4RXZKbUZvd2hmVzJyUE9ES3c1ZU1HaTI3ajF5cG5mY250dDkxUQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTE5PZ3pfRWlqSU04cS1QM2d5MXZlM2lJZUFuS3lHb1JveXliVDJaSnhqRkhocU9UZ1N4OGJLMU5nT3d4RXZKbUZvd2hmVzJyUE9ES3c1ZU1HaTI3ajF5cG5mY250dDkxUQ?oc=5\" targe",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "伊藤忠商事が女子寮を新設。福利厚生の充実をアピール。",
+    "true_intent": "女性社員の採用競争力強化、企業イメージ向上を狙う。優秀な女性人材確保のための投資であり、間接的に企業価値向上を図る。寮運営に関わる不動産会社との連携も考えられる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "伊藤忠商事",
+    "action_required": false,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "## 伊藤忠商事：本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 非資源分野での圧倒的な事業投資力と、生活消費関連ビジネスにおける川上から川下までのサプライチェーン構築力。\n2.  **26-27卒への温度感**: 多様な人材を求める傾向。体育会系だけでなく、尖った個性や専門性を持つ学生も積極的に採用。\n3.  **EGO適性**: 構造的思考は必須。AI活用は積極的に推進中だが、現場レベルでの浸透度は部署による。\n4.  **裏の弱点**: 組織が巨大で、個人の裁量権が限定される場合がある。新規事業創出には時間と根気が必要。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "女性社員の採用競争力強化、企業イメージ向上を狙う。優秀な女性人材確保のための投資であり、間接的に企業価値向上を図る。寮運営に関わる不動産会社との連携も考えられる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:33:48.600448",
+  "source": "Active:伊藤忠商事"
+}

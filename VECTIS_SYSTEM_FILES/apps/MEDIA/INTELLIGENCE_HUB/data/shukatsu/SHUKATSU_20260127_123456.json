@@ -1,0 +1,22 @@
+{
+  "title": "米小売業の求人、10月は前年比16％減 年末商戦の消費に暗雲",
+  "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPblhJYXhYMTlwQzQ5UVhPVVVzZVd5YWpfNDlMT3R4RTN3Yl9ZcW4ycWlzS282MWR5ZXBtdjVBMzY0ZGE3MHVqVDZ3aFMzTHFrTXNFYWVlVm5OTGpZZEFqbng3ME92YlpwX2g5cl9meVRPN1N1TTdPa3RpX0c3dTh4ZA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxPblhJYXhYMTlwQzQ5UVhPVVVzZVd5YWpfNDlMT3R4RTN3Yl9ZcW4ycWlzS282MWR5ZXBtdjVBMzY0ZGE3MHVqVDZ3aFMzTHFrTXNFYWVlVm5OTGpZZEFqbng3ME92YlpwX2g5cl9meV",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "米小売業求人16%減。年末商戦に暗雲。27卒就活にも影響の可能性。",
+    "true_intent": "消費低迷を強調し、政府やFRBの政策への批判、または特定の投資戦略（空売りなど）を推奨する意図が考えられる。小売業界の悲観論を煽り、株価下落を誘発する可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "消費低迷を強調し、政府やFRBの政策への批判、または特定の投資戦略（空売りなど）を推奨する意図が考えられる。小売業界の悲観論を煽り、株価下落を誘発する可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:34:56.743004",
+  "source": "ロイター 企業ニュース"
+}

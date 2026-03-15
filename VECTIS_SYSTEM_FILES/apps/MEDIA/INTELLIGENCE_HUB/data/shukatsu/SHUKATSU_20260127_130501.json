@@ -1,0 +1,23 @@
+{
+  "title": "インタビュー - トヨタ車体",
+  "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HQmdQaGJWUWlsVHhZN0xzajNfcTlSa2pjVUxuMzRrT2ltS2NZeWd4d0pwOUJoVHUzUFJxRE1vQXFFTlFJQWVaSVNHVktFZW4zWE9wTklLRnNONlpmSVFiV3dWamx0U2tuV0lyQkRPQU1GcnVoWWc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMidkFVX3lxTE5HQmdQaGJWUWlsVHhZN0xzajNfcTlSa2pjVUxuMzRrT2ltS2NZeWd4d0pwOUJoVHUzUFJxRE1vQXFFTlFJQWVaSVNHVktFZW4zWE9wTklLRnNONlpmSVFiV3dWamx0U2tuV0lyQkRPQU",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "トヨタ車体のインタビュー記事。企業文化や求める人物像が語られる可能性がある。",
+    "true_intent": "企業イメージ向上と優秀な人材の獲得が目的。下請け構造や労働環境の改善をアピールする可能性も。サプライチェーン全体での責任を曖昧にする意図も考えられる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "トヨタ車体",
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "## トヨタ車体の本質と27卒が狙うべき理由\n\n1.  **主要武器**: 車体製造技術を核に、多様なニーズに応える多品種少量生産体制。商用車・特装車で独自の地位を確立し、トヨタグループの多様性を支える。\n2.  **26-27卒への温度感**: 専門性重視型採用へシフト。特にCASE領域、生産技術、設計開発で即戦力となる人材を求める傾向。\n3.  **EGO適性**: 改善文化が根強いが、DX推進は加速中。構造的思考は必須。AI活用は発展途上だが、提案できる余地あり。\n4.  **裏の弱点**: 親会社依存体質。新規事業創出やアジャイルな開発には課題。既存事業の延長線上ではない挑戦が必要。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "企業イメージ向上と優秀な人材の獲得が目的。下請け構造や労働環境の改善をアピールする可能性も。サプライチェーン全体での責任を曖昧にする意図も考えられる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:05:01.211281",
+  "source": "トヨタ自動車 戦略"
+}

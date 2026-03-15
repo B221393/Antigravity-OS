@@ -1,0 +1,22 @@
+{
+  "title": "就職四季報 総合版2027ー2028年版 - 東洋経済オンラ",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9HVUk2eG0tNUozNzRwZHRHdnlkYVBiM19Ha1Byc3doaGNneGRYNWxpVVRxUHZjZFhJaXNOWVJRMG5JOU56SjQxUThiTHNrT1FuTnFMVzFCYkpCRmx3SEE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE9HVUk2eG0tNUozNzRwZHRHdnlkYVBiM19Ha1Byc3doaGNneGRYNWxpVVRxUHZjZFhJaXNOWVJRMG5JOU56SjQxUThiTHNrT1FuTnFMVzFCYkpCRmx3SEE?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "このニュースは、就活の機会や採用機関の競争力について論じている可能性があります。",
+    "true_intent": "このニュースは、就活の機会や採用機関の競争力について論じる可能性があります。",
+    "bias_warning": "このニュースは、就活関連の情報を対象としているため、政見や党派の立場や特定企業との関係や利害関係などが隐含される可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/ IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "このニュースは、就活の機会や採用機関の競争力について論じる可能性があります。",
+    "bias_warning": "このニュースは、就活関連の情報を対象としているため、政見や党派の立場や特定企業との関係や利害関係などが隐含される可能性があります。"
+  },
+  "collected_at": "2026-01-27T12:21:24.544684",
+  "source": "就活ニュース (Google)"
+}

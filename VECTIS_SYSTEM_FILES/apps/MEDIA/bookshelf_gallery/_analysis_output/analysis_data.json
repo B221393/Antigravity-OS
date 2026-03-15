@@ -1,0 +1,234 @@
+[
+  {
+    "name": "app",
+    "filepath": "c:\\Users\\Yuto\\Desktop\\app\\VECTIS_SYSTEM_FILES\\apps\\MEDIA\\bookshelf_gallery\\app.py",
+    "lines_of_code": 211,
+    "imports": [
+      "flask",
+      "os",
+      "glob",
+      "re",
+      "subprocess",
+      "threading",
+      "flask",
+      "markdown",
+      "html"
+    ],
+    "classes": [],
+    "functions": [
+      {
+        "name": "index",
+        "module": "app",
+        "class_name": null,
+        "lineno": 15,
+        "end_lineno": 16,
+        "args": [],
+        "calls": [
+          "render_template",
+          "app.route"
+        ],
+        "complexity": 1,
+        "decorators": []
+      },
+      {
+        "name": "get_books",
+        "module": "app",
+        "class_name": null,
+        "lineno": 19,
+        "end_lineno": 64,
+        "args": [],
+        "calls": [
+          "os.path.join",
+          "glob.glob",
+          "files.sort",
+          "os.path.basename",
+          "open",
+          "file_obj.read",
+          "content.startswith",
+          "content.split",
+          "len",
+          "re.search",
+          "strip",
+          "replace",
+          "replace",
+          "tag_match.group",
+          "strip",
+          "content.split",
+          "body.split",
+          "line.strip",
+          "line.startswith",
+          "line.strip",
+          "books.append",
+          "filename.replace",
+          "jsonify",
+          "app.route"
+        ],
+        "complexity": 10,
+        "decorators": []
+      },
+      {
+        "name": "read_book",
+        "module": "app",
+        "class_name": null,
+        "lineno": 67,
+        "end_lineno": 81,
+        "args": [
+          "book_path"
+        ],
+        "calls": [
+          "startswith",
+          "os.path.abspath",
+          "open",
+          "f.read",
+          "markdown_to_html_simple",
+          "jsonify",
+          "str",
+          "str",
+          "app.route"
+        ],
+        "complexity": 5,
+        "decorators": []
+      },
+      {
+        "name": "trigger_chaos",
+        "module": "app",
+        "class_name": null,
+        "lineno": 84,
+        "end_lineno": 85,
+        "args": [],
+        "calls": [
+          "launch_app",
+          "app.route"
+        ],
+        "complexity": 1,
+        "decorators": []
+      },
+      {
+        "name": "run_launcher",
+        "module": "app",
+        "class_name": null,
+        "lineno": 107,
+        "end_lineno": 118,
+        "args": [],
+        "calls": [
+          "os.path.abspath",
+          "os.path.join",
+          "os.path.exists",
+          "print",
+          "subprocess.run",
+          "print"
+        ],
+        "complexity": 2,
+        "decorators": []
+      },
+      {
+        "name": "launch_app_route",
+        "module": "app",
+        "class_name": null,
+        "lineno": 88,
+        "end_lineno": 123,
+        "args": [
+          "app_id"
+        ],
+        "calls": [
+          "app_map.get",
+          "jsonify",
+          "threading.Thread",
+          "thread.start",
+          "jsonify",
+          "app.route"
+        ],
+        "complexity": 3,
+        "decorators": []
+      },
+      {
+        "name": "get_all_apps",
+        "module": "app",
+        "class_name": null,
+        "lineno": 126,
+        "end_lineno": 165,
+        "args": [],
+        "calls": [
+          "os.path.abspath",
+          "os.path.join",
+          "os.path.join",
+          "os.path.exists",
+          "os.listdir",
+          "os.path.join",
+          "os.path.isdir",
+          "os.path.exists",
+          "os.path.join",
+          "os.path.exists",
+          "os.path.join",
+          "os.path.exists",
+          "os.path.join",
+          "os.path.exists",
+          "os.path.join",
+          "found_apps.append",
+          "title",
+          "item.replace",
+          "replace",
+          "os.path.join",
+          "jsonify",
+          "app.route"
+        ],
+        "complexity": 10,
+        "decorators": []
+      },
+      {
+        "name": "run_spawn",
+        "module": "app",
+        "class_name": null,
+        "lineno": 175,
+        "end_lineno": 195,
+        "args": [],
+        "calls": [
+          "os.path.abspath",
+          "os.path.join",
+          "os.path.join",
+          "os.path.exists",
+          "print",
+          "os.path.dirname",
+          "full_path.endswith",
+          "full_path.endswith",
+          "subprocess.run"
+        ],
+        "complexity": 5,
+        "decorators": []
+      },
+      {
+        "name": "launch_direct",
+        "module": "app",
+        "class_name": null,
+        "lineno": 168,
+        "end_lineno": 199,
+        "args": [],
+        "calls": [
+          "request.args.get",
+          "threading.Thread",
+          "thread.start",
+          "jsonify",
+          "app.route"
+        ],
+        "complexity": 6,
+        "decorators": []
+      },
+      {
+        "name": "markdown_to_html_simple",
+        "module": "app",
+        "class_name": null,
+        "lineno": 201,
+        "end_lineno": 207,
+        "args": [
+          "md"
+        ],
+        "calls": [
+          "markdown.markdown",
+          "html.escape"
+        ],
+        "complexity": 2,
+        "decorators": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "title": "【材料】 ＭＳＣＩの２月見直し、国内大手証券は清水建、イビデ",
+  "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9XejdIS3puSE5UcFVmNkdwdlFBeXlRaHU4b1l2TlFiTUZQTE5HZzI3ZkpYVG5KelZ2bXA3dFhMX0M0SFJBNGtCV19RaVNQNk5SV0p4M25pVk9kd1RYdjRJVQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTE9XejdIS3puSE5UcFVmNkdwdlFBeXlRaHU4b1l2TlFiTUZQTE5HZzI3ZkpYVG5KelZ2bXA3dFhMX0M0SFJBNGtCV19RaVNQNk5SV0p4M25pVk9kd1RYdjRJVQ?oc=5\" target=\"_blan",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "MSCI指数の2月見直しで、清水建設、イビデン、SBI新生銀行が採用されると予想。",
+    "true_intent": "大手証券会社が特定銘柄を推奨することで、自社の顧客や投資ポートフォリオに有利な状況を作り出そうとしている可能性がある。株価上昇による手数料収入増も狙いか。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "出版/広告/メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "大手証券会社が特定銘柄を推奨することで、自社の顧客や投資ポートフォリオに有利な状況を作り出そうとしている可能性がある。株価上昇による手数料収入増も狙いか。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:09:45.751207",
+  "source": "シスメックス 採用"
+}

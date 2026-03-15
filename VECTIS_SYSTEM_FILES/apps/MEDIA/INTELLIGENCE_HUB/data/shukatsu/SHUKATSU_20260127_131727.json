@@ -1,0 +1,23 @@
+{
+  "title": "神戸大学生など新卒に聞いた『就職人気企業ランキング』が発表さ",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1MN1R6NDJsUEtiRnZheUFyMk9KcTVuYUYtbGZkQWRJbWg4MHZvdHJhajRLQjVpbzVMcnpXcEdibWh5bG5fMzF0SE51OWtwVTJ2NmYwWTRMRmtDbDl6SEE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE1MN1R6NDJsUEtiRnZheUFyMk9KcTVuYUYtbGZkQWRJbWg4MHZvdHJhajRLQjVpbzVMcnpXcEdibWh5bG5fMzF0SE51OWtwVTJ2NmYwWTRMRmtDbDl6SEE?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "神戸大生対象の就職人気企業ランキング発表。上位は商社・銀行、川重もランクイン。",
+    "true_intent": "地域メディアによる地元企業（川重）の宣伝と、大手企業への就職志向を煽ることで、自社メディアのアクセス数増加を狙う。大学との関係性も考慮する必要がある。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "川崎重工業",
+    "action_required": false,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "## 川崎重工業：就活メンター視点\n\n1. **主要武器**: 多岐にわたる事業ポートフォリオと技術力。陸海空、エネルギー、環境分野で社会インフラを支える総合力こそ強み。\n2. **26-27卒への温度感**: 事業拡大に向け採用意欲は高い。特に技術系人材を重視し、多様なバックグラウンドを持つ学生に期待。\n3. **EGO適性**: 伝統的な重工企業だが、DX推進を加速中。データ分析やAI活用に意欲的な人材は活躍のチャンス大。\n4. **裏の弱点**: 縦割り組織の弊害、意思決定の遅さ。変化への対応スピードは課題。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "地域メディアによる地元企業（川重）の宣伝と、大手企業への就職志向を煽ることで、自社メディアのアクセス数増加を狙う。大学との関係性も考慮する必要がある。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:17:27.379198",
+  "source": "神戸・兵庫 採用総合"
+}

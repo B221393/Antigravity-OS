@@ -1,0 +1,22 @@
+{
+  "title": "2027年度 ビジネスコース 新卒採用本選考 - cyber",
+  "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9VQUNVdU9YVzBRdHhUXzhIR3VFZWlRM3kwNjhVZHBJVmlIVVEzdndjNXhKYm9LRUVZaFZnb0JCYjlvaWNrOS0zOG52UDRadDVOTEFfU3JZT0ZORFllQ2JJYV9YMFlXbzV5?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE9VQUNVdU9YVzBRdHhUXzhIR3VFZWlRM3kwNjhVZHBJVmlIVVEzdndjNXhKYm9LRUVZaFZnb0JCYjlvaWNrOS0zOG52UDRadDVOTEFfU3JZT0ZORFllQ2JJYV9YMFlXbzV5?oc=5\" tar",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": " cyberagent.co.jp は、27卒向けの就活インテリジェンス・オフィサーへの応募機会について記事を掲載しています。",
+    "true_intent": "この情報の裏にある意図は、27卒に就職するための特定の機会や特典である可能性があります。",
+    "bias_warning": "ポジショントークの可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "情報通信/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図は、27卒に就職するための特定の機会や特典である可能性があります。",
+    "bias_warning": "ポジショントークの可能性があります。"
+  },
+  "collected_at": "2026-01-27T12:08:29.500563",
+  "source": "ES締切 (Google)"
+}

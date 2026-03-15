@@ -1,0 +1,24 @@
+{
+  "title": "富士通のソリューションを採用したソニー銀行様の新勘定系システ",
+  "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1ieFpKOVVFNFJMam1ldE9aVTJjMHJIQnY4OXlBbmNxeklPUnVfVXhyOGd2UFo4cEJvMmEwSkJVQUdwQkJuWDMwMHVsdHVuRkFEcmVBRE9OU0U?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTE1ieFpKOVVFNFJMam1ldE9aVTJjMHJIQnY4OXlBbmNxeklPUnVfVXhyOGd2UFo4cEJvMmEwSkJVQUdwQkJuWDMwMHVsdHVuRkFEcmVBRE9OU0U?oc=5\" target=\"_blank\">富士通のソリュー",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "富士通がソニー銀行の新勘定系システムを構築し稼働開始。安定稼働のアピール。",
+    "true_intent": "富士通：大規模案件成功事例をアピールし、金融機関へのシステム刷新需要獲得を狙う。ソニー銀行：安定稼働を強調し顧客信頼度向上を図る。既存顧客維持と新規顧客獲得が目的。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "富士通",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。富士通の本質的価値と27卒が狙うべき理由を以下の通り構造化します。\n\n1.  **主要武器**: 官公庁・大企業向けSIerとしての圧倒的顧客基盤と、長年培った技術力。AI・量子コンピューティング等の先進技術への投資も積極的。\n2.  **26-27卒への温度感**: デジタル人材獲得に注力。多様なバックグラウンドを持つ学生を積極的に採用する姿勢。グローバル採用も強化。\n3.  **EGO適性**: データドリブンな意思決定を重視し、AI活用を推進。論理的思考力と最新技術への関心は高く評価される。\n4.  **裏の弱点**: 組織の硬直性、意思決定の遅さ。新規事業創出におけるスピード感不足。年功序列の色が残る点も懸念。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Products:** Laptops (\"Note U\"), Air Conditioners.\n*   **Air Conditioners:** Mentions of specific models (\"KTCA\" / \"诺可力T\").\n*   **Content:** Reviews, Buying Guides, Teardowns/Analysis.\n\n**Structured Summary:**\n\nFujitsu is mentioned in the context of product reviews and guides, specifically for laptops and air conditioners. The air conditioner content includes buying advice and detailed component analysis.\n\n**Gap Analysis:**\n\nThe data is very limited, only containing titles and basic HTML. There's a lack of actual review content or technical specifications, making it impossible to provide a detailed analysis of Fujitsu products. One source returned a 403 error."
+  },
+  "critical_analysis": {
+    "true_intent": "富士通：大規模案件成功事例をアピールし、金融機関へのシステム刷新需要獲得を狙う。ソニー銀行：安定稼働を強調し顧客信頼度向上を図る。既存顧客維持と新規顧客獲得が目的。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:48:25.299730",
+  "source": "Active:ソニー"
+}

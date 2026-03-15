@@ -1,0 +1,179 @@
+# ツール使用の概要
+
+AnimaWorks のツール体系と、実行モード別の使い方のリファレンス。
+自分が利用可能なツールの全体像を把握し、適切な方法で呼び出すためのガイド。
+
+## 実行モードとツールの関係
+
+Anima の実行モードによって、ツールの呼び出し方と利用可能範囲が異なる。
+自分のモードは `status.json` のモデル名から自動で決定される。
+
+| モード | 対象モデル | ツール呼び出し方式 |
+|--------|-----------|------------------|
+| S (SDK) | `claude-*` | MCP ツール (`mcp__aw__*`) + Claude Code 組込み + Bash 経由外部ツール |
+| A (Autonomous) | `openai/*`, `google/*`, `vertex_ai/*` 等 | LiteLLM function calling（ツール名そのまま） |
+| B (Basic) | `ollama/*` 等の小型モデル | テキスト JSON 形式（`{"tool": "名前", "arguments": {...}}`） |
+
+### S-mode（Claude Agent SDK）
+
+3系統のツールが利用可能:
+
+1. **Claude Code 組込みツール**: Read, Write, Edit, Grep, Glob, Bash, git 等。ファイル操作・コマンド実行に使う
+2. **MCP ツール (`mcp__aw__*`)**: AnimaWorks 固有の内部機能。`permissions.md` で許可された外部ツールも MCP 経由で直接利用可能
+   - 内部: `send_message`, `post_channel`, `read_channel`, `read_dm_history`, `add_task`, `update_task`, `list_tasks`, `call_human`, `search_memory`, `report_procedure_outcome`, `report_knowledge_outcome`, `skill`, `disable_subordinate`, `enable_subordinate`
+   - 外部（許可時）: `mcp__aw__slack_post`, `mcp__aw__chatwork_send` 等
+3. **Bash + animaworks-tool**: 長時間ツール（画像生成、ローカルLLM、音声文字起こし等）は `animaworks-tool submit` で非同期実行する
+
+### A-mode（LiteLLM）
+
+2系統のツールが利用可能:
+
+1. **内部ツール**: `send_message`, `search_memory`, `read_file`, `execute_command`, `add_task`, `discover_tools` 等。ツール名をそのまま function calling で呼ぶ
+2. **外部ツール**: `discover_tools(category="...")` でカテゴリを有効化すると、そのツールが動的に追加される
+
+### B-mode（Basic）
+
+テキスト JSON 形式でツールを呼び出す。利用可能なツール:
+
+- **記憶系**: search_memory, read_memory_file, write_memory_file, archive_memory_file
+- **通信系**: send_message, post_channel, read_channel, read_dm_history
+- **ファイル・検索系**: read_file, write_file, edit_file, execute_command, web_fetch, search_code, list_directory
+- **スキル系**: skill, create_skill
+- **成果追跡**: report_procedure_outcome, report_knowledge_outcome
+- **通知**: call_human（通知チャネル設定時）
+- **外部ツール**: permissions.md で許可されたカテゴリのツール（権限あり時）
+
+タスク管理・スーパーバイザー・discover_tools・refresh_tools・share_tool・create_anima は利用不可。
+
+---
+
+## ツールカテゴリ
+
+### 内部ツール（常時利用可能）
+
+全モードで利用可能な AnimaWorks 内部機能（モードにより一部省略あり）。
+
+| カテゴリ | ツール | 概要 |
+|---------|--------|------|
+| 記憶 | `search_memory` | 長期記憶のキーワード検索 |
+| 記憶 | `read_memory_file` | 記憶ファイルの読み取り |
+| 記憶 | `write_memory_file` | 記憶ファイルへの書き込み |
+| 記憶 | `archive_memory_file` | 不要な記憶ファイルを archive/ へ退避 |
+| 通信 | `send_message` | DM 送信（intent 必須: report / delegation / question） |
+| 通信 | `post_channel` | Board チャネルへの投稿 |
+| 通信 | `read_channel` | Board チャネルの読み取り |
+| 通信 | `read_dm_history` | DM 履歴の参照 |
+| スキル | `skill` | スキル・手順書の全文取得 |
+| スキル | `create_skill` | スキルをディレクトリ構造で作成（A/B-mode） |
+| 成果追跡 | `report_procedure_outcome` | 手順書実行結果の報告 |
+| 成果追跡 | `report_knowledge_outcome` | 知識の有用性報告 |
+| 通知 | `call_human` | 人間の管理者への通知 |
+| 権限確認 | `check_permissions` | 自分の権限一覧を確認（A/B-mode） |
+
+S-mode では上記のうち MCP 経由で公開されているものに `mcp__aw__` 接頭辞が付く。
+
+### ファイル・検索ツール（A/B-mode）
+
+| ツール | 概要 |
+|--------|------|
+| `read_file` | ファイルを行番号付きで読み取り |
+| `write_file` | ファイルへ書き込み |
+| `edit_file` | ファイル内の文字列を置換 |
+| `execute_command` | シェルコマンド実行（permissions.md の許可リストに従う） |
+| `web_fetch` | URL からコンテンツを取得 |
+| `search_code` | 正規表現でファイル内検索 |
+| `list_directory` | ディレクトリ一覧・glob フィルタ |
+
+S-mode では Claude Code の Read / Write / Edit / Grep / Glob / Bash で同等の操作を行う。
+
+### タスク管理ツール（A/S-mode のみ）
+
+| ツール | 概要 |
+|--------|------|
+| `add_task` | タスクキューにタスクを追加 |
+| `update_task` | タスクのステータスを更新 |
+| `list_tasks` | タスク一覧取得 |
+
+### ツール管理ツール（A-mode のみ）
+
+| ツール | 概要 |
+|--------|------|
+| `discover_tools` | 外部ツールのカテゴリ一覧・有効化 |
+| `refresh_tools` | 個人・共通ツールを再スキャン |
+| `share_tool` | 個人ツールを common_tools/ へ共有 |
+
+### スーパーバイザーツール（部下を持つ Anima のみ）
+
+部下を持つ Anima に自動で有効化される組織管理ツール。詳細は `organization/hierarchy-rules.md` を参照。
+
+| ツール | 概要 | S-mode MCP |
+|--------|------|------------|
+| `org_dashboard` | 配下全体のプロセス状態をツリー表示 | × |
+| `ping_subordinate` | 配下の生存確認 | × |
+| `read_subordinate_state` | 配下の現在タスク読み取り | × |
+| `delegate_task` | 部下へのタスク委譲 | × |
+| `task_tracker` | 委譲タスクの進捗追跡 | × |
+| `disable_subordinate` | 部下の休止 | ○ |
+| `enable_subordinate` | 部下の再開 | ○ |
+| `set_subordinate_model` | 部下のモデル変更 | × |
+| `restart_subordinate` | 部下プロセスの再起動 | × |
+
+S-mode では `disable_subordinate` と `enable_subordinate` のみ MCP 経由で利用可能。他は A-mode 専用。
+
+### 管理ツール（条件付き）
+
+| ツール | 概要 | 有効条件 |
+|--------|------|----------|
+| `create_anima` | キャラクターシートから新規 Anima 作成 | skills/newstaff.md 保持時（A-mode） |
+
+### 外部ツール（権限・有効化が必要）
+
+外部サービスと連携するツール。`permissions.md` の「外部ツール」セクションで許可されたカテゴリのみ利用可能。
+
+主なカテゴリ: `slack`, `chatwork`, `gmail`, `github`, `aws_collector`, `web_search`, `x_search`, `image_gen`, `local_llm`, `transcribe`
+
+---
+
+## 外部ツールの使い方
+
+### S-mode の場合
+
+1. **カテゴリ確認**: `permissions.md` で許可されたカテゴリを確認
+2. **実行**: 許可された外部ツールは MCP 経由で直接呼び出し可能（例: `mcp__aw__slack_post`）
+3. **長時間ツール**: `animaworks-tool submit <ツール名> <サブコマンド> [引数...]` で非同期実行
+4. **ヘルプ**: `animaworks-tool <ツール名> --help` でサブコマンド一覧と引数を確認
+
+長時間ツール（画像生成、ローカルLLM、音声文字起こし等）は必ず `submit` で実行すること。詳細は `operations/background-tasks.md` を参照。
+
+### A-mode の場合
+
+1. **カテゴリ確認**: `discover_tools()` を引数なしで呼ぶ
+2. **有効化**: `discover_tools(category="slack")` でカテゴリを有効化
+3. **実行**: 有効化されたツールは通常の function calling で呼べるようになる
+4. **長時間ツール**: 自動でバックグラウンド実行される（`submit` 相当）
+
+### B-mode の場合
+
+1. **権限確認**: `check_permissions` で許可されたカテゴリを確認
+2. **実行**: 許可された外部ツールはテキスト JSON 形式で呼び出し可能
+3. **長時間ツール**: 上司（A/S-mode）に依頼するか、権限があれば同様に呼び出し
+
+---
+
+## よくある疑問
+
+### common_knowledge のツール呼び出し例が自分のモードと違う
+
+common_knowledge のドキュメントでは `send_message(to="...", content="...", intent="...")` のように A/B-mode 形式で記載されている。
+S-mode の場合は `mcp__aw__` 接頭辞を付けて読み替えること（例: `mcp__aw__send_message`）。
+
+### 利用可能なツールを確認したい
+
+- **A/B-mode**: `check_permissions` ツールで自分の権限を確認できる
+- **S-mode**: MCP で公開されているツールは `mcp__aw__` 接頭辞付き。権限の詳細は `permissions.md` を読む
+- **A-mode**: `discover_tools()` で外部ツールのカテゴリを確認
+- **全モード**: `read_memory_file(path="permissions.md")` で許可内容を確認可能（S-mode は Claude Code の Read で直接読む）
+
+### ツールがエラーになる
+
+→ `troubleshooting/common-issues.md` の「ツールが使えない」セクションを参照

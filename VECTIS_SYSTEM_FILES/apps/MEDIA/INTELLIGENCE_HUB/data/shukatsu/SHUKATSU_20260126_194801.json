@@ -1,0 +1,23 @@
+{
+  "title": "東大からMARCHまでの「難関大の新卒者」を多く採用している",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9qNGc3MHlpMDhEdDFuNktNR0d5MXpITXk1YjVVRzYtbXZweC1Ta3ZGNC0wZGUxcXVpaXFlYm5sRm1QMlZvT19pTUNobTnSAU9BVV95cUxQNTU3aGN0ZTFlbjRtY1lRR1ctOWswMFVESEFyZmlkQWFtVXJLYkU3Zy1TaHRRbkJ0dDdnUUlzWjJGWFJtdEt3cUlXVWdTSklB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTE9qNGc3MHlpMDhEdDFuNktNR0d5MXpITXk1YjVVRzYtbXZweC1Ta3ZGNC0wZGUxcXVpaXFlYm5sRm1QMlZvT19pTUNobTnSAU9BVV95cUxQNTU3aGN0ZTFlbjRtY1lRR1ctOWswMFVESE",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "東大からMARCHまでの「難関大の新卒者」を多く採用している企業は、主に富士通、ソニー、キヤノンなど、電機・電子関連企業と関連企業が likelyです。これらの企業は、 job postingサイトや LinkedIn で「難関大」とキーワードを検索することで、2027年3月までの新卒者への採用情報を得ることが多いと推測されます。",
+    "true_intent": "この情報の裏にある意図は、富士通やソニーなどの電機・電子関連企業が、新規事業への投資や成長のための新たな人材を得るための戦略だと考えられます。",
+    "bias_warning": "ポジショントーク可能性が高いと見られるため、この情報はあくまでも推測であり、正確性を保証するものではありません。",
+    "deadline": null,
+    "company": "富士通、ソニー、キヤノン",
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "company_profile": "- 富士通: 高速電子機器製造、技術開発企業\n-ソニー: 情報通信機器製造、電子機器製造\n- キヤノン: 情報技術開発、電子機器製造"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図は、富士通やソニーなどの電機・電子関連企業が、新規事業への投資や成長のための新たな人材を得るための戦略だと考えられます。",
+    "bias_warning": "ポジショントーク可能性が高いと見られるため、この情報はあくまでも推測であり、正確性を保証するものではありません。"
+  },
+  "collected_at": "2026-01-26T19:48:01.916121",
+  "source": "ソニーグループ 戦略"
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLM-4 Web Test</title>
+    <style>
+        body {
+            background: radial-gradient(circle at center, #001133 0%, #000000 100%);
+            color: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(0, 15, 30, 0.6);
+            border: 2px solid rgba(0, 255, 255, 0.6);
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.1), 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        h2 {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-shadow: 0 0 8px #00ffff;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.4);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        p {
+            color: #00ffff;
+            letter-spacing: 2px;
+        }
+
+        button {
+            background: rgba(0, 0, 0, 0.6);
+            color: #00ffff;
+            border: 2px solid rgba(0, 255, 255, 0.4);
+            padding: 12px 20px;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: #00ffff;
+            color: #000;
+            box-shadow: 0 0 20px #00ffff;
+        }
+
+        #result {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            background: rgba(0, 0, 0, 0.4);
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            padding: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            min-height: 100px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .success {
+            text-shadow: 0 0 5px #00ffcc;
+            color: #00ffcc !important;
+        }
+
+        .error {
+            text-shadow: 0 0 5px #ff4444;
+            color: #ff4444 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>GLM-4 Connection Test</h2>
+        <p>Model: <strong>glm4</strong></p>
+        <button id="testBtn">Test Connection</button>
+        <div id="result">Ready...</div>
+    </div>
+
+    <script>
+        const btn = document.getElementById('testBtn');
+        const result = document.getElementById('result');
+
+        btn.addEventListener('click', async () => {
+            result.textContent = "Connecting to Ollama (localhost:11434)...";
+            result.className = "";
+
+            try {
+                const response = await fetch('http://localhost:11434/api/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        model: "glm4",
+                        prompt: "Hello from Web! Return a JSON with { \"status\": \"ok\", \"message\": \"GLM-4 is working\" }",
+                        stream: false,
+                        format: "json"
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log("Raw Response:", data);
+
+                let content = data.response;
+                // Parse markdown JSON if needed (GLM-4 quirk)
+                if (content.includes("```json")) {
+                    content = content.split("```json")[1].split("```")[0].trim();
+                } else if (content.includes("```")) {
+                    content = content.split("```")[1].split("```")[0].trim();
+                }
+
+                result.textContent = "✅ Success!\n" + content;
+                result.className = "success";
+
+            } catch (error) {
+                console.error(error);
+                result.textContent = "❌ Error: " + error.message + "\n\n(Note: If this is a NetworkError or Failed to fetch, it's likely a CORS issue. Ollama needs OLLAMA_ORIGINS='*' environment variable.)";
+                result.className = "error";
+            }
+        });
+    </script>
+</body>
+
+</html>

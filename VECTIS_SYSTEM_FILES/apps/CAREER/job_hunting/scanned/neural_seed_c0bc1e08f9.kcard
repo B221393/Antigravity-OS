@@ -1,0 +1,11 @@
+{
+  "title": "🧬 Neural Seed: 🎯 TOEIC x Kodansha: 'Downsizing'",
+  "genre": "NeuralCompressed",
+  "rarity": "Mythic",
+  "content": "- タイトル: 🎯 TOEIC xPublishing \n- Seed: {「ダウンサイズ」：企業の規模縮小、コスト削減。「ターンキー」：完成品の製品或いはサービス。「ベンチマーキング」：業績比較評価。「パラダイムシフト」：根本的な考え方の変化。「デリゲーション」：任務や責任の割り当て。「シナジー」：個々の能力を超えた効果の生み出し。}、{Yutoの「官僚制」（Bureaucracy）条件：兵庫県、「出版」（Publishing）条件：KADOKAWA・小学館・講談社・集英社。}、{ターゲットノード：target_Bureaucracy_Hyogo_Prefecture.md、target_Publishing_KADOKAWA.md、target_None_None.md、target_Publishing_小学館.md、target_Publishing_講談社.md、target_Publishing_集英社.md。}",
+  "hashes_merged": [
+    "c0bc1e08f9743b2d50d5f1607503bf4e849af0e729fca896515bea955d70a33e"
+  ],
+  "source": "VECTIS NEURAL CONDENSER",
+  "created_at": "2026-01-09T12:12:58.935849"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "ビジネスコース新卒採用において6月6日から27卒向けインター",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE54cXEwTGhkRjJzbnd5WkNpQnMwYWRPU2tmQjRTTjBDTUlCYTFaSDFuM3pheXVXWXRldEFTcE8tcVB4LWVkNUJadHRKd01JVUR2NjRoSjZyenVHNnYzOHc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE54cXEwTGhkRjJzbnd5WkNpQnMwYWRPU2tmQjRTTjBDTUlCYTFaSDFuM3pheXVXWXRldEFTcE8tcVB4LWVkNUJadHRKd01JVUR2NjRoSjZyenVHNnYzOHc?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "インターンシップの開催と、ビジネスコース新卒への利権獲得を推測する可能性が高い。",
+    "true_intent": "インターンシップの開催は、ビジネスコース新卒への利権獲得を意図している可能性が高い。",
+    "bias_warning": "肯定的、インターンシップの開催はビジネスコース新卒への利権獲得に繋がる可能性が高い。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "インターンシップの開催は、ビジネスコース新卒への利権獲得を意図している可能性が高い。",
+    "bias_warning": "肯定的、インターンシップの開催はビジネスコース新卒への利権獲得に繋がる可能性が高い。"
+  },
+  "collected_at": "2026-01-26T19:37:46.774148",
+  "source": "ES締切 (Google)"
+}

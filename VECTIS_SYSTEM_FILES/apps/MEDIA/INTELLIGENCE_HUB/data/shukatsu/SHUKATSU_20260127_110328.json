@@ -1,0 +1,22 @@
+{
+  "title": "9月ロイター企業調査：約8割が外国人雇用、規制強化に反対77",
+  "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNWkRvN01rMzZXcXNJOVFfaFhVazBjOTVkNXJXd1czcTdPbmFJakpTTGZiSUlwdS1ONUlaTHh2cWlibHRmZWI5a09WZ2JnMEFYUmZ2ZTE4Z1JqTHlrLXJjV1NpZkNGRzdNUmJfS1JkcWhSMUE3Tko5X2JMcW1BZjZzcg?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxNWkRvN01rMzZXcXNJOVFfaFhVazBjOTVkNXJXd1czcTdPbmFJakpTTGZiSUlwdS1ONUlaTHh2cWlibHRmZWI5a09WZ2JnMEFYUmZ2ZTE4Z1JqTHlrLXJjV1NpZkNGRzdNUmJfS1JkcW",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ロイター調査で約8割が外国人雇用。規制強化反対77%。採用姿勢維持。",
+    "true_intent": "人手不足を強調し、外国人労働力への依存を正当化、規制緩和を促す狙い。企業側のコスト削減要求の代弁か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "人手不足を強調し、外国人労働力への依存を正当化、規制緩和を促す狙い。企業側のコスト削減要求の代弁か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:03:28.883004",
+  "source": "ロイター 企業ニュース"
+}

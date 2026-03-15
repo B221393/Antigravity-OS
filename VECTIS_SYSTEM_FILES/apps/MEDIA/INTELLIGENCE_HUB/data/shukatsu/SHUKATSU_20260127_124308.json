@@ -1,0 +1,22 @@
+{
+  "title": "新卒採用 - ネスレ日本",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBHT1ZlT01Ga2FBaXNtaElYUnZNYUlpdG5scEFMbGpsaFYxM2RubDhEbGR4ZHNabnZNbEIwbHVaRkRjU1dSbjU0aVhDbl9XNGV3WmRRX2x0YnV3dk9BQzdVZm94RmNlX1k?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBHT1ZlT01Ga2FBaXNtaElYUnZNYUlpdG5scEFMbGpsaFYxM2RubDhEbGR4ZHNabnZNbEIwbHVaRkRjU1dSbjU0aVhDbl9XNGV3WmRRX2x0YnV3dk9BQzdVZm94RmNlX1k?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "この情報は、ネスレ日本が新卒採用を広告する目的で、利権構造を疑います。",
+    "true_intent": "この情報の裏にある意図は、ネスレ日本が、新卒に就職支援やキャリアサポートを提供するためのサービスを開発するための投資を裏付ける可能性があります。",
+    "bias_warning": "ポジショントークの可能性があります。、この情報は、ネスレ日本が新卒を差別化する可能性があることを暗示しています。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図は、ネスレ日本が、新卒に就職支援やキャリアサポートを提供するためのサービスを開発するための投資を裏付ける可能性があります。",
+    "bias_warning": "ポジショントークの可能性があります。、この情報は、ネスレ日本が新卒を差別化する可能性があることを暗示しています。"
+  },
+  "collected_at": "2026-01-27T12:43:08.847486",
+  "source": "神戸・兵庫 採用総合"
+}

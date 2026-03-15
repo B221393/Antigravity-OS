@@ -1,0 +1,24 @@
+{
+  "title": "ほかの社員インタビュー - tokyo-gas.co.jp",
+  "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBkdnl5X01EMmZET3l6ZHZLVzhDMEdJZHBxNXJ6d3RicFJsRnEtQngzQzBWc1hzX0hCY1FpZmNXUnpoaEtoQkhOMEYxNnF0LTUtOU9oOHp5UG41OXZ1OG91NGxOemVhVFdWTFBHSjh6TWZib3RWWFRKSWtucw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTFBkdnl5X01EMmZET3l6ZHZLVzhDMEdJZHBxNXJ6d3RicFJsRnEtQngzQzBWc1hzX0hCY1FpZmNXUnpoaEtoQkhOMEYxNnF0LTUtOU9oOHp5UG41OXZ1OG91NGxOemVhVFdWTFBHSjh6TW",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "東京ガスの社員インタビュー。多様な職種の社員を紹介し、企業理解を促進。",
+    "true_intent": "企業イメージ向上、優秀な人材獲得が目的。多様性アピールによるESG投資誘致、企業ブランド価値向上も狙いか。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "東京ガス",
+    "action_required": true,
+    "category": "広告",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。東京ガスの「本質的価値」と「27卒が狙うべき理由」を以下にまとめます。\n\n1.  **主要武器**: 安定供給を支えるインフラ技術と、脱炭素社会への変革をリードする技術開発力。エネルギー自由化で培った顧客基盤と多様な事業展開。\n\n2.  **26-27卒への温度感**: 積極的に新領域への挑戦を促す人材を求める。総合職採用を維持し、多様なバックグラウンドを持つ学生に門戸を開放。\n\n3.  **EGO適性**: データ分析やAI活用による業務効率化、新規事業創出を推進。論理的思考力と柔軟な発想力を持つ人材を重視する傾向。\n\n4.  **裏の弱点**: 規制緩和やエネルギー価格変動の影響を受けやすい。組織の硬直性や変化への抵抗感が残る可能性も。\n",
+    "deep_web_intel": "**Key Points**\n\n*   **Tokyo Gas Network Supply Area:** Provides urban gas mainly in the Tokyo metropolitan area (1 metropolis and 6 prefectures).\n*   **Service Areas:** Detailed maps and lists of municipalities supplied with gas are available.\n*   **PDF Maps:** PDF maps detail gas network supply areas for specific regions, including the city of Chiba and the entire Chiba prefecture.\n\n**Structured Summary**\n\n*   **Company:** Tokyo Gas Network\n*   **Service:** Urban gas supply\n*   **Area:** Tokyo metropolitan area (1 metropolis, 6 prefectures)\n*   **Information:** Detailed area maps (PDF) and municipality lists are available.\n*   **Specific PDFs:** Chiba City and Chiba Prefecture supply area maps.\n\n**Gap Analysis**\n\n*   The provided data lacks specific details on the municipalities served.\n*   The area for 1 metropolis and 5 other prefectures apart from Chiba is missing."
+  },
+  "critical_analysis": {
+    "true_intent": "企業イメージ向上、優秀な人材獲得が目的。多様性アピールによるESG投資誘致、企業ブランド価値向上も狙いか。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:11:19.554631",
+  "source": "東京ガス"
+}

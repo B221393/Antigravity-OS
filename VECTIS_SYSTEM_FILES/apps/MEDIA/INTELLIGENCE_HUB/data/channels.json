@@ -1,0 +1,76 @@
+{
+    "channels": [
+        {
+            "name": "Pivot 公式",
+            "channel_id": "UC8yHePe_RgUBE-waRWy6olw",
+            "enabled": true,
+            "category": "ビジネス・キャリア"
+        },
+        {
+            "name": "ReHacQ",
+            "channel_id": "UCG_oqDSlIYEspNpd2H4zWhw",
+            "enabled": true,
+            "category": "ビジネス・キャリア"
+        },
+        {
+            "name": "NewsPicks",
+            "channel_id": "UCfTnJmRQP79C4y_BMF_XrlA",
+            "enabled": true,
+            "category": "ビジネス・キャリア"
+        },
+        {
+            "name": "社會",
+            "channel_id": "UCsNQlg8pVqp6ZWUM8WmTKNw",
+            "enabled": true,
+            "category": "教育・英語学習"
+        },
+        {
+            "name": "3Blue1Brown",
+            "channel_id": "UCYO_jab_esuFRV4b17AJtAw",
+            "enabled": true,
+            "category": "教育・数学"
+        },
+        {
+            "name": "National Geographic TV",
+            "channel_id": "UC1N2_2vCoyd3EvGcVuwTfmw",
+            "enabled": true,
+            "category": "Curiosity/Chaos"
+        },
+        {
+            "name": "Kurzgesagt – In a Nutshell",
+            "channel_id": "UCsXVk37bltHxD1rDPwtNM8Q",
+            "enabled": true,
+            "category": "Curiosity/Chaos"
+        },
+        {
+            "name": "Veritasium",
+            "channel_id": "UCHnyfMqiRRG1u-2MsSQLbXA",
+            "enabled": true,
+            "category": "Science/Engineering"
+        },
+        {
+            "name": "TED",
+            "channel_id": "UCAuUUnT6oDeKwE6v1NGQxug",
+            "enabled": true,
+            "category": "General/Ideas"
+        },
+        {
+            "name": "Real Engineering",
+            "channel_id": "UCTrLzKfBPY_xpk_y12-E2aQ",
+            "enabled": true,
+            "category": "Science/Engineering"
+        },
+        {
+            "name": "Bloomberg Technology",
+            "channel_id": "UCrM7B7SL_g1edFOnmj-SDKg",
+            "enabled": true,
+            "category": "Tech/Business"
+        },
+        {
+            "name": "Vox",
+            "channel_id": "UCLXo7UDZvByw2ixzpQCufnA",
+            "enabled": true,
+            "category": "General/Explainer"
+        }
+    ]
+}

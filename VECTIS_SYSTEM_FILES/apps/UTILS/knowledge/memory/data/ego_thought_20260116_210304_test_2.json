@@ -1,0 +1,17 @@
+{
+  "type": "thought",
+  "category": "プログラミング",
+  "timestamp": "2026-01-16T21:03:04.166733",
+  "content": "Pythonでデータ分析をするのが好き。特にPandasとMatplotlibを使ったビジュアライゼーションが得意。",
+  "context": {
+    "source": "ego_system_test",
+    "auto_captured": false,
+    "note": "技術的な興味",
+    "routed_category": "プログラミング"
+  },
+  "metadata": {
+    "length": 58,
+    "has_keywords": true,
+    "test_memory": true
+  }
+}

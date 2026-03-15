@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Flow Gallery | VECTIS Remake</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #ffffff;
+            --accent-color: #3b82f6;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-width: 300px;
+            --card-height: 400px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Background Effects */
+        .ambient-light {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050505 80%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            position: absolute;
+            top: 2rem;
+            z-index: 100;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInDown 1s ease-out forwards 0.5s;
+        }
+
+        h1 {
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            margin: 0;
+            background: linear-gradient(90deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 3D Stage */
+        .stage {
+            perspective: 1200px;
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .gallery-container {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            width: var(--card-width);
+            height: var(--card-height);
+        }
+
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s ease-out;
+            cursor: pointer;
+            overflow: hidden;
+            -webkit-box-reflect: below 2px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.3));
+        }
+
+        /* Image Placeholder */
+        .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            transition: opacity 0.5s;
+            z-index: -1;
+        }
+
+        .card:hover .card-image {
+            opacity: 0.8;
+        }
+
+        .card-content {
+            z-index: 2;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .card.active .card-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin: 5px 0 0;
+        }
+
+        /* Navigation Controls */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 50;
+            backdrop-filter: blur(5px);
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .prev-btn {
+            left: 5%;
+        }
+
+        .next-btn {
+            right: 5%;
+        }
+
+        /* Contact Button */
+        .cta-container {
+            position: absolute;
+            bottom: 3rem;
+            z-index: 100;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards 1s;
+        }
+
+        .contact-btn {
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-btn:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-light"></div>
+
+    <header>
+        <h1>COVER FLOW GALLERY</h1>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">VECTIS PREMIUM EDIT</p>
+    </header>
+
+    <div class="stage" id="stage">
+        <div class="gallery-container" id="gallery">
+            <!-- Items injected by JS -->
+        </div>
+    </div>
+
+    <button class="nav-btn prev-btn" onclick="moveGallery(-1)">&#10094;</button>
+    <button class="nav-btn next-btn" onclick="moveGallery(1)">&#10095;</button>
+
+    <div class="cta-container">
+        <a href="https://kawaidesign.studio.site/contact" target="_blank" class="contact-btn">GET IN TOUCH</a>
+    </div>
+
+    <script>
+        const imageData = [
+            { title: "Project Alpha", desc: "Digital Experience", color: "linear-gradient(45deg, #FF6B6B, #556270)" },
+            { title: "Neon Dreams", desc: "Cyberpunk Art", color: "linear-gradient(45deg, #12c2e9, #c471ed, #f64f59)" },
+            { title: "Zen Garden", desc: "Minimalist Design", color: "linear-gradient(45deg, #11998e, #38ef7d)" },
+            { title: "Deep Ocean", desc: "Abstract Concept", color: "linear-gradient(45deg, #2193b0, #6dd5ed)" },
+            { title: "Solar flare", desc: "Energy Visualization", color: "linear-gradient(45deg, #f12711, #f5af19)" },
+            { title: "Night Walk", desc: "Urban Photography", color: "linear-gradient(45deg, #000046, #1CB5E0)" },
+            { title: "Abstract Core", desc: "Generative Art", color: "linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045)" }
+        ];
+
+        const gallery = document.getElementById('gallery');
+        let currentIndex = 3; // Start in middle
+
+        function initGallery() {
+            imageData.forEach((data, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-image" style="background: ${data.color}"></div>
+                    <div class="card-content">
+                        <h2>${data.title}</h2>
+                        <p>${data.desc}</p>
+                    </div>
+                `;
+                card.onclick = () => {
+                    currentIndex = index;
+                    updateGallery();
+                };
+                gallery.appendChild(card);
+            });
+            updateGallery();
+        }
+
+        function moveGallery(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex >= imageData.length) currentIndex = imageData.length - 1;
+            updateGallery();
+        }
+
+        function updateGallery() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                const offset = index - currentIndex;
+                const absOffset = Math.abs(offset);
+
+                // 3D Transform Logic
+                let transform = '';
+                let zIndex = 100 - absOffset;
+                let opacity = 1;
+
+                if (offset === 0) {
+                    // Center Item
+                    transform = `translateX(0) translateZ(200px) rotateY(0deg)`;
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                    const xShift = offset * 220; // Spacing
+                    const zShift = -200 + (absOffset * -100);
+                    const rotate = offset > 0 ? -60 : 60;
+
+                    transform = `translateX(${xShift}px) translateZ(${zShift}px) rotateY(${rotate}deg)`;
+                    opacity = 0.6; // Fade out non-active
+                }
+
+                card.style.transform = transform;
+                card.style.zIndex = zIndex;
+                card.style.opacity = opacity;
+            });
+        }
+
+        // Scroll / Wheel Support
+        window.addEventListener('wheel', (e) => {
+            if (e.deltaY > 0) moveGallery(1);
+            else moveGallery(-1);
+        });
+
+        // Touch Support
+        let touchStartX = 0;
+        window.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+        window.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) moveGallery(1);
+                else moveGallery(-1);
+            }
+        });
+
+        initGallery();
+    </script>
+</body>
+
+</html>

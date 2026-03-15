@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg: #08080d;
+            --s1: #0e0e18;
+            --s2: #151525;
+            --s3: #1c1c30;
+            --bd: #252545;
+            --ac: #7c6cf0;
+            --ac2: #a89eff;
+            --ac3: #00d4c8;
+            --tx: #e8e8f0;
+            --tx2: #7878a0;
+            --tx3: #50506a;
+            --ok: #2ecc71;
+            --warn: #f39c12;
+            --err: #e74c3c
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--tx);
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 20px
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 32px
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--ac), var(--ac3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px
+        }
+
+        .header h1 svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--ac2)
+        }
+
+        .header p {
+            color: var(--tx2);
+            font-size: 12px
+        }
+
+        /* Container */
+        .container {
+            max-width: 860px;
+            width: 100%
+        }
+
+        /* Stats Grid */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px
+        }
+
+        .stat {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            transition: border-color .2s
+        }
+
+        .stat:hover {
+            border-color: rgba(124, 108, 240, .3)
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            background: linear-gradient(135deg, var(--ac), var(--ac3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-variant-numeric: tabular-nums
+        }
+
+        .stat-label {
+            color: var(--tx2);
+            font-size: 11px;
+            margin-top: 4px;
+            font-weight: 500
+        }
+
+        /* Text Display */
+        .text-panel {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            line-height: 2;
+            user-select: none;
+            min-height: 120px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .text-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ac), var(--ac3));
+            border-radius: 12px 12px 0 0;
+            opacity: .5
+        }
+
+        .char {
+            transition: color .05s
+        }
+
+        .char.correct {
+            color: var(--ok)
+        }
+
+        .char.incorrect {
+            color: var(--err);
+            background: rgba(231, 76, 60, .15);
+            border-radius: 2px
+        }
+
+        .char.current {
+            border-left: 2px solid var(--ac3);
+            animation: blink .6s infinite
+        }
+
+        .char.pending {
+            color: var(--tx3)
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                border-color: var(--ac3)
+            }
+
+            50% {
+                border-color: transparent
+            }
+        }
+
+        /* Input */
+        .input-area {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            background: var(--s2);
+            color: var(--tx);
+            outline: none;
+            transition: border-color .2s, box-shadow .2s
+        }
+
+        .input-area:focus {
+            border-color: var(--ac);
+            box-shadow: 0 0 0 3px rgba(124, 108, 240, .15)
+        }
+
+        .input-area::placeholder {
+            color: var(--tx3)
+        }
+
+        .input-area:disabled {
+            opacity: .5
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            border: 1px solid var(--bd);
+            background: var(--s2);
+            color: var(--tx);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .btn:hover {
+            border-color: var(--ac);
+            background: rgba(124, 108, 240, .1)
+        }
+
+        .btn svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor
+        }
+
+        .btn-p {
+            background: linear-gradient(135deg, var(--ac), var(--ac3));
+            border: none;
+            color: #fff;
+            font-weight: 700
+        }
+
+        .btn-p:hover {
+            opacity: .9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(124, 108, 240, .3)
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 0;
+            border: 1px solid var(--bd);
+            border-radius: 8px;
+            overflow: hidden
+        }
+
+        .mode-btn {
+            padding: 8px 16px;
+            border: none;
+            background: var(--s2);
+            color: var(--tx2);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .15s
+        }
+
+        .mode-btn.on {
+            background: rgba(124, 108, 240, .15);
+            color: var(--ac2)
+        }
+
+        .mode-btn:hover {
+            color: var(--tx)
+        }
+
+        /* Result */
+        .result {
+            background: var(--s1);
+            border: 1px solid var(--ok);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 16px;
+            text-align: center;
+            display: none
+        }
+
+        .result h2 {
+            font-size: 18px;
+            color: var(--ok);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px
+        }
+
+        .result h2 svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--ok)
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto
+        }
+
+        .result-item {
+            background: var(--s2);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center
+        }
+
+        .result-item .val {
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--ac2)
+        }
+
+        .result-item .lbl {
+            font-size: 10px;
+            color: var(--tx2);
+            margin-top: 2px
+        }
+
+        /* History */
+        .history {
+            margin-top: 24px
+        }
+
+        .history h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ac2);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .history h3 svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--ac2)
+        }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .history-item {
+            background: var(--s1);
+            border: 1px solid var(--bd);
+            border-radius: 8px;
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            transition: border-color .2s
+        }
+
+        .history-item:hover {
+            border-color: rgba(124, 108, 240, .3)
+        }
+
+        .history-item .hi-wpm {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--ac2)
+        }
+
+        .history-item .hi-meta {
+            color: var(--tx2);
+            display: flex;
+            gap: 12px
+        }
+
+        .history-item .hi-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px
+        }
+
+        .no-history {
+            color: var(--tx3);
+            font-size: 12px;
+            text-align: center;
+            padding: 16px
+        }
+
+        @media(max-width:600px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z" />
+            </svg>
+            Typing Speed Test
+        </h1>
+        <p>タイピング速度を測定しよう</p>
+    </div>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" id="wpm">0</div>
+                <div class="stat-label">WPM</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="accuracy">100</div>
+                <div class="stat-label">正確率 %</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="time">60</div>
+                <div class="stat-label">残り秒</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="chars">0</div>
+                <div class="stat-label">正確文字数</div>
+            </div>
+        </div>
+
+        <div class="text-panel" id="textDisplay"></div>
+        <input type="text" class="input-area" id="inputArea" placeholder="ここにタイプを開始..." autocomplete="off" autofocus>
+
+        <div class="controls">
+            <div class="mode-selector">
+                <button class="mode-btn on" data-time="30">30s</button>
+                <button class="mode-btn" data-time="60">60s</button>
+                <button class="mode-btn" data-time="120">120s</button>
+            </div>
+            <div class="mode-selector">
+                <button class="mode-btn lang-btn on" data-lang="en">English</button>
+                <button class="mode-btn lang-btn" data-lang="ja">日本語</button>
+            </div>
+            <button class="btn btn-p" onclick="startTest()">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+                </svg>
+                新しいテスト
+            </button>
+        </div>
+
+        <div class="result" id="resultPanel">
+            <h2>
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                完了！
+            </h2>
+            <div class="result-grid" id="resultStats"></div>
+        </div>
+
+        <div class="history">
+            <h3>
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M13 3a9 9 0 00-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0013 21a9 9 0 000-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z" />
+                </svg>
+                過去の記録
+            </h3>
+            <div class="history-list" id="historyList">
+                <div class="no-history">まだ記録がありません</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const textsEn = [
+            "The quick brown fox jumps over the lazy dog. This sentence contains every letter of the alphabet.",
+            "Programming is the art of telling a computer what to do through a series of instructions called code.",
+            "Artificial intelligence is transforming how we work, learn, and interact with technology every day.",
+            "The best way to predict the future is to create it. Innovation begins with a single idea and grows.",
+            "Success is not final, failure is not fatal. It is the courage to continue that counts in the end.",
+            "Technology is best when it brings people together and makes complex things simple to understand.",
+            "Every expert was once a beginner. Keep learning and growing every single day of your life.",
+            "The only way to do great work is to love what you do. If you have not found it yet, keep looking.",
+            "In the middle of difficulty lies opportunity. Challenges are what make life interesting.",
+            "Code is like humor. When you have to explain it, it is bad. Write clean and readable code."
+        ];
+
+        const textsJa = [
+            "吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。",
+            "春はあけぼの。やうやう白くなりゆく山際、少し明かりて、紫だちたる雲の細くたなびきたる。",
+            "祇園精舎の鐘の声、諸行無常の響きあり。沙羅双樹の花の色、盛者必衰の理をあらはす。",
+            "技術は日々進化している。新しい言語やツールが次々と登場し、私たちの生活を便利にしている。",
+            "プログラミングとは、コンピュータに対して一連の命令を記述することで問題を解決する技術である。",
+            "努力は必ず報われるとは限らないが、努力しない限り何も始まらない。継続は力なり。",
+            "好奇心は人間の最も強力な原動力である。知らないことを知りたいという欲求が世界を前に進める。",
+            "読書は最も費用対効果の高い自己投資である。一冊の本が人生を変えることもある。"
+        ];
+
+        let currentText = '', currentIndex = 0, startTime = null, timerInterval = null;
+        let correctChars = 0, totalTyped = 0, isRunning = false;
+        let selectedTime = 30, timeLeft = 30, selectedLang = 'en';
+        let history = JSON.parse(localStorage.getItem('typing_history') || '[]');
+
+        function getTexts() { return selectedLang === 'ja' ? textsJa : textsEn; }
+
+        function initTest() {
+            const texts = getTexts();
+            currentText = texts[Math.floor(Math.random() * texts.length)];
+            currentIndex = 0; correctChars = 0; totalTyped = 0;
+            timeLeft = selectedTime; isRunning = false; startTime = null;
+            if (timerInterval) clearInterval(timerInterval);
+            renderText();
+            const inp = document.getElementById('inputArea');
+            inp.value = ''; inp.disabled = false; inp.focus();
+            document.getElementById('resultPanel').style.display = 'none';
+            updateStats();
+        }
+
+        function renderText() {
+            const display = document.getElementById('textDisplay');
+            const typed = document.getElementById('inputArea').value;
+            display.innerHTML = currentText.split('').map((char, i) => {
+                let cls = 'char';
+                if (i < typed.length) {
+                    cls += typed[i] === currentText[i] ? ' correct' : ' incorrect';
+                } else if (i === typed.length) {
+                    cls += ' current';
+                } else {
+                    cls += ' pending';
+                }
+                return `<span class="${cls}">${char === ' ' ? '&nbsp;' : char}</span>`;
+            }).join('');
+        }
+
+        function startTest() { initTest(); }
+
+        function startTimer() {
+            startTime = Date.now();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('time').textContent = timeLeft;
+                updateStats();
+                if (timeLeft <= 0) endTest();
+            }, 1000);
+        }
+
+        function updateStats() {
+            const elapsed = startTime ? (Date.now() - startTime) / 1000 / 60 : 0;
+            const wpm = elapsed > 0 ? Math.round((correctChars / 5) / elapsed) : 0;
+            const accuracy = totalTyped > 0 ? Math.round((correctChars / totalTyped) * 100) : 100;
+            document.getElementById('wpm').textContent = wpm;
+            document.getElementById('accuracy').textContent = accuracy;
+            document.getElementById('chars').textContent = correctChars;
+        }
+
+        function endTest() {
+            isRunning = false;
+            clearInterval(timerInterval);
+            document.getElementById('inputArea').disabled = true;
+            const elapsed = (Date.now() - startTime) / 1000 / 60;
+            const wpm = Math.round((correctChars / 5) / elapsed);
+            const accuracy = totalTyped > 0 ? Math.round((correctChars / totalTyped) * 100) : 100;
+            const seconds = Math.round(elapsed * 60);
+
+            document.getElementById('resultPanel').style.display = 'block';
+            document.getElementById('resultStats').innerHTML = `
+                <div class="result-item"><div class="val">${wpm}</div><div class="lbl">WPM</div></div>
+                <div class="result-item"><div class="val">${accuracy}%</div><div class="lbl">正確率</div></div>
+                <div class="result-item"><div class="val">${correctChars}</div><div class="lbl">正確文字数</div></div>
+                <div class="result-item"><div class="val">${seconds}s</div><div class="lbl">経過時間</div></div>
+            `;
+
+            // Save to history
+            history.unshift({ wpm, accuracy, chars: correctChars, time: seconds, lang: selectedLang, date: new Date().toISOString() });
+            if (history.length > 20) history.pop();
+            localStorage.setItem('typing_history', JSON.stringify(history));
+            renderHistory();
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyList');
+            if (history.length === 0) {
+                list.innerHTML = '<div class="no-history">まだ記録がありません</div>';
+                return;
+            }
+            list.innerHTML = history.slice(0, 10).map((h, i) => {
+                const d = new Date(h.date);
+                const dateStr = `${d.getMonth() + 1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2, '0')}`;
+                return `<div class="history-item">
+                    <div class="hi-wpm">${h.wpm} <span style="font-size:10px;color:var(--tx2);font-weight:400">WPM</span></div>
+                    <div class="hi-meta">
+                        <span>${h.accuracy}%</span>
+                        <span>${h.chars}字</span>
+                        <span>${h.time}s</span>
+                        <span>${h.lang === 'ja' ? '日本語' : 'EN'}</span>
+                        <span style="color:var(--tx3)">${dateStr}</span>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // Input handler
+        document.getElementById('inputArea').addEventListener('input', (e) => {
+            if (!isRunning && e.target.value.length === 1) {
+                isRunning = true;
+                startTimer();
+            }
+            const typed = e.target.value;
+            currentIndex = typed.length;
+            totalTyped = typed.length;
+            correctChars = 0;
+            for (let i = 0; i < typed.length; i++) {
+                if (typed[i] === currentText[i]) correctChars++;
+            }
+            renderText();
+            updateStats();
+            if (typed.length >= currentText.length) {
+                const texts = getTexts();
+                currentText = texts[Math.floor(Math.random() * texts.length)];
+                e.target.value = '';
+                currentIndex = 0;
+                renderText();
+            }
+        });
+
+        // Time mode buttons
+        document.querySelectorAll('.mode-btn[data-time]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mode-btn[data-time]').forEach(b => b.classList.remove('on'));
+                btn.classList.add('on');
+                selectedTime = parseInt(btn.dataset.time);
+                initTest();
+            });
+        });
+
+        // Language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('on'));
+                btn.classList.add('on');
+                selectedLang = btn.dataset.lang;
+                initTest();
+            });
+        });
+
+        // Init
+        initTest();
+        renderHistory();
+    </script>
+</body>
+
+</html>

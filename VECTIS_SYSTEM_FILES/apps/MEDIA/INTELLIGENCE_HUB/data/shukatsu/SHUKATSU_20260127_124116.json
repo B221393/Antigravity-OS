@@ -1,0 +1,24 @@
+{
+  "title": "P&G Japan に内定！「自分の価値観を知り、どのように",
+  "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBaSXJnRXo2bW1XbG0tQkR3cHpsM2xMWmQ2clFPdnRaTVFBMFJTRklJT3RPSmpLZi1FVGc4NW1UaTI5RGhVemMtbEJOUWVNYnRWTXc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiUkFVX3lxTFBaSXJnRXo2bW1XbG0tQkR3cHpsM2xMWmQ2clFPdnRaTVFBMFJTRklJT3RPSmpLZi1FVGc4NW1UaTI5RGhVemMtbEJOUWVNYnRWTXc?oc=5\" target=\"_blank\">P&G Japan に内定！「自",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "明治大学がP&G内定者のインタビューを公開。就活成功例を紹介し、大学のブランド力向上を図る。",
+    "true_intent": "明治大学の広報活動。P&Gへの内定実績をアピールし、受験生獲得や大学の評判向上を狙う。P&G側も優秀な学生の応募を間接的に促す意図が考えられる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "P&G",
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027",
+    "company_profile": "**企業名：P&G**\n1. **主要武器**：グローバルなネットワーク、ブランド力、研発投資\n2. **26-27卒への温度感**：多様な経営陣、社員教育重視\n3. **EGO適性**：データ分析、デジタルツール活用を推進\n4. **裏の弱点**：大企業的な慢性化、変化への対応速度",
+    "deep_web_intel": "Okay, I will extract the key points, create a structured summary, and perform a gap analysis from the provided data with minimal text:\n\n**Overall Summary:**\n\nThe data consists of multiple RAR archives extracted from an online forum. They seem to contain application materials, potentially including PPT presentations, JPG images, and PDF documents, possibly related to P&G recruitment.  The data contains garbage characters.\n\n**Key Points:**\n\n*   **Source:** Yingjiesheng Forum (Chinese job board, especially for new grads).\n*   **File Types:** RAR archives containing PPT, JPG, and PDF files.\n*   **Content Focus:** Recruitment materials (likely P&G related).\n*   **Data Quality Issue:** Extensive garbage data, making full interpretation difficult.\n\n**Structured Summary:**\n\n*   **Data Origin:** Chinese new graduate job forum.\n*   **Data Format:** Multiple RAR archives.\n*   **Data Type:** Application/Recruitment related documents.\n*   **Data Integrity:** Degraded due to garbage characters.\n\n**Gap Analysis:**\n\n*   **Missing Information:**  The exact content of the PPT, JPG, and PDF files is not available without cleaning the garbage data. The purpose of the recruitment materials is not clear.\n*   **Data Usability:**  The garbage data significantly hinders the usability and interpretability.\n*   **Actions Needed:**  Data cleaning to remove garbage characters is required to extract meaningful information.\n\n**Minimal Text Representation:**\n\n`Source: Chinese job forum. Archives (PPT, JPG, PDF). Recruitment materials. Data Quality: Degraded. Action: Data cleaning needed.`"
+  },
+  "critical_analysis": {
+    "true_intent": "明治大学の広報活動。P&Gへの内定実績をアピールし、受験生獲得や大学の評判向上を狙う。P&G側も優秀な学生の応募を間接的に促す意図が考えられる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:41:16.491787",
+  "source": "P&G 採用"
+}

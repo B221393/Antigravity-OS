@@ -1,0 +1,24 @@
+{
+  "title": "ZenX、旧帝大・早慶100名の27卒就職活動動向レポートを",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBaVHJsQUlaeUdMbjhVS2l3SzVNQ2tEQmwwOEE2YkQ3LW1TXzNDbjhTbVNhNXNkbzFJZ2RZOHB6MHd6ZjFTZ1U0UVRLOUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTFBaVHJsQUlaeUdMbjhVS2l3SzVNQ2tEQmwwOEE2YkQ3LW1TXzNDbjhTbVNhNXNkbzFJZ2RZOHB6MHd6ZjFTZ1U0UVRLOUE?oc=5\" target=\"_blank\">ZenX、旧帝大・早慶100名の27卒就職活動動",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ZenXが旧帝大・早慶生の就活レポート公開。早期化・多社併願の実態と内定率16%が判明。",
+    "true_intent": "ZenXのブランドイメージ向上と就活サービス（情報提供、コンサルティング等）への誘導。上位層のデータに焦点を当てることで、学生の不安を煽り、サービス利用を促進する狙い。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ZenX",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## ZenX 本質的価値分析 (27卒向け)\n\n1.  **主要武器**: 圧倒的な技術力とスピード。独自のアルゴリズム開発力で、ニッチ市場を席巻する隠れたリーディングカンパニー。\n2.  **26-27卒への温度感**: 即戦力採用が中心だが、ポテンシャル重視の早期選考枠拡大中。技術系隈研吾枠あり。\n3.  **EGO適性**: データドリブン文化。構造的思考は必須、AI活用を積極的に推進。自律性と学習意欲が評価される。\n4.  **裏の弱点**: 組織体制が急成長に追いつかず、部署間の連携に課題。トップダウン色が強く、柔軟性に欠ける面も。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   User needs Blackberry Connect for Exchange email access due to company restrictions.\n*   Current device (Dash) with BB Connect is failing.\n*   User has a Wing device as a potential replacement.\n*   Issue: \"blackberry connect was unable to connect with your device (returned PIN 0)\".\n\n**Structured Summary:**\n\n| **Problem**                        | **Context**                                                                    | **Solution Attempt** | **Issue**                                                                    |\n| :--------------------------------- | :----------------------------------------------------------------------------- | :------------------- | :--------------------------------------------------------------------------- |\n| Need Exchange email on phone      | Company policy restricts wireless Exchange access.  BB Connect is the workaround. | Using BB Connect     | \"blackberry connect was unable to connect with your device (returned PIN 0)\" |\n| Current device (Dash) is failing | Has a Wing device available                                                   |                                                        |                                                                              |\n\n**Gap Analysis:**\n\n*   Root cause of \"PIN 0\" error is unknown.\n*   Compatibility of BB Connect with Wing is unknown.\n*   Alternative solutions besides BB Connect are not explored."
+  },
+  "critical_analysis": {
+    "true_intent": "ZenXのブランドイメージ向上と就活サービス（情報提供、コンサルティング等）への誘導。上位層のデータに焦点を当てることで、学生の不安を煽り、サービス利用を促進する狙い。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:09:46.144480",
+  "source": "Active:三井物産"
+}

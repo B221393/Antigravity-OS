@@ -1,0 +1,24 @@
+{
+  "title": "2027年卒 大学生キャリア意向調査（10月）＜インターンシ",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE0wZ21GV1JRTmQzekJYcVJrUEFPbWxPUXZlZzc1ZjhrMlUwSURiLXJTOVNkNUk1TXJFYXcyTEVaRHd3NnZRMFYzbXN4SHVIcDJyRUFTMGVXZVF1M0ZLWUxWM0RrVUFld0VJU2c?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE0wZ21GV1JRTmQzekJYcVJrUEFPbWxPUXZlZzc1ZjhrMlUwSURiLXJTOVNkNUk1TXJFYXcyTEVaRHd3NnZRMFYzbXN4SHVIcDJyRUFTMGVXZVF1M0ZLWUxWM0RrVUFld0VJU2c?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "マイナビが27卒向けインターンシップ・キャリア形成活動調査を発表。早期化傾向を強調。",
+    "true_intent": "早期化を煽り、自社の就活サービスへの登録を促す意図。企業側も早期に学生を囲い込みたい思惑が背景にある。人材獲得競争の激化を助長。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "マイナビ",
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。マイナビの本質的価値と27卒が狙うべき理由を、以下の通り構造化します。\n\n1.  **主要武器**: 長年培った企業・大学との強固なリレーションシップと、就活市場における圧倒的なブランド力。データに基づいたマッチング精度向上への投資も積極的。\n\n2.  **26-27卒への温度感**: 採用数維持傾向。変化の激しい人材業界で、主体的に動き、新規事業を推進できる人材を重視。\n\n3.  **EGO適性**: 構造的思考は必須。AI活用は模索段階だが、提案力次第で活躍のチャンスあり。\n\n4.  **裏の弱点**: 既存事業への依存度が高く、新規事業の成功事例が少ない。変化を恐れる保守的な側面も残る。\n",
+    "deep_web_intel": "**Key Points**\n\n*   GitHub user: ghmko\n*   Repository: powershell-Filemetadata\n*   Purpose: Powershell File metadata\n*   File: Get-FileMetaDataReturnObject.ps1\n*   Error: HTTP 429 Too Many Requests.\n\n**Structured Summary**\n\nThe data pertains to a GitHub user \"ghmko\" and their repository \"powershell-Filemetadata,\" which focuses on PowerShell scripts for extracting file metadata.  A specific file, \"Get-FileMetaDataReturnObject.ps1,\" is highlighted.  The retrieval of one file resulted in an HTTP 429 error, indicating rate limiting.\n\n**Gap Analysis**\n\n*   The context of \"マイナビ\" is missing. The relationship between \"マイナビ\" and the github data is unknown.\n*   The purpose of extracting this information is unclear.\n*   The cause of the \"Too Many Requests\" error isn't specified (e.g., excessive API calls).\n*   Details about the functionality of the PowerShell script are absent."
+  },
+  "critical_analysis": {
+    "true_intent": "早期化を煽り、自社の就活サービスへの登録を促す意図。企業側も早期に学生を囲い込みたい思惑が背景にある。人材獲得競争の激化を助長。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:29:40.908679",
+  "source": "インターン (Google)"
+}

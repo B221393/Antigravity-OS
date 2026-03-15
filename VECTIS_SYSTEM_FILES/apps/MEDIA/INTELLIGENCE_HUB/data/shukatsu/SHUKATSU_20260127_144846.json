@@ -1,0 +1,22 @@
+{
+  "title": "アジャイル実践企業5社が集い、未来を切り拓く「Agile X",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBocnlHQUZfQzBKU0JsQnNGSHFBa0lIQWwwLXR4MFJoRnMzZTlsdWRFSGxva0YwWjhYSnUtLUV4LU1VenVjVlBVUDJkX2JyWUNBQkVwM3UtUWxkS2dpRC1HcnMwbmZlTnl4NHc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTFBocnlHQUZfQzBKU0JsQnNGSHFBa0lIQWwwLXR4MFJoRnMzZTlsdWRFSGxva0YwWjhYSnUtLUV4LU1VenVjVlBVUDJkX2JyWUNBQkVwM3UtUWxkS2dpRC1HcnMwbmZlTnl4NHc?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "アジャイル実践企業5社が「Agile X Conference 2025」を開催。",
+    "true_intent": "アジャイル導入を推進し、自社サービスやコンサルティングの需要喚起が目的。アジャイル導入支援企業が得をする。人材獲得も視野か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "アジャイル導入を推進し、自社サービスやコンサルティングの需要喚起が目的。アジャイル導入支援企業が得をする。人材獲得も視野か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T14:48:46.440425",
+  "source": "Active:KDDI"
+}

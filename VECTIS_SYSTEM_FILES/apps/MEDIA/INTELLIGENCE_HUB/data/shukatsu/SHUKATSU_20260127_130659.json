@@ -1,0 +1,22 @@
+{
+  "title": "職員採用／産業技術職 - pref.hyogo.lg.jp",
+  "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9WSDAxblg0V0Z1QWJQd3V4THVfZDVBMXlKSW9ORXJPZHAxTExBdXhzNFlsdUt0dmV1UDlBWEdFQ3NkSU5fMzV4U3E1dkU0YzNHZFFodFZFUFlGbDVPQk91bVo2LVlkUG9EWmd1bllB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTE9WSDAxblg0V0Z1QWJQd3V4THVfZDVBMXlKSW9ORXJPZHAxTExBdXhzNFlsdUt0dmV1UDlBWEdFQ3NkSU5fMzV4U3E1dkU0YzNHZFFodFZFUFlGbDVPQk91bVo2LVlkUG9EWmd1bllB?o",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "兵庫県が産業技術職の職員採用情報を公開。技術系学生は要チェック。",
+    "true_intent": "技術系人材の確保。県内産業の活性化をアピールし、優秀な学生を呼び込みたい思惑。県内企業との連携強化も視野か。",
+    "bias_warning": "なし",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "技術系人材の確保。県内産業の活性化をアピールし、優秀な学生を呼び込みたい思惑。県内企業との連携強化も視野か。",
+    "bias_warning": "なし"
+  },
+  "collected_at": "2026-01-27T13:06:59.711080",
+  "source": "兵庫県庁 採用"
+}

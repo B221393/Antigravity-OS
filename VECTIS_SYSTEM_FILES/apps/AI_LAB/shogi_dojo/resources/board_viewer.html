@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #111;
+            color: #eee;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 10px;
+        }
+
+        #board-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        #status {
+            text-align: center;
+            margin-top: 10px;
+            color: #aaa;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="text-align:center; color:#ff9900;">EGO SHOGI REPLAY</h2>
+
+    <!-- Using Lishogi embed -->
+    <div id="board-container">
+        <!-- Defaulting to startpos if no SFEN provided -->
+        <iframe id="lishogi-frame" src="https://lishogi.org/editor/embed" frameborder=0></iframe>
+    </div>
+
+    <div class="controls">
+        <button onclick="loadSfen()">Load from Clipboard</button>
+        <button onclick="resetBoard()">Reset</button>
+    </div>
+
+    <div id="status">Ready to load SFEN...</div>
+
+    <script>
+        // Simple integration via URL params if we were hosting locally with a board lib.
+        // Since we want "Chat-like" ease, we use Lishogi embed for now which is robust.
+        // But for local replay without internet, we need a JS board.
+        // However, user said "Like chat app", implying interaction?
+
+        async function loadSfen() {
+            try {
+                const text = await navigator.clipboard.readText();
+                if (text) {
+                    // Update iframe src to load this sfen?
+                    // Lishogi embed supports ?fen=...
+                    // SFEN must be URL encoded.
+                    const sfen = encodeURIComponent(text);
+                    document.getElementById('lishogi-frame').src = "https://lishogi.org/editor/embed?fen=" + sfen;
+                    document.getElementById('status').innerText = "Loaded SFEN from clipboard!";
+                }
+            } catch (err) {
+                document.getElementById('status').innerText = "Clipboard Access Failed (Browser restriction?)";
+            }
+        }
+
+        function resetBoard() {
+            document.getElementById('lishogi-frame').src = "https://lishogi.org/editor/embed";
+            document.getElementById('status').innerText = "Board Reset.";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+  "title": "東大からMARCHまでの「難関大の新卒者」を多く採用している",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9YWkNILXVHTURxbzBkTnFWY0lGb3F1d0JIRmtHRUVtNmFNY2JrQWxNT2dwS3ZZWldZQkdEVFV4aEd3U0dFTlJudkptUi3SAU9BVV95cUxQUm5ZS2M4MDczWXAzeXZBZ29MWkV3S3BaU0NLdDFCYlB2WFJoMktka0ZwdkMxZ2ZUZnNRNmcwUGVkMTdSc3o3VXJZR0c1REd3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTE9YWkNILXVHTURxbzBkTnFWY0lGb3F1d0JIRmtHRUVtNmFNY2JrQWxNT2dwS3ZZWldZQkdEVFV4aEd3U0dFTlJudkptUi3SAU9BVV95cUxQUm5ZS2M4MDczWXAzeXZBZ29MWkV3S3BaU0",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "難関大出身者採用企業ランキング（鉄・エネルギー）で、就活生に企業イメージを操作し、特定の業界への誘導を狙う。",
+    "true_intent": "ダイヤモンド・オンラインのブランド力向上と、ランキング上位企業の採用活動支援が目的。特定の大学群に偏った採用を助長し、学歴フィルターの存在を暗に肯定している可能性。業界イメージ向上も狙い。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "ダイヤモンド・オンラインのブランド力向上と、ランキング上位企業の採用活動支援が目的。特定の大学群に偏った採用を助長し、学歴フィルターの存在を暗に肯定している可能性。業界イメージ向上も狙い。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:17:25.718536",
+  "source": "神戸・兵庫 採用総合"
+}

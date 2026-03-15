@@ -1,0 +1,24 @@
+{
+  "title": "ZenX、旧帝大・早慶100名の27卒就職活動動向レポートを",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1UNUY0MHVpNzVDZmJEYnY3c0UwUldXREFPcmZ6eGtMOUE2US0tNGJCQS1kLXloUHlfb0hxRHp4SklOT1hBajlaZ0ZOUjBqWHhJZ3RDUkl1b2J5MnNaN2VrbkpWY1pWSzRDY0E?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE1UNUY0MHVpNzVDZmJEYnY3c0UwUldXREFPcmZ6eGtMOUE2US0tNGJCQS1kLXloUHlfb0hxRHp4SklOT1hBajlaZ0ZOUjBqWHhJZ3RDUkl1b2J5MnNaN2VrbkpWY1pWSzRDY0E?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ZenXが旧帝大・早慶27卒の就活レポート公開。応募12社、内定率16%。早期化、多社併願の実態を暴露。",
+    "true_intent": "ZenXの自社ブランド向上、就活生/企業へのデータ販売促進、コンサルティング契約獲得が狙い。上位層データに偏り、全体像を歪曲している可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ZenX",
+    "action_required": true,
+    "category": "IT/人材",
+    "target_year": "2027",
+    "company_profile": "## ZenX 本質的価値分析 (27卒向け)\n\n1. **主要武器**: 最先端AI技術の実用化力。基礎研究だけでなく、顧客課題解決に直結する独自ソリューション開発が強み。\n2. **26-27卒への温度感**: AI人材需要高騰で積極採用継続。特に、ビジネス視点を持つ技術者/研究者候補を重視。\n3. **EGO適性**: 極めて高い。論理的思考力とAI活用能力は必須。自ら課題を発見し、AIで解決策を導ける人材を求める。\n4. **裏の弱点**: 急成長ゆえ、組織体制や評価制度が未成熟な部分も。変化への適応力と主体性が求められる。\n",
+    "deep_web_intel": "**SUMMARY:** User experiencing issues connecting Blackberry Connect on their HTC Wing. Receiving \"unable to connect with your device (returned PIN 0)\" error. Company requires Blackberry for Exchange server access due to lack of wireless access.\n\n**KEY POINTS:**\n\n*   Blackberry Connect failing on HTC Wing.\n*   Error message: \"unable to connect with your device (returned PIN 0)\".\n*   Company policy mandates Blackberry for Exchange access.\n\n**GAP ANALYSIS:**\n\n*   Root cause of PIN 0 error is unknown.\n*   Missing troubleshooting steps or solutions.\n*   Lack of device-specific details (OS version, BB Connect version)."
+  },
+  "critical_analysis": {
+    "true_intent": "ZenXの自社ブランド向上、就活生/企業へのデータ販売促進、コンサルティング契約獲得が狙い。上位層データに偏り、全体像を歪曲している可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:47:40.643092",
+  "source": "Active:電通"
+}

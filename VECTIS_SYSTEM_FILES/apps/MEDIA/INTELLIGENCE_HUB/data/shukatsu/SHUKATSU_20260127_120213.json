@@ -1,0 +1,23 @@
+{
+  "title": "ジール、三菱商事グループのデータ基盤「DATA SMART」",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBNWncyU21TSkhYdjJBR0Zldk1tZ21EWm92ZEZVSUJnUDlmQ05xdUN4aDI5ek5VMmdKVVNLOEY2dXAzT3hiYUxNMjZDaWp2c182R0I4dGdkenNNMjB4QVVwYlR5dEdaNC1uQUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTFBNWncyU21TSkhYdjJBR0Zldk1tZ21EWm92ZEZVSUJnUDlmQ05xdUN4aDI5ek5VMmdKVVNLOEY2dXAzT3hiYUxNMjZDaWp2c182R0I4dGdkenNNMjB4QVVwYlR5dEdaNC1uQUE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "ジールのオープンデータ提供サービス「CO-ODE」が三菱商事グループのデータ基盤に採用されたというプレスリリース。",
+    "true_intent": "ジール及びアバントグループの技術力のアピールと、三菱商事との協業実績を強調することで、新規顧客獲得を狙う宣伝。データ分析需要の高まりを背景としたポジショントークの可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ジール、株式会社アバントグループ、三菱商事",
+    "action_required": false,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## 各社の本質的価値と27卒が狙うべき理由\n\n**1. ジール**\n*   **主要武器**: データ活用コンサルティングの実績と独立系SIerとしての柔軟性。\n*   **26-27卒への温度感**: データサイエンティスト/コンサルタント育成に積極的。\n*   **EGO適性**: 論理的思考力重視。AI技術活用に意欲的だが、実プロジェクトへの浸透はこれから。\n*   **裏の弱点**: 大手コンサルに比べ、ブランド力で見劣り。人材育成の質にばらつきも。\n\n**2. アバントグループ**\n*   **主要武器**: 連結会計・経営管理領域での圧倒的シェアと、グループシナジー。\n*   **26-27卒への温度感**: デジタル人材、グローバル人材を積極的に採用。\n*   **EGO適性**: 業務効率化意識高く、システム思考は必須。AI導入は模索中。\n*   **裏の弱点**: 安定志向が強く、変化を嫌う傾向。縦割り組織の弊害も。\n\n**3. 三菱商事**\n*   **主要武器**: グローバルネットワーク、多様な事業ポートフォリオ、圧倒的な資金力。\n*   **26-27卒への温度感**: 幅広い人材を求めるが、リーダーシップとタフネス重視。\n*   **EGO適性**: 複雑な情報を整理・分析する能力は不可欠。AI活用は部署による。\n*   **裏の弱点**: 年功序列制度が根強く、若手の裁量権は限定的。体育会系のノリも残る。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "ジール及びアバントグループの技術力のアピールと、三菱商事との協業実績を強調することで、新規顧客獲得を狙う宣伝。データ分析需要の高まりを背景としたポジショントークの可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:02:13.282080",
+  "source": "Active:三菱商事"
+}

@@ -1,0 +1,50 @@
+[
+    {
+        "year": 1467,
+        "era": "Sengoku",
+        "title": "応仁の乱 (Onin War)",
+        "desc": "戦国時代の幕開け。京都が焼け野原となり、将軍の権威が失墜。下剋上の世へ。"
+    },
+    {
+        "year": 1543,
+        "era": "Sengoku",
+        "title": "鉄砲伝来 (Arrival of Firearms)",
+        "desc": "種子島にポルトガル人が漂着。火縄銃がもたらされ、戦の戦術が一変する。"
+    },
+    {
+        "year": 1560,
+        "era": "Sengoku",
+        "title": "桶狭間の戦い (Battle of Okehazama)",
+        "desc": "織田信長が今川義元を急襲し討ち取る。信長の天下統一への第一歩。"
+    },
+    {
+        "year": 1582,
+        "era": "Sengoku",
+        "title": "本能寺の変 (Honnō-ji Incident)",
+        "desc": "明智光秀の裏切りにより織田信長が自害。「敵は本能寺にあり」。"
+    },
+    {
+        "year": 1600,
+        "era": "Sengoku",
+        "title": "関ヶ原の戦い (Battle of Sekigahara)",
+        "desc": "天下分け目の戦い。徳川家康（東軍）が石田三成（西軍）を破り、天下を掌握。"
+    },
+    {
+        "year": 1603,
+        "era": "Edo",
+        "title": "江戸幕府 開府 (Edo Shogunate)",
+        "desc": "徳川家康が征夷大将軍に任命される。260年続く泰平の世の始まり。"
+    },
+    {
+        "year": 1853,
+        "era": "Edo",
+        "title": "黒船来航 (Arrival of Black Ships)",
+        "desc": "ペリー提督率いるアメリカ艦隊が浦賀に来航。鎖国体制の終わりを告げる。"
+    },
+    {
+        "year": 1867,
+        "era": "Edo/Meiji",
+        "title": "大政奉還 (Restoration of Imperial Rule)",
+        "desc": "徳川慶喜が政権を朝廷に返上。江戸幕府の終わりと明治時代の到来。"
+    }
+]

@@ -1,0 +1,22 @@
+{
+  "title": "コクヨが新卒採用にVARIETASの「AI面接官」を導入 |",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1VNHd4c05qRlk0dG5OUTBQa0hJNWR5aXJ6eG9PV19OVFBHN2NqV2FvUzZLWTZNU2ZOdFFCZGpyaTZrZGlGb2tQX0NWSDdLWUJYZDgxYmFta1ZtWDlEUkp0VXFRNjgya28xUHc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE1VNHd4c05qRlk0dG5OUTBQa0hJNWR5aXJ6eG9PV19OVFBHN2NqV2FvUzZLWTZNU2ZOdFFCZGpyaTZrZGlGb2tQX0NWSDdLWUJYZDgxYmFta1ZtWDlEUkp0VXFRNjgya28xUHc?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "VARIETASが新卒採用に AI面接官導入、競争力を高める可能性があるとの懸念を浮き彫りにする",
+    "true_intent": "VARIETASが新卒採用にAI面接官導入は、競争力を上げる可能性があると考えられるが、その効果は競争力のみに基づくものであり、その他の要素も考慮した総合的な戦略で実施する必要があると分析する",
+    "bias_warning": "、AI面接官の導入は、特定の年齢層や職業分野に限定される可能性があり、競争力に影響を与える可能性がある",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "VARIETASが新卒採用にAI面接官導入は、競争力を上げる可能性があると考えられるが、その効果は競争力のみに基づくものであり、その他の要素も考慮した総合的な戦略で実施する必要があると分析する",
+    "bias_warning": "、AI面接官の導入は、特定の年齢層や職業分野に限定される可能性があり、競争力に影響を与える可能性がある"
+  },
+  "collected_at": "2026-01-26T19:22:09.447184",
+  "source": "KDDI 採用 Deep Dive"
+}

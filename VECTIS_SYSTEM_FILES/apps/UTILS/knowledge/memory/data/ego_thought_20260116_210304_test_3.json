@@ -1,0 +1,17 @@
+{
+  "type": "thought",
+  "category": "将棋",
+  "timestamp": "2026-01-16T21:03:04.270208",
+  "content": "藤井聡太の対局を見るのが趣味。特に序盤の角換わりが好き。いつか将棋AIを作ってみたい。",
+  "context": {
+    "source": "ego_system_test",
+    "auto_captured": false,
+    "note": "趣味と学習意欲",
+    "routed_category": "将棋"
+  },
+  "metadata": {
+    "length": 43,
+    "has_keywords": true,
+    "test_memory": true
+  }
+}

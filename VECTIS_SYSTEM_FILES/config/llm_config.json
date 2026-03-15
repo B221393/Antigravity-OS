@@ -1,0 +1,37 @@
+{
+    "default_provider": "ollama",
+    "memory_limit_mb": 4096,
+    "providers": {
+        "ollama": {
+            "enabled": true,
+            "url": "http://localhost:11434/api/generate",
+            "model": "gemma:2b",
+            "timeout": 120,
+            "options": {
+                "num_ctx": 2048,
+                "num_thread": 4
+            }
+        },
+        "gemini": {
+            "enabled": false,
+            "fallback": true
+        }
+    },
+    "recommended_models_by_memory": {
+        "8gb": [
+            "gemma:2b",
+            "phi3:mini",
+            "qwen2.5:1.5b",
+            "llama3.2:1b"
+        ],
+        "16gb": [
+            "llama3.2",
+            "gemma2:9b",
+            "phi3"
+        ],
+        "32gb+": [
+            "llama3.1:70b",
+            "mixtral:8x7b"
+        ]
+    }
+}

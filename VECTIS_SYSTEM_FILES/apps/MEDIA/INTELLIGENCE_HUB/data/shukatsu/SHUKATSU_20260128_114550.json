@@ -1,0 +1,17 @@
+{
+  "title": "Rustの革新性を支える「ライフタイム」、メモリー関連の脆弱性を防ぐ - 日経クロステック",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5XLWVGSkpPMnR6d25LSmhudHAxaUljYXFfS0RYdXRPR0lhTlZWblhLZkM1Zk5rNDlRYzEtSU1sdEZ5dmduUUxNdzB2VDRHT0RvZUNSQWd2UGVWbGNHcENIa0pyNE9sMnk3N2JkdA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE5XLWVGSkpPMnR6d25LSmhudHAxaUljYXFfS0RYdXRPR0lhTlZWblhLZkM1Zk5rNDlRYzEtSU1sdEZ5dmduUUxNdzB2VDRHT0RvZUNSQWd2UGVWbGNHcENIa0pyNE9sMnk3N2JkdA?oc=5\" target=\"_blank\">Rustの革新性を支える「ライフタイム」、メモリー関連の脆弱性を防ぐ</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">日経クロステック</font>",
+  "ai_analysis": {
+    "strength": "Rustのメモリ安全性によるセキュリティ向上、開発効率の向上、人材獲得の優位性",
+    "weakness": "Rustの学習コストの高さ、既存システムとの連携の難しさ、人材不足",
+    "opportunity": "Rustエンジニアの需要増加、セキュリティエンジニアとしてのキャリアパス、Rust関連のスタートアップへの参画",
+    "threat": "他の言語(Go, Swiftなど)との競争激化、Rustのエコシステムの成熟度不足、セキュリティ脆弱性の発見遅延"
+  },
+  "critical_analysis": {},
+  "deep_strategic_dossier": "",
+  "bias": "",
+  "collected_at": "2026-01-28T11:45:50.601723",
+  "source": "Active:サイバーエージェント",
+  "score": 5
+}

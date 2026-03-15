@@ -1,0 +1,24 @@
+{
+  "title": "財務省、エンで幹部候補となる「総合職」を公募 - PR TI",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBERzJWNXJPOHBtUzBJM3pqNmlxazd2VTQwckNZcEdxOWw4RTZaY25KSU00SDktQWQ0dFM5dktGcmZZbHB4WU5IdlhWMFY4SUtKak4ybWdwTEVHVEFvdUFVRTdoWjVaWkZXWlE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTFBERzJWNXJPOHBtUzBJM3pqNmlxazd2VTQwckNZcEdxOWw4RTZaY25KSU00SDktQWQ0dFM5dktGcmZZbHB4WU5IdlhWMFY4SUtKak4ybWdwTEVHVEFvdUFVRTdoWjVaWkZXWlE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "財務省がエンで総合職（幹部候補）を公募。従来の採用経路以外からの人材確保。",
+    "true_intent": "優秀な人材を確保し組織の活性化を図ると同時に、採用チャネルの多様化をアピール。エンとの関係強化、省庁のイメージ向上も狙いか。特定の大学閥に偏らない採用を装う意図も考えられる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "エン",
+    "action_required": true,
+    "category": "広告",
+    "target_year": "2027",
+    "company_profile": "## エン：就活メンター視点での企業分析\n\n1.  **主要武器**: 徹底的な企業/求職者理解に基づくマッチング精度。単なる求人広告屋でなく、人材戦略パートナーを目指す姿勢が強み。\n2.  **26-27卒への温度感**: ポテンシャル重視採用へシフト。早期選考やインターンシップを通じ、優秀層囲い込みを強化中。\n3.  **EGO適性**: ロジカルシンキングは必須。データ分析やAI活用によるマッチング高度化に積極的。改善提案を歓迎する文化。\n4.  **裏の弱点**: 成果主義の色が濃く、プレッシャーを感じやすい環境。人材育成制度は充実しているものの、自己成長意欲が低いと厳しい。\n",
+    "deep_web_intel": "**Key Points**\n\n*   **エン転職**: A major Japanese job search site.\n*   **Functionality**: Job listings, login, regional searches (Kanto).\n*   **New Relic**: Uses New Relic browser monitoring for performance tracking.\n\n**Structured Summary**\n\n*   **Platform**: エン転職 (en-japan.com)\n*   **Purpose**: Job searching/recruiting.\n*   **Features**: Job listings, user login, region-specific searches.\n*   **Monitoring**: New Relic integration for performance/error tracking.\n\n**Gap Analysis**\n\n*   **Lack of Detail**: Specific features/functionality beyond basic job search.\n*   **User-Facing Information**: No information on user interface, advanced search filters.\n*   **Competition**: No information on competitive landscape.\n*   **Business Model**: No data about revenue or business model of en-japan."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材を確保し組織の活性化を図ると同時に、採用チャネルの多様化をアピール。エンとの関係強化、省庁のイメージ向上も狙いか。特定の大学閥に偏らない採用を装う意図も考えられる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:19:47.563883",
+  "source": "財務省 採用"
+}

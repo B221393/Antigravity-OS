@@ -1,0 +1,38 @@
+[
+    {
+        "id": "auto_2027_001",
+        "title": "Hatena Summer Internship 2025 (for 2027 Grads)",
+        "company": "株式会社はてな",
+        "date": "2025-06-01",
+        "type": "Internship/Early Selection",
+        "score": 95,
+        "reason": "Kyoto-based, Tech-driven culture. Perfect match for 'Fluidity' and 'Anti-Mundane'. Critical early move for 2027.",
+        "agi_resistance_rating": "High",
+        "agency_rating": "High",
+        "added_at": "2026-01-13 10:50:00"
+    },
+    {
+        "id": "auto_2027_002",
+        "title": "CyberAgent / CA Tech Kids (2027 Potential)",
+        "company": "CyberAgent",
+        "date": "2025-05-01",
+        "type": "Hackathon/Event",
+        "score": 88,
+        "reason": "Mega-venture valuing 'Agency'. Good for portfolio building involved with 'Abema' or gaming infra.",
+        "agi_resistance_rating": "Medium-High",
+        "agency_rating": "High",
+        "added_at": "2026-01-13 10:50:00"
+    },
+    {
+        "id": "auto_2027_003",
+        "title": "Applied Technology (OYO) 2027 Monitoring",
+        "company": "応用技術株式会社",
+        "date": "2026-03-01",
+        "type": "Briefing Watch",
+        "score": 90,
+        "reason": "Infrastructure/Disaster Sim. High stability + High Logic match. Target for steady career.",
+        "agi_resistance_rating": "Very High",
+        "agency_rating": "Medium",
+        "added_at": "2026-01-13 10:50:00"
+    }
+]

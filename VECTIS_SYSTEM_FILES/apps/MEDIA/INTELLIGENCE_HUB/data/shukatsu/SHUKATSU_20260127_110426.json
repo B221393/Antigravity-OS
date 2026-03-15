@@ -1,0 +1,24 @@
+{
+  "title": "「Honda 0 α」世界初公開で「0シリーズ」が揃った。ベ",
+  "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE8xYlVPYlNtVXFtV2JmcWtkX3dBR3U4eXNwMkRhTWt4OWZraHVVcGFjVkdhb0Qzbm1XZ3Z5UnMyQ1hqa3hUNnd2ay1salRjSDQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiT0FVX3lxTE8xYlVPYlNtVXFtV2JmcWtkX3dBR3U4eXNwMkRhTWt4OWZraHVVcGFjVkdhb0Qzbm1XZ3Z5UnMyQ1hqa3hUNnd2ay1salRjSDQ?oc=5\" target=\"_blank\">「Honda 0 α」世界初公開で「0シ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ホンダがEV「0シリーズ」を発表。戦略の未来をアピール。",
+    "true_intent": "EVシフトの遅れを挽回し、ブランドイメージを刷新。投資家へのアピールと、他社EVとの差別化を図り、市場での競争力を確保したい意図。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "Honda",
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。Hondaの本質的価値と27卒が狙うべき理由を構造化します。\n\n1.  **主要武器**: グローバルなブランド力と、多様な技術領域を持つこと。二輪・四輪に加え、航空機やエネルギー等、多角的な事業展開でリスク分散を図る。\n2.  **26-27卒への温度感**: 積極採用継続。CASE領域強化に向け、デジタル人材獲得に注力。多様なバックグラウンドを持つ人材を求めている。\n3.  **EGO適性**: 構造的思考は必須。AI活用は推進中だが、部門による温度差あり。データ分析能力に加え、現場との連携を重視する。\n4.  **裏の弱点**: 伝統的な企業体質が残存。新規事業のスピード感や、社内調整の煩雑さが課題。年功序列制度も一部残る。\n",
+    "deep_web_intel": "Okay, I have analyzed the provided data regarding Honda. Here's a summary based on the available information:\n\n**Key Points:**\n\n*   **Forums:** The data consists of forum discussions on Quattroruote.it about specific Honda models:\n    *   HRV (Nuova Honda HRV consigli e dubbi)\n    *   Jazz 2025 (Honda Jazz 2025)\n*   **Website Structure:** The HTML code suggests a standard website structure with:\n    *   Use of JavaScript libraries (jQuery, Bootstrap)\n    *   Integration of advertising scripts (Google AdSense)\n    *   Use of tracking scripts (Webtrekk, Google Tag Manager, Selligent Marketing Cloud)\n*   **Dealer Listing (Poland):** There's an attempt to fetch a list of Honda dealers in Poland from \"honda.auto.com.pl,\" but this failed due to a \"403 Forbidden\" error.\n\n**Structured Summary:**\n\n| Category        | Details                                                                                             |\n|-----------------|-----------------------------------------------------------------------------------------------------|\n| **Forums**      | Quattroruote.it discussions about Honda models.                                                     |\n| **Models**      | HRV, Jazz (2025)                                                                                     |\n| **Technology**  | jQuery, Bootstrap, Google AdSense, Webtrekk, Google Tag Manager, Selligent Marketing Cloud         |\n| **Dealer Info** | Attempted fetch from honda.auto.com.pl failed (403 Forbidden).                                    |\n\n**Gap Analysis:**\n\n*   **Content of Forum Discussions:** The actual content of the forum discussions (user opinions, questions, reviews, etc.) is not provided in the HTML snippets.\n*   **Dealer Information:** The attempt to retrieve Polish dealer information failed, leaving a gap in geographic dealer data.\n*   **Specific Model Details:** The HTML provides no information about the specific features, pricing, or availability of the Honda models being discussed.\n*   **Website Purpose:** Without more context, the exact purpose of the targetemsecure.blob.core.windows.net script is unknown. It likely handles some marketing or customer engagement functionality.\n\n**In essence, the provided data gives a glimpse into online discussions and website technology related to Honda, but lacks concrete details about the vehicles themselves or the content of user conversations.**"
+  },
+  "critical_analysis": {
+    "true_intent": "EVシフトの遅れを挽回し、ブランドイメージを刷新。投資家へのアピールと、他社EVとの差別化を図り、市場での競争力を確保したい意図。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:04:26.747962",
+  "source": "Active:ホンダ"
+}

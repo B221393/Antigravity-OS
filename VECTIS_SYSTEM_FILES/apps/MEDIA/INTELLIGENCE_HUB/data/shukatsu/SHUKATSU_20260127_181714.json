@@ -1,0 +1,24 @@
+{
+  "title": "ホンダがAGL採用へ、脱QNX模索 - 日経クロステック",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5FRTlKSlpMVTVmLS1scmdTMHU3ZkFrQ1lmbVVFRzBZd0hVYko5TDJUYWQzQ1pIN05VQ2tUWUFZcEwyMHVCU0ZPSzNZZktSTXpfNTFuVVcwYzhUd3FTdHNZUl9tLWhHSUk?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5FRTlKSlpMVTVmLS1scmdTMHU3ZkFrQ1lmbVVFRzBZd0hVYko5TDJUYWQzQ1pIN05VQ2tUWUFZcEwyMHVCU0ZPSzNZZktSTXpfNTFuVVcwYzhUd3FTdHNZUl9tLWhHSUk?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ホンダが車載OSをQNXからAGLへ移行検討。コスト削減とオープンソース活用が目的か。",
+    "true_intent": "QNXの高ライセンス料からの脱却と、AGL陣営へのアピール。他自動車メーカーへのAGL採用促進も視野か。サプライチェーン再構築の布石。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ホンダ",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## ホンダ：本質と27卒が狙うべき理由\n\n1.  **主要武器**: グローバルな技術力とブランド力。二輪・四輪に加え、航空機やロボティクスなど多角的な事業展開で、モビリティの未来を創造するDNA。\n2.  **26-27卒への温度感**: 新領域への挑戦を加速するため、多様なバックグラウンドを持つ人材を積極的に採用。専門性だけでなく、主体性や創造性を重視。\n3.  **EGO適性**: データ駆動型経営を推進し、AI/IoT技術を積極的に活用。論理的思考力と柔軟な発想力を持ち、変化を楽しめる人材を求める。\n4.  **裏の弱点**: 既存事業の構造改革と新規事業の収益化が課題。年功序列制度が残る部分もあり、若手の活躍機会創出が急務。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Honda Official Site (Car Lineup):** Car lineup, prices, passenger capacity.\n*   **carview! (Honda):** New model info, reviews, fuel efficiency, car search.\n*   **Honda Global Site (Corporate):** Corporate info, sustainability, investor relations, news, recruitment.\n\n**Structured Summary:**\n\nHonda has a car lineup site, a car information/catalog site (carview!), and a corporate information site.\n\n**Gap Analysis:**\n\n*   The car lineup site focuses on current models.\n*   carview! provides broader information (reviews, fuel economy).\n*   The corporate site details company information, not specific car models."
+  },
+  "critical_analysis": {
+    "true_intent": "QNXの高ライセンス料からの脱却と、AGL陣営へのアピール。他自動車メーカーへのAGL採用促進も視野か。サプライチェーン再構築の布石。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T18:17:14.125297",
+  "source": "Active:ホンダ"
+}

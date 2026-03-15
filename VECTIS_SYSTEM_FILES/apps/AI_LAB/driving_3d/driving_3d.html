@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EGO CITY: NAVIGATION</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', sans-serif;
+            background: #87CEEB;
+        }
+
+        #ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .panel {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            pointer-events: auto;
+            max-width: 300px;
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .val {
+            font-family: 'Consolas', monospace;
+            color: #a5f3fc;
+            font-weight: bold;
+        }
+
+        .bad {
+            color: #f87171;
+        }
+
+        .good {
+            color: #4ade80;
+        }
+
+        #controls-help {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        #ai-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        button {
+            background: #38bdf8;
+            border: none;
+            padding: 8px 16px;
+            color: #0f172a;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #7dd3fc;
+        }
+
+        #nav-msg {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #fbbf24;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .visible {
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="ui-layer">
+        <div id="nav-msg">DESTINATION GENERATED</div>
+
+        <div class="panel" id="controls-help">
+            <h2>NAVIGATION SYSTEM</h2>
+            <div class="stat-row"><span>Target</span> <span class="val" id="dest-dist">-- m</span></div>
+            <div class="stat-row"><span>Reward</span> <span class="val good" id="reward-disp">0</span></div>
+            <div class="stat-row"><span>Speed</span> <span class="val" id="speed-disp">0 km/h</span></div>
+            <button onclick="toggleAI()">TOGGLE AI PILOT</button>
+        </div>
+
+        <div class="panel" id="ai-status">
+            <h2>AI Sensor</h2>
+            <div class="stat-row"><span>Light</span> <span class="val" id="light-disp">--</span></div>
+            <div class="stat-row"><span>Traffic</span> <span class="val" id="dist-disp">-- m</span></div>
+            <div class="stat-row"><span>Action</span> <span class="val" id="action-disp">WAIT</span></div>
+        </div>
+    </div>
+
+    <script>
+        // --- CONSTANTS ---
+        const TILE_SIZE = 40;
+        const ROAD_WIDTH = 12;
+        const CITY_SIZE = 8;
+        const CAR_SPEED = 0.8;
+
+        // --- THREE JS ---
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x87CEEB);
+        scene.fog = new THREE.Fog(0x87CEEB, 30, 200);
+
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 500);
+        camera.position.set(0, 40, 40);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        document.body.appendChild(renderer.domElement);
+
+        // Light
+        const amb = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(amb);
+        const sun = new THREE.DirectionalLight(0xffffff, 0.7);
+        sun.position.set(100, 200, 50);
+        sun.castShadow = true;
+        sun.shadow.mapSize.width = 2048; sun.shadow.mapSize.height = 2048;
+        sun.shadow.camera.left = -200; sun.shadow.camera.right = 200;
+        sun.shadow.camera.top = 200; sun.shadow.camera.bottom = -200;
+        scene.add(sun);
+
+        // --- CITY GEN ---
+        const trafficLights = [];
+        const cars = [];
+        let destination = null; // THREE.Vector3
+        let destMesh = null;
+
+        const roadMat = new THREE.MeshStandardMaterial({ color: 0x444444 });
+        const grassMat = new THREE.MeshStandardMaterial({ color: 0x4caf50 });
+        const buildMat = new THREE.MeshStandardMaterial({ color: 0xdddddd });
+        const lineMat = new THREE.MeshBasicMaterial({ color: 0xffeb3b });
+
+        function createCity() {
+            const offset = (CITY_SIZE * TILE_SIZE) / 2;
+            for (let x = 0; x < CITY_SIZE; x++) {
+                for (let z = 0; z < CITY_SIZE; z++) {
+                    const wx = x * TILE_SIZE - offset;
+                    const wz = z * TILE_SIZE - offset;
+
+                    const gr = new THREE.Group();
+                    gr.position.set(wx, 0, wz);
+
+                    // Center
+                    const r = new THREE.Mesh(new THREE.PlaneGeometry(ROAD_WIDTH, ROAD_WIDTH), roadMat);
+                    r.rotation.x = -Math.PI / 2; r.receiveShadow = true; gr.add(r);
+
+                    // Arms
+                    const armW = ROAD_WIDTH;
+                    const armL = (TILE_SIZE - ROAD_WIDTH) / 2;
+                    [[0, -1], [0, 1], [-1, 0], [1, 0]].forEach(([dx, dz]) => {
+                        const arm = new THREE.Mesh(new THREE.PlaneGeometry(armW, armL), roadMat);
+                        arm.rotation.x = -Math.PI / 2;
+                        if (dx !== 0) arm.rotation.z = Math.PI / 2;
+                        arm.position.set(dx * (ROAD_WIDTH / 2 + armL / 2), 0.01, dz * (ROAD_WIDTH / 2 + armL / 2));
+                        arm.receiveShadow = true; gr.add(arm);
+
+                        // Line
+                        const l = new THREE.Mesh(new THREE.PlaneGeometry(0.5, armL), lineMat);
+                        l.rotation.copy(arm.rotation); l.position.copy(arm.position); l.position.y += 0.02; gr.add(l);
+                    });
+
+                    // Corners
+                    [[1, 1], [1, -1], [-1, 1], [-1, -1]].forEach(([qx, qz]) => {
+                        const cSize = (TILE_SIZE - ROAD_WIDTH) / 2;
+                        const cx = qx * (ROAD_WIDTH / 2 + cSize / 2);
+                        const cz = qz * (ROAD_WIDTH / 2 + cSize / 2);
+
+                        const g = new THREE.Mesh(new THREE.PlaneGeometry(cSize, cSize), grassMat);
+                        g.rotation.x = -Math.PI / 2; g.position.set(cx, 0, cz); g.receiveShadow = true; gr.add(g);
+
+                        if (Math.random() > 0.3) {
+                            const h = 5 + Math.random() * 15;
+                            const b = new THREE.Mesh(new THREE.BoxGeometry(cSize - 2, h, cSize - 2), buildMat);
+                            b.position.set(cx, h / 2, cz); b.castShadow = true; b.receiveShadow = true; gr.add(b);
+                        }
+                    });
+
+                    // Light
+                    const tl = createTrafficLight();
+                    tl.group.position.set(wx, 5, wz);
+                    trafficLights.push(tl);
+                    scene.add(tl.group);
+
+                    scene.add(gr);
+                }
+            }
+            const floor = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000), new THREE.MeshStandardMaterial({ color: 0x333333 }));
+            floor.rotation.x = -Math.PI / 2; floor.position.y = -0.1; scene.add(floor);
+        }
+
+        function createTrafficLight() {
+            const g = new THREE.Group();
+            const box = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), new THREE.MeshStandardMaterial({ color: 0x222 }));
+            g.add(box);
+            return { group: g, state: { n: 'RED', e: 'GREEN' }, timer: Math.random() * 200 };
+        }
+
+        // --- DESTINATION ---
+        function spawnDestination() {
+            if (destMesh) scene.remove(destMesh);
+
+            // Pick random tile
+            const x = Math.floor(Math.random() * CITY_SIZE - CITY_SIZE / 2) * TILE_SIZE;
+            const z = Math.floor(Math.random() * CITY_SIZE - CITY_SIZE / 2) * TILE_SIZE;
+            destination = new THREE.Vector3(x, 0, z);
+
+            // Visual
+            const geo = new THREE.CylinderGeometry(0.5, 0.5, 100);
+            const mat = new THREE.MeshBasicMaterial({ color: 0xffff00, transparent: true, opacity: 0.5 });
+            destMesh = new THREE.Mesh(geo, mat);
+            destMesh.position.set(x, 50, z);
+            scene.add(destMesh);
+
+            const msg = document.getElementById('nav-msg');
+            msg.textContent = "NEW DESTINATION SET";
+            msg.classList.add('visible');
+            setTimeout(() => msg.classList.remove('visible'), 2000);
+        }
+
+        // --- AGENT ---
+        class Car {
+            constructor(isUser) {
+                this.isUser = isUser;
+                this.mesh = new THREE.Group();
+                const col = isUser ? 0xff0000 : Math.random() * 0xffffff;
+                const b = new THREE.Mesh(new THREE.BoxGeometry(2, 1, 4), new THREE.MeshStandardMaterial({ color: col }));
+                b.position.y = 0.7; b.castShadow = true; this.mesh.add(b);
+                scene.add(this.mesh);
+
+                // Pos
+                const rx = Math.floor(Math.random() * CITY_SIZE - CITY_SIZE / 2) * TILE_SIZE;
+                const rz = Math.floor(Math.random() * CITY_SIZE - CITY_SIZE / 2) * TILE_SIZE;
+                this.mesh.position.set(rx - 3, 0, rz);
+                this.angle = 0;
+
+                // State
+                this.speed = 0;
+                this.driveState = 'CRUISE';
+                this.waitTimer = 0;
+                this.reward = 0;
+            }
+
+            update() {
+                const pos = this.mesh.position;
+
+                // Navigation
+                if (this.isUser && destination) {
+                    const dist = pos.distanceTo(destination);
+                    document.getElementById('dest-dist').textContent = dist.toFixed(0) + " m";
+                    if (dist < 10) {
+                        this.reward += 100;
+                        spawnDestination();
+                    }
+                }
+
+                // AI Logic
+                if (!this.isUser || AI_PILOT) {
+                    // Determine logic
+                    this.autonomousUpdate();
+                }
+
+                // Physics
+                this.mesh.rotation.y = this.angle;
+                const fwd = new THREE.Vector3(0, 0, -1).applyAxisAngle(new THREE.Vector3(0, 1, 0), this.angle);
+                this.mesh.position.add(fwd.multiplyScalar(this.speed));
+
+                // Loop
+                const LIMIT = CITY_SIZE * TILE_SIZE / 2 + 10;
+                if (Math.abs(pos.x) > LIMIT) pos.x *= -0.99;
+                if (Math.abs(pos.z) > LIMIT) pos.z *= -0.99;
+
+                // Cam
+                if (this.isUser) {
+                    const off = new THREE.Vector3(0, 15, 20).applyAxisAngle(new THREE.Vector3(0, 1, 0), this.angle);
+                    camera.position.lerp(pos.clone().add(off), 0.1);
+                    camera.lookAt(pos);
+
+                    document.getElementById('speed-disp').textContent = (this.speed * 50).toFixed(0) + " km/h";
+                    document.getElementById('reward-disp').textContent = this.reward.toFixed(0);
+                }
+            }
+
+            autonomousUpdate() {
+                const pos = this.mesh.position;
+                const fwd = new THREE.Vector3(0, 0, -1).applyAxisAngle(new THREE.Vector3(0, 1, 0), this.angle);
+
+                // 1. Intersection Check
+                const mx = Math.round(pos.x / TILE_SIZE);
+                const mz = Math.round(pos.z / TILE_SIZE);
+                const center = new THREE.Vector3(mx * TILE_SIZE, 0, mz * TILE_SIZE);
+                const distToInt = pos.distanceTo(center);
+
+                let targetSpeed = CAR_SPEED;
+                let action = "CRUISE";
+
+                // Light Check
+                const tl = trafficLights.find(t => Math.abs(t.group.position.x - center.x) < 1 && Math.abs(t.group.position.z - center.z) < 1);
+                let light = 'GREEN';
+                if (tl && distToInt < 15 && distToInt > 5) {
+                    // Determine axis. fwd.z large -> N/S -> check tl.state.n
+                    if (Math.abs(fwd.z) > 0.5) light = tl.state.n;
+                    else light = tl.state.e;
+                }
+
+                if (light === 'RED') {
+                    targetSpeed = 0;
+                    action = "STOP (RED)";
+                }
+
+                // Check cars
+                let minDist = 999;
+                for (let c of cars) {
+                    if (c === this) continue;
+                    const d = c.mesh.position.distanceTo(pos);
+                    if (d < 20) {
+                        // In front?
+                        const to = c.mesh.position.clone().sub(pos).normalize();
+                        if (fwd.dot(to) > 0.8) {
+                            if (d < minDist) minDist = d;
+                        }
+                    }
+                }
+                if (minDist < 10) { targetSpeed = 0; action = "STOP (CAR)"; }
+                else if (minDist < 15) { targetSpeed *= 0.5; }
+
+                // TURNING LOGIC
+                // At intersection center...
+                if (distToInt < 2 && this.waitTimer <= 0) {
+                    // NAVIGATION LOGIC
+                    // Wh which way decreases distance to destination?
+                    // current: pos. neighbors: N(z-1), S(z+1), E(x+1), W(x-1)
+                    // Evaluate all 4 (or 3 valid) directions?
+                    // Simple greedy:
+
+                    let bestTurn = 0; // 0=Straight
+
+                    if (this.isUser && destination) {
+                        // Vector to dest
+                        const toDest = destination.clone().sub(center).normalize();
+                        // Dot products with Left, Right, Straight vectors
+                        const vLeft = new THREE.Vector3(0, 0, -1).applyAxisAngle(new THREE.Vector3(0, 1, 0), this.angle + Math.PI / 2);
+                        const vRight = new THREE.Vector3(0, 0, -1).applyAxisAngle(new THREE.Vector3(0, 1, 0), this.angle - Math.PI / 2);
+                        const vStr = fwd.clone();
+
+                        const scoreL = vLeft.dot(toDest);
+                        const scoreR = vRight.dot(toDest);
+                        const scoreS = vStr.dot(toDest);
+
+                        // Pick max, with random chance for exploration
+                        // Bias towards best
+                        if (scoreL > scoreS && scoreL > scoreR) { bestTurn = 1; action = "NAV LEFT"; }
+                        else if (scoreR > scoreS && scoreR > scoreL) { bestTurn = -1; action = "NAV RIGHT"; }
+                        else { action = "NAV FWD"; }
+                    } else {
+                        // Random
+                        const r = Math.random();
+                        if (r < 0.2) bestTurn = 1;
+                        else if (r < 0.4) bestTurn = -1;
+                    }
+
+                    // Execute Turn
+                    if (bestTurn === 1) { // Left
+                        this.targetAngle = this.angle + Math.PI / 2;
+                        this.driveState = 'TURNING';
+                    } else if (bestTurn === -1) { // Right
+                        this.targetAngle = this.angle - Math.PI / 2;
+                        this.driveState = 'TURNING';
+                    } else {
+                        this.targetAngle = this.angle;
+                    }
+                    this.waitTimer = 40;
+                }
+                if (this.waitTimer > 0) this.waitTimer--;
+
+                if (this.driveState === 'TURNING') {
+                    targetSpeed = CAR_SPEED * 0.5;
+                    if (Math.abs(this.targetAngle - this.angle) > 0.05) {
+                        this.angle += Math.sign(this.targetAngle - this.angle) * 0.08;
+                    } else {
+                        this.angle = this.targetAngle;
+                        this.driveState = 'CRUISE';
+                    }
+                }
+
+                // Accel
+                if (this.speed < targetSpeed) this.speed += 0.05;
+                else this.speed *= 0.9;
+
+                // UI
+                if (this.isUser) {
+                    document.getElementById('action-disp').textContent = action;
+                    document.getElementById('light-disp').textContent = light;
+                    document.getElementById('dist-disp').textContent = minDist < 999 ? minDist.toFixed(0) + "m" : "--";
+                }
+            }
+        }
+
+        // --- MAIN ---
+        createCity();
+        spawnDestination();
+
+        const p = new Car(true);
+        cars.push(p);
+        for (let i = 0; i < 8; i++) cars.push(new Car(false));
+
+        let AI_PILOT = true;
+        document.getElementById('controls-help').querySelector('h2').textContent = "EGO NAVIGATOR";
+
+        function toggleAI() { AI_PILOT = !AI_PILOT; }
+
+        // User Input
+        const keys = {};
+        window.onkeydown = e => keys[e.key] = true;
+        window.onkeyup = e => keys[e.key] = false;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Traffic Lights
+            trafficLights.forEach(t => {
+                t.timer++;
+                if (t.timer > 300) {
+                    t.timer = 0;
+                    if (t.state.n === 'RED') { t.state.n = 'GREEN'; t.state.e = 'RED'; }
+                    else { t.state.n = 'RED'; t.state.e = 'GREEN'; }
+                    t.group.children[0].material.color.setHex(t.state.n === 'RED' ? 0xff0000 : 0x00ff00);
+                }
+            });
+
+            // Manual
+            if (!AI_PILOT) {
+                if (keys['ArrowUp']) p.speed += 0.05;
+                if (keys['ArrowDown']) p.speed -= 0.1;
+                if (keys['ArrowLeft']) p.angle += 0.05;
+                if (keys['ArrowRight']) p.angle -= 0.05;
+            }
+
+            cars.forEach(c => c.update());
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.onresize = () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+    </script>
+</body>
+
+</html>

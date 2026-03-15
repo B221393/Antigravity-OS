@@ -1,0 +1,24 @@
+{
+  "title": "広がる科学、羽ばたく少女たち / Science Agora",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5jTUc2RDFJN2tNbjZRaC1WWXBPUlhONFJkcmZ3UzN0U3QyUFdKUzA5UUs0TWpLNzZzaXk2Q05oTVNIbkpaZDdQNGF0cUtuVFc2UHZMckpLV09kczRrR0hvaXE2ZG0xMXRkSUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE5jTUc2RDFJN2tNbjZRaC1WWXBPUlhONFJkcmZ3UzN0U3QyUFdKUzA5UUs0TWpLNzZzaXk2Q05oTVNIbkpaZDdQNGF0cUtuVFc2UHZMckpLV09kczRrR0hvaXE2ZG0xMXRkSUE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "Science Agora 2025で「科学と少女」をテーマにしたイベント開催告知。人材育成が目的。",
+    "true_intent": "科学技術振興機構(JST)の広報活動。科学分野への女性進出促進をアピールし、組織のイメージ向上を図る。研究費獲得や政策への影響力維持が目的か。",
+    "bias_warning": "あり",
+    "deadline": "2025-11-XX",
+    "company": "JST",
+    "action_required": false,
+    "category": "出版",
+    "target_year": "2027",
+    "company_profile": "## JST (科学技術振興機構)\n\n1. **主要武器**: 日本の科学技術立国を支える「知のプラットフォーム」。研究資金配分、成果展開、科学技術情報流通を担う唯一無二の存在。\n2. **26-27卒への温度感**: 研究支援・情報発信・国際連携など多様な職種で採用意欲旺盛。理系知識に加え、企画力・コミュニケーション能力を重視。\n3. **EGO適性**: データ分析基盤整備やAIを活用した研究支援に注力。構造的思考力と新しい技術への興味関心は高く評価される。\n4. **裏の弱点**: 官僚的な体質が残存し、スピード感に課題。縦割り組織による連携不足も懸念される。\n",
+    "academic_deep_dive": "---\n\n**広がる科学、羽ばたく少女たち / Science Agora 2025**\n\n1. **歴史的背景**: 女性の科学分野への進出は、長らく疎外されてきた歴史への挑戦。キュリー夫人らの先駆的な業績は、女性の知的能力の偏見を覆したが、依然として社会構造的な障壁は残存。過去の女性科学者支援の試みは、多くが限定的で、ジェンダーロールの固定化を助長する側面も。\n\n2. **現代的意義**: STEM分野におけるジェンダーギャップは、イノベーションの機会損失。多様性の欠如は、偏った視点での技術開発を招き、社会課題解決の可能性を狭める。女性のエンパワーメントは、SDGs達成にも不可欠であり、公正な社会構築の基盤となる。\n\n3. **批判的視座**: 「羽ばたく少女たち」という表現は、少女たちに期待をかけすぎ、プレッシャーを与えていないか？単なる数値目標達成ではなく、科学分野における女性の真のエンパワーメントとは何かを問う必要がある。ジェンダーだけでなく、多様な背景を持つ人々が科学に参画できる環境整備が不可欠。\n---\n"
+  },
+  "critical_analysis": {
+    "true_intent": "科学技術振興機構(JST)の広報活動。科学分野への女性進出促進をアピールし、組織のイメージ向上を図る。研究費獲得や政策への影響力維持が目的か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:15:43.635951",
+  "source": "科学技術 社会論"
+}

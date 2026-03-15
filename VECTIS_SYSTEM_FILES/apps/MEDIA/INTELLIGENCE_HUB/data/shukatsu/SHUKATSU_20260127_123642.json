@@ -1,0 +1,22 @@
+{
+  "title": "進む早期化。「本選考を受けた」が早くも6割を超える - PR",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5TaGF2dTUzelUxQ1A2dENvczVNMHZNNnRJTEJkWHFLWXVfVkdySjFBUi13LVFNZFA1WE5MdkkyVW9XYXlnWE9SNEdaQ3NkZTlfclBlejFUTE9kczYtWXpMS1B2RWtFTDk0bmc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE5TaGF2dTUzelUxQ1A2dENvczVNMHZNNnRJTEJkWHFLWXVfVkdySjFBUi13LVFNZFA1WE5MdkkyVW9XYXlnWE9SNEdaQ3NkZTlfclBlejFUTE9kczYtWXpMS1B2RWtFTDk0bmc?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "このニュースは、政治的なキャンペーンや特定の政治的立場を表明している可能性があります。",
+    "true_intent": "このニュースは、特定の政治的立場を表明している可能性があります。",
+    "bias_warning": "強い政治的立場表明可能性あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "政治/社会",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "このニュースは、特定の政治的立場を表明している可能性があります。",
+    "bias_warning": "強い政治的立場表明可能性あり"
+  },
+  "collected_at": "2026-01-27T12:36:42.555749",
+  "source": "就活ニュース (Google)"
+}

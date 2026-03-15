@@ -1,0 +1,22 @@
+{
+  "title": "職員採用／採用サポーター制度 - pref.hyogo.lg",
+  "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYY0twMy1mYTdBN3E3SGo2V3hZTHJqM2xGZkxQRGFCX0dTSzBDTGR5NGtIMDN2MFBtd1RYaEdQaVFlZEU1eDZMUVdjZmpHOURrb0dEblRxR200TXh0dk5pbElSV0ZnQQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYY0twMy1mYTdBN3E3SGo2V3hZTHJqM2xGZkxQRGFCX0dTSzBDTGR5NGtIMDN2MFBtd1RYaEdQaVFlZEU1eDZMUVdjZmpHOURrb0dEblRxR200TXh0dk5pbElSV0ZnQQ?oc=5\" targe",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "兵庫県職員採用とサポーター制度の告知。採用広報強化と県政への理解促進が目的。",
+    "true_intent": "優秀な人材確保による県政の活性化をアピール。採用サポーター制度でOB/OGを活用し、応募者数を増やしたい。関連企業との癒着の可能性も考慮。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材確保による県政の活性化をアピール。採用サポーター制度でOB/OGを活用し、応募者数を増やしたい。関連企業との癒着の可能性も考慮。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:28:44.576229",
+  "source": "兵庫県庁 採用"
+}

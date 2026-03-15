@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS Knowledge Node</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* 
+         * DESIGN SYSTEM: ZEN & ADMIN
+         * Principle: "Sophisticated Whitespace" & "Progressive Disclosure"
+         */
+
+        :root {
+            /* Palette - Dynamic Context */
+            --bg-body: #F4F4F5;
+            --text-main: #27272A;
+            --text-muted: #71717A;
+            --accent-color: #3B82F6;
+            /* Default Blue */
+            --card-bg: #FFFFFF;
+            --border-subtle: #E4E4E7;
+
+            /* Typography */
+            --font-sans: 'Zen Kaku Gothic New', sans-serif;
+            --font-serif: 'Cormorant Garamond', serif;
+
+            /* Spacing */
+            --space-unit: 8px;
+            --space-md: 24px;
+            --space-xl: 64px;
+        }
+
+        /* DARK MODE / FOCUS MODE VARIABLES */
+        body.mode-focus {
+            --bg-body: #09090B;
+            /* Zinc 950 */
+            --text-main: #E4E4E7;
+            --text-muted: #71717A;
+            --accent-color: #D4D4D8;
+            /* Subtle Silver */
+            --card-bg: #18181B;
+            --border-subtle: #27272A;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden;
+            /* Zen principle: No endless scrolling unless necessary */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 
+         * UTILS & TYPOGRAPHY
+         */
+        .serif {
+            font-family: var(--font-serif);
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hidden {
+            display: none !important;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: inherit;
+            font-family: inherit;
+        }
+
+        /* 
+         * MODE: FOCUS (Night/Early Morning)
+         * Minimal, Philosophical, Deep
+         */
+        #focus-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 10;
+            transition: opacity 0.8s ease;
+        }
+
+        body.mode-focus #focus-layer {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .philosophy-quote {
+            font-size: 2.5rem;
+            text-align: center;
+            line-height: 1.4;
+            max-width: 800px;
+            padding: 0 20px;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            opacity: 0.9;
+        }
+
+        .focus-clock {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .focus-action {
+            margin-top: 80px;
+            padding: 12px 32px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 99px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .focus-action:hover {
+            color: var(--text-main);
+            border-color: var(--text-main);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* 
+         * MODE: ADMIN (Daytime)
+         * Efficient, Organized, Dense but Breathable
+         */
+        #admin-layer {
+            height: 100%;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.98);
+            transition: all 0.5s ease;
+        }
+
+        body.mode-admin #admin-layer {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        /* Toolbar */
+        .admin-header {
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .brand {
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .admin-clock {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        /* Main Grid */
+        .admin-workspace {
+            padding: 40px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            /* Sidebar + Main */
+            gap: 40px;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .menu-item {
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Content Area */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-subtle);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .node-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 160px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .node-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .node-icon {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        .node-title {
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .node-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-subtle);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+    </style>
+</head>
+<!-- Initial class will be set by JS immediately to avoid flash, but default to safe 'mode-admin' -->
+
+<body class="mode-admin">
+
+    <!-- 
+      FOCUS MODE LAYER 
+      (Visible only when body has class .mode-focus)
+    -->
+    <div id="focus-layer">
+        <div class="philosophy-quote serif">
+            "The function of prayer is not to influence God,<br>but rather to change the nature of the one who prays."
+        </div>
+        <div class="focus-clock" id="focus-clock-display">00:00</div>
+
+        <button class="focus-action" onclick="forceAdmin()">
+            ENTER WORKSPACE
+        </button>
+    </div>
+
+    <!-- 
+      ADMIN ADMIN LAYER
+      (Visible only when body has class .mode-admin)
+    -->
+    <div id="admin-layer">
+        <header class="admin-header">
+            <div class="brand">VECTIS // KNOWLEDGE</div>
+            <div class="admin-clock" id="admin-clock-display">12:00</div>
+        </header>
+
+        <div class="admin-workspace">
+            <nav class="sidebar-menu">
+                <button class="menu-item active">Dashboard</button>
+                <button class="menu-item">Intelligence (Patrol)</button>
+                <button class="menu-item">Library (Books)</button>
+                <button class="menu-item">Ego (Identity)</button>
+                <button class="menu-item">System (Settings)</button>
+            </nav>
+
+            <main class="content-area">
+
+                <!-- SECTION: CORE TASKS -->
+                <section>
+                    <h2 class="section-title serif">Today's Focus</h2>
+                    <div class="cards-grid">
+                        <div class="node-card" onclick="openApp('scheduler')">
+                            <div class="node-icon">📅</div>
+                            <div>
+                                <div class="node-title">Schedule & Chores</div>
+                                <div class="node-meta">Manage daily logistics</div>
+                            </div>
+                        </div>
+                        <div class="node-card" onclick="openApp('todo')">
+                            <div class="node-icon">✅</div>
+                            <div>
+                                <div class="node-title">Active Tasks</div>
+                                <div class="node-meta">3 High Priority</div>
+                            </div>
+                        </div>
+                        <div class="node-card" onclick="openApp('journal')">
+                            <div class="node-icon">✒️</div>
+                            <div>
+                                <div class="node-title">Daily Reflection</div>
+                                <div class="node-meta">Write your thoughts</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: INTELLIGENCE -->
+                <section>
+                    <h2 class="section-title serif">Knowledge Access</h2>
+                    <div class="cards-grid">
+                        <div class="node-card" onclick="openApp('youtube_channel')">
+                            <div class="node-icon">📺</div>
+                            <div>
+                                <div class="node-title">YouTube Analysis</div>
+                                <div class="node-meta">Intelligence Gathering</div>
+                            </div>
+                        </div>
+                        <div class="node-card" onclick="openApp('bookshelf')">
+                            <div class="node-icon">📚</div>
+                            <div>
+                                <div class="node-title">The Bookshelf</div>
+                                <div class="node-meta">Access stored wisdom</div>
+                            </div>
+                        </div>
+                        <div class="node-card" onclick="openApp('ego_evolution')">
+                            <div class="node-icon">🧠</div>
+                            <div>
+                                <div class="node-title">Ego Evolution</div>
+                                <div class="node-meta">Self-improvement tracking</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // --- TIME BASED CONTEXT LOGIC ---
+
+        // Configuration
+        const FOCUS_START = 22; // 10 PM
+        const FOCUS_END = 6;    // 6 AM
+        let manualOverride = false;
+
+        function updateContext() {
+            if (manualOverride) return;
+
+            const now = new Date();
+            const hour = now.getHours();
+
+            // Check if Night (Late) or Early Morning
+            const isFocusTime = (hour >= FOCUS_START || hour < FOCUS_END);
+
+            // Apply Mode
+            const body = document.body;
+            if (isFocusTime) {
+                if (!body.classList.contains('mode-focus')) {
+                    body.classList.remove('mode-admin');
+                    body.classList.add('mode-focus');
+                }
+            } else {
+                if (!body.classList.contains('mode-admin')) {
+                    body.classList.remove('mode-focus');
+                    body.classList.add('mode-admin');
+                }
+            }
+
+            // Update Clocks
+            const timeStr = now.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('focus-clock-display').textContent = timeStr;
+            document.getElementById('admin-clock-display').textContent = timeStr;
+        }
+
+        // --- INTERACTION LOGIC ---
+
+        function forceAdmin() {
+            manualOverride = true;
+            document.body.classList.remove('mode-focus');
+            document.body.classList.add('mode-admin');
+        }
+
+        function openApp(appName) {
+            console.log("Opening App:", appName);
+            // In a real Python integration, this would call a backend function or navigate
+            // alert("Opening " + appName);
+
+            // If connected to Python via eel or pywebview, use that.
+            // If standard web, navigate.
+            // Placeholder:
+        }
+
+        // Initialize
+        updateContext();
+        setInterval(updateContext, 1000 * 60); // Check every minute
+    </script>
+</body>
+
+</html>

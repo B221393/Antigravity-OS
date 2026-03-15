@@ -1,0 +1,22 @@
+{
+  "title": "KDDIが中期経営計画を発表、「通信とライフデザインの融合」",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIが中期経営計画を発表、通信とライフデザインの融合を推進する意図が考えられます。",
+    "true_intent": "KDDIは、通信とライフデザインの融合によって、新たなビジネス展開や顧客への価値上げを目指していると考えられます。この戦略は、KDDIが競争力を維持するための重要な手段であると考えられます。",
+    "bias_warning": "この情報は、KDDIが通信とライフデザインを統合するプロセスが政治的かつ競争上の利点であることを暗示する可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIは、通信とライフデザインの融合によって、新たなビジネス展開や顧客への価値上げを目指していると考えられます。この戦略は、KDDIが競争力を維持するための重要な手段であると考えられます。",
+    "bias_warning": "この情報は、KDDIが通信とライフデザインを統合するプロセスが政治的かつ競争上の利点であることを暗示する可能性があります。"
+  },
+  "collected_at": "2026-01-26T18:31:48.775712",
+  "source": "KDDI 事業戦略"
+}

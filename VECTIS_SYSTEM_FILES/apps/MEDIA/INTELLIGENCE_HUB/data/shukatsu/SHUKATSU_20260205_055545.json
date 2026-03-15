@@ -1,0 +1,43 @@
+{
+  "title": "トヨタやスズキ、中国筆頭のホライズン製SoC採用へ 半導体戦略の転換点 - 日経クロステック",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAyMWppTVNjOGp3S3hfZ2l4b0JQNmZ0cXQydnFMWUdiTVlZUWxkN0ZYU0tDM24wWTg0VU8wNHlrc1NHU2d5MW5jYmUwTl9vSUQ0MXBMTG9kd01hOFJkVDFNYUFKYTJQblE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAyMWppTVNjOGp3S3hfZ2l4b0JQNmZ0cXQydnFMWUdiTVlZUWxkN0ZYU0tDM24wWTg0VU8wNHlrc1NHU2d5MW5jYmUwTl9vSUQ0MXBMTG9kd01hOFJkVDFNYUFKYTJQblE?oc=5\" target=\"_blank\">トヨタやスズキ、中国筆頭のホライズン製SoC採用へ 半導体戦略の転換点</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">日経クロステック</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トヨタ、スズキが中国のホライズンのSoCを採用",
+    "strategic_analysis": {
+      "true_intent": "中国の半導体企業の伸長と日本企業の半導体戦略の転換点",
+      "swot": {
+        "strength": "ホライズンのSoC技術、トヨタとスズキの半導体戦略の強化",
+        "weakness": "日本企業の半導体依存度の高さ、中国企業の技術的優位性",
+        "opportunity": "新卒エンジニアにとっての半導体関連業界への就職チャンス",
+        "threat": "半導体供給链の不安定性、中国企業の市場シェア拡大"
+      },
+      "writing_technique": "",
+      "action_plan": "Yutoは、トヨタやスズキの半導体戦略に関する情報を収集し、ホライズンのSoC技術の特徴について調べる。さらに、半導体業界の将来性と、新卒エンジニアとしての就職チャンスについて考える。OB訪問の際には、半導体関連のプロジェクトへの参加や、技術的課題に対する対応について質問する。"
+    },
+    "bias_warning": "日本企業の半導体戦略の転換点についての偏向報道の可能性",
+    "company": "トヨタ、スズキ、ホライズン",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 8,
+    "company_profile": "**本質的価値**: トヨタ、スズキ、ホライズンの「本質的価値」は、以下の3つの要素で構成されます。\n\n1. **強みの源泉**: トヨタ、スズキ、ホライズンの製品は、高い品質と信頼性を特徴としています。\n2. **26-27卒への温度感**: 今では、26-27卒の時代は、技術やデザインに特に注目される分野となっています。\n3. **AI活用への適性**: 複雑な技術やAIを活用した製品開発や製造は、26-27卒に求められます。",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "中国の半導体企業の伸長と日本企業の半導体戦略の転換点",
+    "swot": {
+      "strength": "ホライズンのSoC技術、トヨタとスズキの半導体戦略の強化",
+      "weakness": "日本企業の半導体依存度の高さ、中国企業の技術的優位性",
+      "opportunity": "新卒エンジニアにとっての半導体関連業界への就職チャンス",
+      "threat": "半導体供給链の不安定性、中国企業の市場シェア拡大"
+    },
+    "writing_technique": "",
+    "action_plan": "Yutoは、トヨタやスズキの半導体戦略に関する情報を収集し、ホライズンのSoC技術の特徴について調べる。さらに、半導体業界の将来性と、新卒エンジニアとしての就職チャンスについて考える。OB訪問の際には、半導体関連のプロジェクトへの参加や、技術的課題に対する対応について質問する。"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "日本企業の半導体戦略の転換点についての偏向報道の可能性",
+  "collected_at": "2026-02-05T05:55:45.963382",
+  "source": "トヨタ自動車 戦略",
+  "score": 8
+}

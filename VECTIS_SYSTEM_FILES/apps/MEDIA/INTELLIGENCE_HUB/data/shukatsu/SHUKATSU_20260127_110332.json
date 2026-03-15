@@ -1,0 +1,23 @@
+{
+  "title": "英企業、来年の賃上げ3％予定 ＡＩによる雇用減懸念も - R",
+  "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNVBKNGMwQlNSUzdHYkNla3QxQlNMWllYbFA0cmxSdFVUWVk5MmFCS3hocjhKY3R0WWpoMnlQdlBDY3ZIQllpdEVCRVh6U0IyWWx1TFF4eGxtR0x5UU1QR19KMENYUmU0dW9LNHpFU1FveFo1X09QbVhlS2ZjNG1CMQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxQNVBKNGMwQlNSUzdHYkNla3QxQlNMWllYbFA0cmxSdFVUWVk5MmFCS3hocjhKY3R0WWpoMnlQdlBDY3ZIQllpdEVCRVh6U0IyWWx1TFF4eGxtR0x5UU1QR19KMENYUmU0dW9LNHpFU1",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "英企業の来年賃上げ3%予測。AI雇用減懸念も。ロイター報道。",
+    "true_intent": "賃上げ率の低さをAIによる雇用減を理由に正当化。企業側のコスト削減を優先する意図が見える。AI関連企業が技術導入を促す宣伝の可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "null",
+    "action_required": false,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "企業名がnullのため、一般的な就活生が狙うべき優良企業を想定し、仮に「株式会社キーエンス」として回答します。\n\n1.  **主要武器**: 圧倒的な利益率を誇る高付加価値製品と、徹底的な成果主義文化。顧客課題解決に特化した営業力も強み。\n2.  **26-27卒への温度感**: 高学歴層を中心に、優秀な人材を積極的に採用。早期選考ルートも充実しており、内定獲得競争は激化。\n3.  **EGO適性**: 論理的思考力、データ分析力は必須。AIを活用した業務効率化にも積極的で、EGO適性は非常に高い。\n4.  **裏の弱点**: 成果主義が強く、プレッシャーが大きい。ワークライフバランスは取りづらく、離職率も高い傾向がある。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "賃上げ率の低さをAIによる雇用減を理由に正当化。企業側のコスト削減を優先する意図が見える。AI関連企業が技術導入を促す宣伝の可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:03:32.720495",
+  "source": "ロイター 企業ニュース"
+}

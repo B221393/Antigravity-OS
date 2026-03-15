@@ -1,0 +1,31 @@
+Category,Filename,Path,Type,Size_Estimate,Status,Description,Dependencies
+Core Module,unified_llm.py,VECTIS_SYSTEM_FILES/modules/,Python,8KB,✅ Complete,統合LLMクライアント - Gemini/Ollama/Groq/Phi-3統合,"google-generativeai, groq, requests"
+Core Module,keyboard_layout.py,VECTIS_SYSTEM_FILES/modules/,Python,7KB,✅ Complete,大西o24配列管理システム,json
+Core Module,obsidian_vault.py,VECTIS_SYSTEM_FILES/modules/,Python,9KB,✅ Complete,日付ベースメモ管理（Obsidian形式）,pathlib
+UI Component,hud.py,VECTIS_SYSTEM_FILES/apps/desktop_hud/,Python,13KB,✅ Updated,MAGI HUD - 大西配列トグル＆キーマップ表示追加,tkinter
+UI Component,control_center.html,VECTIS_SYSTEM_FILES/apps/knowledge_cards/,HTML,17KB,✅ Complete,iPhone風設定パネル - LLM/大西配列/TOEIC設定,localStorage
+UI Component,knowledge_network.html,VECTIS_SYSTEM_FILES/apps/knowledge_cards/,HTML,15KB,✅ Complete,Physics-based 3D知識可視化,Canvas API
+Script,launcher_manager.py,VECTIS_SYSTEM_FILES/scripts/,Python,6KB,✅ Complete,使用統計記録＆自動リナンバリングシステム,"json, datetime"
+Script,add_tracking_to_all.py,VECTIS_SYSTEM_FILES/scripts/,Python,4KB,✅ Complete,全ランチャーへ使用記録コード一括追加,pathlib
+Script,check_independence.py,VECTIS_SYSTEM_FILES/scripts/,Python,5KB,✅ Complete,API独立性チェックツール,"requests, json"
+Script,check_llm_status.py,VECTIS_SYSTEM_FILES/scripts/,Python,5KB,✅ Updated,LLMプロバイダー状態確認（Unicode対応）,requests
+Launcher,00_MAGI_HUD.bat,app/,Batch,1KB,✅ Complete,MAGI HUD起動 + 使用記録,launcher_manager.py
+Launcher,09_Control_Center.bat,app/,Batch,0.8KB,✅ Complete,Control Center起動（ブラウザ）,control_center.html
+Launcher,10_Knowledge_Network.bat,app/,Batch,0.9KB,✅ Complete,Knowledge Network起動（ブラウザ）,knowledge_network.html
+Launcher,QUICK_MENU.bat,app/,Batch,2.5KB,✅ Complete,統合クイックメニュー（番号選択式）,All launchers
+Launcher,SETUP_TRACKING.bat,app/,Batch,0.7KB,✅ Complete,使用統計セットアップ,add_tracking_to_all.py
+Launcher,REORDER_LAUNCHERS.bat,app/,Batch,1.2KB,✅ Complete,ランチャー自動最適化（使用頻度ベース）,launcher_manager.py
+Launcher,SHOW_USAGE_STATS.bat,app/,Batch,0.5KB,✅ Complete,使用統計表示,launcher_manager.py
+Launcher,LAUNCH_MAGI_HUD.bat,app/,Batch,0.8KB,✅ Complete,MAGI HUD起動（旧版・互換性）,hud.py
+Documentation,README.md,app/,Markdown,25KB,✅ Complete,統合ドキュメント - クイックスタート＆全体像,N/A
+Documentation,README_SPEC_SIMPLE.md,app/,Markdown,15KB,✅ Complete,簡易仕様書 - システム概要＆アーキテクチャ,N/A
+Documentation,README_SPEC_DETAILED.md,app/,Markdown,40KB,✅ Complete,詳細技術仕様書 - クラス仕様＆API＆データモデル,N/A
+Documentation,IMPLEMENTATION_COMPLETE.md,app/,Markdown,12KB,✅ Complete,実装完了レポート - 全機能まとめ,N/A
+Documentation,SYSTEM_UPGRADE_REPORT.md,VECTIS_SYSTEM_FILES/docs/,Markdown,18KB,✅ Complete,LLMシステム強化レポート,N/A
+Documentation,ONISHI_O24_INTEGRATION.md,VECTIS_SYSTEM_FILES/docs/,Markdown,12KB,✅ Complete,大西配列統合ガイド,N/A
+Documentation,ADDITIONAL_FEATURES.md,VECTIS_SYSTEM_FILES/docs/,Markdown,10KB,✅ Complete,追加機能まとめ,N/A
+Documentation,INDEPENDENCE_GUIDE.md,VECTIS_SYSTEM_FILES/docs/,Markdown,16KB,✅ Complete,完全独立化ガイド（APIキー不要化）,N/A
+Documentation,MAGI_HUD_KEYBOARD_TOGGLE.md,VECTIS_SYSTEM_FILES/docs/,Markdown,8KB,✅ Complete,MAGI HUD大西配列機能説明,N/A
+Documentation,LOCAL_LLM_SETUP.md,VECTIS_SYSTEM_FILES/docs/,Markdown,10KB,✅ Existing,ローカルLLMセットアップガイド,N/A
+Documentation,config/README.md,VECTIS_SYSTEM_FILES/config/,Markdown,3KB,✅ Complete,設定ファイルクイックガイド,N/A
+Configuration,llm_config.json,VECTIS_SYSTEM_FILES/config/,JSON,1KB,✅ Updated,統合LLM設定 - プロバイダー＆機能設定,N/A

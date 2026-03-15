@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS REVOLUTION COMMAND</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --orange: #f97316;
+            --orange-dim: #7c2d12;
+            --red: #ef4444;
+            --bg: #050505;
+            --panel-bg: rgba(20, 10, 5, 0.8);
+            --border: 1px solid var(--orange);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--orange);
+            font-family: 'Share Tech Mono', monospace;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 350px 1fr 350px;
+            grid-template-rows: 60px 1fr 200px;
+            height: 100vh;
+            gap: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            background-image:
+                linear-gradient(rgba(249, 115, 22, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(249, 115, 22, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Scanline effect */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: var(--border);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.1) inset;
+        }
+
+        .panel-header {
+            background: var(--orange);
+            color: #000;
+            padding: 4px 10px;
+            font-weight: bold;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Top Header */
+        .header {
+            grid-column: 1 / 4;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 2px solid var(--orange);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px var(--orange);
+        }
+
+        .system-status {
+            margin-left: auto;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        /* Left Side: Intelligence Stream */
+        .aside-left {
+            grid-row: 2 / 4;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Center: Main Tactical Map */
+        .main-map {
+            grid-row: 2 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hex-grid {
+            width: 90%;
+            height: 90%;
+            border: 1px dashed var(--orange-dim);
+            position: relative;
+            background: radial-gradient(circle, var(--orange-dim) 1%, transparent 1%);
+            background-size: 40px 40px;
+        }
+
+        /* Right Side: Data Metrics */
+        .aside-right {
+            grid-row: 2 / 4;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Bottom Console */
+        .console {
+            grid-column: 2 / 3;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            padding: 10px;
+            overflow-y: hidden;
+        }
+
+        .log-entry {
+            margin-bottom: 2px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .timestamp {
+            color: var(--orange-dim);
+        }
+
+        .tag {
+            border: 1px solid var(--orange);
+            padding: 0 4px;
+            font-size: 9px;
+            line-height: 12px;
+        }
+
+        /* Specialized Widgets */
+        .widget-node {
+            padding: 8px;
+            border-bottom: 1px solid var(--orange-dim);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .widget-node:hover {
+            background: rgba(249, 115, 22, 0.2);
+        }
+
+        .widget-node .title {
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .widget-node .meta {
+            font-size: 10px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--orange-dim);
+        }
+
+        /* Big Alert */
+        .alert-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid var(--red);
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--red);
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+            z-index: 50;
+            pointer-events: none;
+            display: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Detailed Overlay */
+        .doc-overlay {
+            position: fixed;
+            top: 50px;
+            left: 360px;
+            right: 360px;
+            bottom: 50px;
+            background: #000;
+            border: 2px solid var(--orange);
+            z-index: 200;
+            display: none;
+            flex-direction: column;
+        }
+
+        .doc-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', sans-serif;
+            color: #ddd;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>VECTIS : REVOLUTION_STRATEGY</h1>
+        <div class="system-status">
+            SYSTEM LOAD: 14% | AGENTS: ACTIVE | SYNC: 2026-01-21<br>
+            <span id="digitalClock">00:00:00</span>
+        </div>
+    </div>
+
+    <div class="aside-left">
+        <div class="panel" style="flex: 1;">
+            <div class="panel-header">NEWS_STREAM [LIVE]</div>
+            <div id="news-stream" style="padding: 5px; height: 100%; overflow-y: hidden;">
+                <!-- Auto Feed -->
+            </div>
+        </div>
+        <div class="panel" style="height: 150px;">
+            <div class="panel-header">SHUKATSU_TARGETS</div>
+            <div id="shukatsu-stream" style="padding: 5px; font-size: 10px;">
+            </div>
+        </div>
+    </div>
+
+    <div class="main-map panel">
+        <div class="panel-header" style="position:absolute; top:0; width:100%; z-index: 5;">TACTICAL_INTELLIGENCE_MAP
+        </div>
+        <div class="hex-grid" id="map-container">
+            <!-- Simulated Radar Scan -->
+            <div style="position:absolute; width:1px; height:100%; left:50%; background:rgba(249, 115, 22, 0.1);"></div>
+            <div style="position:absolute; height:1px; width:100%; top:50%; background:rgba(249, 115, 22, 0.1);"></div>
+        </div>
+
+        <div class="alert-box" id="globalAlert">
+            CRITICAL INTELLIGENCE DETECTED
+        </div>
+    </div>
+
+    <div class="aside-right">
+        <div class="panel" style="flex: 1;">
+            <div class="panel-header">DEEP_KNOWLEDGE_DOSSIERS</div>
+            <div id="deep-stream" style="padding: 5px;">
+            </div>
+        </div>
+        <div class="panel" style="height: 200px;">
+            <div class="panel-header">AGENT_HEALTH</div>
+            <div style="padding: 15px; font-size: 12px; line-height: 2;">
+                <div>[27_GRAD_PTR] ONLINE <span style="color:var(--red)">●</span></div>
+                <div>[ENCYCLO_GEN] IDLE <span style="color:var(--orange)">●</span></div>
+                <div>[HEALTH_MON] ACTIVE <span style="color:var(--orange)">●</span></div>
+                <div style="margin-top:20px; border:1px solid var(--orange-dim); height:20px;">
+                    <div style="width:75%; height:100%; background:var(--orange);"></div>
+                </div>
+                <div style="font-size:9px; text-align:right;">DATA SYNCHRONIZING... 88%</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="console panel">
+        <div class="panel-header">SYSTEM_CONOLSE_LOG</div>
+        <div id="console-output" style="height: 100%; padding: 5px;">
+            <!-- Lines -->
+        </div>
+    </div>
+
+    <div class="doc-overlay" id="docOverlay">
+        <div class="panel-header">
+            <span id="docTitle">TITLE</span>
+            <button onclick="closeDoc()"
+                style="background:none; border:none; color:#000; cursor:pointer; font-weight:bold;">[X]</button>
+        </div>
+        <div class="doc-content" id="docContent">
+        </div>
+    </div>
+
+    <script>
+        // Update Clock
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('digitalClock').innerText = now.toLocaleTimeString('ja-JP', { hour12: false });
+        }, 1000);
+
+        async function init() {
+            try {
+                const uRes = await fetch('../youtube_channel/data/universe.json');
+                const universe = await uRes.json();
+
+                const dRes = await fetch('../youtube_channel/data/deep_knowledge.json');
+                const deep = await dRes.json();
+
+                renderStreams(universe.nodes);
+                renderDeep(deep.chapters);
+                startConsoleSimulation();
+
+                // Alert simulation
+                setInterval(() => {
+                    if (Math.random() > 0.9) {
+                        const alert = document.getElementById('globalAlert');
+                        alert.style.display = 'block';
+                        setTimeout(() => alert.style.display = 'none', 3000);
+                    }
+                }, 5000);
+
+            } catch (e) { console.error(e); }
+        }
+
+        function renderStreams(nodes) {
+            const news = document.getElementById('news-stream');
+            const shukatsu = document.getElementById('shukatsu-stream');
+
+            nodes.slice(-20).reverse().forEach(n => {
+                const div = document.createElement('div');
+                div.className = 'widget-node';
+                div.innerHTML = `
+                    <div class="title">${n.title}</div>
+                    <div class="meta">
+                        <span>${n.group || 'INTEL'}</span>
+                        <span>[${new Date(n.timestamp).toLocaleTimeString()}]</span>
+                    </div>
+                `;
+                news.appendChild(div);
+
+                if (n.title.includes('就活') || n.title.includes('27')) {
+                    const sDiv = div.cloneNode(true);
+                    shukatsu.appendChild(sDiv);
+                }
+            });
+        }
+
+        function renderDeep(chapters) {
+            const container = document.getElementById('deep-stream');
+            chapters.slice(-10).reverse().forEach(ch => {
+                const div = document.createElement('div');
+                div.className = 'widget-node';
+                div.style.borderColor = '#ef4444'; // Top secret red
+                div.innerHTML = `
+                    <div class="title" style="color:#ef4444;">[DOSSIER] ${ch.title}</div>
+                    <div class="meta">
+                        <span>${ch.category}</span>
+                        <span>LEN: ${ch.word_count}</span>
+                    </div>
+                `;
+                div.onclick = () => openDoc(ch);
+                container.appendChild(div);
+            });
+        }
+
+        function startConsoleSimulation() {
+            const console = document.getElementById('console-output');
+            const messages = [
+                "SCRAPE_JOB: Fetching latest RSS from Nature.com...",
+                "AI_LOGIC: Analyzing trend 'Physical AI'...",
+                "BRIDGE: System sync confirmed with Architect (Antigravity).",
+                "DB_WRITE: Updating universe.json (4204 nodes recognized).",
+                "SECURITY: Scanning for instruction injection... CLEARED.",
+                "LLM_CLIENT: Prompting Gemini 1.5 Flash for high-precision summary.",
+                "PATROL: No abnormalities detected in Shukatsu agent loop.",
+                "REVOLUTION: Optimizing tactical distribution of knowledge.",
+                "CAMEL: Health check complete. Recovery commands ready."
+            ];
+
+            setInterval(() => {
+                const div = document.createElement('div');
+                div.className = 'log-entry';
+                const msg = messages[Math.floor(Math.random() * messages.length)];
+                div.innerHTML = `
+                    <span class="timestamp">[${new Date().toLocaleTimeString()}]</span>
+                    <span class="tag">SYNC</span>
+                    <span>${msg}</span>
+                `;
+                console.prepend(div);
+                if (console.childNodes.length > 15) console.removeChild(console.lastChild);
+            }, 2000);
+        }
+
+        function openDoc(ch) {
+            document.getElementById('docTitle').innerText = ch.title.toUpperCase();
+            let content = ch.full_text || ch.overview || "ENCRYPTED DATA NOT FOUND";
+            content = content.replace(/\n\n/g, '<br><br>');
+            document.getElementById('docContent').innerHTML = `
+                <div style="border-left:4px solid var(--red); padding-left:20px; margin-bottom:30px;">
+                    <h2 style="color:var(--red); font-size:24px;">CLASSIFIED : ${ch.title}</h2>
+                    <p style="font-size: 13px; opacity: 0.7;">VECTIS INTELLIGENCE REPORT [LEVEL_27_GRAD]</p>
+                </div>
+                ${content}
+            `;
+            document.getElementById('docOverlay').style.display = 'flex';
+        }
+
+        function closeDoc() {
+            document.getElementById('docOverlay').style.display = 'none';
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

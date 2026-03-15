@@ -1,0 +1,23 @@
+{
+  "title": "科学と社会の課題を炙り出す推理ゲーム『nocobon』とは？",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE50cmU3b1FfS2M3TjZraWs5b0pfZlA3bU5JNFhwSEpGZnFzSnZHcG5iRTZjVGpYQV80OG8xOXhYMjVZTkNHQ1ItNXRLZ3h3TVlzM3N3SXlKNW0zTm80NmU3WENuRjA5MnYyTGs2Qw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE50cmU3b1FfS2M3TjZraWs5b0pfZlA3bU5JNFhwSEpGZnFzSnZHcG5iRTZjVGpYQV80OG8xOXhYMjVZTkNHQ1ItNXRLZ3h3TVlzM3N3SXlKNW0zTm80NmU3WENuRjA5MnYyTGs2Qw?oc=",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "東大江間氏開発の推理ゲーム『nocobon』が科学と社会の課題を可視化。",
+    "true_intent": "研究活動の広報、資金調達、及び江間氏個人のブランディング。ゲームを通じた啓蒙活動のアピールで、研究費獲得を有利に進める意図が考えられる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "出版",
+    "target_year": "2027",
+    "academic_deep_dive": "1. **歴史的背景:** 科学技術の進歩は常に社会との緊張関係を生んできた。原子力開発における科学者の倫理的責任や、優生思想に利用された遺伝学の歴史などが類似の事例として挙げられる。『nocobon』は、科学技術の進歩がもたらす倫理的ジレンマを、娯楽を通して体験的に学ばせる試みであり、啓蒙主義時代のサロン文化における知的な議論の場を現代的に再構築しようとするものとも言える。\n\n2. **現代的意義:** AI、遺伝子編集、気候変動など、現代社会は科学技術がもたらす複雑な問題に直面している。これらの問題は専門家だけでは解決できず、市民一人ひとりが倫理的判断を下す必要に迫られている。『nocobon』は、市民が科学技術の課題を「自分ごと」として捉え、議論に参加するためのきっかけを提供する。民主主義社会における科学リテラシー向上に貢献する可能性を秘めている。\n\n3. **批判的視座:** 『nocobon』のようなゲームは、複雑な問題を単純化し、誤った理解を招くリスクも孕んでいる。また、ゲームの設計者の価値観がゲームに反映され、特定の視点に偏った議論を誘導する可能性もある。重要なのは、ゲームを絶対的な真実として受け入れるのではなく、あくまで議論の出発点として捉え、多角的な視点から批判的に考察することである。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "研究活動の広報、資金調達、及び江間氏個人のブランディング。ゲームを通じた啓蒙活動のアピールで、研究費獲得を有利に進める意図が考えられる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:30:18.116154",
+  "source": "科学技術 社会論"
+}

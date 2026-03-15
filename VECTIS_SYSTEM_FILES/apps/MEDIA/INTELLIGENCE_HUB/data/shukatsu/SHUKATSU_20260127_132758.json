@@ -1,0 +1,24 @@
+{
+  "title": "ＲＡＶ４、６年ぶり新型車 トヨタ、自社ソフトを初採用 - 朝",
+  "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8ySDNzRjZTTkNKUWU0NE9HZXRBaW0wZ1AxRHZrcVg3bHlmMHg1Q3RHb2k2aXBSdmJtYUpMcHR4cUQ5bFh0clJlSFVLekV4b25lTHl5eEp3R1o4dDg3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXEFVX3lxTE8ySDNzRjZTTkNKUWU0NE9HZXRBaW0wZ1AxRHZrcVg3bHlmMHg1Q3RHb2k2aXBSdmJtYUpMcHR4cUQ5bFh0clJlSFVLekV4b25lTHl5eEp3R1o4dDg3?oc=5\" target=\"_blank\">ＲＡＶ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トヨタRAV4が6年ぶりに新型車発表。自社ソフトを初採用。",
+    "true_intent": "トヨタの技術力アピールと販売促進。自社ソフト採用による囲い込み戦略を示唆。サプライヤーとの力関係の変化も読み取れる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "トヨタ自動車",
+    "action_required": true,
+    "category": "自動車/IT",
+    "target_year": "2027",
+    "company_profile": "## トヨタ自動車：就活メンター視点\n\n1. **主要武器**: 長期的な視点と圧倒的な実行力。改善文化とサプライチェーンを武器に、CASE革命を主導する。\n2. **26-27卒への温度感**: 多様性重視、グローバル志向の人材を積極採用。従来の学歴偏重から脱却し、潜在能力を重視。\n3. **EGO適性**: 伝統的な企業文化が残る一方、DX推進は急務。構造的思考力に加え、変革を推進できる人材を求める。\n4. **裏の弱点**: 意思決定の遅さ、年功序列制度。EV戦略の遅れも懸念材料。変革期ゆえの矛盾に耐え、主体的に動けるかが重要。\n",
+    "deep_web_intel": "**Structured Summary of Toyota Website Data:**\n\n*   **Main Website (toyota.jp):**\n    *   Official website for Toyota Motor Corporation.\n    *   Provides information on new Toyota models.\n    *   Offers services: test drive search, store locator, quotes, catalog requests.\n\n*   **Car Lineup (toyota.jp/carlineup/):**\n    *   Presents Toyota's car lineup.\n    *   Categorizes vehicles (compact, minivan, sedan, SUV, etc.).\n\n*   **Car Comparison (toyota.jp/carlineup/compare/):**\n    *   Allows users to compare vehicle specifications.\n    *   Compares styling (exterior/interior), size, fuel efficiency, safety.\n\n**Key Points:**\n\n*   Website focuses on models, services, and comparison.\n*   Offers resources for potential buyers.\n\n**Gap Analysis:**\n\n*   Limited explicit information about company mission or values.\n*   Lack of financial information or investor relations links.\n*   No information about corporate social responsibility.\n*   Very limited information about technology development and history."
+  },
+  "critical_analysis": {
+    "true_intent": "トヨタの技術力アピールと販売促進。自社ソフト採用による囲い込み戦略を示唆。サプライヤーとの力関係の変化も読み取れる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:27:58.528687",
+  "source": "Active:トヨタ自動車"
+}

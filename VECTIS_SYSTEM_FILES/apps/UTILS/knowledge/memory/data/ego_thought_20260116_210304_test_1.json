@@ -1,0 +1,17 @@
+{
+  "type": "thought",
+  "category": "就活・ES関連",
+  "timestamp": "2026-01-16T21:03:04.062557",
+  "content": "講談社の編集者になりたい。読者の心を揺さぶるストーリーを作りたい。大学では文芸サークルで編集長をやっていた経験がある。",
+  "context": {
+    "source": "ego_system_test",
+    "auto_captured": false,
+    "note": "就職活動への強い意欲",
+    "routed_category": "就活・ES関連"
+  },
+  "metadata": {
+    "length": 59,
+    "has_keywords": true,
+    "test_memory": true
+  }
+}

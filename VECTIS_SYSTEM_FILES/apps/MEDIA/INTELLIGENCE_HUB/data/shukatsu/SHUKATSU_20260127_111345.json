@@ -1,0 +1,24 @@
+{
+  "title": "「健康経営銘柄」に初選定、「ホワイト500」は6年連続で認定",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1iZk5CekVwR0NtckI1ZjZVZEpYOEhGQ295cURDaUtkNE5MX29nNlF1X3pJclhKcldDVF9nckZCM1ZlUDRnOUsyUk5oU0I5dUJ5X01lU2RodHlxOXlqeS1pM1lvelhacXlOTEFn?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTE1iZk5CekVwR0NtckI1ZjZVZEpYOEhGQ295cURDaUtkNE5MX29nNlF1X3pJclhKcldDVF9nckZCM1ZlUDRnOUsyUk5oU0I5dUJ5X01lU2RodHlxOXlqeS1pM1lvelhacXlOTEFn?oc=5\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIが「健康経営銘柄」初選定、「ホワイト500」6年連続認定。企業イメージ向上を図る。",
+    "true_intent": "KDDIの企業イメージ向上と人材獲得戦略の一環。健康経営をアピールすることで、求職者への訴求力を高め、投資家からの評価を上げることが目的。選定基準の透明性や実質的な労働環境への影響は不明。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## KDDI 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 通信インフラを基盤とした生活総合サービス企業への進化。au経済圏と法人向けソリューションを両輪とする、安定性と成長性のバランス。\n2.  **26-27卒への温度感**: 積極的にDX人材を求める。通信知識よりも、データ分析、AI、クラウド等のスキルを持つ人材への期待大。\n3.  **EGO適性**: 構造的思考は必須。AI活用も推進中だが、部署による温度差あり。自ら課題を見つけ、提案できる人材が評価される。\n4.  **裏の弱点**: 既存事業の安定性に甘んじる風潮が一部残存。新規事業のスピード感や、変化への対応力は改善の余地あり。\n",
+    "deep_web_intel": "**Key Points**\n\n*   KDDI is mentioned as a Japanese mobile carrier.\n*   KDDI-au is a specific carrier, possibly related to KDDI.\n*   Japanese iPhone 6 models may be associated with Softbank, KDDI-au, or Docomo.\n\n**Structured Summary**\n\n*   **Topic:** Japanese Mobile Carriers\n*   **Entities:** KDDI, KDDI-au, Softbank, Docomo\n*   **Context:** iPhone 6 models in Japan\n\n**Gap Analysis**\n\n*   Relationship between KDDI and KDDI-au not explicitly defined.\n*   No details on KDDI's specific services or market position.\n*   Limited information on distinguishing iPhone 6 models by carrier."
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIの企業イメージ向上と人材獲得戦略の一環。健康経営をアピールすることで、求職者への訴求力を高め、投資家からの評価を上げることが目的。選定基準の透明性や実質的な労働環境への影響は不明。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:13:45.626383",
+  "source": "Active:KDDI"
+}

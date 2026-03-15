@@ -1,0 +1,24 @@
+{
+  "title": "フォルクスワーゲン、電動化に賭けた経営戦略「3つの誤算」 -",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1GbEtLNmM0UVVXUTlQTy02dm56UnNXb3NhZ1d2dVNQNUoxd1A0Y1lwVXRISHlFU0lmbUlLTTd5TEtjQU5iRmNpZThJeVlrTktMMnpKYlRYbmZGci1LUUV6OElRd3FoSUQ1cnNoWA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE1GbEtLNmM0UVVXUTlQTy02dm56UnNXb3NhZ1d2dVNQNUoxd1A0Y1lwVXRISHlFU0lmbUlLTTd5TEtjQU5iRmNpZThJeVlrTktMMnpKYlRYbmZGci1LUUV6OElRd3FoSUQ1cnNoWA?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "VWの電動化戦略が誤算続き。市場変化と自社戦略のずれが原因か。",
+    "true_intent": "VWの電動化戦略の遅れを報道することで、競合他社の優位性を示唆。既存の自動車産業構造を維持したい勢力の意向が反映されている可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "フォルクスワーゲン",
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027",
+    "company_profile": "## フォルクスワーゲンの本質と27卒が狙うべき理由\n\n1. **主要武器**: グローバルブランド力と、モジュール設計による効率的な多車種展開。電動化戦略「ID.シリーズ」への巨額投資と、既存顧客基盤が強み。\n2. **26-27卒への温度感**: デジタル変革と電動化を担う人材を積極採用。多様性を重視し、グローバル視点を持つ人材を求めている。\n3. **EGO適性**: データドリブンな意思決定を推進しており、構造的思考力とAI活用に積極的。変革期をリードする人材を評価。\n4. **裏の弱点**: 組織の硬直性と、電動化への移行の遅れ。サプライチェーンリスクと地政学的リスクも懸念材料。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Volkswagen Official Site:** Model information, dealer/test drive search, digital catalogs, quotations.\n*   **Wikipedia:** Data unavailable (encoding error).\n*   **Car Sensor:** Used car listings, search, and sales.\n\n**Structured Summary:**\n\nVolkswagen's online presence includes official information, used car sales platform.\n\n**Gap Analysis:**\n\n*   Missing data from Wikipedia due to encoding issues.\n*   Limited content from official site snippet."
+  },
+  "critical_analysis": {
+    "true_intent": "VWの電動化戦略の遅れを報道することで、競合他社の優位性を示唆。既存の自動車産業構造を維持したい勢力の意向が反映されている可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:04:19.643577",
+  "source": "Nikkei ビジネス"
+}

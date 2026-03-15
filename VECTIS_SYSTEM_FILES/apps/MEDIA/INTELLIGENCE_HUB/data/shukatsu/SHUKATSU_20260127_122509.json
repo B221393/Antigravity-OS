@@ -1,0 +1,23 @@
+{
+  "title": "採用情報 - hottolink.co.jp",
+  "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBSMTJaWDBkU1VtVHBzdTZzUUhEeTZneGRCRS1lbnUtVExRd2p1VHdqV3hMRThGUk0ybHUzVVRTWWREU2I1dUhpSlZjdTA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiTEFVX3lxTFBSMTJaWDBkU1VtVHBzdTZzUUhEeTZneGRCRS1lbnUtVExRd2p1VHdqV3hMRThGUk0ybHUzVVRTWWREU2I1dUhpSlZjdTA?oc=5\" target=\"_blank\">採用情報</a>&nbsp;&nbsp;<fon",
+  "ai_analysis": {
+    "relevance": "low",
+    "summary": "ホットリンク採用情報ページへのリンクのみ。詳細不明。",
+    "true_intent": "単なる採用広報。ホットリンクの認知度向上と、採用活動の効率化が目的。詳細情報がないため、具体的な利権構造は不明。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ホットリンク",
+    "action_required": false,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## ホットリンク 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: SNSデータ分析力と、それを基にしたマーケティング支援。表向きは「共感マーケティング」だが、本質はデータドリブンな戦略立案力。\n2.  **26-27卒への温度感**: 採用意欲は高いが、即戦力志向。SNSネイティブ世代の感性と、データ分析への興味関心を重視。\n3.  **EGO適性**: 構造的思考必須。AI活用にも積極的で、データに基づいた仮説検証サイクルを回せる人材を求める。\n4.  **裏の弱点**: 競合ひしめくSNSマーケティング市場での差別化、属人的なノウハウ依存、人材育成の遅れ。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "単なる採用広報。ホットリンクの認知度向上と、採用活動の効率化が目的。詳細情報がないため、具体的な利権構造は不明。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:25:09.611834",
+  "source": "Active:ホンダ"
+}

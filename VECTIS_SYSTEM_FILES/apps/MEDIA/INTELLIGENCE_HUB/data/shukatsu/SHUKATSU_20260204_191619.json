@@ -1,0 +1,43 @@
+{
+  "title": "Wikipediaの「AI検出ガイド」が、逆にAIを“人間らしく見せる”ためのマニュアルになっている - WIRED.jp",
+  "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQR2RzdkxkY0ppbWZ6dHNkLWJNVTkwYjdjQ0FoSTNLNVF6eVBUVGlwRy1MNUM0UjhzYUQ3SEdlTE5Hd3AtTEZFRWlObFR4N0hzNzZRUnhia0ZZTHFLcFZDa1ZZdmx3WlN1MkdmR0JtSFoxRXJZUmpNYndIYW53el9EaWJqT0otLVZQSHBmUDFvdVRJREtfTEZUc2I2azNtQUl1SzFRYUptMVZ6YUE3R3hQNVRPalNSVzA?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxQR2RzdkxkY0ppbWZ6dHNkLWJNVTkwYjdjQ0FoSTNLNVF6eVBUVGlwRy1MNUM0UjhzYUQ3SEdlTE5Hd3AtTEZFRWlObFR4N0hzNzZRUnhia0ZZTHFLcFZDa1ZZdmx3WlN1MkdmR0JtSFoxRXJZUmpNYndIYW53el9EaWJqT0otLVZQSHBmUDFvdVRJREtfTEZUc2I2azNtQUl1SzFRYUptMVZ6YUE3R3hQNVRPalNSVzA?oc=5\" target=\"_blank\">Wikipediaの「AI検出ガイド」が、逆にAIを“人間らしく見せる”ためのマニュアルになっている</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WIRED.jp</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "Wikipediaの「AI検出ガイド」がAIを人間らしく見せるマニュアルになっている",
+    "strategic_analysis": {
+      "true_intent": "WikipediaのガイドがAIの検出を目的としているとされるが、実際にはAIの人間らしさを高めるためのマニュアルになっている。誰が得をするかというと、AIの開発者や使用者が得をする可能性が高い",
+      "swot": {
+        "strength": "AIの人間らしさを高める技術の進歩",
+        "weakness": "AIの検出の困難化",
+        "opportunity": "就活生にとっては、AI関連の技術の学習や研究の機会",
+        "threat": "AIのabusouseの可能性"
+      },
+      "writing_technique": "",
+      "action_plan": "YutoはAIの倫理的な使用について学び、AI関連の技術の最新動向を把握する必要がある。具体的には、AIの開発者や研究者とネットワークを構築し、AIの倫理的な使用についての意見交換を行う"
+    },
+    "bias_warning": "WikipediaのガイドがAIの検出を目的としているとされるが、実際にはAIの人間らしさを高めるためのマニュアルになっているため、偏向報道の可能性がある",
+    "company": "Wikipedia",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 8,
+    "company_profile": "1. **主要武器**: オープンソースの知識プラットフォーム、多言語対応、世界的な影響力。\n2. **26-27卒への温度感**: オンラインでの採用プロセスを活用し、多様性を重視。\n3. **EGO適性**: 構造的思考とAI活用を推進する文化。\n4. **裏の弱点**: 情報の信頼性とセキュリティに関する懸念。",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "WikipediaのガイドがAIの検出を目的としているとされるが、実際にはAIの人間らしさを高めるためのマニュアルになっている。誰が得をするかというと、AIの開発者や使用者が得をする可能性が高い",
+    "swot": {
+      "strength": "AIの人間らしさを高める技術の進歩",
+      "weakness": "AIの検出の困難化",
+      "opportunity": "就活生にとっては、AI関連の技術の学習や研究の機会",
+      "threat": "AIのabusouseの可能性"
+    },
+    "writing_technique": "",
+    "action_plan": "YutoはAIの倫理的な使用について学び、AI関連の技術の最新動向を把握する必要がある。具体的には、AIの開発者や研究者とネットワークを構築し、AIの倫理的な使用についての意見交換を行う"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "WikipediaのガイドがAIの検出を目的としているとされるが、実際にはAIの人間らしさを高めるためのマニュアルになっているため、偏向報道の可能性がある",
+  "collected_at": "2026-02-04T19:16:19.305252",
+  "source": "WIRED JP (Ideas)",
+  "score": 8
+}

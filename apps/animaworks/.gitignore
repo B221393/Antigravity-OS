@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Project
+site/
+site-docs/
+.env
+tmp/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Evaluation framework - generated data (excluded from repo)
+tests/evaluation/datasets/
+tests/evaluation/scenarios/
+tests/evaluation/ground_truth/
+tests/evaluation/_datasets/
+tests/evaluation/_experiment_data/
+
+.cursor/
+
+# ── Private-only (not in public repo) ──────────
+
+# Root files
+CLA.md
+CLAUDE.md
+mkdocs.yml
+
+# Archive (deprecated code)
+archive/
+
+# Documentation - private sections
+docs/drafts/
+docs/implemented/
+docs/issues/
+docs/legacy/
+docs/records/
+docs/reports/
+docs/research/
+docs/testing/
+docs/index.md
+docs/oss-publication-strategy.md
+
+# Experiments
+experiments/
+
+# Private-only scripts
+scripts/coverage_checker.py
+scripts/file_size_checker.py
+scripts/publish.sh
+scripts/worktree_manager.py
+scripts/capture_org_chart.py
+scripts/inspect_org_chart.py
+scripts/verify_org_chart_v3.py
+scripts/verify_org_chart_v4.py
+scripts/verify_org_chart_v5.py
+scripts/verify_org_chart_final.py
+scripts/test_double_handler_hypothesis.py
+scripts/test_lucide_hypothesis.py
+scripts/browser_console_test.py
+scripts/check_chat_input_ui.py
+scripts/check_sidebar_screenshot.py
+scripts/check_workspace_conv_ui.py
+scripts/debug_priming.py
+scripts/test_desktop_chat_layout.py
+scripts/test_mobile_chat_screenshots.py
+scripts/test_mobile_chat_ui.py
+scripts/verify_template_placeholders.py
+
+# Private-only static assets
+server/static/files/
+server/static/finance/
+
+# Private-only test data
+tests/evaluation/results/
+tests/unit/experiments/

@@ -1,0 +1,24 @@
+{
+  "title": "NTT東日本、インターン応募者3倍に 人気低迷から復活を遂げ",
+  "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFBXMEZRWURGbmRFVG5QTXh4dC1pWkhRQkVlZVdBYTJhdXlsbm8wN2pubVZmV0J6RHlDQUN3REEyWHdWZEtiSk9fS0VHWGtlX3lvQjdYR0JzcEZrSkxHS1RXbG5UWTB1My1ubFRGTGtDXzY3dw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTFBXMEZRWURGbmRFVG5QTXh4dC1pWkhRQkVlZVdBYTJhdXlsbm8wN2pubVZmV0J6RHlDQUN3REEyWHdWZEtiSk9fS0VHWGtlX3lvQjdYR0JzcEZrSkxHS1RXbG5UWTB1My1ubFRGTGtDXz",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "NTT東日本インターン応募者3倍増。採用戦略成功をアピール。",
+    "true_intent": "採用ブランディング強化、優秀な学生の囲い込み。報道を通じて企業イメージ向上を図り、競争優位性を確保したい意図が見える。通信業界の将来性への不安を払拭する狙いも。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "NTT東日本",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。NTT東日本の本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: 地域密着型インフラと顧客基盤。通信網維持だけでなく、自治体DXや地域課題解決への展開力が強み。\n\n2.  **26-27卒への温度感**: デジタル人材獲得に注力。多様なバックグラウンドを持つ人材を積極的に採用する意向。\n\n3.  **EGO適性**: 構造的思考は必須。AI活用は推進段階だが、アイデア創出と実装に意欲的な人材を求めている。\n\n4.  **裏の弱点**: 大企業体質による意思決定の遅さ、年功序列制度の残存。変革期ゆえ、旧態依然とした体質との摩擦も。\n",
+    "deep_web_intel": "```json\n{\n  \"company\": \"NTT東日本 (NTT East)\",\n  \"description\": \"Telecommunications company serving eastern Japan. Provides FLET'S services, IP telephony, ICT solutions.\",\n  \"website\": \"ntt-east.co.jp\",\n  \"key_points\": [\n    \"Offers services for both personal and corporate customers.\",\n    \"Provides information related to construction and contact details.\",\n    \"Focuses on FLET'S optical fiber services.\",\n    \"Active in IP telephony and ICT solutions.\"\n  ],\n  \"gap_analysis\": {\n    \"data_encoding\": \"Shift_JIS encoding on the primary website may cause issues when parsing text with standard UTF-8 decoders.\",\n    \"wikipedia_fetch\": \"Failure to retrieve data from Wikipedia due to ASCII encoding issues.\",\n    \"ssl_error\": \"SSL error encountered while fetching data from flets.com.  Indicates that the server requires secure connections, but the client may not be properly configured.\",\n    \"missing_data\": \"Lack of detailed information about specific services, financial performance, or recent developments.\"\n  }\n}\n```"
+  },
+  "critical_analysis": {
+    "true_intent": "採用ブランディング強化、優秀な学生の囲い込み。報道を通じて企業イメージ向上を図り、競争優位性を確保したい意図が見える。通信業界の将来性への不安を払拭する狙いも。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:25:06.790432",
+  "source": "Active:NTT"
+}

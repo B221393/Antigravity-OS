@@ -1,0 +1,22 @@
+{
+  "title": "職員採用／産業技術職 - pref.hyogo.lg.jp",
+  "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9WSDAxblg0V0Z1QWJQd3V4THVfZDVBMXlKSW9ORXJPZHAxTExBdXhzNFlsdUt0dmV1UDlBWEdFQ3NkSU5fMzV4U3E1dkU0YzNHZFFodFZFUFlGbDVPQk91bVo2LVlkUG9EWmd1bllB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTE9WSDAxblg0V0Z1QWJQd3V4THVfZDVBMXlKSW9ORXJPZHAxTExBdXhzNFlsdUt0dmV1UDlBWEdFQ3NkSU5fMzV4U3E1dkU0YzNHZFFodFZFUFlGbDVPQk91bVo2LVlkUG9EWmd1bllB?o",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "兵庫県が産業技術職の職員採用情報を公開。詳細不明。",
+    "true_intent": "技術系人材の確保。地方公務員の人手不足解消、技術力向上による地域産業振興のアピール。県としての技術力PR。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "技術系人材の確保。地方公務員の人手不足解消、技術力向上による地域産業振興のアピール。県としての技術力PR。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:32:09.705380",
+  "source": "兵庫県庁 採用"
+}

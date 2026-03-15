@@ -1,0 +1,22 @@
+{
+  "title": "【27卒】アナウンサーインターンの募集を開始しました！～受付",
+  "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBqaUxoMC1qMWhXRUdyS3NmTUJRMVYxcjhyVThMcTc2RTF6QnZ5UDhxRUtkTDJkNVlkVUV3d2txMHo1VUZ4Wmdoa2w3YWJKOUdOM2NJOFdQSUxYUVVCVE1JdV9R?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTFBqaUxoMC1qMWhXRUdyS3NmTUJRMVYxcjhyVThMcTc2RTF6QnZ5UDhxRUtkTDJkNVlkVUV3d2txMHo1VUZ4Wmdoa2w3YWJKOUdOM2NJOFdQSUxYUVVCVE1JdV9R?oc=5\" target=\"_bl",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "この情報は、アナウンサーインターンの募集を陰的に推測するための情報となります。この情報は、インターンの採用を支持する目的で、特定の人々への利権を得る可能性があります。",
+    "true_intent": "この情報の裏にある意図は、特定の人々に利権を与える可能性があります。この情報は、特定の人々をターゲットにするための宣伝やキャンペーンの材料となる可能性があります。",
+    "bias_warning": "高み,ポジショントーク可能性があるため、この情報は、特定の人々に利権を与える可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図は、特定の人々に利権を与える可能性があります。この情報は、特定の人々をターゲットにするための宣伝やキャンペーンの材料となる可能性があります。",
+    "bias_warning": "高み,ポジショントーク可能性があるため、この情報は、特定の人々に利権を与える可能性があります。"
+  },
+  "collected_at": "2026-01-27T11:47:21.194761",
+  "source": "ES締切 (Google)"
+}

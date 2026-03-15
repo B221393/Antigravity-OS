@@ -1,0 +1,22 @@
+{
+  "title": "日産自動車、Hondaと三菱自動車、3社協業形態の検討に関す",
+  "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE12TXFXNDNScW5NSUFDN0tnNkRvY0ZMSllxLU9QZzZWVWF0N1BjUWZZYVNFTmJ6WENrZm4xcklvU3lUVXJlczN2T2VUazhJQjNIRmVQTmtObnRiU1E?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiW0FVX3lxTE12TXFXNDNScW5NSUFDN0tnNkRvY0ZMSllxLU9QZzZWVWF0N1BjUWZZYVNFTmJ6WENrZm4xcklvU3lUVXJlczN2T2VUazhJQjNIRmVQTmtObnRiU1E?oc=5\" target=\"_blank\">日産自動",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "日産、ホンダ、三菱が協業検討で覚書締結。EVシフトとコスト削減が目的か。",
+    "true_intent": "EV開発競争激化の中、規模の経済を追求し、生き残りを図る。政府の後押しやサプライチェーン再編の利権も絡む可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "EV開発競争激化の中、規模の経済を追求し、生き残りを図る。政府の後押しやサプライチェーン再編の利権も絡む可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:43:13.068625",
+  "source": "Active:ホンダ"
+}

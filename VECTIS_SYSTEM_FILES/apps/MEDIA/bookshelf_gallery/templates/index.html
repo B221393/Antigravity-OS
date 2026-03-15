@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGO OS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&family=Noto+Serif+JP:wght@300;500&display=swap');
+
+        :root {
+            /* Common */
+            --transition-speed: 0.8s;
+
+            /* Admin Mode (Day/Work) */
+            --bg-admin: #0a0b10;
+            --text-admin: #e0e0e0;
+            --accent-admin: #00f3ff;
+            --font-admin: 'Inter', sans-serif;
+            --border-admin: rgba(255, 255, 255, 0.1);
+
+            /* Focus Mode (Night/Zen) */
+            --bg-focus: #050505;
+            --text-focus: #b0b0b0;
+            --accent-focus: #ddcea5;
+            /* Gold/Paper/Zen */
+            --font-focus: 'Noto Serif JP', serif;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            transition: background var(--transition-speed), color var(--transition-speed);
+            overflow: hidden;
+            /* Main scroll handled by containers */
+        }
+
+        /* --- MODE STYLES --- */
+        body.mode-admin {
+            background: var(--bg-admin);
+            color: var(--text-admin);
+            font-family: var(--font-admin);
+        }
+
+        body.mode-focus {
+            background: var(--bg-focus);
+            color: var(--text-focus);
+            font-family: var(--font-focus);
+        }
+
+        /* --- LAYOUT CONTAINERS --- */
+        #admin-container,
+        #focus-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        body.mode-admin #admin-container {
+            display: block;
+            opacity: 1;
+        }
+
+        body.mode-focus #focus-container {
+            display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- ADMIN INTERFACE (Grid & density) --- */
+        .admin-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(10, 11, 16, 0.95);
+            border-bottom: 1px solid var(--border-admin);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-sizing: border-box;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-logo {
+            font-family: 'JetBrains Mono';
+            color: var(--accent-admin);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .grid-wrapper {
+            margin-top: 100px;
+            /* Header space */
+            padding-bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .category-section {
+            width: 1000px;
+            margin-bottom: 60px;
+        }
+
+        .category-header {
+            font-family: 'JetBrains Mono';
+            font-size: 1.2rem;
+            color: #888;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-admin);
+            border-radius: 8px;
+            height: 140px;
+            padding: 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .app-card:hover {
+            background: rgba(0, 243, 255, 0.05);
+            border-color: var(--accent-admin);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .app-icon {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-admin);
+        }
+
+        .app-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .app-desc {
+            font-size: 0.7rem;
+            color: #888;
+            line-height: 1.4;
+        }
+
+
+        /* --- FOCUS INTERFACE (Zen & Reading) --- */
+        #zen-content {
+            max-width: 680px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .zen-quote {
+            font-size: 1.8rem;
+            line-height: 2;
+            margin-bottom: 40px;
+            font-feature-settings: "palt";
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .zen-source {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 80px;
+        }
+
+        .zen-actions {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .zen-btn {
+            background: none;
+            border: 1px solid #333;
+            color: #888;
+            padding: 15px 40px;
+            font-family: var(--font-focus);
+            cursor: pointer;
+            transition: all 0.4s;
+            letter-spacing: 2px;
+        }
+
+        .zen-btn:hover {
+            border-color: var(--accent-focus);
+            color: var(--accent-focus);
+        }
+
+        /* --- UTILS --- */
+        .time-badge {
+            font-family: 'JetBrains Mono';
+            font-size: 0.8rem;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .time-badge:hover {
+            color: #fff;
+        }
+
+        /* LOADING */
+        #loading {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: var(--accent-admin);
+            font-family: 'JetBrains Mono';
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="mode-focus"> <!-- Default will be set by JS -->
+
+    <div id="loading">PROCESSING...</div>
+
+    <!-- ADMIN CONTAINER -->
+    <div id="admin-container">
+        <div class="admin-header">
+            <div class="admin-logo">EGO // COMMAND</div>
+            <div class="time-badge" onclick="toggleMode()">MODE: ADMIN</div>
+        </div>
+        <div class="grid-wrapper" id="admin-grid">
+            <!-- Injected by JS -->
+        </div>
+    </div>
+
+    <!-- FOCUS CONTAINER -->
+    <div id="focus-container">
+        <div id="zen-content">
+            <div class="zen-quote" id="daily-quote">
+                "The only true wisdom is in knowing you know nothing."
+            </div>
+            <div class="zen-source" id="daily-source">
+                – Socrates
+            </div>
+
+            <div class="zen-actions">
+                <button class="zen-btn" onclick="openRandomBook()">READ</button>
+                <button class="zen-btn" onclick="toggleMode()">SYSTEM</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- SYSTEM CONSTANTS ---
+        const sysApps = [
+            { id: 'patrol', title: 'INTELLIGENCE PATROL', desc: 'Auto-scout YouTube, News, and Web.', cat: 'AUTOMATION', icon: '📡' },
+            { id: 'driving', title: 'EVOLUTION DRIVER', desc: 'Genetic algorithm driving simulation.', cat: 'SIMULATION', icon: '🏎️' },
+            { id: 'chat', title: 'CHAT ROOM', desc: 'Connect to EGO Persona.', cat: 'INTERFACE', icon: '💬' },
+            { id: 'router', title: 'TEXT ROUTER', desc: 'Sort & file raw information.', cat: 'CORE', icon: '🧠' },
+            { id: 'es', title: 'ES WRITER', desc: 'Entry Sheet drafting assistant.', cat: 'WORK', icon: '📝' },
+            { id: 'ego', title: 'PERSONAL EGO', desc: 'Agent management console.', cat: 'CORE', icon: '👤' }
+        ];
+
+        let books = [];
+
+        // --- INIT ---
+        window.addEventListener('load', async () => {
+            initTimeMode();
+            renderAdminGrid();
+            await fetchBooks();
+            setRandomQuote();
+        });
+
+        // --- TIME BASED UI ---
+        function initTimeMode() {
+            const hour = new Date().getHours();
+            const isNight = (hour >= 18 || hour < 5); // 18:00 - 05:00 is Focus Time
+
+            if (isNight) {
+                document.body.className = 'mode-focus';
+            } else {
+                document.body.className = 'mode-admin';
+            }
+            updateModeLabel();
+        }
+
+        function toggleMode() {
+            const isFocus = document.body.className.includes('mode-focus');
+            document.body.className = isFocus ? 'mode-admin' : 'mode-focus';
+            updateModeLabel();
+        }
+
+        function updateModeLabel() {
+            const isFocus = document.body.className.includes('mode-focus');
+            const labels = document.querySelectorAll('.time-badge');
+            labels.forEach(l => l.innerText = isFocus ? "MODE: FOCUS" : "MODE: ADMIN");
+        }
+
+        // --- LOGIC: ADMIN MODE ---
+        function renderAdminGrid() {
+            const container = document.getElementById('admin-grid');
+            container.innerHTML = '';
+
+            // Grouping
+            const groups = { 'CORE': [], 'AUTOMATION': [], 'SIMULATION': [], 'INTERFACE': [], 'WORK': [], 'OTHER': [] };
+
+            // Add Sys Apps
+            sysApps.forEach(app => {
+                if (groups[app.cat]) groups[app.cat].push(app);
+                else groups['OTHER'].push(app);
+            });
+
+            // Render Groups
+            Object.keys(groups).forEach(cat => {
+                const list = groups[cat];
+                if (list.length === 0) return;
+
+                const section = document.createElement('div');
+                section.className = 'category-section';
+
+                section.innerHTML = `
+                    <div class="category-header">${cat}</div>
+                    <div class="card-grid" id="grid-${cat}"></div>
+                `;
+                container.appendChild(section);
+
+                const grid = section.querySelector('.card-grid');
+                list.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'app-card';
+                    card.innerHTML = `
+                        <div>
+                            <div class="app-icon">${item.icon}</div>
+                            <div class="app-title">${item.title}</div>
+                        </div>
+                        <div class="app-desc">${item.desc}</div>
+                    `;
+                    card.onclick = (event) => launchApp(item.id, event);
+                    grid.appendChild(card);
+                });
+            });
+        }
+
+        async function launchApp(id, event) {
+            showLoading(true);
+            try {
+                await fetch(`/api/launch/${id}`);
+                // Simple feedback
+                const btn = event.currentTarget;
+                btn.style.borderColor = '#00f3ff';
+            } catch (e) { console.error(e); }
+            setTimeout(() => showLoading(false), 1000);
+        }
+
+        // --- LOGIC: FOCUS MODE ---
+        async function fetchBooks() {
+            try {
+                const res = await fetch('/api/books');
+                books = await res.json();
+            } catch (e) { }
+        }
+
+        function setRandomQuote() {
+            // In a real app, maybe fetch from a philosophical quotes API or local DB
+            // For now, let's use a book title effectively
+            if (books.length > 0) {
+                const randomBook = books[Math.floor(Math.random() * books.length)];
+                document.getElementById('daily-quote').innerText = randomBook.title;
+                document.getElementById('daily-source').innerText = "From your library";
+            }
+        }
+
+        async function openRandomBook() {
+            if (books.length === 0) return;
+            const book = books[Math.floor(Math.random() * books.length)];
+
+            // Reuse the reader overlay logic (simplified here for brevity, relying on browser open or redirect)
+            // For this 'Focus' concept, ideally we open a clean reader view.
+            // Let's just launch visual feedback for now as the 'reader' component is complex to rebuild in one shot
+            // without the overlay code from previous version.
+            alert(`Opening: ${book.title}\n\n(Reader implementation would open here in full Zen mode)`);
+        }
+
+        function showLoading(b) {
+            document.getElementById('loading').style.display = b ? 'block' : 'none';
+        }
+
+    </script>
+</body>
+
+</html>

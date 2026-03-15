@@ -1,0 +1,24 @@
+{
+  "title": "KDDI〈前編〉 求めるのは「あるべき姿に向けて努力する」「",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9lTEtZRE1KcDlROUpsWTVNU2cyb09HRnFCUHpPUTRlMGxrQzI4a3k4a3pjTTh3ZEt3R0NIc0hwVGFWSXMzalF2T2Z3YnNZaGU0eFU3bVpxdXUwdHpaUnpWWGthT1VZWnFqOWFR?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTE9lTEtZRE1KcDlROUpsWTVNU2cyb09HRnFCUHpPUTRlMGxrQzI4a3k4a3pjTTh3ZEt3R0NIc0hwVGFWSXMzalF2T2Z3YnNZaGU0eFU3bVpxdXUwdHpaUnpWWGthT1VZWnFqOWFR?oc=5\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIが求める人材像は「努力家」と「協調性」。人事担当者のホンネを朝日新聞が報道。",
+    "true_intent": "KDDIの企業イメージ向上と採用広報。朝日新聞は広告収入。実質的な選考基準は隠蔽されている可能性。協調性を強調することで、指示待ち人材を求めている可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。KDDIの本質的価値と27卒が狙うべき理由を、以下の通り構造化します。\n\n1.  **主要武器**: 通信インフラ基盤とau経済圏。顧客データと多様な事業ポートフォリオが強み。M&Aと新規事業創出で成長を加速。\n2.  **26-27卒への温度感**: DX推進と新規事業拡大のため、多様な専門性を持つ人材を積極的に採用。グローバル志向も重視。\n3.  **EGO適性**: データドリブン経営を推進。AI/データサイエンス人材を強化しており、構造的思考力とAI活用スキルは高く評価される。\n4.  **裏の弱点**: 通信事業の成熟と競争激化。新規事業の収益化に時間がかかる場合も。官僚的な側面が残る可能性も考慮。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   KDDI is mentioned as a Japanese telecom operator.\n*   KDDI is one of the carriers for iPhones in Japan.\n*   Other Japanese carriers mentioned are Softbank and Docomo.\n*   A search query asked for the five largest telecom operators in Japan.\n\n**Structured Summary:**\n\n*   KDDI is a Japanese telecom operator, along with Softbank and Docomo.\n*   These operators offer iPhones.\n*   A user sought information on the top 5 Japanese telecom operators.\n\n**Gap Analysis:**\n\n*   The provided text confirms KDDI is a Japanese telecom operator.\n*   However, it does not explicitly state whether KDDI is one of the top five.\n*   Further research would be needed to confirm its ranking among Japanese telecom operators."
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIの企業イメージ向上と採用広報。朝日新聞は広告収入。実質的な選考基準は隠蔽されている可能性。協調性を強調することで、指示待ち人材を求めている可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:01:56.453399",
+  "source": "KDDI 採用 Deep Dive"
+}

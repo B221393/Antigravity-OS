@@ -1,0 +1,22 @@
+{
+  "title": "米10月求人件数、1.2万件増 経済の不透明感から採用は減 ",
+  "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNZmY2QlRwUS1ldUhldGFiRzZQdWY2V1JnSkVpYmVXOXhsbDN3S2k2YXdHbEZNWmlTelYzWl9LdDhoeTM2ZElEbUhGRDdLbG5lNFdwZkV2UUtKQzdtQ2ZtOHRtd3FwM0IxTFJIWmdXNGtyOGJVQjJnWGtRc2hzRi1LYQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxNZmY2QlRwUS1ldUhldGFiRzZQdWY2V1JnSkVpYmVXOXhsbDN3S2k2YXdHbEZNWmlTelYzWl9LdDhoeTM2ZElEbUhGRDdLbG5lNFdwZkV2UUtKQzdtQ2ZtOHRtd3FwM0IxTFJIWmdXNG",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "米10月求人微増も採用減。経済不透明感で企業慎重姿勢。",
+    "true_intent": "求人件数増の数字で安心感を演出しつつ、採用減で警戒を促し、金融市場の安定を図る意図か。景気後退懸念を緩和したい政府・FRBの意向を反映している可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "求人件数増の数字で安心感を演出しつつ、採用減で警戒を促し、金融市場の安定を図る意図か。景気後退懸念を緩和したい政府・FRBの意向を反映している可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:12:28.579495",
+  "source": "ロイター 企業ニュース"
+}

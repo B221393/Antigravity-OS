@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGO OS - EGO DYNAMICS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=JetBrains+Mono:wght@400&display=swap');
+
+        :root {
+            --bg-deep: #05070a;
+            --accent-cyan: #00f3ff;
+            --accent-new: #ffffff;
+            /* Fresh content color */
+            --glass: rgba(20, 30, 40, 0.4);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-deep);
+            background-image: radial-gradient(circle at 50% 50%, #111926 0%, #05070a 80%);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        /* CANVAS */
+        #sim-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* VIGNETTE & GRID */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 90%);
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8);
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0.3;
+        }
+
+        /* HUD UI */
+        #ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+            padding: 30px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Top Bar */
+        .hud-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--accent-cyan);
+            border-left: 2px solid var(--accent-cyan);
+            padding-left: 10px;
+        }
+
+        .status-box {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 4px;
+            backdrop-filter: blur(5px);
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: right;
+            transform: skewX(-10deg);
+        }
+
+        /* Detail Panel (Appears on Hover/Click) */
+        #inspector {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%) translateX(50px);
+            width: 280px;
+            background: rgba(10, 15, 20, 0.85);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            padding: 20px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            pointer-events: none;
+            /* Let clicks pass unless active */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        #inspector.active {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .insp-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-cyan);
+            margin-bottom: 5px;
+        }
+
+        .insp-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .insp-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            border-top: 1px solid var(--border);
+            padding-top: 10px;
+        }
+
+        .fresh-badge {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            font-weight: bold;
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 2px;
+            margin-bottom: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Interaction Hint */
+        .hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="sim-canvas"></canvas>
+    <div class="overlay"></div>
+    <div class="scanlines"></div>
+
+    <div id="ui-layer">
+        <div class="hud-top">
+            <div class="brand">
+                EGO OS<br>
+                <span style="font-size: 1.5rem; color: #fff; font-weight:700;">NEURAL FLUX</span>
+            </div>
+            <div class="status-box">
+                SYSTEM: STABLE<br>
+                PHYSICS: ACTIVE
+            </div>
+        </div>
+
+        <div id="inspector">
+            <div id="insp-fresh" class="fresh-badge" style="display:none;">FRESH CONTENT</div>
+            <div class="insp-tag" id="insp-type">CATEGORY</div>
+            <div class="insp-title" id="insp-title">Node Title</div>
+            <div style="font-size: 0.85rem; color: #ccc;" id="insp-desc">Description text...</div>
+            <div class="insp-meta">
+                <div>VIEWS: <span id="insp-views" style="color:#fff;">0</span></div>
+                <div>SIZE: <span style="color:#fff;">12MB</span></div>
+            </div>
+        </div>
+
+        <div class="hint">[ CLICK ] TO EXPAND / ZOOM &nbsp;&nbsp; [ ESC ] TO RESET VIEW</div>
+    </div>
+
+    <script>
+        /**
+         * EGO OS: Organic Physics Engine
+         * Implements Force-directed graph with 3D depth simulation
+         */
+
+        const canvas = document.getElementById('sim-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        // --- CAMERA SYSTEM ---
+        const camera = {
+            x: 0,
+            y: 0,
+            zoom: 1,
+            targetX: 0,
+            targetY: 0,
+            targetZoom: 1
+        };
+
+        // --- CONFIG ---
+        const colors = {
+            core: '#ffffff',
+            tech: '#00f3ff',  // Cyan
+            art: '#ff00ff',   // Magenta
+            life: '#00ff9d',  // Green
+            acad: '#ffaa00',  // Orange
+            fresh: '#ffffff'  // Blinding White for new content
+        };
+
+        // --- DATA INTEGRATION (EGO) ---
+        // Merged with User's Template
+        const genres = [
+            { id: 'shogi', name: 'SHOGI DOJO', color: '#ff9900', desc: 'Strategic Intelligence' },
+            { id: 'job', name: 'JOB HQ', color: '#ff5555', desc: 'Career Strategy' },
+            { id: 'chat', name: 'DEEP CHAT', color: '#00afff', desc: 'Neural Interface' },
+            { id: 'ego', name: 'EGO MODEL', color: '#aa00ff', desc: 'Self Evolution' },
+            { id: 'magi', name: 'MAGI HUD', color: '#ffffff', desc: 'Desktop Overlay' }
+        ];
+
+        let nodes = [];
+        let links = [];
+
+        // --- NODE CLASS ---
+        class Node {
+            constructor(type, parent, data) {
+                this.type = type; // 'core', 'genre', 'video'
+                this.parent = parent;
+                this.data = data;
+
+                // Physics Properties
+                this.x = (Math.random() - 0.5) * 100;
+                this.y = (Math.random() - 0.5) * 100;
+                this.z = (Math.random() - 0.5) * 50; // Depth
+
+                this.vx = 0;
+                this.vy = 0;
+                this.vz = 0;
+
+                this.mass = type === 'core' ? 100 : (type === 'genre' ? 20 : 5);
+                this.baseSize = type === 'core' ? 15 : (type === 'genre' ? 8 : 3);
+
+                // Visuals
+                this.color = data.color || '#fff';
+                this.isNew = data.isNew || false; // Freshness flag
+                this.views = data.views || 0;
+
+                // Interaction
+                this.expanded = false;
+                this.visible = true;
+
+                // Animation
+                this.pulsePhase = Math.random() * Math.PI;
+            }
+
+            updateForces(nodes) {
+                // 1. Center Gravity (Pull to 0,0)
+                const distToCenter = Math.sqrt(this.x * this.x + this.y * this.y);
+                const gravityStrength = 0.0005;
+                this.vx -= this.x * gravityStrength;
+                this.vy -= this.y * gravityStrength;
+
+                // 2. Spring Force (Tether to parent)
+                if (this.parent) {
+                    const dx = this.parent.x - this.x;
+                    const dy = this.parent.y - this.y;
+                    const dz = this.parent.z - this.z;
+                    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                    // Ideal length based on type
+                    const restLength = this.type === 'video' ? 60 : 180;
+                    const k = 0.005; // Spring constant
+
+                    const force = (dist - restLength) * k;
+                    const fx = (dx / dist) * force;
+                    const fy = (dy / dist) * force;
+                    const fz = (dz / dist) * force;
+
+                    this.vx += fx;
+                    this.vy += fy;
+                    this.vz += fz;
+                }
+
+                // 3. Repulsion (Push away neighbors)
+                nodes.forEach(other => {
+                    if (this === other) return;
+                    if (!other.visible) return;
+
+                    const dx = this.x - other.x;
+                    const dy = this.y - other.y;
+                    const distSq = dx * dx + dy * dy;
+
+                    const minDist = 80;
+                    if (distSq < minDist * minDist && distSq > 0) {
+                        const force = 5 / distSq;
+                        this.vx += dx * force;
+                        this.vy += dy * force;
+                    }
+                });
+
+                // 4. Turbulence (Random motion)
+                this.vx += (Math.random() - 0.5) * 0.05;
+                this.vy += (Math.random() - 0.5) * 0.05;
+                this.vz += (Math.random() - 0.5) * 0.02;
+
+                // 5. Damping (Friction)
+                this.vx *= 0.94;
+                this.vy *= 0.94;
+                this.vz *= 0.94;
+
+                // Apply
+                this.x += this.vx;
+                this.y += this.vy;
+                this.z += this.vz;
+            }
+
+            draw(ctx, cam) {
+                if (!this.visible) return;
+
+                // 3D Projection Logic
+                // Simple perspective projection
+                const perspective = 800;
+                const scale = perspective / (perspective + this.z * cam.zoom); // Z affects scale
+
+                // Camera Transform
+                const screenX = (this.x - cam.x) * cam.zoom * scale + width / 2;
+                const screenY = (this.y - cam.y) * cam.zoom * scale + height / 2;
+
+                // Skip if out of view
+                if (screenX < -50 || screenX > width + 50 || screenY < -50 || screenY > height + 50) return;
+
+                // Size calculation (Playback metric + Freshness pulse)
+                let r = this.baseSize * scale * cam.zoom;
+
+                // Freshness Pulse
+                if (this.isNew) {
+                    this.pulsePhase += 0.1;
+                    const pulse = (Math.sin(this.pulsePhase) + 1) * 0.5; // 0 to 1
+                    r += pulse * 3; // Pulse size
+                }
+
+                // Draw Connection Line (Branch)
+                if (this.parent && this.parent.visible) {
+                    const parentScale = perspective / (perspective + this.parent.z * cam.zoom);
+                    const pScreenX = (this.parent.x - cam.x) * cam.zoom * parentScale + width / 2;
+                    const pScreenY = (this.parent.y - cam.y) * cam.zoom * parentScale + height / 2;
+
+                    ctx.beginPath();
+                    ctx.moveTo(pScreenX, pScreenY);
+                    ctx.lineTo(screenX, screenY);
+
+                    // Logic: Link Thickness based on Views (Playback)
+                    let lw = (1 + (this.views / 5000)) * scale * cam.zoom;
+                    if (this.type === 'genre') lw = 2 * scale * cam.zoom;
+
+                    ctx.lineWidth = Math.min(lw, 5); // Cap thickness
+
+                    // Gradient for freshness or standard
+                    const grad = ctx.createLinearGradient(pScreenX, pScreenY, screenX, screenY);
+                    grad.addColorStop(0, hexToRgba(this.parent.color, 0.2));
+
+                    if (this.isNew) {
+                        grad.addColorStop(1, '#ffffff'); // White tip for fresh
+                    } else {
+                        grad.addColorStop(1, hexToRgba(this.color, 0.6));
+                    }
+
+                    ctx.strokeStyle = grad;
+                    ctx.stroke();
+                }
+
+                // Draw Node
+                ctx.beginPath();
+                ctx.arc(screenX, screenY, r, 0, Math.PI * 2);
+
+                if (this.isNew) {
+                    // Fresh Style: White Core + Colored Glow
+                    ctx.fillStyle = '#fff';
+                    ctx.shadowColor = this.color;
+                    ctx.shadowBlur = 20 * scale;
+                } else {
+                    // Standard Style
+                    ctx.fillStyle = this.color;
+                    ctx.shadowColor = this.color;
+                    ctx.shadowBlur = (this.type === 'genre' ? 15 : 5) * scale;
+                }
+
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                // Label (Only genres or hovered)
+                if (this.type === 'genre' || (this.type === 'video' && r > 5)) {
+                    ctx.fillStyle = '#fff';
+                    ctx.font = `${10 * scale * cam.zoom}px 'Outfit'`;
+                    ctx.textAlign = 'center';
+                    ctx.fillText(this.data.name, screenX, screenY + r + 15 * scale);
+                }
+            }
+        }
+
+        // --- INIT ---
+        function initSystem() {
+            // Core
+            const core = new Node('core', null, { name: 'EGO', color: colors.core, desc: 'Central Nervous System' });
+            nodes.push(core);
+
+            // Genres (Modules)
+            genres.forEach((g, i) => {
+                const angle = (Math.PI * 2 / genres.length) * i;
+                const dist = 100;
+                const genreNode = new Node('genre', core, { name: g.name, color: g.color, desc: g.desc });
+
+                // Initial placement roughly in circle
+                genreNode.x = Math.cos(angle) * dist;
+                genreNode.y = Math.sin(angle) * dist;
+
+                nodes.push(genreNode);
+
+                // Sub-features (Simulated)
+                const count = 3 + Math.floor(Math.random() * 3);
+                for (let j = 0; j < count; j++) {
+                    const isFresh = Math.random() < 0.2;
+                    const videoNode = new Node('video', genreNode, {
+                        name: `${g.name} ${j + 1}`,
+                        color: g.color,
+                        isNew: isFresh,
+                        views: Math.floor(Math.random() * 20000),
+                        desc: `Feature Node ${j + 1}`
+                    });
+                    videoNode.visible = false; // Hidden
+                    videoNode.x = genreNode.x + (Math.random() - 0.5) * 10;
+                    videoNode.y = genreNode.y + (Math.random() - 0.5) * 10;
+                    nodes.push(videoNode);
+                }
+            });
+        }
+
+        // --- MAIN LOOP ---
+        function animate() {
+            // Smooth Camera
+            camera.x += (camera.targetX - camera.x) * 0.1;
+            camera.y += (camera.targetY - camera.y) * 0.1;
+            camera.zoom += (camera.targetZoom - camera.zoom) * 0.1;
+
+            ctx.clearRect(0, 0, width, height);
+
+            // Physics Step
+            nodes.forEach(n => n.updateForces(nodes));
+
+            // Draw Step
+            nodes.sort((a, b) => a.z - b.z);
+            nodes.forEach(n => n.draw(ctx, camera));
+
+            requestAnimationFrame(animate);
+        }
+
+        // --- INPUT HANDLING ---
+        function setupInputs() {
+            window.addEventListener('resize', () => {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            });
+            window.dispatchEvent(new Event('resize'));
+
+            canvas.addEventListener('mousemove', e => { });
+
+            canvas.addEventListener('click', e => {
+                const mx = e.clientX - width / 2;
+                const my = e.clientY - height / 2;
+                let clicked = null;
+                let minDist = 1000;
+
+                nodes.forEach(n => {
+                    if (!n.visible) return;
+                    const screenX = (n.x - camera.x) * camera.zoom;
+                    const screenY = (n.y - camera.y) * camera.zoom;
+                    const dist = Math.sqrt((mx - screenX) ** 2 + (my - screenY) ** 2);
+                    if (dist < 30 * camera.zoom && dist < minDist) {
+                        minDist = dist;
+                        clicked = n;
+                    }
+                });
+
+                if (clicked) {
+                    handleNodeClick(clicked);
+                }
+            });
+
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Escape') resetView();
+            });
+        }
+
+        function handleNodeClick(node) {
+            updateInspector(node);
+
+            if (node.type === 'genre') {
+                node.expanded = !node.expanded;
+                nodes.forEach(n => {
+                    if (n.parent === node) {
+                        n.visible = node.expanded;
+                        if (node.expanded) {
+                            n.vx = (Math.random() - 0.5) * 5;
+                            n.vy = (Math.random() - 0.5) * 5;
+                        }
+                    }
+                });
+                if (node.expanded) {
+                    camera.targetX = node.x;
+                    camera.targetY = node.y;
+                    camera.targetZoom = 2.5;
+                } else {
+                    resetView();
+                }
+            } else if (node.type === 'video') {
+                camera.targetX = node.x;
+                camera.targetY = node.y;
+                camera.targetZoom = 4.0;
+            } else if (node.type === 'core') {
+                resetView();
+            }
+        }
+
+        function resetView() {
+            camera.targetX = 0; camera.targetY = 0; camera.targetZoom = 1;
+            document.getElementById('inspector').classList.remove('active');
+        }
+
+        function updateInspector(node) {
+            const insp = document.getElementById('inspector');
+            insp.classList.add('active');
+
+            document.getElementById('insp-type').innerText = node.type.toUpperCase();
+            document.getElementById('insp-title').innerText = node.data.name;
+            document.getElementById('insp-desc').innerText = node.data.desc || 'System Node';
+            document.getElementById('insp-views').innerText = node.views.toLocaleString();
+
+            const freshBadge = document.getElementById('insp-fresh');
+
+            if (node.isNew) {
+                freshBadge.style.display = 'inline-block';
+                document.getElementById('insp-title').style.color = '#fff';
+            } else {
+                freshBadge.style.display = 'none';
+                document.getElementById('insp-title').style.color = node.color;
+            }
+        }
+
+        function hexToRgba(hex, alpha) {
+            let c = hex.substring(1).split('');
+            if (c.length == 3) c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+            c = '0x' + c.join('');
+            return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + alpha + ')';
+        }
+
+        initSystem();
+        setupInputs();
+        animate();
+
+    </script>
+</body>
+
+</html>

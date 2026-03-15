@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VECTIS Knowledge Dredger v1.0.4 - Professional Edition</title>
+    <style>
+        :root {
+            --win-bg: #f0f0f0;
+            --win-border: #808080;
+            --win-border-light: #ffffff;
+            --win-border-dark: #404040;
+            --win-header: #0a246a;
+            /* Classic Win2k blue */
+            --win-text: #000000;
+            --sidebar-bg: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "MS UI Gothic", "Meiryo", sans-serif;
+            font-size: 12px;
+            background-color: var(--win-bg);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            color: var(--win-text);
+        }
+
+        /* Menu Bar */
+        .menu-bar {
+            background-color: var(--win-bg);
+            border-bottom: 1px solid var(--win-border);
+            padding: 2px 6px;
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .menu-item {
+            padding: 2px 6px;
+            cursor: default;
+        }
+
+        .menu-item:hover {
+            background-color: #316ac5;
+            color: white;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            background-color: var(--win-bg);
+            border-bottom: 1px solid var(--win-border);
+            padding: 4px;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .tool-btn {
+            border: 1px solid transparent;
+            padding: 4px 8px;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tool-btn:hover {
+            border: 1px solid var(--win-border);
+            background-color: #e0e0e0;
+        }
+
+        .tool-btn:active {
+            border: 1px solid var(--win-border-dark);
+            background-color: #d0d0d0;
+        }
+
+        .divider {
+            width: 1px;
+            height: 20px;
+            background-color: var(--win-border);
+            margin: 0 4px;
+        }
+
+        /* Workspace */
+        .workspace {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 300px 1px 1fr;
+            overflow: hidden;
+        }
+
+        /* Sidebar: Knowledge Tree */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            overflow-y: auto;
+            border-right: 1px solid var(--win-border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tree-header {
+            background-color: #e0e0e0;
+            padding: 4px 8px;
+            font-weight: bold;
+            border-bottom: 1px solid var(--win-border);
+        }
+
+        .tree-view {
+            padding: 4px;
+        }
+
+        .tree-item {
+            display: flex;
+            align-items: center;
+            padding: 2px 4px;
+            cursor: default;
+            white-space: nowrap;
+        }
+
+        .tree-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .tree-item.selected {
+            background-color: #3169c6;
+            color: white;
+        }
+
+        .tree-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+            background-color: #ccc;
+            display: inline-block;
+            text-align: center;
+            line-height: 14px;
+            font-size: 10px;
+            border: 1px solid #888;
+        }
+
+        /* Splitter */
+        .splitter {
+            background-color: var(--win-border);
+            cursor: col-resize;
+        }
+
+        /* Content Area */
+        .content {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .tabs {
+            background-color: var(--win-bg);
+            display: flex;
+            padding-top: 2px;
+            border-bottom: 1px solid var(--win-border);
+        }
+
+        .tab {
+            padding: 4px 12px;
+            border: 1px solid var(--win-border);
+            border-bottom: none;
+            margin-left: 2px;
+            background-color: #d0d0d0;
+            cursor: default;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .tab.active {
+            background-color: white;
+            margin-bottom: -1px;
+            font-weight: bold;
+        }
+
+        .viewer-container {
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-pane {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 80px 1fr 80px 1fr;
+            gap: 8px;
+        }
+
+        .meta-label {
+            color: #666;
+            font-weight: bold;
+        }
+
+        .text-editor {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            line-height: 1.6;
+            font-family: "Meiryo UI", "MS PGothic", sans-serif;
+            font-size: 14px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 4px;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background-color: var(--win-bg);
+            border-top: 1px solid var(--win-border);
+            padding: 2px 10px;
+            display: grid;
+            grid-template-columns: 1fr 150px 150px 100px;
+            gap: 1px;
+        }
+
+        .status-pane {
+            border-left: 1px solid #808080;
+            padding: 0 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Tables for Analysis */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        th {
+            background-color: #e0e0e0;
+            border: 1px solid var(--win-border);
+            text-align: left;
+            padding: 4px;
+        }
+
+        td {
+            border: 1px solid #ccc;
+            padding: 4px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .btn-action {
+            padding: 2px 8px;
+            background: #eee;
+            border: 1px solid #888;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .btn-action:hover {
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="menu-bar">
+        <div class="menu-item">ファイル(F)</div>
+        <div class="menu-item">編集(E)</div>
+        <div class="menu-item">表示(V)</div>
+        <div class="menu-item">解析(A)</div>
+        <div class="menu-item">ツール(T)</div>
+        <div class="menu-item">ヘルプ(H)</div>
+    </div>
+
+    <div class="toolbar">
+        <button class="tool-btn" onclick="location.reload()">🔄 更新</button>
+        <button class="tool-btn">📂 開く</button>
+        <button class="tool-btn">💾 保存</button>
+        <div class="divider"></div>
+        <button class="tool-btn">🔍 検索</button>
+        <button class="tool-btn">📊 統計</button>
+        <div class="divider"></div>
+        <span style="margin-left: 10px;">Filter:</span>
+        <input type="text" id="quickFilter" style="border: 1px solid #888; padding: 2px;" placeholder="キーワードを入力...">
+    </div>
+
+    <div class="workspace">
+        <div class="sidebar">
+            <div class="tree-header">ナレッジ・インベントリ</div>
+            <div class="tree-view" id="knowledgeTree">
+                <!-- Data Nodes -->
+                <div class="tree-item"><span class="tree-icon">D</span> 読み込み中...</div>
+            </div>
+        </div>
+        <div class="splitter"></div>
+        <div class="content">
+            <div class="tabs">
+                <div class="tab active" id="tabName">データ詳細</div>
+            </div>
+            <div class="viewer-container">
+                <div class="meta-pane">
+                    <div class="meta-label">ID:</div>
+                    <div id="metaId">-</div>
+                    <div class="meta-label">種別:</div>
+                    <div id="metaGroup">-</div>
+                    <div class="meta-label">生成日:</div>
+                    <div id="metaDate">-</div>
+                    <div class="meta-label">文字数:</div>
+                    <div id="metaWordCount">-</div>
+                </div>
+                <div class="text-editor" id="articleViewer">
+                    <p style="color:#888;">知識ノードを選択すると、ここに詳細な解析結果が表示されます。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <div>Ready.</div>
+        <div class="status-pane" id="statNodes">Nodes: 0</div>
+        <div class="status-pane" id="statWords">Total Words: 0</div>
+        <div class="status-pane">VECTIS v1.0.4</div>
+    </div>
+
+    <script>
+        let chapters = [];
+        let universeNodes = [];
+        let currentSelection = null;
+
+        async function init() {
+            try {
+                const [dkRes, uRes] = await Promise.all([
+                    fetch('../youtube_channel/data/deep_knowledge.json'),
+                    fetch('../youtube_channel/data/universe.json')
+                ]);
+
+                const dkData = await dkRes.json();
+                const uData = await uRes.json();
+
+                chapters = dkData.chapters || [];
+                universeNodes = uData.nodes || [];
+
+                document.getElementById('statNodes').innerText = `Nodes: ${universeNodes.length}`;
+                document.getElementById('statWords').innerText = `Total Words: ${dkData.stats.total_words.toLocaleString()}`;
+
+                renderTree();
+
+                document.getElementById('quickFilter').addEventListener('input', (e) => {
+                    renderTree(e.target.value);
+                });
+
+            } catch (e) {
+                console.error("Initialization Failed", e);
+            }
+        }
+
+        function renderTree(filter = '') {
+            const container = document.getElementById('knowledgeTree');
+            container.innerHTML = '';
+
+            // Group by category/group
+            const groups = {};
+            universeNodes.forEach(n => {
+                const g = n.group || 'General';
+                if (!groups[g]) groups[g] = [];
+                groups[g].push(n);
+            });
+
+            Object.keys(groups).sort().forEach(groupName => {
+                // Category Header (Non-clickable for simplicity)
+                const header = document.createElement('div');
+                header.style.backgroundColor = '#f0f0f0';
+                header.style.padding = '2px 8px';
+                header.style.fontWeight = 'bold';
+                header.style.fontSize = '11px';
+                header.innerText = `[${groupName}]`;
+                container.appendChild(header);
+
+                groups[groupName].forEach(node => {
+                    if (filter && !node.title.toLowerCase().includes(filter.toLowerCase())) return;
+
+                    const item = document.createElement('div');
+                    item.className = 'tree-item';
+
+                    // Check if deep knowledge exists for this node
+                    const hasDeep = chapters.some(ch => ch.title === node.title || ch.id.includes(node.id));
+                    const icon = hasDeep ? '📑' : '📄';
+
+                    item.innerHTML = `<span style="margin-right:4px;">${icon}</span> ${node.title}`;
+                    item.onclick = () => selectNode(node, hasDeep);
+                    container.appendChild(item);
+                });
+            });
+        }
+
+        function selectNode(node, hasDeep) {
+            // UI Toggle
+            const items = document.querySelectorAll('.tree-item');
+            items.forEach(i => i.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+
+            // Metadata
+            document.getElementById('metaId').innerText = node.id;
+            document.getElementById('metaGroup').innerText = node.group || '-';
+            document.getElementById('metaDate').innerText = node.timestamp ? node.timestamp.slice(0, 10) : '-';
+
+            const viewer = document.getElementById('articleViewer');
+            const tabName = document.getElementById('tabName');
+            tabName.innerText = `詳細: ${node.title.slice(0, 10)}...`;
+
+            let contentValue = "データがありません";
+            let hasData = false;
+            let wordCount = 0;
+
+            if (hasDeep) {
+                const ch = chapters.find(c => c.title === node.title || c.id.includes(node.id));
+                wordCount = ch.word_count || 0;
+                if (ch.overview) {
+                    contentValue = ch.overview;
+                    hasData = true;
+                } else if (ch.full_text) {
+                    contentValue = ch.full_text.slice(0, 300) + (ch.full_text.length > 300 ? "..." : "");
+                    hasData = true;
+                }
+            } else {
+                wordCount = node.summary ? node.summary.length : 0;
+                if (node.summary) {
+                    contentValue = node.summary;
+                    hasData = true;
+                }
+            }
+
+            document.getElementById('metaWordCount').innerText = wordCount.toLocaleString();
+
+            let tableHtml = `
+                <h2 style="margin-bottom: 20px;">${node.title}</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 150px;">ラベル</th>
+                            <th style="width: 100px;">タイプ</th>
+                            <th>詳細</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Knowledge ID</strong></td>
+                            <td><span style="background:#eee; padding:2px 4px; border-radius:3px; font-family:monospace;">UID</span></td>
+                            <td>${node.id}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Group Category</strong></td>
+                            <td>Tag</td>
+                            <td>${node.group || '-'}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Indexed Date</strong></td>
+                            <td>Date</td>
+                            <td>${node.timestamp ? node.timestamp.slice(0, 10) : '-'}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Source</strong></td>
+                            <td>Status</td>
+                            <td>${hasDeep ? 'Deep Knowledge (Vectorized)' : 'Raw Index Entry'}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Content Summary</strong></td>
+                            <td>Text</td>
+                            <td>${contentValue}</td>
+                        </tr>
+            `;
+
+            if (hasDeep) {
+                // Additional rows for Deep Knowledge
+                const ch = chapters.find(c => c.title === node.title || c.id.includes(node.id));
+                if (ch.main_points && ch.main_points.length > 0) {
+                    tableHtml += `
+                        <tr>
+                            <td><strong>Main Points</strong></td>
+                            <td>List</td>
+                            <td>${ch.main_points.slice(0, 3).join(' / ')}...</td>
+                        </tr>
+                     `;
+                }
+            }
+
+            tableHtml += `
+                    </tbody>
+                </table>
+            `;
+
+            if (!hasData && !node.id) {
+                // Fallback if truly empty (though usually node has ID)
+                viewer.innerHTML = `<div style="padding:20px; color:#888;">データがありません</div>`;
+            } else {
+                viewer.innerHTML = tableHtml;
+            }
+
+            viewer.scrollTop = 0;
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

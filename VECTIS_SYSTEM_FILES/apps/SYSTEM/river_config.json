@@ -1,0 +1,6 @@
+{
+    "interval_seconds": 300,
+    "queries_per_run": 5,
+    "mode": "aggressive",
+    "notes": "interval_seconds: 収集間隔（秒）。300=5分、600=10分、3600=1時間"
+}

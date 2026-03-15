@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hatetris AI Solver</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --primary: #3b82f6;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --grid-line: #334155;
+            --block-S: #ef4444;
+            --block-Z: #10b981;
+            --block-O: #f59e0b;
+            --block-I: #06b6d4;
+            --block-L: #f97316;
+            --block-J: #6366f1;
+            --block-T: #8b5cf6;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: var(--text-dim);
+            margin: 0.5rem 0 2rem;
+        }
+
+        .container {
+            display: flex;
+            gap: 2rem;
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(10, 30px);
+            grid-template-rows: repeat(20, 30px);
+            gap: 1px;
+            background-color: var(--grid-line);
+            border: 2px solid var(--grid-line);
+            border-radius: 4px;
+        }
+
+        .cell {
+            width: 30px;
+            height: 30px;
+            background-color: var(--bg);
+            transition: background-color 0.1s;
+        }
+
+        .cell.filled {
+            border-radius: 2px;
+        }
+
+        .cell.S {
+            background-color: var(--block-S);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cell.Z {
+            background-color: var(--block-Z);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cell.O {
+            background-color: var(--block-O);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cell.I {
+            background-color: var(--block-I);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cell.L {
+            background-color: var(--block-L);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cell.J {
+            background-color: var(--block-J);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cell.T {
+            background-color: var(--block-T);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cell.active {
+            opacity: 0.8;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 200px;
+        }
+
+        .panel {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .panel h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stats-val {
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: monospace;
+            color: var(--primary);
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.25rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        button:disabled {
+            background-color: var(--grid-line);
+            cursor: not-allowed;
+            color: #64748b;
+        }
+
+        .speed-control {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .speed-control label {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+        .log {
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 600px;
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            max-height: 150px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .log div {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 4px 0;
+        }
+
+        /* Loading animation for AI thinking */
+        .thinking {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: #fbbf24;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                opacity: 0.5;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Hatetris vs AI</h1>
+        <p>「最も嫌なブロックを出す」悪魔のアルゴリズムに挑むプレイヤーAI</p>
+    </div>
+
+    <div class="container">
+        <div class="game-area">
+            <div id="board" class="board"></div>
+        </div>
+
+        <div class="sidebar">
+            <div class="panel">
+                <h3>Lines Cleared</h3>
+                <div id="score" class="stats-val">0</div>
+            </div>
+
+            <div class="panel">
+                <h3>Next Piece (AI Choice)</h3>
+                <div id="next-piece-display" style="font-size: 2rem; font-weight: bold; text-align: center;">?</div>
+            </div>
+
+            <div class="panel controls">
+                <button id="btn-start">Start Auto AI</button>
+                <button id="btn-pause" disabled>Pause</button>
+                <button id="btn-step">Step Run</button>
+                <button id="btn-reset">Reset</button>
+
+                <div class="speed-control">
+                    <label for="speed">AI Speed (Delay ms)</label>
+                    <input type="range" id="speed" min="0" max="1000" value="50" step="10">
+                    <span id="speed-val" style="color:var(--text-dim); font-size:0.8rem;">50ms</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="log" class="log">
+        <div>System initialized. Ready to play.</div>
+    </div>
+
+    <script>
+        // --- 1. PIECE DEFINITIONS (Simple Rotation System) ---
+        // Hatetris pieces are generated at a specific offset.
+        const PIECES = {
+            'S': [[[0, 1, 1], [1, 1, 0], [0, 0, 0]], [[0, 1, 0], [0, 1, 1], [0, 0, 1]]],
+            'Z': [[[1, 1, 0], [0, 1, 1], [0, 0, 0]], [[0, 0, 1], [0, 1, 1], [0, 1, 0]]],
+            'O': [[[1, 1], [1, 1]]],
+            'I': [[[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]], [[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0]]],
+            'L': [[[0, 0, 1], [1, 1, 1], [0, 0, 0]], [[0, 1, 0], [0, 1, 0], [0, 1, 1]], [[0, 0, 0], [1, 1, 1], [1, 0, 0]], [[1, 1, 0], [0, 1, 0], [0, 1, 0]]],
+            'J': [[[1, 0, 0], [1, 1, 1], [0, 0, 0]], [[0, 1, 1], [0, 1, 0], [0, 1, 0]], [[0, 0, 0], [1, 1, 1], [0, 0, 1]], [[0, 1, 0], [0, 1, 0], [1, 1, 0]]],
+            'T': [[[0, 1, 0], [1, 1, 1], [0, 0, 0]], [[0, 1, 0], [0, 1, 1], [0, 1, 0]], [[0, 0, 0], [1, 1, 1], [0, 1, 0]], [[0, 1, 0], [1, 1, 0], [0, 1, 0]]]
+        };
+        const PIECE_ORDER = ['S', 'Z', 'O', 'I', 'L', 'J', 'T'];
+
+        // Initial offsets for pieces
+        function getSpawnOffset(id) {
+            if (id === 'I') return { x: 3, y: -1 };
+            if (id === 'O') return { x: 4, y: 0 };
+            return { x: 3, y: 0 };
+        }
+
+        // --- 2. GAME ENGINE ---
+        class HatetrisEngine {
+            constructor() {
+                this.cols = 10;
+                this.rows = 20;
+                this.board = Array(this.rows).fill(null).map(() => Array(this.cols).fill(0));
+                this.lines = 0;
+            }
+
+            cloneBoard(b) {
+                return b.map(row => [...row]);
+            }
+
+            // check if a piece collides with the board bounds or filled cells
+            collides(board, id, r, x, y) {
+                const shape = PIECES[id][r];
+                for (let r_idx = 0; r_idx < shape.length; r_idx++) {
+                    for (let c_idx = 0; c_idx < shape[r_idx].length; c_idx++) {
+                        if (shape[r_idx][c_idx]) {
+                            const boardY = y + r_idx;
+                            const boardX = x + c_idx;
+                            if (boardX < 0 || boardX >= this.cols || boardY >= this.rows) return true; // walls & floor
+                            if (boardY >= 0 && board[boardY][boardX] !== 0) return true; // block collision
+                        }
+                    }
+                }
+                return false;
+            }
+
+            // Lock a piece into the board and return the new board + cleared lines info
+            lockPiece(board, id, r, x, y) {
+                const newBoard = this.cloneBoard(board);
+                const shape = PIECES[id][r];
+                for (let r_idx = 0; r_idx < shape.length; r_idx++) {
+                    for (let c_idx = 0; c_idx < shape[r_idx].length; c_idx++) {
+                        if (shape[r_idx][c_idx]) {
+                            if (y + r_idx >= 0 && y + r_idx < this.rows) {
+                                newBoard[y + r_idx][x + c_idx] = id;
+                            }
+                        }
+                    }
+                }
+                // clear lines
+                let linesCleared = 0;
+                for (let r_idx = this.rows - 1; r_idx >= 0; r_idx--) {
+                    let full = true;
+                    for (let c_idx = 0; c_idx < this.cols; c_idx++) {
+                        if (newBoard[r_idx][c_idx] === 0) { full = false; break; }
+                    }
+                    if (full) {
+                        newBoard.splice(r_idx, 1);
+                        newBoard.unshift(Array(this.cols).fill(0));
+                        r_idx++; // check the new line that fell into this index
+                        linesCleared++;
+                    }
+                }
+                return { board: newBoard, lines: linesCleared };
+            }
+
+            // BFS to find all reachable landing positions for a piece from its spawn
+            getReachableLockPositions(board, id) {
+                const spawn = getSpawnOffset(id);
+                if (this.collides(board, id, 0, spawn.x, spawn.y)) return []; // game over condition
+
+                const queue = [{ r: 0, x: spawn.x, y: spawn.y }];
+                const visited = new Set();
+                const lockPositions = []; // {r, x, y, board, topY}
+
+                const stateKey = (r, x, y) => `${r},${x},${y}`;
+                visited.add(stateKey(0, spawn.x, spawn.y));
+
+                // Process BFS
+                while (queue.length > 0) {
+                    const curr = queue.shift();
+
+                    // Check if we can move down
+                    const downCollides = this.collides(board, id, curr.r, curr.x, curr.y + 1);
+                    if (downCollides) {
+                        // This is a lock position!
+                        // Calculate the peak height after locking
+                        const lockInfo = this.lockPiece(board, id, curr.r, curr.x, curr.y);
+                        // Find peak Y (smaller is higher)
+                        let topY = this.rows;
+                        for (let r_idx = 0; r_idx < this.rows; r_idx++) {
+                            for (let c_idx = 0; c_idx < this.cols; c_idx++) {
+                                if (lockInfo.board[r_idx][c_idx] !== 0) {
+                                    topY = r_idx;
+                                    break;
+                                }
+                            }
+                            if (topY !== this.rows) break;
+                        }
+
+                        lockPositions.push({
+                            r: curr.r, x: curr.x, y: curr.y,
+                            board: lockInfo.board,
+                            cleared: lockInfo.lines,
+                            topY: topY
+                        });
+                    } else {
+                        // Ensure we can actually reach the cell below
+                        const nKey = stateKey(curr.r, curr.x, curr.y + 1);
+                        if (!visited.has(nKey)) {
+                            visited.add(nKey);
+                            queue.push({ r: curr.r, x: curr.x, y: curr.y + 1 });
+                        }
+                    }
+
+                    // Try Left, Right, Rotate (only if they don't collide)
+                    const moves = [
+                        { r: curr.r, x: curr.x - 1, y: curr.y }, // Left
+                        { r: curr.r, x: curr.x + 1, y: curr.y }, // Right
+                        { r: (curr.r + 1) % PIECES[id].length, x: curr.x, y: curr.y }, // Rotate CW
+                    ];
+
+                    for (const m of moves) {
+                        if (!this.collides(board, id, m.r, m.x, m.y)) {
+                            const mKey = stateKey(m.r, m.x, m.y);
+                            if (!visited.has(mKey)) {
+                                visited.add(mKey);
+                                queue.push(m);
+                            }
+                        }
+                    }
+                }
+
+                // Important: Hatetris only considers unique resulting boards to optimize
+                // But for now returning all unique lock positions is fine.
+                // Let's filter to unique resulting boards just to be safe.
+                const uniqueBoards = new Map();
+                for (const p of lockPositions) {
+                    const boardStr = p.board.map(row => row.join('')).join('');
+                    if (!uniqueBoards.has(boardStr)) {
+                        uniqueBoards.set(boardStr, p);
+                    }
+                }
+                return Array.from(uniqueBoards.values());
+            }
+
+            // --- 3. EVIL EVALUATOR (Hatetris AI) ---
+            // Finds the worst piece for the player.
+            // A piece's "score" is defined by the best lock position the player can find.
+            // Hatetris minimizes the player's best outcome.
+            getEvilPiece(board) {
+                let maxLowestTopY = -1; // We want to maximize the topY (meaning a lower stack), wait...
+                // Actually the player wants to maximize topY (keep blocks low).
+                // So the player will choose a placement that MAXIMIZES topY.
+                // The enemy wants to MINIMIZE the player's max topY (force the blocks to be high).
+
+                // Let's recalibrate:
+                // height = 20 - topY. 
+                // Player wants to minimize height (maximize topY).
+                // Enemy wants to maximize height (minimize player's max topY).
+
+                let enemyWorstPiece = PIECE_ORDER[0];
+                let enemyMinOfMaxTopY = 999;
+
+                for (const id of PIECE_ORDER) {
+                    const lockPositions = this.getReachableLockPositions(board, id);
+                    if (lockPositions.length === 0) {
+                        // Game over for player with this piece! Pick it immediately!
+                        return { id, isGameOver: true };
+                    }
+                    // Player finds the best position (MAXIMUM topY)
+                    let playerMaxTopY = -1;
+                    for (const p of lockPositions) {
+                        if (p.topY > playerMaxTopY) {
+                            playerMaxTopY = p.topY;
+                        }
+                    }
+
+                    // Enemy picks the piece where the player's best (playerMaxTopY) is the MINIMUM
+                    if (playerMaxTopY < enemyMinOfMaxTopY) {
+                        enemyMinOfMaxTopY = playerMaxTopY;
+                        enemyWorstPiece = id;
+                    }
+                }
+
+                return { id: enemyWorstPiece, isGameOver: false };
+            }
+        }
+
+        // --- 4. PLAYER AI HELPER ---
+        // Basic Tetris heuristic evaluation script
+        function evaluateBoard(board, cleared) {
+            let aggregateHeight = 0;
+            let holes = 0;
+            let wellSums = 0;
+
+            const heights = Array(10).fill(0);
+            for (let c = 0; c < 10; c++) {
+                for (let r = 0; r < 20; r++) {
+                    if (board[r][c] !== 0) {
+                        heights[c] = 20 - r;
+                        aggregateHeight += heights[c];
+                        break;
+                    }
+                }
+            }
+
+            for (let c = 0; c < 10; c++) {
+                let blockFound = false;
+                for (let r = 0; r < 20; r++) {
+                    if (board[r][c] !== 0) {
+                        blockFound = true;
+                    } else if (board[r][c] === 0 && blockFound) {
+                        holes++;
+                    }
+                }
+            }
+
+            let bumpiness = 0;
+            for (let c = 0; c < 9; c++) {
+                bumpiness += Math.abs(heights[c] - heights[c + 1]);
+            }
+
+            // In Hatetris it's important to keep a flat surface and minimize holes heavily
+            // Weightings
+            const a = -0.61; // aggregateHeight
+            const b = 0.86; // cleared
+            const c_w = -0.56; // holes
+            const d = -0.18; // bumpiness
+
+            // Custom weighting for Hatetris - keep it flat!
+            return (a * aggregateHeight) + (b * cleared) + (c_w * holes * 2) + (d * bumpiness * 1.5);
+        }
+
+        // --- 5. UI and Render ---
+        const boardEl = document.getElementById('board');
+        const scoreEl = document.getElementById('score');
+        const nextIdEl = document.getElementById('next-piece-display');
+        const logEl = document.getElementById('log');
+        const speedEl = document.getElementById('speed');
+
+        let cells = [];
+        for (let r = 0; r < 20; r++) {
+            const row = [];
+            for (let c = 0; c < 10; c++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                boardEl.appendChild(cell);
+                row.push(cell);
+            }
+            cells.push(row);
+        }
+
+        function render(board, fallingPiece = null) {
+            for (let r = 0; r < 20; r++) {
+                for (let c = 0; c < 10; c++) {
+                    cells[r][c].className = 'cell';
+                    if (board[r][c] !== 0) {
+                        cells[r][c].classList.add('filled', board[r][c]);
+                    }
+                }
+            }
+
+            if (fallingPiece) {
+                const { id, r, x, y } = fallingPiece;
+                const shape = PIECES[id][r];
+                for (let r_idx = 0; r_idx < shape.length; r_idx++) {
+                    for (let c_idx = 0; c_idx < shape[r_idx].length; c_idx++) {
+                        if (shape[r_idx][c_idx]) {
+                            const boardY = y + r_idx;
+                            const boardX = x + c_idx;
+                            if (boardY >= 0 && boardY < 20 && boardX >= 0 && boardX < 10) {
+                                cells[boardY][boardX].classList.add('filled', id, 'active');
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function logMsg(msg) {
+            const div = document.createElement('div');
+            div.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            logEl.prepend(div);
+            if (logEl.children.length > 20) {
+                logEl.removeChild(logEl.lastChild);
+            }
+        }
+
+        // --- 6. GAME LOOP ---
+        const engine = new HatetrisEngine();
+        let currentBoard = engine.board;
+        let isPlaying = false;
+        let gameActive = true;
+        let totalLines = 0;
+        let delayMs = 50;
+
+        document.getElementById('speed').addEventListener('input', (e) => {
+            delayMs = parseInt(e.target.value);
+            document.getElementById('speed-val').textContent = delayMs + 'ms';
+        });
+
+        async function stepGame() {
+            if (!gameActive) return;
+
+            nextIdEl.innerHTML = '<span class="thinking">AI Thinking...</span>';
+            await new Promise(res => setTimeout(res, 10)); // Allow UI to update
+
+            // 1. Enemy chooses piece
+            const evilRes = engine.getEvilPiece(currentBoard);
+            const nextPieceId = evilRes.id;
+
+            nextIdEl.textContent = nextPieceId;
+            nextIdEl.className = nextPieceId; // set color via class if we had css for it, not needed
+            nextIdEl.style.color = `var(--block-${nextPieceId})`;
+
+            if (evilRes.isGameOver) {
+                logMsg("💥 GAME OVER! No moves possible for piece " + nextPieceId);
+                gameActive = false;
+                isPlaying = false;
+                updateBtns();
+                return;
+            }
+
+            // 2. Player AI chooses best lock position
+            const lockPositions = engine.getReachableLockPositions(currentBoard, nextPieceId);
+            if (lockPositions.length === 0) {
+                logMsg("💥 GAME OVER! Board full!");
+                gameActive = false;
+                isPlaying = false;
+                updateBtns();
+                return;
+            }
+
+            let bestScore = -Infinity;
+            let bestMove = null;
+
+            for (const p of lockPositions) {
+                const score = evaluateBoard(p.board, p.cleared);
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMove = p;
+                }
+            }
+
+            // 3. Render the drop visually (just teleport for speed)
+            currentBoard = bestMove.board;
+            totalLines += bestMove.cleared;
+            scoreEl.textContent = totalLines;
+
+            if (bestMove.cleared > 0) {
+                logMsg(`✨ Cleared ${bestMove.cleared} line(s)!`);
+            }
+
+            render(currentBoard);
+        }
+
+        async function playLoop() {
+            if (!isPlaying || !gameActive) return;
+            await stepGame();
+            if (isPlaying && gameActive) {
+                setTimeout(playLoop, delayMs);
+            }
+        }
+
+        function updateBtns() {
+            document.getElementById('btn-start').disabled = isPlaying || !gameActive;
+            document.getElementById('btn-pause').disabled = !isPlaying;
+            document.getElementById('btn-step').disabled = isPlaying || !gameActive;
+        }
+
+        document.getElementById('btn-start').addEventListener('click', () => {
+            if (!gameActive) return;
+            isPlaying = true;
+            updateBtns();
+            playLoop();
+        });
+
+        document.getElementById('btn-pause').addEventListener('click', () => {
+            isPlaying = false;
+            updateBtns();
+        });
+
+        document.getElementById('btn-step').addEventListener('click', async () => {
+            document.getElementById('btn-step').disabled = true;
+            await stepGame();
+            if (!isPlaying) updateBtns();
+        });
+
+        document.getElementById('btn-reset').addEventListener('click', () => {
+            isPlaying = false;
+            gameActive = true;
+            currentBoard = Array(20).fill(null).map(() => Array(10).fill(0));
+            totalLines = 0;
+            scoreEl.textContent = '0';
+            nextIdEl.innerHTML = '?';
+            nextIdEl.style.color = '#fff';
+            render(currentBoard);
+            logMsg("Game reset.");
+            updateBtns();
+        });
+
+        // Init
+        render(currentBoard);
+        updateBtns();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "title": "電通、27年卒向け秋季インターンシップのエントリー受け付け中",
+  "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBOMU03ZGphank0cWlrdkJPMVlUd041RUtuNTdueU9fYVBFTUlQbWw3SGpfejNhc0I2T1BwNG9xTDZKVExsYTVpV2FtYw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiS0FVX3lxTFBOMU03ZGphank0cWlrdkJPMVlUd041RUtuNTdueU9fYVBFTUlQbWw3SGpfejNhc0I2T1BwNG9xTDZKVExsYTVpV2FtYw?oc=5\" target=\"_blank\">電通、27年卒向け秋季インターンシップのエントリー",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "電通が27卒向け秋季インターンシップのエントリー受付を開始。早期囲い込み戦略か。",
+    "true_intent": "優秀な学生の早期囲い込み。電通ブランドの維持・向上。インターンシップを通じた選考プロセスの効率化。広告業界への関心喚起。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "電通",
+    "action_required": true,
+    "category": "広告/メディア",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。電通の本質的価値と27卒が狙うべき理由を、就活メンターとして構造的に解説します。\n\n1.  **主要武器**: 顧客課題解決を起点とした、統合マーケティング戦略立案力と実行力。クリエイティビティとデータ分析を融合し、社会を動かす影響力を持つ。\n2.  **26-27卒への温度感**: デジタル人材、データサイエンティスト、ビジネスプロデューサーなど、多様な専門性を持つ人材を積極採用。変化に対応できるポテンシャル重視。\n3.  **EGO適性**: 構造的思考は必須。AI活用にも積極的だが、創造性やコミュニケーション能力も重視。論理と情熱を両立できる人材が活躍できる。\n4.  **裏の弱点**: 組織の縦割り構造、長時間労働体質は依然として課題。変化を恐れず、自律的にキャリアを切り開く覚悟が必要。\n",
+    "deep_web_intel": "Okay, I will extract key points, create a structured summary, and perform a gap analysis based on the provided data. Due to the fetch error from Wikipedia, I will not be able to use that as a data source.\n\n**Structured Summary:**\n\n*   **Dentsu (株式会社電通):**\n    *   **Website:** dentsu.co.jp\n        *   Provides company and business overview, recruitment information, and sustainability initiatives.\n    *   **Dentsu Group Inc. (株式会社電通グループ):**\n        *   **Website:** group.dentsu.com/jp/\n        *   Provides corporate information, group information, sustainability information, IR information, news, and group topics.\n\n**Key Points:**\n\n*   Both websites utilize Google Tag Manager for analytics.\n*   Both sites have mobile-friendly configurations using meta viewport tags.\n*   Both sites specify descriptions and Open Graph (og:) meta tags for SEO and social sharing.\n*   Both sites provide favicon and apple-touch-icon.\n*   Dentsu Group provides links to alternate language versions of the page (Spanish).\n\n**Gap Analysis:**\n\n*   **Content Focus:** dentsu.co.jp seems to be focused on a general audience, including potential employees, while group.dentsu.com/jp/ is geared more toward investors and stakeholders with its focus on IR and Group information.\n*   **Technology Stack:** Both sites use common web technologies like JavaScript, CSS, and Google Fonts. The Dentsu Group site uses Typekit for fonts.\n*   **Responsiveness:** The Dentsu Group site has more complex logic to determine viewport width based on the user agent. The Dentsu website uses a simpler `width=device-width` approach.\n*   **Missing Data:** I was not able to obtain data from the Wikipedia page due to a `FETCH_ERR`. This would have been valuable to provide a third-party perspective.\n\n**Further Considerations (If Wikipedia data were available):**\n\n*   **History and Overview:** The Wikipedia page likely would have provided historical context, details about Dentsu's business model, and information on its market position.\n*   **Controversies:** Wikipedia often includes information about controversies or criticisms related to an organization, which would be important for a complete picture.\n*   **Global Presence:** The provided data is primarily focused on the Japanese market. The Wikipedia page would likely have provided a broader view of Dentsu's global operations."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な学生の早期囲い込み。電通ブランドの維持・向上。インターンシップを通じた選考プロセスの効率化。広告業界への関心喚起。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:14:44.990256",
+  "source": "Active:電通"
+}

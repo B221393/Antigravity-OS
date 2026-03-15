@@ -1,0 +1,23 @@
+{
+  "title": "【材料】 ＭＳＣＩの２月見直し、国内大手証券は清水建、イビデ",
+  "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9XejdIS3puSE5UcFVmNkdwdlFBeXlRaHU4b1l2TlFiTUZQTE5HZzI3ZkpYVG5KelZ2bXA3dFhMX0M0SFJBNGtCV19RaVNQNk5SV0p4M25pVk9kd1RYdjRJVQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTE9XejdIS3puSE5UcFVmNkdwdlFBeXlRaHU4b1l2TlFiTUZQTE5HZzI3ZkpYVG5KelZ2bXA3dFhMX0M0SFJBNGtCV19RaVNQNk5SV0p4M25pVk9kd1RYdjRJVQ?oc=5\" target=\"_blan",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "MSCI2月見直しで清水建設、イビデン、SBI新生銀行が採用予想。株価への影響に注目。",
+    "true_intent": "証券会社の投資判断を促し、該当銘柄の取引を活発化させ、手数料収入を増やす意図。株価上昇期待を煽る可能性も。",
+    "bias_warning": "あり",
+    "deadline": "2024-02-01",
+    "company": "清水建設, イビデン, SBI新生銀行",
+    "action_required": true,
+    "category": "金融/メディア",
+    "target_year": "2027",
+    "company_profile": "以下の3社について、構造化した情報を提供します。\n\n### 清水建設\n1. **主要武器**: 技術力と経験豊富な人材\n2. **26-27卒への温度感**: デジタル化への取り組みを強化し、若手の活躍を期待\n3. **EGO適性**: デジタルツイン技術の導入など、構造的思考とAI活用を推進\n4. **裏の弱点**: 業界全体の景気動向への依存度が高い\n\n### イビデン\n1. **主要武器**: 半導体関連の技術力とグローバルなネットワーク\n2. **26-27卒への温度感**: 半導体市場の成長に伴い、若手の採用を増やす\n3. **EGO適性**: 高度な技術を活用した製品開発と製造工程の最適化\n4. **裏の弱点**: 半導体市場の変動による収益の不安定さ\n\n### SBI新生銀行\n1. **主要武器**: デジタル金融サービスと金融商品の多様性\n2. **26-27卒への温度感**: フィンテック分野での活躍を期待し、積極的に採用\n3. **EGO適性**: デジタル化とAIを活用した金融サービス開発\n4. **裏の弱点**: 金融規制への対応と市場競争の激化"
+  },
+  "critical_analysis": {
+    "true_intent": "証券会社の投資判断を促し、該当銘柄の取引を活発化させ、手数料収入を増やす意図。株価上昇期待を煽る可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:44:59.125671",
+  "source": "シスメックス 採用"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "大阪でＡＩ採用店舗を開業 業務スーパーの神戸物産 - 産経ニ",
+  "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5ERTljMjFzN3UyeTJNb2V2Z3U1ellONFYtclJZQTQ0cWFfem9EMjduV3ZhUXI0VVdLdzN2S1BCd1k3b2hoWDkzLThyVU1sc2luVHlUQzQteEdLVzFqeW5LWnJmT2J5NkpxdlNrMjBmOVdGR05pR1E?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMidkFVX3lxTE5ERTljMjFzN3UyeTJNb2V2Z3U1ellONFYtclJZQTQ0cWFfem9EMjduV3ZhUXI0VVdLdzN2S1BCd1k3b2hoWDkzLThyVU1sc2luVHlUQzQteEdLVzFqeW5LWnJmT2J5NkpxdlNrMjBmOV",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "神戸物産が大阪でAI採用店舗を開業。省人化と効率化をアピール。",
+    "true_intent": "省人化によるコスト削減、AI技術導入による企業イメージ向上、他社への技術販売の可能性。人件費抑制と技術PRが目的か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "神戸物産",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。神戸物産の「本質的価値」と「27卒が狙うべき理由」を構造化してご提示します。\n\n1.  **主要武器**: 自社輸入と国内製造による圧倒的な低価格。海外ネットワークと国内工場を垂直統合し、価格競争力を追求する徹底した効率主義。\n\n2.  **26-27卒への温度感**: 採用数増加傾向。実力主義を重視し、若手にも裁量を与える風土をアピール。グローバル展開を担う人材を求める。\n\n3.  **EGO適性**: 標準化された業務が多く、構造的思考は必須。AI活用は発展途上だが、業務効率化への意識は高い。データ分析スキルは評価される。\n\n4.  **裏の弱点**: 徹底したコスト削減至上主義による、社員への負荷。変化への対応の遅さ。海外情勢や為替変動の影響を受けやすい。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "省人化によるコスト削減、AI技術導入による企業イメージ向上、他社への技術販売の可能性。人件費抑制と技術PRが目的か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:08:33.456270",
+  "source": "神戸物産 採用"
+}

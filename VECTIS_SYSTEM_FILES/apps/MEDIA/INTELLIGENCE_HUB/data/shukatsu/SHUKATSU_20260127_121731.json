@@ -1,0 +1,23 @@
+{
+  "title": "川崎重工がTalentXの採用MAサービス「MyTalent",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE41RUd0UkZTYmwyMG9rbk9UX0Z3SWZsTUgyY3dvTjNra0dQS3JHQXVWTWhHbjJpNUNIWElnQW0zcXJTUUZERGZyNVdNc2FQMGdjVVh2Y1lTYWc4QUJSSDI4WlFtOWI1SUd0VlE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE41RUd0UkZTYmwyMG9rbk9UX0Z3SWZsTUgyY3dvTjNra0dQS3JHQXVWTWhHbjJpNUNIWElnQW0zcXJTUUZERGZyNVdNc2FQMGdjVVh2Y1lTYWc4QUJSSDI4WlFtOWI1SUd0VlE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "川崎重工が採用MAツール導入、アルムナイネットワーク構築開始。採用効率化と人材プール拡大が狙い。",
+    "true_intent": "採用コスト削減、優秀な退職者の再雇用、企業ブランディング向上、TalentXの顧客獲得。データ囲い込みの可能性も考慮。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "川崎重工",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## 川崎重工：就活生の羅針盤\n\n1.  **主要武器**: 陸海空、そして宇宙まで。重工技術の多角展開力と、技術者集団としてのプライドが源泉。\n2.  **26-27卒への温度感**: 積極的に多様な人材を求める姿勢。特にデジタル・グローバル人材への期待大。\n3.  **EGO適性**: プロジェクト推進における構造的思考は必須。AI活用は模索段階だが、変革期を担う人材を求める。\n4.  **裏の弱点**: 官僚的な組織体質と、新規事業における意思決定の遅さ。風通しの悪さが革新を阻害する可能性も。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "採用コスト削減、優秀な退職者の再雇用、企業ブランディング向上、TalentXの顧客獲得。データ囲い込みの可能性も考慮。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:17:31.539181",
+  "source": "川崎重工 採用"
+}

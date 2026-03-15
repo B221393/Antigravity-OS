@@ -1,0 +1,22 @@
+{
+  "title": "就職四季報 企業研究・インターンシップ版2027年版 - 東",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "企業の競争力に影響を与えるインテリジェンス・オフィサーの活躍と、それが企業の利権構造に影響を与える可能性を指摘します。",
+    "true_intent": "この情報は、企業の競争力を維持するための戦略としてインテリジェンス・オフィサーの活用を暗示しています。また、利権構造への影響についても分析することで、企業の利益に影響を与える可能性を指摘しています。",
+    "bias_warning": "ポジショントークの可能性があり、企業が特定分野の技術や知識を独占していることを暗示します。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、企業の競争力を維持するための戦略としてインテリジェンス・オフィサーの活用を暗示しています。また、利権構造への影響についても分析することで、企業の利益に影響を与える可能性を指摘しています。",
+    "bias_warning": "ポジショントークの可能性があり、企業が特定分野の技術や知識を独占していることを暗示します。"
+  },
+  "collected_at": "2026-01-26T19:46:17.005720",
+  "source": "インターン (Google)"
+}

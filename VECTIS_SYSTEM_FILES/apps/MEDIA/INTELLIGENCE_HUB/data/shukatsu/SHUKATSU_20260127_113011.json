@@ -1,0 +1,22 @@
+{
+  "title": "アングル：金融機関にも米技能ビザ見直しの波紋、高額手数料で初",
+  "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWkhoSzAyTDhjZDFXcjNLLTFNYzlVU0dMMzRxMnNjU0RSaWJOWV9BMjJyZWVEMWlvcng4OXBNRkRPTUVfWTloaVB4TjhtUklzajBHWS1WYmk2YzM3R05OdGhVQ3pvcmpHdUJMOEpZc0t3SXItbkJTN2xqQWhzQVBjeQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxQWkhoSzAyTDhjZDFXcjNLLTFNYzlVU0dMMzRxMnNjU0RSaWJOWV9BMjJyZWVEMWlvcng4OXBNRkRPTUVfWTloaVB4TjhtUklzajBHWS1WYmk2YzM3R05OdGhVQ3pvcmpHdUJMOEpZc0",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "米技能ビザ見直しで金融機関の初級職採用が困難化。高額手数料が障壁。",
+    "true_intent": "米国内の雇用を優先する政策を正当化し、国内労働者の保護をアピール。金融機関の人件費抑制策への牽制とも解釈できる。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "米国内の雇用を優先する政策を正当化し、国内労働者の保護をアピール。金融機関の人件費抑制策への牽制とも解釈できる。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:30:11.925234",
+  "source": "ロイター 企業ニュース"
+}

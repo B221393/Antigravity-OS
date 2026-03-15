@@ -1,0 +1,24 @@
+{
+  "title": "PeopleXの対話型AI面接サービス「PeopleX AI",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFByN3VxV1RrUFVhaEFIVENRY2l6a0g0V21LMUEzbEhKT3RXcm53YjUtS1dpNTUtRllPQUxDRncteHV0Sy0yOWUtVnVrZkxDZUtHWXM2YTJERFk0bWRGbUZGb0RISFNjR19OaXc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTFByN3VxV1RrUFVhaEFIVENRY2l6a0g0V21LMUEzbEhKT3RXcm53YjUtS1dpNTUtRllPQUxDRncteHV0Sy0yOWUtVnVrZkxDZUtHWXM2YTJERFk0bWRGbUZGb0RISFNjR19OaXc?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "PeopleXのAI面接がHakuhodo DY ONEの新卒採用に導入。選考効率化と候補者体験向上を狙う。",
+    "true_intent": "PeopleXは導入実績をアピールし、更なる顧客獲得を目指す。Hakuhodo DY ONEは先進的なイメージを演出し、優秀な学生の応募を促したい。採用コスト削減も目的。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "PeopleX",
+    "action_required": true,
+    "category": "IT/広告",
+    "target_year": "2027",
+    "company_profile": "## PeopleX 本質的価値と27卒が狙うべき理由\n\n1. **主要武器**: データドリブンな顧客体験設計。表向きはコンサルだが、本質は顧客データを徹底活用し、LTV最大化を追求する「グロースハッカー集団」。\n\n2. **26-27卒への温度感**: 採用数拡大傾向。第二創業期と捉え、ポテンシャル重視の採用にシフト。優秀層獲得に積極投資。\n\n3. **EGO適性**: 極めて高い。論理的思考力とデータ分析スキルは必須。AI/MLを活用したソリューション開発にも積極的。\n\n4. **裏の弱点**: 急成長ゆえ組織体制が未成熟。個人の裁量が大きい反面、体系的な教育制度が不足し、自主性が求められる。\n",
+    "deep_web_intel": "No search results found to analyze."
+  },
+  "critical_analysis": {
+    "true_intent": "PeopleXは導入実績をアピールし、更なる顧客獲得を目指す。Hakuhodo DY ONEは先進的なイメージを演出し、優秀な学生の応募を促したい。採用コスト削減も目的。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:48:03.456051",
+  "source": "博報堂"
+}

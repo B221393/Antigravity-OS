@@ -1,0 +1,22 @@
+{
+  "title": "2027年に生成AIチップ市場は1100億ドルに拡大へ、日本",
+  "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9IMVlrRWxUM2FZRmJsVVFqa2ZNbG5qZnduMXJmTVJ3cHZOcFRCMVdXNnpvc2QxNXFtZ1gxb216ZFNmM0M2dzFxeHRJZEMyTFB0OEtBcWZB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTE9IMVlrRWxUM2FZRmJsVVFqa2ZNbG5qZnduMXJmTVJ3cHZOcFRCMVdXNnpvc2QxNXFtZ1gxb216ZFNmM0M2dzFxeHRJZEMyTFB0OEtBcWZB?oc=5\" target=\"_blank\">2027年に生成AIチ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "2027年にAI技術がどのように活用されるかを考えるためのニュース。特に、日本におけるAI技術利用の進捗状況を分析する内容であることを指摘する。",
+    "true_intent": "このニュースは、2027年におけるAI技術の活用を分析するよりも、日本におけるAI技術利用の進捗状況を分析していると考えられる。",
+    "bias_warning": "ポジショントークで、AI技術の活用が日本における経済発展や技術競争にどのような影響を与えるか、そしてその可能性も触れる可能性がある",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "このニュースは、2027年におけるAI技術の活用を分析するよりも、日本におけるAI技術利用の進捗状況を分析していると考えられる。",
+    "bias_warning": "ポジショントークで、AI技術の活用が日本における経済発展や技術競争にどのような影響を与えるか、そしてその可能性も触れる可能性がある"
+  },
+  "collected_at": "2026-01-27T13:12:40.669763",
+  "source": "通信業界 トレンド"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "KDDIが月額最大「約8.5万円」の賃上げ、初任給は「30.",
+  "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8xdnNIdnRQTzdidG81bWF5U3RJMUliVDhVTHhON21vZVIyUVlDV3Ffb21vRFlQeEJ1OFJlN1ZhNDVvV21HV1NIVmtoaENyWWMzSHZYbndqa2lQd25Q?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXEFVX3lxTE8xdnNIdnRQTzdidG81bWF5U3RJMUliVDhVTHhON21vZVIyUVlDV3Ffb21vRFlQeEJ1OFJlN1ZhNDVvV21HV1NIVmtoaENyWWMzSHZYbndqa2lQd25Q?oc=5\" target=\"_blank\">KDD",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIが大幅賃上げを発表。初任給30.5万円以上、非管理職平均6%アップ。",
+    "true_intent": "優秀な人材獲得競争激化の中、KDDIの企業イメージ向上と求職者へのアピールが目的。通信業界全体の人件費高騰を牽引し、寡占状態を維持したい思惑も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。KDDIの本質的な価値と27卒が狙うべき理由を、以下の通り構造化します。\n\n1.  **主要武器**: 通信インフラを基盤とした、生活・ビジネス全般を支える総合的なソリューション提供力。au経済圏の拡大と、法人向けDX推進が強みの源泉。\n2.  **26-27卒への温度感**: 積極採用継続。多様なバックグラウンドを持つ人材を求め、新規事業創出や技術革新を担う人材への期待が高い。\n3.  **EGO適性**: データドリブンな意思決定を重視。AI活用や構造的思考を評価する傾向。新規ビジネス開発でEGOを活かせる可能性大。\n4.  **裏の弱点**: 通信事業の成熟による収益性の鈍化。新規事業の成功が不可欠だが、既存事業とのシナジー創出に課題も。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   KDDI is a major Japanese telecommunications carrier.\n*   Japan has multiple telecom operators.\n*   Japanese network standards differ from China's.\n\n**Summary:**\n\nKDDI operates in Japan's telecom market, which has multiple providers and distinct network standards compared to China.\n\n**Gap Analysis:**\n\n*   Specific network technologies/standards used by KDDI and how they differ from China are not detailed.\n*   The other major telecom operators in Japan besides KDDI are not named.\n*   No specific services or products of KDDI are mentioned."
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な人材獲得競争激化の中、KDDIの企業イメージ向上と求職者へのアピールが目的。通信業界全体の人件費高騰を牽引し、寡占状態を維持したい思惑も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:35:06.149046",
+  "source": "KDDI 採用 Deep Dive"
+}

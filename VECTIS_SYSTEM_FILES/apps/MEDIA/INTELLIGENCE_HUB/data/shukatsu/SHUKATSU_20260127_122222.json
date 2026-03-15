@@ -1,0 +1,24 @@
+{
+  "title": "モビリティのテストコース“Toyota Woven City",
+  "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5NcVBJYU9EV1RrckRsVThuSk5rR01uNExrd3luNWV5NXI5RExPVFF6ZE9QeWxqQ1VlWEtuZE8yb3ZTNFZaVTg3OUt1bi1KaFktVHRYblM0Vl9VWVpROF9EcmJBV1YwU2c2?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTE5NcVBJYU9EV1RrckRsVThuSk5rR01uNExrd3luNWV5NXI5RExPVFF6ZE9QeWxqQ1VlWEtuZE8yb3ZTNFZaVTg3OUt1bi1KaFktVHRYblM0Vl9VWVpROF9EcmJBV1YwU2c2?oc=5\" tar",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "トヨタWoven Cityに12社が参画。実証実験加速へ。",
+    "true_intent": "未来都市構想の進捗アピールと、参画企業の技術力を利用した開発加速。トヨタのブランドイメージ向上と、関連企業への投資促進が狙い。競争を有利に進めるための囲い込み戦略。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "トヨタ自動車株式会社",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。トヨタ自動車の本質的価値と27卒が狙うべき理由を以下の通りまとめます。\n\n1.  **主要武器**: 長期的な視点と改善文化。徹底的な現場主義とサプライチェーンを巻き込む圧倒的な実行力。\n2.  **26-27卒への温度感**: デジタル人材獲得に注力。従来の採用に加え、専門性を重視した多様な採用ルートを模索中。\n3.  **EGO適性**: 構造的思考は必須。AI活用は推進中だが、現場主義との融合が課題。データ分析力と課題解決能力が重要視される。\n4.  **裏の弱点**: 意思決定の遅さと変化への抵抗。既存事業への依存体質からの脱却が急務。新しい挑戦には覚悟が必要。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **Official Website:** Provides corporate, investor, news, mobility, sustainability, and recruitment information.\n*   **Company Profile:** Focuses on corporate information like management philosophy, top messages, company overview, and history.\n*   **Headquarters:** Has headquarters and Tokyo headquarters.\n*   **Keywords:** Company information, investor relations, newsroom, mobility, sustainability, recruitment information, corporate profile, company overview.\n*   **Meta Descriptions:** Consistent messaging about contributing to society and being a trusted corporate citizen.\n\n**Structured Summary:**\n\n1.  **Purpose:** Toyota's official site offers comprehensive corporate data.\n2.  **Content:** Includes investor news, sustainability reports, recruitment info, and company profiles.\n3.  **Profile Focus:** Emphasizes management principles, leadership, history.\n4.  **Physical Presence:** Has multiple headquarters (e.g., Tokyo).\n\n**Gap Analysis:**\n\n*   **Limited Data:** The data focuses on website structure and meta-information, lacking specific operational or financial details.\n*   **No Performance Metrics:** No mention of market share, revenue, or production numbers.\n*   **Lacks Actionable Details:** The extracted data has limited practical application."
+  },
+  "critical_analysis": {
+    "true_intent": "未来都市構想の進捗アピールと、参画企業の技術力を利用した開発加速。トヨタのブランドイメージ向上と、関連企業への投資促進が狙い。競争を有利に進めるための囲い込み戦略。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:22:22.800566",
+  "source": "Active:トヨタ自動車"
+}

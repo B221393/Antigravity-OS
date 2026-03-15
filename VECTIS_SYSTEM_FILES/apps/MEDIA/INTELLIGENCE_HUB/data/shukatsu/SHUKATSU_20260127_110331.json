@@ -1,0 +1,23 @@
+{
+  "title": "米10月求人件数、1.2万件増 経済の不透明感から採用は減 ",
+  "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNZmY2QlRwUS1ldUhldGFiRzZQdWY2V1JnSkVpYmVXOXhsbDN3S2k2YXdHbEZNWmlTelYzWl9LdDhoeTM2ZElEbUhGRDdLbG5lNFdwZkV2UUtKQzdtQ2ZtOHRtd3FwM0IxTFJIWmdXNGtyOGJVQjJnWGtRc2hzRi1LYQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxNZmY2QlRwUS1ldUhldGFiRzZQdWY2V1JnSkVpYmVXOXhsbDN3S2k2YXdHbEZNWmlTelYzWl9LdDhoeTM2ZElEbUhGRDdLbG5lNFdwZkV2UUtKQzdtQ2ZtOHRtd3FwM0IxTFJIWmdXNG",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "米10月求人微増も採用減。経済不透明感増大を示唆。",
+    "true_intent": "経済状況の複雑さを伝え、金融市場の変動を警戒させる意図か。大手金融機関や投資ファンドが、リスク回避行動を促したい可能性がある。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "Reuters",
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "## Reuters 本質的価値と27卒が狙うべき理由\n\n1.  **主要武器**: 170年の歴史と世界規模の取材網による、揺るぎない信頼性と速報性。金融情報に強み。\n\n2.  **26-27卒への温度感**: デジタル化推進のため、データ分析やエンジニアリング人材を積極採用。ジャーナリズム経験不問のポテンシャル採用も。\n\n3.  **EGO適性**: データドリブンな意思決定を重視。AIを活用したニュース配信や分析に積極投資しており、適性高。\n\n4.  **裏の弱点**: 伝統的組織ゆえ、意思決定の遅さや変化への抵抗感も。デジタル人材が活躍できるかは配属次第。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "経済状況の複雑さを伝え、金融市場の変動を警戒させる意図か。大手金融機関や投資ファンドが、リスク回避行動を促したい可能性がある。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:03:31.283634",
+  "source": "ロイター 企業ニュース"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "博報堂とNTTデータ、戦略からデータ活用・システム実装まで一",
+  "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE16eDduUlYtUzZ4b0Y5b1JSaEZrY1JLdnVsZ0tHOTdGWjd3djFqUElFdHpQODNZRXRQX2RuY0hRQl9ObEdjWDB4RklZT1JKbGJ1UHhpN3R3Z3NOUnRfVWJqRQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTE16eDduUlYtUzZ4b0Y5b1JSaEZrY1JLdnVsZ0tHOTdGWjd3djFqUElFdHpQODNZRXRQX2RuY0hRQl9ObEdjWDB4RklZT1JKbGJ1UHhpN3R3Z3NOUnRfVWJqRQ?oc=5\" target=\"_blan",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "博報堂とNTTデータが新会社「HAKUHODO ITTENI」設立、デマンドチェーン変革を支援。",
+    "true_intent": "企業のDX需要を取り込み、両社の収益拡大を図るのが狙い。生活者発想を謳うが、データ収集・利用におけるプライバシーへの懸念も考慮すべき。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "博報堂, NTTデータ",
+    "action_required": true,
+    "category": "広告/IT",
+    "target_year": "2027",
+    "company_profile": "## 博報堂 & NTTデータ 本質的価値と27卒が狙うべき理由\n\n**博報堂**\n\n1.  **主要武器**: 創造性と実行力を両立する「生活者発想」。多様な才能を束ね、社会を動かすムーブメントを生み出す力。\n2.  **26-27卒への温度感**: 変化を恐れず、自ら道を切り拓く人材を積極採用。多様なバックグラウンドを重視。\n3.  **EGO適性**: 構造的思考は必須。AI等の先端技術をクリエイティブに活用する姿勢を重視。\n4.  **裏の弱点**: 変化の速さへの対応、デジタル人材育成の遅れ。組織の縦割り構造がイノベーションを阻害する可能性。\n\n**NTTデータ**\n\n1.  **主要武器**: 国内最大級のSIerとしての実績と信頼。社会インフラを支える技術力と、グローバル展開の加速。\n2.  **26-27卒への温度感**: デジタル技術に精通し、社会課題解決に貢献できる人材を求める。専門性重視の傾向。\n3.  **EGO適性**: 論理的思考力、問題解決能力は必須。AI、データ分析等のスキルを持つ人材を高く評価。\n4.  **裏の弱点**: 官僚的な体質、意思決定の遅さ。新規事業創出におけるスピード感の欠如。\n",
+    "deep_web_intel": "## 博報堂 (HAKUHODO Inc.) Key Points:\n\n*   **Core:** Creative agency focused on societal value creation through consumer insights.\n*   **Services:** Advertising, marketing, corporate information, data/knowledge resources.\n*   **Digital Presence:** Website with news, company info, recruitment, data, and insights.\n\n## NTTデータ (Gap Analysis - No Data Provided):\n\n*   No information available in provided data."
+  },
+  "critical_analysis": {
+    "true_intent": "企業のDX需要を取り込み、両社の収益拡大を図るのが狙い。生活者発想を謳うが、データ収集・利用におけるプライバシーへの懸念も考慮すべき。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:41:55.542482",
+  "source": "Active:博報堂"
+}

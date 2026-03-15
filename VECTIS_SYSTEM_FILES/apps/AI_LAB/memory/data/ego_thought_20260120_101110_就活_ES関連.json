@@ -1,0 +1,15 @@
+{
+  "type": "thought",
+  "category": "就活・ES関連",
+  "timestamp": "2026-01-20T10:11:10.594421",
+  "content": "生成AIについて調べて",
+  "context": {
+    "source": "text_router",
+    "auto_captured": true,
+    "routed_category": "就活・ES関連"
+  },
+  "metadata": {
+    "length": 11,
+    "has_keywords": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "デンソー、車にDockerコンテナ SDVのアプリ開発基盤で（2ページ目） - 日経クロステック",
+  "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1ocXdRb3VyaV8yMnhKQTJtSE1JVlFmeThaRHJmV1YxaFhpb1YtazQ4YmgxMjVONDZvWUY5YjJmbnh0U2pMOHhNS3E0MV9mWk82dWlZSTVzV2xOZEtjSGdlQXRZSVgyaVBIOWxKX0syam9SUQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE1ocXdRb3VyaV8yMnhKQTJtSE1JVlFmeThaRHJmV1YxaFhpb1YtazQ4YmgxMjVONDZvWUY5YjJmbnh0U2pMOHhNS3E0MV9mWk82dWlZSTVzV2xOZEtjSGdlQXRZSVgyaVBIOWxKX0syam9SUQ?oc=5\" target=\"_blank\">デンソー、車にDockerコンテナ SDVのアプリ開発基盤で（2ページ目）</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">日経クロステック</font>",
+  "ai_analysis": {
+    "strength": "SDV向け開発基盤の内製化による技術力のアピール、開発効率向上によるコスト削減、変化への迅速な対応力。",
+    "weakness": "Dockerコンテナ技術に特化した人材の不足、セキュリティリスクの増大、既存のレガシーシステムとの連携の難しさ、開発基盤の普及と標準化の遅れ。",
+    "opportunity": "SDV関連技術、特にDockerコンテナ、Kubernetes等の知識・スキルを持つ人材への需要増。デンソーへの就職、あるいはSDV関連企業への就職のチャンス。",
+    "threat": "他企業による類似プラットフォームの開発競争激化、セキュリティ脆弱性の発見による信頼失墜、自動車業界全体のSDVシフトの遅延。"
+  },
+  "critical_analysis": {},
+  "deep_strategic_dossier": "",
+  "bias": "",
+  "collected_at": "2026-01-28T11:35:20.368749",
+  "source": "Active:デンソー",
+  "score": 5
+}

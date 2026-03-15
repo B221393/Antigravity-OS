@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS Node Studio (Intelligent)</title>
+    <style>
+        :root {
+            --bg: #1e1e1e;
+            --panel: #252526;
+            --accent: #007acc;
+            --text: #d4d4d4;
+            --border: #333;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Layout */
+        #sidebar {
+            width: 280px;
+            background: var(--panel);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .tab-bar {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            background: #2d2d30;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .tab.active {
+            background: var(--panel);
+            border-bottom: 3px solid var(--accent);
+            color: white;
+        }
+
+        #palette-view,
+        #files-view {
+            padding: 10px;
+            overflow-y: auto;
+            flex-grow: 1;
+            display: none;
+        }
+
+        #palette-view.show,
+        #files-view.show {
+            display: block;
+        }
+
+        .cat-head {
+            font-weight: bold;
+            margin: 15px 0 5px 0;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .block-item {
+            background: #333;
+            padding: 6px 10px;
+            margin-bottom: 4px;
+            border-radius: 4px;
+            cursor: grab;
+            border-left: 4px solid transparent;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .block-item:hover {
+            background: #444;
+        }
+
+        .c-event {
+            border-left-color: #FFBF00;
+        }
+
+        .c-logic {
+            border-left-color: #59C059;
+        }
+
+        .c-math {
+            border-left-color: #4C97FF;
+        }
+
+        .c-draw {
+            border-left-color: #9966FF;
+        }
+
+        .c-ai {
+            border-left-color: #FF00FF;
+        }
+
+        /* Magenta for AI */
+        .c-custom {
+            border-left-color: #FFFFFF;
+        }
+
+        /* White for Custom */
+
+        #main-view {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        #top-bar {
+            height: 45px;
+            background: var(--panel);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            justify-content: space-between;
+        }
+
+        #canvas-container {
+            flex-grow: 1;
+            position: relative;
+            background: #1e1e1e radial-gradient(#2a2a2a 1px, transparent 1px);
+            background-size: 20px 20px;
+            overflow: hidden;
+        }
+
+        /* Nodes */
+        .node {
+            position: absolute;
+            min-width: 140px;
+            background: #333;
+            border: 1px solid #555;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            user-select: none;
+            z-index: 10;
+            font-family: 'Consolas', monospace;
+        }
+
+        .node.selected {
+            border-color: white;
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .node-header {
+            padding: 6px 10px;
+            border-radius: 7px 7px 0 0;
+            font-weight: bold;
+            font-size: 0.85em;
+            display: flex;
+            justify-content: space-between;
+            cursor: grab;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .node-body {
+            padding: 8px;
+            background: #2b2b2b;
+            border-radius: 0 0 7px 7px;
+        }
+
+        .socket {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #888;
+            margin: 4px 0;
+            cursor: crosshair;
+            border: 2px solid #333;
+            transition: transform 0.2s;
+        }
+
+        .socket:hover {
+            transform: scale(1.3);
+            background: white;
+        }
+
+        .socket.in {
+            float: left;
+            margin-left: -14px;
+            background: #eee;
+        }
+
+        .socket.out {
+            float: right;
+            margin-right: -14px;
+            background: #eee;
+        }
+
+        svg {
+            position: absolute;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        path {
+            stroke: #888;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+        }
+
+        /* Windows */
+        .result-window {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            width: 420px;
+            height: 340px;
+            background: #252526;
+            border: 2px solid #555;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            border-radius: 6px;
+        }
+
+        .res-header {
+            background: #333;
+            color: white;
+            padding: 8px;
+            font-weight: bold;
+            cursor: grab;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #444;
+        }
+
+        .res-content {
+            flex-grow: 1;
+            background: black;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas#game-canvas {
+            border: 1px solid #333;
+        }
+
+        button {
+            background: #444;
+            border: 1px solid #555;
+            color: #ccc;
+            padding: 6px 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #555;
+            color: white;
+        }
+
+        button.primary {
+            background: var(--accent);
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="tab-bar">
+            <div class="tab active" onclick="switchTab('palette')">🧱 Blocks</div>
+            <div class="tab" onclick="switchTab('mixer')">🎛️ Mixer</div>
+            <div class="tab" onclick="switchTab('files')">📂 Files</div>
+        </div>
+
+        <div id="palette-view" class="show">
+            <!-- ... (existing palette content) ... -->
+            <div class="cat-head">
+                <div class="cat-dot" style="background:#FF00FF"></div>Intelligence
+            </div>
+            <div class="block-item c-ai" onclick="addNode('AskAI')">🤖 Ask AI</div>
+            <div class="block-item c-ai" onclick="addNode('WebSearch')">🌐 Web Search</div>
+
+            <div class="cat-head">
+                <div class="cat-dot" style="background:white"></div>Custom
+            </div>
+            <button onclick="createCustomBlock()" style="width:100%; margin-bottom:10px;">📦 Quick Group (Def)</button>
+            <div id="custom-blocks-list"></div>
+
+            <div class="cat-head">
+                <div class="cat-dot" style="background:#FFBF00"></div>Events
+            </div>
+            <div class="block-item c-event" onclick="addNode('Start')">🚩 Start</div>
+            <div class="block-item c-event" onclick="addNode('GameLoop')">↻ Game Loop</div>
+
+            <div class="cat-head">
+                <div class="cat-dot" style="background:#4C97FF"></div>Logic & Math
+            </div>
+            <div class="block-item c-math" onclick="addNode('SetVar')">📦 Set Variable</div>
+            <div class="block-item c-math" onclick="addNode('ChangeVar')">📈 Change Var</div>
+            <div class="block-item c-logic" onclick="addNode('If')">❓ If Condition</div>
+            <div class="block-item c-math" onclick="addNode('Random')">🎲 Random</div>
+            <div class="block-item c-math" onclick="addNode('Log')">📝 Debug Log</div>
+
+            <div class="cat-head">
+                <div class="cat-dot" style="background:#9966FF"></div>Graphics
+            </div>
+            <div class="block-item c-draw" onclick="addNode('InitCanvas')">🖼 Init Canvas</div>
+            <div class="block-item c-draw" onclick="addNode('ClearRect')">🧹 Clear Screen</div>
+            <div class="block-item c-draw" onclick="addNode('DrawRect')">🟥 Draw Rect</div>
+        </div>
+
+        <div id="mixer-view" style="padding:10px; display:none; overflow-y:auto; flex-grow:1;">
+            <div style="margin-bottom:10px; font-weight:bold; color:#aaa;">Base App</div>
+            <select id="mixer-base"
+                style="width:100%; padding:5px; background:#333; color:white; border:1px solid #555;">
+                <option value="tetris">Tetris Game</option>
+                <option value="todo">ToDo List</option>
+                <option value="snake">Snake Game</option>
+                <option value="clock">Digital Clock</option>
+            </select>
+
+            <div style="margin:15px 0 10px 0; font-weight:bold; color:#aaa;">Modifiers (Ingredients)</div>
+            <div id="mixer-ingredients">
+                <label style="display:block; margin:5px 0;"><input type="checkbox" value="neon"> 🧬 Neon Visuals</label>
+                <label style="display:block; margin:5px 0;"><input type="checkbox" value="hard"> 🔥 Hard Mode</label>
+                <label style="display:block; margin:5px 0;"><input type="checkbox" value="sound"> 🔊 Sound
+                    Effects</label>
+                <label style="display:block; margin:5px 0;"><input type="checkbox" value="score"> 🏆 High Score</label>
+                <label style="display:block; margin:5px 0;"><input type="checkbox" value="multi"> 👥 2 Player</label>
+            </div>
+
+            <button onclick="generateMix()"
+                style="width:100%; margin-top:15px; background:linear-gradient(45deg, #FF00FF, #00FFFF); color:black; font-weight:bold; padding:10px;">✨
+                Generate Code</button>
+            <p style="font-size:0.8em; color:#666; margin-top:10px;">Combines snippets to create a unique result without
+                pure AI.</p>
+        </div>
+
+        <div id="files-view">
+            <div id="file-list"></div>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div id="main-view">
+        <div id="top-bar">
+            <div style="display:flex; gap:10px; align-items:center;">
+                <span style="font-weight:bold; color:white;">VECTIS Studio 8</span>
+                <button onclick="saveFlow()">💾 Save</button>
+                <button onclick="compileAndRun()">▶ Run Async</button>
+                <button onclick="vibeEdit()"
+                    style="background: linear-gradient(45deg, #ff00ff, #00ffff); color:black; font-weight:bold; border:none;">✨
+                    Vibe Edit</button>
+            </div>
+            <div>
+                <button onclick="toggleCodePanel()">Errors / Code &lt;&gt;</button>
+                <span style="font-size:0.8em; color:#888; margin-left:10px;">Select nodes to create Custom Block</span>
+            </div>
+        </div>
+        <div style="display:flex; flex-grow:1; position:relative; overflow:hidden;">
+            <div id="canvas-container" onmousedown="panStart(event)" style="flex-grow:1; position:relative;">
+                <svg id="connections"></svg>
+            </div>
+            <div id="code-panel"
+                style="width:0px; background:#1e1e1e; border-left:1px solid #333; transition:width 0.2s; display:flex; flex-direction:column;">
+                <div
+                    style="padding:10px; background:#252526; border-bottom:1px solid #333; font-weight:bold; display:flex; justify-content:space-between;">
+                    <span>Code / Script View</span>
+                    <div>
+                        <button onclick="saveScript()"
+                            style="padding:0 5px; margin-right:5px; background:#007acc; border:none; color:white;">💾
+                            Save</button>
+                        <button onclick="toggleCodePanel()" style="padding:0 5px;">×</button>
+                    </div>
+                </div>
+                <textarea id="code-editor"
+                    style="flex-grow:1; background:#1e1e1e; color:#d4d4d4; border:none; padding:10px; resize:none; font-family:consolas,monospace;"
+                    placeholder="Python script content or generated code..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Window -->
+    <div id="app-window" class="result-window" style="display:none;">
+        <div class="res-header" onmousedown="winDragStart(event)">
+            <span>🕹 Running...</span>
+            <button onclick="stopApp()"
+                style="height:24px; line-height:10px; padding:0 8px; background:#d32f2f;">×</button>
+        </div>
+        <div class="res-content">
+            <canvas id="game-canvas" width="400" height="300"></canvas>
+            <div id="console-out"
+                style="position:absolute; bottom:0; left:0; right:0; height:100px; background:rgba(0,0,0,0.8); color:#0f0; font-family:monospace; font-size:10px; overflow:auto; padding:5px; pointer-events:none;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === Graph State ===
+        let nodes = [];
+        let edges = [];
+        let nextId = 1;
+        let customDefs = {}; // Stored definitions for Custom Blocks
+
+        const COLORS = { 'Event': '#FFBF00', 'Logic': '#59C059', 'Math': '#4C97FF', 'Draw': '#9966FF', 'AI': '#FF00FF', 'Custom': '#FFF' };
+        const DEFS = {
+            'Start': { cat: 'Event' }, 'GameLoop': { cat: 'Event' },
+            'AskAI': { cat: 'AI', params: { prompt: 'Hello!', store: 'ai_res' } },
+            'WebSearch': { cat: 'AI', params: { query: 'Vectis', store: 'search_res' } },
+            'SetVar': { cat: 'Math', params: { name: 'x', val: '0' } },
+            'ChangeVar': { cat: 'Math', params: { name: 'x', by: '1' } },
+            'If': { cat: 'Logic', params: { cond: 'x > 10' } },
+            'Random': { cat: 'Math', params: { store: 'x', min: '0', max: '100' } },
+            'Log': { cat: 'Math', params: { msg: 'Value: x' } },
+            'InitCanvas': { cat: 'Draw', params: { w: 400, h: 300 } },
+            'ClearRect': { cat: 'Draw', params: { color: 'black' } },
+            'DrawRect': { cat: 'Draw', params: { x: '10', y: '10', w: '20', h: '20', color: 'red' } }
+        };
+
+        // === UI Logic ===
+        function addNode(type, x, y, params, isCustom = false) {
+            let def = DEFS[type];
+            if (!def && isCustom) def = { cat: 'Custom', params: {} };
+            if (!def) return;
+
+            const id = nextId++;
+            nodes.push({
+                id, type, x: x || 100, y: y || 100,
+                params: params ? { ...params } : { ...(def.params || {}) },
+                cat: def.cat,
+                custom: isCustom
+            });
+            renderGraph();
+        }
+
+        function renderGraph() {
+            const c = document.getElementById('canvas-container');
+            const s = document.getElementById('connections');
+            // Clear nodes (keep SVG)
+            c.querySelectorAll('.node').forEach(n => n.remove());
+            s.innerHTML = '';
+
+            nodes.forEach(n => {
+                const el = document.createElement('div');
+                el.className = `node ${n.selected ? 'selected' : ''}`;
+                el.style.left = n.x + 'px'; el.style.top = n.y + 'px';
+                el.onmousedown = (e) => { e.stopPropagation(); toggleSelect(n.id, e.shiftKey); nodeDragStart(e, n.id); };
+
+                let body = '';
+                for (let k in n.params) {
+                    body += `<div style="display:flex;justify-content:space-between;font-size:0.8em;margin:2px 0;color:#aaa;">
+                    <span>${k}</span><input style="width:70px;background:#111;color:white;border:none;" value="${n.params[k]}" onchange="updateParam(${n.id},'${k}',this.value)">
+                </div>`;
+                }
+
+                el.innerHTML = `
+                <div class="node-header" style="background:${COLORS[n.cat] || '#888'};color:black;">${n.type} #${n.id}</div>
+                <div class="node-body">${body}</div>
+                <div class="socket out" onmousedown="cableStart(event, ${n.id})"></div>
+                <div class="socket in" onmousedown="dockStart(event, ${n.id})"></div>
+            `;
+                c.appendChild(el);
+            });
+            edges.forEach(e => drawCurve(e.from, e.to));
+        }
+
+        // === Interaction ===
+        let selection = [];
+        function toggleSelect(id, multi) {
+            if (!multi) { selection.forEach(i => nodes.find(n => n.id == i).selected = false); selection = []; }
+            const n = nodes.find(x => x.id == id); n.selected = !n.selected;
+            if (n.selected) selection.push(id); else selection = selection.filter(x => x != id);
+            renderGraph();
+        }
+
+        function drawCurve(from, to) {
+            const n1 = nodes.find(x => x.id == from), n2 = nodes.find(x => x.id == to);
+            if (!n1 || !n2) return;
+            const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            p.setAttribute("d", `M ${n1.x + 140} ${n1.y + 20} C ${n1.x + 190} ${n1.y + 20}, ${n2.x - 50} ${n2.y + 20}, ${n2.x} ${n2.y + 20}`);
+            document.getElementById('connections').appendChild(p);
+        }
+
+        let dragging = null, dragOff = { x: 0, y: 0 };
+        function nodeDragStart(e, id) { dragging = { id, type: 'node' }; const n = nodes.find(x => x.id == id); dragOff = { x: e.clientX - n.x, y: e.clientY - n.y }; document.onmousemove = onDrag; document.onmouseup = endDrag; }
+        function winDragStart(e) { dragging = { el: document.getElementById('app-window'), type: 'win' }; dragOff = { x: e.clientX - dragging.el.offsetLeft, y: e.clientY - dragging.el.offsetTop }; document.onmousemove = onDrag; document.onmouseup = endDrag; }
+        function onDrag(e) {
+            if (!dragging) return;
+            if (dragging.type == 'node') { const n = nodes.find(x => x.id == dragging.id); n.x = e.clientX - dragOff.x; n.y = e.clientY - dragOff.y; renderGraph(); }
+            else { dragging.el.style.left = (e.clientX - dragOff.x) + 'px'; dragging.el.style.top = (e.clientY - dragOff.y) + 'px'; }
+        }
+        function endDrag() { dragging = null; document.onmousemove = null; }
+
+        let cabling = null;
+        function cableStart(e, id) { e.stopPropagation(); cabling = { from: id }; }
+        function dockStart(e, id) { if (cabling) { e.stopPropagation(); edges.push({ from: cabling.from, to: id }); cabling = null; renderGraph(); } }
+        function updateParam(id, k, v) { nodes.find(n => n.id == id).params[k] = v; }
+
+        // === Custom Block Logic ===
+        function createCustomBlock() {
+            if (selection.length < 1) { alert("Select nodes first!"); return; }
+            const name = prompt("Name this block:");
+            if (!name) return;
+
+            // Clone selected nodes/edges
+            const subNodes = nodes.filter(n => selection.includes(n.id));
+            // Find edges internal to selection
+            const subEdges = edges.filter(e => selection.includes(e.from) && selection.includes(e.to));
+
+            // Find "entry" node (roughly top-left or first)
+            const entryId = subNodes[0].id; // Simple assumption
+
+            customDefs[name] = { nodes: JSON.parse(JSON.stringify(subNodes)), edges: JSON.parse(JSON.stringify(subEdges)), entryId };
+
+            // Add to palette
+            const d = document.createElement('div');
+            d.className = 'block-item c-custom';
+            d.innerText = '📦 ' + name;
+            d.onclick = () => addNode(name, 100, 100, {}, true);
+            document.getElementById('custom-blocks-list').appendChild(d);
+            alert(`Block '${name}' created!`);
+        }
+
+        // === ASYNC RUNNER ===
+        let loopId = null;
+        let isRunning = false;
+        let consoleDiv = document.getElementById('console-out');
+
+        function log(msg) { consoleDiv.innerText += msg + "\n"; consoleDiv.scrollTop = consoleDiv.scrollHeight; }
+
+        function stopApp() {
+            if (loopId) clearInterval(loopId);
+            loopId = null; isRunning = false;
+            document.getElementById('app-window').style.display = 'none';
+        }
+
+        async function compileAndRun() {
+            stopApp();
+            document.getElementById('app-window').style.display = 'flex';
+            consoleDiv.innerText = "Started...\n";
+
+            const canvas = document.getElementById('game-canvas');
+            const ctx = canvas.getContext('2d');
+            const vars = {};
+
+            const starts = nodes.filter(n => n.type === 'Start');
+            const loops = nodes.filter(n => n.type === 'GameLoop');
+
+            if (starts.length > 0) {
+                await runChain(starts[0].id, { ctx, vars, canvas });
+            }
+
+            if (loops.length > 0) {
+                loopId = setInterval(async () => {
+                    if (isRunning) return; // Prevent overlap
+                    isRunning = true;
+                    await runChain(loops[0].id, { ctx, vars, canvas });
+                    isRunning = false;
+                }, 33); // ~30 FPS
+            }
+        }
+
+        async function runChain(startId, env) {
+            let curr = nodes.find(n => n.id == startId);
+            let safety = 0;
+            while (curr && safety++ < 500) {
+                try {
+                    // Execute Node
+                    const shouldCont = await execNode(curr, env);
+                    if (!shouldCont) break; // Condition fail logic
+
+                    // Find next
+                    const edge = edges.find(e => e.from == curr.id);
+                    if (edge) {
+                        curr = nodes.find(n => n.id == edge.to);
+                    } else {
+                        curr = null;
+                    }
+                } catch (e) {
+                    log("Error: " + e);
+                    break;
+                }
+            }
+        }
+
+        async function execNode(n, env) {
+            const { vars, ctx, canvas } = env;
+            const p = n.params;
+            const V = (v) => {
+                if (typeof v !== 'string') return v;
+                // Variable interpolation
+                if (vars[v] !== undefined) return vars[v];
+                if (v.match(/^[0-9.-]+$/)) return parseFloat(v);
+                return v.replace(/\{(\w+)\}/g, (_, name) => vars[name] || '');
+            };
+
+            if (n.custom) {
+                // Custom Block Execution!
+                const def = customDefs[n.type];
+                if (def) {
+                    // Should run the subgraph. 
+                    // For simplicity, we run the subgraph in the SAME env.
+                    // But we need to define the 'start' of the subgraph.
+                    // And we need to wait for it to finish?
+                    // This Runner implementation is linear. It doesn't support recursive 'call and return' well yet because edge finding depends on IDs which might clash?
+                    // Actually, Custom Block Defs have OLD IDs. We can't query 'nodes' list for them.
+                    // We must map their IDs or run them virtually.
+                    // Current simple hack: Skip logic for custom blocks in this prototype phase to avoid crash.
+                    log(`[Custom] Running ${n.type}... (No-op in prototype)`);
+                }
+                return true;
+            }
+
+            switch (n.type) {
+                case 'Start': case 'GameLoop': return true;
+                case 'Log': log(V(p.msg)); return true;
+                case 'SetVar': vars[p.name] = V(p.val); return true;
+                case 'ChangeVar': vars[p.name] = (vars[p.name] || 0) + V(p.by); return true;
+                case 'Random': vars[p.store] = Math.floor(Math.random() * (V(p.max) - V(p.min)) + V(p.min)); return true;
+
+                case 'If':
+                    // Simple Eval for prototyping
+                    try {
+                        let expr = p.cond;
+                        for (let k in vars) expr = expr.split(k).join(vars[k]);
+                        // Safety check needed in real app
+                        return eval(expr);
+                    } catch (e) { return false; }
+
+                case 'InitCanvas': canvas.width = p.w; canvas.height = p.h; return true;
+                case 'ClearRect': ctx.fillStyle = p.color; ctx.fillRect(0, 0, canvas.width, canvas.height); return true;
+                case 'DrawRect': ctx.fillStyle = p.color; ctx.fillRect(V(p.x), V(p.y), V(p.w), V(p.h)); return true;
+
+                case 'AskAI':
+                    log("🤖 Asking AI...");
+                    const r = await fetch('/api/ai', { method: 'POST', body: JSON.stringify({ prompt: V(p.prompt) }) });
+                    const d = await r.json();
+                    vars[p.store] = d.result;
+                    log(`AI: ${d.result.substring(0, 20)}...`);
+                    return true;
+
+                case 'WebSearch':
+                    log("🌐 Searching...");
+                    const r2 = await fetch('/api/search', { method: 'POST', body: JSON.stringify({ query: V(p.query) }) });
+                    const d2 = await r2.json();
+                    vars[p.store] = d2.result;
+                    log(`Search: Done.`);
+                    return true;
+            }
+            return true;
+        }
+
+        // Tabs
+        function switchTab(t) {
+            document.getElementById('palette-view').className = t == 'palette' ? 'show' : '';
+            document.getElementById('files-view').className = t == 'files' ? 'show' : '';
+            document.getElementById('mixer-view').style.display = t == 'mixer' ? 'block' : 'none';
+
+            document.querySelectorAll('.tab').forEach((e, i) => {
+                e.classList.remove('active');
+                if ((t == 'palette' && i == 0) || (t == 'mixer' && i == 1) || (t == 'files' && i == 2)) e.classList.add('active');
+            });
+            if (t == 'files') refreshFiles();
+        }
+
+        async function generateMix() {
+            const base = document.getElementById('mixer-base').value;
+            const ingredients = Array.from(document.querySelectorAll('#mixer-ingredients input:checked')).map(cb => cb.value);
+
+            alert(`Generating: ${base} + ${ingredients.join(', ')} ...`);
+
+            // Call backend to generate
+            try {
+                const r = await fetch('/api/mix_code', {
+                    method: 'POST',
+                    body: JSON.stringify({ base, ingredients })
+                });
+                const d = await r.json();
+
+                if (d.status === 'success') {
+                    if (!isCodeOpen) toggleCodePanel();
+                    document.getElementById('code-editor').value = d.code;
+                    alert("Generated! Check Code View.");
+                } else {
+                    alert("Error: " + d.message);
+                }
+            } catch (e) { console.error(e); alert("Mix failed"); }
+        }
+        async function refreshFiles() {
+            try {
+                const r = await fetch('/api/flows'); const d = await r.json();
+                let html = `<div style="padding:10px;text-align:center;"><button onclick="openExplorer()" style="width:100%">📂 Open Folder</button></div>`;
+                html += d.flows.map(f => `
+                    <div style="padding:5px; border-bottom:1px solid #333; display:flex; justify-content:space-between; align-items:center;">
+                        <span style="cursor:pointer;" onclick="loadFlow('${f}')">📄 ${f}</span>
+                        <button style="font-size:0.8em; padding:2px 5px;" onclick="duplicateFlow('${f}')">📋</button>
+                    </div>`).join('');
+                document.getElementById('file-list').innerHTML = html;
+            } catch (e) { }
+        }
+        async function openExplorer() {
+            await fetch('/api/open_explorer');
+        }
+        async function duplicateFlow(f) {
+            if (confirm(`Duplicate ${f}?`)) {
+                await fetch('/api/duplicate', { method: 'POST', body: JSON.stringify({ filename: f }) });
+                refreshFiles();
+            }
+        }
+
+        async function vibeEdit() {
+            if (selection.length === 0) { alert("Select nodes to Vibe Edit!"); return; }
+            const promptText = prompt("✨ Vibe Edit: How should these nodes change?");
+            if (!promptText) return;
+
+            // In a real Vibe Coding implementation, this would send the node JSON and prompt to the LLM 
+            // and replace the nodes with the response.
+            // For now, we'll simulate by adding a Log node describing the change.
+            const n = nodes.find(n => n.id == selection[0]);
+            addNode('Log', n.x + 150, n.y, { msg: `[Vibe] ${promptText}` });
+        }
+        async function saveFlow() {
+            const f = prompt("Filename:", "flow.json");
+            if (f) fetch('/api/save', { method: 'POST', body: JSON.stringify({ filename: f, graph: { nodes, edges } }) });
+        }
+        // === Shortcuts ===
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.key === 's') { e.preventDefault(); saveFlow(); }
+            if (e.ctrlKey && e.key === 'Enter') { e.preventDefault(); compileAndRun(); }
+            if (e.key === 'Delete') { deleteSelected(); }
+        });
+
+        function deleteSelected() {
+            nodes = nodes.filter(n => !n.selected);
+            // Remove edges connected to deleted nodes
+            edges = edges.filter(e => nodes.find(n => n.id == e.from) && nodes.find(n => n.id == e.to));
+            selection = [];
+            renderGraph();
+        }
+        // === Code Panel ===
+        let isCodeOpen = false;
+        function toggleCodePanel() {
+            isCodeOpen = !isCodeOpen;
+            document.getElementById('code-panel').style.width = isCodeOpen ? '400px' : '0px';
+        }
+
+        // Updated Load Flow to handle scripts
+        async function loadFlow(fname) {
+            try {
+                const r = await fetch('/api/flows/' + fname);
+                const d = await r.json();
+
+                if (d.type === 'script') {
+                    // It's a python script
+                    if (!isCodeOpen) toggleCodePanel();
+                    document.getElementById('code-editor').value = d.content;
+                    alert("Loaded script into Code View. (Visual editing not supported for pure scripts yet)");
+                } else {
+                    // It's a node graph
+                    nodes = d.nodes || [];
+                    edges = d.edges || [];
+                    if (d.nextId) nextId = d.nextId;
+                    else nextId = nodes.length > 0 ? Math.max(...nodes.map(n => n.id)) + 1 : 1;
+                    renderGraph();
+                    // Also generate code preview?
+                    // document.getElementById('code-editor').value = JSON.stringify(d, null, 2);
+                }
+            } catch (e) { console.error(e); }
+        }
+    </script>
+</body>
+
+</html>

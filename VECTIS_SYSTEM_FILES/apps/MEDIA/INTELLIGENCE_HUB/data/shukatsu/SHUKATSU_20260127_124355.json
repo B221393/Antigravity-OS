@@ -1,0 +1,22 @@
+{
+  "title": "BOSTON CAREER FORUM 2025 - met",
+  "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNQk9LNDh5c3NSdW90RVZVLThnY0FXUEFIUnluUzVyRU9NTV95Qnpra2czQnFoYU4ycDY1RWpOQm9RR21uaVI1bDJiRmxJWWZPNG00NWtfbjIyYUF6UmNzOXFfRGIyMHdnNTBxOG90MXRQQWZEUVdUbEdxZjY4aVQ5TTNJZlo2Zw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMihgFBVV95cUxNQk9LNDh5c3NSdW90RVZVLThnY0FXUEFIUnluUzVyRU9NTV95Qnpra2czQnFoYU4ycDY1RWpOQm9RR21uaVI1bDJiRmxJWWZPNG00NWtfbjIyYUF6UmNzOXFfRGIyMHdnNTBxOG90MX",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "経産省がボストンキャリアフォーラム2025の情報を公開。27卒も対象となりうる。",
+    "true_intent": "優秀な学生の海外流出促進を批判的に捉え、グローバル人材育成という美名のもと、国内産業の空洞化を招く可能性。経産省の国際競争力強化策の一環だが、国内雇用への影響は不明。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "優秀な学生の海外流出促進を批判的に捉え、グローバル人材育成という美名のもと、国内産業の空洞化を招く可能性。経産省の国際競争力強化策の一環だが、国内雇用への影響は不明。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:43:55.597898",
+  "source": "経産省 採用"
+}

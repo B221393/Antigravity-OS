@@ -1,0 +1,38 @@
+{
+    "categories": [
+        {
+            "name": "🧠 CORE",
+            "apps": [
+                {
+                    "name": "情報収集",
+                    "key": "d",
+                    "screen": "discovery",
+                    "description": "自動情報収集の状態確認"
+                },
+                {
+                    "name": "知識検索",
+                    "key": "s",
+                    "screen": "search",
+                    "description": "収集した知識を検索"
+                },
+                {
+                    "name": "就活支援",
+                    "key": "j",
+                    "screen": "career",
+                    "description": "企業分析・面接練習"
+                }
+            ]
+        },
+        {
+            "name": "🎮 RELAX",
+            "apps": [
+                {
+                    "name": "ゲーム",
+                    "key": "g",
+                    "screen": "games",
+                    "description": "息抜き・タイピング練習"
+                }
+            ]
+        }
+    ]
+}

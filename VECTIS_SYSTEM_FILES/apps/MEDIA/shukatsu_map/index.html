@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS Intelligence Map - 就活戦略地図</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <style>
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --accent: #3b82f6;
+            --text: #f1f5f9;
+            --text-dim: #94a3b8;
+            --success: #10b981;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(30, 41, 59, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            width: 300px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 15px;
+        }
+
+        .legend {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        .custom-popup .leaflet-popup-content-wrapper {
+            background: var(--surface);
+            color: var(--text);
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        .custom-popup .leaflet-popup-tip {
+            background: var(--surface);
+        }
+
+        .popup-title {
+            font-weight: bold;
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .popup-industry {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+        }
+
+        .popup-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--success);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .popup-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay">
+        <h1>VECTIS Intelligence Map</h1>
+        <div class="stats" id="comp-count">Loading intelligence nodes...</div>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="dot" style="background: #3b82f6; box-shadow: 0 0 8px #3b82f6;"></div><span>Major / Strategic
+                    Targets</span>
+            </div>
+            <div class="legend-item">
+                <div class="dot" style="background: #10b981; box-shadow: 0 0 8px #10b981;"></div><span>Hyogo / Kansai
+                    Base</span>
+            </div>
+        </div>
+        <div style="margin-top: 20px; font-size: 0.8rem; color: var(--text-dim);">
+            ※ Click on map markers to view company intelligence.
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""></script>
+    <script>
+        const map = L.map('map', {
+            zoomControl: false
+        }).setView([36.2048, 138.2529], 6);
+
+        // Professional Dark Map (CartoDB Dark Matter)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+        }).addTo(map);
+
+        L.control.zoom({
+            position: 'bottomright'
+        }).addTo(map);
+
+        // Load Company Data
+        fetch('../../data/company_locations.json')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('comp-count').innerText = `${data.length} Strategic Entities Tracked`;
+
+                data.forEach(company => {
+                    const color = company.prefecture === 'Hyogo' ? '#10b981' : '#3b82f6';
+
+                    const marker = L.circleMarker(company.coords, {
+                        radius: 8,
+                        fillColor: color,
+                        color: "#fff",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    }).addTo(map);
+
+                    const popupContent = `
+                        <div class="custom-popup">
+                            <div class="popup-title">${company.name}</div>
+                            <div class="popup-industry">${company.industry} (${company.prefecture})</div>
+                            <div style="font-size: 0.85rem;">Intelligence Status: <b>Captured</b></div>
+                            <a href="#" class="popup-link">Open Intelligence HQ &rarr;</a>
+                        </div>
+                    `;
+
+                    marker.bindPopup(popupContent);
+                });
+            })
+            .catch(err => console.error("Failed to load company data:", err));
+    </script>
+</body>
+
+</html>

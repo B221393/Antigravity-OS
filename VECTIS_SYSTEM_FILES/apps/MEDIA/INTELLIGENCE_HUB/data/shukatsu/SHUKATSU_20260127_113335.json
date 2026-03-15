@@ -1,0 +1,24 @@
+{
+  "title": "伊藤忠商事×NTTデータ登壇 “次世代人材を惹きつける”採用",
+  "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1aTUxHTjZuYjdVc0xYNHZVOUc3bHBZdE80Tk9HanhrUkd2cWllQ2szVGozdlZIelAxbkpXbW45dDB0WldKRWxkVzFPV25wYWRhMWdhM2JJVzRBMzFmOW9MVTU5LXk5cjgyaTh6MlQxVTdCQlpxZ25LdjFB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiekFVX3lxTE1aTUxHTjZuYjdVc0xYNHZVOUc3bHBZdE80Tk9HanhrUkd2cWllQ2szVGozdlZIelAxbkpXbW45dDB0WldKRWxkVzFPV25wYWRhMWdhM2JJVzRBMzFmOW9MVTU5LXk5cjgyaTh6MlQxVT",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "伊藤忠とNTTデータが28卒採用イベント開催。次世代人材惹きつけが目的。",
+    "true_intent": "大手企業が早期に優秀な学生を囲い込むための宣伝活動。自社のブランドイメージ向上と、競合他社に先駆けた人材獲得競争が目的。",
+    "bias_warning": "あり",
+    "deadline": "null",
+    "company": "伊藤忠商事, NTTデータ",
+    "action_required": true,
+    "category": "広告",
+    "target_year": "2027",
+    "company_profile": "## 伊藤忠商事 & NTTデータ 本質的価値と27卒攻略\n\n**伊藤忠商事**\n\n1.  **主要武器**: 圧倒的な情報収集力と多様な業界への投資による「総合力」。\n2.  **26-27卒への温度感**: 実力主義を強め、変化への対応力がある人材を重視。\n3.  **EGO適性**: 構造的思考は必須。データ分析・AI活用は推進中だが、現場レベルでの浸透はこれから。\n4.  **裏の弱点**: 資源価格変動の影響を受けやすく、新規事業の成功率は低い。\n\n**NTTデータ**\n\n1.  **主要武器**: 国内最大級のSIerとしての実績と、社会インフラを支える技術力。\n2.  **26-27卒への温度感**: デジタル人材育成に注力。主体性と学習意欲を重視。\n3.  **EGO適性**: 構造的思考は必須。AI・データ活用は積極的だが、官僚的な側面も残る。\n4.  **裏の弱点**: 公共事業依存度が高く、海外展開は課題。スピード感に欠ける面も。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   Reddit pages related to Microsoft Rewards and Bing quizzes.\n*   Pages share similar HTML structure (Reddit).\n*   Scripts present for experiments, configuration, and canary testing.\n\n**Structured Summary:**\n\n*   **Content:** Reddit discussions (Microsoft Rewards, Bing Quizzes).\n*   **Structure:** Standard Reddit HTML.\n*   **Functionality:** Client-side scripts for A/B testing, settings, and potentially feature toggles.\n\n**Gap Analysis:**\n\n*   No specific quiz content or answers extracted.\n*   Purpose of the scripts is not fully clear without further context.\n*   No user-generated content extracted."
+  },
+  "critical_analysis": {
+    "true_intent": "大手企業が早期に優秀な学生を囲い込むための宣伝活動。自社のブランドイメージ向上と、競合他社に先駆けた人材獲得競争が目的。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:33:35.445231",
+  "source": "Active:伊藤忠商事"
+}

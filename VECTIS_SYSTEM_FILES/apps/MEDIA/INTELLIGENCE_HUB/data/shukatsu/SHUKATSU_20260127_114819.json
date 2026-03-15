@@ -1,0 +1,24 @@
+{
+  "title": "日産自動車とHonda、経営統合に向けた検討に関する基本合意",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE42ZWZ4OXE0Q2tidnhxYU9BcnpzdWdBY3pHUUc0MDFGMVVjWWNFTW5xNm9rN25QaVFXUWNwMUV3YmxBWFhIOVRja0gtWmNLZ2Npd0VsQ3dfWGxDbFpfVkdVVnpWNGRNVms?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE42ZWZ4OXE0Q2tidnhxYU9BcnpzdWdBY3pHUUc0MDFGMVVjWWNFTW5xNm9rN25QaVFXUWNwMUV3YmxBWFhIOVRja0gtWmNLZ2Npd0VsQ3dfWGxDbFpfVkdVVnpWNGRNVms?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "日産とホンダが経営統合に向け基本合意。自動車業界再編の可能性。",
+    "true_intent": "EVシフトの遅れ、中国市場での苦戦打開が狙い。政府主導の可能性も。部品メーカーなど下請けへの影響大。雇用維持が課題。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "日産自動車, Honda",
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "## 日産自動車/Honda 本質と27卒が狙うべき理由\n\n**日産自動車**\n\n1.  **主要武器**: ルノー・三菱とのアライアンスによるグローバルな開発・生産体制と、電動化技術への先行投資。\n2.  **26-27卒への温度感**: 変革期を支える人材を積極的に採用。多様性重視。\n3.  **EGO適性**: データドリブンな意思決定を推進。AI活用にも積極的。\n4.  **裏の弱点**: アライアンスの複雑さによる意思決定の遅延。企業文化の硬直性。\n\n**Honda**\n\n1.  **主要武器**: 独自の技術力とブランド力。「人・夢・技術」を大切にする企業文化。\n2.  **26-27卒への温度感**: 新領域への挑戦を担う、自律的な人材を重視。\n3.  **EGO適性**: 現場主導の改善文化が根強く、AI活用は発展途上。\n4.  **裏の弱点**: 新規事業の成功率の低さ。電動化戦略の遅れ。\n",
+    "deep_web_intel": "**日産自動車 (Nissan):** No mention in provided sources.\n\n**Honda:** No mention in provided sources.\n\n**Key Points from Sources (Related to Sora - OpenAI's text-to-video model):**\n\n*   Sora 2 is a new model from OpenAI for creating videos.\n*   SaveSora is a free online tool for downloading Sora-generated videos.\n*   A dienmaycholon.com article provides instructions on how to access and use Sora 2 on phones and computers (for content creation).\n\n**Summary:**\n\nThe sources discuss OpenAI's Sora 2 (a video generation model), a tool to download Sora videos (SaveSora), and a guide to using Sora 2.\n\n**Gap Analysis:**\n\n*   No direct information about Nissan or Honda in the provided text."
+  },
+  "critical_analysis": {
+    "true_intent": "EVシフトの遅れ、中国市場での苦戦打開が狙い。政府主導の可能性も。部品メーカーなど下請けへの影響大。雇用維持が課題。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:48:19.937270",
+  "source": "Active:ホンダ"
+}

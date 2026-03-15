@@ -1,0 +1,23 @@
+{
+  "title": "KDDIが中期経営計画を発表、「通信とライフデザインの融合」",
+  "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hX2JfS01ndXpPZkxlSnJReG1tWTVlMmpvLVUwdXFiSzBZdEdtT3Y5VHhvU1NxT3ZJV0tWblQ1aXo3dkpXSVlPcWM5ZXl3bnVnYU1QY0dsVmNZY2hiczVoQlBLZ1BYRWc?oc=5\" targ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIは、通信とライフデザインの統合を達成するために、中期経営計画を発表したと考えられます。",
+    "true_intent": "この情報の裏にある意図は、KDDIが通信とライフデザインの統合によって、新たな収益源や顧客基盤を獲得することで得ることを意味しています。",
+    "bias_warning": "なし",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "company_profile": "- **事業の強み・特徴**: KDDIはデジタルコミュニケーションの分野で業界首位であり、モバイルコンテンツやデジタル広告などの開発と運営が盛っています。\n\n- **社風・カルチャー**: KDDIは、スポーツやスポーツ関連のイベントやプロジェクトを積極的に展開し、社員の創造力とチームワークを強化しています。\n\n- **求める人物像の推測**: KDDIは、技術的な分野やコンテンツ開発に適した人材が求められます。特に、モバイル開発やデジタル広告などの分野は、新規性と創造性に関する知識とスキルが求められます。"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図は、KDDIが通信とライフデザインの統合によって、新たな収益源や顧客基盤を獲得することで得ることを意味しています。",
+    "bias_warning": "なし"
+  },
+  "collected_at": "2026-01-26T17:22:46.910141",
+  "source": "KDDI 事業戦略"
+}

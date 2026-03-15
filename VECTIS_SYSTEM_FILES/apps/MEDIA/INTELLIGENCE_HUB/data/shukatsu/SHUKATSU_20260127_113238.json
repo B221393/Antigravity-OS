@@ -1,0 +1,23 @@
+{
+  "title": "健康経営 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1SbGtKY05pZXpXTmhGSmhlcmhZQ0ZZSmxoNXdJUGpvWFUwcFpPMC0zNUFGM29qUGtXREVrRTJNTHlDbUNLMjdFc1gwMFBZRTkySmFhb2d0Q2ZiUnFDOVRjNWZsQWZEcmNTZXpnaVR3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTE1SbGtKY05pZXpXTmhGSmhlcmhZQ0ZZSmxoNXdJUGpvWFUwcFpPMC0zNUFGM29qUGtXREVrRTJNTHlDbUNLMjdFc1gwMFBZRTkySmFhb2d0Q2ZiUnFDOVRjNWZsQWZEcmNTZXpnaVR3?o",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "KDDIが健康経営を推進。従業員の健康増進を図る取り組み。",
+    "true_intent": "企業イメージ向上、優秀な人材確保、生産性向上、医療費削減が目的。健康経営銘柄認定による株価上昇も視野か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": false,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "## KDDI：就活メンターが見抜く本質と狙い目\n\n1.  **主要武器**: 通信インフラ基盤とau経済圏。顧客データと多様な事業ポートフォリオが強み。通信だけに留まらない成長戦略が強み。\n2.  **26-27卒への温度感**: デジタル人材獲得に積極的。多様なバックグラウンドを持つ学生を重視し、早期選考も活発。\n3.  **EGO適性**: 構造的思考は必須。AI活用にも積極的だが、現場レベルでの浸透度は部署による。\n4.  **裏の弱点**: 官僚的な側面が残存。新規事業のスピード感や意思決定の遅さが課題となる可能性も。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "企業イメージ向上、優秀な人材確保、生産性向上、医療費削減が目的。健康経営銘柄認定による株価上昇も視野か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:32:38.753885",
+  "source": "Active:KDDI"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "8割以上の学生が「インターンシップは本選考に影響すると思う」",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9iQVRmQmpCNnVDOFI4ZHhhZGlJRndkSWthUTJhcFpmY3E3Uy03b0lqS2g1XzBpNzJEWEpibDBPeF9HM3p0cFVEejNJV0tyYmFyV1Z5QjFUdHBubkxpLUlja05PeGx3WUhISlE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE9iQVRmQmpCNnVDOFI4ZHhhZGlJRndkSWthUTJhcFpmY3E3Uy03b0lqS2g1XzBpNzJEWEpibDBPeF9HM3p0cFVEejNJV0tyYmFyV1Z5QjFUdHBubkxpLUlja05PeGx3WUhISlE?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "8割超がインターン選考影響を認識、6割は不合格でも志望度不変。",
+    "true_intent": "自社（i-plug）の採用プラットフォーム（OfferBox等）利用促進。学生の不安を煽りつつ、選考対策の必要性を訴求、企業側には早期接触の重要性をアピール。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "i-plug",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## i-plug 本質的価値と27卒が狙うべき理由\n\n1. **主要武器**: 逆求人型採用プラットフォーム「OfferBox」による、企業と学生のマッチング精度の高さ。中小・地方企業の人材獲得支援が強み。\n2. **26-27卒への温度感**: 積極採用継続。多様な人材を求める傾向。早期選考ルートも存在。\n3. **EGO適性**: データ分析に基づいたマッチングを重視。AI活用への関心は高いが、組織全体への浸透は途上。構造的思考力は評価される。\n4. **裏の弱点**: OfferBoxへの依存度が高い。競合サービスの台頭や、企業の採用手法変化に弱い可能性あり。\n",
+    "deep_web_intel": "**I-plug Summary:**\n\n*   **Core Business:** 新卒採用ダイレクトリクルーティング (\"OfferBox\" platform).\n*   **Business Model:** 成功報酬型 (no cost until内々定承諾).\n*   **Target Clients:** Startups to large enterprises.\n* **Stock Ticker:** 4177.T (Yahoo! Finance).\n*   **Recognition:** ベストベンチャーWEST100.\n\n**Gap Analysis:**\n\n*   Missing: Financials, leadership, detailed service specifics, competitive landscape."
+  },
+  "critical_analysis": {
+    "true_intent": "自社（i-plug）の採用プラットフォーム（OfferBox等）利用促進。学生の不安を煽りつつ、選考対策の必要性を訴求、企業側には早期接触の重要性をアピール。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:53:44.430964",
+  "source": "Active:電通"
+}

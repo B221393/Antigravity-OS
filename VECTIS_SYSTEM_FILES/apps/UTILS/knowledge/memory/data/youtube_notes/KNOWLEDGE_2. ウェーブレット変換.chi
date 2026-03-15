@@ -1,0 +1,22 @@
+TYPE:FRACTAL_NODE
+TERM:2. ウェーブレット変換
+SRC:Derived from 1. フーリエ変換 (Fourier変換)
+DEPTH:3
+TIME:2026-01-11 21:46
+---BODY---
+## ウェーブレット変換 (Wavelet Transform)
+
+【定義】傅立葉変換派生、時間周波数解析
+
+【構造】
+*   短時間傅立葉変換缺陷補完
+*   窓関数伸縮、高周波分解能向上
+*   多重解像度分析、局所特徴抽出
+
+【意義】非定常信号解析、画像圧縮有用
+
+【関連】
+*   短時間傅立葉変換 (STFT)
+*   多重解像度解析 (Multiresolution Analysis)
+*   信号処理 (Signal Processing)
+

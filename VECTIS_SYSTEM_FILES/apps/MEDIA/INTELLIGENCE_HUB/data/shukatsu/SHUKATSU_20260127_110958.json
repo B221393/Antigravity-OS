@@ -1,0 +1,24 @@
+{
+  "title": "三井物産とKDDI、AI・人流分析で都市DXを推進する新会社",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9EbDF4aGUyUFR0Q2xEckhvS1pSZ1Y2c3VpNmlPRlVvVmsxYlNPSURvam9FbjYyRzZOdW5YS3JQM1k1cVpuZDd4SHZfMG0weVRWemppQ0RNS0k1VE56TElGLVdkakVUeTlqTzhF?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTE9EbDF4aGUyUFR0Q2xEckhvS1pSZ1Y2c3VpNmlPRlVvVmsxYlNPSURvam9FbjYyRzZOdW5YS3JQM1k1cVpuZDd4SHZfMG0weVRWemppQ0RNS0k1VE56TElGLVdkakVUeTlqTzhF?oc=5\"",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "三井物産とKDDIが人流分析AI新会社GEOTRA設立。都市DX推進、スマートシティ貢献を謳う。",
+    "true_intent": "都市OS構築競争への参入。データ収集・分析基盤の囲い込みによる収益化、自治体への影響力拡大が狙い。スマートシティ利権争いの一環。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "三井物産, KDDI",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## 三井物産\n\n1. **主要武器**: 圧倒的な情報網と多様な事業ポートフォリオ。世界中のビジネスチャンスを掴む「総合力」が源泉。\n2. **26-27卒への温度感**: 高い。グローバルリーダー育成への投資意欲旺盛で、多様な人材を求める。\n3. **EGO適性**: 高い。データドリブン経営を推進し、構造的思考とAI活用による事業変革を重視。\n4. **裏の弱点**: 巨大組織ゆえの意思決定の遅さ。新規事業創出におけるスピード感の欠如。\n\n## KDDI\n\n1. **主要武器**: 通信インフラを基盤とした顧客基盤と、au経済圏の拡大。生活に密着したサービス展開が強み。\n2. **26-27卒への温度感**: 高い。通信事業の枠を超えた新規事業創出を担う人材を積極的に採用。\n3. **EGO適性**: 中程度。データ分析基盤は強化中だが、構造的思考やAI活用は部署・プロジェクトによる。\n4. **裏の弱点**: 通信事業の規制リスクと競争激化。au経済圏の成長鈍化に対する依存脱却の遅れ。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   Jinan University (珠海) Science and Technology Park\n*   珠海首个高校科技园 (Zhuhai's first university science park)\n*   Collaboration: 珠海市, 香洲区, 暨南大学 (Zhuhai City, Xiangzhou District, Jinan University)\n*   Model: “高校出地、政府出资” (University provides land, government provides funding)\n*   全链条科技创新创业孵化载体 (Full-chain technology innovation and entrepreneurship incubator)\n*   Goal: “暨南硅谷” (Jinan Silicon Valley)\n*   二期 - December (Phase 2 - December)\n\n**Entities:**\n\n*   三井物産 (Mitsui & Co.) - Not mentioned.\n*   KDDI - Not mentioned.\n\n**Gap Analysis:**\n\n*   The provided text does not mention Mitsui & Co. or KDDI."
+  },
+  "critical_analysis": {
+    "true_intent": "都市OS構築競争への参入。データ収集・分析基盤の囲い込みによる収益化、自治体への影響力拡大が狙い。スマートシティ利権争いの一環。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:09:58.562392",
+  "source": "Active:三井物産"
+}

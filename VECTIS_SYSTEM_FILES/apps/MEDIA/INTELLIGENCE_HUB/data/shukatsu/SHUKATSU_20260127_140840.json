@@ -1,0 +1,24 @@
+{
+  "title": "Hondaと三菱商事、新会社「ALTNA株式会社」を設立 |",
+  "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5raC1ZcHo4MzVSX3loLUxYNGNtX3lRVjd2WUQ3QkJKMFpiVzg2bGY1X0QzVmVsNlZUSGloLXVmUHltQk5RZmxWaDVfYmdlYkNhSElQaW9xRWtPc19TQnEzS0RSdWFTX0RBYlpBV0pseWV5eTRJeUJVMHR3?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiekFVX3lxTE5raC1ZcHo4MzVSX3loLUxYNGNtX3lRVjd2WUQ3QkJKMFpiVzg2bGY1X0QzVmVsNlZUSGloLXVmUHltQk5RZmxWaDVfYmdlYkNhSElQaW9xRWtPc19TQnEzS0RSdWFTX0RBYlpBV0pseW",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "Hondaと三菱商事がALTNA株式会社を設立。新たなエネルギー事業展開か。",
+    "true_intent": "電動化とエネルギーマネジメント事業への本格参入。異業種連携でリスク分散を図り、政府の脱炭素政策に乗ることで補助金や優遇措置を狙う。三菱商事のエネルギー事業ノウハウとHondaの技術力を利用し、先行者利益を得ようとしている可能性。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "Honda, 三菱商事",
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "## Honda & 三菱商事：本質と27卒が狙うべき理由\n\n**Honda**\n\n1.  **主要武器**: 圧倒的な技術力とグローバルブランド。現場主義で若手にも裁量権大。\n2.  **26-27卒への温度感**: 多様なバックグラウンドを重視。変革期を担う人材を積極採用。\n3.  **EGO適性**: データドリブンな開発を推進。AI/データサイエンス人材ニーズ高。\n4.  **裏の弱点**: 既存事業への依存度。EVシフトの遅れと組織の硬直化リスク。\n\n**三菱商事**\n\n1.  **主要武器**: グローバルネットワークと多角的な事業ポートフォリオ。事業投資と人材育成。\n2.  **26-27卒への温度感**: 総合力重視。多様な価値観を持つ人材を幅広く採用。\n3.  **EGO適性**: デジタル変革を推進。新規事業創出に意欲的な人材を歓迎。\n4.  **裏の弱点**: 資源価格変動の影響を受けやすい。事業ポートフォリオの再編課題。\n",
+    "deep_web_intel": "Okay, I've reviewed the provided data. Here's a summary:\n\n**Key Points:**\n\n*   The data consists of HTML code snippets from \"Quattroruote\" forum threads about Honda HRV and Honda Jazz, and an error accessing a Polish Honda dealer website.\n\n**Structured Summary:**\n\n*   **Source 1 & 2:** HTML structure for forum threads on Quattroruote website. Contains meta information, scripts for analytics (Webtrekk, Google Tag Manager, Selligent Marketing Cloud), and advertising scripts.\n*   **Source 3:** Attempt to fetch data from \"honda.auto.com.pl\" resulted in a 403 Forbidden error.\n\n**Gap Analysis:**\n\n*   Missing: Actual content of the forum threads (discussions, opinions, questions about Honda HRV/Jazz).\n*   Missing: Specific information about Honda dealers in Poland (from the inaccessible website).\n*   Missing: Details about 三菱商事 (Mitsubishi Corporation). This was in the original request, but no data regarding them was supplied.\n\n**In essence, I can see the technical setup of the forum pages discussing Honda, but I don't have the actual substance of those discussions, nor any information regarding Mitsubishi.**"
+  },
+  "critical_analysis": {
+    "true_intent": "電動化とエネルギーマネジメント事業への本格参入。異業種連携でリスク分散を図り、政府の脱炭素政策に乗ることで補助金や優遇措置を狙う。三菱商事のエネルギー事業ノウハウとHondaの技術力を利用し、先行者利益を得ようとしている可能性。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T14:08:40.028394",
+  "source": "Active:ホンダ"
+}

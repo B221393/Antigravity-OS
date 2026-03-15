@@ -1,0 +1,22 @@
+{
+  "title": "ビジネスコース新卒採用において6月6日から27卒向けインター",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE54cXEwTGhkRjJzbnd5WkNpQnMwYWRPU2tmQjRTTjBDTUlCYTFaSDFuM3pheXVXWXRldEFTcE8tcVB4LWVkNUJadHRKd01JVUR2NjRoSjZyenVHNnYzOHc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE54cXEwTGhkRjJzbnd5WkNpQnMwYWRPU2tmQjRTTjBDTUlCYTFaSDFuM3pheXVXWXRldEFTcE8tcVB4LWVkNUJadHRKd01JVUR2NjRoSjZyenVHNnYzOHc?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "インターンシップの機会が、ビジネスコース新卒採用に関係している可能性が高いことが確認されます。",
+    "true_intent": "インターンシップの参加を促す可能性があり、この機会はビジネスコース新卒のキャリアアップに役立つ可能性があります。",
+    "bias_warning": "ポジショントークの可能性があり、企業が新卒を特に支援する意図がある可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア/IT/教育/社会",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "インターンシップの参加を促す可能性があり、この機会はビジネスコース新卒のキャリアアップに役立つ可能性があります。",
+    "bias_warning": "ポジショントークの可能性があり、企業が新卒を特に支援する意図がある可能性があります。"
+  },
+  "collected_at": "2026-01-26T18:47:37.603429",
+  "source": "ES締切 (Google)"
+}

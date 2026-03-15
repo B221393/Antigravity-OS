@@ -1,0 +1,24 @@
+{
+  "title": "ZEV規制撤回の衝撃、ホンダ・トヨタ戦略見直し EVからHE",
+  "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE01QXVFd2NEOUg4WnZ6cXg5TEo2bE5kSzYxcWFKWlVkQko3TUZkTHhGckRsNUFmWUtHR0lTSnVJNUQzSEY0ZzlqdnRZRmdGOTJuaGV1dkV5d2pFQURmNDR0OW00OVNMUjJmYVlyaQ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE01QXVFd2NEOUg4WnZ6cXg5TEo2bE5kSzYxcWFKWlVkQko3TUZkTHhGckRsNUFmWUtHR0lTSnVJNUQzSEY0ZzlqdnRZRmdGOTJuaGV1dkV5d2pFQURmNDR0OW00OVNMUjJmYVlyaQ?oc=",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "ZEV規制撤回でホンダ・トヨタがEV戦略を見直し、HEVへシフトする可能性。",
+    "true_intent": "EV推進一辺倒からの転換を促し、HEV技術を持つ日本メーカーの優位性を示唆。規制撤回の正当性を強調し、関連業界の既得権益を擁護する意図か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "ホンダ/トヨタ",
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027",
+    "company_profile": "## ホンダ/トヨタ 本質的価値と27卒が狙うべき理由\n\n**ホンダ:**\n\n1.  **主要武器**: 創造性と技術力。F1等の挑戦精神が革新を生む。\n2.  **26-27卒への温度感**: 多様性重視。新領域への挑戦意欲を重視。\n3.  **EGO適性**: 比較的高い。データ活用や先進技術への投資意欲旺盛。\n4.  **裏の弱点**: 電動化戦略の遅れ。組織の硬直化。\n\n**トヨタ:**\n\n1.  **主要武器**: 生産方式と品質。圧倒的な規模とサプライチェーン。\n2.  **26-27卒への温度感**: 保守的だが、変革期で積極採用の可能性。\n3.  **EGO適性**: 中程度。改善文化は根強いが、AI活用は発展途上。\n4.  **裏の弱点**: 変化への抵抗。意思決定の遅さ。\n",
+    "deep_web_intel": "**Honda Key Points:**\n\n*   **Car Lineup:** Official website provides car lineup with pricing and capacity filters. (honda.co.jp)\n*   **Comprehensive Car Info:** Carview! offers new model information, rankings, specifications. (carview.yahoo.co.jp)\n*   **Corporate Info:** Official corporate website provides information on sustainability, investors, news, recruitment. (global.honda/jp)\n\n**Toyota Gap Analysis:**\n\n*   Data provided only covers Honda. Need corresponding sources for Toyota (car lineup, specs, corporate information) to compare."
+  },
+  "critical_analysis": {
+    "true_intent": "EV推進一辺倒からの転換を促し、HEV技術を持つ日本メーカーの優位性を示唆。規制撤回の正当性を強調し、関連業界の既得権益を擁護する意図か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T15:56:15.148075",
+  "source": "Active:ホンダ"
+}

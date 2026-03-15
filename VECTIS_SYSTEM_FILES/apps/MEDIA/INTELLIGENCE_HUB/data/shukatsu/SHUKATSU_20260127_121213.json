@@ -1,0 +1,23 @@
+{
+  "title": "関西電力の蓄電池オンサイト導入サービスで蓄電システムが採用 ",
+  "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBsYlRIeE5VanBVb1UyejV4UTdYdmF5SjRLZW83bWgyMHM0dmtROXV5MmhyZ2RSRjgycmU5OVhFOHBiZVF2YzdwaXk4VXY2T2Nod3hoVnhvdklzNURSd0txcTMzZGdnUXJuSHFZ?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTFBsYlRIeE5VanBVb1UyejV4UTdYdmF5SjRLZW83bWgyMHM0dmtROXV5MmhyZ2RSRjgycmU5OVhFOHBiZVF2YzdwaXk4VXY2T2Nod3hoVnhvdklzNURSd0txcTMzZGdnUXJuSHFZ?oc=5\"",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "関電の蓄電池オンサイト導入サービスに蓄電システム採用。",
+    "true_intent": "電力会社による分散型エネルギーリソース（DER）囲い込み戦略の一環。補助金や優遇措置を利用し、初期投資を抑えつつ顧客を長期的にロックインし、系統安定化サービス等で収益化を図る狙い。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "関西電力",
+    "action_required": true,
+    "category": "エネルギー",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。関西電力の本質的価値と27卒が狙うべき理由を以下に構造化します。\n\n1.  **主要武器**: 関西圏の電力インフラ独占と、原子力発電技術による安定供給。再エネ投資も強化中だが、既存設備の強みが揺るがない基盤。\n2.  **26-27卒への温度感**: 安定志向の学生を重視しつつ、脱炭素分野を担う人材を求める。採用数は安定傾向だが、専門性アピールが重要に。\n3.  **EGO適性**: 保守的な社風が残るが、データ分析やAI活用プロジェクトも増加中。構造的思考力に加え、変化を恐れない姿勢が評価される可能性。\n4.  **裏の弱点**: 原発依存度と地域独占による競争意識の低さ。再エネ転換の遅れと、それによる将来的な収益悪化リスクを抱える。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "電力会社による分散型エネルギーリソース（DER）囲い込み戦略の一環。補助金や優遇措置を利用し、初期投資を抑えつつ顧客を長期的にロックインし、系統安定化サービス等で収益化を図る狙い。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:12:13.724407",
+  "source": "関西電力"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "「不適切な販売どうして放置？」「5Gで特徴的なサービスがない",
+  "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5DNXhBNFZ6eGxjcENqTFo2bkUydzdjM1FwaVNCQ1ZaUnlFSjIzNXU1N2p6XzNzc2pHcUpiNk15YjR6c0pTb1NCdTNtQ2p1SG1meUxKNTFJUW5YaThEby1CTEdNbmtRS0RmS0NlSjZSZ9IBaEFVX3lxTE9jZW9HWExTT1BnZGR1bjc5ZGltM0Q0bUpNeGw3dWFTYXRwaHl1UW5ITE1TLXpkQWE1ZDZSTjJkdU5FTFY4cTR4bmZJLUVZWXZxY3hKcEZLVUx0bzJDU0ZVMzhuOGI0RVdN?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMib0FVX3lxTE5DNXhBNFZ6eGxjcENqTFo2bkUydzdjM1FwaVNCQ1ZaUnlFSjIzNXU1N2p6XzNzc2pHcUpiNk15YjR6c0pTb1NCdTNtQ2p1SG1meUxKNTFJUW5YaThEby1CTEdNbmtRS0RmS0NlSjZSZ9",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "この情報はKDDI株主総会の開催について、特に5G関連の話題を強調していることが示される可能性があります。",
+    "true_intent": "この情報の裏にある意図を推測すると、KDDIが5G関連製品やサービスの販売や開発に集中した戦略を暗示している可能性があります。",
+    "bias_warning": "この情報は、KDDIが5G技術への投資を強化した結果、株価が上乗する可能性があることを暗示する可能性があります。",
+    "deadline": null,
+    "company": "KDDI",
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "company_profile": "- **事業の強み・特徴**: KDDIは、通信技術や情報技術の分野において世界トップクラスの企業として有名です。\n- **社風・カルチャー**: KDDIは、スポーツやスポーツ関連の企業も運営しており、スポーツとエンターテインメントを軸とした企業です。\n- **求める人物像の推測**: KDDIは、創造的な才能と技術的な能力を持った人間を募集しています。"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図を推測すると、KDDIが5G関連製品やサービスの販売や開発に集中した戦略を暗示している可能性があります。",
+    "bias_warning": "この情報は、KDDIが5G技術への投資を強化した結果、株価が上乗する可能性があることを暗示する可能性があります。"
+  },
+  "collected_at": "2026-01-26T17:15:43.238941",
+  "source": "KDDI 事業戦略"
+}

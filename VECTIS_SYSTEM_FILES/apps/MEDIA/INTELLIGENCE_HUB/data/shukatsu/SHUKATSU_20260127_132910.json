@@ -1,0 +1,24 @@
+{
+  "title": "営業や人事の新規採用「一切するな」、売上高3,000億円へS",
+  "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1JR3Q3MGZfanF1Njdwci1FZlhpSERLRmt4MnFUaGY1cUJWU05zTHZ4RzNnbkVjNHBVV21YS0N5WVNQdW12ZWpZLTZDMGhXNDRLRDVz?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiU0FVX3lxTE1JR3Q3MGZfanF1Njdwci1FZlhpSERLRmt4MnFUaGY1cUJWU05zTHZ4RzNnbkVjNHBVV21YS0N5WVNQdW12ZWpZLTZDMGhXNDRLRDVz?oc=5\" target=\"_blank\">営業や人事の新規採用「一切する",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "SHIFTが営業・人事の新規採用停止で売上3000億円を目指す。効率化と既存社員の能力開発が鍵。",
+    "true_intent": "SHIFTの先進的な取り組みをアピールし、優秀な人材（特にエンジニア）の獲得を狙う広報戦略。株価上昇も視野に入れている可能性。人件費抑制による利益率向上も目的か。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "SHIFT",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。SHIFTの本質的価値と27卒が狙うべき理由を、以下の通り構造化します。\n\n1.  **主要武器**: 徹底的な品質保証(QA)とテスト技術。顧客のDX推進を支える独自のノウハウと、アジャイル開発への対応力が強み。\n\n2.  **26-27卒への温度感**: 事業拡大に伴い、ポテンシャル重視の積極採用を継続。技術力だけでなく、成長意欲とコミュニケーション能力を重視。\n\n3.  **EGO適性**: 論理的思考力は必須。AI/自動化技術の活用を推進しており、新しい技術への好奇心と学習意欲があれば活躍できる。\n\n4.  **裏の弱点**: 急成長による組織の肥大化と、人材育成の遅れ。個人の裁量が大きい反面、自己成長への意識が低いと埋没する可能性あり。\n",
+    "deep_web_intel": "## SHIFT Key Information:\n\n**1. Location:** The question asks where the SHIFT key is located on a computer keyboard.\n\n**2. Functionality (Pandas context):**  `shift(1)` is mentioned in the context of the Pandas library, implying it shifts data within a DataFrame/Series.\n\n**3. Excel Shortcut (Ctrl+Shift+V):**  There's a problem reported with the `Ctrl+Shift+V` shortcut in Excel not working, while other shortcuts function correctly."
+  },
+  "critical_analysis": {
+    "true_intent": "SHIFTの先進的な取り組みをアピールし、優秀な人材（特にエンジニア）の獲得を狙う広報戦略。株価上昇も視野に入れている可能性。人件費抑制による利益率向上も目的か。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:29:10.915405",
+  "source": "Active:キーエンス"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "マクロスコープ：日本企業の採用意欲、ＡＩ普及でじわり低下 求",
+  "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNemJoWklQZzFtZzZscnRXU3FXeWFxdV9YdDg0T3g0bW1lcWxfYW9oaUVvbjB0bUc1WnRRTTQ0LVBYbGlRQlByVW0zaUdQcTZaNDFQN0FKekc1d090QTdvZ09aRk1PQXVmZ1ZJeEk0ZDYtRi11d3RGR0IwTWhPc2lXMWZn?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxNemJoWklQZzFtZzZscnRXU3FXeWFxdV9YdDg0T3g0bW1lcWxfYW9oaUVvbjB0bUc1WnRRTTQ0LVBYbGlRQlByVW0zaUdQcTZaNDFQN0FKekc1d090QTdvZ09aRk1PQXVmZ1ZJeEk0ZD",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "AI普及で日本企業の採用意欲が低下、求人件数に異変が生じているという報道。",
+    "true_intent": "AIベンダーの技術力を誇示し、導入を促進する狙いか。一方で、人材派遣業界の危機感を煽り、新たなサービス開発を促す意図も考えられる。雇用不安を煽り、政府のAI推進政策を牽制する可能性も。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "AIベンダーの技術力を誇示し、導入を促進する狙いか。一方で、人材派遣業界の危機感を煽り、新たなサービス開発を促す意図も考えられる。雇用不安を煽り、政府のAI推進政策を牽制する可能性も。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:34:52.766986",
+  "source": "ロイター 企業ニュース"
+}

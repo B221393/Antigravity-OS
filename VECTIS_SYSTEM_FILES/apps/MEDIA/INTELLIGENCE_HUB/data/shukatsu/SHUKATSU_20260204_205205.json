@@ -1,0 +1,43 @@
+{
+  "title": "採用情報 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5\" target=\"_blank\">採用情報</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">KDDI</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIが2027年入社のインテリジェンス・オフィサーの戦略的視点",
+    "strategic_analysis": {
+      "true_intent": "この情報は、KDDIが2027年入社のインテリジェンス・オフィサーの目標や戦略を特定するための crucial情報である可能性があります。",
+      "swot": {
+        "strength": "KDDIは、日本においてインテリジェンス・オフィサーという職種を設立するための tiên動的な取り組みを行う可能性が高い",
+        "weakness": " KDDIは、競合企業に比べて、インテリジェンス・オフィサーの確保が難しい可能性があります",
+        "opportunity": "KDDIは、新しい事業分野やサービスを開発することで、インテリジェンス・オフィサーへのアクセスを得られる可能性がある",
+        "threat": "KDDIが競合に及ぶ可能性があることを考慮する必要があります"
+      },
+      "writing_technique": "この情報は、KDDIが2027年入社のインテリジェンス・オフィサーの戦略的な目標や戦略策を分析するための重要な要素となる可能性があります",
+      "action_plan": "KDDIは、この情報を基に、2027年入社のインテリジェンス・オフィサーの戦略的な目標や戦略策を明確にするべきです"
+    },
+    "bias_warning": "この情報は、KDDIが特定した企業や業界について言及する可能性があることを考慮する必要があります",
+    "company": "KDDI",
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "priority_score": 10,
+    "company_profile": "**本質的価値**\n\nKDDIは、強みと創造性を表す「強みの源泉」と表現されます。 \n\n**27卒への温度感**\n\nKDDIは、近年、 young generation には、強みや創造性を求めやすいとされています。 \n\n**EGO適性**\n\nKDDIは、構造的思考やAI活用を好む文化と考えることができます。 \n\n**裏の弱点**\n\n KDDIは、強みや創造性を表す「強みの源泉」は、同時にリスクや偏り、差別化 potential に繋がる可能性があります。",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "この情報は、KDDIが2027年入社のインテリジェンス・オフィサーの目標や戦略を特定するための crucial情報である可能性があります。",
+    "swot": {
+      "strength": "KDDIは、日本においてインテリジェンス・オフィサーという職種を設立するための tiên動的な取り組みを行う可能性が高い",
+      "weakness": " KDDIは、競合企業に比べて、インテリジェンス・オフィサーの確保が難しい可能性があります",
+      "opportunity": "KDDIは、新しい事業分野やサービスを開発することで、インテリジェンス・オフィサーへのアクセスを得られる可能性がある",
+      "threat": "KDDIが競合に及ぶ可能性があることを考慮する必要があります"
+    },
+    "writing_technique": "この情報は、KDDIが2027年入社のインテリジェンス・オフィサーの戦略的な目標や戦略策を分析するための重要な要素となる可能性があります",
+    "action_plan": "KDDIは、この情報を基に、2027年入社のインテリジェンス・オフィサーの戦略的な目標や戦略策を明確にするべきです"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "この情報は、KDDIが特定した企業や業界について言及する可能性があることを考慮する必要があります",
+  "collected_at": "2026-02-04T20:52:05.946204",
+  "source": "KDDI 採用 Deep Dive",
+  "score": 10
+}

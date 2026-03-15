@@ -1,0 +1,22 @@
+{
+  "title": "採用情報 - KDDI",
+  "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiQ0FVX3lxTE92Mkw5a0VMc2lkY2R4a2d1RVFxbEtkQlBfYUl4eWR6R2tQcG5rcC1TbE5rWDF4LVlIMFZfd3hhZ3FPTkU?oc=5\" target=\"_blank\">採用情報</a>&nbsp;&nbsp;<font color=\"#6f",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "KDDIは、2027年卒業生の就職を情報として提供しています。",
+    "true_intent": "KDDIは、2027年卒業生の就職を情報として提供することで、その就職の可能性を分析し、適した職種への誘致を支援するとしていると考えられます。",
+    "bias_warning": "この情報は、KDDIが特定職種の採用情報を情報提供していることを誤解させる可能性があるため、慎重に検討する必要があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "情報",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "KDDIは、2027年卒業生の就職を情報として提供することで、その就職の可能性を分析し、適した職種への誘致を支援するとしていると考えられます。",
+    "bias_warning": "この情報は、KDDIが特定職種の採用情報を情報提供していることを誤解させる可能性があるため、慎重に検討する必要があります。"
+  },
+  "collected_at": "2026-01-27T11:36:26.742025",
+  "source": "KDDI 採用 Deep Dive"
+}

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Center - EGO OS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --bg-tertiary: #2c2c2e;
+            --text-primary: #ffffff;
+            --text-secondary: #8e8e93;
+            --accent-blue: #007aff;
+            --accent-green: #34c759;
+            --separator: rgba(84, 84, 88, 0.65);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header - iPhone style */
+        .header {
+            background: var(--bg-secondary);
+            padding: 60px 20px 20px 20px;
+            border-bottom: 0.5px solid var(--separator);
+        }
+
+        .header h1 {
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        /* Settings List */
+        .settings-container {
+            padding: 20px;
+        }
+
+        .section {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            margin-bottom: 35px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 8px 16px;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        .setting-item {
+            background: var(--bg-secondary);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 0.5px solid var(--separator);
+            min-height: 44px;
+            transition: background 0.15s;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-item:active {
+            background: var(--bg-tertiary);
+        }
+
+        .setting-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .setting-icon {
+            width: 29px;
+            height: 29px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .setting-info {
+            flex: 1;
+        }
+
+        .setting-title {
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .setting-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        /* iOS-style Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            width: 51px;
+            height: 31px;
+            background: var(--separator);
+            border-radius: 31px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: var(--accent-green);
+        }
+
+        .toggle-knob {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 27px;
+            height: 27px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15),
+                0 3px 1px rgba(0, 0, 0, 0.06);
+        }
+
+        .toggle-switch.active .toggle-knob {
+            transform: translateX(20px);
+        }
+
+        /* Segmented Control (iOS 13+ style) */
+        .segmented-control {
+            display: flex;
+            background: var(--bg-tertiary);
+            border-radius: 9px;
+            padding: 2px;
+            gap: 2px;
+        }
+
+        .segment {
+            flex: 1;
+            padding: 7px 12px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-primary);
+            border-radius: 7px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.2, 0.85, 0.32, 1);
+            user-select: none;
+        }
+
+        .segment.active {
+            background: var(--bg-secondary);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12),
+                0 3px 1px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Value Display */
+        .value-display {
+            font-size: 17px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chevron {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Status Indicators */
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .status-ok {
+            background: rgba(52, 199, 89, 0.15);
+            color: var(--accent-green);
+        }
+
+        .status-warning {
+            background: rgba(255, 159, 10, 0.15);
+            color: #ff9f0a;
+        }
+
+        .status-error {
+            background: rgba(255, 69, 58, 0.15);
+            color: #ff453a;
+        }
+
+        /* Action Button */
+        .action-button {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .action-button:active {
+            opacity: 0.7;
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-secondary);
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.2, 0.85, 0.32, 1);
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Home Indicator (iPhone X+) */
+        .home-indicator {
+            position: fixed;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 134px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>⚡ MagicHub</h1>
+        <p>EGO OS Configuration Center</p>
+    </div>
+
+    <div class="settings-container">
+
+        <!-- LLM Provider Section -->
+        <div class="section-header">AI Provider</div>
+        <div class="section">
+            <div class="setting-item">
+                <div class="setting-left">
+                    <div class="setting-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        🤖
+                    </div>
+                    <div class="setting-info">
+                        <div class="setting-title">Default Provider</div>
+                        <div class="setting-subtitle">Currently using Ollama</div>
+                    </div>
+                </div>
+                <div class="value-display">
+                    <span id="provider-name">Ollama</span>
+                    <span class="chevron">›</span>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-left">
+                    <div class="setting-icon" style="background: #34c759;">
+                        ✓
+                    </div>
+                    <div class="setting-info">
+                        <div class="setting-title">Auto-Fallback</div>
+                        <div class="setting-subtitle">Switch to local when API fails</div>
+                    </div>
+                </div>
+                <div class="toggle-switch active" id="toggle-fallback">
+                    <div class="toggle-knob"></div>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-left">
+                    <div class="setting-icon" style="background: #007aff;">
+                        📊
+                    </div>
+                    <div class="setting-info">
+                        <div class="setting-title">Provider Status</div>
+                    </div>
+                </div>
+                <div class="status-badge status-ok">ONLINE</div>
+            </div>
+        </div>
+
+        <!-- Keyboard Layout Section -->
+        <div class="section-header">Input Method</div>
+        <div class="section">
+            <div class="setting-item">
+                <div class="setting-left">
+                    <div class="setting-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        ⌨️
+                    </div>
+                    <div class="setting-info">
+                        <div class="setting-title">Onishi Layout</div>
+                        <div class="setting-subtitle" id="keyboard-subtitle">Disabled - Using QWERTY</div>
+                    </div>
+                </div>
+                <div class="toggle-switch" id="toggle-keyboard">
+                    <div class="toggle-knob"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Application Priorities -->
+        <div class="section-header">App Priorities</div>
+        <div class="section">
+            <div class="setting-item">
+                <div class="setting-left">
+                    <div class="setting-icon" style="background: #ff9f0a;">
+                        📚
+                    </div>
+                    <div class="setting-info">
+                        <div class="setting-title">TOEIC App</div>
+                        <div class="setting-subtitle">Menu display priority</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-item" style="flex-direction: column; align-items: stretch; padding: 16px;">
+                <div class="segmented-control" id="toeic-control">
+                    <div class="segment" data-priority="high">High</div>
+                    <div class="segment" data-priority="medium">Med</div>
+                    <div class="segment active" data-priority="low">Low</div>
+                    <div class="segment" data-priority="disabled">Off</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Info -->
+        <div class="section-header">System</div>
+        <div class="section">
+            <div class="setting-item">
+                <div class="setting-left">
+                    <div class="setting-icon" style="background: #5e5ce6;">
+                        ℹ️
+                    </div>
+                    <div class="setting-info">
+                        <div class="setting-title">EGO OS</div>
+                        <div class="setting-subtitle">Version 2.0.1</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-left">
+                    <div class="setting-info">
+                        <div class="setting-title">Total Memory Nodes</div>
+                    </div>
+                </div>
+                <div class="value-display">1,247</div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-left">
+                    <div class="setting-info">
+                        <div class="setting-title">Storage Used</div>
+                    </div>
+                </div>
+                <div class="value-display">3.2 GB</div>
+            </div>
+        </div>
+
+        <!-- Action -->
+        <button class="action-button" id="save-btn">Save Configuration</button>
+
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Configuration saved!</div>
+
+    <!-- Home Indicator -->
+    <div class="home-indicator"></div>
+
+    <script>
+        // State
+        let config = {
+            provider: 'ollama',
+            autoFallback: true,
+            keyboardLayout: 'qwerty',
+            toeicPriority: 'low'
+        };
+
+        // Load from localStorage
+        function loadConfig() {
+            const saved = localStorage.getItem('magichub_config');
+            if (saved) {
+                config = { ...config, ...JSON.parse(saved) };
+                applyConfig();
+            }
+        }
+
+        function saveConfig() {
+            localStorage.setItem('magichub_config', JSON.stringify(config));
+
+            // Also save to Python config file via API call (future implementation)
+            // fetch('/api/config', { method: 'POST', body: JSON.stringify(config) });
+
+            showToast('Configuration saved!');
+        }
+
+        function applyConfig() {
+            // Auto-fallback toggle
+            const toggleFallback = document.getElementById('toggle-fallback');
+            toggleFallback.classList.toggle('active', config.autoFallback);
+
+            // Keyboard layout toggle
+            const toggleKeyboard = document.getElementById('toggle-keyboard');
+            const keyboardSubtitle = document.getElementById('keyboard-subtitle');
+            const isOnishi = config.keyboardLayout === 'onishi';
+
+            toggleKeyboard.classList.toggle('active', isOnishi);
+            keyboardSubtitle.textContent = isOnishi ? 'Enabled - Using Onishi' : 'Disabled - Using QWERTY';
+
+            // TOEIC priority
+            document.querySelectorAll('#toeic-control .segment').forEach(seg => {
+                seg.classList.toggle('active', seg.dataset.priority === config.toeicPriority);
+            });
+
+            // Provider name
+            document.getElementById('provider-name').textContent =
+                config.provider.charAt(0).toUpperCase() + config.provider.slice(1);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Event Listeners
+        document.getElementById('toggle-fallback').addEventListener('click', function () {
+            config.autoFallback = !config.autoFallback;
+            this.classList.toggle('active', config.autoFallback);
+            showToast(config.autoFallback ? 'Auto-fallback enabled' : 'Auto-fallback disabled');
+        });
+
+        // Keyboard toggle switch
+        document.getElementById('toggle-keyboard').addEventListener('click', function () {
+            const isCurrentlyOnishi = config.keyboardLayout === 'onishi';
+            config.keyboardLayout = isCurrentlyOnishi ? 'qwerty' : 'onishi';
+
+            const isNowOnishi = config.keyboardLayout === 'onishi';
+            this.classList.toggle('active', isNowOnishi);
+
+            const subtitle = document.getElementById('keyboard-subtitle');
+            subtitle.textContent = isNowOnishi ? 'Enabled - Using Onishi' : 'Disabled - Using QWERTY';
+
+            showToast(`Keyboard: ${config.keyboardLayout.toUpperCase()}`);
+        });
+
+        document.querySelectorAll('#toeic-control .segment').forEach(segment => {
+            segment.addEventListener('click', function () {
+                const priority = this.dataset.priority;
+                config.toeicPriority = priority;
+
+                document.querySelectorAll('#toeic-control .segment').forEach(s => {
+                    s.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                showToast(`TOEIC priority: ${priority.toUpperCase()}`);
+            });
+        });
+
+        document.getElementById('save-btn').addEventListener('click', () => {
+            saveConfig();
+
+            // Add haptic feedback effect
+            navigator.vibrate && navigator.vibrate(50);
+        });
+
+        // Initialize
+        loadConfig();
+    </script>
+
+</body>
+
+</html>

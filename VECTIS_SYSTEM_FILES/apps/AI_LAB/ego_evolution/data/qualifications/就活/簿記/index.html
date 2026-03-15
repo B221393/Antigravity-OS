@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簿記 勉強ページ</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>簿記 対策</h1>
+    </header>
+    <main>
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab(event, 'level3')">3級</button>
+                <button class="tab-button" onclick="openTab(event, 'level2')">2級</button>
+                <button class="tab-button" onclick="openTab(event, 'level1')">1級</button>
+            </div>
+
+            <div id="level3" class="tab-content active">
+                <h2>3級</h2>
+                <p>商業簿記の基本である、貸借対照表（B/S）と損益計算書（P/L）の仕組みを理解します。まずは5つの要素を覚えましょう。</p>
+                <ul>
+                    <li><strong>資産:</strong> 会社の財産（現金、商品、建物など）</li>
+                    <li><strong>負債:</strong> 将来支払う義務（借入金、買掛金など）</li>
+                    <li><strong>純資産:</strong> 資産と負債の差額（資本金など）</li>
+                    <li><strong>収益:</strong> 儲け（売上、受取利息など）</li>
+                    <li><strong>費用:</strong> 儲けのためにかかったコスト（仕入、給料、広告費など）</li>
+                </ul>
+            </div>
+
+            <div id="level2" class="tab-content">
+                <h2>2級</h2>
+                <p>3級の商業簿記に加え、工業簿記を学びます。</p>
+                <ul>
+                    <li><strong>商業簿記:</strong> 商品を仕入れて販売する業態の簿記。</li>
+                    <li><strong>工業簿記:</strong> 材料を仕入れて製品を製造・販売する業態の簿記。原価計算が中心となります。</li>
+                </ul>
+                <p>株式会社の会計や、連結会計の基礎も範囲に含まれます。</p>
+            </div>
+
+            <div id="level1" class="tab-content">
+                <h2>1級</h2>
+                <p>公認会計士や税理士などの国家資格への登竜門とされるレベルです。</p>
+                <p>会計基準や会社法など、より専門的で高度な会計知識が問われます。以下の4科目から構成されます。</p>
+                <ul>
+                    <li>商業簿記</li>
+                    <li>会計学</li>
+                    <li>工業簿記</li>
+                    <li>原価計算</li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            function openTab(evt, tabName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tab-content");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tab-button");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+        <br>
+        <a href="../index.html">トップに戻る</a>
+    </main>
+</body>
+</html>

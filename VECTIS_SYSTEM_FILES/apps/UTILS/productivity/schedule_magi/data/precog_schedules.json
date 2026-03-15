@@ -1,0 +1,51 @@
+[
+    {
+        "Date": "2026-01-25",
+        "Time": "HH:MM",
+        "Event": "summary",
+        "Type": "DEADLINE",
+        "Priority": 10
+    },
+    {
+        "Date": "2026-01-27",
+        "Time": "00:00",
+        "Event": "summary",
+        "Type": "DEADLINE",
+        "Priority": 10
+    },
+    {
+        "Date": "2026-06-01",
+        "Time": "00:00",
+        "Event": "summary",
+        "Type": "DEADLINE",
+        "Priority": 10
+    },
+    {
+        "Date": "2026-01-26",
+        "Time": "00:00",
+        "Event": "summary",
+        "Type": "DEADLINE",
+        "Priority": 10
+    },
+    {
+        "Date": "2026-01-20",
+        "Time": "00:00",
+        "Event": "summary",
+        "Type": "DEADLINE",
+        "Priority": 10
+    },
+    {
+        "Date": "2026-01-29",
+        "Time": "HH:MM",
+        "Event": "summary",
+        "Type": "DEADLINE",
+        "Priority": 10
+    },
+    {
+        "Date": "2026-02-06",
+        "Time": "N/A",
+        "Event": "summary",
+        "Type": "DEADLINE",
+        "Priority": 10
+    }
+]

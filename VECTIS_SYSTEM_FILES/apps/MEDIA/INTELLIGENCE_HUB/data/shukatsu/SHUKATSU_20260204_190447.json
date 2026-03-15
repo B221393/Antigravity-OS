@@ -1,0 +1,43 @@
+{
+  "title": "「分析するAI」から「実行するAIエージェント」へ。DATAFLUCT、Eight EXPO 2026にて、業界特化型AIによるDXの最新事例を展示 - PR TIMES",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBycGN6M0trV241X2NjZjVoSUhNY3RNN2lWNXlUbF95dkxHTHdDTHpybjdMUTZ5UmVxQzNMSlFqZ0l5OWV0Qlh4UXk3RS1CNE1IcVZ1X0xUcVlrSWFHV2V2OW1mT2dhdGtUUVE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTFBycGN6M0trV241X2NjZjVoSUhNY3RNN2lWNXlUbF95dkxHTHdDTHpybjdMUTZ5UmVxQzNMSlFqZ0l5OWV0Qlh4UXk3RS1CNE1IcVZ1X0xUcVlrSWFHV2V2OW1mT2dhdGtUUVE?oc=5\" target=\"_blank\">「分析するAI」から「実行するAIエージェント」へ。DATAFLUCT、Eight EXPO 2026にて、業界特化型AIによるDXの最新事例を展示</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PR TIMES</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "DATAFLUCTがEight EXPO 2026で業界特化型AIによるDXの最新事例を展示",
+    "strategic_analysis": {
+      "true_intent": "DATAFLUCTが自社のAI技術を宣伝し、業界特化型AIの需要を高めようとしている",
+      "swot": {
+        "strength": "DATAFLUCTのAI技術の業界特化型への適応性",
+        "weakness": "競合他社との差別化が不明瞭",
+        "opportunity": "就活生がAI技術の最新動向を把握し、自身のスキルを高められる",
+        "threat": "AI技術の進化により、従来のビジネスモデルが破壊される可能性"
+      },
+      "writing_technique": "",
+      "action_plan": "就活生はEight EXPO 2026に参加し、DATAFLUCTの展示内容を確認。さらに、AI技術の最新動向を把握し、自身のスキルを高めるために、関連する勉強会やセミナーに参加する"
+    },
+    "bias_warning": "DATAFLUCTのPR TIMESの記事は、自社のAI技術を宣伝するために書かれた可能性がある",
+    "company": "DATAFLUCT",
+    "category": "IT",
+    "target_year": "2027",
+    "priority_score": 8,
+    "company_profile": "DATAFLUCTの「本質的価値」と「27卒が狙うべき理由」を構造化してみます。\n\n* **主要武器**: データ分析とAI技術の融合による革新的なソリューションの提供\n* **26-27卒への温度感**: 高度な技術力を重視し、若手エンジニアの採用に積極的\n* **EGO適性**: 構造的思考とAI活用を重視する文化で、創造性と挑戦精神を価値とする\n* **裏の弱点**: 技術の急速な進化に伴う人材の育成と定着のリスク、また、データの質とセキュリティへの依存度が高い",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "DATAFLUCTが自社のAI技術を宣伝し、業界特化型AIの需要を高めようとしている",
+    "swot": {
+      "strength": "DATAFLUCTのAI技術の業界特化型への適応性",
+      "weakness": "競合他社との差別化が不明瞭",
+      "opportunity": "就活生がAI技術の最新動向を把握し、自身のスキルを高められる",
+      "threat": "AI技術の進化により、従来のビジネスモデルが破壊される可能性"
+    },
+    "writing_technique": "",
+    "action_plan": "就活生はEight EXPO 2026に参加し、DATAFLUCTの展示内容を確認。さらに、AI技術の最新動向を把握し、自身のスキルを高めるために、関連する勉強会やセミナーに参加する"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "DATAFLUCTのPR TIMESの記事は、自社のAI技術を宣伝するために書かれた可能性がある",
+  "collected_at": "2026-02-04T19:04:47.798419",
+  "source": "PR TIMES (AI/DX)",
+  "score": 8
+}

@@ -1,0 +1,587 @@
+[
+  {
+    "term": "1.  機会費用",
+    "source": "Derived from 1. 時間価値",
+    "depth": 4
+  },
+  {
+    "term": "2.  割引率",
+    "source": "Derived from 1. 時間価値",
+    "depth": 4
+  },
+  {
+    "term": "3.  現在価値",
+    "source": "Derived from 1. 時間価値",
+    "depth": 4
+  },
+  {
+    "term": "1. 微分積分",
+    "source": "Derived from 2. 指数関数",
+    "depth": 4
+  },
+  {
+    "term": "2. 対数関数",
+    "source": "Derived from 2. 指数関数",
+    "depth": 4
+  },
+  {
+    "term": "3. 成長率",
+    "source": "Derived from 2. 指数関数",
+    "depth": 4
+  },
+  {
+    "term": "2.  長期投資",
+    "source": "Derived from 3. （該当なし）",
+    "depth": 4
+  },
+  {
+    "term": "3.  資産形成",
+    "source": "Derived from 3. （該当なし）",
+    "depth": 4
+  },
+  {
+    "term": "1.  内部統制",
+    "source": "Derived from 1. リスク管理",
+    "depth": 4
+  },
+  {
+    "term": "2.  危機管理",
+    "source": "Derived from 1. リスク管理",
+    "depth": 4
+  },
+  {
+    "term": "1. リスク選好",
+    "source": "Derived from 2. リスク許容度",
+    "depth": 4
+  },
+  {
+    "term": "2. リスク回避",
+    "source": "Derived from 2. リスク許容度",
+    "depth": 4
+  },
+  {
+    "term": "3. ポートフォリオ",
+    "source": "Derived from 2. リスク許容度",
+    "depth": 4
+  },
+  {
+    "term": "1.  リスク管理",
+    "source": "Derived from 3. リスク軽減策",
+    "depth": 4
+  },
+  {
+    "term": "2.  事業継続計画",
+    "source": "Derived from 3. リスク軽減策",
+    "depth": 4
+  },
+  {
+    "term": "3.  フレーム問題（AI関連で、要約に直接は含まれないが、リスク評価軽減に関連する概念として想起されるため）",
+    "source": "Derived from 3. リスク軽減策",
+    "depth": 4
+  },
+  {
+    "term": "1.  なし (提示された要約には該当する人物や概念が含まれていませんでした)",
+    "source": "Derived from 1.  金融政策",
+    "depth": 4
+  },
+  {
+    "term": "1. インフレ",
+    "source": "Derived from 2.  景気変動",
+    "depth": 4
+  },
+  {
+    "term": "2. デフレ",
+    "source": "Derived from 2.  景気変動",
+    "depth": 4
+  },
+  {
+    "term": "3. 金融政策",
+    "source": "Derived from 2.  景気変動",
+    "depth": 4
+  },
+  {
+    "term": "1.  （特になし  要約に該当する人物概念が含まれていません）",
+    "source": "Derived from 3.  デフレ",
+    "depth": 4
+  },
+  {
+    "term": "1. 递归 (Recursion)",
+    "source": "Derived from 1. 分治法 (Divide and Conquer)",
+    "depth": 4
+  },
+  {
+    "term": "2. 算法 (Algorithm)",
+    "source": "Derived from 1. 分治法 (Divide and Conquer)",
+    "depth": 4
+  },
+  {
+    "term": "3. 动态规划 (Dynamic Programming)",
+    "source": "Derived from 1. 分治法 (Divide and Conquer)",
+    "depth": 4
+  },
+  {
+    "term": "1.  Recursion (遞迴)",
+    "source": "Derived from 2. 堆疊 (Stack)",
+    "depth": 4
+  },
+  {
+    "term": "2.  Data Structure (資料結構)",
+    "source": "Derived from 2. 堆疊 (Stack)",
+    "depth": 4
+  },
+  {
+    "term": "1. 人物分析",
+    "source": "Derived from この要約からは、深掘りすべき重要人物や高次な概念を抽出することができません。",
+    "depth": 4
+  },
+  {
+    "term": "2. 概念構造",
+    "source": "Derived from この要約からは、深掘りすべき重要人物や高次な概念を抽出することができません。",
+    "depth": 4
+  },
+  {
+    "term": "3. 情報網羅",
+    "source": "Derived from この要約からは、深掘りすべき重要人物や高次な概念を抽出することができません。",
+    "depth": 4
+  },
+  {
+    "term": "2. 損失回避",
+    "source": "Derived from 1. 認知偏見",
+    "depth": 4
+  },
+  {
+    "term": "3. フレーミング効果",
+    "source": "Derived from 1. 認知偏見",
+    "depth": 4
+  },
+  {
+    "term": "1.  プロスペクト理論",
+    "source": "Derived from 2. 損失回避",
+    "depth": 4
+  },
+  {
+    "term": "2.  フレーミング効果",
+    "source": "Derived from 2. 損失回避",
+    "depth": 4
+  },
+  {
+    "term": "3.  現状維持バイアス",
+    "source": "Derived from 2. 損失回避",
+    "depth": 4
+  },
+  {
+    "term": "1. プロスペクト理論",
+    "source": "Derived from 3. 框架効果",
+    "depth": 4
+  },
+  {
+    "term": "3. 認知バイアス",
+    "source": "Derived from 3. 框架効果",
+    "depth": 4
+  },
+  {
+    "term": "2. ヒューリスティックス",
+    "source": "Derived from 2. 認知バイアス",
+    "depth": 4
+  },
+  {
+    "term": "3. 確証バイアス",
+    "source": "Derived from 2. 認知バイアス",
+    "depth": 4
+  },
+  {
+    "term": "2. 損失回避性",
+    "source": "Derived from 1. プロスペクト理論",
+    "depth": 4
+  },
+  {
+    "term": "3. フレーミング効果",
+    "source": "Derived from 1. プロスペクト理論",
+    "depth": 4
+  },
+  {
+    "term": "3. サンクコスト",
+    "source": "Derived from 3. 現状維持バイアス",
+    "depth": 4
+  },
+  {
+    "term": "1. 共産主義",
+    "source": "Derived from 1. 反共",
+    "depth": 2
+  },
+  {
+    "term": "2. 自由主義",
+    "source": "Derived from 1. 反共",
+    "depth": 2
+  },
+  {
+    "term": "3. 民主主義",
+    "source": "Derived from 1. 反共",
+    "depth": 2
+  },
+  {
+    "term": "1. マルコルビオ",
+    "source": "Derived from 2. 対外政策",
+    "depth": 2
+  },
+  {
+    "term": "2. 勢力均衡",
+    "source": "Derived from 2. 対外政策",
+    "depth": 2
+  },
+  {
+    "term": "3. 安全保障",
+    "source": "Derived from 2. 対外政策",
+    "depth": 2
+  },
+  {
+    "term": "1. ゲバラ (Guevara)",
+    "source": "Derived from 3. 古巴",
+    "depth": 2
+  },
+  {
+    "term": "2. カストロ (Castro)",
+    "source": "Derived from 3. 古巴",
+    "depth": 2
+  },
+  {
+    "term": "3. キューバ危機 (Cuban Missile Crisis)",
+    "source": "Derived from 3. 古巴",
+    "depth": 2
+  },
+  {
+    "term": "1.  民意",
+    "source": "Derived from 1.  民主主義",
+    "depth": 2
+  },
+  {
+    "term": "2.  正統性",
+    "source": "Derived from 1.  民主主義",
+    "depth": 2
+  },
+  {
+    "term": "3.  選挙制度",
+    "source": "Derived from 1.  民主主義",
+    "depth": 2
+  },
+  {
+    "term": "1. 世論操作",
+    "source": "Derived from 2.  選挙不正",
+    "depth": 2
+  },
+  {
+    "term": "2. 民主主義",
+    "source": "Derived from 2.  選挙不正",
+    "depth": 2
+  },
+  {
+    "term": "1. 保護責任",
+    "source": "Derived from 3.  国際制裁",
+    "depth": 2
+  },
+  {
+    "term": "2. 国際法",
+    "source": "Derived from 3.  国際制裁",
+    "depth": 2
+  },
+  {
+    "term": "3. 国際秩序",
+    "source": "Derived from 3.  国際制裁",
+    "depth": 2
+  },
+  {
+    "term": "1.  貴族政治",
+    "source": "Derived from 1. 世襲政治",
+    "depth": 2
+  },
+  {
+    "term": "2.  門閥制度",
+    "source": "Derived from 1. 世襲政治",
+    "depth": 2
+  },
+  {
+    "term": "3.  政治腐敗",
+    "source": "Derived from 1. 世襲政治",
+    "depth": 2
+  },
+  {
+    "term": "1.  利益相反",
+    "source": "Derived from 2. ロビイング",
+    "depth": 2
+  },
+  {
+    "term": "2.  圧力団体",
+    "source": "Derived from 2. ロビイング",
+    "depth": 2
+  },
+  {
+    "term": "3.  政治献金",
+    "source": "Derived from 2. ロビイング",
+    "depth": 2
+  },
+  {
+    "term": "1. 法治主義",
+    "source": "Derived from 3. 民主主義",
+    "depth": 2
+  },
+  {
+    "term": "2. 基本的人権",
+    "source": "Derived from 3. 民主主義",
+    "depth": 2
+  },
+  {
+    "term": "3. 権力分立",
+    "source": "Derived from 3. 民主主義",
+    "depth": 2
+  },
+  {
+    "term": "1. グローバル秩序",
+    "source": "Derived from 1.  トランプ (主義)",
+    "depth": 2
+  },
+  {
+    "term": "2. 孤立主義",
+    "source": "Derived from 1.  トランプ (主義)",
+    "depth": 2
+  },
+  {
+    "term": "3. 保護貿易",
+    "source": "Derived from 1.  トランプ (主義)",
+    "depth": 2
+  },
+  {
+    "term": "1. 社会主義",
+    "source": "Derived from 2.  ルビオ",
+    "depth": 2
+  },
+  {
+    "term": "2. 共和党",
+    "source": "Derived from 2.  ルビオ",
+    "depth": 2
+  },
+  {
+    "term": "3. ベネズエラ",
+    "source": "Derived from 2.  ルビオ",
+    "depth": 2
+  },
+  {
+    "term": "1. チャベス",
+    "source": "Derived from 3.  マドゥーロ",
+    "depth": 2
+  },
+  {
+    "term": "2. グアイド",
+    "source": "Derived from 3.  マドゥーロ",
+    "depth": 2
+  },
+  {
+    "term": "3. 社会主義",
+    "source": "Derived from 3.  マドゥーロ",
+    "depth": 2
+  },
+  {
+    "term": "1.  フーリエ変換",
+    "source": "Derived from 1. ラプラス変換",
+    "depth": 4
+  },
+  {
+    "term": "2.  伝達関数",
+    "source": "Derived from 1. ラプラス変換",
+    "depth": 4
+  },
+  {
+    "term": "3.  複素数",
+    "source": "Derived from 1. ラプラス変換",
+    "depth": 4
+  },
+  {
+    "term": "1.  なし",
+    "source": "Derived from 2. ウェーブレット変換",
+    "depth": 4
+  },
+  {
+    "term": "1. 奈奎斯特 (Nyquist)",
+    "source": "Derived from 2. 周波数応答",
+    "depth": 4
+  },
+  {
+    "term": "2. 伯德 (Bode)",
+    "source": "Derived from 2. 周波数応答",
+    "depth": 4
+  },
+  {
+    "term": "3. 伝達関数 (Transfer Function)",
+    "source": "Derived from 2. 周波数応答",
+    "depth": 4
+  },
+  {
+    "term": "1.  ナイキスト",
+    "source": "Derived from 3. ボード線図",
+    "depth": 4
+  },
+  {
+    "term": "2.  伝達関数",
+    "source": "Derived from 3. ボード線図",
+    "depth": 4
+  },
+  {
+    "term": "3.  ゲイン余裕",
+    "source": "Derived from 3. ボード線図",
+    "depth": 4
+  },
+  {
+    "term": "1.  デルタ関数",
+    "source": "Derived from 1. グリーン関数",
+    "depth": 4
+  },
+  {
+    "term": "2.  偏微分方程式",
+    "source": "Derived from 1. グリーン関数",
+    "depth": 4
+  },
+  {
+    "term": "3.  積分核",
+    "source": "Derived from 1. グリーン関数",
+    "depth": 4
+  },
+  {
+    "term": "2. ヒルベルトシュミット理論",
+    "source": "Derived from 2. フレドホルム積分方程式",
+    "depth": 4
+  },
+  {
+    "term": "3. ヴォルテラ積分方程式",
+    "source": "Derived from 2. フレドホルム積分方程式",
+    "depth": 4
+  },
+  {
+    "term": "1. フーリエ変換",
+    "source": "Derived from 3. 畳込積分",
+    "depth": 4
+  },
+  {
+    "term": "2. ラプラス変換",
+    "source": "Derived from 3. 畳込積分",
+    "depth": 4
+  },
+  {
+    "term": "2.  フィードバック制御",
+    "source": "Derived from 1.  PID制御",
+    "depth": 4
+  },
+  {
+    "term": "3.  システム同定",
+    "source": "Derived from 1.  PID制御",
+    "depth": 4
+  },
+  {
+    "term": "1. カールマンフィルタ (カルマン濾波)",
+    "source": "Derived from 2.  状態空間表現",
+    "depth": 4
+  },
+  {
+    "term": "2. 最適制御 (最佳控制)",
+    "source": "Derived from 2.  状態空間表現",
+    "depth": 4
+  },
+  {
+    "term": "3. 線形システム (線性系統)",
+    "source": "Derived from 2.  状態空間表現",
+    "depth": 4
+  },
+  {
+    "term": "1. 動的計画法",
+    "source": "Derived from 3.  最適制御",
+    "depth": 4
+  },
+  {
+    "term": "2. カルマンフィルタ",
+    "source": "Derived from 3.  最適制御",
+    "depth": 4
+  },
+  {
+    "term": "3. モデル予測制御",
+    "source": "Derived from 3.  最適制御",
+    "depth": 4
+  },
+  {
+    "term": "1.  なし (提示された要約には、優先順位の高い人物概念は含まれていません)",
+    "source": "Derived from 1.  フーリエ変換",
+    "depth": 4
+  },
+  {
+    "term": "2. 線形時不変システム",
+    "source": "Derived from 2.  伝達関数",
+    "depth": 4
+  },
+  {
+    "term": "3. 周波数応答",
+    "source": "Derived from 2.  伝達関数",
+    "depth": 4
+  },
+  {
+    "term": "1. フーリエ (Fourier)",
+    "source": "Derived from 1.  フーリエ",
+    "depth": 4
+  },
+  {
+    "term": "2. 調和解析 (Harmonic Analysis)",
+    "source": "Derived from 1.  フーリエ",
+    "depth": 4
+  },
+  {
+    "term": "3. 傅立葉変換 (Fourier Transform)",
+    "source": "Derived from 1.  フーリエ",
+    "depth": 4
+  },
+  {
+    "term": "1. 傅立葉",
+    "source": "Derived from 2.  スペクトル解析",
+    "depth": 4
+  },
+  {
+    "term": "3. 信号処理",
+    "source": "Derived from 2.  スペクトル解析",
+    "depth": 4
+  },
+  {
+    "term": "1. 傅立葉変換",
+    "source": "Derived from 3.  周波数",
+    "depth": 4
+  },
+  {
+    "term": "2. スペクトル分析",
+    "source": "Derived from 3.  周波数",
+    "depth": 4
+  },
+  {
+    "term": "3. 信号処理",
+    "source": "Derived from 3.  周波数",
+    "depth": 4
+  },
+  {
+    "term": "1.  なし (哲学者思想家小説家)",
+    "source": "Derived from 1.  ラプラス変換",
+    "depth": 4
+  },
+  {
+    "term": "3.  周波数応答",
+    "source": "Derived from 1.  ラプラス変換",
+    "depth": 4
+  },
+  {
+    "term": "1.  伝達関数",
+    "source": "Derived from 3.  周波数応答",
+    "depth": 4
+  },
+  {
+    "term": "2.  ボード線図",
+    "source": "Derived from 3.  周波数応答",
+    "depth": 4
+  },
+  {
+    "term": "3.  ナイキスト線図",
+    "source": "Derived from 3.  周波数応答",
+    "depth": 4
+  }
+]

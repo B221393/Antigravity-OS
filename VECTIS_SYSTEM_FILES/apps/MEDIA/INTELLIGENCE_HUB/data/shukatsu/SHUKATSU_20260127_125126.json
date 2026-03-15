@@ -1,0 +1,24 @@
+{
+  "title": "日産自動車、Hondaと三菱自動車、3社協業形態の検討に関す",
+  "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQZ1BPQ09OMGtxMGM1djM4WE9Bd2NlOU5qbGZsWVR6LUx6bFpLSHpvUXhfcHZIVnlYYkRscFVEbk50WkVnM0U2Mk95dmZHdVAzbWlPd3pmcGZQeDlZbDhYQ3dtWkJiTk9ELTZOM2U4RmVwbHpZamdYa2o0d3BWTU5xMkFDQ3c?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxQZ1BPQ09OMGtxMGM1djM4WE9Bd2NlOU5qbGZsWVR6LUx6bFpLSHpvUXhfcHZIVnlYYkRscFVEbk50WkVnM0U2Mk95dmZHdVAzbWlPd3pmcGZQeDlZbDhYQ3dtWkJiTk9ELTZOM2U4Rm",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "日産、ホンダ、三菱自が協業検討。電動化・コネクテッド技術で生き残り図るか。",
+    "true_intent": "生き残り戦略としてのコスト削減、技術共有。EVシフトへの遅れを挽回し、政府からの補助金獲得も視野か。系列サプライヤーへの影響大。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "日産自動車",
+    "action_required": true,
+    "category": "その他",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。日産自動車の本質的価値と27卒が狙うべき理由を以下にまとめます。\n\n1.  **主要武器**: グローバルな生産・販売網、電動化技術（e-POWER）、ルノー・三菱とのアライアンスによる規模の経済性。\n2.  **26-27卒への温度感**: 積極採用継続。変革期を担う人材を求めており、多様なバックグラウンドを持つ学生に門戸を開放。\n3.  **EGO適性**: データドリブンな意思決定を重視し、AI活用も推進。構造的思考力とテクノロジーへの関心は高く評価される。\n4.  **裏の弱点**: アライアンスの複雑さによる意思決定の遅延、海外市場への依存度、国内市場の低迷。\n",
+    "deep_web_intel": "**Key Points & Structured Summary (Minimal Text):**\n\n*   **Nissan Corporate Website:** Official site, Japanese language. Focus: company, products, information. Uses Google Tag Manager. Meta data includes keywords, descriptions, site verification.\n\n*   **Car Lineup Page:** Lists Nissan car models. Allows selection by body type, fuel efficiency, price. Includes scripts for browser compatibility and site functionality.\n\n*   **News/Campaigns Page:**  Details new Nissan vehicles, special editions, campaigns. Includes global navigation elements.\n\n**Gap Analysis:**\n\n*   **Incomplete HTML:** Snippets provided, not full documents. Limits comprehensive analysis.\n*   **Limited Content:**  Focus on structure, meta data. Lacks specific product/news details.\n*   **External Dependencies:** Relies on external CSS/JS files. Not fully self-contained."
+  },
+  "critical_analysis": {
+    "true_intent": "生き残り戦略としてのコスト削減、技術共有。EVシフトへの遅れを挽回し、政府からの補助金獲得も視野か。系列サプライヤーへの影響大。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:51:26.589241",
+  "source": "Active:ホンダ"
+}

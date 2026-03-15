@@ -1,0 +1,22 @@
+{
+  "title": "参加者に聞く「職場密着インターン」の魅力とは？Vol.5 -",
+  "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9ySXlQZEpuajR3MVFvV0lfZU9TUXRSNzJEVkxHS2x6bG5ZSUxZYUtsSVlSZWgxYzdjbm5fb3RXdU10Y0g4RkRYUE8xbGJVbEJmUHZ0ZzBxS1dWQUJUU256T0FRcTlGODJ5YnpLMW5WU1VJVjVfRHBQczFqNEw?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE9ySXlQZEpuajR3MVFvV0lfZU9TUXRSNzJEVkxHS2x6bG5ZSUxZYUtsSVlSZWgxYzdjbm5fb3RXdU10Y0g4RkRYUE8xbGJVbEJmUHZ0ZzBxS1dWQUJUU256T0FRcTlGODJ5YnpLMW5WU1",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "職場密着インターンは、企業が従業員の秘密や情報を調査し、利用する可能性があります。",
+    "true_intent": "この情報の裏にある意図は、企業が従業員や関係者の秘密や情報を使用するための可能性があります。",
+    "bias_warning": "高 likelyhood",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "情報政治/企業管理",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図は、企業が従業員や関係者の秘密や情報を使用するための可能性があります。",
+    "bias_warning": "高 likelyhood"
+  },
+  "collected_at": "2026-01-26T18:40:59.536774",
+  "source": "ソニーグループ 戦略"
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ Habit Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1dd1a1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .add-habit {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .add-habit input {
+            flex: 1;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1em;
+            outline: none;
+        }
+
+        .add-habit button {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #1dd1a1, #10ac84);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-habit button:hover {
+            transform: scale(1.05);
+        }
+
+        .week-header {
+            display: grid;
+            grid-template-columns: 200px repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #888;
+            font-size: 0.85em;
+        }
+
+        .habit-row {
+            display: grid;
+            grid-template-columns: 200px repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 8px;
+            align-items: center;
+        }
+
+        .habit-name {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .habit-name span {
+            flex: 1;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 1.2em;
+            opacity: 0;
+            transition: all 0.2s;
+        }
+
+        .habit-name:hover .delete-btn {
+            opacity: 1;
+        }
+
+        .delete-btn:hover {
+            color: #ff6b6b;
+        }
+
+        .day-cell {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.5em;
+        }
+
+        .day-cell:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .day-cell.completed {
+            background: linear-gradient(135deg, #1dd1a1, #10ac84);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #1dd1a1;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+
+        .streak {
+            color: #feca57;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>✅ Habit Tracker</h1>
+
+    <div class="container">
+        <div class="add-habit">
+            <input type="text" id="newHabit" placeholder="新しい習慣を追加...（例: 読書30分）"
+                onkeypress="if(event.key==='Enter')addHabit()">
+            <button onclick="addHabit()">+ 追加</button>
+        </div>
+
+        <div class="week-header" id="weekHeader"></div>
+        <div id="habitList"></div>
+
+        <div class="stats" id="stats"></div>
+    </div>
+
+    <script>
+        let habits = JSON.parse(localStorage.getItem('vectis_habits') || '[]');
+
+        function getWeekDates() {
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+            const startOfWeek = new Date(today);
+            startOfWeek.setDate(today.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
+
+            const dates = [];
+            for (let i = 0; i < 7; i++) {
+                const d = new Date(startOfWeek);
+                d.setDate(startOfWeek.getDate() + i);
+                dates.push(d);
+            }
+            return dates;
+        }
+
+        function formatDate(date) {
+            return date.toISOString().split('T')[0];
+        }
+
+        function getDayName(date) {
+            const days = ['日', '月', '火', '水', '木', '金', '土'];
+            return days[date.getDay()];
+        }
+
+        function renderWeekHeader() {
+            const dates = getWeekDates();
+            const header = document.getElementById('weekHeader');
+            header.innerHTML = '<div></div>' + dates.map(d =>
+                `<div>${getDayName(d)}<br><small>${d.getDate()}</small></div>`
+            ).join('');
+        }
+
+        function renderHabits() {
+            const list = document.getElementById('habitList');
+            const dates = getWeekDates();
+
+            if (habits.length === 0) {
+                list.innerHTML = '<div class="empty-state">習慣を追加してトラッキングを始めましょう！</div>';
+                document.getElementById('stats').innerHTML = '';
+                return;
+            }
+
+            list.innerHTML = habits.map((habit, hIdx) => `
+                <div class="habit-row">
+                    <div class="habit-name">
+                        <span>${habit.name}</span>
+                        <button class="delete-btn" onclick="deleteHabit(${hIdx})">×</button>
+                    </div>
+                    ${dates.map(d => {
+                const dateStr = formatDate(d);
+                const completed = habit.completed.includes(dateStr);
+                return `<div class="day-cell ${completed ? 'completed' : ''}" 
+                                    onclick="toggleDay(${hIdx}, '${dateStr}')">
+                                    ${completed ? '✓' : ''}
+                                </div>`;
+            }).join('')}
+                </div>
+            `).join('');
+
+            renderStats();
+        }
+
+        function renderStats() {
+            const today = formatDate(new Date());
+            let totalCompleted = 0;
+            let todayCompleted = 0;
+            let currentStreak = 0;
+            let bestStreak = 0;
+
+            habits.forEach(habit => {
+                totalCompleted += habit.completed.length;
+                if (habit.completed.includes(today)) todayCompleted++;
+
+                // Calculate streak
+                let streak = 0;
+                const sorted = [...habit.completed].sort().reverse();
+                const todayDate = new Date();
+                for (let i = 0; i < 365; i++) {
+                    const checkDate = new Date(todayDate);
+                    checkDate.setDate(todayDate.getDate() - i);
+                    if (sorted.includes(formatDate(checkDate))) {
+                        streak++;
+                    } else {
+                        break;
+                    }
+                }
+                if (streak > currentStreak) currentStreak = streak;
+                if (streak > bestStreak) bestStreak = streak;
+            });
+
+            const weekCompletion = habits.length > 0 ?
+                Math.round((totalCompleted / (habits.length * 7)) * 100) : 0;
+
+            document.getElementById('stats').innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-value">${todayCompleted}/${habits.length}</div>
+                    <div class="stat-label">今日の達成</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${weekCompletion}%</div>
+                    <div class="stat-label">今週の完了率</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value streak">🔥 ${currentStreak}</div>
+                    <div class="stat-label">現在のストリーク</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${totalCompleted}</div>
+                    <div class="stat-label">総完了数</div>
+                </div>
+            `;
+        }
+
+        function addHabit() {
+            const input = document.getElementById('newHabit');
+            const name = input.value.trim();
+            if (!name) return;
+
+            habits.push({ name, completed: [] });
+            save();
+            input.value = '';
+            renderHabits();
+        }
+
+        function toggleDay(habitIdx, dateStr) {
+            const habit = habits[habitIdx];
+            const idx = habit.completed.indexOf(dateStr);
+            if (idx === -1) {
+                habit.completed.push(dateStr);
+            } else {
+                habit.completed.splice(idx, 1);
+            }
+            save();
+            renderHabits();
+        }
+
+        function deleteHabit(idx) {
+            if (confirm('この習慣を削除しますか？')) {
+                habits.splice(idx, 1);
+                save();
+                renderHabits();
+            }
+        }
+
+        function save() {
+            localStorage.setItem('vectis_habits', JSON.stringify(habits));
+        }
+
+        renderWeekHeader();
+        renderHabits();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "title": "横浜市で、自動運転におけるローカル5Gと路側インフラを活用し",
+  "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5GRjhLVWRxbERucE02bmZOcEgtdHIzaFdQVkVRR1VuSzJJbEJLR004VTJ2MDQxXzgtWmp5YVFpUjJla0dGMnRZUGI5cUFlWURHRVZBMW02RFRCdnpONXZBOWhB?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTE5GRjhLVWRxbERucE02bmZOcEgtdHIzaFdQVkVRR1VuSzJJbEJLR004VTJ2MDQxXzgtWmp5YVFpUjJla0dGMnRZUGI5cUFlWURHRVZBMW02RFRCdnpONXZBOWhB?oc=5\" target=\"_bl",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "横浜市で自動運転実証実験開始。ローカル5Gと路側インフラ活用。",
+    "true_intent": "NTTデータ戦略が技術力をアピールし、自動運転関連事業への参入障壁を築き、将来的な公共事業受注を狙っている可能性。横浜市のスマートシティ構想推進への協力アピールも。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "NTTデータストラテジー",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## NTTデータストラテジー 本質分析 (27卒向け)\n\n1. **主要武器**: NTTデータグループの戦略コンサルティング部門。グループの技術力・顧客基盤を梃子に、実行まで見据えた戦略策定が強み。\n2. **26-27卒への温度感**: 採用数増加傾向。コンサル未経験者にも門戸を開き、ポテンシャル重視の採用へシフト。\n3. **EGO適性**: 論理的思考力は必須。AI/データ活用案件増加中で、積極的に学べる人材を歓迎。\n4. **裏の弱点**: 親会社の影響力大。スピード感やアグレッシブさに欠ける場合も。官公庁案件比率高め。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "NTTデータ戦略が技術力をアピールし、自動運転関連事業への参入障壁を築き、将来的な公共事業受注を狙っている可能性。横浜市のスマートシティ構想推進への協力アピールも。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:38:42.853444",
+  "source": "Active:NTT"
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "target_topic": "Pass/Fail Analysis",
+    "critique": "User Request: Discern Good vs Bad ES",
+    "instruction": "【重要】収集したES事例や体験談を、RAGの『合否の分かれ目マトリクス』に基づいて分類してください。単に保存するのではなく、「これは『抽象的すぎる』から落ちるパターン」「これは『泥臭い数値』があるから受かるパターン」と明記して分析してください。",
+    "priority": "critical",
+    "created_at": "2026-02-01T08:46:00",
+    "status": "active"
+  },
+  {
+    "target_topic": "Service Analysis Strategy",
+    "critique": "User Request: Collect & Judge Data",
+    "instruction": "【重要】収集したサービス情報（DX, 金融, ドローン, Starlink等）を、「新卒エンジニアのESネタとして使えるか？」という視点で『判断』してください。",
+    "priority": "high",
+    "created_at": "2026-01-31T17:18:00",
+    "status": "active"
+  },
+  {
+    "target_topic": "Global Style Constraint",
+    "critique": "User Feedback: Unnatural Sentences",
+    "instruction": "【重要】「AI翻訳調」や「不自然な直訳日本語」を絶対に避けてください。主語の省略、体言止め、自然な接続詞の使用を徹底し、日本のビジネスパーソンが書いて違和感のない、洗練された日本語で出力してください。",
+    "priority": "critical",
+    "created_at": "2026-01-31T16:33:00",
+    "status": "active"
+  }
+]

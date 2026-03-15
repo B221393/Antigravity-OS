@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGO OS - Memory Tree</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #020817;
+            --bg-secondary: #0f172a;
+            --color-cyan: #06b6d4;
+            --color-purple: #a855f7;
+            --color-orange: #f97316;
+            --color-green: #10b981;
+            --color-core: #60a5fa;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #020817, #0a1628);
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Starfield Background */
+        #stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 100;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--text-primary);
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.8);
+        }
+
+        /* Canvas Container */
+        #canvas-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #tree-canvas {
+            display: block;
+        }
+
+        /* Control Panel */
+        #control-panel {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 40px;
+            padding: 20px 40px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 150px;
+        }
+
+        .metric-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+        }
+
+        .metric-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .metric-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .metric-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Navigation Arrows */
+        .nav-arrow {
+            position: absolute;
+            bottom: 40px;
+            width: 50px;
+            height: 50px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(96, 165, 250, 0.2);
+            border-color: var(--color-core);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+        }
+
+        .nav-arrow.left {
+            left: 100px;
+        }
+
+        .nav-arrow.right {
+            right: 100px;
+        }
+
+        /* Settings Button */
+        #settings-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #settings-btn:hover {
+            background: rgba(96, 165, 250, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* Tooltip */
+        #tooltip {
+            position: absolute;
+            padding: 12px 16px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(96, 165, 250, 0.5);
+            border-radius: 8px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            font-size: 0.9rem;
+            z-index: 1000;
+            max-width: 200px;
+        }
+
+        #tooltip.show {
+            opacity: 1;
+        }
+
+        .tooltip-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .tooltip-category {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Starfield -->
+    <div id="stars"></div>
+
+    <!-- Header -->
+    <header>
+        <h1>MEMORY TREE</h1>
+    </header>
+
+    <!-- Settings Button -->
+    <div id="settings-btn">⚙️</div>
+
+    <!-- Canvas -->
+    <div id="canvas-container">
+        <canvas id="tree-canvas"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-arrow left">◀</div>
+    <div class="nav-arrow right">▶</div>
+
+    <!-- Control Panel -->
+    <div id="control-panel">
+        <div class="metric">
+            <div class="metric-label">Node Density</div>
+            <div class="metric-bar">
+                <div class="metric-fill" id="density-bar"
+                    style="width: 85%; background: linear-gradient(90deg, #06b6d4, #3b82f6);"></div>
+            </div>
+            <div class="metric-value">100%</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">Sensitivity</div>
+            <div class="metric-bar">
+                <div class="metric-fill" id="sensitivity-bar"
+                    style="width: 65%; background: linear-gradient(90deg, #f97316, #ef4444);"></div>
+            </div>
+            <div class="metric-value">65%</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">Links</div>
+            <div class="metric-bar">
+                <div class="metric-fill" id="links-bar"
+                    style="width: 78%; background: linear-gradient(90deg, #10b981, #059669);"></div>
+            </div>
+            <div class="metric-value">THK: SYN</div>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div id="tooltip">
+        <div class="tooltip-title">Node Title</div>
+        <div class="tooltip-category">Category</div>
+    </div>
+
+    <script>
+        // Generate starfield
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 2;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Canvas setup
+        const canvas = document.getElementById('tree-canvas');
+        const ctx = canvas.getContext('2d');
+        const tooltip = document.getElementById('tooltip');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Knowledge tree data structure
+        const treeData = {
+            core: {
+                x: canvas.width / 2,
+                y: canvas.height / 2,
+                label: 'CORE: SELF',
+                color: '#60a5fa'
+            },
+            branches: [
+                {
+                    name: 'PROGRAMMING',
+                    color: '#06b6d4',
+                    angle: -Math.PI / 4,
+                    nodes: [
+                        'React', 'Next.js', 'Node.js', 'GraphQL', 'Docker', 'Kubernetes',
+                        'Python', 'TypeScript', 'WebGL', 'Three.js', 'Vue', 'Svelte'
+                    ]
+                },
+                {
+                    name: 'PHILOSOPHY',
+                    color: '#a855f7',
+                    angle: Math.PI / 4,
+                    nodes: [
+                        'Mindset', 'Ethics', 'Logic', 'Metaphysics', 'Aesthetics',
+                        'Epistemology', 'Existentialism', 'Stoicism', 'Buddhism'
+                    ]
+                },
+                {
+                    name: 'LANGUAGES',
+                    color: '#f97316',
+                    angle: -3 * Math.PI / 4,
+                    nodes: [
+                        'Japanese', 'English', 'Spanish', 'German', 'French',
+                        'Mandarin', 'Korean', 'Arabic', 'Portuguese'
+                    ]
+                },
+                {
+                    name: 'HISTORY',
+                    color: '#10b981',
+                    angle: 3 * Math.PI / 4,
+                    nodes: [
+                        'Ancient', 'Medieval', 'Renaissance', 'Modern',
+                        'Contemporary', 'Asian', 'European', 'American'
+                    ]
+                }
+            ]
+        };
+
+        // Node class
+        class Node {
+            constructor(x, y, label, color, level = 0) {
+                this.x = x;
+                this.y = y;
+                this.label = label;
+                this.color = color;
+                this.level = level;
+                this.radius = level === 0 ? 30 : (level === 1 ? 20 : 12);
+                this.pulse = 0;
+                this.connections = [];
+            }
+
+            draw() {
+                // Glow effect
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius + 10);
+                gradient.addColorStop(0, this.color + 'aa');
+                gradient.addColorStop(0.5, this.color + '44');
+                gradient.addColorStop(1, this.color + '00');
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius + 10 + Math.sin(this.pulse) * 3, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Hexagon
+                this.drawHexagon();
+
+                // Icon (for main branches)
+                if (this.level === 1) {
+                    ctx.fillStyle = this.color;
+                    ctx.font = '16px "Orbitron"';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('⬡', this.x, this.y);
+                }
+
+                // Label
+                if (this.level <= 1) {
+                    ctx.fillStyle = '#fff';
+                    ctx.font = this.level === 0 ? 'bold 12px "Orbitron"' : '10px "Inter"';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(this.label, this.x, this.y + this.radius + 15);
+
+                    if (this.level === 1) {
+                        ctx.font = '8px "Inter"';
+                        ctx.fillStyle = '#94a3b8';
+                        const category = this.label.split('\n')[1] || '';
+                        ctx.fillText(category, this.x, this.y + this.radius + 27);
+                    }
+                }
+
+                this.pulse += 0.03;
+            }
+
+            drawHexagon() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.beginPath();
+
+                for (let i = 0; i < 6; i++) {
+                    const angle = (Math.PI / 3) * i;
+                    const x = this.radius * Math.cos(angle);
+                    const y = this.radius * Math.sin(angle);
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+
+                ctx.closePath();
+                ctx.fillStyle = this.color + '33';
+                ctx.fill();
+                ctx.strokeStyle = this.color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.restore();
+            }
+
+            isHovered(mouseX, mouseY) {
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                return Math.sqrt(dx * dx + dy * dy) < this.radius;
+            }
+        }
+
+        // Create nodes
+        const nodes = [];
+        const coreNode = new Node(
+            canvas.width / 2,
+            canvas.height / 2,
+            'SELF',
+            treeData.core.color,
+            0
+        );
+        nodes.push(coreNode);
+
+        treeData.branches.forEach((branch, branchIndex) => {
+            const baseDistance = 180;
+            const mainX = coreNode.x + Math.cos(branch.angle) * baseDistance;
+            const mainY = coreNode.y + Math.sin(branch.angle) * baseDistance;
+
+            const mainNode = new Node(mainX, mainY, branch.name, branch.color, 1);
+            nodes.push(mainNode);
+            mainNode.connections.push(coreNode);
+
+            // Create sub-nodes
+            branch.nodes.forEach((nodeName, index) => {
+                const angleOffset = (index - branch.nodes.length / 2) * 0.3;
+                const distance = 80 + Math.random() * 40;
+                const nodeAngle = branch.angle + angleOffset;
+
+                const nodeX = mainX + Math.cos(nodeAngle) * distance;
+                const nodeY = mainY + Math.sin(nodeAngle) * distance;
+
+                const subNode = new Node(nodeX, nodeY, nodeName, branch.color, 2);
+                nodes.push(subNode);
+                subNode.connections.push(mainNode);
+
+                // Connect some sub-nodes to each other
+                if (index > 0 && Math.random() > 0.5) {
+                    const prevNode = nodes[nodes.length - 2];
+                    if (prevNode.level === 2) {
+                        subNode.connections.push(prevNode);
+                    }
+                }
+            });
+        });
+
+        // Draw connections
+        function drawConnections() {
+            nodes.forEach(node => {
+                node.connections.forEach(targetNode => {
+                    const gradient = ctx.createLinearGradient(
+                        node.x, node.y,
+                        targetNode.x, targetNode.y
+                    );
+                    gradient.addColorStop(0, node.color + '88');
+                    gradient.addColorStop(1, targetNode.color + '88');
+
+                    ctx.strokeStyle = gradient;
+                    ctx.lineWidth = node.level === 0 ? 2 : 1;
+                    ctx.setLineDash([5, 5]);
+                    ctx.beginPath();
+                    ctx.moveTo(node.x, node.y);
+                    ctx.lineTo(targetNode.x, targetNode.y);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+
+                    // Particles along connections
+                    if (Math.random() > 0.95) {
+                        const t = Math.random();
+                        const px = node.x + (targetNode.x - node.x) * t;
+                        const py = node.y + (targetNode.y - node.y) * t;
+
+                        ctx.fillStyle = node.color;
+                        ctx.beginPath();
+                        ctx.arc(px, py, 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+            });
+        }
+
+        // Mouse interaction
+        let hoveredNode = null;
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            hoveredNode = nodes.find(node => node.isHovered(mouseX, mouseY));
+
+            if (hoveredNode) {
+                tooltip.querySelector('.tooltip-title').textContent = hoveredNode.label;
+                tooltip.querySelector('.tooltip-category').textContent =
+                    hoveredNode.level === 0 ? 'Core' :
+                        hoveredNode.level === 1 ? 'Main Branch' : 'Knowledge Node';
+                tooltip.style.left = e.clientX + 15 + 'px';
+                tooltip.style.top = e.clientY + 15 + 'px';
+                tooltip.classList.add('show');
+                canvas.style.cursor = 'pointer';
+            } else {
+                tooltip.classList.remove('show');
+                canvas.style.cursor = 'default';
+            }
+        });
+
+        canvas.addEventListener('click', (e) => {
+            if (hoveredNode) {
+                alert(`Clicked: ${hoveredNode.label}\nLevel: ${hoveredNode.level}`);
+            }
+        });
+
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawConnections();
+            nodes.forEach(node => node.draw());
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Navigation arrows
+        document.querySelector('.nav-arrow.left').addEventListener('click', () => {
+            console.log('Previous view');
+        });
+
+        document.querySelector('.nav-arrow.right').addEventListener('click', () => {
+            console.log('Next view');
+        });
+
+        document.getElementById('settings-btn').addEventListener('click', () => {
+            alert('Settings panel (to be implemented)');
+        });
+    </script>
+</body>
+
+</html>

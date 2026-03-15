@@ -1,0 +1,22 @@
+{
+  "title": "DGFTとauフィナンシャルサービスの共同開発による KDD",
+  "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1mRUphN2hQck9VaEhiYnJQVmxEaHJFdTIxMlBiTDVadVk2YXQwZmNLcUJuN0hsT2U5N2pjMGJteFp0eWVxd3NQWFVEOHJwOHJQSEs4NG1IRWI?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiWEFVX3lxTE1mRUphN2hQck9VaEhiYnJQVmxEaHJFdTIxMlBiTDVadVk2YXQwZmNLcUJuN0hsT2U5N2pjMGJteFp0eWVxd3NQWFVEOHJwOHJQSEs4NG1IRWI?oc=5\" target=\"_blank\">DGFTとauフ",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "このニュースは、KDDIグループの次世代決済プラットフォーム「NESTA」に関する情報と関係性が高いと分析されますが、特定の利権構造や意図が明確に記述されているわけではないため、分析は複雑な内容であることが懸念されます。",
+    "true_intent": "この情報の裏にある意図や、誰が得をするか（利権・宣伝色）を批判的に分析 (100文字以内に)。",
+    "bias_warning": "この情報は、KDDIグループやデジタルガレージとの共同開発によるプロジェクトに関係している可能性があるため、利権構造を推測するための信頼性が高いと考えられます。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "この情報の裏にある意図や、誰が得をするか（利権・宣伝色）を批判的に分析 (100文字以内に)。",
+    "bias_warning": "この情報は、KDDIグループやデジタルガレージとの共同開発によるプロジェクトに関係している可能性があるため、利権構造を推測するための信頼性が高いと考えられます。"
+  },
+  "collected_at": "2026-01-26T19:21:53.332883",
+  "source": "KDDI 採用 Deep Dive"
+}

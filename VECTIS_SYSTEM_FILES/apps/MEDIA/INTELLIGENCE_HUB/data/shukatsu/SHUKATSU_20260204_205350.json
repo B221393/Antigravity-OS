@@ -1,0 +1,43 @@
+{
+  "title": "P&G Japan に内定！「自分の価値観を知り、どのように相手に伝えるか」を模擬面接で吟味して改善（山本裕暉さん） ｜明治大学 - Meiji NOW",
+  "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBaSXJnRXo2bW1XbG0tQkR3cHpsM2xMWmQ2clFPdnRaTVFBMFJTRklJT3RPSmpLZi1FVGc4NW1UaTI5RGhVemMtbEJOUWVNYnRWTXc?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiUkFVX3lxTFBaSXJnRXo2bW1XbG0tQkR3cHpsM2xMWmQ2clFPdnRaTVFBMFJTRklJT3RPSmpLZi1FVGc4NW1UaTI5RGhVemMtbEJOUWVNYnRWTXc?oc=5\" target=\"_blank\">P&G Japan に内定！「自分の価値観を知り、どのように相手に伝えるか」を模擬面接で吟味して改善（山本裕暉さん） ｜明治大学</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Meiji NOW</font>",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "P&G の理念と Just Value を分析し、戦略的なインテリジェンスを抽出します。",
+    "strategic_analysis": {
+      "true_intent": "P&G の理念と Just Value をどのように組み合わせして、顧客との差別化を実現するか？",
+      "swot": {
+        "strength": "P&G のブランドイメージは、顧客との差別化に役立ちます",
+        "weakness": "Just Value の定義は抽象的であり、顧客に明確な価値提供は難しい",
+        "opportunity": "P&G は、顧客に価値を提供するための様々な製品とサービスを提供することで、差別化を達成することができます",
+        "threat": "競合がP&G より差別化が難しい場合は、Just Value の定義ミスで顧客との差別化が難しい可能性があります"
+      },
+      "writing_technique": "P&G の理念と Just Value をどのように統合して、効果的なマーケティング戦略を構築するのか？",
+      "action_plan": "P&G は、Just Value をどのように顧客に明確かつ効果的に伝えるかを考えるべきです。これは、製品やサービスの機能とメリットを明確かつ簡潔に説明することで達成することができます"
+    },
+    "bias_warning": "ポジショントークの可能性があります",
+    "company": "P&G JAPAN",
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027",
+    "priority_score": 9,
+    "company_profile": "P&G JAPANの「本質的価値」と「27卒が狙うべき理由」を以下に構造化します。\n\n1. **主要武器**: グローバルなリーダーシップと革新的な製品開発\n2. **26-27卒への温度感**: 多様性と国際的なキャリアへの支援に注力\n3. **EGO適性**: デジタル化とデータ分析を重視する文化\n4. **裏の弱点**: 大企業としての層重なりや変化への対応の遅れ\n\nこれらを踏まえると、P&G JAPANはグローバルな視野と革新的なアプローチを重視する企業であり、多様性を尊重し、国際的なキャリア開発を支援しています。ただし、大企業としての複雑さや変化への対応の遅れが懸念される可能性があります。",
+    "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+  },
+  "critical_analysis": {
+    "true_intent": "P&G の理念と Just Value をどのように組み合わせして、顧客との差別化を実現するか？",
+    "swot": {
+      "strength": "P&G のブランドイメージは、顧客との差別化に役立ちます",
+      "weakness": "Just Value の定義は抽象的であり、顧客に明確な価値提供は難しい",
+      "opportunity": "P&G は、顧客に価値を提供するための様々な製品とサービスを提供することで、差別化を達成することができます",
+      "threat": "競合がP&G より差別化が難しい場合は、Just Value の定義ミスで顧客との差別化が難しい可能性があります"
+    },
+    "writing_technique": "P&G の理念と Just Value をどのように統合して、効果的なマーケティング戦略を構築するのか？",
+    "action_plan": "P&G は、Just Value をどのように顧客に明確かつ効果的に伝えるかを考えるべきです。これは、製品やサービスの機能とメリットを明確かつ簡潔に説明することで達成することができます"
+  },
+  "deep_strategic_dossier": "ERROR: Gemini API call failed for model 'gemini-pro': 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+  "bias": "ポジショントークの可能性があります",
+  "collected_at": "2026-02-04T20:53:50.208842",
+  "source": "P&G 採用",
+  "score": 9
+}

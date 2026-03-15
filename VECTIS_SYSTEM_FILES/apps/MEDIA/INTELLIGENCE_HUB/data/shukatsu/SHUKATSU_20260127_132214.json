@@ -1,0 +1,24 @@
+{
+  "title": "ITエンジニア志望学生のインターンシップ、27卒の人気企業は",
+  "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE45SWRjNkRSWVJMcGhFUHUzOUl6N2FnN3ptM2dqdzFJckgwdU1GZmF4bjNOWEVHdEZtQmtkYmg5czk0Vl9NYUJzdzRWQ0JDRGU0WjdoVENENmJzQnM?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiW0FVX3lxTE45SWRjNkRSWVJMcGhFUHUzOUl6N2FnN3ptM2dqdzFJckgwdU1GZmF4bjNOWEVHdEZtQmtkYmg5czk0Vl9NYUJzdzRWQ0JDRGU0WjdoVENENmJzQnM?oc=5\" target=\"_blank\">ITエン",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "27卒ITエンジニア志望インターンシップ人気はゲーム系企業が強い（paiza調べ）。",
+    "true_intent": "paizaのブランド力向上と、自社サービス（ITエンジニア向け転職・学習支援）への誘導。ゲーム業界の人材需要を強調し、学生のキャリア選択に影響を与えようとしている。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "paiza",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "はい、承知いたしました。paizaの本質的価値と27卒が狙うべき理由を構造化します。\n\n**paizaの本質と27卒が狙うべき理由**\n\n1.  **主要武器**: スキル可視化による採用DX推進。プログラミングスキル評価と学習プラットフォームの独自性。\n2.  **26-27卒への温度感**: ポテンシャル重視。実務未経験者への門戸も広く、採用数も増加傾向。\n3.  **EGO適性**: 論理的思考力と技術探求心を重視。AI技術も積極的に活用しており、親和性高。\n4.  **裏の弱点**: 急成長に伴う組織体制の整備、教育制度の拡充が課題。変化への適応力が求められる。\n",
+    "deep_web_intel": "**Key Points:**\n\n*   **paiza:** ITエンジニア向け転職・就活・学習サービス. スキルチェックで実力を可視化、スカウトによる転職支援. 技術評価重視.\n*   **paizaラーニング:** プログラミング学習サイト。主要言語の講座、環境構築不要、ブラウザで学習可能. 初心者～中級者向け、動画と演習問題.\n\n**Structured Summary:**\n\n*   **paiza:** 転職・就活プラットフォーム for IT engineers. Skill-based matching, not based on academic background.\n*   **paizaラーニング:** Online coding school. Easy setup, various languages.\n\n**Gap Analysis:**\n\n*   paiza focuses on career advancement.\n*   paizaラーニング focuses on skill development.\n*   Both emphasize accessibility and practical skills."
+  },
+  "critical_analysis": {
+    "true_intent": "paizaのブランド力向上と、自社サービス（ITエンジニア向け転職・学習支援）への誘導。ゲーム業界の人材需要を強調し、学生のキャリア選択に影響を与えようとしている。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:22:14.404082",
+  "source": "Active:博報堂"
+}

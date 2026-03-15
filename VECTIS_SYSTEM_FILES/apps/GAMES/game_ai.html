@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Ethereal Runner (AI Mode)</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #0c001f;
+            touch-action: none;
+        }
+        #gl-canvas {
+            display: block;
+        }
+        #ui-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    </style>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.skypack.dev/three@0.149.0"
+        }
+    }
+    </script>
+</head>
+<body>
+    <canvas id="gl-canvas"></canvas>
+    <canvas id="ui-canvas"></canvas>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        let scene, camera, renderer, clock;
+        let player, tunnel, obstacleManager;
+        let uiCanvas, uiCtx;
+        
+        let gameSpeed = 15;
+        let score = 0;
+        let isPlaying = true;
+        let targetPlayerPositionX = 0;
+        
+        // AI State
+        let isAutoPilot = true;
+
+        // --- 1. 初期化 (Initialization) ---
+        function init() {
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('gl-canvas'), antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setClearColor(0x0c001f);
+
+            // Scene
+            scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0x0c001f, 0.03);
+
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            // Clock
+            clock = new THREE.Clock();
+
+            // UI Canvas
+            uiCanvas = document.getElementById('ui-canvas');
+            uiCtx = uiCanvas.getContext('2d');
+            uiCanvas.width = window.innerWidth;
+            uiCanvas.height = window.innerHeight;
+
+            // --- Game Objects ---
+            createPlayer();
+            createTunnel();
+            createObstacleManager();
+
+            // --- AI UI ---
+            createAIButton();
+
+            // --- Event Listeners ---
+            window.addEventListener('resize', onWindowResize);
+            window.addEventListener('pointerdown', onPointerDown);
+        }
+
+        function createAIButton() {
+            const btn = document.createElement('button');
+            btn.id = 'ai-toggle';
+            btn.textContent = 'AI: ON';
+            btn.style.position = 'absolute';
+            btn.style.top = '20px';
+            btn.style.right = '20px';
+            btn.style.zIndex = '1000';
+            btn.style.padding = '10px 20px';
+            btn.style.fontFamily = 'monospace';
+            btn.style.fontSize = '16px';
+            btn.style.background = '#00ffff';
+            btn.style.border = 'none';
+            btn.style.borderRadius = '4px';
+            btn.style.cursor = 'pointer';
+            btn.style.boxShadow = '0 0 10px #00ffff';
+            
+            btn.onclick = (e) => {
+                e.stopPropagation(); // Prevent triggering game input
+                isAutoPilot = !isAutoPilot;
+                btn.textContent = isAutoPilot ? 'AI: ON' : 'AI: OFF';
+                btn.style.background = isAutoPilot ? '#00ffff' : '#555';
+                btn.style.boxShadow = isAutoPilot ? '0 0 10px #00ffff' : 'none';
+                btn.style.color = isAutoPilot ? 'black' : 'white';
+            };
+            document.body.appendChild(btn);
+        }
+
+        // --- 2. ゲームオブジェクト生成 (Game Object Creation) ---
+
+        function createPlayer() {
+            const geometry = new THREE.TetrahedronGeometry(0.4);
+            const material = new THREE.MeshStandardMaterial({
+                color: 0x00ffff,
+                emissive: 0x00ffff,
+                emissiveIntensity: 2,
+                metalness: 0.8,
+                roughness: 0.2
+            });
+            player = new THREE.Mesh(geometry, material);
+            player.position.z = 2;
+            scene.add(player);
+        }
+
+        function createTunnel() {
+            const numRings = 50;
+            const ringRadius = 5;
+            const ringTubeRadius = 0.1;
+            const ringGeometry = new THREE.TorusGeometry(ringRadius, ringTubeRadius, 8, 32);
+            const ringMaterial = new THREE.MeshStandardMaterial({
+                color: 0xff00ff,
+                emissive: 0xff00ff,
+                emissiveIntensity: 1,
+                wireframe: true
+            });
+            tunnel = new THREE.Group();
+            for (let i = 0; i < numRings; i++) {
+                const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+                ring.position.z = i * -4;
+                tunnel.add(ring);
+            }
+            scene.add(tunnel);
+        }
+
+        function createObstacleManager() {
+            const numObstacles = 100;
+            const obstacleGeometry = new THREE.BoxGeometry(1, 1, 1);
+            const obstacleMaterial = new THREE.MeshStandardMaterial({
+                color: 0xffa500,
+                emissive: 0xffa500,
+                emissiveIntensity: 1,
+            });
+            obstacleManager = new THREE.InstancedMesh(obstacleGeometry, obstacleMaterial, numObstacles);
+            
+            const dummy = new THREE.Object3D();
+            for (let i = 0; i < numObstacles; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const radius = 4;
+                dummy.position.set(
+                    Math.cos(angle) * radius,
+                    Math.sin(angle) * radius,
+                    -10 - i * 10
+                );
+                dummy.updateMatrix();
+                obstacleManager.setMatrixAt(i, dummy.matrix);
+            }
+            scene.add(obstacleManager);
+        }
+        
+        // --- 3. イベントハンドラ (Event Handlers) ---
+        
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            uiCanvas.width = window.innerWidth;
+            uiCanvas.height = window.innerHeight;
+        }
+
+        function onPointerDown(event) {
+            // If AI is ON, ignore player input for movement, but allow restart
+            if (event.target.id === 'ai-toggle') return;
+
+            if (!isPlaying) {
+                resetGame();
+                return;
+            }
+            
+            if (!isAutoPilot) {
+                targetPlayerPositionX = (event.clientX < window.innerWidth / 2) ? -3 : 3;
+            }
+        }
+
+        // --- 4. AI Logic ---
+        function updateAI() {
+            if (!isAutoPilot || !isPlaying) return;
+
+            const dummy = new THREE.Object3D();
+            const playerZ = player.position.z;
+            let closestZ = -Infinity;
+            let targetObstacle = null;
+
+            // Scan obstacles
+            for (let i = 0; i < obstacleManager.count; i++) {
+                obstacleManager.getMatrixAt(i, dummy.matrix);
+                dummy.position.setFromMatrixPosition(dummy.matrix);
+                
+                const z = dummy.position.z;
+                
+                // Find the closest obstacle that is IN FRONT of the player (z < playerZ)
+                // Note: Obstacles spawn at negative Z and move towards positive Z.
+                // We want to find the obstacle with the highest Z value that is still less than playerZ + margin.
+                // Wait, if obstacle passes player (z > playerZ), we ignore it.
+                // So condition: z < playerZ + 1. (Add margin for "just passing")
+                
+                if (z < playerZ + 1 && z > closestZ && z > playerZ - 40) {
+                    closestZ = z;
+                    targetObstacle = dummy.position.clone();
+                }
+            }
+
+            if (targetObstacle) {
+                // Analyze threat
+                // Obstacle is dangerous if it's roughly at the same height as the player (y=0)
+                // Obstacles orbit at radius 4. y = sin(angle) * 4.
+                // Player is safe if |y| > 1 approx.
+                
+                if (Math.abs(targetObstacle.y) < 1.5) {
+                    // It is in the dangerous horizontal band.
+                    // Determine if it's on the Left or Right side.
+                    // x = cos(angle) * 4.
+                    
+                    if (targetObstacle.x > 0) {
+                        // Obstacle is on the Right. Dodge Left.
+                        targetPlayerPositionX = -3;
+                    } else {
+                        // Obstacle is on the Left. Dodge Right.
+                        targetPlayerPositionX = 3;
+                    }
+                } else {
+                    // Obstacle is above or below. Safe to stay or move?
+                    // Better to stay in current lane or move to center?
+                    // Actually, if vertical obstacle is incoming, any X is safe.
+                    // But if we are ALREADY in a lane, we might as well stay there.
+                }
+            }
+        }
+
+        // --- 5. ゲームループ (Game Loop) ---
+        
+        function updateUI() {
+            uiCtx.clearRect(0, 0, uiCanvas.width, uiCanvas.height);
+            uiCtx.font = "30px monospace";
+            uiCtx.fillStyle = "white";
+            uiCtx.fillText(`Score: ${Math.floor(score)}`, 20, 50);
+
+            if (!isPlaying) {
+                uiCtx.font = "50px monospace";
+                uiCtx.fillStyle = "cyan";
+                const text = "GAME OVER";
+                const textWidth = uiCtx.measureText(text).width;
+                uiCtx.fillText(text, (uiCanvas.width - textWidth) / 2, uiCanvas.height / 2);
+
+                uiCtx.font = "20px monospace";
+                const restartText = "Tap to Restart";
+                const restartWidth = uiCtx.measureText(restartText).width;
+                uiCtx.fillText(restartText, (uiCanvas.width - restartWidth) / 2, uiCanvas.height / 2 + 40);
+            }
+        }
+        
+        function checkCollisions() {
+            const playerBox = new THREE.Box3().setFromObject(player);
+            const dummy = new THREE.Object3D();
+
+            for (let i = 0; i < obstacleManager.count; i++) {
+                obstacleManager.getMatrixAt(i, dummy.matrix);
+                dummy.position.setFromMatrixPosition(dummy.matrix);
+                
+                // Optimized collision check: only check close objects
+                if (Math.abs(player.position.z - dummy.position.z) < 2) {
+                    const obstacleBox = new THREE.Box3().setFromObject(dummy);
+                    obstacleBox.expandByScalar(-0.5); // Adjust hitbox
+                    if (playerBox.intersectsBox(obstacleBox)) {
+                        isPlaying = false;
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const delta = clock.getDelta();
+            
+            if (isPlaying) {
+                // Run AI Logic
+                updateAI();
+
+                score += delta * gameSpeed;
+                gameSpeed += delta * 0.1;
+
+                // Player movement
+                player.position.x = THREE.MathUtils.lerp(player.position.x, targetPlayerPositionX, 0.1);
+                player.rotation.y += delta * 2;
+                player.rotation.z += delta * 2;
+                
+                // Tunnel movement
+                tunnel.position.z += delta * gameSpeed;
+                if (tunnel.children[0].position.z + tunnel.position.z > camera.position.z) {
+                    tunnel.children[0].position.z -= tunnel.children.length * 4;
+                    const first = tunnel.children.shift();
+                    tunnel.children.push(first);
+                }
+
+                // Obstacle movement and recycling
+                const dummy = new THREE.Object3D();
+                for (let i = 0; i < obstacleManager.count; i++) {
+                    obstacleManager.getMatrixAt(i, dummy.matrix);
+                    dummy.position.setFromMatrixPosition(dummy.matrix);
+                    dummy.position.z += delta * gameSpeed;
+
+                    if (dummy.position.z > camera.position.z) {
+                         const angle = Math.random() * Math.PI * 2;
+                         const radius = 4;
+                         dummy.position.set(
+                            Math.cos(angle) * radius,
+                            Math.sin(angle) * radius,
+                            -400 // Reset far away
+                         );
+                    }
+                    dummy.updateMatrix();
+                    obstacleManager.setMatrixAt(i, dummy.matrix);
+                }
+                obstacleManager.instanceMatrix.needsUpdate = true;
+
+                checkCollisions();
+            }
+
+            updateUI();
+            renderer.render(scene, camera);
+        }
+
+        function resetGame() {
+            score = 0;
+            gameSpeed = 15;
+            targetPlayerPositionX = 0;
+            isPlaying = true;
+            tunnel.position.z = 0;
+
+            const dummy = new THREE.Object3D();
+            for (let i = 0; i < obstacleManager.count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const radius = 4;
+                dummy.position.set(
+                    Math.cos(angle) * radius,
+                    Math.sin(angle) * radius,
+                    -10 - i * 10
+                );
+                dummy.updateMatrix();
+                obstacleManager.setMatrixAt(i, dummy.matrix);
+            }
+            obstacleManager.instanceMatrix.needsUpdate = true;
+        }
+
+        // --- 5. 実行 (Execution) ---
+        init();
+        animate();
+
+    </script>
+</body>
+</html>

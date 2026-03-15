@@ -1,0 +1,22 @@
+{
+  "title": "【内閣官房国土強靱化推進室 主催】国土強靱化に向けた防災・減",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1wZE5jZlpuRTlDZDFvMFVWRm5ZMnB6Z2hyTE9RS2Z1eWhLd2RpMnJySVQxZk00RmJQME1FSUpDNWRQV0ZCQVA0aUdGUUJqdHpjRE5jU0dOc202QXBZUVB6cmNMcEFoVnRTc0E?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE1wZE5jZlpuRTlDZDFvMFVWRm5ZMnB6Z2hyTE9RS2Z1eWhLd2RpMnJySVQxZk00RmJQME1FSUpDNWRQV0ZCQVA0aUdGUUJqdHpjRE5jU0dOc202QXBZUVB6cmNMcEFoVnRTc0E?oc=5\" ",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "内閣官房主催の国土強靱化ワークショップ開催。防災・減災がテーマ。",
+    "true_intent": "国土強靭化計画の推進、関連予算の獲得、及び関連業界（建設・インフラ）への利益誘導の可能性。国民の防災意識向上を謳い、政策の正当性をアピール。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": false,
+    "category": "その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "国土強靭化計画の推進、関連予算の獲得、及び関連業界（建設・インフラ）への利益誘導の可能性。国民の防災意識向上を謳い、政策の正当性をアピール。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:31:12.971734",
+  "source": "Active:NTT"
+}

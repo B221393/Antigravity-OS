@@ -1,0 +1,22 @@
+{
+  "title": "就職四季報 企業研究・インターンシップ版2027年版 - 東",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "インターンシップの機会や企業との利権的な関係を分析するニュース。",
+    "true_intent": "インターンシッププログラムが企業との利権的な関係を構築するための機会や、その利点やリスクを分析する。",
+    "bias_warning": "ポジショントークであり、企業との利権的な関係を強調している可能性がある。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "インターンシッププログラムが企業との利権的な関係を構築するための機会や、その利点やリスクを分析する。",
+    "bias_warning": "ポジショントークであり、企業との利権的な関係を強調している可能性がある。"
+  },
+  "collected_at": "2026-01-27T11:50:01.036281",
+  "source": "インターン (Google)"
+}

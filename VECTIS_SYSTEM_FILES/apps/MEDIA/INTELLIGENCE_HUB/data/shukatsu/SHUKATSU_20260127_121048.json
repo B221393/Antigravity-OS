@@ -1,0 +1,22 @@
+{
+  "title": "神戸企業インタビュー - city.kobe.lg.jp",
+  "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPS1FXTkZFLVNtV2p5VGtaRU9mYzl2UGtUYXZOb3AxSWNWZ1QycE5FQW9fQmZlUWl6VWtUS1RFajlQYXJoODl1dkRSczU2UDctZmF6N091c2xtUTFVNjBJVDhRTlZoQ3NDUEhNRUtvb1djTFR3V3g3SGJJaTdic3haeEhFMlZzQzFYbVBjMFJBTnZnUVFhLVVHX1hR?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxPS1FXTkZFLVNtV2p5VGtaRU9mYzl2UGtUYXZOb3AxSWNWZ1QycE5FQW9fQmZlUWl6VWtUS1RFajlQYXJoODl1dkRSczU2UDctZmF6N091c2xtUTFVNjBJVDhRTlZoQ3NDUEhNRUtvb1",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "神戸市が地元企業を紹介。就活生向け情報提供か。",
+    "true_intent": "神戸市が地元企業への就職を促進し、地域経済を活性化させたい意図。企業誘致の宣伝や、市のイメージアップも狙い。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "神戸市が地元企業への就職を促進し、地域経済を活性化させたい意図。企業誘致の宣伝や、市のイメージアップも狙い。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T12:10:48.932349",
+  "source": "フェリシモ 採用"
+}

@@ -1,0 +1,29 @@
+TYPE:FRACTAL_NODE
+TERM:1. Laplace変換
+SRC:Derived from Why Laplace transforms are so useful
+DEPTH:1
+TIME:2026-01-11 19:59
+---BODY---
+## 【指令: Laplace変換 知識圧縮 (.chi形式)】
+
+**用語:** Laplace変換
+
+**文脈:** Derived from Why Laplace transforms are so useful
+
+**出力:**
+
+【定義】時域関数頻域転化 (時間領域函數 頻率領域轉化)
+
+【構造】
+*   積分核 e^(-st) 乗算 (積分核 e^(-st) 乗算)
+*   積分範囲 0 至 ∞ (積分範圍 0 至 ∞)
+*   微分方程式代数化 (微分方程式代數化)
+*   伝達関数表現可能 (傳達函數表現可能)
+
+【意義】複雑系解析簡潔化 (複雜系解析簡潔化)
+
+【関連】
+*   フーリエ変換 (Fourier変換)
+*   伝達関数 (傳達函數)
+*   逆ラプラス変換 (逆Laplace轉換)
+

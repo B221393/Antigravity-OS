@@ -1,0 +1,22 @@
+{
+  "title": "【イベントレポート】Career Talk在日外資系企業で高",
+  "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE04aDh3aE52NEpqcldUNkRJTGt3SjQzbVBpTVhUUnFDa1pfZVhEaFg4ZHdXT25xc25fdG1MUFJBRlVVVHJFdGVBazcyc01PQWVjNlJhblZjMXhvZ3cwRjNNaXcxbENfYjBJUDM2eEhqRTlQQThX?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE04aDh3aE52NEpqcldUNkRJTGt3SjQzbVBpTVhUUnFDa1pfZVhEaFg4ZHdXT25xc25fdG1MUFJBRlVVVHJFdGVBazcyc01PQWVjNlJhblZjMXhvZ3cwRjNNaXcxbENfYjBJUDM2eEhqRT",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "このニュースは、日外資系企業が採用活動に課題をきたしていることを alertaする内容です。",
+    "true_intent": "このニュースは、日外資系企業が採用活動に課題をきたしていることを alertするためのニュースであると考えられます。",
+    "bias_warning": "肯定的かつ、日外資系企業に利益が得られる可能性があると見られているため、 potentially misleading な可能性があります。",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "出版/広告/メディア/IT/その他",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "このニュースは、日外資系企業が採用活動に課題をきたしていることを alertするためのニュースであると考えられます。",
+    "bias_warning": "肯定的かつ、日外資系企業に利益が得られる可能性があると見られているため、 potentially misleading な可能性があります。"
+  },
+  "collected_at": "2026-01-26T16:50:14.919076",
+  "source": "外資メーカー"
+}

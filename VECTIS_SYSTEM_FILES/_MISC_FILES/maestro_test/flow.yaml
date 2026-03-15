@@ -1,0 +1,8 @@
+appId: com.google.android.calculator
+---
+- launchApp
+- tapOn: '7'
+- tapOn: 'x'
+- tapOn: '6'
+- tapOn: '='
+- assertVisible: '42'

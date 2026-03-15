@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS CORTEX - System Diagnostics</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            margin: 0;
+            padding: 10px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .header {
+            border-bottom: 2px solid #004400;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .workspace {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: 200px 1fr;
+            gap: 10px;
+            overflow: hidden;
+        }
+
+        .pane {
+            border: 1px solid #004400;
+            background: #050505;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .pane-title {
+            background: #002200;
+            color: #00ff00;
+            padding: 2px 8px;
+            font-size: 11px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pane-content {
+            flex: 1;
+            padding: 8px;
+            font-size: 12px;
+            overflow-y: auto;
+            line-height: 1.4;
+        }
+
+        .log-entry {
+            margin-bottom: 2px;
+        }
+
+        .log-time {
+            color: #008800;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+
+        .log-msg {
+            color: #ccffcc;
+        }
+
+        .log-critical {
+            color: #ff0000;
+            background: #330000;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat-box {
+            border: 1px solid #004400;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .stat-val {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .stat-lbl {
+            font-size: 10px;
+            color: #008800;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            border-bottom: 1px solid #002200;
+        }
+
+        .status-ok {
+            color: #00ff00;
+        }
+
+        .status-err {
+            color: #ff0000;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #001100;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #004400;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div>VECTIS CORTEX KERNEL MONITOR [v4.1.2]</div>
+        <div id="sys-time">2026-01-21 16:56:42</div>
+    </div>
+
+    <div class="workspace">
+        <!-- Stats -->
+        <div class="pane">
+            <div class="pane-title">SYSTEM RESOURCES</div>
+            <div class="pane-content">
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <div class="stat-val">34%</div>
+                        <div class="stat-lbl">CPU ALLOC</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val">2.4G</div>
+                        <div class="stat-lbl">MEM IN USE</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val">12</div>
+                        <div class="stat-lbl">WORKERS</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val">68s</div>
+                        <div class="stat-lbl">UPTIME</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <div class="pane-title" style="margin-bottom:5px">SERVICES</div>
+                    <div class="service-list">
+                        <div class="service-item"><span>LLM_BRIDGE</span><span class="status-ok">ONLINE</span></div>
+                        <div class="service-item"><span>INTEL_PROC</span><span class="status-ok">POLLING</span></div>
+                        <div class="service-item"><span>AUTO_FIXER</span><span class="status-ok">SUSPEND</span></div>
+                        <div class="service-item"><span>OLLAMA_SMART</span><span class="status-err">OFFLINE</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Log (Bridge Stream) -->
+        <div class="pane" style="grid-row: span 2;">
+            <div class="pane-title">AUTONOMOUS CONTEXT BRIDGE (LIVE_STREAM) <span>[RECEIVING...]</span></div>
+            <div id="logContent" class="pane-content text-green-100">
+                <!-- Log content -->
+            </div>
+        </div>
+
+        <!-- Intelligence Stats -->
+        <div class="pane">
+            <div class="pane-title">KNOWLEDGE REPOSITORY STATUS</div>
+            <div class="pane-content">
+                <div class="log-entry"><span class="log-time">[DATA]</span> Universe Nodes: <span
+                        id="nodeCount">0</span></div>
+                <div class="log-entry"><span class="log-time">[DATA]</span> Deep Chapters: <span
+                        id="chapterCount">0</span></div>
+                <div class="log-entry"><span class="log-time">[DATA]</span> Last Sync: <span id="syncTime">-</span>
+                </div>
+                <hr style="border:0; border-top: 1px solid #004400; margin: 10px 0;">
+                <div style="font-size: 10px; color: #008800;">
+                    Storage Path: /VECTIS_SYSTEM_FILES/apps/MEDIA/youtube_channel/data/<br>
+                    State: SYNC_COMPLETE
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function refresh() {
+            try {
+                document.getElementById('sys-time').textContent = new Date().toLocaleString();
+
+                const uRes = await fetch('../youtube_channel/data/universe.json');
+                const uData = await uRes.json();
+                document.getElementById('nodeCount').textContent = uData.nodes.length;
+
+                const dRes = await fetch('../youtube_channel/data/deep_knowledge.json');
+                const dData = await dRes.json();
+                document.getElementById('chapterCount').textContent = dData.chapters.length;
+                document.getElementById('syncTime').textContent = new Date(dData.chapters[0].created_at).toLocaleTimeString();
+
+                // Bridge Log
+                const bRes = await fetch('../../../AI_CONTEXT_BRIDGE.md');
+                const bText = await bRes.text();
+
+                const log = document.getElementById('logContent');
+                const lines = bText.split('\n');
+                let html = '';
+                lines.forEach(l => {
+                    if (l.startsWith('## ')) html += `<div style="color:#00ff00; margin-top:10px; border-bottom:1px solid #002200">${l}</div>`;
+                    else if (l.startsWith('### ')) html += `<div style="color:#008800; margin-top:5px;">${l}</div>`;
+                    else if (l.startsWith('- ')) html += `<div class="log-entry"><span class="log-time">>></span><span class="log-msg">${l.substring(2)}</span></div>`;
+                    else if (l.includes('[CRITICAL]')) html += `<div class="log-critical p-1">!!! ${l}</div>`;
+                    else if (l.trim()) html += `<div class="log-entry opacity-60">${l}</div>`;
+                });
+                log.innerHTML = html;
+
+            } catch (e) { }
+        }
+
+        setInterval(refresh, 5000);
+        refresh();
+    </script>
+</body>
+
+</html>

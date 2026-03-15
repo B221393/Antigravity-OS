@@ -1,0 +1,23 @@
+{
+  "title": "伊藤忠がデジタル戦略披露、「データ分析で15億円削減」「事業",
+  "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1Ud2g0eWkyQXMwNW1VX2pYOVVvQWlWanpxWk9ZaUVQUWlzS2huTDROMWRTcnZfOFBrYm5XWDhXbnNRVnpCQnlMdDBWQ095M3lkOURFbTNiN01WcUxM?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXEFVX3lxTE1Ud2g0eWkyQXMwNW1VX2pYOVVvQWlWanpxWk9ZaUVQUWlzS2huTDROMWRTcnZfOFBrYm5XWDhXbnNRVnpCQnlMdDBWQ095M3lkOURFbTNiN01WcUxM?oc=5\" target=\"_blank\">伊藤忠",
+  "ai_analysis": {
+    "relevance": "medium",
+    "summary": "伊藤忠がデジタル戦略発表。データ分析でコスト削減、生成AI投資で事業拡大を目指す。",
+    "true_intent": "企業イメージ向上、株価上昇誘導、優秀なIT人材獲得が目的。具体的な削減・投資の詳細が開示されておらず、過大広告の可能性も考慮すべき。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": "伊藤忠",
+    "action_required": true,
+    "category": "IT",
+    "target_year": "2027",
+    "company_profile": "## 伊藤忠商事：就活メンターが見抜く本質\n\n1. **主要武器**: 現場主義と多様な人脈が生む「個」の突破力。総合商社の中でも事業投資と生活消費分野に強み。\n2. **26-27卒への温度感**: 採用数維持、多様性重視。体育会系だけでなく、異質な才能を求める傾向強。\n3. **EGO適性**: 構造的思考は必須。AI活用は部署によるが、推進意欲は高い。データドリブンな提案ができる人材は重宝される。\n4. **裏の弱点**: 属人的な文化が残存。部署間の連携不足や、若手の裁量権の少なさが課題。\n"
+  },
+  "critical_analysis": {
+    "true_intent": "企業イメージ向上、株価上昇誘導、優秀なIT人材獲得が目的。具体的な削減・投資の詳細が開示されておらず、過大広告の可能性も考慮すべき。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T11:05:34.524869",
+  "source": "Active:伊藤忠商事"
+}

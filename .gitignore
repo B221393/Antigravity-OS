@@ -1,0 +1,72 @@
+# --- Environments & Dependencies ---
+.venv/
+env/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Build Artifacts ---
+target/
+**/target/
+build/
+dist/
+out/
+*.exe
+*.dll
+*.pdb
+*.rlib
+*.rmeta
+*.pyd
+*.so
+*.a
+*.lib
+*.o
+*.obj
+
+# --- Data & Large Files ---
+*.zim
+*.sst
+*.vtt
+*.log
+*.bak
+*.swp
+*.tmp
+*.dat
+*.bin
+
+# --- Specific Large Directories ---
+**/.venv/
+**/cache/
+**/_ARCHIVE/
+**/_legacy_archive/
+**/vosk-model-*/
+**/logs/
+archives/
+
+# --- Media (Often large) ---
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.wav
+*.mp3
+*.mov
+*.avi
+*.ico
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# --- Personal / Sensitive ---
+*.xlsx
+*.pdf
+_media/papers/
+_media/screenshots/
+.env
+_config/

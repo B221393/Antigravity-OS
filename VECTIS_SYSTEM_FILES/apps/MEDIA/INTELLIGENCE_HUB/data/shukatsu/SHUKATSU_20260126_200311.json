@@ -1,0 +1,22 @@
+{
+  "title": "就職四季報 企業研究・インターンシップ版2027年版 - 東",
+  "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTFAyUExKcW83UlpQTTBONW5wUEpBMTd2S3VRNUdib2ZWUkJ6TjRid3IxUkxKSGQtSXhxdE1vTUZVcmREWjI3NERvSE1USDk4VDBwQ1ZNNzg3bWZ0LTYxeUE?oc=5\" target=\"_blank\">",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": " 就職の機会や就職体制について分析。利権構造が明らかであると指摘される",
+    "true_intent": "利権構造や就職情報への影響を分析し、政治的・経済的利益を特定する",
+    "bias_warning": "高み、政治的・経済的利益への寄与の可能性があることが指摘される",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "政治/経済/社会",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "利権構造や就職情報への影響を分析し、政治的・経済的利益を特定する",
+    "bias_warning": "高み、政治的・経済的利益への寄与の可能性があることが指摘される"
+  },
+  "collected_at": "2026-01-26T20:03:11.734799",
+  "source": "インターン (Google)"
+}

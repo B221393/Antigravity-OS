@@ -1,0 +1,22 @@
+{
+  "title": "マクロスコープ：日本企業の採用意欲、ＡＩ普及でじわり低下 求",
+  "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNemJoWklQZzFtZzZscnRXU3FXeWFxdV9YdDg0T3g0bW1lcWxfYW9oaUVvbjB0bUc1WnRRTTQ0LVBYbGlRQlByVW0zaUdQcTZaNDFQN0FKekc1d090QTdvZ09aRk1PQXVmZ1ZJeEk0ZDYtRi11d3RGR0IwTWhPc2lXMWZn?oc=5",
+  "raw_summary": "<a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxNemJoWklQZzFtZzZscnRXU3FXeWFxdV9YdDg0T3g0bW1lcWxfYW9oaUVvbjB0bUc1WnRRTTQ0LVBYbGlRQlByVW0zaUdQcTZaNDFQN0FKekc1d090QTdvZ09aRk1PQXVmZ1ZJeEk0ZD",
+  "ai_analysis": {
+    "relevance": "high",
+    "summary": "AI普及で日本企業の採用意欲が低下。求人件数に異変が生じている。",
+    "true_intent": "AIベンダーの売り込み促進、または人件費削減を正当化する企業の広報活動の可能性。人材紹介会社は危機感を煽り、早期囲い込みを狙うかもしれない。",
+    "bias_warning": "あり",
+    "deadline": null,
+    "company": null,
+    "action_required": true,
+    "category": "メディア",
+    "target_year": "2027"
+  },
+  "critical_analysis": {
+    "true_intent": "AIベンダーの売り込み促進、または人件費削減を正当化する企業の広報活動の可能性。人材紹介会社は危機感を煽り、早期囲い込みを狙うかもしれない。",
+    "bias_warning": "あり"
+  },
+  "collected_at": "2026-01-27T13:20:19.907228",
+  "source": "ロイター 企業ニュース"
+}

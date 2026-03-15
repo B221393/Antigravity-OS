@@ -1,0 +1,2405 @@
+{
+  "generated_at": "2026-01-08T16:27:50.791734",
+  "total_files": 477,
+  "duplicates_detected": 230,
+  "topic_distribution": {
+    "その他": 219,
+    "Googleニュース": 73,
+    "地政学": 22,
+    "Pixel紹介": 15,
+    "ChatGPT比較": 8,
+    "Gemini使い方": 55,
+    "Gemini紹介": 6,
+    "ひろゆき": 1,
+    "高橋弘樹": 67,
+    "言語学ラジオ": 4,
+    "石丸伸二": 7
+  },
+  "scores": {
+    "YouTube_#dance #japan #ai_Nrg1OfCIXCs.md": {
+      "title": "#dance #japan #ai",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_$1600 Unitree Go2 is INSANE! #_0fR8JbvvWc8.md": {
+      "title": "$1600 Unitree Go2 is INSANE! #",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_1000通の“不適切メッセージ”には性的な表現用いたものも…_bF28zJW9lOc.md": {
+      "title": "1000通の“不適切メッセージ”には性的な表現用いたものも…",
+      "topic": "Googleニュース",
+      "novelty_score": 0.513
+    },
+    "YouTube_12. Final Touches  Connecting _t2usNBHQuMQ.md": {
+      "title": "12. Final Touches  Connecting ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_2030年、世界地図はこう変わる。ジョージ・フリードマンが名_ZrOVU_4JBAM.md": {
+      "title": "2030年、世界地図はこう変わる。ジョージ・フリードマンが名_ZrOVU_4JBAM",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_500円だと思ったら「500ウォンが入っていた」価値は約10_yeda7Qh9UwI.md": {
+      "title": "500円だと思ったら「500ウォンが入っていた」価値は約10",
+      "topic": "Googleニュース",
+      "novelty_score": 0.586
+    },
+    "YouTube_60万円の“不思議なお風呂”とは？ 分譲住宅でも“浴槽レス”_79cBWxoet6o.md": {
+      "title": "60万円の“不思議なお風呂”とは？ 分譲住宅でも“浴槽レス”",
+      "topic": "Googleニュース",
+      "novelty_score": 0.55
+    },
+    "YouTube_A 7-minute video that shows yo_Wj0Jd-n008E.md": {
+      "title": "A 7-minute video that shows yo",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_A collection of linguistic pap_LNj0-cppMXw.md": {
+      "title": "A collection of linguistic pap",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_A language nerd has collected _vfG9VPhJlDE.md": {
+      "title": "A language nerd has collected ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_A roundtable discussion with t_tN0DlalwJKs.md": {
+      "title": "A roundtable discussion with t",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_A Slow Explaining of the Histo_Sg7elJkmgRc.md": {
+      "title": "A Slow Explaining of the Histo",
+      "topic": "地政学",
+      "novelty_score": 0.558
+    },
+    "YouTube_A spell for Gemini #androidsma_gsTjuZSXwIg.md": {
+      "title": "A spell for Gemini #androidsma",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.5
+    },
+    "YouTube_A video explaining GPU to peop_ZW1e2Ax76jo.md": {
+      "title": "A video explaining GPU to peop",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_A.I. Robot Sophia Wants To DES_Z-fH7uvDsmU.md": {
+      "title": "A.I. Robot Sophia Wants To DES",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_accountはなぜ「口座」も「説明」も表すのか？_1tSTqYyB4pk.md": {
+      "title": "accountはなぜ「口座」も「説明」も表すのか？",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Adorable AI Baby Dancing #baby_K0ZO7iediXM.md": {
+      "title": "Adorable AI Baby Dancing #baby",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_AI can now bypass photoID veri_cYODG91nHSY.md": {
+      "title": "AI can now bypass photoID veri",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_AI Humanoid Robot 2025 trains _-iiuDB-ZwDU.md": {
+      "title": "AI Humanoid Robot 2025 trains ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_AI image to video test with Kl_iev8-AZhGdM.md": {
+      "title": "AI image to video test with Kl",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_AI Meets Quantum Computing  Wh_4StdRPtTW78.md": {
+      "title": "AI Meets Quantum Computing  Wh",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_AI or Easy Linguistics Radio W_QJYwzzyRMOk.md": {
+      "title": "AI or Easy Linguistics Radio W",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_AI Robot Sophia said i will de_yOg5y5W2bUk.md": {
+      "title": "AI Robot Sophia said i will de",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_AI versus Uncle Roger_Aiqy7nnA7Yc.md": {
+      "title": "AI versus Uncle Roger",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_AI2027 Is this how AI might de_1UufaK3pQMg.md": {
+      "title": "AI2027 Is this how AI might de",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_AIを使えないと負け組確定？Gemini 3・Noteboo_BEiXZJNEYqA.md": {
+      "title": "AIを使えないと負け組確定？Gemini 3・Noteboo",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Angry Robot Chef Cooking Enter_AQ2u1nZF9SY.md": {
+      "title": "Angry Robot Chef Cooking Enter",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Arctic Geopolitics Why Preside_U1LDjKNN-go.md": {
+      "title": "Arctic Geopolitics Why Preside",
+      "topic": "地政学",
+      "novelty_score": 0.537
+    },
+    "YouTube_Artificial Intelligence India _9KqSSkiI8iw.md": {
+      "title": "Artificial Intelligence India ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_baby singing #baby #cute #cute_u-6zvO_okMM.md": {
+      "title": "baby singing #baby #cute #cute_u-6zvO_okMM",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Bear attacks continue; demand _zYDSNCg6_BU.md": {
+      "title": "Bear attacks continue; demand _zYDSNCg6_BU",
+      "topic": "Googleニュース",
+      "novelty_score": 0.581
+    },
+    "YouTube_ChatGPT or Gemini #ChatGPT #Ge_DBIaX46rJ6Q.md": {
+      "title": "ChatGPT or Gemini #ChatGPT #Ge",
+      "topic": "ChatGPT比較",
+      "novelty_score": 0.608
+    },
+    "YouTube_ChatGPT Vs Google Gemini AI Im_zonAFUaijys.md": {
+      "title": "ChatGPT Vs Google Gemini AI Im",
+      "topic": "ChatGPT比較",
+      "novelty_score": 0.58
+    },
+    "YouTube_ChatGPTとGoogleのGeminiって何が違うのかA_kPoeIk3yXFY.md": {
+      "title": "ChatGPTとGoogleのGeminiって何が違うのかA",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.536
+    },
+    "YouTube_China's fully autonomous AI po_JOqc7dmmD5o.md": {
+      "title": "China's fully autonomous AI po",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_David Ha's Vision for Japan's _BlXWU6gVnzM.md": {
+      "title": "David Ha's Vision for Japan's ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_DeepL翻訳が出した存在しない四字熟語「別日同腹」が怖すぎ_xaDxvchr78s.md": {
+      "title": "DeepL翻訳が出した存在しない四字熟語「別日同腹」が怖すぎ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Did you know you can generate _53H0izeICQM.md": {
+      "title": "Did you know you can generate ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Do you know the best free AI #_QkNzU5a0nls.md": {
+      "title": "Do you know the best free AI #",
+      "topic": "ChatGPT比較",
+      "novelty_score": 0.52
+    },
+    "YouTube_Dr.STONEは科学マンガではない。本質は文系。【雑談回】_8hURqVX7sXo.md": {
+      "title": "Dr.STONEは科学マンガではない。本質は文系。【雑談回】",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Ex Google AI Veteran Claims Wo_RVqNUUYd9UA.md": {
+      "title": "Ex Google AI Veteran Claims Wo",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Future of AI Robots Giving Bir_VE-lb1X92cw.md": {
+      "title": "Future of AI Robots Giving Bir",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Gemini 3が凄い！【徹底検証】生成AI No.1に返り_dekKEmvmxHA.md": {
+      "title": "Gemini 3が凄い！【徹底検証】生成AI No.1に返り",
+      "topic": "Gemini紹介",
+      "novelty_score": 0.513
+    },
+    "YouTube_Gemini AI trending Pictures  H_7F2g6sAmyR4.md": {
+      "title": "Gemini AI trending Pictures  H",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Gemini AI活用10連発！ショート版_ilEOirthWss.md": {
+      "title": "Gemini AI活用10連発！ショート版",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.547
+    },
+    "YouTube_Gemini Gem（ジェム）徹底解説！ルーティン作業を効率_KuECMAq85-Q.md": {
+      "title": "Gemini Gem（ジェム）徹底解説！ルーティン作業を効率",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.596
+    },
+    "YouTube_Gemini in Gmailの使い方｜自動返信で業務効率化_ALEkrIg1Ves.md": {
+      "title": "Gemini in Gmailの使い方｜自動返信で業務効率化",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.595
+    },
+    "YouTube_Gemini Super Gems Google's NEW_1choivCbZDg.md": {
+      "title": "Gemini Super Gems Google's NEW",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Gemini × Googleカレンダー連携の便利すぎる活用_mrN349YyzyM.md": {
+      "title": "Gemini × Googleカレンダー連携の便利すぎる活用",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.55
+    },
+    "YouTube_Gemini でなんでも画像生成 篇_9tzayT41mzo.md": {
+      "title": "Gemini でなんでも画像生成 篇",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Gemini でフィギュア作り 篇_BJJ9Yl1WTjw.md": {
+      "title": "Gemini でフィギュア作り 篇",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Gemini で絵文字作り 篇_GQN93A8eiHE.md": {
+      "title": "Gemini で絵文字作り 篇",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Gemini 最強のAI仕事術～Geminiチャット・Goo_IpgA_WqUnVw.md": {
+      "title": "Gemini 最強のAI仕事術～Geminiチャット・Goo_IpgA_WqUnVw",
+      "topic": "Gemini紹介",
+      "novelty_score": 0.644
+    },
+    "YouTube_Geminiで複数枚画像を同時生成する裏技 #Gemini _MlEtKBNQKM4.md": {
+      "title": "Geminiで複数枚画像を同時生成する裏技 #Gemini ",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.5
+    },
+    "YouTube_Geminiの最強な活用方法を3つ紹介します！あなたはちゃん_OfodhtOBUrU.md": {
+      "title": "Geminiの最強な活用方法を3つ紹介します！あなたはちゃん",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.6
+    },
+    "YouTube_Gemini入門  Gemの使い方 #ai #サテライトオフ_XTGcFl4SN4Y.md": {
+      "title": "Gemini入門  Gemの使い方 #ai #サテライトオフ",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.543
+    },
+    "YouTube_Geopolitical Flaw Why Russia C_v7Dzs1kanLc.md": {
+      "title": "Geopolitical Flaw Why Russia C",
+      "topic": "地政学",
+      "novelty_score": 0.579
+    },
+    "YouTube_Google AI Studio Just Changed _rSr8Go2fQfg.md": {
+      "title": "Google AI Studio Just Changed ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google CEO Sundar Pichai and t_5puu3kN9l7c.md": {
+      "title": "Google CEO Sundar Pichai and t",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.531
+    },
+    "YouTube_Google gemini ai nano banana s_TuEt5kkLy2E.md": {
+      "title": "Google gemini ai nano banana s",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google Gemini Ai Photo Editing_vocnw9TOqiE.md": {
+      "title": "Google Gemini Ai Photo Editing",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google Pixel  ハードウェアデザインチームが紐解_tHH8Be7ibVc.md": {
+      "title": "Google Pixel  ハードウェアデザインチームが紐解",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.669
+    },
+    "YouTube_Google Pixel 10  Camera Coach_qFa1idaWcK8.md": {
+      "title": "Google Pixel 10  Camera Coach",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.533
+    },
+    "YouTube_Google Pixel 10  Magic Suggest_KiHIeuyY90s.md": {
+      "title": "Google Pixel 10  Magic Suggest",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.583
+    },
+    "YouTube_Google Pixel 10 Pro  マイボイス通訳篇 _myyTT6CsXdI.md": {
+      "title": "Google Pixel 10 Pro  マイボイス通訳篇 ",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.523
+    },
+    "YouTube_Google Pixel 8 Real-time Trans_ZLfPEKwK8L4.md": {
+      "title": "Google Pixel 8 Real-time Trans",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.53
+    },
+    "YouTube_Google Pixel 8 The AI ​​smartp_L5nrCTMaNqk.md": {
+      "title": "Google Pixel 8 The AI ​​smartp",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.524
+    },
+    "YouTube_Google Pixel 9 Pro Gemini and _r0s5BlrbRkk.md": {
+      "title": "Google Pixel 9 Pro Gemini and ",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.583
+    },
+    "YouTube_Google Pixel 9a is here_l_yScPEQnDU.md": {
+      "title": "Google Pixel 9a is here_l_yScPEQnDU",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.5
+    },
+    "YouTube_Google Pixel The Hardware Desi_OvAPG0ZLYjA.md": {
+      "title": "Google Pixel The Hardware Desi",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.541
+    },
+    "YouTube_Google Pixel：AI 時代に求められる「エモーショ_ks0i4_1cFqo.md": {
+      "title": "Google Pixel：AI 時代に求められる「エモーショ_ks0i4_1cFqo",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.5
+    },
+    "YouTube_Google Pixel：AI 時代に求められる「エモーショ_N__RWIKgtGM.md": {
+      "title": "Google Pixel：AI 時代に求められる「エモーショ_N__RWIKgtGM",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.584
+    },
+    "YouTube_Google Veo 3  a road with poth_eFfrp08SO2U.md": {
+      "title": "Google Veo 3  a road with poth",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google の AI Gemini  恋篇_jIg0ciVoL94.md": {
+      "title": "Google の AI Gemini  恋篇",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google の AI Gemini  誕生日篇_HpHeIP4BwF4.md": {
+      "title": "Google の AI Gemini  誕生日篇",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google の AI｜#やりたいこと、Gemini と｜か_MgDreLtnsGA.md": {
+      "title": "Google の AI｜#やりたいこと、Gemini と｜か",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google の AI｜#やりたいこと、Gemini と｜は_QTYocDnxpag.md": {
+      "title": "Google の AI｜#やりたいこと、Gemini と｜は",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google の生成 AI｜Gemini と Noteboo_0mohKaedlCo.md": {
+      "title": "Google の生成 AI｜Gemini と Noteboo",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google's AI Gemini Wedding Edi_D1OlG4Lqnqw.md": {
+      "title": "Google's AI Gemini Wedding Edi",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google's latest Gemini 2.5 Pro_ChSR1AbYqoI.md": {
+      "title": "Google's latest Gemini 2.5 Pro",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Googleが作った生成AI、Geminiの使い方。使ってみ_FLIrHLrlXhI.md": {
+      "title": "Googleが作った生成AI、Geminiの使い方。使ってみ",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.513
+    },
+    "YouTube_GoogleのAIバーチャル試着機能「バーチャルでお試し」が_kvaHQKznbfA.md": {
+      "title": "GoogleのAIバーチャル試着機能「バーチャルでお試し」が",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Google生成AI Gemini（ジェミニ）完全解説【この_tqk95bTg5pc.md": {
+      "title": "Google生成AI Gemini（ジェミニ）完全解説【この",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.556
+    },
+    "YouTube_He Just Unboxed an AI Robot Th_yVG2kCgks1g.md": {
+      "title": "He Just Unboxed an AI Robot Th",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_How Hard Is It To Get A Job At_MtdokX2p-5M.md": {
+      "title": "How Hard Is It To Get A Job At",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_How to create AI Apps for free_AoKNh-77DD4.md": {
+      "title": "How to create AI Apps for free",
+      "topic": "ChatGPT比較",
+      "novelty_score": 0.529
+    },
+    "YouTube_How to get Disposable Virtual _NqpwVRIvSD0.md": {
+      "title": "How to get Disposable Virtual ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_How to get started with Google_5QnDDD822o8.md": {
+      "title": "How to get started with Google",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_How to use Google's AI Gemini _etvu46fHChM.md": {
+      "title": "How to use Google's AI Gemini ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_How to Use Google's Free AI Ap_31JiybBMlck.md": {
+      "title": "How to Use Google's Free AI Ap",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Hyper-realistic Robot at CES 2_NE43B_maSps.md": {
+      "title": "Hyper-realistic Robot at CES 2_NE43B_maSps",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_I found common ground between _aDLr5jFmL_8.md": {
+      "title": "I found common ground between _aDLr5jFmL_8",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_I Oversimplified the Google Lo_EoUD1tL5SBc.md": {
+      "title": "I Oversimplified the Google Lo",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_I took a counterintuitive etym_Q5LF9bzYt_0.md": {
+      "title": "I took a counterintuitive etym_Q5LF9bzYt_0",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_I want to become a dictator an_GNLazvO8AVQ.md": {
+      "title": "I want to become a dictator an",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_I'll introduce some good books_-PkSLQxMQ1g.md": {
+      "title": "I'll introduce some good books",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Ideas to Reality Cinnamon - AI_WhvBPM54Iic.md": {
+      "title": "Ideas to Reality Cinnamon - AI",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Introduction to AI for seniors_ZOWhaUQCJBo.md": {
+      "title": "Introduction to AI for seniors",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Is Korean a parallel world to _IR0iK5D1xlE.md": {
+      "title": "Is Korean a parallel world to ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_JAPAN AI SPEECH Google Meet in_vzVlL1Rd7GI.md": {
+      "title": "JAPAN AI SPEECH Google Meet in",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_JAPAN TRAVEL PHOTOS USING THIS_eLO_7bJIxFo.md": {
+      "title": "JAPAN TRAVEL PHOTOS USING THIS_eLO_7bJIxFo",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Japan’s KDDI Partners with Goo_fhLANl1NTSk.md": {
+      "title": "Japan’s KDDI Partners with Goo",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Leave it all to AI! Latest AI _Cj6qVIi610g.md": {
+      "title": "Leave it all to AI! Latest AI ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Let's decipher this difficult _5CrYwigtrF0.md": {
+      "title": "Let's decipher this difficult ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Let's insult each other with i_rR0fL67rcrg.md": {
+      "title": "Let's insult each other with i",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Let's read our Japanese textbo_QAHHqNFAiTU.md": {
+      "title": "Let's read our Japanese textbo",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Let's think about the psycholo_afDWJlu7w5s.md": {
+      "title": "Let's think about the psycholo",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Linguistically correct small t_Zn9AVySCHOY.md": {
+      "title": "Linguistically correct small t",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Masu is dying_5VJA9V34iy4.md": {
+      "title": "Masu is dying",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Meta AI Glasses 2025 – The Fut_3ulCv56QUYo.md": {
+      "title": "Meta AI Glasses 2025 – The Fut",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Most Disturbing Things Said By_P_y_TLCmQ_g.md": {
+      "title": "Most Disturbing Things Said By_P_y_TLCmQ_g",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_MV with Gemini｜TOWA TEI × Naka_PuEIzcG5plA.md": {
+      "title": "MV with Gemini｜TOWA TEI × Naka",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Nagoya was artificially create_E40WEvpNFLw.md": {
+      "title": "Nagoya was artificially create",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_New Google Search ❘ AI Mode As_97ouYecBowM.md": {
+      "title": "New Google Search ❘ AI Mode As",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_New Google Search ❘ AI Mode Mu_dPSrakLhDtc.md": {
+      "title": "New Google Search ❘ AI Mode Mu",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_NYタイムズ　「2026年に行くべき52か所」に長崎と沖縄を_PGTLMd5R0bw.md": {
+      "title": "NYタイムズ　「2026年に行くべき52か所」に長崎と沖縄を",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_OpenAI and Google unite! The s_fg0O0VlVhp8.md": {
+      "title": "OpenAI and Google unite! The s",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_photoshopが不要になるかも？Geminiの最新AI「_F6KPddl1sko.md": {
+      "title": "photoshopが不要になるかも？Geminiの最新AI「",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.546
+    },
+    "YouTube_Pixelスマホで日常で役立つGemini活用法10選_MqkCPDakF4M.md": {
+      "title": "Pixelスマホで日常で役立つGemini活用法10選",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.5
+    },
+    "YouTube_rightはなぜ「右」も「権利」も表すのか？_5QYQbzVSXTI.md": {
+      "title": "rightはなぜ「右」も「権利」も表すのか？",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Sasemaseru has been hated for _Y-g5cxcjsU4.md": {
+      "title": "Sasemaseru has been hated for ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Software Engineer vs AI Engine_GUyPQO_-9Lg.md": {
+      "title": "Software Engineer vs AI Engine_GUyPQO_-9Lg",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Squid Game AI Korean Ice Cream_yhWNstDnxCE.md": {
+      "title": "Squid Game AI Korean Ice Cream",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Ssu is not rude. In fact, it's_MR_gz2U7UvY.md": {
+      "title": "Ssu is not rude. In fact, it's_MR_gz2U7UvY",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Talk to your smartphone! Using_BHR77bcW4IM.md": {
+      "title": "Talk to your smartphone! Using",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Talking about rude Japanese. W_0CdX3PIH7Kc.md": {
+      "title": "Talking about rude Japanese. W",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_TBS NEWS DIGのライブストリーム_dUNF9nejyLs.md": {
+      "title": "TBS NEWS DIGのライブストリーム",
+      "topic": "Googleニュース",
+      "novelty_score": 0.54
+    },
+    "YouTube_TBS NEWS DIGアプリ　台風前にインストールを！！_ykImkoSDW8Y.md": {
+      "title": "TBS NEWS DIGアプリ　台風前にインストールを！！",
+      "topic": "Googleニュース",
+      "novelty_score": 0.524
+    },
+    "YouTube_The first person in Japan to b_QpbHWSXCE2w.md": {
+      "title": "The first person in Japan to b",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_The greatness of the Apartment_AV8jY6BDpWM.md": {
+      "title": "The greatness of the Apartment",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_The meaning of Kaiseki cuisine_GZRCpEGmhS0.md": {
+      "title": "The meaning of Kaiseki cuisine",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_The Mystery of Elephants Have _yzTqAU_kiKM.md": {
+      "title": "The Mystery of Elephants Have _yzTqAU_kiKM",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_There are villages in modern-d_Mda9QSd9G-s.md": {
+      "title": "There are villages in modern-d",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_This AI Animation Workflow is _TLSz2umeMd8.md": {
+      "title": "This AI Animation Workflow is ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_This episode talks about the l_29PFDiaygwY.md": {
+      "title": "This episode talks about the l",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_This extremely valuable materi_GAqZFncwndM.md": {
+      "title": "This extremely valuable materi",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_This is the AI ​​you should pa_MouxBtMqosc.md": {
+      "title": "This is the AI ​​you should pa",
+      "topic": "ChatGPT比較",
+      "novelty_score": 0.56
+    },
+    "YouTube_Tod gayi #freefiremax #lovekat_7IY-bSEc9hk.md": {
+      "title": "Tod gayi #freefiremax #lovekat",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_TOP 5 AI Personal Robots for Y_K1S-BUkOq24.md": {
+      "title": "TOP 5 AI Personal Robots for Y",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Top 5 Tech Careers ranked  AI,_AG1AzZoE1hs.md": {
+      "title": "Top 5 Tech Careers ranked  AI,",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Trending Google Gemini Viral P_85g-7_skSOY.md": {
+      "title": "Trending Google Gemini Viral P_85g-7_skSOY",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Trending Google Gemini Viral P_V2_zWPPMank.md": {
+      "title": "Trending Google Gemini Viral P_V2_zWPPMank",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Trending Google Gemini Viral P_WPE8zRsjEn8.md": {
+      "title": "Trending Google Gemini Viral P",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Unboxing the Google Pixel Tabl_E2NWSp9vjQo.md": {
+      "title": "Unboxing the Google Pixel Tabl",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.556
+    },
+    "YouTube_Using AI for interviews withou_0cTD4r29tmg.md": {
+      "title": "Using AI for interviews withou",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Using Google's AI, Gemini, in _eyvKrELtlzg.md": {
+      "title": "Using Google's AI, Gemini, in ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Warren Buffett on ChatGPT and _lGlpRe2WD6g.md": {
+      "title": "Warren Buffett on ChatGPT and ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_We compared the AI ​​features _eEgc04ig31w.md": {
+      "title": "We compared the AI ​​features ",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.575
+    },
+    "YouTube_We were given a glimpse into t_TQGekCftU1A.md": {
+      "title": "We were given a glimpse into t",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_We will tell you the reality o_SehpE5FQDsQ.md": {
+      "title": "We will tell you the reality o",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_We'll talk about the best book_B4DskRymyeM.md": {
+      "title": "We'll talk about the best book",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_What are dialect kanji that ar_2RK700azLzs.md": {
+      "title": "What are dialect kanji that ar",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_What if Google's AI mode featu_piVigclO7sE.md": {
+      "title": "What if Google's AI mode featu",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_What is the treatment for alco_AnRSkCoTW7M.md": {
+      "title": "What is the treatment for alco",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_What's strange about the Japan_gVR5J7ff3Xc.md": {
+      "title": "What's strange about the Japan",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_When we connected the trivia l_pWSf-2bez84.md": {
+      "title": "When we connected the trivia l",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Which Burger King commercial m_4lTesMnx308.md": {
+      "title": "Which Burger King commercial m",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Why can't we say the world rec_h7tMEfZIhdU.md": {
+      "title": "Why can't we say the world rec",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Why did only Japan and Western_ajyyGn9MexU.md": {
+      "title": "Why did only Japan and Western",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Why did the utopia for the dea_T-jKleBEeM4.md": {
+      "title": "Why did the utopia for the dea",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Why do dialects exist Solving _ceYj1Fa1t5A.md": {
+      "title": "Why do dialects exist Solving ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Why GOOGLE Is Actually Misspel_maYYCw_vHcA.md": {
+      "title": "Why GOOGLE Is Actually Misspel_maYYCw_vHcA",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Why Grok Outshines ChatGPT and_4qGw9WH4Xj8.md": {
+      "title": "Why Grok Outshines ChatGPT and",
+      "topic": "ChatGPT比較",
+      "novelty_score": 0.6
+    },
+    "YouTube_Why the US and Venezuela are o_E_Qfnz4RBOU.md": {
+      "title": "Why the US and Venezuela are o_E_Qfnz4RBOU",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Xiaomi AI Glasses 2025 – The F_ZI2fmyXROys.md": {
+      "title": "Xiaomi AI Glasses 2025 – The F",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Xiaomi AI Glasses 2025 – The F__mbX3lDgEB0.md": {
+      "title": "Xiaomi AI Glasses 2025 – The F__mbX3lDgEB0",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_Your Google Search ❘ Seoul Tra_VsOp1JsVfBE.md": {
+      "title": "Your Google Search ❘ Seoul Tra",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Amazing Evolution!] Google Ge_RBDsF93oHyg.md": {
+      "title": "[Amazing Evolution!] Google Ge",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Amazing Feature] How to use G_-kzdfWPXLx0.md": {
+      "title": "[Amazing Feature] How to use G",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[ChatGPT is already outdated] _Obpxflp5SFM.md": {
+      "title": "[ChatGPT is already outdated] ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Complete Guide] A thorough ex_OxAwAe6W1wI.md": {
+      "title": "[Complete Guide] A thorough ex",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Complete Mastery] A thorough _fZMQwtRNI70.md": {
+      "title": "[Complete Mastery] A thorough ",
+      "topic": "ひろゆき",
+      "novelty_score": 1
+    },
+    "YouTube_[Did you know you could use it_9zRGSfTQaAg.md": {
+      "title": "[Did you know you could use it",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Different from Word] A thorou_s8teJz9D5Gs.md": {
+      "title": "[Different from Word] A thorou",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Exclusive] If only I weren't _b12LJiWAB_g.md": {
+      "title": "[Exclusive] If only I weren't _b12LJiWAB_g",
+      "topic": "地政学",
+      "novelty_score": 0.572
+    },
+    "YouTube_[For absolute beginners] How t_PY4ipuISyAc.md": {
+      "title": "[For absolute beginners] How t",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[For beginners] Basic operatio_Y6Ymzo-qS4M.md": {
+      "title": "[For beginners] Basic operatio",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[For beginners] How to use Nan_4BbrNRi4B00.md": {
+      "title": "[For beginners] How to use Nan",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Freeloaders multiply] This is_nUWj9ysMhsg.md": {
+      "title": "[Freeloaders multiply] This is",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Generative AI] Learn the basi_MWmi1nmcrBA.md": {
+      "title": "[Generative AI] Learn the basi",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Geopolitics is biology] Basic_OgwnFKiX2Ho.md": {
+      "title": "[Geopolitics is biology] Basic",
+      "topic": "地政学",
+      "novelty_score": 0.522
+    },
+    "YouTube_[Horiemon] Google finally rele_vzp3l6CNSW4.md": {
+      "title": "[Horiemon] Google finally rele",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[It's finally here!] The long-_eNxnbIORXeg.md": {
+      "title": "[It's finally here!] The long-",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Landing in Japan] Google's no_40WX8zf9zss.md": {
+      "title": "[Landing in Japan] Google's no",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Latest] How to use Gemini's G_2_BXDjC5d2U.md": {
+      "title": "[Latest] How to use Gemini's G_2_BXDjC5d2U",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Learn in one book] Gemini Com_dMd4zKsK_v4.md": {
+      "title": "[Learn in one book] Gemini Com_dMd4zKsK_v4",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Maps and Geopolitics] AI thin_H4XwrlpBRpw.md": {
+      "title": "[Maps and Geopolitics] AI thin",
+      "topic": "地政学",
+      "novelty_score": 0.636
+    },
+    "YouTube_[Must-see] Gemini's evolution _6rBe-2pV_L0.md": {
+      "title": "[Must-see] Gemini's evolution _6rBe-2pV_L0",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[ReHacQ Hiroki Takahashi vs To_iOpnMjx6Moo.md": {
+      "title": "[ReHacQ Hiroki Takahashi vs To",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.555
+    },
+    "YouTube_[Takahashi Hiroki vs. Quitting_Km4Hw7otGrU.md": {
+      "title": "[Takahashi Hiroki vs. Quitting",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Takaichi Sanae's Brain] Emerg_NnEZ6wVBVEM.md": {
+      "title": "[Takaichi Sanae's Brain] Emerg",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[Too Awesome] GM x Google Self_Y6b7iyfPFq8.md": {
+      "title": "[Too Awesome] GM x Google Self",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_[You're missing out if you don_CzYqAYeML3M.md": {
+      "title": "[You're missing out if you don",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_“正月太り”実感は7割　医師が教える食事・美容負債リセット術_kpZjfMfQ_jQ.md": {
+      "title": "“正月太り”実感は7割　医師が教える食事・美容負債リセット術_kpZjfMfQ_jQ",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_「はい」と「うん」の違いは、丁寧さではない。_c8KS4Httk7s.md": {
+      "title": "「はい」と「うん」の違いは、丁寧さではない。",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_「アメリカによる軍事侵略を拒否し、非難する」ベネズエラ政府が_BgFLxdYX-c8.md": {
+      "title": "「アメリカによる軍事侵略を拒否し、非難する」ベネズエラ政府が",
+      "topic": "Googleニュース",
+      "novelty_score": 0.523
+    },
+    "YouTube_「タメ語でいいよ」は暴力になりうる_7vNhgWgcuuo.md": {
+      "title": "「タメ語でいいよ」は暴力になりうる",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_「モテ」と「おもしろ」、どっちを優先する？#388_CydUkNQPMFQ.md": {
+      "title": "「モテ」と「おもしろ」、どっちを優先する？#388",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_「二十歳のつどい」記念バンジー 若者10人がジャンプ「一皮む_hbax5MWYc_c.md": {
+      "title": "「二十歳のつどい」記念バンジー 若者10人がジャンプ「一皮む_hbax5MWYc_c",
+      "topic": "Googleニュース",
+      "novelty_score": 0.6
+    },
+    "YouTube_「空スキャン」に「もやしパス」巧妙化するセルフレジ万引き　悪_TrU85NN3EnA.md": {
+      "title": "「空スキャン」に「もやしパス」巧妙化するセルフレジ万引き　悪",
+      "topic": "Googleニュース",
+      "novelty_score": 0.545
+    },
+    "YouTube_「論理的」は、地域によって違う #372_WmVm81unxP4.md": {
+      "title": "「論理的」は、地域によって違う #372",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_「野菜をコトコト煮込まない」はなぜキモいのか？#357_C-ppWQ9o5xA.md": {
+      "title": "「野菜をコトコト煮込まない」はなぜキモいのか？#357",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_『利己的な遺伝子』の内容、ホントに知ってる？ 古典的名著を語_j1hzaE-nPDQ.md": {
+      "title": "『利己的な遺伝子』の内容、ホントに知ってる？ 古典的名著を語",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【13歳からの地政学①】今こそ知っておくべき世界の仕組み！ア__jx9WOEfABA.md": {
+      "title": "【13歳からの地政学①】今こそ知っておくべき世界の仕組み！ア__jx9WOEfABA",
+      "topic": "地政学",
+      "novelty_score": 0.56
+    },
+    "YouTube_【13歳からの地政学②】日本、朝鮮半島、アフリカ、欧州小国の_S--TvMbGKOY.md": {
+      "title": "【13歳からの地政学②】日本、朝鮮半島、アフリカ、欧州小国の",
+      "topic": "地政学",
+      "novelty_score": 0.557
+    },
+    "YouTube_【1本で全てわかる】ChatGPT超え？Geminiの使い方_6L4XlPQOhY0.md": {
+      "title": "【1本で全てわかる】ChatGPT超え？Geminiの使い方",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.568
+    },
+    "YouTube_【2025年】今年の漢字は…   TBS NEWS DIG_Naop4BpKJ7U.md": {
+      "title": "【2025年】今年の漢字は…   TBS NEWS DIG",
+      "topic": "Googleニュース",
+      "novelty_score": 0.543
+    },
+    "YouTube_【2025年最新】Geminiの使い方をゼロから初心者向けに_l_CwyLbEo_c.md": {
+      "title": "【2025年最新】Geminiの使い方をゼロから初心者向けに_l_CwyLbEo_c",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.595
+    },
+    "YouTube_【2026年のヒット予測】「セルフ式」コンビニラーメンに“あ_0YFow5kHBE4.md": {
+      "title": "【2026年のヒット予測】「セルフ式」コンビニラーメンに“あ",
+      "topic": "Googleニュース",
+      "novelty_score": 0.609
+    },
+    "YouTube_【2026年伸びる企業】テーマ買いは危険？投資の前に見るべき_vYdgKcJksL0.md": {
+      "title": "【2026年伸びる企業】テーマ買いは危険？投資の前に見るべき",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.512
+    },
+    "YouTube_【3時間で全部学ぶ】音韻論の基礎から最適性理論まで【ちょいガ_EsyYaoSHXvQ.md": {
+      "title": "【3時間で全部学ぶ】音韻論の基礎から最適性理論まで【ちょいガ",
+      "topic": "言語学ラジオ",
+      "novelty_score": 0.7
+    },
+    "YouTube_【40代から若返る！】体力は才能じゃない！筋トレより効く最強_5xS_xtpWvVg.md": {
+      "title": "【40代から若返る！】体力は才能じゃない！筋トレより効く最強_5xS_xtpWvVg",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【AIと結婚】「この恋は理屈じゃない」41歳女性が語る“AI_XJyarM9EDNY.md": {
+      "title": "【AIと結婚】「この恋は理屈じゃない」41歳女性が語る“AI",
+      "topic": "Googleニュース",
+      "novelty_score": 0.525
+    },
+    "YouTube_【AIに全任せ】Google最強AIのGeniniを神カスタ_LG9IBRO3tZ4.md": {
+      "title": "【AIに全任せ】Google最強AIのGeniniを神カスタ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【AI神連携】GeminiとGoogleカレンダー連携でスケ_5GMl6loiJ50.md": {
+      "title": "【AI神連携】GeminiとGoogleカレンダー連携でスケ",
+      "topic": "Gemini紹介",
+      "novelty_score": 0.5
+    },
+    "YouTube_【ChatGPTはもう古い】知らないと乗り遅れる。Googl_Obpxflp5SFM.md": {
+      "title": "【ChatGPTはもう古い】知らないと乗り遅れる。Googl",
+      "topic": "ChatGPT比較",
+      "novelty_score": 0.518
+    },
+    "YouTube_【ChatGPT超え】Geminiのおすすめ神機能５選！あま_nw4GQKHoB98.md": {
+      "title": "【ChatGPT超え】Geminiのおすすめ神機能５選！あま",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.518
+    },
+    "YouTube_【ChatGPT超えの成長】Google Gemini完全ガ_T5ry8nlFAkg.md": {
+      "title": "【ChatGPT超えの成長】Google Gemini完全ガ",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.512
+    },
+    "YouTube_【ChatGPT超え！】人類を超えた世界最強AI（Gemin_sPxXoNSFYFk.md": {
+      "title": "【ChatGPT超え！】人類を超えた世界最強AI（Gemin",
+      "topic": "Gemini紹介",
+      "novelty_score": 0.515
+    },
+    "YouTube_【Galaxyユーザー必見】日常が変わる！Geminiの便利_lv1050z8dXI.md": {
+      "title": "【Galaxyユーザー必見】日常が変わる！Geminiの便利",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.547
+    },
+    "YouTube_【Gemini 3.0】Google最強AIの最新モデル！無_HdtLXwllpus.md": {
+      "title": "【Gemini 3.0】Google最強AIの最新モデル！無",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.5
+    },
+    "YouTube_【Gemini 超進化】Google Cloud／AI エー_Bmk_s6H1C6A.md": {
+      "title": "【Gemini 超進化】Google Cloud／AI エー_Bmk_s6H1C6A",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.636
+    },
+    "YouTube_【Gemini神機能】Gemであなた専用AIを作る方法を解説_zCa6iaLGVjw.md": {
+      "title": "【Gemini神機能】Gemであなた専用AIを作る方法を解説",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.5
+    },
+    "YouTube_【Googleの最新AI。４つの超絶進化】Gemini 3._upGAcpkwpm4.md": {
+      "title": "【Googleの最新AI。４つの超絶進化】Gemini 3.",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【LIVE】新宿駅前のライブカメラ 現在の様子は？ Shin_glJu8snzi78.md": {
+      "title": "【LIVE】新宿駅前のライブカメラ 現在の様子は？ Shin",
+      "topic": "Googleニュース",
+      "novelty_score": 0.546
+    },
+    "YouTube_【LIVE】最新ニュースまとめ（Japan News Dig_AfImJOisoYI.md": {
+      "title": "【LIVE】最新ニュースまとめ（Japan News Dig",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【LIVE】最新ニュースまとめ（Japan News Dig_E3dLxfqoAM0.md": {
+      "title": "【LIVE】最新ニュースまとめ（Japan News Dig",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【LIVE】最新ニュースまとめ（Japan News Dig_E9Fd1t4oAlM.md": {
+      "title": "【LIVE】最新ニュースまとめ（Japan News Dig",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【LIVE】最新ニュースまとめ（Japan News Dig_ffbI0FI9qT0.md": {
+      "title": "【LIVE】最新ニュースまとめ（Japan News Dig",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【LIVE】自民党総裁選 開票速報⚡ 新総裁に高市氏！初の女_WyJ0jJ0JDkI.md": {
+      "title": "【LIVE】自民党総裁選 開票速報⚡ 新総裁に高市氏！初の女",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【LIVE】鳥取県、島根県で最大震度5強の強い地震　津波の心_KH2ynTvS6rA.md": {
+      "title": "【LIVE】鳥取県、島根県で最大震度5強の強い地震　津波の心",
+      "topic": "Googleニュース",
+      "novelty_score": 0.52
+    },
+    "YouTube_【PIVOT vs ReHacQ】大激論！新時代のメディアへ_MCTJZTJ1mzQ.md": {
+      "title": "【PIVOT vs ReHacQ】大激論！新時代のメディアへ",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.527
+    },
+    "YouTube_【ReHacQ討論会】伊東市長選ネット討論会 【高橋弘樹】_Of2eOvmxXQU.md": {
+      "title": "【ReHacQ討論会】伊東市長選ネット討論会 【高橋弘樹】",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【“代替チョコ”】カカオ高騰で市場に異変！ バレンタイン 今_L6HJeyI_EXI.md": {
+      "title": "【“代替チョコ”】カカオ高騰で市場に異変！ バレンタイン 今_L6HJeyI_EXI",
+      "topic": "Googleニュース",
+      "novelty_score": 0.633
+    },
+    "YouTube_【“奇跡の開示”で真相は？】改ざんされた森友文書･･･17万_edfTXwPnTyo.md": {
+      "title": "【“奇跡の開示”で真相は？】改ざんされた森友文書･･･17万",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【“成長投資”の行方】高市政権の財政拡張と円安の“核心”を総_8ReLC1lA548.md": {
+      "title": "【“成長投資”の行方】高市政権の財政拡張と円安の“核心”を総",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【これが無料？】史上最強の生成AIになったGemini 3が_L79MFHTL74w.md": {
+      "title": "【これが無料？】史上最強の生成AIになったGemini 3が",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.539
+    },
+    "YouTube_【すべての人が生成 AI をつかいこなす時代へ】 Gemin_teIvz_qoDT8.md": {
+      "title": "【すべての人が生成 AI をつかいこなす時代へ】 Gemin_teIvz_qoDT8",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【ついに解禁！】スライド作成機能がGemini公式リリース！_X4QcKrHsci0.md": {
+      "title": "【ついに解禁！】スライド作成機能がGemini公式リリース！",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.5
+    },
+    "YouTube_【ひろゆきvs令和ロマンくるま】緊急雑談！今後どうする？【R_L-NsJjPlUig.md": {
+      "title": "【ひろゆきvs令和ロマンくるま】緊急雑談！今後どうする？【R",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.665
+    },
+    "YouTube_【ひろゆきvs山本一太】「知事辞めても良い」なぜ？…投資額1_Z-wx3k3CZXs.md": {
+      "title": "【ひろゆきvs山本一太】「知事辞めても良い」なぜ？…投資額1",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【ひろゆきvs山本一太】世界が注目…エンタメで稼ぐ！群馬の衝_NOK49OtuPnY.md": {
+      "title": "【ひろゆきvs山本一太】世界が注目…エンタメで稼ぐ！群馬の衝",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【ひろゆきvs睡眠】日本人に警鐘！睡眠不足の原因は…【ReH_zRpW5kKnLOY.md": {
+      "title": "【ひろゆきvs睡眠】日本人に警鐘！睡眠不足の原因は…【ReH",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【ひろゆきvs睡眠不足】”失われた30年”の原因は睡眠に…？_KE_lex9P9DY.md": {
+      "title": "【ひろゆきvs睡眠不足】”失われた30年”の原因は睡眠に…？_KE_lex9P9DY",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【ひろゆきvs石川県知事】初告白…能登半島地震から２年…復興_pZLc90HK9Ak.md": {
+      "title": "【ひろゆきvs石川県知事】初告白…能登半島地震から２年…復興",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.657
+    },
+    "YouTube_【ひろゆきvs維新前代表②】衝撃の過去…藤田共同代表なぜキレ_p32c3PHAwL8.md": {
+      "title": "【ひろゆきvs維新前代表②】衝撃の過去…藤田共同代表なぜキレ",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.546
+    },
+    "YouTube_【ひろゆきvs蓮舫②】地方の政治の闇暴露…公開されない謎の金_iSSGz-HdJ5w.md": {
+      "title": "【ひろゆきvs蓮舫②】地方の政治の闇暴露…公開されない謎の金",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.558
+    },
+    "YouTube_【ひろゆきvs蓮舫】なぜ激怒？自民党へ…税のムダは見直せる？_k0cjikBMNHI.md": {
+      "title": "【ひろゆきvs蓮舫】なぜ激怒？自民党へ…税のムダは見直せる？",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.514
+    },
+    "YouTube_【ひろゆきvs高橋弘樹】「明日植毛です」突撃電話で深夜に衝撃_KeQpXRLJ9Qw.md": {
+      "title": "【ひろゆきvs高橋弘樹】「明日植毛です」突撃電話で深夜に衝撃",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.562
+    },
+    "YouTube_【ふたご座流星群】この冬最高の天体ショー（2025年12月1_9n60d4Ghn3Y.md": {
+      "title": "【ふたご座流星群】この冬最高の天体ショー（2025年12月1",
+      "topic": "Googleニュース",
+      "novelty_score": 0.562
+    },
+    "YouTube_【アメリカのベネズエラ攻撃】北朝鮮「重大な主権の侵害」 中国_GJy0mkHlUvE.md": {
+      "title": "【アメリカのベネズエラ攻撃】北朝鮮「重大な主権の侵害」 中国",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【ウビフ語】言語学者の間で有名な言語10選【ホピ語】#180_tvqAcsay9qA.md": {
+      "title": "【ウビフ語】言語学者の間で有名な言語10選【ホピ語】#180",
+      "topic": "ChatGPT比較",
+      "novelty_score": 0.53
+    },
+    "YouTube_【グリーンランド領有】アメリカ軍の活用「選択肢のひとつ」 ホ_oIK3E0jYFqY.md": {
+      "title": "【グリーンランド領有】アメリカ軍の活用「選択肢のひとつ」 ホ",
+      "topic": "Googleニュース",
+      "novelty_score": 0.614
+    },
+    "YouTube_【スマホが変わればここまでできる】Google Pixel _H9K8COo6EOg.md": {
+      "title": "【スマホが変わればここまでできる】Google Pixel ",
+      "topic": "Pixel紹介",
+      "novelty_score": 0.566
+    },
+    "YouTube_【スマホでAI使ってる？】本当にオススメしたい最新AI「Ge_-6qEQ-x33zA.md": {
+      "title": "【スマホでAI使ってる？】本当にオススメしたい最新AI「Ge",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.514
+    },
+    "YouTube_【ダイエット最新研究】痩せ薬が大流行…大丈夫？腹八分目の研究_tNl0z3BHqwg.md": {
+      "title": "【ダイエット最新研究】痩せ薬が大流行…大丈夫？腹八分目の研究",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【デジタルきゅうり】子どもの驚きの間違いを集めました【ががが_L-vvnSEzDPU.md": {
+      "title": "【デジタルきゅうり】子どもの驚きの間違いを集めました【ががが",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【ニセの1万円銀貨幣】「昭和天皇在位60年記念」都内の信用金_5Mmbs_7SqK8.md": {
+      "title": "【ニセの1万円銀貨幣】「昭和天皇在位60年記念」都内の信用金_5Mmbs_7SqK8",
+      "topic": "Googleニュース",
+      "novelty_score": 0.627
+    },
+    "YouTube_【フィジカルAI】洋服の片付けや献立の提案も 2050年は一_-rnkSCWmtGU.md": {
+      "title": "【フィジカルAI】洋服の片付けや献立の提案も 2050年は一",
+      "topic": "Googleニュース",
+      "novelty_score": 0.517
+    },
+    "YouTube_【ベネズエラ空爆の衝撃】目的は原油か？トランプ大統領が「斬首_tpMNbPkFCKA.md": {
+      "title": "【ベネズエラ空爆の衝撃】目的は原油か？トランプ大統領が「斬首",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.514
+    },
+    "YouTube_【マドゥロ大統領出廷】トランプ大統領 「歴史の特別な瞬間」｜_QdkFuEd04sM.md": {
+      "title": "【マドゥロ大統領出廷】トランプ大統領 「歴史の特別な瞬間」｜",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【ライブ】津波注意報全て解除　北海道・青森・岩手・宮城・福島_fUDIc4MhP5M.md": {
+      "title": "【ライブ】津波注意報全て解除　北海道・青森・岩手・宮城・福島",
+      "topic": "Googleニュース",
+      "novelty_score": 0.663
+    },
+    "YouTube_【ロシアが併合のヘルソン州】ウクライナ軍によるドローン攻撃で__pN5YLUkNS0.md": {
+      "title": "【ロシアが併合のヘルソン州】ウクライナ軍によるドローン攻撃で__pN5YLUkNS0",
+      "topic": "Googleニュース",
+      "novelty_score": 0.533
+    },
+    "YouTube_【ロシアと中国が抱える根源的恐怖とは】地政学で読み解く大国の_Y864TW2PHdU.md": {
+      "title": "【ロシアと中国が抱える根源的恐怖とは】地政学で読み解く大国の",
+      "topic": "地政学",
+      "novelty_score": 0.512
+    },
+    "YouTube_【中国vs国防】高市発言の波紋…中国人の本音vs日本の防衛と_BoN67BM4xN0.md": {
+      "title": "【中国vs国防】高市発言の波紋…中国人の本音vs日本の防衛と",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.532
+    },
+    "YouTube_【中学受験が危ない？】燃え尽きて勉強しない子供 が増加！？親_9xof2q8QfVI.md": {
+      "title": "【中学受験が危ない？】燃え尽きて勉強しない子供 が増加！？親",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【今さら聞けないGemini】usutakuAI道場・第2弾_-W0fAG1uTNg.md": {
+      "title": "【今さら聞けないGemini】usutakuAI道場・第2弾",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【今年のコメ価格どうなる？】七草がゆ無料配布に大行列！新年か_qtT7g-Kwerw.md": {
+      "title": "【今年のコメ価格どうなる？】七草がゆ無料配布に大行列！新年か",
+      "topic": "Googleニュース",
+      "novelty_score": 0.529
+    },
+    "YouTube_【作業用】うんちくエウレーカクイズ傑作選1_Gcj32E7EwKI.md": {
+      "title": "【作業用】うんちくエウレーカクイズ傑作選1",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【保存版】Gemini for Google Workspa_0BZpNHfdFIk.md": {
+      "title": "【保存版】Gemini for Google Workspa",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.511
+    },
+    "YouTube_【俳優・広末涼子さん】罰金70万円の略式命令　過失運転傷害の_jhiwoefTgNQ.md": {
+      "title": "【俳優・広末涼子さん】罰金70万円の略式命令　過失運転傷害の",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【入試革命】本当に頭のいい子が育つ! 偏差値より必須の「10_vzOSIbfsYaE.md": {
+      "title": "【入試革命】本当に頭のいい子が育つ! 偏差値より必須の「10",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.52
+    },
+    "YouTube_【兵庫県知事選で新事実】フジテレビ番組で暴走コメント…なぜ止_5yS43XdsIfI.md": {
+      "title": "【兵庫県知事選で新事実】フジテレビ番組で暴走コメント…なぜ止",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.533
+    },
+    "YouTube_【円安はピーク？】米国信用不安 × 日本債券売り…転換点は“_iAJb6E4j1sY.md": {
+      "title": "【円安はピーク？】米国信用不安 × 日本債券売り…転換点は“",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【冬に食べたいアイスは？】3位「ピノ」2位「ハーゲンダッツ」_k4aKZItYlZc.md": {
+      "title": "【冬に食べたいアイスは？】3位「ピノ」2位「ハーゲンダッツ」",
+      "topic": "Googleニュース",
+      "novelty_score": 0.581
+    },
+    "YouTube_【初任給 37万円に】ファーストリテイリング初任給4万円アッ_Y00uc8QYoAs.md": {
+      "title": "【初任給 37万円に】ファーストリテイリング初任給4万円アッ",
+      "topic": "Googleニュース",
+      "novelty_score": 0.634
+    },
+    "YouTube_【初心者必見】Googleの最新AI「Gemini 3」の進_Z8EJrh5g7eU.md": {
+      "title": "【初心者必見】Googleの最新AI「Gemini 3」の進",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.521
+    },
+    "YouTube_【割り箸で家が埋まる】ポイ活男子の悲しみを語る【同じクレカが_Y7TiZ55RZvw.md": {
+      "title": "【割り箸で家が埋まる】ポイ活男子の悲しみを語る【同じクレカが",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【危険？】Androidに現れたGeminiについて！対処法_ayK9p4liNHE.md": {
+      "title": "【危険？】Androidに現れたGeminiについて！対処法",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.514
+    },
+    "YouTube_【呉座勇一vs高橋弘樹】秀吉は光秀なぜ打てた？衝撃のラッキー_QkOnCrQTkE0.md": {
+      "title": "【呉座勇一vs高橋弘樹】秀吉は光秀なぜ打てた？衝撃のラッキー",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.525
+    },
+    "YouTube_【国連安保理が緊急会合】アメリカとベネズエラがマドゥロ大統領_A2-66fwyQZ0.md": {
+      "title": "【国連安保理が緊急会合】アメリカとベネズエラがマドゥロ大統領",
+      "topic": "Googleニュース",
+      "novelty_score": 0.543
+    },
+    "YouTube_【地図でわかる】中国がいずれ崩壊する理由【最新地政学基礎：第_XGhWhzpR3U8.md": {
+      "title": "【地図でわかる】中国がいずれ崩壊する理由【最新地政学基礎：第",
+      "topic": "地政学",
+      "novelty_score": 0.528
+    },
+    "YouTube_【地政学①】紛争が必ず起きる場所は？日本やアジアは大丈夫か？_KD9DGcI6t9I.md": {
+      "title": "【地政学①】紛争が必ず起きる場所は？日本やアジアは大丈夫か？",
+      "topic": "地政学",
+      "novelty_score": 0.5
+    },
+    "YouTube_【地政学②】ロシアはなぜ北方領土を返さない？沖縄米軍基地や尖_5libvZTXiwM.md": {
+      "title": "【地政学②】ロシアはなぜ北方領土を返さない？沖縄米軍基地や尖",
+      "topic": "地政学",
+      "novelty_score": 0.533
+    },
+    "YouTube_【地政学】今の世界情勢と日本の課題《茂木誠》_MjhZH-BAvk4.md": {
+      "title": "【地政学】今の世界情勢と日本の課題《茂木誠》",
+      "topic": "地政学",
+      "novelty_score": 0.569
+    },
+    "YouTube_【地政学から見る10年後の世界：エミン・ユルマズ】5万円突破_lfqa0OQy_9I.md": {
+      "title": "【地政学から見る10年後の世界：エミン・ユルマズ】5万円突破_lfqa0OQy_9I",
+      "topic": "地政学",
+      "novelty_score": 0.582
+    },
+    "YouTube_【地政学で見る中国最大の弱点】中国が覇権を取れない理由とは／_npsMgu4tt50.md": {
+      "title": "【地政学で見る中国最大の弱点】中国が覇権を取れない理由とは／",
+      "topic": "地政学",
+      "novelty_score": 0.5
+    },
+    "YouTube_【地政学の日本史】なぜ日本は地政学的にも世界で圧倒的1位なの_IaIayIRE7lU.md": {
+      "title": "【地政学の日本史】なぜ日本は地政学的にも世界で圧倒的1位なの",
+      "topic": "地政学",
+      "novelty_score": 0.52
+    },
+    "YouTube_【基本のき】Geminiの各機能とNotebookLMの特徴_bI1FA6actjg.md": {
+      "title": "【基本のき】Geminiの各機能とNotebookLMの特徴",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.53
+    },
+    "YouTube_【堀江貴文vs日本の教育】ホリエモン日本の教育に吠える！なぜ_kPnYHyD2FfY.md": {
+      "title": "【堀江貴文vs日本の教育】ホリエモン日本の教育に吠える！なぜ",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.541
+    },
+    "YouTube_【堀江貴文vs茂木健一郎】受験は時代遅れ日本の教育の今後はど_fAJzcvaEf3I.md": {
+      "title": "【堀江貴文vs茂木健一郎】受験は時代遅れ日本の教育の今後はど",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【天才数学者秋山仁vs高橋弘樹】破天荒人生…カリスマの“頭の_PepvPos4Hy0.md": {
+      "title": "【天才数学者秋山仁vs高橋弘樹】破天荒人生…カリスマの“頭の",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.524
+    },
+    "YouTube_【太田光が問う／参政党】神谷宗幣代表ホンネ対談　選挙の日、そ_bB2N3qJrV_g.md": {
+      "title": "【太田光が問う／参政党】神谷宗幣代表ホンネ対談　選挙の日、そ_bB2N3qJrV_g",
+      "topic": "Googleニュース",
+      "novelty_score": 0.517
+    },
+    "YouTube_【始球式】吉岡里帆、柳田悠岐にホームランを打たれる_7fGvfcd8Hi4.md": {
+      "title": "【始球式】吉岡里帆、柳田悠岐にホームランを打たれる",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【学生・ビジネスマン必見】GoogleのNotebookLM_qiUdafY76vA.md": {
+      "title": "【学生・ビジネスマン必見】GoogleのNotebookLM",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【安倍、菅、岸田総理を支えた男】衝撃告白！首相官邸クリエイテ_VSd-qIT5XMc.md": {
+      "title": "【安倍、菅、岸田総理を支えた男】衝撃告白！首相官邸クリエイテ",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.527
+    },
+    "YouTube_【完全マスター】AI初心者が学ぶべきGeminiの基本的な使_k1qFX5zJwLk.md": {
+      "title": "【完全マスター】AI初心者が学ぶべきGeminiの基本的な使",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.575
+    },
+    "YouTube_【完全攻略】Geminiとは？使い方を徹底解説！無料AIで何_KmMYweL5gXg.md": {
+      "title": "【完全攻略】Geminiとは？使い方を徹底解説！無料AIで何",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.512
+    },
+    "YouTube_【寝落ち用】布団でダラダラ喋るラジオ#339_YKTj06BWfYM.md": {
+      "title": "【寝落ち用】布団でダラダラ喋るラジオ#339",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【強豪・日本体育大学レスリング部】10代の男が公然わいせつの_wpAGWIZKnoo.md": {
+      "title": "【強豪・日本体育大学レスリング部】10代の男が公然わいせつの",
+      "topic": "Googleニュース",
+      "novelty_score": 0.537
+    },
+    "YouTube_【後藤達也vs地経学】米中覇権争いどうなる…市場に不可欠なも_g90mBa3A1PY.md": {
+      "title": "【後藤達也vs地経学】米中覇権争いどうなる…市場に不可欠なも",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【後藤達也vs堀江貴文】SNSの功罪…陰謀論はなぜ生まれる？_8tYNc2l-l30.md": {
+      "title": "【後藤達也vs堀江貴文】SNSの功罪…陰謀論はなぜ生まれる？",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【後藤達也vs堀江貴文】「日本人ファーストだ！」ホリエモンは_mQQ99VmmFL0.md": {
+      "title": "【後藤達也vs堀江貴文】「日本人ファーストだ！」ホリエモンは",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.537
+    },
+    "YouTube_【必見】ChatGPTよりも絶対に使ったほうがいいGoogl_P0qCDkj4DRU.md": {
+      "title": "【必見】ChatGPTよりも絶対に使ったほうがいいGoogl",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.5
+    },
+    "YouTube_【志位和夫vs斎藤幸平】搾取を許すな!共産党のドンが激白！資_ujLjyXg0n1A.md": {
+      "title": "【志位和夫vs斎藤幸平】搾取を許すな!共産党のドンが激白！資",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.526
+    },
+    "YouTube_【性犯罪者などをGPSで24時間監視】韓国で再犯防止のため4_aImf9TAmjzw.md": {
+      "title": "【性犯罪者などをGPSで24時間監視】韓国で再犯防止のため4",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【拡大中】「お正月は休業します」百貨店やスーパー、飲食業界で_BrGl05rFO68.md": {
+      "title": "【拡大中】「お正月は休業します」百貨店やスーパー、飲食業界で",
+      "topic": "Googleニュース",
+      "novelty_score": 0.532
+    },
+    "YouTube_【擬態語ミステリー】変な漢字 #328_WY_WR0vopcg.md": {
+      "title": "【擬態語ミステリー】変な漢字 #328_WY_WR0vopcg",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【新年一般参賀 2026】天皇陛下お言葉「年の初めにあたり、_98Xuw-8__P4.md": {
+      "title": "【新年一般参賀 2026】天皇陛下お言葉「年の初めにあたり、_98Xuw-8__P4",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【日銀・利上げ】植田総裁の決断…中立金利見直しを市場はどう読_5VCztzMAgNg.md": {
+      "title": "【日銀・利上げ】植田総裁の決断…中立金利見直しを市場はどう読",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.512
+    },
+    "YouTube_【早くもChatGPT時代の終了】Geminiのおすすめ神機_7yoAj2k_ug8.md": {
+      "title": "【早くもChatGPT時代の終了】Geminiのおすすめ神機_7yoAj2k_ug8",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.514
+    },
+    "YouTube_【昭和映像アーカイブ】東京ディズニーランド開園前の舞台裏から_oJKZpwPKhlw.md": {
+      "title": "【昭和映像アーカイブ】東京ディズニーランド開園前の舞台裏から",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【最強】Gemの活用方法はこれだ！Notebook LM使い_23-OW1k2GLU.md": {
+      "title": "【最強】Gemの活用方法はこれだ！Notebook LM使い",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【最強の無料AI活用】Gemini×Googleスプレッドシ_zMDc4TtHp6A.md": {
+      "title": "【最強の無料AI活用】Gemini×Googleスプレッドシ",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.518
+    },
+    "YouTube_【最新版】「Gemini」の進化がすごい！現時点で使える機能_NS6bgKLKamE.md": {
+      "title": "【最新版】「Gemini」の進化がすごい！現時点で使える機能",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.514
+    },
+    "YouTube_【村上隆vsスーツ】「至急、話がしたい」なぜ？「悟り」と「ア_Txv2Y31DRpA.md": {
+      "title": "【村上隆vsスーツ】「至急、話がしたい」なぜ？「悟り」と「ア",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.523
+    },
+    "YouTube_【来週デンマークと協議】グリーンランド領有は「ロシア・中国の_VE7IYS6WIy8.md": {
+      "title": "【来週デンマークと協議】グリーンランド領有は「ロシア・中国の",
+      "topic": "Googleニュース",
+      "novelty_score": 0.677
+    },
+    "YouTube_【東京・豊洲市場でマグロの初競り】過去最高額の5億1030万_JisvV33rqHo.md": {
+      "title": "【東京・豊洲市場でマグロの初競り】過去最高額の5億1030万",
+      "topic": "Googleニュース",
+      "novelty_score": 0.514
+    },
+    "YouTube_【東出昌大vs角幡唯介】 生きている実感を得たい...自由に_zclxqZwBp5M.md": {
+      "title": "【東出昌大vs角幡唯介】 生きている実感を得たい...自由に",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.527
+    },
+    "YouTube_【消費増1.5兆円】株高で二極化する市場…富裕層が牽引する2_G7GhuweRhuU.md": {
+      "title": "【消費増1.5兆円】株高で二極化する市場…富裕層が牽引する2",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.55
+    },
+    "YouTube_【激白！元自衛官のホンネ】人生が突然“ゼロ”…いったいなぜ？_rj0SD_Umxcc.md": {
+      "title": "【激白！元自衛官のホンネ】人生が突然“ゼロ”…いったいなぜ？_rj0SD_Umxcc",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.555
+    },
+    "YouTube_【激論！西田亮介の正体】日本大学教授が集結…普段何してる？【_J_OLhoZlSsc.md": {
+      "title": "【激論！西田亮介の正体】日本大学教授が集結…普段何してる？【_J_OLhoZlSsc",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.525
+    },
+    "YouTube_【無料で使える】GoogleのAIアプリ「Gemini ジェ_31JiybBMlck.md": {
+      "title": "【無料で使える】GoogleのAIアプリ「Gemini ジェ",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.527
+    },
+    "YouTube_【無料で使える神ツール!!】Google AI Studio_FoU5fzseT7M.md": {
+      "title": "【無料で使える神ツール!!】Google AI Studio",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【犯人に“強い殺意” 】水戸ネイリスト殺害事件 頭の傷は皮膚_P_mIMfjrSpU.md": {
+      "title": "【犯人に“強い殺意” 】水戸ネイリスト殺害事件 頭の傷は皮膚_P_mIMfjrSpU",
+      "topic": "Googleニュース",
+      "novelty_score": 0.521
+    },
+    "YouTube_【生成AI】「Gemini」をもっと使いこなすための基礎知識_MWmi1nmcrBA.md": {
+      "title": "【生成AI】「Gemini」をもっと使いこなすための基礎知識",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.553
+    },
+    "YouTube_【生成AI】超初心者OK!「Gemini」をもっと使いこなす_yd-bpNe3Axg.md": {
+      "title": "【生成AI】超初心者OK!「Gemini」をもっと使いこなす",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.518
+    },
+    "YouTube_【疲労の正体】休めない日本人へ…実は病気のサインかも？疲労を_2_BK46oaSNA.md": {
+      "title": "【疲労の正体】休めない日本人へ…実は病気のサインかも？疲労を_2_BK46oaSNA",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.546
+    },
+    "YouTube_【知ってた？】Gemini出力の修正がこんなにも変わる！好み_Mk-ZfCn_Gs0.md": {
+      "title": "【知ってた？】Gemini出力の修正がこんなにも変わる！好み_Mk-ZfCn_Gs0",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.556
+    },
+    "YouTube_【知らないと損！】Webアプリ版と「Google AI St_CzYqAYeML3M.md": {
+      "title": "【知らないと損！】Webアプリ版と「Google AI St",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.5
+    },
+    "YouTube_【石丸伸二vsNewsPicks元CEO】神議論！日本は革命_CmTOcYCF5sA.md": {
+      "title": "【石丸伸二vsNewsPicks元CEO】神議論！日本は革命",
+      "topic": "石丸伸二",
+      "novelty_score": 0.5
+    },
+    "YouTube_【石丸伸二vsひろゆき】高市早苗が首相に指名！自維連立政権発_FLpXxsuYKls.md": {
+      "title": "【石丸伸二vsひろゆき】高市早苗が首相に指名！自維連立政権発",
+      "topic": "石丸伸二",
+      "novelty_score": 0.543
+    },
+    "YouTube_【石丸伸二vs人生の無駄】なぜネガティブな言葉は信頼されるの_LJzJnsYNu84.md": {
+      "title": "【石丸伸二vs人生の無駄】なぜネガティブな言葉は信頼されるの",
+      "topic": "石丸伸二",
+      "novelty_score": 0.541
+    },
+    "YouTube_【石丸伸二vs元ゴールドマンサックス②】なぜ渋谷から北海道の_w7afTaYuxVs.md": {
+      "title": "【石丸伸二vs元ゴールドマンサックス②】なぜ渋谷から北海道の",
+      "topic": "石丸伸二",
+      "novelty_score": 0.5
+    },
+    "YouTube_【石丸伸二vs元ゴールドマンサックス】北海道の奇跡!ホテルで_O3dwZwbdqIo.md": {
+      "title": "【石丸伸二vs元ゴールドマンサックス】北海道の奇跡!ホテルで",
+      "topic": "石丸伸二",
+      "novelty_score": 0.525
+    },
+    "YouTube_【石丸伸二vs新感覚温泉】球場に温泉!北海道の新名所＆焼肉で_F0QqaRDxYO0.md": {
+      "title": "【石丸伸二vs新感覚温泉】球場に温泉!北海道の新名所＆焼肉で",
+      "topic": "石丸伸二",
+      "novelty_score": 0.563
+    },
+    "YouTube_【石丸伸二vs現代人の悩み】社会に潜む「呪い」とは...なぜ_CB67CXBz9FE.md": {
+      "title": "【石丸伸二vs現代人の悩み】社会に潜む「呪い」とは...なぜ",
+      "topic": "石丸伸二",
+      "novelty_score": 0.5
+    },
+    "YouTube_【神アプデ】Google最強の無料AI「Gemini」でパワ_aO4vXJbHJHs.md": {
+      "title": "【神アプデ】Google最強の無料AI「Gemini」でパワ",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.525
+    },
+    "YouTube_【神アプデ】最新版Geminiでパワポ・スライド資料作成が一_VY82g_vQzEM.md": {
+      "title": "【神アプデ】最新版Geminiでパワポ・スライド資料作成が一_VY82g_vQzEM",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.527
+    },
+    "YouTube_【神カスタマイズ】Gemini Gemで業務効率化！自分専用_7DIQ70pODOg.md": {
+      "title": "【神カスタマイズ】Gemini Gemで業務効率化！自分専用",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.5
+    },
+    "YouTube_【立憲vs国民vs参政vs自民】都政で激論！自由を守る会が激_XIbP_1QMBNw.md": {
+      "title": "【立憲vs国民vs参政vs自民】都政で激論！自由を守る会が激_XIbP_1QMBNw",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【立憲民主党vs高橋弘樹】高市早苗総理が誕生！これからどうす_gb289snBsWY.md": {
+      "title": "【立憲民主党vs高橋弘樹】高市早苗総理が誕生！これからどうす",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【総合経済対策を閣議決定】コロナ後最大21.3兆円も「物価高_JMamsFOznFw.md": {
+      "title": "【総合経済対策を閣議決定】コロナ後最大21.3兆円も「物価高",
+      "topic": "Googleニュース",
+      "novelty_score": 0.543
+    },
+    "YouTube_【総集編】日本は地政学的に世界一だった！地理的にも最強すぎる_5hiTfzLovKo.md": {
+      "title": "【総集編】日本は地政学的に世界一だった！地理的にも最強すぎる",
+      "topic": "地政学",
+      "novelty_score": 0.5
+    },
+    "YouTube_【群馬県知事が激白】前橋市長の辞職について【ひろゆきvsRe_dnHrcIM4BVA.md": {
+      "title": "【群馬県知事が激白】前橋市長の辞職について【ひろゆきvsRe",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.595
+    },
+    "YouTube_【肝臓リスクvs天才物理学者】専門医が忠告する肝臓NG行動T_gPvOaONwAxk.md": {
+      "title": "【肝臓リスクvs天才物理学者】専門医が忠告する肝臓NG行動T",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.52
+    },
+    "YouTube_【肝臓リスク徹底解説】知られざる脂肪肝の恐怖！そして酒好き加_EPR1-ANMrsY.md": {
+      "title": "【肝臓リスク徹底解説】知られざる脂肪肝の恐怖！そして酒好き加",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.511
+    },
+    "YouTube_【自律神経ケア】原因不明の不調のカギは「自律神経」！？今日か_y0QYGfiKyj8.md": {
+      "title": "【自律神経ケア】原因不明の不調のカギは「自律神経」！？今日か",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【自民vs維新vs国民vs公明】本音激白！2025年大忘年会_doGpvZITQ7w.md": {
+      "title": "【自民vs維新vs国民vs公明】本音激白！2025年大忘年会",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【興梠一郎×小泉悠】2026展望／日中関係と中国経済の低迷／_hdm2_d_b8Zk.md": {
+      "title": "【興梠一郎×小泉悠】2026展望／日中関係と中国経済の低迷／_hdm2_d_b8Zk",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【藤田晋が緊急出演②】“重大告白”社長退任後に何をする？メデ_eq_Er-muZSA.md": {
+      "title": "【藤田晋が緊急出演②】“重大告白”社長退任後に何をする？メデ_eq_Er-muZSA",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【藤田晋が緊急出演】「人生は不平等、だから…」メディア最後の_kT34SGVBs6Y.md": {
+      "title": "【藤田晋が緊急出演】「人生は不平等、だから…」メディア最後の",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.512
+    },
+    "YouTube_【語彙力ゼロでも感動を伝えるコツ】好きを言語化する技術 タイ_MjU5_ztglvk.md": {
+      "title": "【語彙力ゼロでも感動を伝えるコツ】好きを言語化する技術 タイ_MjU5_ztglvk",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_【誰でも簡単】Gemini 2.5 Flash Image（_7rJGTsyruIg.md": {
+      "title": "【誰でも簡単】Gemini 2.5 Flash Image（",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.535
+    },
+    "YouTube_【超実践】2025年最新・Gemini基礎編！初心者でも業務_yInmFXqn-d0.md": {
+      "title": "【超実践】2025年最新・Gemini基礎編！初心者でも業務",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.5
+    },
+    "YouTube_【車運転の70代男を逮捕】男子中学生がコンビニの駐車場で車に_wITAC76NsTc.md": {
+      "title": "【車運転の70代男を逮捕】男子中学生がコンビニの駐車場で車に",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【辞めテレ東vs辞め共同通信】衝撃のラスト...！社内抗争の_MsLKBszjZDE.md": {
+      "title": "【辞めテレ東vs辞め共同通信】衝撃のラスト...！社内抗争の",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【速報】18兆3000億円規模の補正予算案が衆院予算委員会で_FtLjKhvkVTw.md": {
+      "title": "【速報】18兆3000億円規模の補正予算案が衆院予算委員会で",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【速報】北朝鮮が再び弾道ミサイル発射か｜TBS NEWS D_02gyAk33Zu0.md": {
+      "title": "【速報】北朝鮮が再び弾道ミサイル発射か｜TBS NEWS D",
+      "topic": "Googleニュース",
+      "novelty_score": 0.62
+    },
+    "YouTube_【速報】北海道と青森県で負傷者23人 計11万4092人に避_jdtwO0Kb0O0.md": {
+      "title": "【速報】北海道と青森県で負傷者23人 計11万4092人に避",
+      "topic": "Googleニュース",
+      "novelty_score": 0.515
+    },
+    "YouTube_【速報】無料で使える！Gemini3.0 Proがついにリリ_TnU88XdlY-w.md": {
+      "title": "【速報】無料で使える！Gemini3.0 Proがついにリリ",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.514
+    },
+    "YouTube_【速報】高市総理がトランプ大統領と電話会談　今春の高市総理の_GoOadDrIGv4.md": {
+      "title": "【速報】高市総理がトランプ大統領と電話会談　今春の高市総理の",
+      "topic": "Googleニュース",
+      "novelty_score": 0.553
+    },
+    "YouTube_【速報】鳥取・米子市　地震発生時の様子｜TBS NEWS D_hQqmYE44c6s.md": {
+      "title": "【速報】鳥取・米子市　地震発生時の様子｜TBS NEWS D",
+      "topic": "Googleニュース",
+      "novelty_score": 0.522
+    },
+    "YouTube_【速報】鳥取・米子市　地震発生時の様子｜TBS NEWS D_GlYic8AQbyY.md": {
+      "title": "【速報】鳥取・米子市　地震発生時の様子｜TBS NEWS D",
+      "topic": "Googleニュース",
+      "novelty_score": 0.55
+    },
+    "YouTube_【速報解説】Gemini 3.0がリリース！注目のポイントは_kdpI49lmSQ8.md": {
+      "title": "【速報解説】Gemini 3.0がリリース！注目のポイントは",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.516
+    },
+    "YouTube_【運転手と乗客9人けが】関西空港発のバスが歩道に乗り上げビル_RrId27vHJJQ.md": {
+      "title": "【運転手と乗客9人けが】関西空港発のバスが歩道に乗り上げビル",
+      "topic": "Googleニュース",
+      "novelty_score": 0.567
+    },
+    "YouTube_【野村泰紀vs宇宙最大の謎】暗黒物質がついに見えた！？世界が_6ZBE5fQAZXM.md": {
+      "title": "【野村泰紀vs宇宙最大の謎】暗黒物質がついに見えた！？世界が",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【革命】Gemini3.0の使い方を徹底解説！【最強】_NdM0Mx7EDAI.md": {
+      "title": "【革命】Gemini3.0の使い方を徹底解説！【最強】",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.5
+    },
+    "YouTube_【革命】Google Geminiの“Gem機能”がヤバい！_gZLJqznf8I0.md": {
+      "title": "【革命】Google Geminiの“Gem機能”がヤバい！",
+      "topic": "Gemini紹介",
+      "novelty_score": 0.543
+    },
+    "YouTube_【驚きの使い方】Google Geminiのスゴ技10選！こ_3KSKAYE80C4.md": {
+      "title": "【驚きの使い方】Google Geminiのスゴ技10選！こ",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.517
+    },
+    "YouTube_【驚愕】AI初心者が学ぶべきGoogle Geminiの天才_NylD6yIdUAA.md": {
+      "title": "【驚愕】AI初心者が学ぶべきGoogle Geminiの天才",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.56
+    },
+    "YouTube_【高橋弘樹vsウソの歴史】徳川家康うんこ漏らし事件...正し_CKWYm81vFTY.md": {
+      "title": "【高橋弘樹vsウソの歴史】徳川家康うんこ漏らし事件...正し",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.571
+    },
+    "YouTube_【高橋弘樹vsダウンタウン番組P】激論！どうなるメディアの未_rPc3nSRxwKQ.md": {
+      "title": "【高橋弘樹vsダウンタウン番組P】激論！どうなるメディアの未",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.571
+    },
+    "YouTube_【高橋弘樹vsテクノロジー】人生の時間を3倍にする方法を家電_F8FMA0d-fHU.md": {
+      "title": "【高橋弘樹vsテクノロジー】人生の時間を3倍にする方法を家電",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.53
+    },
+    "YouTube_【高橋弘樹vs呉座勇一】戦国時代のウソ！豊臣秀吉の正体とは？_H6ZVuj7IGOM.md": {
+      "title": "【高橋弘樹vs呉座勇一】戦国時代のウソ！豊臣秀吉の正体とは？",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.527
+    },
+    "YouTube_【高橋弘樹vs天才数学者】もなかも組織論も数学で説明できた！_QTL9TIWfX-4.md": {
+      "title": "【高橋弘樹vs天才数学者】もなかも組織論も数学で説明できた！",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.525
+    },
+    "YouTube_【高橋弘樹vs川上量生】大学受験は不要？乱立する大学の役割と_YHbb-_23uDk.md": {
+      "title": "【高橋弘樹vs川上量生】大学受験は不要？乱立する大学の役割と_YHbb-_23uDk",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【高橋弘樹vs朝日新聞vs毎日新聞vs幻冬舎】どんな報道あっ_aZ3Bg_WxwYQ.md": {
+      "title": "【高橋弘樹vs朝日新聞vs毎日新聞vs幻冬舎】どんな報道あっ_aZ3Bg_WxwYQ",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.5
+    },
+    "YouTube_【高橋弘樹vs東武鉄道】終電後の成増駅で駅長激白！最強観光列_YreXcSbqaeY.md": {
+      "title": "【高橋弘樹vs東武鉄道】終電後の成増駅で駅長激白！最強観光列",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.543
+    },
+    "YouTube_【高橋弘樹vs毒殺の日本史】衝撃のかぐや姫！藤原仲麻呂の正体_VS4g1lSahEo.md": {
+      "title": "【高橋弘樹vs毒殺の日本史】衝撃のかぐや姫！藤原仲麻呂の正体",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.52
+    },
+    "YouTube_【高橋弘樹vs老化】衝撃研究！寿命を伸ばす栄養素？健康的な食_NU5BsXYOTC4.md": {
+      "title": "【高橋弘樹vs老化】衝撃研究！寿命を伸ばす栄養素？健康的な食",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.517
+    },
+    "YouTube_【高橋弘樹vs辞めゴールドマン】毎年20%がクビ！激烈…エリ_SEqkSNRqrUE.md": {
+      "title": "【高橋弘樹vs辞めゴールドマン】毎年20%がクビ！激烈…エリ",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.543
+    },
+    "YouTube_【高橋弘樹vs辞めフジテレビ】なぜ退社？悩みを告白…コンプラ_PI7q6EjEWcE.md": {
+      "title": "【高橋弘樹vs辞めフジテレビ】なぜ退社？悩みを告白…コンプラ",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.512
+    },
+    "YouTube_【高橋弘樹vs辞めフジテレビ】フジ・エースアナウンサーが電撃_XtMndTouq34.md": {
+      "title": "【高橋弘樹vs辞めフジテレビ】フジ・エースアナウンサーが電撃",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.606
+    },
+    "YouTube_【高橋弘樹vs辞め共同通信】異端のエース記者が衝撃退社..._QqekINGTL6c.md": {
+      "title": "【高橋弘樹vs辞め共同通信】異端のエース記者が衝撃退社...",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.52
+    },
+    "YouTube_【高橋弘樹vs鉄道4社】沿線の価値を上げろ！JR東日本・東急_DLRN7SmOb-w.md": {
+      "title": "【高橋弘樹vs鉄道4社】沿線の価値を上げろ！JR東日本・東急",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.527
+    },
+    "YouTube_【高橋弘樹vs青山繁晴】なぜ献金拒否？政治とカネ問題…本当の_UMuDpNgmB_8.md": {
+      "title": "【高橋弘樹vs青山繁晴】なぜ献金拒否？政治とカネ問題…本当の_UMuDpNgmB_8",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.512
+    },
+    "YouTube_【高橋弘樹vs青山繁晴】忘れられない…ペルー日本大使公邸人質_c9Z6MkUU1xc.md": {
+      "title": "【高橋弘樹vs青山繁晴】忘れられない…ペルー日本大使公邸人質",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.543
+    },
+    "YouTube_【高橋弘樹vs高市早苗】高市早苗が描く“強い日本”構想　減税_gvhsrihOCrc.md": {
+      "title": "【高橋弘樹vs高市早苗】高市早苗が描く“強い日本”構想　減税",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.537
+    },
+    "YouTube_【高橋弘樹】ReHacQプロデューサーに密着取材！クリエイタ_Sjsovka7e6U.md": {
+      "title": "【高橋弘樹】ReHacQプロデューサーに密着取材！クリエイタ",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.617
+    },
+    "YouTube_【鳥取・島根で最大震度5強の強い地震】津波の心配なし　山陰地_nbjZALKDLjY.md": {
+      "title": "【鳥取・島根で最大震度5強の強い地震】津波の心配なし　山陰地",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_【鳥取県・島根県で震度5強】高市総理コメント【ノーカット】（_ldc6snFVDhE.md": {
+      "title": "【鳥取県・島根県で震度5強】高市総理コメント【ノーカット】（",
+      "topic": "Googleニュース",
+      "novelty_score": 0.52
+    },
+    "YouTube_【齋藤幸平vs日本共産党のドン】緊急参戦！志位和夫が語るマル_DEMH8VS6sns.md": {
+      "title": "【齋藤幸平vs日本共産党のドン】緊急参戦！志位和夫が語るマル",
+      "topic": "高橋弘樹",
+      "novelty_score": 0.582
+    },
+    "YouTube_おいしさの本質は味ではないし、服は着ない方がいい【雑談回】#_r8lqZO7hRtE.md": {
+      "title": "おいしさの本質は味ではないし、服は着ない方がいい【雑談回】#",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_かわいい小鳥「鵺」は、なぜ怪物に変わった？文学研究で分かった_t4jeIxyKxZU.md": {
+      "title": "かわいい小鳥「鵺」は、なぜ怪物に変わった？文学研究で分かった",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_ことわざは世界中に見ることができる「小さな言語芸術」【ことわ_k5RHoWWjk-s.md": {
+      "title": "ことわざは世界中に見ることができる「小さな言語芸術」【ことわ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_じゃがいもの呼称、知らんヤツまみれで絶望【言語地理学2】#3_LxfVadD7WxU.md": {
+      "title": "じゃがいもの呼称、知らんヤツまみれで絶望【言語地理学2】#3",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_なぜ「仏の顔も3回まで」は間違いなのか？【助数詞2】#38_K5_ktUB62G0.md": {
+      "title": "なぜ「仏の顔も3回まで」は間違いなのか？【助数詞2】#38_K5_ktUB62G0",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_なぜイギリスが世界最強だったのか？地政学からの考察_w7VzYSjLZjM.md": {
+      "title": "なぜイギリスが世界最強だったのか？地政学からの考察",
+      "topic": "地政学",
+      "novelty_score": 0.524
+    },
+    "YouTube_なぜ日本は地政学的に最高といえるのか？_rkusd2hmIgw.md": {
+      "title": "なぜ日本は地政学的に最高といえるのか？",
+      "topic": "地政学",
+      "novelty_score": 0.5
+    },
+    "YouTube_なぜ民主国家は海沿いに集中しているのか？_1EpIsD8pO8k.md": {
+      "title": "なぜ民主国家は海沿いに集中しているのか？",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_ゆる国語辞典ラジオ_JCm4dRoLO2s.md": {
+      "title": "ゆる国語辞典ラジオ",
+      "topic": "言語学ラジオ",
+      "novelty_score": 0.718
+    },
+    "YouTube_よかれと思った行為が罰当たりに！？　神社の泉が小銭だらけに…_wbFRUMdoXlE.md": {
+      "title": "よかれと思った行為が罰当たりに！？　神社の泉が小銭だらけに…",
+      "topic": "Googleニュース",
+      "novelty_score": 0.6
+    },
+    "YouTube_イオンはカゴの色分けで売上を伸ばした。【うんちくエウレーカク_5J6soZ3Kkk4.md": {
+      "title": "イオンはカゴの色分けで売上を伸ばした。【うんちくエウレーカク",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_イランで激化する抗議デモめぐり　トランプ大統領が介入示唆　イ_bNlSW9d_Mug.md": {
+      "title": "イランで激化する抗議デモめぐり　トランプ大統領が介入示唆　イ_bNlSW9d_Mug",
+      "topic": "Googleニュース",
+      "novelty_score": 0.536
+    },
+    "YouTube_オノマトペを使うだけで記憶力も筋力も上がるらしい【怪しくない_JOPGCUbsADg.md": {
+      "title": "オノマトペを使うだけで記憶力も筋力も上がるらしい【怪しくない",
+      "topic": "言語学ラジオ",
+      "novelty_score": 0.781
+    },
+    "YouTube_オリンピックの輪は、なぜこの色でないといけないのか？【うんち_k7nk-ZH3_B4.md": {
+      "title": "オリンピックの輪は、なぜこの色でないといけないのか？【うんち_k7nk-ZH3_B4",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_カスタムGemini（Gem）の作り方_njjHRzUQEqU.md": {
+      "title": "カスタムGemini（Gem）の作り方",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_カヌレ誕生の理由が意外すぎるし、ポテチも意外。あとタルト・タ_-UD6YMkMVf0.md": {
+      "title": "カヌレ誕生の理由が意外すぎるし、ポテチも意外。あとタルト・タ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_クリスマス休暇中に55億円相当盗まれる　ドイツの貸金庫にドリ_r775pTdKuQ8.md": {
+      "title": "クリスマス休暇中に55億円相当盗まれる　ドイツの貸金庫にドリ",
+      "topic": "Googleニュース",
+      "novelty_score": 0.59
+    },
+    "YouTube_スマホでリアルな写真風の生成AI、イラストを作る方法｜Goo_Z8_7Ma9PK7A.md": {
+      "title": "スマホでリアルな写真風の生成AI、イラストを作る方法｜Goo_Z8_7Ma9PK7A",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.537
+    },
+    "YouTube_データを分析し、言語を理解する。言語学版『ファクトフルネス』_60SQzKRdPDI.md": {
+      "title": "データを分析し、言語を理解する。言語学版『ファクトフルネス』",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_トランプ大統領　機関投資家の「戸建て住宅購入」を禁止へ　住宅_KVbHUblYhCE.md": {
+      "title": "トランプ大統領　機関投資家の「戸建て住宅購入」を禁止へ　住宅",
+      "topic": "Googleニュース",
+      "novelty_score": 0.533
+    },
+    "YouTube_トランプ大統領「アメリカがベネズエラを運営する」、軍事攻撃し_0RT--ndI8aA.md": {
+      "title": "トランプ大統領「アメリカがベネズエラを運営する」、軍事攻撃し",
+      "topic": "Googleニュース",
+      "novelty_score": 0.525
+    },
+    "YouTube_ニトリに業務スーパー！異業種が参入したお得すぎるレストランチ_fhdLLP63bn4.md": {
+      "title": "ニトリに業務スーパー！異業種が参入したお得すぎるレストランチ",
+      "topic": "Googleニュース",
+      "novelty_score": 0.56
+    },
+    "YouTube_バキのレトリックを思い切り語る回【達人は保護されているッッッ_bp6GOWvn6fo.md": {
+      "title": "バキのレトリックを思い切り語る回【達人は保護されているッッッ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_パリピ姉の結婚式に出た話。一番の見せ場は◯◯【雑談回】 #3_L1HwggDEPkQ.md": {
+      "title": "パリピ姉の結婚式に出た話。一番の見せ場は◯◯【雑談回】 #3",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_パン派？ご飯派？朝食に何を食べていくらかけているか調査！「曜_R62xGeOhg5A.md": {
+      "title": "パン派？ご飯派？朝食に何を食べていくらかけているか調査！「曜",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_ベネズエラへの初の地上攻撃か　トランプ大統領「船に麻薬積み込_cyPtVvwiUJ4.md": {
+      "title": "ベネズエラへの初の地上攻撃か　トランプ大統領「船に麻薬積み込",
+      "topic": "Googleニュース",
+      "novelty_score": 0.543
+    },
+    "YouTube_ベネズエラ・マドゥロ大統領がNYの拘置所に到着　トランプ政権_AfuzT2s-aeA.md": {
+      "title": "ベネズエラ・マドゥロ大統領がNYの拘置所に到着　トランプ政権",
+      "topic": "Googleニュース",
+      "novelty_score": 0.607
+    },
+    "YouTube_マヂラブ Gemini 教室 第 1 回「Gemini と仕_0vn_SMfiLMQ.md": {
+      "title": "マヂラブ Gemini 教室 第 1 回「Gemini と仕_0vn_SMfiLMQ",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.546
+    },
+    "YouTube_ラジオで年商1億円？ 謎の会社pedanticの内情を暴露し_5Ewz-HDFZHU.md": {
+      "title": "ラジオで年商1億円？ 謎の会社pedanticの内情を暴露し",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_中国やロシアがモンゴルに侵攻しない納得の理由【地政学】_cRHReXVvb84.md": {
+      "title": "中国やロシアがモンゴルに侵攻しない納得の理由【地政学】",
+      "topic": "地政学",
+      "novelty_score": 0.54
+    },
+    "YouTube_人のすれ違いは「スキーマ」から生まれる。【赤ちゃんミステイク_8Wpli2n6wAE.md": {
+      "title": "人のすれ違いは「スキーマ」から生まれる。【赤ちゃんミステイク",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_仕事始めの街中を馬が徘徊　明治大学・馬術部の馬が逃走か　警察_4oYLSMZMlWI.md": {
+      "title": "仕事始めの街中を馬が徘徊　明治大学・馬術部の馬が逃走か　警察",
+      "topic": "Googleニュース",
+      "novelty_score": 0.535
+    },
+    "YouTube_劇団四季：ディズニーミュージカル『アナと雪の女王』：プロモー_bKDc2nBMjCI.md": {
+      "title": "劇団四季：ディズニーミュージカル『アナと雪の女王』：プロモー",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_動詞を見れば死生観が分かる！記述言語学者に聞く、言語地図の楽_qQXCIzpCycM.md": {
+      "title": "動詞を見れば死生観が分かる！記述言語学者に聞く、言語地図の楽",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_反省しているのは現在なのになぜ「た」を使うの？【た3】#91_I0iFsy-QShY.md": {
+      "title": "反省しているのは現在なのになぜ「た」を使うの？【た3】#91",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_四季報がおもしろすぎる。炎上対策の会社が上場してるの？#37_Duv-BH9ksGs.md": {
+      "title": "四季報がおもしろすぎる。炎上対策の会社が上場してるの？#37",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_図鑑に溺れようぜ！！！！！_eNxaoYVFPew.md": {
+      "title": "図鑑に溺れようぜ！！！！！",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_大人になってから興奮した「学校教育アハ体験」を語ろう！！#3_oWBznhMApjY.md": {
+      "title": "大人になってから興奮した「学校教育アハ体験」を語ろう！！#3",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_大人の間違いを専門家に解説してもらったら、感動が生まれた #_a_qAlQtFZgo.md": {
+      "title": "大人の間違いを専門家に解説してもらったら、感動が生まれた #_a_qAlQtFZgo",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_大学の“2026年問題” 進学者数減少で経営に影響か　専門家_YYBoVx1JXNY.md": {
+      "title": "大学の“2026年問題” 進学者数減少で経営に影響か　専門家",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_安倍元総理銃撃事件　裁判で明らかになった山上徹也被告と家族の_2RWcBzLlZD8.md": {
+      "title": "安倍元総理銃撃事件　裁判で明らかになった山上徹也被告と家族の",
+      "topic": "Googleニュース",
+      "novelty_score": 0.533
+    },
+    "YouTube_実際にGmailとGeminiを連携させた結果がヤバかった、_rV_-A_nq2Hw.md": {
+      "title": "実際にGmailとGeminiを連携させた結果がヤバかった、_rV_-A_nq2Hw",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.556
+    },
+    "YouTube_専門家と「プロジェクション」を語り尽くす1時間_X7JpfLAb1Xs.md": {
+      "title": "専門家と「プロジェクション」を語り尽くす1時間",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_小林・益川理論は腐女子の妄想と同じ？偉大な科学者と腐女子の共_4EX6b97xcLk.md": {
+      "title": "小林・益川理論は腐女子の妄想と同じ？偉大な科学者と腐女子の共",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_山陽道で複数台が立ち往生 一時20キロ超の渋滞に　大雪の影響_kGk5X3ABu68.md": {
+      "title": "山陽道で複数台が立ち往生 一時20キロ超の渋滞に　大雪の影響",
+      "topic": "Googleニュース",
+      "novelty_score": 0.513
+    },
+    "YouTube_巷にあふれるウソ学説を語れ！謬説ナイト！【雪を表す語彙が40_k2wtazyfhHo.md": {
+      "title": "巷にあふれるウソ学説を語れ！謬説ナイト！【雪を表す語彙が40",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_平安時代の犬は「びよ」と鳴いていた。鳴き声が激変した理由は…_OzTm1x4NNoY.md": {
+      "title": "平安時代の犬は「びよ」と鳴いていた。鳴き声が激変した理由は…",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_徹底討論！ 「結論から喋る」は本当に正しいのか？ #373_HmClYAes144.md": {
+      "title": "徹底討論！ 「結論から喋る」は本当に正しいのか？ #373",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_心は存在しない。【ビジュアルシンカー3】#324_Gjt52U9vMs4.md": {
+      "title": "心は存在しない。【ビジュアルシンカー3】#324",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_新しい Google 検索 ❘ AI モード マルチターン篇_cPaRyY0u_1A.md": {
+      "title": "新しい Google 検索 ❘ AI モード マルチターン篇_cPaRyY0u_1A",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_日本語の歴史が生んだ奇跡。「パリパリ」がオノマトペだと断定で_B73sEyA0wbs.md": {
+      "title": "日本語の歴史が生んだ奇跡。「パリパリ」がオノマトペだと断定で",
+      "topic": "言語学ラジオ",
+      "novelty_score": 0.76
+    },
+    "YouTube_決算速報：AIにすべてを賭けるGoogleとテスラ、未来の勝__UxuzKNKC8o.md": {
+      "title": "決算速報：AIにすべてを賭けるGoogleとテスラ、未来の勝__UxuzKNKC8o",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_泣き方の歴史。源氏物語から野々村竜太郎まで。#300_UlRaIiBS0pk.md": {
+      "title": "泣き方の歴史。源氏物語から野々村竜太郎まで。#300",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_温泉旅館で寝る前の会話_bXR8BIYLV7E.md": {
+      "title": "温泉旅館で寝る前の会話",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_温泉旅館で酔っ払った3人が理屈っぽい話を1時間20分喋るよ【_W9I3nfqGlVo.md": {
+      "title": "温泉旅館で酔っ払った3人が理屈っぽい話を1時間20分喋るよ【",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_激動の1年を振り返るライブ【全国ツアー後夜祭】_l2RkHuzECQ0.md": {
+      "title": "激動の1年を振り返るライブ【全国ツアー後夜祭】",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_無料で連携！Geminiとスプレッドシート　#生成ai  #_afVlD956m_M.md": {
+      "title": "無料で連携！Geminiとスプレッドシート　#生成ai  #_afVlD956m_M",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_無料のGoogle最強AI「NotebookLM」活用法5選_aZFntAAwR0A.md": {
+      "title": "無料のGoogle最強AI「NotebookLM」活用法5選",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_無料の神ツール「Google AI Studio」徹底解説【_J4NhtqReyl8.md": {
+      "title": "無料の神ツール「Google AI Studio」徹底解説【",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.55
+    },
+    "YouTube_熱中症は人間だけじゃないpart2【news23】｜TBS _Kf25n0KDtQ0.md": {
+      "title": "熱中症は人間だけじゃないpart2【news23】｜TBS ",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_牛の性別にはオス・メス・去勢・フリーマーチンの4つがある。フ_yGbjdK4GmnU.md": {
+      "title": "牛の性別にはオス・メス・去勢・フリーマーチンの4つがある。フ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_特殊詐欺など国際犯罪の“黒幕” カンボジア「プリンス・グルー_6moeZbXFOaw.md": {
+      "title": "特殊詐欺など国際犯罪の“黒幕” カンボジア「プリンス・グルー",
+      "topic": "Googleニュース",
+      "novelty_score": 0.564
+    },
+    "YouTube_生成AIのNo.1に進化したGemini 3が凄い！おすすめ_NhfjQIQ_Pfg.md": {
+      "title": "生成AIのNo.1に進化したGemini 3が凄い！おすすめ_NhfjQIQ_Pfg",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.523
+    },
+    "YouTube_田中みな実、司会進行中に流暢な英語披露　突然の出来事に東京0_94JcO90jNfM.md": {
+      "title": "田中みな実、司会進行中に流暢な英語披露　突然の出来事に東京0",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_発言被りはなぜ嫌われるのか？_Q5uiBu14_9c.md": {
+      "title": "発言被りはなぜ嫌われるのか？_Q5uiBu14_9c",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_皇居で「新年祝賀の儀」秋篠宮家の長男・悠仁さまが元日伝統の儀_nvCxcw-OBvg.md": {
+      "title": "皇居で「新年祝賀の儀」秋篠宮家の長男・悠仁さまが元日伝統の儀",
+      "topic": "Googleニュース",
+      "novelty_score": 0.548
+    },
+    "YouTube_直接言う東北、婉曲に言う関西。言語行動が違いすぎてビビる #_3vr3mpwbEUY.md": {
+      "title": "直接言う東北、婉曲に言う関西。言語行動が違いすぎてビビる #",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_知らないと損するGemini無料神機能4選 #ai #gem_aK9d9uVCqso.md": {
+      "title": "知らないと損するGemini無料神機能4選 #ai #gem",
+      "topic": "Gemini紹介",
+      "novelty_score": 0.5
+    },
+    "YouTube_知人男性への暴行疑いで会社役員の男（46）を現行犯逮捕　男性_dVzVd-XF7lU.md": {
+      "title": "知人男性への暴行疑いで会社役員の男（46）を現行犯逮捕　男性",
+      "topic": "Googleニュース",
+      "novelty_score": 0.606
+    },
+    "YouTube_石ころは「石+ころ」ではないし、キツツキは木突きではない【直_s7I16xFt3vs.md": {
+      "title": "石ころは「石+ころ」ではないし、キツツキは木突きではない【直",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_福本伸行の傑作『天』を読み返して泣いちゃった話 #367_CK4DJPpF3jo.md": {
+      "title": "福本伸行の傑作『天』を読み返して泣いちゃった話 #367",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_自分がない。社会に適合しすぎる男の悲劇。_fb-OfzOVDow.md": {
+      "title": "自分がない。社会に適合しすぎる男の悲劇。",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_自己肯定感と自己評価は別物_OlMjMnpj_ig.md": {
+      "title": "自己肯定感と自己評価は別物_OlMjMnpj_ig",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_自己責任はなぜ幻想なのか？_rZqGICe9SLI.md": {
+      "title": "自己責任はなぜ幻想なのか？",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_芸術偏差値43コンビによる、あいまい美術講座【ベルト・モリゾ_9wkB39DIJWc.md": {
+      "title": "芸術偏差値43コンビによる、あいまい美術講座【ベルト・モリゾ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_茨城・水戸市ネイリスト女性（31）殺害　玄関に大量の血痕… _8VZ2AcQHODw.md": {
+      "title": "茨城・水戸市ネイリスト女性（31）殺害　玄関に大量の血痕… ",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_言語学者と広告コピーを読んだら、意外な分析の嵐だった。#26_wnC5-HDO5SY.md": {
+      "title": "言語学者と広告コピーを読んだら、意外な分析の嵐だった。#26",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_読書で挫折しないコツ「ギャルになる」#355_Sxo5vpoJGnM.md": {
+      "title": "読書で挫折しないコツ「ギャルになる」#355",
+      "topic": "Gemini使い方",
+      "novelty_score": 0.544
+    },
+    "YouTube_谷川岳 【JNN 紅葉ドローンDIG 2025】｜TBS N__S2im33j2co.md": {
+      "title": "谷川岳 【JNN 紅葉ドローンDIG 2025】｜TBS N__S2im33j2co",
+      "topic": "Googleニュース",
+      "novelty_score": 0.5
+    },
+    "YouTube_足立佳奈 『なにこの速さ! 12万5094人からのｼﾝﾃﾞﾚ_LsJMCZYfaaE.md": {
+      "title": "足立佳奈 『なにこの速さ! 12万5094人からのｼﾝﾃﾞﾚ",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_防衛が最強の国TOP3 #地政学 #地理_Y26CegiGUFU.md": {
+      "title": "防衛が最強の国TOP3 #地政学 #地理",
+      "topic": "地政学",
+      "novelty_score": 0.5
+    },
+    "YouTube_韓国語の専門家と一緒に、おもしろ単語を堪能しよう！#387_kTuz8V6Cznc.md": {
+      "title": "韓国語の専門家と一緒に、おもしろ単語を堪能しよう！#387",
+      "topic": "地政学",
+      "novelty_score": 0.521
+    },
+    "YouTube_🌷Google gemini couple edit ✨ r_8CsEo1y84M4.md": {
+      "title": "🌷Google gemini couple edit ✨ r",
+      "topic": "その他",
+      "novelty_score": 1
+    },
+    "YouTube_🔥 Salary of an AI Engineer  AI_dKro1EH2z2E.md": {
+      "title": "🔥 Salary of an AI Engineer  AI",
+      "topic": "その他",
+      "novelty_score": 1
+    }
+  }
+}
