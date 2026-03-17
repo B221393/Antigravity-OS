@@ -57,6 +57,10 @@ GitHubの `main` ブランチを「真実のソース」として常に同一の
 *   `/apps/dev_loop/game_05/`: PULSE DYNAMICS (App #5)
 *   `/apps/dev_loop/game_06/`: FLUID VORTEX (App #6)
 *   `/apps/dev_loop/game_07/`: SENSOR HUB VISUALIZER (App #7)
+*   `/apps/dev_loop/game_08/`: VOXEL EXPANSION (App #8)
+*   `/apps/dev_loop/game_09/`: KNOWLEDGE NEBULA (App #9)
+*   `/apps/dev_loop/game_10/`: SIGNAL BRIDGE (App #10)
+*   `/apps/dev_loop/game_11/`: BANDWIDTH TUNER (App #11)
 
 ---
 **システムメッセージ:**
