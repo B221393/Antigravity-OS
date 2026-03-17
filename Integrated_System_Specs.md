@@ -52,6 +52,7 @@ GitHubの `main` ブランチを「真実のソース」として常に同一の
 *   `/_agent/workflows/auto-run.md`: オートパイロット手順書
 *   `/apps/dev_loop/game_01/`: ORBITAL EXPLORER (App #1)
 *   `/apps/dev_loop/game_02/`: NEON CITY GENERATOR (App #2)
+*   `/apps/dev_loop/game_03/`: TERRAIN VOID (App #3)
 
 ---
 **システムメッセージ:**
