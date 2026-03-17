@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNOWLEDGE NEBULA | App #9</title>
+    <style>
+        body { margin: 0; background: radial-gradient(circle, #0a0a1a 0%, #000 100%); overflow: hidden; font-family: 'Outfit', sans-serif; }
+        #ui { position: absolute; top: 30px; left: 30px; color: #8b5cf6; pointer-events: none; }
+        h1 { font-weight: 200; letter-spacing: 12px; font-size: 1.2rem; border-bottom: 1px solid rgba(139, 92, 246, 0.3); padding-bottom: 10px; }
+        .interest-tags { font-size: 0.6rem; color: #fff; opacity: 0.4; margin-top: 10px; }
+        #status { position: absolute; bottom: 30px; left: 30px; font-family: monospace; font-size: 0.7rem; color: #fff; opacity: 0.3; }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <h1>KNOWLEDGE NEBULA</h1>
+        <div class="interest-tags">MECHANICAL / SOFTWARE / EQUINE / PHILOSOPHY / EXPANDING...</div>
+    </div>
+    <div id="status">COMMANDER: ANTIGRAVITY | ENGINE: COPILOT | LOOP_SEQUENCE: 09</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, particles, lines;
+        const nodeCount = 100;
+        const nodes = [];
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 200;
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.body.appendChild(renderer.domElement);
+
+            // Create knowledge nodes
+            const geo = new THREE.SphereGeometry(1.5, 8, 8);
+            for (let i = 0; i < nodeCount; i++) {
+                const mat = new THREE.MeshBasicMaterial({ 
+                    color: new THREE.Color().setHSL(Math.random() * 0.2 + 0.6, 0.8, 0.6),
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const node = new THREE.Mesh(geo, mat);
+                node.position.set(
+                    (Math.random() - 0.5) * 200,
+                    (Math.random() - 0.5) * 200,
+                    (Math.random() - 0.5) * 200
+                );
+                node.velocity = new THREE.Vector3(
+                    (Math.random() - 0.5) * 0.2,
+                    (Math.random() - 0.5) * 0.2,
+                    (Math.random() - 0.5) * 0.2
+                );
+                scene.add(node);
+                nodes.push(node);
+            }
+
+            // Connection Lines
+            const lineMat = new THREE.LineBasicMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.2 });
+            const lineGeo = new THREE.BufferGeometry();
+            lines = new THREE.LineSegments(lineGeo, lineMat);
+            scene.add(lines);
+
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const posArray = [];
+            const linePositions = [];
+
+            nodes.forEach((node, i) => {
+                // Gentle drift
+                node.position.add(node.velocity);
+
+                // Central gravity
+                const distToCenter = node.position.length();
+                node.velocity.sub(node.position.clone().normalize().multiplyScalar(0.001));
+
+                // Bounds check
+                if (distToCenter > 200) node.velocity.multiplyScalar(-1);
+
+                // Connections
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dist = node.position.distanceTo(nodes[j].position);
+                    if (dist < 40) {
+                        linePositions.push(node.position.x, node.position.y, node.position.z);
+                        linePositions.push(nodes[j].position.x, nodes[j].position.y, nodes[j].position.z);
+                    }
+                }
+            });
+
+            lines.geometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+            lines.geometry.computeBoundingSphere();
+
+            scene.rotation.y += 0.001;
+            scene.rotation.x += 0.0005;
+
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        init();
+    </script>
+</body>
+</html>
