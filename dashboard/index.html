@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Thinking OS | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Noto+Sans+JP:wght@300;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wallpaper-container">
+        <!-- AI Generated Hero Image -->
+        <img src="background.png" id="bg-image">
+        
+        <div class="glass-overlay">
+            <header>
+                <div class="date-widget">
+                    <h1 id="current-time">10:45</h1>
+                    <p id="current-date">Tuesday, March 17, 2026</p>
+                </div>
+                <div class="system-status">
+                    <span class="status-dot"></span>
+                    <p>GITHUB SYNC: ONLINE</p>
+                </div>
+            </header>
+
+            <main>
+                <section class="widget schedule-widget">
+                    <h2>📅 デッドラインと今後の予定</h2>
+                    <ul id="schedule-list">
+                        <li class="priority-high"><strong>3/17 (今日)</strong>: ES提出期限 - パーソルAVC</li>
+                        <li><strong>3/19</strong>: 適性検査 - テクノプロ</li>
+                        <li><strong>3/20</strong>: 面接シミュレーション</li>
+                        <li class="priority-low"><strong>3月下旬</strong>: 一次面接開始</li>
+                    </ul>
+                </section>
+
+                <section class="widget mail-widget">
+                    <h2>📧 最新の通知 (Inbox)</h2>
+                    <ul id="mail-list">
+                        <!-- ここは動的に更新されるか、重要なものをリストアップ -->
+                        <li>[マイナビ] セミナー予約完了のお知らせ</li>
+                        <li>[Panasonic] マイページ更新の通知</li>
+                        <li>[リクナビ] あなたに興味のある企業...</li>
+                    </ul>
+                </section>
+
+                <section class="widget strategy-widget">
+                    <h2>🧠 戦略インサイト</h2>
+                    <p class="quote">「面接は、InputとOutputのバランス、そして最後は『勇気』。自分というシステムを信頼し、等身大で向き合う。」</p>
+                </section>
+            </main>
+
+            <footer>
+                <p>AUTOSYNC: b221393/my-syukatu-app (origin/main)</p>
+            </footer>
+        </div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('current-time').textContent = timeStr;
+            
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('ja-JP', options);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
