@@ -27,6 +27,20 @@
 | `/python_scripts/` | **自動化エンジン層** | 同期、メール連携、データ更新等のバックエンドスクリプト |
 | `Integrated_System_Specs.md` | **システム記述層** | **【本ファイル】** 全仕様と現状の真実のソース |
 
+### 2.1 自律開発成果物リスト (Autonomous Assets)
+*   `/apps/dev_loop/game_01/`: ORBITAL EXPLORER (App #1)
+*   `/apps/dev_loop/game_02/`: NEON CITY GENERATOR (App #2)
+*   `/apps/dev_loop/game_03/`: TERRAIN VOID (App #3)
+*   `/apps/dev_loop/game_04/`: NEURAL CONNECTION VISUALIZER (App #4)
+*   `/apps/dev_loop/game_05/`: PULSE DYNAMICS (App #5)
+*   `/apps/dev_loop/game_06/`: FLUID VORTEX (App #6)
+*   `/apps/dev_loop/game_07/`: SENSOR HUB VISUALIZER (App #7)
+*   `/apps/dev_loop/game_08/`: VOXEL EXPANSION (App #8)
+*   `/apps/dev_loop/game_09/`: KNOWLEDGE NEBULA (App #9)
+*   `/apps/dev_loop/game_10/`: SIGNAL BRIDGE (App #10)
+*   `/apps/dev_loop/game_11/`: BANDWIDTH TUNER (App #11)
+*   `/apps/dev_loop/game_12/`: NEXUS SEARCH (App #12)
+
 ---
 
 ## 3. 自律開発（プログラム生成）プロトコル (Autonomous Dev Protocol)
