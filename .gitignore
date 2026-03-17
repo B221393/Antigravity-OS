@@ -70,3 +70,7 @@ _media/papers/
 _media/screenshots/
 .env
 _config/
+# --- Simulation Projects ---
+!quake_sim/
+!quake_sim_3d/
+!*.png

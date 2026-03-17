@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUAKE-CHECK 3D | Multi-Scenario Simulation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Three.js UMD Build -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- OrbitControls -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span class="active-dot"></span>
+                <h1>QUAKE-CHECK <span>PRO</span></h1>
+            </div>
+            <p class="subtitle">統合構造解析シミュレーター</p>
+        </header>
+
+        <main>
+            <div id="canvas-container">
+                <div id="loading-overlay">解析エンジンの初期化中...</div>
+            </div>
+
+            <div class="control-panel">
+                <div class="glass-card">
+                    <h3>シミュレーション設定</h3>
+                    <div class="input-group">
+                        <label for="scene-select">解析対象オブジェクト</label>
+                        <select id="scene-select">
+                            <option value="house">2階建て住宅（一般）</option>
+                            <option value="factory">生産工場（大スパン構造）</option>
+                            <option value="office">オフィスビル（高層・免震構造）</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="intensity">最大震度: <span id="intensity-val">5</span></label>
+                        <input type="range" id="intensity" min="1" max="7" value="5">
+                    </div>
+                    
+                    <button id="trigger-btn" class="glow-btn">シミュレーション開始</button>
+                    <button id="reset-btn" class="reset-btn">再配置・リセット</button>
+                </div>
+
+                <div class="glass-card info">
+                    <h3>リアルタイム・データレポート</h3>
+                    <p id="status-display">システム待機中</p>
+                    <div class="meter-container">
+                        <div class="meter-label">加速度ベクトル (Energy)</div>
+                        <div class="meter-bg"><div id="energy-bar" class="meter-fill"></div></div>
+                    </div>
+                    <div id="analysis-report" style="margin-top:1rem; font-size: 0.85rem; color: #94a3b8;"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
