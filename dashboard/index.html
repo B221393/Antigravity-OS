@@ -30,30 +30,35 @@
                 </div>
             </header>
 
-            <main>
-                <section class="widget schedule-widget">
-                    <h2>📅 デッドラインと今後の予定</h2>
-                    <ul id="schedule-list">
-                        <li class="priority-high"><strong>3/17 (今日)</strong>: ES提出期限 (パナソニック/パーソル)</li>
-                        <li><strong>3/18 (明日)</strong>: テスト勉強 (テクノプロ対策)</li>
-                        <li><strong>3/19 (木)</strong>: 適性検査 (テクノプロ)</li>
-                        <li><strong>3/20 (金)</strong>: 面接練習 (学部時代対策)</li>
+            <main class="dashboard-grid">
+                <section class="widget todo-hero">
+                    <h2>✅ 最優先：やることリスト</h2>
+                    <ul id="todo-list">
+                        <li class="priority-high pulse-border">パナソニック ES提出 (本日)</li>
+                        <li class="priority-high pulse-border">パーソルAVC ES提出 (本日)</li>
+                        <li>テクノプロ テスト勉強 (3/18)</li>
+                        <li>学部時代の即答練習 (3/20)</li>
                     </ul>
                 </section>
 
-                <section class="widget mail-widget">
-                    <h2>📧 最新の通知 (Inbox)</h2>
-                    <ul id="mail-list">
-                        <!-- ここは動的に更新されるか、重要なものをリストアップ -->
-                        <li>[マイナビ] セミナー予約完了のお知らせ</li>
-                        <li>[Panasonic] マイページ更新の通知</li>
-                        <li>[リクナビ] あなたに興味のある企業...</li>
-                    </ul>
+                <section class="widget status-widget">
+                    <h2>🏢 応募企業ステータス</h2>
+                    <table class="status-table">
+                        <thead>
+                            <tr><th>企業名</th><th>状況</th><th>期限</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>パナソニック</td><td>📋 ES作成</td><td>3/17</td></tr>
+                            <tr><td>パーソルAVC</td><td>📋 ES作成</td><td>3/17</td></tr>
+                            <tr><td>テクノプロ</td><td>📅 テスト</td><td>3/19</td></tr>
+                            <tr><td>マツダ</td><td>📂 推脳中</td><td>-</td></tr>
+                        </tbody>
+                    </table>
                 </section>
 
-                <section class="widget strategy-widget">
-                    <h2>🧠 戦略インサイト</h2>
-                    <p class="quote">「面接は、InputとOutputのバランス、そして最後は『勇気』。自分というシステムを信頼し、等身大で向き合う。」</p>
+                <section class="widget insight-mini">
+                    <h2>🧠 戦略</h2>
+                    <p>「入り口は狭いが、通り抜ければ無限の広がりがある」</p>
                 </section>
             </main>
 

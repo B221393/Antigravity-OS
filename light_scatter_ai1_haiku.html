@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Scatter 3D - AI Test #1 (Haiku)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Courier New', monospace; background: #0a0e27; color: #e0e0e0; }
+        #canvas { display: block; width: 100vw; height: 100vh; }
+        #ui {
+            position: absolute; top: 0; left: 0; padding: 20px;
+            background: rgba(10, 14, 39, 0.9); border-radius: 10px;
+            z-index: 10; max-width: 300px;
+        }
+        .control-group { margin: 15px 0; }
+        label { display: block; margin-bottom: 5px; font-size: 12px; color: #aaa; }
+        input[type="range"] { width: 100%; }
+        input[type="number"] { width: 100%; padding: 5px; background: #1a1f3a; border: 1px solid #444; color: #e0e0e0; }
+        button {
+            width: 100%; padding: 8px; margin-top: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none; color: white; cursor: pointer; border-radius: 5px;
+            font-weight: bold; transition: all 0.3s;
+        }
+        button:hover { transform: scale(1.02); box-shadow: 0 0 10px #667eea; }
+        #stats {
+            position: absolute; bottom: 20px; left: 20px;
+            background: rgba(10, 14, 39, 0.9); padding: 15px;
+            border: 1px solid #444; border-radius: 5px; font-size: 12px;
+        }
+        .stat-line { margin: 3px 0; }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <h3 style="margin-bottom: 15px;">Light Scatter Control</h3>
+        
+        <div class="control-group">
+            <label>Light Direction X</label>
+            <input type="range" id="lightX" min="-1" max="1" step="0.05" value="0.5">
+        </div>
+        
+        <div class="control-group">
+            <label>Light Direction Y</label>
+            <input type="range" id="lightY" min="-1" max="1" step="0.05" value="0.5">
+        </div>
+        
+        <div class="control-group">
+            <label>Light Direction Z</label>
+            <input type="range" id="lightZ" min="-1" max="1" step="0.05" value="0.5">
+        </div>
+        
+        <div class="control-group">
+            <label>Particle Count: <span id="particleCountDisplay">1000</span></label>
+            <input type="range" id="particleCount" min="100" max="5000" step="100" value="1000">
+        </div>
+        
+        <button id="toggleSimBtn">Pause</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+    
+    <div id="stats">
+        <div class="stat-line">FPS: <span id="fps">0</span></div>
+        <div class="stat-line">Particles: <span id="particleDisplay">0</span></div>
+        <div class="stat-line">Collisions: <span id="collisionDisplay">0</span></div>
+        <div class="stat-line">Frame: <span id="frameDisplay">0</span></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 30;
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x0a0e27);
+        document.body.appendChild(renderer.domElement);
+        
+        // Lighting
+        const ambLight = new THREE.AmbientLight(0xffffff, 0.3);
+        scene.add(ambLight);
+        
+        const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+        dirLight.position.set(5, 5, 5);
+        scene.add(dirLight);
+        
+        // Central obstacle
+        const sphereGeom = new THREE.SphereGeometry(5, 32, 32);
+        const sphereMat = new THREE.MeshStandardMaterial({ color: 0x888888, roughness: 0.7 });
+        const sphere = new THREE.Mesh(sphereGeom, sphereMat);
+        scene.add(sphere);
+        
+        // Particle system
+        let particleCount = 1000;
+        let particles = [];
+        let particleLines = [];
+        let collisionPoints = [];
+        let collisionCounts = new Uint32Array(10000);
+        let totalCollisions = 0;
+        let isSimulating = true;
+        let frameCount = 0;
+        
+        const particleGeom = new THREE.BufferGeometry();
+        const particlePositions = new Float32Array(particleCount * 3);
+        const particleVelocities = new Float32Array(particleCount * 3);
+        const particleColors = new Uint8Array(particleCount * 3);
+        
+        for (let i = 0; i < particleCount; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const theta = Math.random() * Math.PI;
+            const r = 0.1;
+            
+            particlePositions[i * 3] = Math.sin(theta) * Math.cos(angle) * r;
+            particlePositions[i * 3 + 1] = Math.sin(theta) * Math.sin(angle) * r;
+            particlePositions[i * 3 + 2] = Math.cos(theta) * r;
+            
+            const vel = 0.15;
+            particleVelocities[i * 3] = Math.sin(theta) * Math.cos(angle) * vel;
+            particleVelocities[i * 3 + 1] = Math.sin(theta) * Math.sin(angle) * vel;
+            particleVelocities[i * 3 + 2] = Math.cos(theta) * vel;
+            
+            particleColors[i * 3] = 100;
+            particleColors[i * 3 + 1] = 200;
+            particleColors[i * 3 + 2] = 255;
+        }
+        
+        particleGeom.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+        particleGeom.setAttribute('color', new THREE.BufferAttribute(particleColors, 3, true));
+        
+        const particleMat = new THREE.PointsMaterial({ size: 0.15, vertexColors: true });
+        const particlePoints = new THREE.Points(particleGeom, particleMat);
+        scene.add(particlePoints);
+        
+        // UI interaction
+        const lightXInput = document.getElementById('lightX');
+        const lightYInput = document.getElementById('lightY');
+        const lightZInput = document.getElementById('lightZ');
+        const particleCountInput = document.getElementById('particleCount');
+        const toggleSimBtn = document.getElementById('toggleSimBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        
+        lightXInput.addEventListener('input', (e) => {
+            dirLight.position.x = parseFloat(e.target.value) * 10;
+        });
+        lightYInput.addEventListener('input', (e) => {
+            dirLight.position.y = parseFloat(e.target.value) * 10;
+        });
+        lightZInput.addEventListener('input', (e) => {
+            dirLight.position.z = parseFloat(e.target.value) * 10;
+        });
+        
+        particleCountInput.addEventListener('input', (e) => {
+            const newCount = parseInt(e.target.value);
+            document.getElementById('particleCountDisplay').innerText = newCount;
+            // Note: Full particle system recreation would be needed here
+        });
+        
+        toggleSimBtn.addEventListener('click', () => {
+            isSimulating = !isSimulating;
+            toggleSimBtn.innerText = isSimulating ? 'Pause' : 'Resume';
+        });
+        
+        resetBtn.addEventListener('click', () => {
+            // Reset particle positions
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                const angle = Math.random() * Math.PI * 2;
+                const theta = Math.random() * Math.PI;
+                const r = 0.1;
+                
+                particlePositions[i] = Math.sin(theta) * Math.cos(angle) * r;
+                particlePositions[i + 1] = Math.sin(theta) * Math.sin(angle) * r;
+                particlePositions[i + 2] = Math.cos(theta) * r;
+                
+                const vel = 0.15;
+                particleVelocities[i] = Math.sin(theta) * Math.cos(angle) * vel;
+                particleVelocities[i + 1] = Math.sin(theta) * Math.sin(angle) * vel;
+                particleVelocities[i + 2] = Math.cos(theta) * vel;
+            }
+            totalCollisions = 0;
+            collisionCounts.fill(0);
+            particleGeom.getAttribute('position').needsUpdate = true;
+        });
+        
+        // Animation loop
+        const sphereBbox = new THREE.Box3().setFromObject(sphere);
+        let lastFpsTime = Date.now();
+        let framesSinceLastFps = 0;
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            frameCount++;
+            framesSinceLastFps++;
+            
+            if (isSimulating) {
+                // Update particles
+                for (let i = 0; i < particleCount; i++) {
+                    const idx = i * 3;
+                    
+                    // Movement
+                    particlePositions[idx] += particleVelocities[idx];
+                    particlePositions[idx + 1] += particleVelocities[idx + 1];
+                    particlePositions[idx + 2] += particleVelocities[idx + 2];
+                    
+                    // Collision detection (simple distance)
+                    const dx = particlePositions[idx] - sphere.position.x;
+                    const dy = particlePositions[idx + 1] - sphere.position.y;
+                    const dz = particlePositions[idx + 2] - sphere.position.z;
+                    const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+                    
+                    if (dist < 5.2) { // Collision
+                        // Simple scatter: reflect velocity
+                        const nx = dx / dist;
+                        const ny = dy / dist;
+                        const nz = dz / dist;
+                        
+                        const dot = particleVelocities[idx]*nx + particleVelocities[idx+1]*ny + particleVelocities[idx+2]*nz;
+                        
+                        // Reflect and add randomness (Lambertian)
+                        const rand1 = Math.random() * 0.3;
+                        particleVelocities[idx] = (nx * dot + Math.random() * rand1 - rand1/2) * 0.9;
+                        particleVelocities[idx + 1] = (ny * dot + Math.random() * rand1 - rand1/2) * 0.9;
+                        particleVelocities[idx + 2] = (nz * dot + Math.random() * rand1 - rand1/2) * 0.9;
+                        
+                        // Move particle outside sphere
+                        particlePositions[idx] = nx * 5.3;
+                        particlePositions[idx + 1] = ny * 5.3;
+                        particlePositions[idx + 2] = nz * 5.3;
+                        
+                        totalCollisions++;
+                        
+                        // Color shift based on collision count
+                        const collCount = (collisionCounts[i]++) % 10;
+                        const ratio = collCount / 10;
+                        particleColors[idx] = Math.floor(100 + ratio * 155); // Blue -> Red
+                        particleColors[idx + 1] = Math.floor(200 - ratio * 100); // Green fade
+                        particleColors[idx + 2] = Math.floor(255 - ratio * 155); // Blue -> less
+                    }
+                    
+                    // Boundary check
+                    if (Math.abs(particlePositions[idx]) > 40 || 
+                        Math.abs(particlePositions[idx + 1]) > 40 || 
+                        Math.abs(particlePositions[idx + 2]) > 40) {
+                        
+                        const angle = Math.random() * Math.PI * 2;
+                        const theta = Math.random() * Math.PI;
+                        const r = 0.1;
+                        
+                        particlePositions[idx] = Math.sin(theta) * Math.cos(angle) * r;
+                        particlePositions[idx + 1] = Math.sin(theta) * Math.sin(angle) * r;
+                        particlePositions[idx + 2] = Math.cos(theta) * r;
+                        
+                        collisionCounts[i] = 0;
+                        particleColors[idx] = 100;
+                        particleColors[idx + 1] = 200;
+                        particleColors[idx + 2] = 255;
+                    }
+                }
+                
+                particleGeom.getAttribute('position').needsUpdate = true;
+                particleGeom.getAttribute('color').needsUpdate = true;
+            }
+            
+            // FPS calculation
+            const now = Date.now();
+            if (now - lastFpsTime >= 1000) {
+                document.getElementById('fps').innerText = framesSinceLastFps;
+                framesSinceLastFps = 0;
+                lastFpsTime = now;
+            }
+            
+            document.getElementById('particleDisplay').innerText = particleCount;
+            document.getElementById('collisionDisplay').innerText = totalCollisions;
+            document.getElementById('frameDisplay').innerText = frameCount;
+            
+            renderer.render(scene, camera);
+        }
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        animate();
+    </script>
+</body>
+</html>
