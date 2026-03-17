@@ -50,6 +50,8 @@ GitHubの `main` ブランチを「真実のソース」として常に同一の
 *   `/dashboard/`: 統合HUD UI (index.html, style.css, background.png)
 *   `/VECTIS_SYSTEM_FILES/CAREER/`: スケジュール、戦略ログ、ES草案
 *   `/_agent/workflows/auto-run.md`: オートパイロット手順書
+*   `/apps/dev_loop/game_01/`: ORBITAL EXPLORER (App #1)
+*   `/apps/dev_loop/game_02/`: NEON CITY GENERATOR (App #2)
 
 ---
 **システムメッセージ:**
