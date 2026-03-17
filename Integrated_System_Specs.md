@@ -40,6 +40,7 @@
 *   `/apps/dev_loop/game_10/`: SIGNAL BRIDGE (App #10)
 *   `/apps/dev_loop/game_11/`: BANDWIDTH TUNER (App #11)
 *   `/apps/dev_loop/game_12/`: NEXUS SEARCH (App #12)
+*   `/apps/dev_loop/game_13/`: INTELLIGENCE MAP (App #13)
 
 ---
 

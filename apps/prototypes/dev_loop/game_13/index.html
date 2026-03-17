@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTELLIGENCE MAP | App #13</title>
+    <style>
+        body { margin: 0; background: #050510; overflow: hidden; font-family: 'Outfit', sans-serif; color: #fff; }
+        #ui { position: absolute; top: 40px; left: 40px; pointer-events: none; }
+        h1 { font-weight: 200; letter-spacing: 10px; font-size: 1.5rem; color: #4ade80; }
+        .legend { font-size: 0.7rem; opacity: 0.6; margin-top: 10px; line-height: 1.8; }
+        .legend span { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
+        #node-label { position: absolute; color: #fff; font-size: 0.9rem; padding: 10px; background: rgba(0,0,0,0.7); border-radius: 5px; display: none; pointer-events: none; border: 1px solid rgba(74, 222, 128, 0.3); }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <h1>INTELLIGENCE MAP</h1>
+        <div class="legend">
+            <span style="background: #ef4444;"></span> CAREER_ASSETS (ES/PREP)<br>
+            <span style="background: #3b82f6;"></span> SYSTEM_CORE (SPECS/SYNC)<br>
+            <span style="background: #fbbf24;"></span> TIMELINE (SCHEDULE)
+        </div>
+    </div>
+    <div id="node-label"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, nodes = [], links = [];
+        const clock = new THREE.Clock();
+
+        const mapData = [
+            { id: "CORE", type: "SYSTEM", label: "ANTIGRAVITY-CORE", pos: [0,0,0] },
+            { id: "ES", type: "CAREER", label: "PANASONIC_ES", pos: [-40, 30, 20] },
+            { id: "PREP", type: "CAREER", label: "INTERVIEW_PREP", pos: [-20, 50, -10] },
+            { id: "SCHED", type: "TIME", label: "SCHEDULE_INTEGRATED", pos: [60, 10, 30] },
+            { id: "LOG", type: "SYSTEM", label: "STRATEGIC_INTEL_LOG", pos: [20, -40, -30] },
+            { id: "STATUS", type: "TIME", label: "APPLICATION_STATUS", pos: [50, -20, 10] },
+            { id: "APP13", type: "SYSTEM", label: "APP_13_MAP_ENGINE", pos: [-60, -10, -40] }
+        ];
+
+        const connections = [
+            ["CORE", "LOG"], ["CORE", "ES"], ["ES", "PREP"], ["CORE", "SCHED"], 
+            ["SCHED", "STATUS"], ["STATUS", "ES"], ["CORE", "APP13"]
+        ];
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 80, 200);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.body.appendChild(renderer.domElement);
+
+            // Create Nodes
+            const geo = new THREE.SphereGeometry(3, 16, 16);
+            mapData.forEach(d => {
+                let color = 0x3b82f6;
+                if(d.type === "CAREER") color = 0xef4444;
+                if(d.type === "TIME") color = 0xfbbf24;
+
+                const mat = new THREE.MeshBasicMaterial({ color: color });
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.position.set(...d.pos);
+                mesh.userData = d;
+                scene.add(mesh);
+                nodes.push(mesh);
+
+                // Add point light decoy for glow
+                const light = new THREE.PointLight(color, 1, 50);
+                light.position.set(...d.pos);
+                scene.add(light);
+            });
+
+            // Create Links
+            const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
+            connections.forEach(conn => {
+                const n1 = nodes.find(n => n.userData.id === conn[0]);
+                const n2 = nodes.find(n => n.userData.id === conn[1]);
+                const lineGeo = new THREE.BufferGeometry().setFromPoints([n1.position, n2.position]);
+                const line = new THREE.Line(lineGeo, lineMat);
+                scene.add(line);
+                links.push({ line, n1, n2 });
+            });
+
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = clock.getElapsedTime();
+
+            nodes.forEach(n => {
+                // Subtle floating animation
+                n.position.y += Math.sin(time + n.position.x) * 0.05;
+                n.position.x += Math.cos(time + n.position.y) * 0.02;
+            });
+
+            links.forEach(l => {
+                l.line.geometry.setFromPoints([l.n1.position, l.n2.position]);
+            });
+
+            scene.rotation.y += 0.002;
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            // Optional: Node labeling logic could go here
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        init();
+    </script>
+</body>
+</html>
