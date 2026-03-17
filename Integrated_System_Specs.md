@@ -53,6 +53,10 @@ GitHubの `main` ブランチを「真実のソース」として常に同一の
 *   `/apps/dev_loop/game_01/`: ORBITAL EXPLORER (App #1)
 *   `/apps/dev_loop/game_02/`: NEON CITY GENERATOR (App #2)
 *   `/apps/dev_loop/game_03/`: TERRAIN VOID (App #3)
+*   `/apps/dev_loop/game_04/`: NEURAL CONNECTION VISUALIZER (App #4)
+*   `/apps/dev_loop/game_05/`: PULSE DYNAMICS (App #5)
+*   `/apps/dev_loop/game_06/`: FLUID VORTEX (App #6)
+*   `/apps/dev_loop/game_07/`: SENSOR HUB VISUALIZER (App #7)
 
 ---
 **システムメッセージ:**
