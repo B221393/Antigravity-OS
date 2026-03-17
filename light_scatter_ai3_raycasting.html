@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Scatter 3D - AI Test #3 (Raycasting)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #1e1e2e 0%, #2d1b3d 100%); color: #e0e0e0; }
+        #canvas { display: block; width: 100vw; height: 100vh; }
+        #panel {
+            position: absolute; top: 15px; left: 15px;
+            background: rgba(30, 30, 46, 0.92);
+            padding: 20px; border-radius: 12px;
+            width: 280px; backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 100, 255, 0.3);
+            z-index: 100;
+        }
+        #panel h1 { font-size: 16px; margin-bottom: 15px; color: #c864ff; }
+        .param { margin: 12px 0; }
+        .param label { display: block; font-size: 12px; color: #aaa; margin-bottom: 5px; font-weight: 500; }
+        .param input, .param select {
+            width: 100%; padding: 6px;
+            background: rgba(60, 40, 80, 0.5);
+            border: 1px solid #c864ff;
+            color: #e0e0e0;
+            border-radius: 4px;
+        }
+        .param input[type="range"] { padding: 0; }
+        .row-display { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; }
+        .btn-group { display: flex; gap: 8px; margin-top: 12px; }
+        button {
+            flex: 1; padding: 8px;
+            background: linear-gradient(135deg, #c864ff, #9f5fff);
+            border: none; color: white; font-weight: 600;
+            border-radius: 4px; cursor: pointer;
+            transition: all 0.2s;
+        }
+        button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(200, 100, 255, 0.4); }
+        #stats {
+            position: absolute; bottom: 15px; right: 15px;
+            background: rgba(30, 30, 46, 0.92);
+            padding: 15px; border-radius: 12px;
+            width: 260px; backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 100, 255, 0.3);
+            font-size: 12px; line-height: 1.6;
+        }
+        .stat-row { display: flex; justify-content: space-between; }
+        .stat-label { color: #aaa; }
+        .stat-value { color: #c864ff; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div id="panel">
+        <h1>🔬 Ray-Scatter Engine v3</h1>
+        
+        <div class="param">
+            <label>Ray Count</label>
+            <input type="range" id="rayCount" min="500" max="4000" step="100" value="2000">
+            <div class="row-display"><span>Rays:</span><span id="rayCountVal">2000</span></div>
+        </div>
+        
+        <div class="param">
+            <label>Ray Bounce Limit</label>
+            <input type="number" id="maxBounces" min="2" max="20" value="10">
+        </div>
+        
+        <div class="param">
+            <label>Surface Roughness</label>
+            <input type="range" id="roughness" min="0" max="100" step="5" value="50">
+            <div class="row-display"><span>Roughness:</span><span id="roughnessVal">50%</span></div>
+        </div>
+        
+        <div class="param">
+            <label>Scene Geometry</label>
+            <select id="geometryType">
+                <option value="sphere">Sphere</option>
+                <option value="box">Box</option>
+                <option value="torus">Torus</option>
+            </select>
+        </div>
+        
+        <div class="btn-group">
+            <button id="simToggle">Pause</button>
+            <button id="resetRays">Reset</button>
+        </div>
+    </div>
+    
+    <div id="stats">
+        <div class="stat-row"><span class="stat-label">FPS</span><span class="stat-value" id="fpsDisplay">60</span></div>
+        <div class="stat-row"><span class="stat-label">Active Rays</span><span class="stat-value" id="activeRaysDisplay">0</span></div>
+        <div class="stat-row"><span class="stat-label">Total Bounces</span><span class="stat-value" id="bouncesDisplay">0</span></div>
+        <div class="stat-row"><span class="stat-label">Avg. Path Length</span><span class="stat-value" id="pathLengthDisplay">0.0</span></div>
+        <div class="stat-row"><span class="stat-label">Memory (MB)</span><span class="stat-value" id="memoryDisplay">0.0</span></div>
+        <div style="border-top: 1px solid #555; margin-top: 8px; padding-top: 8px; margin-bottom: 0;">
+            <div class="stat-row"><span class="stat-label">Scene</span><span class="stat-value" id="sceneTypeDisplay">Sphere</span></div>
+            <div class="stat-row"><span class="stat-label">Simulation</span><span class="stat-value" id="simStateDisplay">Running</span></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        class RayTracer {
+            constructor(rayCount, scene) {
+                this.scene = scene;
+                this.rays = [];
+                this.raycaster = new THREE.Raycaster();
+                this.rayCount = rayCount;
+                this.totalBounces = 0;
+                this.totalPathLength = 0;
+                
+                this.lineGroup = new THREE.Group();
+                this.scene.add(this.lineGroup);
+                
+                this.particleGeom = new THREE.BufferGeometry();
+                const positions = new Float32Array(rayCount * 3);
+                const colors = new Uint8Array(rayCount * 3);
+                
+                for (let i = 0; i < rayCount; i++) {
+                    this.initRay(i, positions, colors);
+                }
+                
+                this.particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                this.particleGeom.setAttribute('color', new THREE.BufferAttribute(colors, 3, true));
+                
+                const pMat = new THREE.PointsMaterial({ size: 0.3, vertexColors: true });
+                this.particles = new THREE.Points(this.particleGeom, pMat);
+                this.scene.add(this.particles);
+                
+                this.positions = positions;
+                this.colors = colors;
+            }
+            
+            initRay(idx, positions, colors) {
+                const phi = Math.random() * Math.PI * 2;
+                const theta = Math.random() * Math.PI;
+                
+                positions[idx * 3] = Math.sin(theta) * Math.cos(phi) * 0.5;
+                positions[idx * 3 + 1] = Math.sin(theta) * Math.sin(phi) * 0.5;
+                positions[idx * 3 + 2] = Math.cos(theta) * 0.5;
+                
+                colors[idx * 3] = 150;
+                colors[idx * 3 + 1] = 200;
+                colors[idx * 3 + 2] = 255;
+                
+                this.rays[idx] = {
+                    pos: new THREE.Vector3(positions[idx*3], positions[idx*3+1], positions[idx*3+2]),
+                    dir: new THREE.Vector3(Math.sin(theta) * Math.cos(phi), Math.sin(theta) * Math.sin(phi), Math.cos(theta)).normalize(),
+                    bounces: 0,
+                    maxBounces: 10,
+                    pathLength: 0,
+                    alive: true
+                };
+            }
+            
+            trace(obstacle, roughness, maxBounces) {
+                for (let i = 0; i < this.rayCount; i++) {
+                    if (!this.rays[i].alive) continue;
+                    
+                    const ray = this.rays[i];
+                    ray.maxBounces = maxBounces;
+                    
+                    this.raycaster.set(ray.pos, ray.dir);
+                    const intersects = this.raycaster.intersectObject(obstacle);
+                    
+                    if (intersects.length > 0) {
+                        const hit = intersects[0];
+                        const hitDist = hit.distance;
+                        
+                        // Move ray to hit point
+                        ray.pos.addScaledVector(ray.dir, hitDist);
+                        ray.pathLength += hitDist;
+                        ray.bounces++;
+                        this.totalBounces++;
+                        
+                        // Calculate reflection
+                        let newDir = ray.dir.clone().reflect(hit.face.normal);
+                        
+                        // Add roughness (diffuse component)
+                        const rough = roughness / 100;
+                        newDir.x += (Math.random() - 0.5) * rough;
+                        newDir.y += (Math.random() - 0.5) * rough;
+                        newDir.z += (Math.random() - 0.5) * rough;
+                        newDir.normalize();
+                        
+                        ray.dir = newDir;
+                        
+                        // Color based on bounces
+                        const bounceRatio = Math.min(1, ray.bounces / 10);
+                        this.colors[i * 3] = Math.floor(150 + bounceRatio * 105);
+                        this.colors[i * 3 + 1] = Math.floor(200 - bounceRatio * 100);
+                        this.colors[i * 3 + 2] = Math.floor(255 - bounceRatio * 55);
+                        
+                        // Terminate if max bounces reached or energy too low
+                        if (ray.bounces >= ray.maxBounces) {
+                            ray.alive = false;
+                            this.totalPathLength += ray.pathLength;
+                        }
+                    } else {
+                        // No intersection, restart ray
+                        ray.alive = false;
+                        this.totalPathLength += ray.pathLength;
+                        this.resetRayAt(i);
+                    }
+                    
+                    // Update position
+                    this.positions[i * 3] = ray.pos.x;
+                    this.positions[i * 3 + 1] = ray.pos.y;
+                    this.positions[i * 3 + 2] = ray.pos.z;
+                }
+                
+                this.particleGeom.getAttribute('position').needsUpdate = true;
+                this.particleGeom.getAttribute('color').needsUpdate = true;
+            }
+            
+            resetRayAt(idx) {
+                const phi = Math.random() * Math.PI * 2;
+                const theta = Math.random() * Math.PI;
+                
+                this.rays[idx] = {
+                    pos: new THREE.Vector3(
+                        Math.sin(theta) * Math.cos(phi) * 0.5,
+                        Math.sin(theta) * Math.sin(phi) * 0.5,
+                        Math.cos(theta) * 0.5
+                    ),
+                    dir: new THREE.Vector3(Math.sin(theta) * Math.cos(phi), Math.sin(theta) * Math.sin(phi), Math.cos(theta)).normalize(),
+                    bounces: 0,
+                    pathLength: 0,
+                    alive: true
+                };
+            }
+            
+            resizeRays(newCount) {
+                if (newCount === this.rayCount) return;
+                
+                this.scene.remove(this.particles);
+                this.particleGeom.dispose();
+                this.particles.material.dispose();
+                
+                this.rayCount = newCount;
+                this.rays = [];
+                
+                this.particleGeom = new THREE.BufferGeometry();
+                const positions = new Float32Array(newCount * 3);
+                const colors = new Uint8Array(newCount * 3);
+                
+                for (let i = 0; i < newCount; i++) {
+                    this.initRay(i, positions, colors);
+                }
+                
+                this.particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                this.particleGeom.setAttribute('color', new THREE.BufferAttribute(colors, 3, true));
+                
+                const pMat = new THREE.PointsMaterial({ size: 0.3, vertexColors: true });
+                this.particles = new THREE.Points(this.particleGeom, pMat);
+                this.scene.add(this.particles);
+                
+                this.positions = positions;
+                this.colors = colors;
+                this.totalBounces = 0;
+                this.totalPathLength = 0;
+            }
+        }
+        
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x1e1e2e);
+        
+        const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(40, 30, 40);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        
+        const ambLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambLight);
+        
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
+        dirLight.position.set(15, 20, 15);
+        scene.add(dirLight);
+        
+        // Geometry
+        let geometry = new THREE.SphereGeometry(7, 64, 64);
+        let obstacle = new THREE.Mesh(
+            geometry,
+            new THREE.MeshStandardMaterial({
+                color: 0x552288,
+                metalness: 0.4,
+                roughness: 0.5
+            })
+        );
+        scene.add(obstacle);
+        
+        let raytracer = new RayTracer(2000, scene);
+        let isRunning = true;
+        
+        // Controls
+        document.getElementById('rayCount').addEventListener('input', (e) => {
+            document.getElementById('rayCountVal').innerText = e.target.value;
+            raytracer.resizeRays(parseInt(e.target.value));
+        });
+        
+        document.getElementById('roughness').addEventListener('input', (e) => {
+            document.getElementById('roughnessVal').innerText = e.target.value + '%';
+        });
+        
+        document.getElementById('geometryType').addEventListener('change', (e) => {
+            scene.remove(obstacle);
+            
+            let newGeom;
+            switch(e.target.value) {
+                case 'box':
+                    newGeom = new THREE.BoxGeometry(10, 10, 10, 16, 16, 16);
+                    break;
+                case 'torus':
+                    newGeom = new THREE.TorusGeometry(6, 3, 20, 100);
+                    break;
+                default:
+                    newGeom = new THREE.SphereGeometry(7, 64, 64);
+            }
+            
+            obstacle = new THREE.Mesh(newGeom, obstacle.material);
+            scene.add(obstacle);
+            document.getElementById('sceneTypeDisplay').innerText = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
+        });
+        
+        document.getElementById('simToggle').addEventListener('click', () => {
+            isRunning = !isRunning;
+            document.getElementById('simToggle').innerText = isRunning ? 'Pause' : 'Resume';
+            document.getElementById('simStateDisplay').innerText = isRunning ? 'Running' : 'Paused';
+        });
+        
+        document.getElementById('resetRays').addEventListener('click', () => {
+            raytracer.totalBounces = 0;
+            raytracer.totalPathLength = 0;
+            for (let i = 0; i < raytracer.rayCount; i++) {
+                raytracer.resetRayAt(i);
+            }
+            raytracer.particleGeom.getAttribute('position').needsUpdate = true;
+        });
+        
+        // Animation
+        let frameCounter = 0;
+        let lastFrameTime = performance.now();
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            const now = performance.now();
+            frameCounter++;
+            
+            if (isRunning) {
+                const roughness = parseInt(document.getElementById('roughness').value);
+                const maxBounces = parseInt(document.getElementById('maxBounces').value);
+                raytracer.trace(obstacle, roughness, maxBounces);
+            }
+            
+            if (frameCounter % 10 === 0) {
+                const fps = Math.round(10000 / (now - lastFrameTime));
+                document.getElementById('fpsDisplay').innerText = fps;
+                document.getElementById('activeRaysDisplay').innerText = raytracer.rayCount;
+                document.getElementById('bouncesDisplay').innerText = raytracer.totalBounces;
+                
+                const avgPath = raytracer.totalPathLength > 0 
+                    ? (raytracer.totalPathLength / raytracer.rayCount).toFixed(2)
+                    : '0.0';
+                document.getElementById('pathLengthDisplay').innerText = avgPath;
+                
+                lastFrameTime = now;
+            }
+            
+            renderer.render(scene, camera);
+        }
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        animate();
+    </script>
+</body>
+</html>

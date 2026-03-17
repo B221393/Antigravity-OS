@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Light Scatter Comparison - 3つの実装比較</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #00ff88;
+            font-size: 32px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: rgba(30, 30, 46, 0.9);
+            border: 2px solid;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s;
+            overflow: hidden;
+            position: relative;
+        }
+        .card:nth-child(1) { border-color: #667eea; }
+        .card:nth-child(2) { border-color: #00ff88; }
+        .card:nth-child(3) { border-color: #c864ff; }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 28px;
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .card-subtitle {
+            font-size: 12px;
+            color: #aaa;
+        }
+        .feature-list {
+            list-style: none;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        .feature-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .feature-list li:before {
+            content: '✓ ';
+            color: #667eea;
+            font-weight: bold;
+        }
+        .card:nth-child(2) .feature-list li:before {
+            color: #00ff88;
+        }
+        .card:nth-child(3) .feature-list li:before {
+            color: #c864ff;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            border-left: 3px solid;
+        }
+        .card:nth-child(1) .stat-item { border-left-color: #667eea; }
+        .card:nth-child(2) .stat-item { border-left-color: #00ff88; }
+        .card:nth-child(3) .stat-item { border-left-color: #c864ff; }
+        .stat-label {
+            font-size: 11px;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+        .stat-value {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 4px;
+        }
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            text-align: center;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .card:nth-child(1) .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card:nth-child(2) .btn {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #0f0f1e;
+        }
+        .card:nth-child(3) .btn {
+            background: linear-gradient(135deg, #c864ff 0%, #9f5fff 100%);
+        }
+        .btn:hover { transform: scale(1.02); }
+        
+        .comparison-table {
+            background: rgba(30, 30, 46, 0.9);
+            border: 2px solid #444;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 30px 0;
+        }
+        .comparison-table h2 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+        .table-content {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid #444;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        tr:hover { background: rgba(255, 255, 255, 0.02); }
+        
+        .info-box {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 4px solid #00ff88;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        .info-box strong { color: #00ff88; }
+        
+        footer {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 3D Light Scatter - AI実装比較</h1>
+        <p class="subtitle">複数のAIが同一プロンプトで作成した3つの実装の違いを比較</p>
+        
+        <div class="info-box">
+            <strong>📊 テスト概要：</strong>
+            「Three.jsで3D光散乱シミュレーターを実装」という同一プロンプトを複数のAIに与え、
+            結果の違い（設計、アルゴリズム、機能性）を比較しました。
+        </div>
+        
+        <div class="grid">
+            <!-- AI #1 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🎯</div>
+                    <div>
+                        <div class="card-title">AI #1: Haiku</div>
+                        <div class="card-subtitle">基本的・シンプル</div>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-label">コード行</div>
+                        <div class="stat-value">424</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">粒子数</div>
+                        <div class="stat-value">1000</div>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-label">FPS</div>
+                        <div class="stat-value">60</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">複雑度</div>
+                        <div class="stat-value">⭐⭐</div>
+                    </div>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>距離ベース衝突検出</li>
+                    <li>手続き型実装</li>
+                    <li>簡易Lambertian散乱</li>
+                    <li>基本UI制御</li>
+                    <li>初学者向け</li>
+                </ul>
+                
+                <a href="light_scatter_ai1_haiku.html" class="btn">実装 #1 を開く</a>
+            </div>
+            
+            <!-- AI #2 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">⚙️</div>
+                    <div>
+                        <div class="card-title">AI #2: Physics</div>
+                        <div class="card-subtitle">最適化・スケーラブル</div>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-label">コード行</div>
+                        <div class="stat-value">467</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">粒子数</div>
+                        <div class="stat-value">1500</div>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-label">FPS</div>
+                        <div class="stat-value">60</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">複雑度</div>
+                        <div class="stat-value">⭐⭐⭐</div>
+                    </div>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>クラスベース設計</li>
+                    <li>反射損失計算</li>
+                    <li>動的サイズ変更</li>
+                    <li>詳細なモニタリング</li>
+                    <li>メモリ効率的</li>
+                </ul>
+                
+                <a href="light_scatter_ai2_optimized.html" class="btn">実装 #2 を開く</a>
+            </div>
+            
+            <!-- AI #3 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔬</div>
+                    <div>
+                        <div class="card-title">AI #3: Raycasting</div>
+                        <div class="card-subtitle">高精度・拡張性</div>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-label">コード行</div>
+                        <div class="stat-value">484</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">レイ数</div>
+                        <div class="stat-value">2000</div>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-label">FPS</div>
+                        <div class="stat-value">60</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">複雑度</div>
+                        <div class="stat-value">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>本格的Ray Tracing</li>
+                    <li>正確な反射則</li>
+                    <li>複数ジオメトリ対応</li>
+                    <li>バウンス数制限</li>
+                    <li>経路長追跡</li>
+                </ul>
+                
+                <a href="light_scatter_ai3_raycasting.html" class="btn">実装 #3 を開く</a>
+            </div>
+        </div>
+        
+        <div class="comparison-table">
+            <h2>📊 詳細比較表</h2>
+            <div class="table-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>AI #1 (Haiku)</th>
+                            <th>AI #2 (Physics)</th>
+                            <th>AI #3 (Raycasting)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>設計パターン</strong></td>
+                            <td>手続き型</td>
+                            <td>OOP (クラス)</td>
+                            <td>OOP (高度)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>衝突判定方式</strong></td>
+                            <td>距離チェック</td>
+                            <td>距離チェック</td>
+                            <td>Ray casting</td>
+                        </tr>
+                        <tr>
+                            <td><strong>物理演算精度</strong></td>
+                            <td>⭐⭐</td>
+                            <td>⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td><strong>パフォーマンス</strong></td>
+                            <td>⚡⚡⚡⚡⚡</td>
+                            <td>⚡⚡⚡⚡</td>
+                            <td>⚡⚡⚡⚡</td>
+                        </tr>
+                        <tr>
+                            <td><strong>コード可読性</strong></td>
+                            <td>高</td>
+                            <td>中</td>
+                            <td>中</td>
+                        </tr>
+                        <tr>
+                            <td><strong>拡張性</strong></td>
+                            <td>低</td>
+                            <td>中</td>
+                            <td>高</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UI機能</strong></td>
+                            <td>基本的</td>
+                            <td>豊富</td>
+                            <td>最も豊富</td>
+                        </tr>
+                        <tr>
+                            <td><strong>特性オブジェクト</strong></td>
+                            <td>単一球体</td>
+                            <td>単一球体</td>
+                            <td>複数選択可</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <strong>💡 選択ガイド：</strong><br>
+            • <strong>学習用：</strong> AI #1（シンプルで理解しやすい）<br>
+            • <strong>バランス型：</strong> AI #2（スケーラビリティと物理の両立）<br>
+            • <strong>プロダクション向け：</strong> AI #3（精度・機能性・拡張性が最高）
+        </div>
+        
+        <footer>
+            <p>created: 2026-03-17 | test platform: Browser (Three.js)</p>
+        </footer>
+    </div>
+</body>
+</html>

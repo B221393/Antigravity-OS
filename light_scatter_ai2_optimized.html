@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Scatter 3D - AI Test #2 (Physics-Optimized)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Courier New', monospace; background: #0f0f1e; color: #00ff88; }
+        #canvas { display: block; width: 100vw; height: 100vh; }
+        #ui {
+            position: absolute; top: 20px; right: 20px; width: 320px;
+            background: rgba(15, 15, 30, 0.95); padding: 20px;
+            border: 2px solid #00ff88; border-radius: 8px; z-index: 10;
+        }
+        h2 { margin-bottom: 15px; font-size: 14px; text-transform: uppercase; }
+        .ctrl-block { margin: 12px 0; }
+        .ctrl-block label { display: block; font-size: 11px; margin-bottom: 4px; opacity: 0.8; }
+        .slider-row { display: flex; gap: 8px; }
+        input[type="range"] { flex: 1; }
+        input[type="number"] { width: 60px; padding: 4px; background: #1a1a2e; border: 1px solid #00ff88; color: #00ff88; }
+        button {
+            width: 100%; padding: 8px; margin-top: 8px;
+            background: #00ff88; color: #0f0f1e; border: none;
+            font-weight: bold; cursor: pointer; border-radius: 4px;
+            transition: all 0.2s;
+        }
+        button:hover { background: #00dd66; }
+        button:active { transform: scale(0.98); }
+        #monitor {
+            position: absolute; bottom: 20px; right: 20px;
+            background: rgba(15, 15, 30, 0.95); padding: 15px;
+            border: 2px solid #00ff88; border-radius: 8px;
+            font-size: 11px; line-height: 1.8; min-width: 200px;
+        }
+        .meter { background: #1a1a2e; height: 8px; border-radius: 2px; margin: 4px 0; overflow: hidden; }
+        .meter-fill { height: 100%; background: linear-gradient(90deg, #00ff88, #00dd66); }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <h2>⚡ Light Scatter Engine</h2>
+        
+        <div class="ctrl-block">
+            <label>Photon Energy (count)</label>
+            <input type="number" id="photonCount" min="200" max="3000" value="1500" step="100">
+        </div>
+        
+        <div class="ctrl-block">
+            <label>Reflection Loss Rate</label>
+            <div class="slider-row">
+                <input type="range" id="reflectionLoss" min="0.5" max="0.99" step="0.01" value="0.85">
+                <span id="lossVal" style="width: 40px; text-align: right;">0.85</span>
+            </div>
+        </div>
+        
+        <div class="ctrl-block">
+            <label>Light Intensity</label>
+            <input type="range" id="lightIntensity" min="0.2" max="2.0" step="0.1" value="1.0">
+        </div>
+        
+        <div class="ctrl-block">
+            <label>Obstacle Radius</label>
+            <input type="range" id="obstacleRadius" min="3" max="15" step="0.5" value="6">
+        </div>
+        
+        <button id="playPause">Pause Simulation</button>
+        <button id="clearTrails">Clear Trails</button>
+    </div>
+    
+    <div id="monitor">
+        <div><strong>Performance Monitor</strong></div>
+        <div style="border-top: 1px solid #00ff88; margin: 8px 0; padding-top: 8px;">
+            <div>FPS: <span id="fpsVal">60</span> | <span id="timerVal">0ms</span></div>
+            <div>Active Photons: <span id="activePhotonsVal">0</span></div>
+            <div>Total Collisions: <span id="collisionsVal">0</span></div>
+            <div style="margin-top: 8px;">
+                <div>Memory Usage</div>
+                <div class="meter"><div class="meter-fill" id="memMeter"></div></div>
+            </div>
+            <div style="margin-top: 8px;">
+                <div>Scene Energy</div>
+                <div class="meter"><div class="meter-fill" id="energyMeter"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        class PhotonSystem {
+            constructor(initialCount, scene) {
+                this.scene = scene;
+                this.photons = [];
+                this.collisionCount = 0;
+                this.geometry = new THREE.BufferGeometry();
+                this.positions = new Float32Array(initialCount * 3);
+                this.colors = new Uint8Array(initialCount * 3);
+                this.velocities = new Float32Array(initialCount * 3);
+                this.alive = new Uint8Array(initialCount);
+                
+                for (let i = 0; i < initialCount; i++) {
+                    this.initPhoton(i);
+                    this.alive[i] = 1;
+                }
+                
+                this.geometry.setAttribute('position', new THREE.BufferAttribute(this.positions, 3));
+                this.geometry.setAttribute('color', new THREE.BufferAttribute(this.colors, 3, true));
+                
+                const material = new THREE.PointsMaterial({
+                    size: 0.2,
+                    vertexColors: true,
+                    transparent: true,
+                    opacity: 0.9
+                });
+                
+                this.points = new THREE.Points(this.geometry, material);
+                this.scene.add(this.points);
+                this.maxPhotons = initialCount;
+            }
+            
+            initPhoton(idx) {
+                const phi = Math.random() * Math.PI * 2;
+                const theta = Math.random() * Math.PI;
+                const r = 0.3;
+                
+                this.positions[idx * 3] = Math.sin(theta) * Math.cos(phi) * r;
+                this.positions[idx * 3 + 1] = Math.sin(theta) * Math.sin(phi) * r;
+                this.positions[idx * 3 + 2] = Math.cos(theta) * r;
+                
+                const speed = 0.2;
+                this.velocities[idx * 3] = Math.sin(theta) * Math.cos(phi) * speed;
+                this.velocities[idx * 3 + 1] = Math.sin(theta) * Math.sin(phi) * speed;
+                this.velocities[idx * 3 + 2] = Math.cos(theta) * speed;
+                
+                this.colors[idx * 3] = 100;
+                this.colors[idx * 3 + 1] = 220;
+                this.colors[idx * 3 + 2] = 255;
+            }
+            
+            update(obstacle, reflectionLoss) {
+                const obsPos = obstacle.position;
+                const obsRadius = obstacle.geometry.parameters.radius;
+                
+                for (let i = 0; i < this.maxPhotons; i++) {
+                    if (this.alive[i] === 0) continue;
+                    
+                    const idx = i * 3;
+                    this.positions[idx] += this.velocities[idx];
+                    this.positions[idx + 1] += this.velocities[idx + 1];
+                    this.positions[idx + 2] += this.velocities[idx + 2];
+                    
+                    const dx = this.positions[idx] - obsPos.x;
+                    const dy = this.positions[idx + 1] - obsPos.y;
+                    const dz = this.positions[idx + 2] - obsPos.z;
+                    const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+                    
+                    if (dist < obsRadius + 0.3) {
+                        const nx = dx / dist;
+                        const ny = dy / dist;
+                        const nz = dz / dist;
+                        
+                        const dot = this.velocities[idx]*nx + this.velocities[idx+1]*ny + this.velocities[idx+2]*nz;
+                        
+                        this.velocities[idx] = (nx * Math.abs(dot) - this.velocities[idx] * 2) * reflectionLoss + (Math.random() - 0.5) * 0.1;
+                        this.velocities[idx + 1] = (ny * Math.abs(dot) - this.velocities[idx+1] * 2) * reflectionLoss + (Math.random() - 0.5) * 0.1;
+                        this.velocities[idx + 2] = (nz * Math.abs(dot) - this.velocities[idx+2] * 2) * reflectionLoss + (Math.random() - 0.5) * 0.1;
+                        
+                        this.positions[idx] = nx * (obsRadius + 0.5);
+                        this.positions[idx + 1] = ny * (obsRadius + 0.5);
+                        this.positions[idx + 2] = nz * (obsRadius + 0.5);
+                        
+                        this.collisionCount++;
+                        
+                        const hue = (this.collisionCount % 100) / 100;
+                        this.colors[idx] = Math.floor(255 * (0.5 + 0.5 * Math.sin(hue * Math.PI * 2)));
+                        this.colors[idx + 1] = Math.floor(150 + 100 * Math.cos(hue * Math.PI * 2));
+                        this.colors[idx + 2] = 200;
+                    }
+                    
+                    if (Math.abs(this.positions[idx]) > 50 || 
+                        Math.abs(this.positions[idx + 1]) > 50 || 
+                        Math.abs(this.positions[idx + 2]) > 50) {
+                        this.initPhoton(i);
+                    }
+                }
+                
+                this.geometry.getAttribute('position').needsUpdate = true;
+                this.geometry.getAttribute('color').needsUpdate = true;
+            }
+            
+            resize(newCount) {
+                if (newCount === this.maxPhotons) return;
+                
+                const oldGeometry = this.geometry;
+                this.maxPhotons = newCount;
+                this.positions = new Float32Array(newCount * 3);
+                this.colors = new Uint8Array(newCount * 3);
+                this.velocities = new Float32Array(newCount * 3);
+                this.alive = new Uint8Array(newCount);
+                
+                for (let i = 0; i < newCount; i++) {
+                    this.initPhoton(i);
+                    this.alive[i] = 1;
+                }
+                
+                this.scene.remove(this.points);
+                oldGeometry.dispose();
+                
+                this.geometry = new THREE.BufferGeometry();
+                this.geometry.setAttribute('position', new THREE.BufferAttribute(this.positions, 3));
+                this.geometry.setAttribute('color', new THREE.BufferAttribute(this.colors, 3, true));
+                
+                this.points = new THREE.Points(this.geometry, this.points.material);
+                this.scene.add(this.points);
+            }
+        }
+        
+        // Initialize
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(35, 28, 35);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x0f0f1e);
+        document.body.appendChild(renderer.domElement);
+        
+        const ambLight = new THREE.AmbientLight(0xffffff, 0.4);
+        scene.add(ambLight);
+        
+        const dirLight = new THREE.DirectionalLight(0x88ccff, 0.8);
+        dirLight.position.set(10, 15, 10);
+        scene.add(dirLight);
+        
+        // Obstacle geometry
+        let obstacle = new THREE.Mesh(
+            new THREE.SphereGeometry(6, 64, 64),
+            new THREE.MeshStandardMaterial({
+                color: 0x444455,
+                metalness: 0.3,
+                roughness: 0.6,
+                emissive: 0x111122
+            })
+        );
+        scene.add(obstacle);
+        
+        // Photon system
+        let photonSystem = new PhotonSystem(1500, scene);
+        let isRunning = true;
+        
+        // UI Controls
+        document.getElementById('photonCount').addEventListener('change', (e) => {
+            photonSystem.resize(parseInt(e.target.value));
+        });
+        
+        document.getElementById('reflectionLoss').addEventListener('input', (e) => {
+            document.getElementById('lossVal').innerText = e.target.value;
+        });
+        
+        document.getElementById('obstacleRadius').addEventListener('input', (e) => {
+            const r = parseFloat(e.target.value);
+            obstacle.scale.set(r / 6, r / 6, r / 6);
+        });
+        
+        document.getElementById('playPause').addEventListener('click', () => {
+            isRunning = !isRunning;
+            document.getElementById('playPause').innerText = isRunning ? 'Pause Simulation' : 'Resume Simulation';
+        });
+        
+        document.getElementById('clearTrails').addEventListener('click', () => {
+            for (let i = 0; i < photonSystem.maxPhotons; i++) {
+                photonSystem.initPhoton(i);
+            }
+            photonSystem.collisionCount = 0;
+            photonSystem.geometry.getAttribute('position').needsUpdate = true;
+            photonSystem.geometry.getAttribute('color').needsUpdate = true;
+        });
+        
+        // Animation loop
+        let lastFrame = performance.now();
+        let frameCount = 0;
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            const now = performance.now();
+            const deltaTime = now - lastFrame;
+            lastFrame = now;
+            frameCount++;
+            
+            if (isRunning) {
+                const reflectionLoss = parseFloat(document.getElementById('reflectionLoss').value);
+                photonSystem.update(obstacle, reflectionLoss);
+            }
+            
+            if (frameCount % 10 === 0) {
+                const fps = Math.round(1000 / (deltaTime || 1));
+                document.getElementById('fpsVal').innerText = fps;
+                document.getElementById('timerVal').innerText = Math.round(deltaTime) + 'ms';
+                document.getElementById('activePhotonsVal').innerText = photonSystem.maxPhotons;
+                document.getElementById('collisionsVal').innerText = photonSystem.collisionCount;
+                
+                const memRatio = Math.min(1, photonSystem.maxPhotons / 3000);
+                document.getElementById('memMeter').style.width = (memRatio * 100) + '%';
+                
+                const energyRatio = Math.min(1, photonSystem.collisionCount / 100000);
+                document.getElementById('energyMeter').style.width = (energyRatio * 100) + '%';
+            }
+            
+            renderer.render(scene, camera);
+        }
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        animate();
+    </script>
+</body>
+</html>
