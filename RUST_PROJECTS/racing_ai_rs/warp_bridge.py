@@ -387,3 +387,7 @@ print("Warp Bridge Initialized. Ready for Rust FFI.")
 # Optimization pass 189 applied at 2026-03-19 16:15:45.758909
 
 # Optimization pass 190 applied at 2026-03-19 16:16:50.238580
+
+# Optimization pass 191 applied at 2026-03-19 16:17:50.387087
+
+# Optimization pass 192 applied at 2026-03-19 16:18:50.395885
