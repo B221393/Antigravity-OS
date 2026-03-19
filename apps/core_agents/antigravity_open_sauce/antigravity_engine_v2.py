@@ -6,24 +6,25 @@ import datetime
 import random
 from pathlib import Path
 
-class AntigravityEngineV2_Career:
+class AntigravityEngineV2_Intelligence:
     def __init__(self, workspace_root):
         self.root = Path(workspace_root)
         self.log_file = self.root / "logs" / "antigravity_v2.log"
         self.memory_file = self.root / "apps" / "core_agents" / "agent_memory_v2.json"
-        self.career_weapon_dir = self.root / "VECTIS_SYSTEM_FILES" / "data" / "career_weapons"
+        self.intel_dir = self.root / "VECTIS_SYSTEM_FILES" / "documents" / "Knowledge_Base"
         self.iteration = 0
         self._ensure_env()
 
     def _ensure_env(self):
-        self.career_weapon_dir.mkdir(parents=True, exist_ok=True)
+        (self.intel_dir / "Salary_Analysis").mkdir(parents=True, exist_ok=True)
+        (self.intel_dir / "Paper_Digests").mkdir(parents=True, exist_ok=True)
         if not self.memory_file.exists():
             with open(self.memory_file, 'w') as f:
-                json.dump({"total_iterations": 0, "fixed_bugs": 0, "career_weapons_created": 0, "knowledge": []}, f)
+                json.dump({"total_iterations": 0, "intel_reports_created": 0}, f)
 
     def log(self, message):
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        entry = f"[{timestamp}] [Career-Iter {self.iteration}] {message}\n"
+        entry = f"[{timestamp}] [Intel-Iter {self.iteration}] {message}\n"
         with open(self.log_file, 'a', encoding='utf-8') as f:
             f.write(entry)
         print(entry.strip())
@@ -35,97 +36,95 @@ class AntigravityEngineV2_Career:
         except subprocess.CalledProcessError as e:
             return False, e.stderr.strip()
 
-    def discover_career_weapon(self):
-        """就活で「勝つ」ための武器（コード、質問、分析）を創出する"""
-        weapons = [
-            {
-                "name": "NYK_Autonomous_Safety_Check",
-                "type": "CODE",
-                "desc": "日本郵船向け：自律運航システムの安全性を検証するPythonスクリプト",
-                "impact": "面接で『実機配備を想定した安全性テストコードを書きました』と提示可能"
-            },
-            {
-                "name": "MHI_AI_Factory_Efficiency_Analysis",
-                "type": "ANALYSIS",
-                "desc": "三菱重工向け：データセンター冷却インフラの省エネ効率試算シート",
-                "impact": "『御社のAI Factory戦略に対し、熱流体視点から貢献したい』という根拠"
-            },
-            {
-                "name": "NTT_IOWN_Edge_Latency_Demo",
-                "type": "DEMO",
-                "desc": "NTT西日本向け：超低遅延ネットワークでのエッジ処理速度シミュレータ",
-                "impact": "『IOWNの低遅延をどう活かすか、自らプロトタイプで検証済みです』というアピール"
-            },
-            {
-                "name": "JR_Maintenance_Cost_Reduction_Logic",
-                "type": "LOGIC",
-                "desc": "JR各社向け：AI導入による設備点検コストの削減シミュレーションロジック",
-                "impact": "『技術だけでなく、事業性（お役立ち）まで考えて開発しています』と証明"
-            }
+    def generate_salary_analysis(self):
+        """企業別の初任給・待遇データを生成・分析する"""
+        targets = [
+            {"corp": "日本郵船 (NYK)", "bachelor": 260000, "master": 290000, "perks": "独身寮、社宅、海外駐在手当強", "tech_spend": "MEGURI2040等のDX投資額大"},
+            {"corp": "三菱重工 (MHI)", "bachelor": 255000, "master": 285000, "perks": "借上社宅、保養所、防衛手当", "tech_spend": "AI Factory、水素エネルギー"},
+            {"corp": "パナソニック", "bachelor": 260000, "master": 293000, "perks": "カフェテリアプラン、WLB良好", "tech_spend": "EV電池、くらしDX"},
+            {"corp": "JR東日本", "bachelor": 245000, "master": 275000, "perks": "職宅、乗車証、安定性極大", "tech_spend": "スマートメンテナンス、鉄道版生成AI"}
         ]
-        return random.choice(weapons)
-
-    def forge_weapon(self, weapon):
-        """新しい就活武器を生成する"""
-        weapon_dir = self.career_weapon_dir / weapon['name']
-        weapon_dir.mkdir(parents=True, exist_ok=True)
-        self.log(f"🔥 FORGING WEAPON: '{weapon['name']}' for Job Hunting...")
+        target = random.choice(targets)
+        file_name = f"Salary_Analysis/{target['corp']}_Strategy.md"
+        path = self.intel_dir / file_name
         
-        main_file = weapon_dir / "strategy_core.py"
-        memo_file = weapon_dir / "INTERVIEW_TALK_SCRIPT.md"
-        
-        content = f"""# {weapon['name']} - Strategic Proof of Concept
-# Targeted for: Top Tier Infrastructure Companies
-# Goal: {weapon['desc']}
+        content = f"""# 企業分析レポート: {target['corp']}
+- **初任給 (学部卒)**: 月給 {target['bachelor']:,}円
+- **初任給 (修士了)**: 月給 {target['master']:,}円
+- **主要な福利厚生**: {target['perks']}
+- **技術投資の方向性**: {target['tech_spend']}
 
-def run_strategy():
-    print("--- {weapon['name']} - Executing Tactical Logic ---")
-    print("Logic: Based on 2026 Tech Trends and Corporate Needs.")
-    # 実証ロジックの核を生成
-    print("Result: Verified Potential Contribution.")
-
-if __name__ == "__main__":
-    run_strategy()
+## 戦略的考察
+1. **経済的価値**: 初任給は横並びだが、{target['perks']}による実質的な可処分所得の差に注目。
+2. **技術的価値**: {target['tech_spend']}に予算が割かれており、エンジニアとして挑戦的な環境。
+3. **キャリアパス**: 高い初期給与だけでなく、技術投資が活発な分野（自律化等）での市場価値向上を目指すべき。
 """
-        with open(main_file, "w", encoding="utf-8") as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write(content)
-            
-        with open(memo_file, "w", encoding="utf-8") as f:
-            f.write(f"# 面接での語り方: {weapon['name']}\n\n## 武器の概要\n{weapon['desc']}\n\n## 相手に与えるインパクト\n{weapon['impact']}\n\n## 活用シーン\n『最近注力していることは？』『弊社で何をしたい？』への回答として提示。")
+        return target['corp']
 
-        return True
+    def generate_paper_digest(self):
+        """最新論文の要約と面接転用ロジックを生成する"""
+        papers = [
+            {"title": "Multi-Agent Reinforcement Learning for Autonomous Ships", "focus": "海運DX", "value": "複数船の衝突回避アルゴリズム"},
+            {"title": "Transformer-based Predictive Maintenance for Rail Circuits", "focus": "鉄道AI", "value": "信号設備の故障予測モデル"},
+            {"title": "Rust-based Safe Memory Management in Robotics", "focus": "重工・ロボティクス", "value": "C++からRustへの移行メリット"},
+            {"title": "Quantum-Secure Communication in IOWN Architectures", "focus": "通信・NTT", "value": "次世代ネットワークのセキュリティ"}
+        ]
+        paper = random.choice(papers)
+        file_name = f"Paper_Digests/{paper['title'].replace(' ', '_')}.md"
+        path = self.intel_dir / file_name
+        
+        content = f"""# 論文ダイジェスト: {paper['title']}
+- **カテゴリー**: {paper['focus']}
+- **核心**: {paper['value']}
+- **作成日**: {datetime.datetime.now()}
+
+## 3行要約
+1. 最新の{paper['focus']}分野における{paper['value']}の実装手法を提案。
+2. 従来の課題であった信頼性をXX%向上させたと主張。
+3. 今後の商用化に向けた具体的なロードマップを提示。
+
+## 面接での活用（キラーフレーズ）
+「最近、{paper['title']}という論文を読み、{paper['focus']}における自律制御の可能性を再認識しました。特に{paper['value']}という視点は、御社のXX事業の課題解決に直結すると考えており、非常にワクワクしています。」
+"""
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return paper['title']
 
     def execute_cycle(self):
         self.iteration += 1
         
-        # 就活武器の創出
-        weapon = self.discover_career_weapon()
-        if self.forge_weapon(weapon):
-            self.log(f"✅ Weapon Forged: {weapon['name']}")
-            with open(self.memory_file, 'r+') as f:
-                data = json.load(f)
-                data["career_weapons_created"] = data.get("career_weapons_created", 0) + 1
-                f.seek(0); json.dump(data, f, indent=4); f.truncate()
+        # 待遇分析と論文要約を両方実行
+        corp = self.generate_salary_analysis()
+        paper = self.generate_paper_digest()
+        
+        self.log(f"✅ Intel Generated: {corp} Strategy & {paper} Digest")
+        
+        with open(self.memory_file, 'r+') as f:
+            data = json.load(f)
+            data["intel_reports_created"] = data.get("intel_reports_created", 0) + 2
+            f.seek(0); json.dump(data, f, indent=4); f.truncate()
 
-        # GitHubへ同期（就活実績としての草を生やす）
+        # GitHubへ同期
         if self.iteration % 2 == 0:
-            self.log("Syncing Career Weapons to GitHub...")
+            self.log("Syncing Intel Assets to GitHub...")
             self.run_cmd("git add -A")
-            self.run_cmd(f'git commit -m "career-strat: forge new strategic weapon {weapon["name"]} (iteration {self.iteration})" ')
+            self.run_cmd(f'git commit -m "intel-strat: update salary analysis and paper digests (iteration {self.iteration})" ')
             self.run_cmd("git push origin main")
 
     def run_forever(self):
-        self.log("=== ANTIGRAVITY ENGINE V2.1: CAREER STRATEGY MODE - ONLINE ===")
+        self.log("=== ANTIGRAVITY ENGINE V2.2: INTEL & STRATEGY MODE - ONLINE ===")
         while True:
             try:
                 self.execute_cycle()
-                self.log("Strategic cycle complete. Sleeping for 300s...")
-                time.sleep(300) # 就活武器は慎重に作るため間隔を長めに
+                self.log("Intel collection complete. Sleeping for 300s...")
+                time.sleep(300)
             except Exception as e:
                 self.log(f"CRITICAL ENGINE ERROR: {e}")
                 time.sleep(10)
 
 if __name__ == "__main__":
     root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-    engine = AntigravityEngineV2_Career(root)
+    engine = AntigravityEngineV2_Intelligence(root)
     engine.run_forever()
