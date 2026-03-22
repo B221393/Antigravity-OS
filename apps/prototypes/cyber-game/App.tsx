@@ -18,7 +18,7 @@ import NovelStudioScreen from './src/screens/NovelStudioScreen';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
-import Animated, { FadeIn, FadeInDown, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSequence } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeInDown, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSequence, withSpring } from 'react-native-reanimated';
 import { useFonts, Outfit_700Bold, Outfit_900Black, Outfit_400Regular } from '@expo-google-fonts/outfit';
 
 const { width, height } = Dimensions.get('window');
@@ -37,6 +37,83 @@ const SLOTS = [
   { id: '11', name: 'G-MAPS', icon: Map, color: '#00F5D4', available: false },
   { id: '12', name: 'CONFIG', icon: Settings, color: '#666666', available: false },
 ];
+
+const SlotCard = ({ slot, index, onPress }: { slot: any; index: number; onPress: () => void }) => {
+  const Icon = slot.icon;
+  
+  // 押した時の「ぷにっ」としたバウンスアニメーション
+  const scale = useSharedValue(1);
+  const handlePressIn = () => { scale.value = withSpring(0.9, { damping: 10, stiffness: 300 }); };
+  const handlePressOut = () => { scale.value = withSpring(1, { damping: 12, stiffness: 200 }); };
+
+  // アイコンが常にフワフワ浮遊するアニメーション
+  const floatY = useSharedValue(0);
+  useEffect(() => {
+    if (slot.available) {
+      floatY.value = withRepeat(withTiming(-5, { duration: 1500 + Math.random() * 500, easing: Easing.inOut(Easing.ease) }), -1, true);
+    }
+  }, []);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }]
+  }));
+  const iconStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: floatY.value }]
+  }));
+
+  // ネオンの呼吸（明滅）アニメーション
+  const glowOpacity = useSharedValue(0.4);
+  useEffect(() => {
+    if (slot.available) {
+      glowOpacity.value = withRepeat(withTiming(0.8, { duration: 2000 + index * 200, easing: Easing.inOut(Easing.ease) }), -1, true);
+    }
+  }, []);
+  const glowStyle = useAnimatedStyle(() => ({ opacity: glowOpacity.value }));
+
+  return (
+    <Animated.View entering={FadeInDown.delay(200 + index * 100).springify().damping(12)} style={[{ width: width > 600 ? 180 : width * 0.42, aspectRatio: 1, margin: 8 }]}>
+      <TouchableOpacity 
+        activeOpacity={1}
+        onPressIn={slot.available ? handlePressIn : undefined}
+        onPressOut={slot.available ? handlePressOut : undefined}
+        onPress={slot.available ? onPress : undefined}
+        disabled={!slot.available}
+        style={{ flex: 1, opacity: slot.available ? 1 : 0.5 }}
+      >
+        <Animated.View style={[styles.glassCard, slot.available && { borderColor: `${slot.color}55` }, animatedStyle]}>
+          
+          <BlurView intensity={80} tint="dark" style={StyleSheet.absoluteFillObject} />
+
+          {/* 呼吸するネオンシャドウ */}
+          {slot.available && (
+            <Animated.View style={[styles.neonGlow, { shadowColor: slot.color, backgroundColor: `${slot.color}11` }, glowStyle]} />
+          )}
+
+          {/* フワフワ動くアイコン */}
+          <Animated.View style={iconStyle}>
+            <LinearGradient 
+              colors={slot.available ? [`${slot.color}44`, `${slot.color}00`] : ['#222222', '#0A0A0A']} 
+              style={styles.iconCircle}
+            >
+              <Icon color={slot.available ? slot.color : '#444'} size={28} strokeWidth={1.5} />
+            </LinearGradient>
+          </Animated.View>
+
+          <View style={styles.cardTextContainer}>
+            <Text style={[styles.slotId, slot.available && { color: slot.color }]}>{slot.id}</Text>
+            <Text style={[styles.slotName, !slot.available && { color: '#666' }]}>{slot.name}</Text>
+          </View>
+
+          {!slot.available && (
+            <View style={styles.lockedOverlay}>
+              <Text style={styles.lockedText}>LOCKED</Text>
+            </View>
+          )}
+        </Animated.View>
+      </TouchableOpacity>
+    </Animated.View>
+  );
+};
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'game' | 'diary' | 'novel'>('home');
@@ -71,7 +148,7 @@ export default function App() {
   // ─── 画面遷移 ───
   if (currentScreen === 'memo') return (
     <View style={{ flex: 1 }}>
-      <TouchableOpacity style={styles.floatingBackButton} onPress={() => setCurrentScreen('home')}>
+      <TouchableOpacity style={styles.floatingBackButton} onPress={() => setCurrentScreen('home')} activeOpacity={0.8}>
         <Text style={styles.floatingBackText}>← 戻る / Back</Text>
       </TouchableOpacity>
       <AiMemoScreen />
@@ -83,7 +160,7 @@ export default function App() {
   if (currentScreen === 'diary') return <DailyDiaryScreen onBack={() => setCurrentScreen('home')} />;
   if (currentScreen === 'novel') return <NovelStudioScreen onBack={() => setCurrentScreen('home')} />;
 
-  // ─── Home Screen (Glassmorphism & Neon Design) ───
+  // ─── Home Screen (Glassmorphism & Neon Design & Physics Animations) ───
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#050511" />
@@ -107,54 +184,23 @@ export default function App() {
           </BlurView>
         </Animated.View>
 
-        {/* ─── Grid (12 Slots) ─── */}
+        {/* ─── Grid (12 Slots Animated) ─── */}
         <View style={styles.grid}>
-          {SLOTS.map((slot, index) => {
-            const Icon = slot.icon;
-            return (
-              <Animated.View key={slot.id} entering={FadeInDown.delay(200 + index * 50).springify()}>
-                <TouchableOpacity 
-                  style={[styles.slotWrapper, !slot.available && styles.slotDisabled]}
-                  activeOpacity={0.7}
-                  disabled={!slot.available}
-                  onPress={() => {
-                    if (slot.id === '04') setCurrentScreen('memo');
-                    if (slot.id === '03') setCurrentScreen('tutor');
-                    if (slot.id === '01') setCurrentScreen('vector');
-                    if (slot.id === '02') setCurrentScreen('game');
-                    if (slot.id === '09') setCurrentScreen('diary');
-                    if (slot.id === '10') setCurrentScreen('novel');
-                  }}
-                >
-                  <BlurView intensity={80} tint="dark" style={[styles.glassCard, slot.available && { borderColor: `${slot.color}55` }]}>
-                    
-                    {/* ネオン発光エフェクト */}
-                    {slot.available && (
-                      <View style={[styles.neonGlow, { shadowColor: slot.color, backgroundColor: `${slot.color}11` }]} />
-                    )}
-                    
-                    <LinearGradient 
-                      colors={slot.available ? [`${slot.color}33`, `${slot.color}00`] : ['#222222', '#0A0A0A']} 
-                      style={styles.iconCircle}
-                    >
-                      <Icon color={slot.available ? slot.color : '#444'} size={28} strokeWidth={1.5} />
-                    </LinearGradient>
-                    
-                    <View style={styles.cardTextContainer}>
-                      <Text style={[styles.slotId, slot.available && { color: slot.color }]}>{slot.id}</Text>
-                      <Text style={[styles.slotName, !slot.available && { color: '#666' }]}>{slot.name}</Text>
-                    </View>
-
-                    {!slot.available && (
-                      <View style={styles.lockedOverlay}>
-                        <Text style={styles.lockedText}>LOCKED</Text>
-                      </View>
-                    )}
-                  </BlurView>
-                </TouchableOpacity>
-              </Animated.View>
-            );
-          })}
+          {SLOTS.map((slot, index) => (
+            <SlotCard 
+              key={slot.id} 
+              slot={slot} 
+              index={index} 
+              onPress={() => {
+                if (slot.id === '04') setCurrentScreen('memo');
+                if (slot.id === '03') setCurrentScreen('tutor');
+                if (slot.id === '01') setCurrentScreen('vector');
+                if (slot.id === '02') setCurrentScreen('game');
+                if (slot.id === '09') setCurrentScreen('diary');
+                if (slot.id === '10') setCurrentScreen('novel');
+              }}
+            />
+          ))}
         </View>
 
       </ScrollView>
