@@ -42,7 +42,6 @@ const AppIcon = ({ slot, index, isDock = false, onPress }: { slot: any; index: n
   const Icon = slot.icon;
   const scale = useSharedValue(1);
 
-  // iPhone風の「押した時の縮む」アニメーション
   const handlePressIn = () => { scale.value = withSpring(0.85, { damping: 15, stiffness: 400 }); };
   const handlePressOut = () => { scale.value = withSpring(1, { damping: 15, stiffness: 300 }); };
 
@@ -50,7 +49,6 @@ const AppIcon = ({ slot, index, isDock = false, onPress }: { slot: any; index: n
     transform: [{ scale: scale.value }]
   }));
 
-  // iPhoneの角丸（Squircle）スタイルのアイコン背景
   const iconBg = slot.available ? [`${slot.color}DD`, `${slot.color}88`] : ['#222', '#111'];
 
   return (
@@ -67,12 +65,8 @@ const AppIcon = ({ slot, index, isDock = false, onPress }: { slot: any; index: n
           <LinearGradient colors={iconBg} style={styles.appIconGradient}>
             <Icon color={slot.available ? '#FFFFFF' : '#555'} size={isDock ? 30 : 28} strokeWidth={1.5} />
           </LinearGradient>
-          
-          {/* 非アクティブなアイコンの半透明グレーフィルター */}
           {!slot.available && <View style={styles.lockedIconOverlay} />}
         </Animated.View>
-        
-        {/* Dock（下部）の場合はテキストを隠すのがiPhone風 */}
         {!isDock && (
           <Text style={[styles.appLabel, !slot.available && { color: '#666' }]} numberOfLines={1}>
             {slot.name.replace('VECTOR ', 'V-').replace('STUDIO', '')}
@@ -86,11 +80,10 @@ const AppIcon = ({ slot, index, isDock = false, onPress }: { slot: any; index: n
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'game' | 'diary' | 'novel'>('home');
 
-  // フォントの読み込み
   const [fontsLoaded] = useFonts({ Outfit_400Regular, Outfit_700Bold, Outfit_900Black });
 
-  // 背景のオーブ（iOSのダイナミック壁紙のようなゆっくりとした動き）
-  const orb1X = useSharedValue(0); const orb1Y = useSharedValue(0);
+  const orb1X = useSharedValue(0); 
+  const orb1Y = useSharedValue(0);
 
   useEffect(() => {
     orb1X.value = withRepeat(withTiming(150, { duration: 20000, easing: Easing.inOut(Easing.ease) }), -1, true);
@@ -101,7 +94,6 @@ export default function App() {
 
   if (!fontsLoaded) return <View style={{ flex: 1, backgroundColor: '#000' }} />;
 
-  // ドックに置くアプリ（4つ）と、ホーム画面に置くアプリ（残り）の分割
   const DOCK_APPS = SLOTS.filter(s => ['04', '03', '01', '02'].includes(s.id));
   const HOME_APPS = SLOTS.filter(s => !['04', '03', '01', '02'].includes(s.id));
 
@@ -114,14 +106,12 @@ export default function App() {
     if (id === '10') setCurrentScreen('novel');
   };
 
-  // ─── 画面遷移（アプリを開いた状態） ───
   if (currentScreen !== 'home') {
     return (
       <Animated.View entering={FadeIn.duration(300)} style={{ flex: 1, backgroundColor: '#000' }}>
-        {/* iOS風の「← 戻る」ボタン */}
         <TouchableOpacity style={styles.floatingBackButton} onPress={() => setCurrentScreen('home')} activeOpacity={0.7}>
           <BlurView intensity={80} tint="dark" style={styles.backButtonBlur}>
-            <Text style={styles.floatingBackText}>← ホーム</Text>
+            <Text style={styles.floatingBackText}>← Home</Text>
           </BlurView>
         </TouchableOpacity>
 
@@ -135,16 +125,13 @@ export default function App() {
     );
   }
 
-  // ─── Home Screen (iOS iPhone Style) ───
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#000" />
       
-      {/* 🔮 iOSのダイナミック壁紙風 */}
       <Animated.View style={[styles.glowOrb, styles.orb1, orb1Style]} />
       <View style={styles.wallpaperOverlay} />
 
-      {/* トップのステータスモック（時間など） */}
       <View style={styles.iosStatusBar}>
         <Text style={styles.iosTimeText}>VECTIS OS</Text>
         <View style={styles.iosStatusIcons}>
@@ -159,7 +146,6 @@ export default function App() {
         ))}
       </ScrollView>
 
-      {/* ─── 🍎 iOS DOCK (下部の固定領域) ─── */}
       <View style={styles.dockContainer}>
         <BlurView intensity={60} tint="dark" style={styles.dockBlur}>
           <View style={styles.dockInner}>
@@ -175,34 +161,24 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#000' },
-
-  // 壁紙設定
   glowOrb: { position: 'absolute', width: 400, height: 400, borderRadius: 200, opacity: 0.6 },
   orb1: { top: -100, left: -100, backgroundColor: '#3b82f6', filter: 'blur(100px)' as any },
   wallpaperOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 0 },
-
-  // iOS風 上部ステータス
   iosStatusBar: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 24, paddingTop: 16, zIndex: 10 },
   iosTimeText: { color: '#FFF', fontSize: 13, fontWeight: 'bold', fontFamily: 'Outfit_700Bold' },
   iosStatusIcons: { flexDirection: 'row', alignItems: 'center' },
   iosSignalText: { color: '#FFF', fontSize: 11, fontWeight: '600', marginLeft: 6 },
   pulseDot: { width: 6, height: 6, borderRadius: 3, shadowColor: '#00FF99', shadowOpacity: 1, shadowRadius: 5 },
-
-  // === アプリアイコン群 ===
   homeGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 16, paddingTop: 40, zIndex: 10 },
-  appIconWrapper: { width: '25%', alignItems: 'center', marginBottom: 28 }, // 4列配置
+  appIconWrapper: { width: '25%', alignItems: 'center', marginBottom: 28 }, 
   appIconBox: { width: width > 600 ? 80 : 64, height: width > 600 ? 80 : 64, borderRadius: 16, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.5, shadowRadius: 8 },
   appIconGradient: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   lockedIconOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.4)' },
   appLabel: { color: '#FFF', fontSize: 11, fontFamily: 'Outfit_400Regular', marginTop: 6, textAlign: 'center', width: '120%' },
-
-  // === iOS Dock (下部) ===
   dockContainer: { position: 'absolute', bottom: Platform.OS === 'ios' ? 30 : 20, left: 16, right: 16, borderRadius: 32, overflow: 'hidden', zIndex: 20 },
   dockBlur: { paddingVertical: 16, paddingHorizontal: 8 },
   dockInner: { flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' },
-
-  // 戻るボタン
   floatingBackButton: { position: 'absolute', top: Platform.OS === 'web' ? 20 : 50, left: 20, zIndex: 100, borderRadius: 20, overflow: 'hidden' },
-  backButtonBlur: { paddingHorizontal: 16, paddingVertical: 10, backgroundColor: 'rgba(0,0,0,0.4)' },
+  backButtonBlur: { paddingHorizontal: 16, paddingVertical: 10, backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 20 },
   floatingBackText: { color: '#FFF', fontSize: 13, fontWeight: 'bold' }
 });
