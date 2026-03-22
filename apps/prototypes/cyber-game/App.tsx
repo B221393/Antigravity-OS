@@ -15,6 +15,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import VectorBrainScreen from './src/screens/VectorBrainScreen';
 import CyberGameScreen from './src/screens/CyberGameScreen';
+import DailyDiaryScreen from './src/screens/DailyDiaryScreen';
 
 const { width } = Dimensions.get('window');
 
@@ -27,14 +28,14 @@ const SLOTS = [
   { id: '06', name: 'VISION', icon: Camera, color: '#10b981', available: false },
   { id: '07', name: 'SECURITY', icon: Shield, color: '#ef4444', available: false },
   { id: '08', name: 'SOUND', icon: Mic, color: '#06b6d4', available: false },
-  { id: '09', name: 'SCHEDULE', icon: Calendar, color: '#f43f5e', available: false },
+  { id: '09', name: 'DAILY LOG', icon: Calendar, color: '#f43f5e', available: true },
   { id: '10', name: 'IOWN', icon: Zap, color: '#eab308', available: false },
   { id: '11', name: 'G-MAPS', icon: Map, color: '#14b8a6', available: false },
   { id: '12', name: 'CONFIG', icon: Settings, color: '#64748b', available: false },
 ];
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'game'>('home');
+  const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'game' | 'diary'>('home');
 
   if (currentScreen === 'memo') {
     return (
@@ -63,6 +64,10 @@ export default function App() {
     return <CyberGameScreen onBack={() => setCurrentScreen('home')} />;
   }
 
+  if (currentScreen === 'diary') {
+    return <DailyDiaryScreen onBack={() => setCurrentScreen('home')} />;
+  }
+
   // ─── Home Screen (12 Slots) ───
   return (
     <SafeAreaView style={styles.container}>
@@ -89,6 +94,7 @@ export default function App() {
                 if (slot.id === '03') setCurrentScreen('tutor');
                 if (slot.id === '01') setCurrentScreen('vector');
                 if (slot.id === '02') setCurrentScreen('game');
+                if (slot.id === '09') setCurrentScreen('diary');
               }}
               disabled={!slot.available}
             >
