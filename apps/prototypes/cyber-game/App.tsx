@@ -14,12 +14,13 @@ import EducationScreen from './src/screens/EducationScreen';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import VectorBrainScreen from './src/screens/VectorBrainScreen';
+import CyberGameScreen from './src/screens/CyberGameScreen';
 
 const { width } = Dimensions.get('window');
 
 const SLOTS = [
   { id: '01', name: 'VECTOR BRAIN', icon: BrainCircuit, color: '#3b82f6', available: true },
-  { id: '02', name: 'CYBER GAME', icon: Gamepad2, color: '#ec4899', available: false },
+  { id: '02', name: 'CYBER GAME', icon: Gamepad2, color: '#ec4899', available: true },
   { id: '03', name: 'TUTOR AI', icon: GraduationCap, color: '#00FF99', available: true },
   { id: '04', name: 'AI MEMO', icon: FileText, color: '#8b5cf6', available: true },
   { id: '05', name: 'LOCAL LLM', icon: MessageSquare, color: '#f59e0b', available: false },
@@ -33,7 +34,7 @@ const SLOTS = [
 ];
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector'>('home');
+  const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'game'>('home');
 
   if (currentScreen === 'memo') {
     return (
@@ -56,6 +57,10 @@ export default function App() {
 
   if (currentScreen === 'vector') {
     return <VectorBrainScreen onBack={() => setCurrentScreen('home')} />;
+  }
+
+  if (currentScreen === 'game') {
+    return <CyberGameScreen onBack={() => setCurrentScreen('home')} />;
   }
 
   // ─── Home Screen (12 Slots) ───
@@ -83,6 +88,7 @@ export default function App() {
                 if (slot.id === '04') setCurrentScreen('memo');
                 if (slot.id === '03') setCurrentScreen('tutor');
                 if (slot.id === '01') setCurrentScreen('vector');
+                if (slot.id === '02') setCurrentScreen('game');
               }}
               disabled={!slot.available}
             >
