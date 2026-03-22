@@ -16,6 +16,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import VectorBrainScreen from './src/screens/VectorBrainScreen';
 import CyberGameScreen from './src/screens/CyberGameScreen';
 import DailyDiaryScreen from './src/screens/DailyDiaryScreen';
+import NovelStudioScreen from './src/screens/NovelStudioScreen';
 
 const { width } = Dimensions.get('window');
 
@@ -29,13 +30,13 @@ const SLOTS = [
   { id: '07', name: 'SECURITY', icon: Shield, color: '#ef4444', available: false },
   { id: '08', name: 'SOUND', icon: Mic, color: '#06b6d4', available: false },
   { id: '09', name: 'DAILY LOG', icon: Calendar, color: '#f43f5e', available: true },
-  { id: '10', name: 'IOWN', icon: Zap, color: '#eab308', available: false },
+  { id: '10', name: 'NOVEL STUDIO', icon: Zap, color: '#eab308', available: true },
   { id: '11', name: 'G-MAPS', icon: Map, color: '#14b8a6', available: false },
   { id: '12', name: 'CONFIG', icon: Settings, color: '#64748b', available: false },
 ];
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'game' | 'diary'>('home');
+  const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'game' | 'diary' | 'novel'>('home');
 
   if (currentScreen === 'memo') {
     return (
@@ -68,6 +69,10 @@ export default function App() {
     return <DailyDiaryScreen onBack={() => setCurrentScreen('home')} />;
   }
 
+  if (currentScreen === 'novel') {
+    return <NovelStudioScreen onBack={() => setCurrentScreen('home')} />;
+  }
+
   // ─── Home Screen (12 Slots) ───
   return (
     <SafeAreaView style={styles.container}>
@@ -95,6 +100,7 @@ export default function App() {
                 if (slot.id === '01') setCurrentScreen('vector');
                 if (slot.id === '02') setCurrentScreen('game');
                 if (slot.id === '09') setCurrentScreen('diary');
+                if (slot.id === '10') setCurrentScreen('novel');
               }}
               disabled={!slot.available}
             >
