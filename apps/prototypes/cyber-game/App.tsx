@@ -18,10 +18,10 @@ import NovelStudioScreen from './src/screens/NovelStudioScreen';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
-import Animated, { FadeIn, FadeInDown, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSequence, withSpring } from 'react-native-reanimated';
-import { useFonts, Outfit_700Bold, Outfit_900Black, Outfit_400Regular } from '@expo-google-fonts/outfit';
+import Animated, { FadeIn, FadeInDown, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSpring } from 'react-native-reanimated';
+import { useFonts, Outfit_400Regular, Outfit_700Bold, Outfit_900Black } from '@expo-google-fonts/outfit';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const SLOTS = [
   { id: '01', name: 'VECTOR BRAIN', icon: BrainCircuit, color: '#00F0FF', available: true },
@@ -38,78 +38,46 @@ const SLOTS = [
   { id: '12', name: 'CONFIG', icon: Settings, color: '#666666', available: false },
 ];
 
-const SlotCard = ({ slot, index, onPress }: { slot: any; index: number; onPress: () => void }) => {
+const AppIcon = ({ slot, index, isDock = false, onPress }: { slot: any; index: number; isDock?: boolean; onPress: () => void }) => {
   const Icon = slot.icon;
-  
-  // 押した時の「ぷにっ」としたバウンスアニメーション
   const scale = useSharedValue(1);
-  const handlePressIn = () => { scale.value = withSpring(0.9, { damping: 10, stiffness: 300 }); };
-  const handlePressOut = () => { scale.value = withSpring(1, { damping: 12, stiffness: 200 }); };
 
-  // アイコンが常にフワフワ浮遊するアニメーション
-  const floatY = useSharedValue(0);
-  useEffect(() => {
-    if (slot.available) {
-      floatY.value = withRepeat(withTiming(-5, { duration: 1500 + Math.random() * 500, easing: Easing.inOut(Easing.ease) }), -1, true);
-    }
-  }, []);
+  // iPhone風の「押した時の縮む」アニメーション
+  const handlePressIn = () => { scale.value = withSpring(0.85, { damping: 15, stiffness: 400 }); };
+  const handlePressOut = () => { scale.value = withSpring(1, { damping: 15, stiffness: 300 }); };
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }]
   }));
-  const iconStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: floatY.value }]
-  }));
 
-  // ネオンの呼吸（明滅）アニメーション
-  const glowOpacity = useSharedValue(0.4);
-  useEffect(() => {
-    if (slot.available) {
-      glowOpacity.value = withRepeat(withTiming(0.8, { duration: 2000 + index * 200, easing: Easing.inOut(Easing.ease) }), -1, true);
-    }
-  }, []);
-  const glowStyle = useAnimatedStyle(() => ({ opacity: glowOpacity.value }));
+  // iPhoneの角丸（Squircle）スタイルのアイコン背景
+  const iconBg = slot.available ? [`${slot.color}DD`, `${slot.color}88`] : ['#222', '#111'];
 
   return (
-    <Animated.View entering={FadeInDown.delay(200 + index * 100).springify().damping(12)} style={[{ width: width > 600 ? 180 : width * 0.42, aspectRatio: 1, margin: 8 }]}>
+    <Animated.View entering={FadeInDown.delay(index * 40).springify().damping(15)} style={styles.appIconWrapper}>
       <TouchableOpacity 
         activeOpacity={1}
         onPressIn={slot.available ? handlePressIn : undefined}
         onPressOut={slot.available ? handlePressOut : undefined}
         onPress={slot.available ? onPress : undefined}
         disabled={!slot.available}
-        style={{ flex: 1, opacity: slot.available ? 1 : 0.5 }}
+        style={{ alignItems: 'center' }}
       >
-        <Animated.View style={[styles.glassCard, slot.available && { borderColor: `${slot.color}55` }, animatedStyle]}>
+        <Animated.View style={[styles.appIconBox, animatedStyle]}>
+          <LinearGradient colors={iconBg} style={styles.appIconGradient}>
+            <Icon color={slot.available ? '#FFFFFF' : '#555'} size={isDock ? 30 : 28} strokeWidth={1.5} />
+          </LinearGradient>
           
-          <BlurView intensity={80} tint="dark" style={StyleSheet.absoluteFillObject} />
-
-          {/* 呼吸するネオンシャドウ */}
-          {slot.available && (
-            <Animated.View style={[styles.neonGlow, { shadowColor: slot.color, backgroundColor: `${slot.color}11` }, glowStyle]} />
-          )}
-
-          {/* フワフワ動くアイコン */}
-          <Animated.View style={iconStyle}>
-            <LinearGradient 
-              colors={slot.available ? [`${slot.color}44`, `${slot.color}00`] : ['#222222', '#0A0A0A']} 
-              style={styles.iconCircle}
-            >
-              <Icon color={slot.available ? slot.color : '#444'} size={28} strokeWidth={1.5} />
-            </LinearGradient>
-          </Animated.View>
-
-          <View style={styles.cardTextContainer}>
-            <Text style={[styles.slotId, slot.available && { color: slot.color }]}>{slot.id}</Text>
-            <Text style={[styles.slotName, !slot.available && { color: '#666' }]}>{slot.name}</Text>
-          </View>
-
-          {!slot.available && (
-            <View style={styles.lockedOverlay}>
-              <Text style={styles.lockedText}>LOCKED</Text>
-            </View>
-          )}
+          {/* 非アクティブなアイコンの半透明グレーフィルター */}
+          {!slot.available && <View style={styles.lockedIconOverlay} />}
         </Animated.View>
+        
+        {/* Dock（下部）の場合はテキストを隠すのがiPhone風 */}
+        {!isDock && (
+          <Text style={[styles.appLabel, !slot.available && { color: '#666' }]} numberOfLines={1}>
+            {slot.name.replace('VECTOR ', 'V-').replace('STUDIO', '')}
+          </Text>
+        )}
       </TouchableOpacity>
     </Animated.View>
   );
@@ -118,148 +86,123 @@ const SlotCard = ({ slot, index, onPress }: { slot: any; index: number; onPress:
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'game' | 'diary' | 'novel'>('home');
 
-  // カスタムフォント（Google Fonts）の読み込み
-  const [fontsLoaded] = useFonts({
-    Outfit_400Regular,
-    Outfit_700Bold,
-    Outfit_900Black,
-  });
+  // フォントの読み込み
+  const [fontsLoaded] = useFonts({ Outfit_400Regular, Outfit_700Bold, Outfit_900Black });
 
-  // 背景の光るオーブアニメーション
-  const orb1X = useSharedValue(0);
-  const orb1Y = useSharedValue(0);
-  const orb2X = useSharedValue(0);
+  // 背景のオーブ（iOSのダイナミック壁紙のようなゆっくりとした動き）
+  const orb1X = useSharedValue(0); const orb1Y = useSharedValue(0);
 
   useEffect(() => {
-    orb1X.value = withRepeat(withTiming(150, { duration: 15000, easing: Easing.inOut(Easing.ease) }), -1, true);
-    orb1Y.value = withRepeat(withTiming(-150, { duration: 12000, easing: Easing.inOut(Easing.ease) }), -1, true);
-    orb2X.value = withRepeat(withTiming(-200, { duration: 18000, easing: Easing.inOut(Easing.ease) }), -1, true);
+    orb1X.value = withRepeat(withTiming(150, { duration: 20000, easing: Easing.inOut(Easing.ease) }), -1, true);
+    orb1Y.value = withRepeat(withTiming(-150, { duration: 18000, easing: Easing.inOut(Easing.ease) }), -1, true);
   }, []);
 
-  const orb1Style = useAnimatedStyle(() => ({
-    transform: [{ translateX: orb1X.value }, { translateY: orb1Y.value }]
-  }));
-  const orb2Style = useAnimatedStyle(() => ({
-    transform: [{ translateX: orb2X.value }]
-  }));
+  const orb1Style = useAnimatedStyle(() => ({ transform: [{ translateX: orb1X.value }, { translateY: orb1Y.value }] }));
 
-  if (!fontsLoaded) return <View style={{ flex: 1, backgroundColor: '#050511' }} />;
+  if (!fontsLoaded) return <View style={{ flex: 1, backgroundColor: '#000' }} />;
 
-  // ─── 画面遷移 ───
-  if (currentScreen === 'memo') return (
-    <View style={{ flex: 1 }}>
-      <TouchableOpacity style={styles.floatingBackButton} onPress={() => setCurrentScreen('home')} activeOpacity={0.8}>
-        <Text style={styles.floatingBackText}>← 戻る / Back</Text>
-      </TouchableOpacity>
-      <AiMemoScreen />
-    </View>
-  );
-  if (currentScreen === 'tutor') return <EducationScreen onBack={() => setCurrentScreen('home')} />;
-  if (currentScreen === 'vector') return <VectorBrainScreen onBack={() => setCurrentScreen('home')} />;
-  if (currentScreen === 'game') return <CyberGameScreen onBack={() => setCurrentScreen('home')} />;
-  if (currentScreen === 'diary') return <DailyDiaryScreen onBack={() => setCurrentScreen('home')} />;
-  if (currentScreen === 'novel') return <NovelStudioScreen onBack={() => setCurrentScreen('home')} />;
+  // ドックに置くアプリ（4つ）と、ホーム画面に置くアプリ（残り）の分割
+  const DOCK_APPS = SLOTS.filter(s => ['04', '03', '01', '02'].includes(s.id));
+  const HOME_APPS = SLOTS.filter(s => !['04', '03', '01', '02'].includes(s.id));
 
-  // ─── Home Screen (Glassmorphism & Neon Design & Physics Animations) ───
+  const handleOpenApp = (id: string) => {
+    if (id === '04') setCurrentScreen('memo');
+    if (id === '03') setCurrentScreen('tutor');
+    if (id === '01') setCurrentScreen('vector');
+    if (id === '02') setCurrentScreen('game');
+    if (id === '09') setCurrentScreen('diary');
+    if (id === '10') setCurrentScreen('novel');
+  };
+
+  // ─── 画面遷移（アプリを開いた状態） ───
+  if (currentScreen !== 'home') {
+    return (
+      <Animated.View entering={FadeIn.duration(300)} style={{ flex: 1, backgroundColor: '#000' }}>
+        {/* iOS風の「← 戻る」ボタン */}
+        <TouchableOpacity style={styles.floatingBackButton} onPress={() => setCurrentScreen('home')} activeOpacity={0.7}>
+          <BlurView intensity={80} tint="dark" style={styles.backButtonBlur}>
+            <Text style={styles.floatingBackText}>← ホーム</Text>
+          </BlurView>
+        </TouchableOpacity>
+
+        {currentScreen === 'memo' && <AiMemoScreen />}
+        {currentScreen === 'tutor' && <EducationScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === 'vector' && <VectorBrainScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === 'game' && <CyberGameScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === 'diary' && <DailyDiaryScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === 'novel' && <NovelStudioScreen onBack={() => setCurrentScreen('home')} />}
+      </Animated.View>
+    );
+  }
+
+  // ─── Home Screen (iOS iPhone Style) ───
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#050511" />
+      <StatusBar barStyle="light-content" backgroundColor="#000" />
       
-      {/* 🔮 背景の美しいアニメーション付きの光るオーブ（ブラーエフェクト用） */}
+      {/* 🔮 iOSのダイナミック壁紙風 */}
       <Animated.View style={[styles.glowOrb, styles.orb1, orb1Style]} />
-      <Animated.View style={[styles.glowOrb, styles.orb2, orb2Style]} />
+      <View style={styles.wallpaperOverlay} />
 
-      <ScrollView contentContainerStyle={{ paddingBottom: 100 }} showsVerticalScrollIndicator={false}>
-        
-        {/* ─── Header ─── */}
-        <Animated.View entering={FadeInDown.delay(100).springify()} style={styles.header}>
-          <Text style={styles.title}>VECTIS</Text>
-          <Text style={styles.subtitle}>// ADVANCED THINKING OS //</Text>
-          
-          <BlurView intensity={Platform.OS === 'ios' ? 40 : 100} tint="dark" style={styles.statusBadgeWrapper}>
-            <View style={styles.statusBadge}>
-              <View style={styles.pulseDot} />
-              <Text style={styles.badgeText}>MCP SERVER: SECURE CONNECTION</Text>
-            </View>
-          </BlurView>
-        </Animated.View>
-
-        {/* ─── Grid (12 Slots Animated) ─── */}
-        <View style={styles.grid}>
-          {SLOTS.map((slot, index) => (
-            <SlotCard 
-              key={slot.id} 
-              slot={slot} 
-              index={index} 
-              onPress={() => {
-                if (slot.id === '04') setCurrentScreen('memo');
-                if (slot.id === '03') setCurrentScreen('tutor');
-                if (slot.id === '01') setCurrentScreen('vector');
-                if (slot.id === '02') setCurrentScreen('game');
-                if (slot.id === '09') setCurrentScreen('diary');
-                if (slot.id === '10') setCurrentScreen('novel');
-              }}
-            />
-          ))}
+      {/* トップのステータスモック（時間など） */}
+      <View style={styles.iosStatusBar}>
+        <Text style={styles.iosTimeText}>VECTIS OS</Text>
+        <View style={styles.iosStatusIcons}>
+          <View style={[styles.pulseDot, { backgroundColor: '#00FF99' }]} />
+          <Text style={styles.iosSignalText}>MCP Connected</Text>
         </View>
+      </View>
 
+      <ScrollView contentContainerStyle={styles.homeGrid} showsVerticalScrollIndicator={false}>
+        {HOME_APPS.map((slot, index) => (
+          <AppIcon key={slot.id} slot={slot} index={index} onPress={() => handleOpenApp(slot.id)} />
+        ))}
       </ScrollView>
 
-      {/* 画面下部のオシャレグラデーション */}
-      <LinearGradient colors={['transparent', '#050511']} style={styles.bottomFade} pointerEvents="none" />
+      {/* ─── 🍎 iOS DOCK (下部の固定領域) ─── */}
+      <View style={styles.dockContainer}>
+        <BlurView intensity={60} tint="dark" style={styles.dockBlur}>
+          <View style={styles.dockInner}>
+            {DOCK_APPS.map((slot, index) => (
+              <AppIcon key={slot.id} slot={slot} index={index} isDock onPress={() => handleOpenApp(slot.id)} />
+            ))}
+          </View>
+        </BlurView>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#050511' }, // 極めて深いミッドナイトブルー/ブラック
+  container: { flex: 1, backgroundColor: '#000' },
 
-  // Background Animations
-  glowOrb: { position: 'absolute', width: 300, height: 300, borderRadius: 150, opacity: 0.4 },
-  orb1: { top: -50, right: -50, backgroundColor: '#B026FF', filter: 'blur(80px)' as any }, // Web CSS blur
-  orb2: { bottom: 100, left: -50, backgroundColor: '#00F0FF', filter: 'blur(100px)' as any },
+  // 壁紙設定
+  glowOrb: { position: 'absolute', width: 400, height: 400, borderRadius: 200, opacity: 0.6 },
+  orb1: { top: -100, left: -100, backgroundColor: '#3b82f6', filter: 'blur(100px)' as any },
+  wallpaperOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 0 },
 
-  // Header Typography 
-  header: { alignItems: 'center', marginTop: 60, marginBottom: 40, zIndex: 10 },
-  title: { fontFamily: 'Outfit_900Black', color: '#FFF', fontSize: 64, letterSpacing: 8, lineHeight: 70, textShadowColor: 'rgba(255,255,255,0.3)', textShadowOffset: { width: 0, height: 4 }, textShadowRadius: 10 },
-  subtitle: { fontFamily: 'Outfit_700Bold', color: '#00F0FF', fontSize: 12, letterSpacing: 6, marginBottom: 24, textShadowColor: 'rgba(0, 240, 255, 0.4)', textShadowRadius: 8 },
-  
-  statusBadgeWrapper: { borderRadius: 24, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
-  statusBadge: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 8, backgroundColor: 'rgba(0,0,0,0.3)' },
-  pulseDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#00FF66', marginRight: 8, shadowColor: '#00FF66', shadowOffset: { width: 0, height: 0 }, shadowOpacity: 1, shadowRadius: 6 },
-  badgeText: { fontFamily: 'Outfit_400Regular', color: '#CCC', fontSize: 10, letterSpacing: 2 },
-  
-  // Custom 12-Slot CSS Grid (Glassmorphism)
-  grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', zIndex: 10, paddingHorizontal: 10 },
-  slotWrapper: { width: width > 600 ? 180 : width * 0.42, aspectRatio: 1, margin: 8 },
-  slotDisabled: { opacity: 0.5 },
-  
-  glassCard: {
-    flex: 1, borderRadius: 24, overflow: 'hidden', alignItems: 'center', justifyContent: 'center',
-    borderWidth: 1, borderColor: 'rgba(255,255,255,0.05)', backgroundColor: 'rgba(15, 15, 30, 0.4)',
-    paddingTop: 16
-  },
-  neonGlow: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 24,
-    shadowOffset: { width: 0, height: 10 }, shadowOpacity: 0.6, shadowRadius: 20, zIndex: -1
-  },
-  
-  iconCircle: { width: 56, height: 56, borderRadius: 28, justifyContent: 'center', alignItems: 'center', marginBottom: 12, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
-  
-  cardTextContainer: { alignItems: 'center' },
-  slotId: { fontFamily: 'Outfit_900Black', color: '#555', fontSize: 13, letterSpacing: 2, marginBottom: 2 },
-  slotName: { fontFamily: 'Outfit_700Bold', color: '#FFF', fontSize: 12, letterSpacing: 1, textAlign: 'center' },
-  
-  lockedOverlay: { position: 'absolute', bottom: 12, width: '100%', alignItems: 'center', paddingVertical: 4, backgroundColor: 'rgba(255,0,0,0.1)' },
-  lockedText: { fontFamily: 'Outfit_700Bold', color: '#FF3366', fontSize: 9, letterSpacing: 2 },
+  // iOS風 上部ステータス
+  iosStatusBar: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 24, paddingTop: 16, zIndex: 10 },
+  iosTimeText: { color: '#FFF', fontSize: 13, fontWeight: 'bold', fontFamily: 'Outfit_700Bold' },
+  iosStatusIcons: { flexDirection: 'row', alignItems: 'center' },
+  iosSignalText: { color: '#FFF', fontSize: 11, fontWeight: '600', marginLeft: 6 },
+  pulseDot: { width: 6, height: 6, borderRadius: 3, shadowColor: '#00FF99', shadowOpacity: 1, shadowRadius: 5 },
 
-  bottomFade: { position: 'absolute', bottom: 0, width: '100%', height: 100, zIndex: 5 },
+  // === アプリアイコン群 ===
+  homeGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 16, paddingTop: 40, zIndex: 10 },
+  appIconWrapper: { width: '25%', alignItems: 'center', marginBottom: 28 }, // 4列配置
+  appIconBox: { width: width > 600 ? 80 : 64, height: width > 600 ? 80 : 64, borderRadius: 16, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.5, shadowRadius: 8 },
+  appIconGradient: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  lockedIconOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.4)' },
+  appLabel: { color: '#FFF', fontSize: 11, fontFamily: 'Outfit_400Regular', marginTop: 6, textAlign: 'center', width: '120%' },
 
-  floatingBackButton: {
-    position: 'absolute', top: Platform.OS === 'web' ? 20 : 50, left: 20, zIndex: 100, 
-    backgroundColor: 'rgba(0,0,0,0.6)', paddingHorizontal: 16, paddingVertical: 10,
-    borderRadius: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)'
-  },
-  floatingBackText: { fontFamily: 'Outfit_700Bold', color: '#FFF', fontSize: 12, letterSpacing: 1 }
+  // === iOS Dock (下部) ===
+  dockContainer: { position: 'absolute', bottom: Platform.OS === 'ios' ? 30 : 20, left: 16, right: 16, borderRadius: 32, overflow: 'hidden', zIndex: 20 },
+  dockBlur: { paddingVertical: 16, paddingHorizontal: 8 },
+  dockInner: { flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' },
+
+  // 戻るボタン
+  floatingBackButton: { position: 'absolute', top: Platform.OS === 'web' ? 20 : 50, left: 20, zIndex: 100, borderRadius: 20, overflow: 'hidden' },
+  backButtonBlur: { paddingHorizontal: 16, paddingVertical: 10, backgroundColor: 'rgba(0,0,0,0.4)' },
+  floatingBackText: { color: '#FFF', fontSize: 13, fontWeight: 'bold' }
 });
