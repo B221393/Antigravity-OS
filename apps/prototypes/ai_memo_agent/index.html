@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Agent Memo App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+    <header class="bg-indigo-600 text-white shadow-md">
+        <div class="max-w-3xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold flex items-center gap-2">
+                <i class="fa-solid fa-robot"></i> AI Memo Agent
+            </h1>
+            <div class="text-sm bg-indigo-500 px-3 py-1 rounded-full flex items-center gap-1">
+                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> MCP Server Ready
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow max-w-3xl mx-auto w-full px-4 py-6">
+        <div class="flex border-b border-slate-200 mb-6">
+            <button onclick="switchTab('list')" id="tab-btn-list" class="flex-1 py-3 text-center font-medium border-b-2 border-indigo-600 text-indigo-600 transition-colors">
+                <i class="fa-solid fa-list-ul mr-2"></i>メモ一覧
+            </button>
+            <button onclick="switchTab('add')" id="tab-btn-add" class="flex-1 py-3 text-center font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
+                <i class="fa-solid fa-pen-to-square mr-2"></i>メモ追加
+            </button>
+        </div>
+        <div id="tab-list" class="tab-content active fade-in">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold text-slate-700">保存されたメモ</h2>
+                <button onclick="renderMemos()" class="text-sm text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+                    <i class="fa-solid fa-rotate-right"></i> 更新
+                </button>
+            </div>
+            <div id="memo-container" class="space-y-3">
+                <div class="text-center py-10 text-slate-400">
+                    <i class="fa-solid fa-spinner fa-spin text-2xl mb-2"></i>
+                    <p>メモを読み込んでいます...</p>
+                </div>
+            </div>
+        </div>
+        <div id="tab-add" class="tab-content fade-in">
+            <h2 class="text-lg font-semibold text-slate-700 mb-4">新しいメモを作成</h2>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                <div class="mb-4">
+                    <label for="memo-title" class="block text-sm font-medium text-slate-600 mb-1">タイトル</label>
+                    <input type="text" id="memo-title" placeholder="例: 買い物リスト" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                </div>
+                <div class="mb-5">
+                    <label for="memo-content" class="block text-sm font-medium text-slate-600 mb-1">内容</label>
+                    <textarea id="memo-content" rows="4" placeholder="AIに指示したい内容や、保存したいテキストを入力..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all resize-none"></textarea>
+                </div>
+                <button onclick="handleAddMemo()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-plus"></i> メモを保存する
+                </button>
+            </div>
+            <div class="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm text-blue-800">
+                <p class="font-semibold flex items-center gap-2 mb-1"><i class="fa-solid fa-circle-info"></i> AIエージェントとの連携</p>
+                <p>MCP経由でAIに「牛乳を買うメモを追加して」と指示すると、この画面を操作しなくても裏側でAPIが叩かれ、データが追加されます。</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        let mockMemos = [
+            { id: 1, title: "プロジェクトのアイデア", content: "MCPを使った自動化ツールの構成案を作成する。", date: "2026-03-21 10:00" },
+            { id: 2, title: "AIからの報告", content: "[AIエージェントによる自動追記] 競合アプリの調査を完了しました。結果はデータベースに保存されています。", date: "2026-03-21 14:30" }
+        ];
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            const btnList = document.getElementById('tab-btn-list');
+            const btnAdd = document.getElementById('tab-btn-add');
+            if (tabId === 'list') {
+                btnList.className = "flex-1 py-3 text-center font-medium border-b-2 border-indigo-600 text-indigo-600 transition-colors";
+                btnAdd.className = "flex-1 py-3 text-center font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition-colors";
+                renderMemos();
+            } else {
+                btnAdd.className = "flex-1 py-3 text-center font-medium border-b-2 border-indigo-600 text-indigo-600 transition-colors";
+                btnList.className = "flex-1 py-3 text-center font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition-colors";
+            }
+        }
+        function renderMemos() {
+            const container = document.getElementById('memo-container');
+            container.innerHTML = '';
+            if (mockMemos.length === 0) {
+                container.innerHTML = `<div class="text-center py-10 bg-white rounded-xl border border-slate-100 shadow-sm"><i class="fa-regular fa-folder-open text-4xl text-slate-300 mb-3"></i><p class="text-slate-500">メモはまだありません</p></div>`;
+                return;
+            }
+            const sortedMemos = [...mockMemos].reverse();
+            sortedMemos.forEach(memo => {
+                const isAI = memo.content.includes('[AIエージェント');
+                const badge = isAI ? `<span class="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded border border-purple-200 ml-2"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i>AI</span>` : '';
+                const el = document.createElement('div');
+                el.className = "bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow relative overflow-hidden";
+                if(isAI) el.classList.add('border-l-4', 'border-l-purple-400');
+                el.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-semibold text-slate-800 flex items-center">${memo.title} ${badge}</h3>
+                        <span class="text-xs text-slate-400">${memo.date}</span>
+                    </div>
+                    <p class="text-slate-600 text-sm whitespace-pre-wrap">${memo.content}</p>
+                `;
+                container.appendChild(el);
+            });
+        }
+        function handleAddMemo() {
+            const titleInput = document.getElementById('memo-title');
+            const contentInput = document.getElementById('memo-content');
+            const title = titleInput.value.trim();
+            const content = contentInput.value.trim();
+            if (!title || !content) {
+                alert('タイトルと内容を入力してください。');
+                return;
+            }
+            const now = new Date();
+            const timeStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+            mockMemos.push({ id: Date.now(), title: title, content: content, date: timeStr });
+            titleInput.value = ''; contentInput.value = '';
+            switchTab('list');
+        }
+        window.onload = () => { renderMemos(); };
+    </script>
+</body>
+</html>
