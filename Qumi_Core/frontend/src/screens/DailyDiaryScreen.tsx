@@ -1,37 +1,76 @@
-import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Platform, Dimensions } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, ScrollView, Platform, Dimensions, TextInput, TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Calendar, Clock, Sparkles } from 'lucide-react-native';
-import Animated, { FadeInUp, FadeInDown, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing } from 'react-native-reanimated';
+import { Calendar, Clock, Plus } from 'lucide-react-native';
+import Animated, { FadeInUp, FadeInDown, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, Layout } from 'react-native-reanimated';
 
 const { width } = Dimensions.get('window');
 
-const LOGS = [
+const DEFAULT_LOGS = [
   { id: '1', time: '09:00 AM', title: 'Qumi OS Architecture', desc: 'UI設計とCLIエージェント層（抽象レイヤー）を独立Publicリポジトリとして分離構築。' },
-  { id: '2', time: '10:30 AM', title: 'Physics UI Engine', desc: '指の弾きでコロコロ転がり吸い付く物理演算コアを実装。未知への探求心の具現化。' },
-  { id: '3', time: '16:00 PM', title: 'Observation Deep Dive', desc: '馬術部での経験や小売店での適応力を言語化。「仕組み化」ではなく「自己拡張システム」としてのトークを遂行。' },
+  { id: '2', time: '10:30 AM', title: 'Physics UI Engine', desc: '指の弾きでコロコロ転がり吸い付く物理演算コアを実装。未知への探求心の具現化。' }
 ];
 
 export default function DailyDiaryScreen() {
+  const [logs, setLogs] = useState(DEFAULT_LOGS);
+  const [newTitle, setNewTitle] = useState('');
+  const [newDesc, setNewDesc] = useState('');
+  
   const pulse = useSharedValue(1);
 
-  React.useEffect(() => {
+  useEffect(() => {
     pulse.value = withRepeat(withTiming(1.3, { duration: 2000, easing: Easing.inOut(Easing.ease) }), -1, true);
+    loadLogs();
   }, []);
+
+  const loadLogs = async () => {
+    try {
+      const savedLogs = await AsyncStorage.getItem('@qumi_daily_logs');
+      if (savedLogs !== null) setLogs(JSON.parse(savedLogs));
+    } catch (e) {
+      console.log('Failed to load logs');
+    }
+  };
+
+  const saveLog = async () => {
+    if (!newTitle.trim() && !newDesc.trim()) return;
+    const now = new Date();
+    let hours = now.getHours();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
+    const min = now.getMinutes().toString().padStart(2, '0');
+    
+    const newEntry = {
+      id: Date.now().toString(),
+      time: `${hours}:${min} ${ampm}`,
+      title: newTitle || 'Thought Vector',
+      desc: newDesc
+    };
+    
+    const updatedLogs = [...logs, newEntry];
+    setLogs(updatedLogs);
+    setNewTitle('');
+    setNewDesc('');
+    
+    try {
+      await AsyncStorage.setItem('@qumi_daily_logs', JSON.stringify(updatedLogs));
+    } catch (e) {
+      console.log('Failed to save log');
+    }
+  };
 
   const ringStyle = useAnimatedStyle(() => ({ transform: [{ scale: pulse.value }] }));
 
   return (
     <View style={styles.container}>
-      {/* 背景の美しいネオンオーブ */}
       <View style={styles.bgGlow1} />
       <View style={styles.bgGlow2} />
       <BlurView intensity={Platform.OS === 'ios' ? 80 : 100} tint="dark" style={StyleSheet.absoluteFillObject} />
 
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         
-        {/* ヘッダーエリア / Apple Fitnessのような思考シンクロ・リング */}
         <Animated.View entering={FadeInDown.delay(100).springify()} style={styles.header}>
           <View style={{ position: 'relative', width: 80, height: 80, justifyContent: 'center', alignItems: 'center' }}>
             <Animated.View style={[styles.pulseRing, ringStyle]} />
@@ -40,18 +79,44 @@ export default function DailyDiaryScreen() {
             </LinearGradient>
           </View>
           <Text style={styles.title}>DAILY LOG</Text>
-          <Text style={styles.subtitle}>March 23, 2026 - 思考同期率: 98%</Text>
+          <Text style={styles.subtitle}>Memory Persisted via AsyncStorage</Text>
         </Animated.View>
 
-        {/* ガラス質のタイムライン・カード一覧 */}
+        {/* Input Area (New feature to literally commit Memory) */}
+        <Animated.View entering={FadeInDown.delay(200).springify()} style={styles.inputContainer}>
+          <BlurView intensity={60} tint="dark" style={styles.inputBlur}>
+            <TextInput 
+              style={styles.inputTitle} 
+              placeholder="Abstract Title..." 
+              placeholderTextColor="#888" 
+              value={newTitle} 
+              onChangeText={setNewTitle} 
+            />
+            <TextInput 
+              style={styles.inputDesc} 
+              placeholder="Record your thoughts or events..." 
+              placeholderTextColor="#666" 
+              multiline 
+              value={newDesc} 
+              onChangeText={setNewDesc} 
+            />
+            <TouchableOpacity style={styles.addButton} onPress={saveLog}>
+              <LinearGradient colors={['#FF5C93', '#FFAE00']} style={styles.addButtonGrad} start={{x:0, y:0}} end={{x:1, y:1}}>
+                <Plus color="#FFF" size={20} />
+                <Text style={styles.addButtonText}>Save Memory</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          </BlurView>
+        </Animated.View>
+
         <View style={styles.timeline}>
           <View style={styles.timelineLine} />
-          {LOGS.map((log, index) => (
-            <Animated.View key={log.id} entering={FadeInUp.delay(index * 200 + 300).springify().damping(15)} style={styles.cardWrapper}>
+          {logs.map((log, index) => (
+             /* Layout allows smooth list pushing */
+            <Animated.View key={log.id} layout={Layout.springify()} entering={FadeInUp.delay(index * 100).springify().damping(15)} style={styles.cardWrapper}>
                <View style={styles.timelineDot}>
                   <View style={styles.timelineInnerDot} />
                </View>
-               
                <BlurView intensity={60} tint="dark" style={styles.logCard}>
                   <View style={styles.cardHeader}>
                     <Clock color="#FF5C93" size={14} />
@@ -76,11 +141,19 @@ const styles = StyleSheet.create({
   
   scrollContent: { paddingHorizontal: 20, paddingTop: Platform.OS === 'web' ? 80 : 120, paddingBottom: 150 },
   
-  header: { alignItems: 'center', marginBottom: 50 },
+  header: { alignItems: 'center', marginBottom: 30 },
   pulseRing: { position: 'absolute', width: 100, height: 100, borderRadius: 50, backgroundColor: 'rgba(255, 92, 147, 0.4)', borderWidth: 1, borderColor: '#FF5C93' },
   syncCircle: { width: 80, height: 80, borderRadius: 40, justifyContent: 'center', alignItems: 'center', shadowColor: '#FF5C93', shadowOpacity: 0.8, shadowRadius: 20 },
-  title: { color: '#FFF', fontSize: 28, fontWeight: '900', fontFamily: 'Outfit_900Black', marginTop: 24, letterSpacing: 2 },
+  title: { color: '#FFF', fontSize: 26, fontWeight: '900', fontFamily: 'Outfit_900Black', marginTop: 24, letterSpacing: 2 },
   subtitle: { color: '#FF5C93', fontSize: 13, fontFamily: 'Outfit_700Bold', marginTop: 6, letterSpacing: 1 },
+
+  inputContainer: { marginBottom: 40, borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(255, 92, 147, 0.4)' },
+  inputBlur: { padding: 16, backgroundColor: 'rgba(30, 0, 10, 0.3)' },
+  inputTitle: { color: '#FFF', fontSize: 18, fontFamily: 'Outfit_700Bold', borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.1)', paddingBottom: 8, marginBottom: 12 },
+  inputDesc: { color: '#FFF', fontSize: 14, fontFamily: 'Outfit_400Regular', minHeight: 60, textAlignVertical: 'top' },
+  addButton: { alignSelf: 'flex-end', marginTop: 12, borderRadius: 20, overflow: 'hidden' },
+  addButtonGrad: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 10 },
+  addButtonText: { color: '#FFF', fontFamily: 'Outfit_700Bold', marginLeft: 6 },
 
   timeline: { position: 'relative', marginTop: 10, paddingLeft: 24, paddingRight: 8 },
   timelineLine: { position: 'absolute', left: 8, top: 0, bottom: 0, width: 2, backgroundColor: 'rgba(255,255,255,0.1)' },
