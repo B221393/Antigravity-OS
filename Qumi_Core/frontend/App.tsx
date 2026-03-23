@@ -3,6 +3,7 @@ import {
   StyleSheet, Text, View, TouchableOpacity, SafeAreaView,
   StatusBar, Dimensions, ScrollView, Platform
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { 
   BrainCircuit, GraduationCap, FileText, Calendar, Settings, Sparkles, BookOpen
 } from 'lucide-react-native';
@@ -120,6 +121,25 @@ export default function App() {
   useEffect(() => {
     orb1X.value = withRepeat(withTiming(150, { duration: 20000, easing: Easing.inOut(Easing.ease) }), -1, true);
     orb1Y.value = withRepeat(withTiming(-150, { duration: 18000, easing: Easing.inOut(Easing.ease) }), -1, true);
+
+    const enforceUpdate = async () => {
+      if (Platform.OS !== 'web') return;
+      try {
+        const response = await fetch(`/Qumi/version.json?t=${new Date().getTime()}`);
+        const data = await response.json();
+        const currentVersion = await AsyncStorage.getItem('@qumi_pwa_version');
+        if (currentVersion !== data.version) {
+          await AsyncStorage.setItem('@qumi_pwa_version', data.version);
+          // 強制リロードでキャッシュを打ち破る
+          if (currentVersion !== null) {
+            window.location.reload(true);
+          }
+        }
+      } catch (e) {
+        console.log('Update check failed', e);
+      }
+    };
+    enforceUpdate();
   }, []);
 
   const orb1Style = useAnimatedStyle(() => ({ transform: [{ translateX: orb1X.value }, { translateY: orb1Y.value }] }));
