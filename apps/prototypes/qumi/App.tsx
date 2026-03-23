@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   StyleSheet, Text, View, TouchableOpacity, SafeAreaView,
   StatusBar, Dimensions, ScrollView, Platform
@@ -6,7 +6,7 @@ import {
 import { 
   BrainCircuit, Gamepad2, GraduationCap, FileText, 
   MessageSquare, Camera, Shield, Mic, Calendar, 
-  Zap, Map, Settings 
+  Zap, Map, Settings, Sparkles
 } from 'lucide-react-native';
 
 import AiMemoScreen from './src/screens/AiMemoScreen';
