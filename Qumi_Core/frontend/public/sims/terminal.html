@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>System Terminal</title>
+    <style>
+        body { margin: 0; background-color: #020205; color: #00f2ff; font-family: 'Consolas', monospace; padding: 20px; font-size: 1rem; }
+        #terminal { height: 100vh; display: flex; flex-direction: column; }
+        #output { flex-grow: 1; overflow-y: auto; line-height: 1.5; white-space: pre-wrap; }
+        #input-line { display: flex; align-items: center; margin-top: 10px; }
+        #prompt { color: #ff0055; font-weight: bold; margin-right: 10px; }
+        #cmd-input { background: transparent; border: none; color: #fff; font-family: inherit; font-size: 1rem; flex-grow: 1; outline: none; }
+        .success { color: #00f2ff; }
+        .error { color: #ff0055; }
+        .info { color: #88c0d0; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #00f2ff; }
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <div id="output"></div>
+        <div id="input-line">
+            <span id="prompt">SYSTEM@THINK-OS:~$</span>
+            <input type="text" id="cmd-input" autofocus spellcheck="false">
+        </div>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+        const input = document.getElementById('cmd-input');
+        
+        const commands = {
+            'help': 'Available commands: help, clear, status, sysinfo, whoami, simulations, /fleet',
+            'date': () => new Date().toLocaleString(),
+            'clear': () => { output.innerHTML = ''; return ''; },
+            'status': '<span class="success">SYSTEM CORE: STABLE\nMEMORY: 128GB\nUPTIME: 14:02:33</span>',
+            'sysinfo': 'Integrated Thinking OS v2.5.0\nKernel: 5.15.0-generic\nVisual: Three.js r128',
+            'whoami': 'AUTHORIZED_USER: YUTO_G01201',
+            'simulations': 'Active Modules:\n- [FLT] Tactical Fleet\n- [FLD] WebGL Fluid\n- [WVE] Shader Sea\n- [LMT] Limitless Horizon',
+            '/fleet': () => {
+                // 親ウィンドウにメッセージを送信してタブを切り替えさせる
+                window.parent.postMessage({ command: 'switch_tab', target: 'simulations/fleet/index.html' }, '*');
+                return '<span class="info">TACTICAL FLEET ENGAGED. Deploying units...</span>';
+            }
+        };
+
+        function writeLine(text, type = '') {
+            const line = document.createElement('div');
+            line.className = type;
+            line.innerHTML = text;
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        writeLine('INITIALIZING LIMITLESS EXPLORER CORE...', 'info');
+        writeLine('SYSTEM READY. Type "/fleet" to command the swarm.', 'success');
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const cmd = input.value.trim().toLowerCase();
+                writeLine(`SYSTEM@THINK-OS:~$ ${input.value}`);
+                
+                if (commands[cmd]) {
+                    const res = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
+                    if (res !== '') writeLine(res);
+                } else {
+                    writeLine(`Command not found: ${cmd}.`, 'error');
+                }
+                input.value = '';
+            }
+        });
+        document.body.addEventListener('click', () => input.focus());
+    </script>
+</body>
+</html>

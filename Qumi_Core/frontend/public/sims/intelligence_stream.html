@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>SYSTEM: INTELLIGENCE_STREAM</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #000; font-family: 'Consolas', monospace; }
+        canvas { display: block; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle, transparent 20%, #000 120%);
+        }
+        #info {
+            position: absolute; top: 30px; left: 40px; color: #bcff00;
+            text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; font-weight: 800;
+            text-shadow: 0 0 10px #bcff00;
+        }
+        #terminal {
+            position: absolute; bottom: 30px; left: 40px; color: #00f2ff;
+            font-size: 0.7rem; line-height: 1.5; text-shadow: 0 0 5px #00f2ff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <div id="overlay"></div>
+    <div id="info">BACKGROUND_PROCESS: INTEL_PATROL</div>
+    <div id="terminal">
+        > SCANNING: JobHunting_Strategy_20260304.md... [OK]<br>
+        > SCANNING: PRODUCT_DEPT_ANALYSIS_20260311.md... [OK]<br>
+        > EXTRACTING_VECTORS: gemini-embedding-2-preview...<br>
+        > UPLOADING_TO: LOCAL_BRAIN
+    </div>
+
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=~[]{}|;:,.<>/?ｱｲｳｴ繧ｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ'.split('');
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function draw() {
+            // Translucent black background to create fade effect
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Modern Matrix color (Cyberpunk Lime/Cyan)
+            ctx.fillStyle = Math.random() > 0.9 ? '#00f2ff' : '#bcff00';
+            ctx.font = fontSize + 'px Consolas';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 33);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Simulate terminal logging
+        const terminal = document.getElementById('terminal');
+        const logs = [
+            "> SYNC: STRATEGIC_INTEL_LOG.md",
+            "> FOUND_KEYWORD: 'NTT西日本'",
+            "> INFERRING_INTENT: INFRASTRUCTURE_FOCUS",
+            "> RUNNING: smart_file_manager.py",
+            "> CLUSTERING_PAGES: k=5",
+            "> MEMORY_COMPRESSING: [||||||||||] 100%"
+        ];
+        
+        let logIndex = 0;
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const currentHtml = terminal.innerHTML.split('<br>');
+                if (currentHtml.length > 5) currentHtml.shift();
+                currentHtml.push(logs[logIndex % logs.length]);
+                terminal.innerHTML = currentHtml.join('<br>');
+                logIndex++;
+            }
+        }, 800);
+    </script>
+</body>
+</html>
