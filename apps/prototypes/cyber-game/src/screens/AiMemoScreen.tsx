@@ -44,20 +44,33 @@ export default function AiMemoScreen() {
     { id: '1', text: '今日はどんな思考を「外部脳」に委譲しますか？\n（就活の悩み、アイディア、何でもOKです）', type: 'ai' }
   ]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!inputText.trim()) return;
-    const newMemo = { id: Date.now().toString(), text: inputText, type: 'user' as const };
+    const userInput = inputText;
+    const newMemo = { id: Date.now().toString(), text: userInput, type: 'user' as const };
     setMemos(prev => [...prev, newMemo]);
     setInputText('');
     
-    // AIの返信モック（Siri風の知的レスポンス）
-    setTimeout(() => {
-      setMemos(prev => [...prev, { 
-        id: (Date.now()+1).toString(), 
-        text: '記録完了。「魂のJSON化」に向けたデータとして外部脳に蓄積しました。\n何か深掘りして考察する要素はありますか？', 
-        type: 'ai' 
-      }]);
-    }, 1000);
+    // AI思考中（ローディング）プロンプトの追加
+    const aiMessageId = (Date.now()+1).toString();
+    setMemos(prev => [...prev, { id: aiMessageId, text: '🧠 魂のレイヤーをCLIに委譲中... \n「browser-use」エージェントが起動し、自動でリサーチを行っています...', type: 'ai' }]);
+    
+    try {
+      const response = await fetch('http://localhost:8000/api/soul', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ thought: userInput })
+      });
+      const data = await response.json();
+      
+      // 成功時に結果を整形して表示
+      const resultText = data.result ? (typeof data.result === 'string' ? data.result : JSON.stringify(data.result, null, 2)) : '処理エラー';
+      setMemos(prev => prev.map(m => m.id === aiMessageId ? { ...m, text: resultText } : m));
+    } catch (e: any) {
+      setMemos(prev => prev.map(m => m.id === aiMessageId ? { 
+        ...m, text: `⚠️ 接続エラー: ローカルのFastAPIサーバーが起動していません。\nPythonで 'soul_api_server.py' を実行してください。\n(${e.message})` 
+      } : m));
+    }
   };
 
   return (
