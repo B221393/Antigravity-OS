@@ -4,7 +4,7 @@ import {
   StatusBar, Dimensions, ScrollView, Platform
 } from 'react-native';
 import { 
-  BrainCircuit, GraduationCap, FileText, Calendar, Settings, Sparkles
+  BrainCircuit, GraduationCap, FileText, Calendar, Settings, Sparkles, BookOpen
 } from 'lucide-react-native';
 
 import AiMemoScreen from './src/screens/AiMemoScreen';
@@ -12,6 +12,7 @@ import EducationScreen from './src/screens/EducationScreen';
 import VectorBrainScreen from './src/screens/VectorBrainScreen';
 import DailyDiaryScreen from './src/screens/DailyDiaryScreen';
 import ConfigScreen from './src/screens/ConfigScreen';
+import WikiArchiveScreen from './src/screens/WikiArchiveScreen';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
@@ -25,6 +26,7 @@ const SLOTS = [
   { id: '03', name: 'TUTOR AI', icon: GraduationCap, color: '#00FF99', available: true },
   { id: '09', name: 'DAILY LOG', icon: Calendar, color: '#FF5C93', available: true },
   { id: '01', name: 'VECTOR CORE', icon: BrainCircuit, color: '#00F0FF', available: true },
+  { id: '02', name: 'WIKI INTEL', icon: BookOpen, color: '#00FF99', available: true },
   { id: '12', name: 'SYS CONFIG', icon: Settings, color: '#666666', available: true }
 ];
 
@@ -110,7 +112,7 @@ const DraggableCore = () => {
 };
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'diary' | 'config'>('home');
+  const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'diary' | 'config' | 'wiki'>('home');
   const [fontsLoaded] = useFonts({ Outfit_400Regular, Outfit_700Bold, Outfit_900Black });
   const orb1X = useSharedValue(0); 
   const orb1Y = useSharedValue(0);
@@ -125,7 +127,7 @@ export default function App() {
   if (!fontsLoaded) return <View style={{ flex: 1, backgroundColor: '#000' }} />;
 
   const DOCK_APPS = SLOTS.filter(s => ['04', '03', '09'].includes(s.id));
-  const HOME_APPS = SLOTS.filter(s => ['01', '12'].includes(s.id));
+  const HOME_APPS = SLOTS.filter(s => ['01', '02', '12'].includes(s.id));
 
   const handleOpenApp = (id: string) => {
     if (id === '04') setCurrentScreen('memo');
@@ -133,6 +135,7 @@ export default function App() {
     if (id === '01') setCurrentScreen('vector');
     if (id === '09') setCurrentScreen('diary');
     if (id === '12') setCurrentScreen('config');
+    if (id === '02') setCurrentScreen('wiki');
   };
 
   if (currentScreen !== 'home') {
@@ -149,6 +152,7 @@ export default function App() {
         {currentScreen === 'vector' && <VectorBrainScreen onBack={() => setCurrentScreen('home')} />}
         {currentScreen === 'diary' && <DailyDiaryScreen />}
         {currentScreen === 'config' && <ConfigScreen />}
+        {currentScreen === 'wiki' && <WikiArchiveScreen />}
       </Animated.View>
     );
   }
