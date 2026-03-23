@@ -5,7 +5,9 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { 
-  BrainCircuit, GraduationCap, FileText, Calendar, Settings, Sparkles, BookOpen
+  BrainCircuit, Gamepad2, GraduationCap, FileText, 
+  MessageSquare, Camera, Shield, Mic, Calendar, 
+  Zap, Map, Settings, Sparkles, BookOpen
 } from 'lucide-react-native';
 
 import AiMemoScreen from './src/screens/AiMemoScreen';
@@ -14,6 +16,12 @@ import VectorBrainScreen from './src/screens/VectorBrainScreen';
 import DailyDiaryScreen from './src/screens/DailyDiaryScreen';
 import ConfigScreen from './src/screens/ConfigScreen';
 import WikiArchiveScreen from './src/screens/WikiArchiveScreen';
+import LocalLlmScreen from './src/screens/LocalLlmScreen';
+import VisionScreen from './src/screens/VisionScreen';
+import SecurityScreen from './src/screens/SecurityScreen';
+import SoundScreen from './src/screens/SoundScreen';
+import GMapsScreen from './src/screens/GMapsScreen';
+import NovelStudioScreen from './src/screens/NovelStudioScreen';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
@@ -28,6 +36,12 @@ const SLOTS = [
   { id: '09', name: 'DAILY LOG', icon: Calendar, color: '#FF5C93', available: true },
   { id: '01', name: 'VECTOR CORE', icon: BrainCircuit, color: '#00F0FF', available: true },
   { id: '02', name: 'WIKI INTEL', icon: BookOpen, color: '#00FF99', available: true },
+  { id: '05', name: 'LOCAL LLM', icon: Zap, color: '#FF9E00', available: true },
+  { id: '06', name: 'VISION', icon: Camera, color: '#FF0055', available: true },
+  { id: '07', name: 'SECURITY', icon: Shield, color: '#444444', available: true },
+  { id: '08', name: 'SOUND', icon: Mic, color: '#00D4FF', available: true },
+  { id: '10', name: 'NOVEL STD', icon: MessageSquare, color: '#FF00B3', available: true },
+  { id: '11', name: 'G-MAPS', icon: Map, color: '#00CC44', available: true },
   { id: '12', name: 'SYS CONFIG', icon: Settings, color: '#666666', available: true }
 ];
 
@@ -66,6 +80,7 @@ const AppIcon = ({ slot, index, isDock = false, onPress }: { slot: any; index: n
   );
 };
 
+// Physics Rolling Engine
 import { Animated as RNAnimated, PanResponder } from 'react-native';
 
 const DraggableCore = () => {
@@ -113,7 +128,7 @@ const DraggableCore = () => {
 };
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'diary' | 'config' | 'wiki'>('home');
+  const [currentScreen, setCurrentScreen] = useState<string>('home');
   const [fontsLoaded] = useFonts({ Outfit_400Regular, Outfit_700Bold, Outfit_900Black });
   const orb1X = useSharedValue(0); 
   const orb1Y = useSharedValue(0);
@@ -130,7 +145,6 @@ export default function App() {
         const currentVersion = await AsyncStorage.getItem('@qumi_pwa_version');
         if (currentVersion !== data.version) {
           await AsyncStorage.setItem('@qumi_pwa_version', data.version);
-          // 強制リロードでキャッシュを打ち破る
           if (currentVersion !== null) {
             window.location.reload(true);
           }
@@ -147,15 +161,10 @@ export default function App() {
   if (!fontsLoaded) return <View style={{ flex: 1, backgroundColor: '#000' }} />;
 
   const DOCK_APPS = SLOTS.filter(s => ['04', '03', '09'].includes(s.id));
-  const HOME_APPS = SLOTS.filter(s => ['01', '02', '12'].includes(s.id));
+  const HOME_APPS = SLOTS.filter(s => !['04', '03', '09'].includes(s.id));
 
   const handleOpenApp = (id: string) => {
-    if (id === '04') setCurrentScreen('memo');
-    if (id === '03') setCurrentScreen('tutor');
-    if (id === '01') setCurrentScreen('vector');
-    if (id === '09') setCurrentScreen('diary');
-    if (id === '12') setCurrentScreen('config');
-    if (id === '02') setCurrentScreen('wiki');
+    setCurrentScreen(id);
   };
 
   if (currentScreen !== 'home') {
@@ -167,12 +176,18 @@ export default function App() {
           </BlurView>
         </TouchableOpacity>
 
-        {currentScreen === 'memo' && <AiMemoScreen />}
-        {currentScreen === 'tutor' && <EducationScreen onBack={() => setCurrentScreen('home')} />}
-        {currentScreen === 'vector' && <VectorBrainScreen onBack={() => setCurrentScreen('home')} />}
-        {currentScreen === 'diary' && <DailyDiaryScreen />}
-        {currentScreen === 'config' && <ConfigScreen />}
-        {currentScreen === 'wiki' && <WikiArchiveScreen />}
+        {currentScreen === '01' && <VectorBrainScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === '02' && <WikiArchiveScreen />}
+        {currentScreen === '03' && <EducationScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === '04' && <AiMemoScreen />}
+        {currentScreen === '05' && <LocalLlmScreen />}
+        {currentScreen === '06' && <VisionScreen />}
+        {currentScreen === '07' && <SecurityScreen />}
+        {currentScreen === '08' && <SoundScreen />}
+        {currentScreen === '09' && <DailyDiaryScreen />}
+        {currentScreen === '10' && <NovelStudioScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === '11' && <GMapsScreen />}
+        {currentScreen === '12' && <ConfigScreen />}
       </Animated.View>
     );
   }
@@ -227,7 +242,7 @@ const styles = StyleSheet.create({
   pulseDot: { width: 6, height: 6, borderRadius: 3, shadowColor: '#00FF99', shadowOpacity: 1, shadowRadius: 5 },
   homeGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 16, paddingTop: 40, zIndex: 10, paddingBottom: 150 },
   pcHomeGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', width: 800, alignSelf: 'center', paddingTop: 60, paddingBottom: 150 },
-  appIconWrapper: { width: '25%', alignItems: 'center', marginBottom: 28 }, 
+  appIconWrapper: { width: '25%', alignItems: 'center', marginBottom: 20 }, 
   appIconBox: { width: width > 600 ? 76 : 64, height: width > 600 ? 76 : 64, borderRadius: 18, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.5, shadowRadius: 8 },
   appIconGradient: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   appLabel: { color: '#FFF', fontSize: 11, fontFamily: 'Outfit_700Bold', marginTop: 8, textAlign: 'center', width: '120%' },
