@@ -1,906 +1,271 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  StyleSheet, Text, View, ScrollView, TouchableOpacity,
-  SafeAreaView, StatusBar, Dimensions, Modal, TextInput,
-  Alert, ActivityIndicator, KeyboardAvoidingView, Platform,
-  Keyboard,
+  StyleSheet, Text, View, TouchableOpacity, SafeAreaView,
+  StatusBar, Dimensions, ScrollView, Platform
 } from 'react-native';
-import {
-  Bot, Book, Camera, Map, Mail, Calendar,
-  Settings, Zap, Shield, Cpu, Share2, Music,
-  X, Save, Lock, Link, Link2Off, ChevronRight,
-  Send, MessageSquare, ChevronDown, Sparkles,
+import { 
+  BrainCircuit, Gamepad2, GraduationCap, FileText, 
+  MessageSquare, Camera, Shield, Mic, Calendar, 
+  Zap, Map, Settings 
 } from 'lucide-react-native';
+
+import AiMemoScreen from './src/screens/AiMemoScreen';
+import EducationScreen from './src/screens/EducationScreen';
+import VectorBrainScreen from './src/screens/VectorBrainScreen';
+import CyberGameScreen from './src/screens/CyberGameScreen';
+import DailyDiaryScreen from './src/screens/DailyDiaryScreen';
+import NovelStudioScreen from './src/screens/NovelStudioScreen';
+import LocalLlmScreen from './src/screens/LocalLlmScreen';
+import VisionScreen from './src/screens/VisionScreen';
+import SecurityScreen from './src/screens/SecurityScreen';
+import SoundScreen from './src/screens/SoundScreen';
+import GMapsScreen from './src/screens/GMapsScreen';
+import ConfigScreen from './src/screens/ConfigScreen';
+
 import { LinearGradient } from 'expo-linear-gradient';
-import Animated, {
-  FadeIn, FadeOut, SlideInUp, SlideOutDown,
-  useSharedValue, useAnimatedStyle, withSpring, withTiming,
-} from 'react-native-reanimated';
-import { saveYakumiConfig, getYakumiConfig } from './src/services/vault';
-import { testConnection } from './src/services/mcpClient';
-import { routeCommand, executeCommand, AgentResult } from './src/services/agentLogic';
-import { PulseGlow, NotificationBadge, ProcessingOverlay, ChatBubbleAnimated } from './src/components/ActionFeedback';
+import { BlurView } from 'expo-blur';
+import Animated, { FadeIn, FadeInDown, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSpring } from 'react-native-reanimated';
+import { useFonts, Outfit_400Regular, Outfit_700Bold, Outfit_900Black } from '@expo-google-fonts/outfit';
 
 const { width, height } = Dimensions.get('window');
-const COLUMN_WIDTH = (width - 48) / 3;
 
-// ─── チャットメッセージ型 ─────────────────────────
-interface ChatMessage {
-  id: string;
-  type: 'user' | 'system' | 'result';
-  text: string;
-  slotLabel?: string;
-  slotId?: number;
-  slotColor?: string;
-  timestamp: Date;
-  executionTime?: number;
-  success?: boolean;
-}
+const SLOTS = [
+  { id: '01', name: 'VECTOR BRAIN', icon: BrainCircuit, color: '#00F0FF', available: true },
+  { id: '02', name: 'CYBER GAME', icon: Gamepad2, color: '#FF003C', available: true },
+  { id: '03', name: 'TUTOR AI', icon: GraduationCap, color: '#00FF99', available: true },
+  { id: '04', name: 'AI MEMO', icon: FileText, color: '#B026FF', available: true },
+  { id: '05', name: 'LOCAL LLM', icon: MessageSquare, color: '#FCEE09', available: true },
+  { id: '06', name: 'VISION', icon: Camera, color: '#00FF66', available: true },
+  { id: '07', name: 'SECURITY', icon: Shield, color: '#FF3366', available: true },
+  { id: '08', name: 'SOUND', icon: Mic, color: '#00D4FF', available: true },
+  { id: '09', name: 'DAILY LOG', icon: Calendar, color: '#FF5C93', available: true },
+  { id: '10', name: 'NOVEL STUDIO', icon: Zap, color: '#FFAE00', available: true },
+  { id: '11', name: 'G-MAPS', icon: Map, color: '#00F5D4', available: true },
+  { id: '12', name: 'CONFIG', icon: Settings, color: '#666666', available: true },
+];
 
-// ─── メインアプリ ─────────────────────────────────
-export default function App() {
-  // 既存state
-  const [selectedYakumi, setSelectedYakumi] = useState<any>(null);
-  const [endpoint, setEndpoint] = useState('');
-  const [apiKey, setApiKey] = useState('');
-  const [registry, setRegistry] = useState<Record<number, boolean>>({});
-  const [testing, setTesting] = useState(false);
-  const [lastCheck, setLastCheck] = useState<Record<number, boolean>>({});
+const AppIcon = ({ slot, index, isDock = false, onPress }: { slot: any; index: number; isDock?: boolean; onPress: () => void }) => {
+  const Icon = slot.icon;
+  const scale = useSharedValue(1);
 
-  // 新規: チャットUI state
-  const [chatVisible, setChatVisible] = useState(false);
-  const [commandInput, setCommandInput] = useState('');
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: 'welcome',
-      type: 'system',
-      text: 'qumi 起動完了。コマンドを入力してください。\n例: 「牛乳を買うメモを追加して」',
-      timestamp: new Date(),
-    },
-  ]);
-  const [processingSlot, setProcessingSlot] = useState<number | null>(null);
-  const [completedSlots, setCompletedSlots] = useState<Record<number, boolean>>({});
+  const handlePressIn = () => { scale.value = withSpring(0.85, { damping: 15, stiffness: 400 }); };
+  const handlePressOut = () => { scale.value = withSpring(1, { damping: 15, stiffness: 300 }); };
 
-  const scrollRef = useRef<ScrollView>(null);
-  const chatScrollRef = useRef<ScrollView>(null);
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }]
+  }));
 
-  // ─── 薬味定義 ──────────────────────────────────
-  const yakumis = [
-    { id: 1, icon: Bot, label: 'AI MEMO', color: '#FF3B30' },
-    { id: 2, icon: Book, label: 'KNOWLEDGE', color: '#FF9500' },
-    { id: 3, icon: Zap, label: 'IOWN', color: '#FFCC00' },
-    { id: 4, icon: Shield, label: 'SECURITY', color: '#4CD964' },
-    { id: 5, icon: Map, label: 'G-MAPS', color: '#5AC8FA' },
-    { id: 6, icon: Camera, label: 'VISION', color: '#007AFF' },
-    { id: 7, icon: Cpu, label: 'AGENT', color: '#5856D6' },
-    { id: 8, icon: Calendar, label: 'SCHEDULE', color: '#AF52DE' },
-    { id: 9, icon: Mail, label: 'G-MAIL', color: '#FF2D55' },
-    { id: 10, icon: Music, label: 'SOUND', color: '#8E8E93' },
-    { id: 11, icon: Share2, label: 'NETWORK', color: '#00FF99' },
-    { id: 12, icon: Settings, label: 'CONFIG', color: '#FFFFFF' },
-  ];
+  const iconBg = slot.available ? [`${slot.color}DD`, `${slot.color}88`] : ['#222', '#111'];
 
-  // ─── 初期化 ────────────────────────────────────
-  useEffect(() => {
-    const initRegistry = async () => {
-      const reg: any = {};
-      for (const y of yakumis) {
-        const config = await getYakumiConfig(y.id);
-        reg[y.id] = !!config;
+  return (
+    <Animated.View entering={FadeInDown.delay(index * 40).springify().damping(15)} style={styles.appIconWrapper}>
+      <TouchableOpacity 
+        activeOpacity={1}
+        onPressIn={slot.available ? handlePressIn : undefined}
+        onPressOut={slot.available ? handlePressOut : undefined}
+        onPress={slot.available ? onPress : undefined}
+        disabled={!slot.available}
+        style={{ alignItems: 'center' }}
+      >
+        <Animated.View style={[styles.appIconBox, animatedStyle]}>
+          <LinearGradient colors={iconBg} style={styles.appIconGradient}>
+            <Icon color={slot.available ? '#FFFFFF' : '#555'} size={isDock ? 30 : 28} strokeWidth={1.5} />
+          </LinearGradient>
+          {!slot.available && <View style={styles.lockedIconOverlay} />}
+        </Animated.View>
+        {!isDock && (
+          <Text style={[styles.appLabel, !slot.available && { color: '#666' }]} numberOfLines={1}>
+            {slot.name.replace('VECTOR ', 'V-').replace('STUDIO', '')}
+          </Text>
+        )}
+      </TouchableOpacity>
+    </Animated.View>
+  );
+};
+
+// ─── 新規実装：画面をコロコロ転がる・ドラッグできる「統合思考コア」の物理演算UI ───
+import { Animated as RNAnimated, PanResponder } from 'react-native';
+
+const DraggableCore = () => {
+  const pan = useRef(new RNAnimated.ValueXY({ x: 0, y: height / 3 })).current;
+  
+  const panResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onPanResponderGrant: () => {
+        pan.setOffset({ x: (pan.x as any)._value, y: (pan.y as any)._value });
+        pan.setValue({ x: 0, y: 0 });
+      },
+      onPanResponderMove: RNAnimated.event([null, { dx: pan.x, dy: pan.y }], { useNativeDriver: false }),
+      onPanResponderRelease: (e, gestureState) => {
+        pan.flattenOffset();
+        const endX = gestureState.moveX > width / 2 ? width / 2 - 40 : -width / 2 + 40;
+        RNAnimated.spring(pan, {
+          toValue: { x: endX, y: (pan.y as any)._value + gestureState.vy * 50 },
+          friction: 6,
+          tension: 40,
+          useNativeDriver: false
+        }).start();
       }
-      setRegistry(reg);
-    };
-    initRegistry();
+    })
+  ).current;
+
+  return (
+    <RNAnimated.View
+      {...panResponder.panHandlers}
+      style={[
+        pan.getLayout(),
+        { position: 'absolute', top: '50%', left: '50%', zIndex: 999, elevation: 999 }
+      ]}
+    >
+      <View style={{ transform: [{ translateX: -30 }, { translateY: -30 }] }}>
+        <BlurView intensity={100} tint="dark" style={styles.floatingCore}>
+          <LinearGradient colors={['#A020F0', '#00D4FF']} style={styles.coreGradient}>
+            <Sparkles color="#FFF" size={24} />
+          </LinearGradient>
+        </BlurView>
+        <View style={styles.coreGlow} />
+      </View>
+    </RNAnimated.View>
+  );
+};
+
+export default function App() {
+  const [currentScreen, setCurrentScreen] = useState<'home' | 'memo' | 'tutor' | 'vector' | 'game' | 'diary' | 'novel' | 'llm' | 'vision' | 'security' | 'sound' | 'maps' | 'config'>('home');
+
+  const [fontsLoaded] = useFonts({ Outfit_400Regular, Outfit_700Bold, Outfit_900Black });
+
+  const orb1X = useSharedValue(0); 
+  const orb1Y = useSharedValue(0);
+
+  useEffect(() => {
+    orb1X.value = withRepeat(withTiming(150, { duration: 20000, easing: Easing.inOut(Easing.ease) }), -1, true);
+    orb1Y.value = withRepeat(withTiming(-150, { duration: 18000, easing: Easing.inOut(Easing.ease) }), -1, true);
   }, []);
 
-  // ─── 完了バッジの自動消去 ──────────────────────
-  useEffect(() => {
-    const entries = Object.entries(completedSlots).filter(([, v]) => v);
-    if (entries.length > 0) {
-      const timer = setTimeout(() => {
-        setCompletedSlots({});
-      }, 3500);
-      return () => clearTimeout(timer);
-    }
-  }, [completedSlots]);
+  const orb1Style = useAnimatedStyle(() => ({ transform: [{ translateX: orb1X.value }, { translateY: orb1Y.value }] }));
 
-  // ─── 既存: スロット設定画面 ────────────────────
-  const handleOpenSlot = async (yakumi: any) => {
-    const config = await getYakumiConfig(yakumi.id);
-    setSelectedYakumi(yakumi);
-    setEndpoint(config?.endpoint || '');
-    setApiKey(config?.apiKey || '');
+  if (!fontsLoaded) return <View style={{ flex: 1, backgroundColor: '#000' }} />;
+
+  const DOCK_APPS = SLOTS.filter(s => ['04', '03', '01', '02'].includes(s.id));
+  const HOME_APPS = SLOTS.filter(s => !['04', '03', '01', '02'].includes(s.id));
+
+  const handleOpenApp = (id: string) => {
+    if (id === '04') setCurrentScreen('memo');
+    if (id === '03') setCurrentScreen('tutor');
+    if (id === '01') setCurrentScreen('vector');
+    if (id === '02') setCurrentScreen('game');
+    if (id === '09') setCurrentScreen('diary');
+    if (id === '10') setCurrentScreen('novel');
+    if (id === '05') setCurrentScreen('llm');
+    if (id === '06') setCurrentScreen('vision');
+    if (id === '07') setCurrentScreen('security');
+    if (id === '08') setCurrentScreen('sound');
+    if (id === '11') setCurrentScreen('maps');
+    if (id === '12') setCurrentScreen('config');
   };
 
-  const handleTestAndSave = async () => {
-    if (!selectedYakumi) return;
-    setTesting(true);
+  if (currentScreen !== 'home') {
+    return (
+      <Animated.View entering={FadeIn.duration(300)} style={{ flex: 1, backgroundColor: '#000' }}>
+        <TouchableOpacity style={styles.floatingBackButton} onPress={() => setCurrentScreen('home')} activeOpacity={0.7}>
+          <BlurView intensity={80} tint="dark" style={styles.backButtonBlur}>
+            <Text style={styles.floatingBackText}>← Home</Text>
+          </BlurView>
+        </TouchableOpacity>
 
-    if (!endpoint) {
-      setTesting(false);
-      Alert.alert('Error', 'Endpoint URLを入力してください。');
-      return;
-    }
+        {currentScreen === 'memo' && <AiMemoScreen />}
+        {currentScreen === 'tutor' && <EducationScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === 'vector' && <VectorBrainScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === 'game' && <CyberGameScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === 'diary' && <DailyDiaryScreen />}
+        {currentScreen === 'novel' && <NovelStudioScreen onBack={() => setCurrentScreen('home')} />}
+        {currentScreen === 'llm' && <LocalLlmScreen />}
+        {currentScreen === 'vision' && <VisionScreen />}
+        {currentScreen === 'security' && <SecurityScreen />}
+        {currentScreen === 'sound' && <SoundScreen />}
+        {currentScreen === 'maps' && <GMapsScreen />}
+        {currentScreen === 'config' && <ConfigScreen />}
+      </Animated.View>
+    );
+  }
 
-    const isAlive = await testConnection(endpoint, apiKey);
+  // Web・PCブラウザ用の横幅最適化フラグ
+  const isPC = width > 800;
 
-    const success = await saveYakumiConfig({
-      id: selectedYakumi.id,
-      label: selectedYakumi.label,
-      endpoint,
-      apiKey,
-      type: 'custom',
-    });
-
-    setTesting(false);
-    if (success) {
-      setRegistry({ ...registry, [selectedYakumi.id]: true });
-      setLastCheck({ ...lastCheck, [selectedYakumi.id]: isAlive });
-
-      if (isAlive) {
-        Alert.alert('Connected!', `${selectedYakumi.label} との連携に成功しました。`);
-        setSelectedYakumi(null);
-      } else {
-        Alert.alert('Saved (Offline)', '設定は保存されましたが、サーバーからの応答がありません。');
-      }
-    }
-  };
-
-  // ─── 新規: コマンド実行ハンドラー ─────────────
-  const handleSendCommand = async () => {
-    const input = commandInput.trim();
-    if (!input) return;
-
-    Keyboard.dismiss();
-
-    // ユーザーメッセージ追加
-    const userMsg: ChatMessage = {
-      id: `user-${Date.now()}`,
-      type: 'user',
-      text: input,
-      timestamp: new Date(),
-    };
-    setMessages(prev => [...prev, userMsg]);
-    setCommandInput('');
-
-    // ルーティング解析
-    const route = routeCommand(input);
-
-    if (route) {
-      const yakumi = yakumis.find(y => y.id === route.slotId);
-
-      // ルーティング通知
-      const routeMsg: ChatMessage = {
-        id: `route-${Date.now()}`,
-        type: 'system',
-        text: `🌶️ ${route.slotLabel} にルーティング中...`,
-        slotLabel: route.slotLabel,
-        slotId: route.slotId,
-        slotColor: yakumi?.color,
-        timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, routeMsg]);
-
-      // パルス発光開始
-      setProcessingSlot(route.slotId);
-
-      // コマンド実行
-      const result = await executeCommand(input);
-
-      // パルス発光停止
-      setProcessingSlot(null);
-
-      // 完了バッジ表示
-      setCompletedSlots(prev => ({ ...prev, [route.slotId]: true }));
-
-      // 結果メッセージ
-      const resultMsg: ChatMessage = {
-        id: `result-${Date.now()}`,
-        type: 'result',
-        text: result.success
-          ? `✅ ${result.slotLabel} 完了 (${result.executionTime}ms)\n${JSON.stringify(result.data, null, 2)}`
-          : `❌ ${result.slotLabel} エラー: ${result.error}`,
-        slotLabel: result.slotLabel,
-        slotId: result.slotId,
-        slotColor: yakumi?.color,
-        timestamp: new Date(),
-        executionTime: result.executionTime,
-        success: result.success,
-      };
-      setMessages(prev => [...prev, resultMsg]);
-    } else {
-      // ルーティング失敗
-      const errorMsg: ChatMessage = {
-        id: `error-${Date.now()}`,
-        type: 'system',
-        text: '⚠️ コマンドを解析できませんでした。\n「メモを追加」「G-MAPSで検索」などの形式で試してください。',
-        timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, errorMsg]);
-    }
-
-    // スクロール
-    setTimeout(() => {
-      chatScrollRef.current?.scrollToEnd({ animated: true });
-    }, 100);
-  };
-
-  // ─── ヘルパー: スロットの色を取得 ─────────────
-  const getSlotColor = (slotId?: number) => {
-    if (!slotId) return '#444';
-    return yakumis.find(y => y.id === slotId)?.color || '#444';
-  };
-
-  // ─── レンダリング ──────────────────────────────
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="light-content" backgroundColor="#000" />
+      
+      <Animated.View style={[styles.glowOrb, styles.orb1, orb1Style]} />
+      <View style={styles.wallpaperOverlay} />
 
-      {/* ═══ ヘッダー ═══ */}
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.headerTitle}>qumi</Text>
-          <Text style={styles.headerSubtitle}>Personal MCP Registry</Text>
-        </View>
-        <View style={styles.headerRight}>
-          <View style={styles.liveCounter}>
-            <Link size={12} color="#00FF99" style={{ marginRight: 4 }} />
-            <Text style={styles.liveText}>
-              {Object.values(lastCheck).filter(v => v).length} ACTIVE
-            </Text>
-          </View>
+      {/* PC版ではステータスバーをMac風に少し控えめに */}
+      <View style={[styles.iosStatusBar, isPC && { paddingHorizontal: 40, paddingTop: 20 }]}>
+        <Text style={styles.iosTimeText}>QUMI : INTEGRATED OS</Text>
+        <View style={styles.iosStatusIcons}>
+          <View style={[styles.pulseDot, { backgroundColor: '#00FF99' }]} />
+          <Text style={styles.iosSignalText}>Agent Online</Text>
         </View>
       </View>
 
-      {/* ═══ 薬味グリッド ═══ */}
-      <ScrollView contentContainerStyle={styles.grid} ref={scrollRef}>
-        <View style={styles.yakumiWrapper}>
-          {yakumis.map((yakumi) => (
-            <TouchableOpacity
-              key={yakumi.id}
-              style={styles.slotContainer}
-              onPress={() => handleOpenSlot(yakumi)}
-              activeOpacity={0.7}
-            >
-              <PulseGlow
-                isActive={processingSlot === yakumi.id}
-                color={yakumi.color}
-              >
-                <LinearGradient
-                  colors={[yakumi.color + '33', yakumi.color + '05']}
-                  style={[
-                    styles.slotIcon,
-                    registry[yakumi.id] && { borderColor: yakumi.color, borderWidth: 2 },
-                    lastCheck[yakumi.id] && styles.activePulse,
-                  ]}
-                >
-                  <yakumi.icon size={28} color={registry[yakumi.id] ? yakumi.color : '#222'} />
-                  {registry[yakumi.id] && (
-                    <View style={[styles.statusIndicator, { backgroundColor: lastCheck[yakumi.id] ? '#00FF99' : '#444' }]} />
-                  )}
-                </LinearGradient>
-                <NotificationBadge
-                  visible={!!completedSlots[yakumi.id]}
-                  color={yakumi.color}
-                />
-              </PulseGlow>
-              <Text style={[styles.slotLabel, registry[yakumi.id] && { color: '#FFF' }]}>{yakumi.label}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
+      {/* ブラウザ版は中央にUIを寄せて超絶高級感を出す */}
+      <ScrollView contentContainerStyle={isPC ? styles.pcHomeGrid : styles.homeGrid} showsVerticalScrollIndicator={false}>
+        {HOME_APPS.map((slot, index) => (
+          <AppIcon key={slot.id} slot={slot} index={index} onPress={() => handleOpenApp(slot.id)} />
+        ))}
       </ScrollView>
 
-      {/* ═══ 処理中インジケーター ═══ */}
-      {processingSlot && (
-        <ProcessingOverlay
-          visible={true}
-          slotLabel={yakumis.find(y => y.id === processingSlot)?.label || ''}
-          color={yakumis.find(y => y.id === processingSlot)?.color || '#FFF'}
-        />
-      )}
-
-      {/* ═══ コマンド入力バー（常時表示） ═══ */}
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={0}
-      >
-        <View style={styles.commandBar}>
-          {/* チャット展開ボタン */}
-          <TouchableOpacity
-            style={styles.chatToggle}
-            onPress={() => setChatVisible(!chatVisible)}
-          >
-            <MessageSquare size={18} color={chatVisible ? '#00FF99' : '#444'} />
-          </TouchableOpacity>
-
-          {/* 入力フィールド */}
-          <View style={styles.inputContainer}>
-            <Sparkles size={14} color="#333" style={{ marginRight: 8 }} />
-            <TextInput
-              style={styles.commandInput}
-              placeholder="コマンドを入力... 「牛乳を買うメモを追加して」"
-              placeholderTextColor="#222"
-              value={commandInput}
-              onChangeText={setCommandInput}
-              onSubmitEditing={handleSendCommand}
-              returnKeyType="send"
-              autoCorrect={false}
-            />
+      {/* PC版ではDockをMac風に中央固定、スマホは全幅 */}
+      <View style={[styles.dockContainer, isPC && styles.pcDockContainer]}>
+        <BlurView intensity={80} tint="dark" style={styles.dockBlur}>
+          <View style={styles.dockInner}>
+            {DOCK_APPS.map((slot, index) => (
+              <AppIcon key={slot.id} slot={slot} index={index} isDock onPress={() => handleOpenApp(slot.id)} />
+            ))}
           </View>
-
-          {/* 送信ボタン */}
-          <TouchableOpacity
-            style={[
-              styles.sendButton,
-              commandInput.trim() ? styles.sendButtonActive : null,
-            ]}
-            onPress={handleSendCommand}
-            disabled={!commandInput.trim() || !!processingSlot}
-          >
-            {processingSlot ? (
-              <ActivityIndicator size="small" color="#00FF99" />
-            ) : (
-              <Send size={18} color={commandInput.trim() ? '#000' : '#333'} />
-            )}
-          </TouchableOpacity>
-        </View>
-      </KeyboardAvoidingView>
-
-      {/* ═══ チャットパネル（展開時） ═══ */}
-      <Modal visible={chatVisible} animationType="slide" transparent>
-        <View style={styles.chatOverlay}>
-          <View style={styles.chatPanel}>
-            {/* チャットヘッダー */}
-            <View style={styles.chatHeader}>
-              <View style={styles.chatHeaderLeft}>
-                <Sparkles size={18} color="#00FF99" />
-                <Text style={styles.chatHeaderTitle}>Agent Log</Text>
-              </View>
-              <TouchableOpacity onPress={() => setChatVisible(false)}>
-                <ChevronDown size={24} color="#666" />
-              </TouchableOpacity>
-            </View>
-
-            {/* メッセージリスト */}
-            <ScrollView
-              ref={chatScrollRef}
-              style={styles.chatMessages}
-              contentContainerStyle={styles.chatMessagesContent}
-              onContentSizeChange={() => chatScrollRef.current?.scrollToEnd({ animated: true })}
-            >
-              {messages.map((msg, index) => (
-                <ChatBubbleAnimated key={msg.id} index={index}>
-                  {msg.type === 'user' ? (
-                    <View style={styles.userBubble}>
-                      <Text style={styles.userBubbleText}>{msg.text}</Text>
-                      <Text style={styles.bubbleTime}>
-                        {msg.timestamp.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
-                      </Text>
-                    </View>
-                  ) : msg.type === 'result' ? (
-                    <View style={[styles.resultBubble, { borderLeftColor: msg.slotColor || '#444' }]}>
-                      <View style={styles.resultHeader}>
-                        <View style={[styles.resultDot, { backgroundColor: msg.slotColor }]} />
-                        <Text style={[styles.resultSlotLabel, { color: msg.slotColor }]}>
-                          {msg.slotLabel}
-                        </Text>
-                        {msg.executionTime && (
-                          <Text style={styles.resultTime}>{msg.executionTime}ms</Text>
-                        )}
-                      </View>
-                      <Text style={styles.resultText}>{msg.text}</Text>
-                      <Text style={styles.bubbleTime}>
-                        {msg.timestamp.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
-                      </Text>
-                    </View>
-                  ) : (
-                    <View style={styles.systemBubble}>
-                      <Text style={styles.systemText}>{msg.text}</Text>
-                    </View>
-                  )}
-                </ChatBubbleAnimated>
-              ))}
-            </ScrollView>
-
-            {/* チャット内コマンド入力 */}
-            <View style={styles.chatInputBar}>
-              <TextInput
-                style={styles.chatInput}
-                placeholder="何をしましょうか？"
-                placeholderTextColor="#222"
-                value={commandInput}
-                onChangeText={setCommandInput}
-                onSubmitEditing={handleSendCommand}
-                returnKeyType="send"
-              />
-              <TouchableOpacity
-                style={[
-                  styles.chatSendButton,
-                  commandInput.trim() ? styles.chatSendButtonActive : null,
-                ]}
-                onPress={handleSendCommand}
-                disabled={!commandInput.trim() || !!processingSlot}
-              >
-                {processingSlot ? (
-                  <ActivityIndicator size="small" color="#00FF99" />
-                ) : (
-                  <Send size={16} color={commandInput.trim() ? '#000' : '#333'} />
-                )}
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </Modal>
-
-      {/* ═══ 連携設定モーダル（既存） ═══ */}
-      <Modal visible={!!selectedYakumi} animationType="slide" transparent>
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContent}>
-            <View style={styles.modalHeader}>
-              <View style={styles.modalTitleRow}>
-                {selectedYakumi && <selectedYakumi.icon size={24} color={selectedYakumi?.color} />}
-                <Text style={[styles.modalTitle, { color: selectedYakumi?.color, marginLeft: 12 }]}>
-                  {selectedYakumi?.label} 連携設定
-                </Text>
-              </View>
-              <TouchableOpacity onPress={() => setSelectedYakumi(null)}>
-                <X color="#666" size={24} />
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>ENDPOINT (HTTPS/WSS)</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="https://idx-mcp-server..."
-                placeholderTextColor="#333"
-                value={endpoint}
-                onChangeText={setEndpoint}
-              />
-            </View>
-
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>AUTHORIZATION TOKEN</Text>
-              <TextInput
-                style={styles.input}
-                secureTextEntry
-                placeholder="Bearer / API Key"
-                placeholderTextColor="#333"
-                value={apiKey}
-                onChangeText={setApiKey}
-              />
-            </View>
-
-            <TouchableOpacity
-              style={[styles.saveButton, { backgroundColor: selectedYakumi?.color }]}
-              onPress={handleTestAndSave}
-              disabled={testing}
-            >
-              {testing ? (
-                <ActivityIndicator color="#000" />
-              ) : (
-                <>
-                  <Link size={20} color="#000" />
-                  <Text style={styles.saveButtonText}>TEST & INTEGRATE</Text>
-                </>
-              )}
-            </TouchableOpacity>
-
-            <View style={styles.securityBox}>
-              <Lock size={14} color="#00FF99" />
-              <Text style={styles.securityText}>
-                このデバイスの Secure Vault にのみ保存されます。
-              </Text>
-            </View>
-          </View>
-        </View>
-      </Modal>
-
-      {/* ═══ フッター ═══ */}
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>Integrating 12 Flavors of Cloud & Local Agents</Text>
+        </BlurView>
       </View>
+
+      {/* 🔮 物理エンジンで転がる「統合思考コア」 */}
+      <DraggableCore />
+
     </SafeAreaView>
   );
 }
 
-// ─── スタイルシート ───────────────────────────────
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-  },
+  container: { flex: 1, backgroundColor: '#000' },
+  glowOrb: { position: 'absolute', width: 400, height: 400, borderRadius: 200, opacity: 0.6 },
+  orb1: { top: -100, left: -100, backgroundColor: '#3b82f6', filter: 'blur(100px)' as any },
+  wallpaperOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 0 },
+  
+  iosStatusBar: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 24, paddingTop: 16, zIndex: 10 },
+  iosTimeText: { color: '#FFF', fontSize: 13, fontWeight: 'bold', fontFamily: 'Outfit_700Bold', letterSpacing: 1 },
+  iosStatusIcons: { flexDirection: 'row', alignItems: 'center' },
+  iosSignalText: { color: '#FFF', fontSize: 11, fontWeight: '600', marginLeft: 6 },
+  pulseDot: { width: 6, height: 6, borderRadius: 3, shadowColor: '#00FF99', shadowOpacity: 1, shadowRadius: 5 },
+  
+  homeGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 16, paddingTop: 40, zIndex: 10, paddingBottom: 150 },
+  pcHomeGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', width: 800, alignSelf: 'center', paddingTop: 60, paddingBottom: 150 },
+  
+  appIconWrapper: { width: '25%', alignItems: 'center', marginBottom: 28 }, 
+  appIconBox: { width: width > 600 ? 76 : 64, height: width > 600 ? 76 : 64, borderRadius: 18, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.5, shadowRadius: 8 },
+  appIconGradient: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  lockedIconOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.5)' },
+  appLabel: { color: '#FFF', fontSize: 11, fontFamily: 'Outfit_400Regular', marginTop: 8, textAlign: 'center', width: '120%' },
+  
+  dockContainer: { position: 'absolute', bottom: Platform.OS === 'ios' ? 30 : 20, left: 16, right: 16, borderRadius: 32, overflow: 'hidden', zIndex: 20 },
+  pcDockContainer: { width: 400, alignSelf: 'center', left: undefined, right: undefined, bottom: 30, borderRadius: 40 },
+  dockBlur: { paddingVertical: 18, paddingHorizontal: 12 },
+  dockInner: { flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' },
+  
+  floatingBackButton: { position: 'absolute', top: Platform.OS === 'web' ? 20 : 50, left: 20, zIndex: 100, borderRadius: 20, overflow: 'hidden' },
+  backButtonBlur: { paddingHorizontal: 16, paddingVertical: 10, backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 20 },
+  floatingBackText: { color: '#FFF', fontSize: 13, fontWeight: 'bold' },
 
-  // ─ ヘッダー ─
-  header: {
-    padding: 24,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#111',
-  },
-  headerTitle: {
-    color: '#FFF',
-    fontSize: 36,
-    fontWeight: '900',
-    letterSpacing: -2,
-  },
-  headerSubtitle: {
-    color: '#444',
-    fontSize: 11,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-  },
-  headerRight: {
-    alignItems: 'flex-end',
-    gap: 8,
-  },
-  liveCounter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#001105',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: '#003311',
-  },
-  liveText: {
-    color: '#00FF99',
-    fontSize: 10,
-    fontWeight: '900',
-  },
-
-  // ─ グリッド ─
-  grid: {
-    padding: 12,
-  },
-  yakumiWrapper: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  slotContainer: {
-    width: COLUMN_WIDTH,
-    height: 130,
-    margin: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  slotIcon: {
-    width: 75,
-    height: 75,
-    borderRadius: 24,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#080808',
-    borderWidth: 1,
-    borderColor: '#111',
-    marginBottom: 10,
-    position: 'relative',
-  },
-  statusIndicator: {
-    position: 'absolute',
-    bottom: -2,
-    right: -2,
-    width: 14,
-    height: 14,
-    borderRadius: 7,
-    borderWidth: 3,
-    borderColor: '#000',
-  },
-  activePulse: {
-    shadowColor: '#FFF',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-    elevation: 10,
-  },
-  slotLabel: {
-    color: '#333',
-    fontSize: 10,
-    fontWeight: '800',
-    letterSpacing: 1,
-    textAlign: 'center',
-  },
-
-  // ─ コマンドバー（常時表示） ─
-  commandBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderTopWidth: 1,
-    borderTopColor: '#111',
-    backgroundColor: '#050505',
-    gap: 8,
-  },
-  chatToggle: {
-    width: 40,
-    height: 40,
-    borderRadius: 12,
-    backgroundColor: '#0A0A0A',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#1A1A1A',
-  },
-  inputContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#0A0A0A',
-    borderRadius: 12,
-    paddingHorizontal: 14,
-    height: 44,
-    borderWidth: 1,
-    borderColor: '#1A1A1A',
-  },
-  commandInput: {
-    flex: 1,
-    color: '#FFF',
-    fontSize: 14,
-    fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
-  },
-  sendButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 12,
-    backgroundColor: '#111',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  sendButtonActive: {
-    backgroundColor: '#00FF99',
-  },
-
-  // ─ チャットパネル ─
-  chatOverlay: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    justifyContent: 'flex-end',
-  },
-  chatPanel: {
-    height: height * 0.7,
-    backgroundColor: '#050505',
-    borderTopLeftRadius: 28,
-    borderTopRightRadius: 28,
-    borderTopWidth: 1,
-    borderTopColor: '#1A1A1A',
-    overflow: 'hidden',
-  },
-  chatHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 24,
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#111',
-  },
-  chatHeaderLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-  },
-  chatHeaderTitle: {
-    color: '#FFF',
-    fontSize: 16,
-    fontWeight: '800',
-    letterSpacing: 1,
-  },
-  chatMessages: {
-    flex: 1,
-  },
-  chatMessagesContent: {
-    padding: 16,
-    paddingBottom: 8,
-  },
-
-  // ─ メッセージバブル ─
-  userBubble: {
-    alignSelf: 'flex-end',
-    backgroundColor: '#1A1A1A',
-    borderRadius: 16,
-    borderBottomRightRadius: 4,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginBottom: 10,
-    maxWidth: '80%',
-    borderWidth: 1,
-    borderColor: '#222',
-  },
-  userBubbleText: {
-    color: '#FFF',
-    fontSize: 14,
-    lineHeight: 20,
-  },
-  systemBubble: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#080808',
-    borderRadius: 16,
-    borderBottomLeftRadius: 4,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginBottom: 10,
-    maxWidth: '85%',
-    borderWidth: 1,
-    borderColor: '#111',
-  },
-  systemText: {
-    color: '#666',
-    fontSize: 13,
-    lineHeight: 20,
-    fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
-  },
-  resultBubble: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#080808',
-    borderRadius: 16,
-    borderBottomLeftRadius: 4,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginBottom: 10,
-    maxWidth: '85%',
-    borderLeftWidth: 3,
-    borderWidth: 1,
-    borderColor: '#111',
-  },
-  resultHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 8,
-    gap: 6,
-  },
-  resultDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-  },
-  resultSlotLabel: {
-    fontSize: 11,
-    fontWeight: '900',
-    letterSpacing: 1,
-  },
-  resultTime: {
-    color: '#333',
-    fontSize: 10,
-    fontWeight: '700',
-    marginLeft: 'auto',
-  },
-  resultText: {
-    color: '#888',
-    fontSize: 12,
-    lineHeight: 18,
-    fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
-  },
-  bubbleTime: {
-    color: '#222',
-    fontSize: 9,
-    fontWeight: '700',
-    marginTop: 6,
-    textAlign: 'right',
-  },
-
-  // ─ チャット入力 ─
-  chatInputBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#111',
-    gap: 8,
-  },
-  chatInput: {
-    flex: 1,
-    backgroundColor: '#0A0A0A',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    height: 44,
-    color: '#FFF',
-    fontSize: 14,
-    borderWidth: 1,
-    borderColor: '#1A1A1A',
-  },
-  chatSendButton: {
-    width: 44,
-    height: 44,
-    borderRadius: 12,
-    backgroundColor: '#111',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  chatSendButtonActive: {
-    backgroundColor: '#00FF99',
-  },
-
-  // ─ 設定モーダル（既存） ─
-  modalOverlay: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.95)',
-    justifyContent: 'flex-end',
-  },
-  modalContent: {
-    backgroundColor: '#0A0A0A',
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
-    padding: 32,
-    borderTopWidth: 1,
-    borderTopColor: '#222',
-  },
-  modalHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 40,
-  },
-  modalTitleRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  modalTitle: {
-    fontSize: 20,
-    fontWeight: '900',
-    letterSpacing: 1,
-  },
-  inputGroup: {
-    marginBottom: 28,
-  },
-  inputLabel: {
-    color: '#444',
-    fontSize: 10,
-    fontWeight: '900',
-    marginBottom: 12,
-    letterSpacing: 2,
-  },
-  input: {
-    backgroundColor: '#050505',
-    borderBottomWidth: 2,
-    borderBottomColor: '#222',
-    padding: 16,
-    color: '#FFF',
-    fontSize: 16,
-    fontFamily: 'monospace',
-  },
-  saveButton: {
-    padding: 20,
-    borderRadius: 16,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  saveButtonText: {
-    color: '#000',
-    fontWeight: '900',
-    fontSize: 15,
-    marginLeft: 12,
-    letterSpacing: 1,
-  },
-  securityBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 32,
-    opacity: 0.5,
-  },
-  securityText: {
-    color: '#00FF99',
-    fontSize: 10,
-    fontWeight: '700',
-    marginLeft: 8,
-  },
-
-  // ─ フッター ─
-  footer: {
-    padding: 8,
-    alignItems: 'center',
-  },
-  footerText: {
-    color: '#111',
-    fontSize: 9,
-    fontWeight: '800',
-    letterSpacing: 2,
-  },
+  // コロコロ転がる物理オーブのスタイル
+  floatingCore: { width: 60, height: 60, borderRadius: 30, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)' },
+  coreGradient: { ...StyleSheet.absoluteFillObject, justifyContent: 'center', alignItems: 'center', opacity: 0.8 },
+  coreGlow: { position: 'absolute', top: -10, left: -10, right: -10, bottom: -10, borderRadius: 40, backgroundColor: '#00D4FF', opacity: 0.3, filter: 'blur(10px)' as any, zIndex: -1 }
 });

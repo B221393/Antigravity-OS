@@ -23,7 +23,7 @@
       }
     },
     "experiments": {
-      "baseUrl": "/Qumi"
+      "baseUrl": "/my-syukatu-app/docs/qumi"
     },
     "web": {
       "favicon": "./assets/favicon.png"
