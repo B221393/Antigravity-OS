@@ -18,6 +18,9 @@
       },
       "package": "com.qumi.app"
     },
+    "experiments": {
+      "baseUrl": "/my-syukatu-app/qumi"
+    },
     "plugins": [
       "expo-secure-store"
     ]

@@ -1,212 +1,97 @@
-import React, { useState } from 'react';
-import {
-  StyleSheet, Text, View, TextInput, TouchableOpacity,
-  SafeAreaView, StatusBar, ScrollView, Platform
-} from 'react-native';
-import { MaterialIcons, Feather } from '@expo/vector-icons';
-import Animated, { FadeIn, FadeInUp, Layout } from 'react-native-reanimated';
+import React from 'react';
+import { StyleSheet, Text, View, ScrollView, Platform, Dimensions } from 'react-native';
+import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Calendar, Clock, Sparkles } from 'lucide-react-native';
+import Animated, { FadeInUp, FadeInDown, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing } from 'react-native-reanimated';
 
-type Mood = 'great' | 'good' | 'neutral' | 'bad';
-const MOOD_COLORS = {
-  great: '#00FF99', // グリーン
-  good: '#5AC8FA',  // ブルー
-  neutral: '#FFCC00',// イエロー
-  bad: '#FF3B30'    // レッド
-};
-const MOOD_LABELS = {
-  great: '最高 / THE BEST',
-  good: '良い / GOOD',
-  neutral: '普通 / NEUTRAL',
-  bad: '疲労 / EXHAUSTED'
-};
+const { width } = Dimensions.get('window');
 
-export default function DailyDiaryScreen({ onBack }: { onBack: () => void }) {
-  const [diaryText, setDiaryText] = useState('');
-  const [mood, setMood] = useState<Mood>('neutral');
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [entries, setEntries] = useState<any[]>([
-    {
-      id: '1',
-      date: '2026/03/21',
-      text: '面接の戦略について深く考えた。Antigravityという名前をやめて、抽象化した表現を使うことに決めた。',
-      mood: 'good',
-      aiComment: '素晴らしい洞察です。客観視できる能力は就職活動で非常に高く評価されます。'
-    }
-  ]);
+const LOGS = [
+  { id: '1', time: '09:00 AM', title: 'Qumi OS Architecture', desc: 'UI設計とCLIエージェント層（抽象レイヤー）を独立Publicリポジトリとして分離構築。' },
+  { id: '2', time: '10:30 AM', title: 'Physics UI Engine', desc: '指の弾きでコロコロ転がり吸い付く物理演算コアを実装。未知への探求心の具現化。' },
+  { id: '3', time: '16:00 PM', title: 'Observation Deep Dive', desc: '馬術部での経験や小売店での適応力を言語化。「仕組み化」ではなく「自己拡張システム」としてのトークを遂行。' },
+];
 
-  const handleSave = () => {
-    if (!diaryText.trim()) return;
-    setIsProcessing(true);
+export default function DailyDiaryScreen() {
+  const pulse = useSharedValue(1);
 
-    // AIによる「日記振り返りコメント生成」をシミュレート
-    setTimeout(() => {
-      const newEntry = {
-        id: Date.now().toString(),
-        date: new Date().toLocaleDateString('ja-JP'),
-        text: diaryText,
-        mood: mood,
-        aiComment: mood === 'bad' 
-          ? '今日はいろいろあってお疲れのようですね。まずはゆっくり休んで、明日また整理しましょう。'
-          : 'その記録は未来の自分にとっての大きな資産になります。今日も一日お疲れ様でした！'
-      };
-      setEntries([newEntry, ...entries]);
-      setDiaryText('');
-      setMood('neutral');
-      setIsProcessing(false);
-      if (Platform.OS === 'web') alert('日記がローカルに保存され、AIの分析が完了しました。');
-    }, 1500);
-  };
+  React.useEffect(() => {
+    pulse.value = withRepeat(withTiming(1.3, { duration: 2000, easing: Easing.inOut(Easing.ease) }), -1, true);
+  }, []);
+
+  const ringStyle = useAnimatedStyle(() => ({ transform: [{ scale: pulse.value }] }));
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      
-      {/* ─── Header ─── */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={onBack} style={styles.backButton}>
-          <MaterialIcons name="arrow-back-ios" size={20} color="#f43f5e" />
-          <Text style={styles.backText}>HOME</Text>
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>DAILY LOG</Text>
-        <Feather name="book-open" size={24} color="#f43f5e" />
-      </View>
+    <View style={styles.container}>
+      {/* 背景の美しいネオンオーブ */}
+      <View style={styles.bgGlow1} />
+      <View style={styles.bgGlow2} />
+      <BlurView intensity={Platform.OS === 'ios' ? 80 : 100} tint="dark" style={StyleSheet.absoluteFillObject} />
 
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         
-        {/* ─── 日記記入エリア ─── */}
-        <Animated.View entering={FadeInUp.delay(100)} style={styles.editorSection}>
-          <View style={styles.dateHeader}>
-            <Text style={styles.todayDate}>{new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</Text>
-            <Text style={styles.timeClock}>TODAY'S RECORD</Text>
-          </View>
-
-          <View style={styles.moodSelector}>
-            {(Object.keys(MOOD_COLORS) as Mood[]).map((m) => (
-              <TouchableOpacity 
-                key={m} 
-                onPress={() => setMood(m)}
-                style={[
-                  styles.moodButton, 
-                  mood === m && { backgroundColor: `${MOOD_COLORS[m]}22`, borderColor: MOOD_COLORS[m] }
-                ]}
-              >
-                <View style={[styles.moodDot, { backgroundColor: MOOD_COLORS[m] }]} />
-                {mood === m && <Text style={[styles.moodLabel, { color: MOOD_COLORS[m] }]}>{MOOD_LABELS[m].split('/')[0]}</Text>}
-              </TouchableOpacity>
-            ))}
-          </View>
-
-          <TextInput
-            style={styles.diaryInput}
-            placeholder="今日はどんな一日でしたか？（AIが最後に振り返りコメントをくれます）"
-            placeholderTextColor="#555"
-            multiline
-            value={diaryText}
-            onChangeText={setDiaryText}
-            textAlignVertical="top"
-          />
-
-          <TouchableOpacity 
-            style={[styles.saveButton, !diaryText.trim() && styles.saveButtonDisabled]} 
-            onPress={handleSave}
-            disabled={!diaryText.trim() || isProcessing}
-          >
-            <LinearGradient
-              colors={['#e11d48', '#f43f5e']}
-              start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
-              style={styles.saveGradient}
-            >
-              <Text style={styles.saveButtonText}>
-                {isProcessing ? 'AI 分析中...' : 'SAVE JOURNAL'}
-              </Text>
+        {/* ヘッダーエリア / Apple Fitnessのような思考シンクロ・リング */}
+        <Animated.View entering={FadeInDown.delay(100).springify()} style={styles.header}>
+          <View style={{ position: 'relative', width: 80, height: 80, justifyContent: 'center', alignItems: 'center' }}>
+            <Animated.View style={[styles.pulseRing, ringStyle]} />
+            <LinearGradient colors={['#FF5C93', '#FFAE00']} style={styles.syncCircle}>
+              <Calendar color="#FFF" size={32} />
             </LinearGradient>
-          </TouchableOpacity>
+          </View>
+          <Text style={styles.title}>DAILY LOG</Text>
+          <Text style={styles.subtitle}>March 23, 2026 - 思考同期率: 98%</Text>
         </Animated.View>
 
-        {/* ─── 過去のログエリア ─── */}
-        <View style={styles.historySection}>
-          <Text style={styles.historySectionTitle}>// PREVIOUS LOGS</Text>
-          
-          {entries.map((entry, index) => (
-            <Animated.View 
-              key={entry.id} 
-              entering={FadeInUp.delay(200 + index * 100).springify()}
-              layout={Layout.springify()}
-              style={[styles.entryCard, { borderLeftColor: MOOD_COLORS[entry.mood as Mood] }]}
-            >
-              <View style={styles.entryHeader}>
-                <Text style={styles.entryDate}>{entry.date}</Text>
-                <View style={[styles.moodTag, { backgroundColor: `${MOOD_COLORS[entry.mood as Mood]}22` }]}>
-                  <Text style={[styles.moodTagText, { color: MOOD_COLORS[entry.mood as Mood] }]}>{MOOD_LABELS[entry.mood as Mood]}</Text>
-                </View>
-              </View>
-              <Text style={styles.entryText}>{entry.text}</Text>
-              
-              <View style={styles.aiInsightBox}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
-                  <MaterialIcons name="auto-awesome" size={14} color="#f43f5e" style={{ marginRight: 6 }} />
-                  <Text style={styles.aiInsightTitle}>AI REFLECTION</Text>
-                </View>
-                <Text style={styles.aiInsightText}>{entry.aiComment}</Text>
-              </View>
+        {/* ガラス質のタイムライン・カード一覧 */}
+        <View style={styles.timeline}>
+          <View style={styles.timelineLine} />
+          {LOGS.map((log, index) => (
+            <Animated.View key={log.id} entering={FadeInUp.delay(index * 200 + 300).springify().damping(15)} style={styles.cardWrapper}>
+               <View style={styles.timelineDot}>
+                  <View style={styles.timelineInnerDot} />
+               </View>
+               
+               <BlurView intensity={60} tint="dark" style={styles.logCard}>
+                  <View style={styles.cardHeader}>
+                    <Clock color="#FF5C93" size={14} />
+                    <Text style={styles.timeText}>{log.time}</Text>
+                  </View>
+                  <Text style={styles.logTitle}>{log.title}</Text>
+                  <Text style={styles.logDesc}>{log.desc}</Text>
+               </BlurView>
             </Animated.View>
           ))}
         </View>
-
+        
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#09090b' },
-  header: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    paddingHorizontal: 20, paddingVertical: 16, borderBottomWidth: 1, borderBottomColor: '#27272a',
-    backgroundColor: 'rgba(9, 9, 11, 0.95)'
-  },
-  backButton: { flexDirection: 'row', alignItems: 'center' },
-  backText: { color: '#f43f5e', fontSize: 13, fontWeight: 'bold', marginLeft: 4 },
-  headerTitle: { color: '#FFF', fontSize: 18, fontWeight: '900', letterSpacing: 2 },
+  container: { flex: 1, backgroundColor: '#000' },
+  bgGlow1: { position: 'absolute', top: -50, left: -50, width: width, height: width, borderRadius: width, backgroundColor: '#FF5C93', opacity: 0.3, filter: 'blur(100px)' as any },
+  bgGlow2: { position: 'absolute', bottom: -50, right: -50, width: width*0.8, height: width*0.8, borderRadius: width, backgroundColor: '#FFAE00', opacity: 0.3, filter: 'blur(100px)' as any },
   
-  content: { padding: 20, paddingBottom: 60 },
+  scrollContent: { paddingHorizontal: 20, paddingTop: Platform.OS === 'web' ? 80 : 120, paddingBottom: 150 },
   
-  editorSection: { marginBottom: 40 },
-  dateHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 20 },
-  todayDate: { color: '#FFF', fontSize: 24, fontWeight: '900', letterSpacing: 1 },
-  timeClock: { color: '#f43f5e', fontSize: 10, fontWeight: 'bold', letterSpacing: 2 },
+  header: { alignItems: 'center', marginBottom: 50 },
+  pulseRing: { position: 'absolute', width: 100, height: 100, borderRadius: 50, backgroundColor: 'rgba(255, 92, 147, 0.4)', borderWidth: 1, borderColor: '#FF5C93' },
+  syncCircle: { width: 80, height: 80, borderRadius: 40, justifyContent: 'center', alignItems: 'center', shadowColor: '#FF5C93', shadowOpacity: 0.8, shadowRadius: 20 },
+  title: { color: '#FFF', fontSize: 28, fontWeight: '900', fontFamily: 'Outfit_900Black', marginTop: 24, letterSpacing: 2 },
+  subtitle: { color: '#FF5C93', fontSize: 13, fontFamily: 'Outfit_700Bold', marginTop: 6, letterSpacing: 1 },
 
-  moodSelector: { flexDirection: 'row', gap: 12, marginBottom: 20 },
-  moodButton: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 10, borderRadius: 20, backgroundColor: '#18181b', borderWidth: 1, borderColor: '#27272a' },
-  moodDot: { width: 10, height: 10, borderRadius: 5, marginRight: 6 },
-  moodLabel: { fontSize: 11, fontWeight: '900' },
+  timeline: { position: 'relative', marginTop: 10, paddingLeft: 24, paddingRight: 8 },
+  timelineLine: { position: 'absolute', left: 8, top: 0, bottom: 0, width: 2, backgroundColor: 'rgba(255,255,255,0.1)' },
+  
+  cardWrapper: { position: 'relative', marginBottom: 30 },
+  timelineDot: { position: 'absolute', left: -26, top: 20, width: 20, height: 20, borderRadius: 10, backgroundColor: 'rgba(255, 92, 147, 0.3)', justifyContent: 'center', alignItems: 'center' },
+  timelineInnerDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#FF5C93', shadowColor: '#FF5C93', shadowOpacity: 1, shadowRadius: 8 },
 
-  diaryInput: {
-    backgroundColor: '#18181b', borderWidth: 1, borderColor: '#27272a',
-    borderRadius: 16, padding: 20, color: '#FFF', fontSize: 15, lineHeight: 24,
-    minHeight: 180, marginBottom: 20
-  },
-  saveButton: { borderRadius: 16, overflow: 'hidden' },
-  saveButtonDisabled: { opacity: 0.5 },
-  saveGradient: { paddingVertical: 18, alignItems: 'center', justifyContent: 'center' },
-  saveButtonText: { color: '#FFF', fontSize: 13, fontWeight: '900', letterSpacing: 2 },
-
-  historySection: { marginTop: 20 },
-  historySectionTitle: { color: '#52525b', fontSize: 12, fontWeight: '900', letterSpacing: 3, marginBottom: 20 },
-  
-  entryCard: {
-    backgroundColor: '#18181b', borderRadius: 16, padding: 20, marginBottom: 16,
-    borderLeftWidth: 4, borderWidth: 1, borderColor: '#27272a'
-  },
-  entryHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
-  entryDate: { color: '#a1a1aa', fontSize: 12, fontWeight: 'bold', letterSpacing: 1 },
-  moodTag: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8 },
-  moodTagText: { fontSize: 9, fontWeight: '900', letterSpacing: 1 },
-  
-  entryText: { color: '#e4e4e7', fontSize: 15, lineHeight: 24, marginBottom: 16 },
-  
-  aiInsightBox: { backgroundColor: '#27272a44', padding: 16, borderRadius: 12, borderWidth: 1, borderColor: '#f43f5e22' },
-  aiInsightTitle: { color: '#f43f5e', fontSize: 10, fontWeight: '900', letterSpacing: 2 },
-  aiInsightText: { color: '#a1a1aa', fontSize: 13, lineHeight: 20 },
+  logCard: { padding: 20, borderRadius: 24, borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)', overflow: 'hidden', backgroundColor: 'rgba(30, 10, 20, 0.4)' },
+  cardHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 12 },
+  timeText: { color: '#FF5C93', fontSize: 13, fontFamily: 'Outfit_700Bold', marginLeft: 6, letterSpacing: 1 },
+  logTitle: { color: '#FFF', fontSize: 18, fontFamily: 'Outfit_700Bold', marginBottom: 10 },
+  logDesc: { color: '#CCC', fontSize: 14, fontFamily: 'Outfit_400Regular', lineHeight: 22 }
 });
