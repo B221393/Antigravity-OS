@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUMI: NEURAL HUB CONCEPT</title>
+    <style>
+        :root {
+            --core-color: #A020F0;
+            --accent-color: #00D4FF;
+            --bg-color: #000;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            position: relative;
+            width: 800px;
+            height: 800px;
+        }
+        /* --- 中央のコア --- */
+        .core-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        .core {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #fff 0%, var(--core-color) 40%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 60px var(--core-color), 0 0 100px var(--accent-color);
+            animation: pulse 3s infinite ease-in-out;
+        }
+        .core-label {
+            position: absolute;
+            top: 140%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            letter-spacing: 5px;
+            color: var(--accent-color);
+            white-space: nowrap;
+            font-weight: 900;
+            opacity: 0.8;
+        }
+
+        /* --- クラスターの定義 --- */
+        .cluster {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cluster-label {
+            position: absolute;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #fff;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* 1: 思考層 (Top Right) */
+        .thought { top: 15%; right: 15%; }
+        /* 2: 知能層 (Top Left) */
+        .intel { top: 15%; left: 15%; }
+        /* 3: 知覚層 (Bottom Left) */
+        .sense { bottom: 15%; left: 15%; }
+        /* 4: システム層 (Bottom Right) */
+        .sys { bottom: 15%; right: 15%; }
+
+        /* --- スロット（アイコン） --- */
+        .slot {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .slot:hover {
+            border-color: var(--accent-color);
+            background: rgba(0, 212, 255, 0.1);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+        .slot::after {
+            content: attr(data-name);
+            position: absolute;
+            top: 60px;
+            font-size: 8px;
+            color: #888;
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
+
+        /* クラスター内の配置 */
+        .slot:nth-child(1) { transform: translate(-40px, -40px); }
+        .slot:nth-child(2) { transform: translate(40px, -40px); }
+        .slot:nth-child(3) { transform: translate(0px, 40px); }
+
+        /* --- ネットワーク・パス (SVG) --- */
+        svg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+        }
+        .path {
+            fill: none;
+            stroke: var(--accent-color);
+            stroke-width: 1;
+            opacity: 0.15;
+            stroke-dasharray: 4, 4;
+            animation: dash 20s linear infinite;
+        }
+        .path-active {
+            stroke: var(--core-color);
+            stroke-width: 2;
+            opacity: 0.4;
+            stroke-dasharray: 100, 1000;
+            animation: flow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: -1000; }
+        }
+        @keyframes flow {
+            0% { stroke-dashoffset: 1100; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        /* --- タイトル --- */
+        .os-title {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            font-weight: 900;
+            letter-spacing: 10px;
+            opacity: 0.5;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="os-title">QUMI : NEURAL_HUB_V1</div>
+
+    <div class="container">
+        <svg viewBox="0 0 800 800">
+            <!-- ニューラルパス -->
+            <path class="path" d="M400,400 L200,200 M400,400 L600,200 M400,400 L200,600 M400,400 L600,600" />
+            <path class="path-active" d="M400,400 L200,200 M400,400 L600,200 M400,400 L200,600 M400,400 L600,600" />
+        </svg>
+
+        <div class="core-wrapper">
+            <div class="core"></div>
+            <div class="core-label">INTEGRATED_CORE</div>
+        </div>
+
+        <!-- THOUGHT CLUSTER -->
+        <div class="cluster thought">
+            <div class="cluster-label">THOUGHT</div>
+            <div class="slot" data-name="AI MEMO">📝</div>
+            <div class="slot" data-name="NOVEL">Zap</div>
+            <div class="slot" data-name="DIARY">📅</div>
+        </div>
+
+        <!-- INTEL CLUSTER -->
+        <div class="cluster intel">
+            <div class="cluster-label">INTEL</div>
+            <div class="slot" data-name="VECTOR">🧠</div>
+            <div class="slot" data-name="LLM">💬</div>
+            <div class="slot" data-name="TUTOR">🎓</div>
+        </div>
+
+        <!-- SENSE CLUSTER -->
+        <div class="cluster sense">
+            <div class="cluster-label">SENSE</div>
+            <div class="slot" data-name="VISION">📸</div>
+            <div class="slot" data-name="SOUND">🎙️</div>
+            <div class="slot" data-name="MAPS">📍</div>
+        </div>
+
+        <!-- SYSTEM CLUSTER -->
+        <div class="cluster sys">
+            <div class="cluster-label">SYSTEM</div>
+            <div class="slot" data-name="GAME">🎮</div>
+            <div class="slot" data-name="SECURITY">🛡️</div>
+            <div class="slot" data-name="CONFIG">⚙️</div>
+        </div>
+    </div>
+</body>
+</html>

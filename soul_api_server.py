@@ -25,8 +25,14 @@ app.add_middleware(
 class SoulRequest(BaseModel):
     thought: str
 
+class NovelRequest(BaseModel):
+    title: str
+    synopsis: str
+    context: str
+
 @app.post("/api/soul")
 async def delegate_soul(req: SoulRequest):
+    # ... (既存のコード) ...
     print(f"\n====================\n【RECEIVED SOUL】: {req.thought}\n====================")
     
     task_description = (
@@ -41,17 +47,47 @@ async def delegate_soul(req: SoulRequest):
     llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=os.getenv("GEMINI_API_KEY", "YOUR_API_KEY_HERE"))
     agent = Agent(task=task_description, llm=llm)
     
-    # ブラウザが裏で立ち上がり、自動で検索して思考を拡張する
     history = await agent.run()
     
-    # browser-useエージェントの最終結果を取得
     try:
         final_output = history.final_result()
-        print(f"\n【AGENT SUCCESS】: {final_output}\n")
         return {"status": "success", "result": final_output}
     except Exception as e:
-        print(f"\n【AGENT ERROR】: {e}\n")
         return {"status": "error", "result": str(history)}
+
+@app.post("/api/novel")
+async def generate_novel_branches(req: NovelRequest):
+    print(f"\n====================\n【NOVEL EXPANSION REQUEST】: {req.title}\n====================")
+    
+    prompt = (
+        f"あなたは創作支援AIです。以下の小説の続きとして、3つの異なる展開を提案してください。\n\n"
+        f"タイトル: {req.title}\n"
+        f"あらすじ: {req.synopsis}\n"
+        f"現在の本文末尾: \n\"\"\"{req.context[-500:]}\"\"\"\n\n"
+        f"以下の3つのタイプで続きを提案してください：\n"
+        f"1. ACTION: 状況が急変する、あるいは物理的な動きがある展開。\n"
+        f"2. DRAMA: 登場人物の感情や人間関係を深掘りする展開。\n"
+        f"3. LOGIC: 世界観の謎が解ける、あるいは論理的な解決に向かう展開。\n\n"
+        f"出力は必ず以下の純粋なJSONフォーマットのみで行ってください：\n"
+        f"[\n"
+        f"  {{\"type\": \"ACTION\", \"label\": \"急展開\", \"text\": \"続きの文章...\"}},\n"
+        f"  {{\"type\": \"DRAMA\", \"label\": \"心理描写\", \"text\": \"続きの文章...\"}},\n"
+        f"  {{\"type\": \"LOGIC\", \"label\": \"理論的解決\", \"text\": \"続きの文章...\"}}\n"
+        f"]"
+    )
+
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=os.getenv("GEMINI_API_KEY", "YOUR_API_KEY_HERE"))
+    
+    try:
+        # browser-useを使わずに直接LLMに聞く（高速化のため）
+        response = await llm.ainvoke(prompt)
+        # JSONの抽出（念のためマークダウンを剥がす）
+        content = response.content.replace('```json', '').replace('```', '').strip()
+        branches = json.loads(content)
+        return {"status": "success", "branches": branches}
+    except Exception as e:
+        print(f"Error: {e}")
+        return {"status": "error", "message": str(e)}
 
 if __name__ == "__main__":
     if os.name == 'nt':
