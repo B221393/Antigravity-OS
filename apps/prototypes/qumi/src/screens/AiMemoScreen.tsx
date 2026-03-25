@@ -96,7 +96,7 @@ export default function AiMemoScreen() {
       setMemos(prev => prev.map(m => m.id === aiMessageId ? { ...m, text: resultText } : m));
     } catch (e: any) {
       setMemos(prev => prev.map(m => m.id === aiMessageId ? { 
-        ...m, text: `⚠️ 接続エラー: soul_api_server.py が起動していません。` 
+        ...m, text: `⚠️ PC Agent Offline\n同期は GitHub で確立されています。[GITHUB PORTAL] ボタンから最新の外部脳を確認してください。` 
       } : m));
     }
   };
@@ -117,6 +117,23 @@ export default function AiMemoScreen() {
               <BrainCircuit color="#00D4FF" size={24} />
               <Text style={styles.title}>AI MEMO</Text>
             </View>
+            <TouchableOpacity 
+              onPress={() => {
+                const url = 'https://github.com/b221393/my-syukatu-app/blob/main/logs/STRATEGIC_INTEL_LOG.md';
+                if (Platform.OS === 'web') {
+                  window.open(url, '_blank');
+                } else {
+                  // Actually, we'd use Linking.openURL if we were on mobile
+                  import('react-native').then(({ Linking }) => Linking.openURL(url));
+                }
+              }}
+              style={styles.githubPortal}
+            >
+              <BlurView intensity={20} tint="light" style={styles.portalBlur}>
+                <Sparkles color="#00FF99" size={14} />
+                <Text style={styles.portalText}>GITHUB PORTAL</Text>
+              </BlurView>
+            </TouchableOpacity>
             <View style={styles.syncIndicator}>
               <Text style={styles.syncLabel}>THOUGHT SYNC:</Text>
               <Text style={styles.syncValue}>{Math.floor(syncRate.value)}%</Text>
@@ -173,6 +190,9 @@ const styles = StyleSheet.create({
 
   header: { alignItems: 'center', marginBottom: 20 },
   headerRow: { flexDirection: 'row', alignItems: 'center' },
+  githubPortal: { marginTop: 12, borderRadius: 16, overflow: 'hidden' },
+  portalBlur: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 6, backgroundColor: 'rgba(0, 255, 153, 0.1)' },
+  portalText: { color: '#00FF99', fontSize: 10, fontFamily: 'Outfit_900Black', marginLeft: 6, letterSpacing: 1 },
   title: { color: '#FFF', fontSize: 24, fontWeight: '800', fontFamily: 'Outfit_900Black', letterSpacing: 4, marginLeft: 10 },
   syncIndicator: { flexDirection: 'row', marginTop: 8 },
   syncLabel: { color: '#666', fontSize: 10, fontWeight: '900', letterSpacing: 1 },

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS SEARCH | ANTIGRAVITY-CORE APP #12</title>
+    <style>
+        :root {
+            --core-color: #6200ea;
+            --accent-color: #00e5ff;
+            --bg-color: #020202;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #canvas-container {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+        }
+
+        /* --- UI Overlay --- */
+        .search-container {
+            position: relative;
+            z-index: 10;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+        .os-tag {
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 12px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+        .search-bar-wrapper {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            padding: 10px 30px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .search-bar-wrapper:focus-within {
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 60px rgba(0, 229, 255, 0.2);
+            transform: scale(1.02);
+        }
+        .search-icon {
+            font-size: 24px;
+            margin-right: 20px;
+            opacity: 0.5;
+        }
+        input[type="text"] {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            width: 100%;
+            outline: none;
+            padding: 15px 0;
+            letter-spacing: 1px;
+        }
+        input::placeholder {
+            color: rgba(255,255,255,0.2);
+            font-weight: 300;
+        }
+
+        /* --- 検索結果プレビュー (ダミー) --- */
+        .results-preview {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+        }
+        .results-preview.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .result-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .result-card:hover {
+            border-color: var(--accent-color);
+            background: rgba(0, 229, 255, 0.05);
+        }
+        .result-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        .result-snippet {
+            font-size: 12px;
+            opacity: 0.6;
+            line-height: 1.6;
+        }
+
+        /* --- メタ情報 --- */
+        .nexus-info {
+            position: absolute;
+            bottom: 40px;
+            font-size: 9px;
+            opacity: 0.3;
+            letter-spacing: 3px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div class="search-container">
+        <div class="os-tag">INTEGRATED EXTERNAL BRAIN HUB</div>
+        <div class="search-bar-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="nexus-input" placeholder="あなたの外部脳(GitHub/Logs/Docs)から検索..." spellcheck="false">
+        </div>
+
+        <div class="results-preview" id="results">
+            <div class="result-card">
+                <div class="result-title">docs/STRATEGIC_INTEL_LOG.md</div>
+                <div class="result-snippet">自律実行プロトコル適用済み。エージェントの自律化とユーザー負荷の最小化を優先する。</div>
+            </div>
+            <div class="result-card">
+                <div class="result-title">Persol_AVC_ES_Draft.md</div>
+                <div class="result-snippet">強みは「未知への探求心」。馬術部での経験とIT独学スキルの融合による自己研鑽。</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nexus-info">NEXUS SEARCH [V0.1.0] | ASSET #12 READY</div>
+
+    <!-- Three.js for Neural Network Background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
+
+        // 星屑（パーティクル）の生成
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 2000;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i=0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.005,
+            color: 0x00e5ff,
+            transparent: true,
+            opacity: 0.5
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        camera.position.z = 2;
+
+        // アニメーション
+        function animate() {
+            requestAnimationFrame(animate);
+            particlesMesh.rotation.y += 0.001;
+            particlesMesh.rotation.x += 0.0005;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // 検索窓のアニメーション連動
+        const input = document.getElementById('nexus-input');
+        const results = document.getElementById('results');
+
+        input.addEventListener('input', (e) => {
+            if (e.target.value.length > 2) {
+                results.classList.add('active');
+            } else {
+                results.classList.remove('active');
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

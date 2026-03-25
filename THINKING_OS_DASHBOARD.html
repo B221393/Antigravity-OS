@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTEGRATED THINKING OS: DASHBOARD</title>
+    <style>
+        :root {
+            --core-color: #6200ea;
+            --accent-color: #00e5ff;
+            --bg-color: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(98, 0, 234, 0.1) 0%, transparent 50%),
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+            color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .os-container {
+            position: relative;
+            width: 1000px;
+            height: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- 中央のコア (Central Command) --- */
+        .core-hub {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .core-hub:hover {
+            transform: scale(1.1);
+        }
+        .core-circle {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #fff 0%, var(--core-color) 45%, transparent 75%);
+            border-radius: 50%;
+            box-shadow: 0 0 80px var(--core-color), 0 0 120px var(--accent-color);
+            animation: pulse-core 4s infinite ease-in-out;
+        }
+        .core-label {
+            position: absolute;
+            top: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 6px;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--accent-color);
+            white-space: nowrap;
+        }
+
+        /* --- クラスター共通 --- */
+        .cluster {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .cluster-label {
+            position: absolute;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* 配置 */
+        .cluster-intel { top: 50px; left: 50px; }
+        .cluster-visual { top: 50px; right: 50px; }
+        .cluster-sense { bottom: 50px; left: 50px; }
+        .cluster-sys { bottom: 50px; right: 50px; }
+
+        /* --- アプリ・スロット (App Interactive Nodes) --- */
+        .app-node {
+            width: 70px;
+            height: 70px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #fff;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .app-node:hover {
+            border-color: var(--accent-color);
+            background: rgba(0, 229, 255, 0.1);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2);
+        }
+        .app-icon { font-size: 24px; margin-bottom: 5px; }
+        .app-name {
+            font-size: 7px;
+            font-weight: 700;
+            text-align: center;
+            width: 100%;
+            padding: 0 5px;
+            box-sizing: border-box;
+            opacity: 0.7;
+            text-transform: uppercase;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .app-number {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--core-color);
+            font-size: 8px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+        }
+
+        /* --- 背景のニューラルパス (SVG) --- */
+        .neural-paths {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .path-line {
+            fill: none;
+            stroke: var(--accent-color);
+            stroke-width: 0.5;
+            opacity: 0.1;
+            stroke-dasharray: 5, 5;
+            animation: move-dash 30s linear infinite;
+        }
+
+        @keyframes pulse-core {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        @keyframes move-dash {
+            to { stroke-dashoffset: -500; }
+        }
+
+        /* ヘッダー情報 */
+        .os-header {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            z-index: 200;
+        }
+        .os-branding {
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 12px;
+            margin-bottom: 5px;
+        }
+        .os-status {
+            font-size: 10px;
+            color: var(--accent-color);
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="os-header">
+        <div class="os-branding">INTEGRATED THINKING OS</div>
+        <div class="os-status">STATUS: AUTONOMOUS_CONNECTED [V3.0.1]</div>
+    </header>
+
+    <div class="os-container">
+        <svg class="neural-paths" viewBox="0 0 1000 800">
+            <path class="path-line" d="M500,400 L200,200 M500,400 L800,200 M500,400 L200,600 M500,400 L800,600" />
+        </svg>
+
+        <!-- CENTRAL CORE (Office View Link) -->
+        <div class="core-hub" onclick="window.open('http://127.0.0.1:8800', '_blank')">
+            <div class="core-circle"></div>
+            <div class="core-label">CORE_OFFICE</div>
+        </div>
+
+        <!-- INTEL CLUSTER (Search & Knowledge) -->
+        <div class="cluster cluster-intel">
+            <div class="cluster-label" style="top:-30px">INTEL_ENGINE</div>
+            <a href="apps/dev_loop/game_12/index.html" class="app-node">
+                <div class="app-icon">🔍</div>
+                <div class="app-name">Nexus Search</div>
+                <div class="app-number">#12</div>
+            </a>
+            <a href="apps/dev_loop/game_13/index.html" class="app-node">
+                <div class="app-icon">🗺️</div>
+                <div class="app-name">Intelligence Map</div>
+                <div class="app-number">#13</div>
+            </a>
+            <a href="apps/dev_loop/game_09/index.html" class="app-node">
+                <div class="app-icon">🌌</div>
+                <div class="app-name">Knowledge Nebula</div>
+                <div class="app-number">#09</div>
+            </a>
+        </div>
+
+        <!-- VISUAL CLUSTER (Physics & Simulation) -->
+        <div class="cluster cluster-visual">
+            <div class="cluster-label" style="top:-30px">VISUAL_UNIT</div>
+            <a href="apps/dev_loop/game_04/index.html" class="app-node">
+                <div class="app-icon">🧠</div>
+                <div class="app-name">Neural Conn</div>
+                <div class="app-number">#04</div>
+            </a>
+            <a href="apps/dev_loop/game_05/index.html" class="app-node">
+                <div class="app-icon">📈</div>
+                <div class="app-name">Pulse Dyn</div>
+                <div class="app-number">#05</div>
+            </a>
+            <a href="apps/dev_loop/game_06/index.html" class="app-node">
+                <div class="app-icon">🌪️</div>
+                <div class="app-name">Fluid Vortex</div>
+                <div class="app-number">#06</div>
+            </a>
+            <a href="apps/dev_loop/game_08/index.html" class="app-node">
+                <div class="app-icon">🧊</div>
+                <div class="app-name">Voxel Exp</div>
+                <div class="app-number">#08</div>
+            </a>
+        </div>
+
+        <!-- SENSE CLUSTER (Sensors & Bridge) -->
+        <div class="cluster cluster-sense">
+            <div class="cluster-label" style="bottom:-30px">SENSE_HUB</div>
+            <a href="apps/dev_loop/game_07/index.html" class="app-node">
+                <div class="app-icon">📡</div>
+                <div class="app-name">Sensor Hub</div>
+                <div class="app-number">#07</div>
+            </a>
+            <a href="apps/dev_loop/game_10/index.html" class="app-node">
+                <div class="app-icon">🌉</div>
+                <div class="app-name">Signal Bridge</div>
+                <div class="app-number">#10</div>
+            </a>
+            <a href="apps/dev_loop/game_11/index.html" class="app-node">
+                <div class="app-icon">📻</div>
+                <div class="app-name">Bandwidth</div>
+                <div class="app-number">#11</div>
+            </a>
+        </div>
+
+        <!-- SYSTEM CLUSTER (Core Creation) -->
+        <div class="cluster cluster-sys">
+            <div class="cluster-label" style="bottom:-30px">SYSTEM_CORE</div>
+            <a href="apps/dev_loop/game_01/index.html" class="app-node">
+                <div class="app-icon">🪐</div>
+                <div class="app-name">Orbital Exp</div>
+                <div class="app-number">#01</div>
+            </a>
+            <a href="apps/dev_loop/game_02/index.html" class="app-node">
+                <div class="app-icon">🏙️</div>
+                <div class="app-name">Neon City</div>
+                <div class="app-number">#02</div>
+            </a>
+            <a href="apps/dev_loop/game_03/index.html" class="app-node">
+                <div class="app-icon">🌫️</div>
+                <div class="app-name">Terrain Void</div>
+                <div class="app-number">#03</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

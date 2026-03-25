@@ -34,20 +34,41 @@ const SLOTS = [
   // SENSE LAYER (知覚層)
   { id: '06', name: 'VISION',       icon: Camera,          color: '#FF0055', sim: 'digital_brain', layer: 'SENSE' },
   { id: '08', name: 'SOUND',        icon: Mic,             color: '#00D4FF', sim: 'quantum_core', layer: 'SENSE' },
-  { id: '11', name: 'G-MAPS',       icon: Map,             color: '#00CC44', sim: 'globe_nexus', layer: 'SENSE' },
+  { id: '11', name: 'NEXUS SRCH',   icon: Map,             color: '#00D4FF', sim: 'game_12', layer: 'SENSE' },
 
   // SYSTEM LAYER (システム層)
   { id: '02', name: 'WIKI INTEL',   icon: BookOpen,        color: '#00FF99', sim: 'content_memory', layer: 'SYSTEM' },
   { id: '07', name: 'SECURITY',     icon: Shield,          color: '#444444', sim: 'encrypted_tunnel', layer: 'SYSTEM' },
   { id: '12', name: 'SYS CONFIG',   icon: Settings,        color: '#666666', sim: 'system_monitor', layer: 'SYSTEM' },
+  { id: '13', name: 'G-MAPS',       icon: Map,             color: '#00CC44', sim: 'globe_nexus', layer: 'SYSTEM' },
 ];
 
 const AppIcon = ({ slot, index, onPress }: { slot: any; index: number; onPress: () => void }) => {
   const Icon = slot.icon;
   const scale = useSharedValue(1);
+  const translateY = useSharedValue(0);
+
+  useEffect(() => {
+    // 浮遊アニメーション (Floating Animation)
+    translateY.value = withRepeat(
+      withTiming(index % 2 === 0 ? -4 : 4, {
+        duration: 2000 + (index * 200),
+        easing: Easing.inOut(Easing.ease),
+      }),
+      -1,
+      true
+    );
+  }, []);
+
   const handlePressIn = () => { scale.value = withSpring(0.82, { damping: 12, stiffness: 500 }); };
   const handlePressOut = () => { scale.value = withSpring(1, { damping: 12, stiffness: 300 }); };
-  const animatedStyle = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
+  
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [
+      { scale: scale.value },
+      { translateY: translateY.value }
+    ]
+  }));
 
   return (
     <Animated.View entering={FadeInDown.delay(index * 50).springify().damping(14)} style={styles.appIconWrapper}>

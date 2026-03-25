@@ -35,6 +35,16 @@ async def delegate_soul(req: SoulRequest):
     # ... (既存のコード) ...
     print(f"\n====================\n【RECEIVED SOUL】: {req.thought}\n====================")
     
+    # 1. 外部脳（STRATEGIC_INTEL_LOG.md）への書き込み準備
+    import datetime
+    log_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs", "STRATEGIC_INTEL_LOG.md")
+    
+    with open(log_path, "a", encoding="utf-8") as f:
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        f.write(f"\n### 📝 THOUGHT SYNC [{timestamp}]\n")
+        f.write(f"- **INPUT**: {req.thought}\n")
+        f.flush()
+
     task_description = (
         f"ユーザーの以下の抽象的な思考（魂）を処理してください。\n"
         f"思考: '{req.thought}'\n\n"
@@ -44,15 +54,26 @@ async def delegate_soul(req: SoulRequest):
         f"{{\"title\": \"string\", \"core_philosophy\": \"string\", \"insights\": [\"string\"]}}"
     )
 
+    # ... (AI処理) ...
     llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=os.getenv("GEMINI_API_KEY", "YOUR_API_KEY_HERE"))
     agent = Agent(task=task_description, llm=llm)
     
     history = await agent.run()
     
     try:
-        final_output = history.final_result()
+        final_output_str = history.final_result()
+        final_output = json.loads(final_output_str) if isinstance(final_output_str, str) else final_output_str
+        
+        # 2. AIの気付きもログに追記
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(f"- **AI ANALYSIS**: {final_output.get('core_philosophy', 'N/A')}\n")
+            insights = final_output.get('insights', [])
+            for insight in insights:
+                f.write(f"  - {insight}\n")
+        
         return {"status": "success", "result": final_output}
     except Exception as e:
+        # JSONパースエラーなどの場合でもテキストとして返す
         return {"status": "error", "result": str(history)}
 
 @app.post("/api/novel")
