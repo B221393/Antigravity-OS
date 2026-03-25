@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Quantum Flocking | Mobile Optimized</title>
+<style>
+  body, html { margin: 0; padding: 0; overflow: hidden; background: #050510; touch-action: none; }
+  canvas { display: block; width: 100vw; height: 100vh; }
+  #ui { 
+    position: absolute; top: 15px; left: 15px; 
+    color: #0ff; font-family: sans-serif; pointer-events: none;
+    text-shadow: 0 0 10px #0ff; z-index: 10;
+  }
+  h1 { margin: 0; font-size: 1rem; letter-spacing: 1px; }
+  p { margin: 2px 0 0 0; font-size: 0.7rem; opacity: 0.7; }
+</style>
+</head>
+<body>
+<div id="ui">
+  <h1>QUANTUM FLOCKING</h1>
+  <p>// MOBILE OPTIMIZED SWARM</p>
+</div>
+<canvas id="canvas"></canvas>
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  let width, height, mouse = { x: -1000, y: -1000 };
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const handleInput = (e) => {
+    const t = e.touches ? e.touches[0] : e;
+    mouse.x = t.clientX;
+    mouse.y = t.clientY;
+  };
+  window.addEventListener('mousemove', handleInput);
+  window.addEventListener('touchstart', handleInput);
+  window.addEventListener('touchmove', handleInput);
+  window.addEventListener('touchend', () => { mouse.x = -1000; mouse.y = -1000; });
+
+  class Particle {
+    constructor() {
+      this.init();
+    }
+    init() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 2;
+      this.vy = (Math.random() - 0.5) * 2;
+      this.size = Math.random() * 2 + 1;
+    }
+    update() {
+      let dx = mouse.x - this.x;
+      let dy = mouse.y - this.y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      
+      if (dist < 200) {
+        this.vx += dx * 0.001;
+        this.vy += dy * 0.001;
+      }
+      this.vx *= 0.98;
+      this.vy *= 0.98;
+      this.x += this.vx;
+      this.y += this.vy;
+      
+      if (this.x < 0) this.x = width; if (this.x > width) this.x = 0;
+      if (this.y < 0) this.y = height; if (this.y > height) this.y = 0;
+    }
+    draw() {
+      ctx.fillStyle = '#0ff';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  const particles = Array.from({ length: 80 }, () => new Particle());
+
+  function animate() {
+    ctx.fillStyle = 'rgba(5, 5, 16, 0.2)';
+    ctx.fillRect(0, 0, width, height);
+    
+    ctx.strokeStyle = 'rgba(0, 255, 255, 0.1)';
+    ctx.beginPath();
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+      for (let j = i + 1; j < particles.length; j++) {
+        let dx = particles[i].x - particles[j].x;
+        let dy = particles[i].y - particles[j].y;
+        if (dx*dx + dy*dy < 4000) {
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+        }
+      }
+    }
+    ctx.stroke();
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+</body>
+</html>

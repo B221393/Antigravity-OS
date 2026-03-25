@@ -1,47 +1,175 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   StyleSheet, Text, View, TouchableOpacity, SafeAreaView,
-  StatusBar, Dimensions, ScrollView, Platform
+  StatusBar, Dimensions, ScrollView, Platform, TextInput, Modal, ActivityIndicator
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { 
-  BrainCircuit, Gamepad2, GraduationCap, FileText, 
-  MessageSquare, Camera, Shield, Mic, Calendar, 
-  Zap, Map, Settings, Sparkles, BookOpen
+  BrainCircuit, LayoutGrid, FileText, 
+  Settings, Sparkles, Shield, Mic, Camera,
+  Database, Activity, Cpu, Send, X, ChevronRight
 } from 'lucide-react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
-import Animated, { FadeIn, FadeInDown, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSpring, Layout } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeInDown, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing, withSpring } from 'react-native-reanimated';
 import { useFonts, Outfit_400Regular, Outfit_700Bold, Outfit_900Black } from '@expo-google-fonts/outfit';
 import { Animated as RNAnimated, PanResponder } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 const BASE = '/Qumi';
+const API_BASE = 'http://localhost:8000';
 
-// 12 Core OS Slots
 const SLOTS = [
-  // INTEL LAYER (知能層)
-  { id: '01', name: 'VECTOR CORE',  icon: BrainCircuit,   color: '#00F0FF', sim: 'neural_brain', layer: 'INTEL' },
-  { id: '05', name: 'LOCAL LLM',    icon: Zap,             color: '#FF9E00', sim: 'terminal', layer: 'INTEL' },
-  { id: '03', name: 'TUTOR AI',     icon: GraduationCap,   color: '#00FF99', sim: 'intelligence_stream', layer: 'INTEL' },
+  { id: '01', name: 'CORE LOG',    icon: Database,     color: '#00F0FF', sim: 'game_01', cat: 'INTEL', desc: 'AIの学習履歴とスキル確認' },
+  { id: '04', name: 'SOUL HUB',    icon: BrainCircuit, color: '#B026FF', sim: 'game_04', cat: 'INTEL', desc: '構造化された思考の保存庫' },
+  { id: '09', name: 'KNOWLEDGE',   icon: FileText,     color: '#FF5C93', sim: 'game_09', cat: 'INTEL', desc: '外部脳ナレッジベース' },
   
-  // THOUGHT LAYER (思考層)
-  { id: '04', name: 'AI MEMO',      icon: FileText,        color: '#B026FF', sim: 'agent_core', layer: 'THOUGHT' },
-  { id: '10', name: 'NOVEL STD',    icon: MessageSquare,   color: '#FF00B3', sim: 'cyber_city', layer: 'THOUGHT' },
-  { id: '09', name: 'DAILY LOG',    icon: Calendar,        color: '#FF5C93', sim: 'holo_calendar', layer: 'THOUGHT' },
+  { id: '06', name: 'SYSTEM 3D',   icon: Activity,     color: '#FF0055', sim: 'game_06', cat: 'VISUAL', desc: 'OS稼働状況の3D可視化' },
+  { id: '14', name: 'SWARM FLOW',  icon: Sparkles,     color: '#00D4FF', sim: 'game_14', cat: 'VISUAL', desc: 'データフローの粒子表現' },
+  { id: '15', name: 'TOPOLOGY',    icon: LayoutGrid,   color: '#FF9E00', sim: 'game_15', cat: 'VISUAL', desc: 'ネットワーク構造の歪み' },
   
-  // SENSE LAYER (知覚層)
-  { id: '06', name: 'VISION',       icon: Camera,          color: '#FF0055', sim: 'digital_brain', layer: 'SENSE' },
-  { id: '08', name: 'SOUND',        icon: Mic,             color: '#00D4FF', sim: 'quantum_core', layer: 'SENSE' },
-  { id: '11', name: 'NEXUS SRCH',   icon: Map,             color: '#00D4FF', sim: 'game_12', layer: 'SENSE' },
-
-  // SYSTEM LAYER (システム層)
-  { id: '02', name: 'WIKI INTEL',   icon: BookOpen,        color: '#00FF99', sim: 'content_memory', layer: 'SYSTEM' },
-  { id: '07', name: 'SECURITY',     icon: Shield,          color: '#444444', sim: 'encrypted_tunnel', layer: 'SYSTEM' },
-  { id: '12', name: 'SYS CONFIG',   icon: Settings,        color: '#666666', sim: 'system_monitor', layer: 'SYSTEM' },
-  { id: '13', name: 'G-MAPS',       icon: Map,             color: '#00CC44', sim: 'globe_nexus', layer: 'SYSTEM' },
+  { id: '08', name: 'VOICE SENSE', icon: Mic,          color: '#00FF99', sim: 'game_08', cat: 'SYSTEM', desc: '音声認識と聴覚コア' },
+  { id: '12', name: 'OS CONFIG',   icon: Settings,     color: '#666666', sim: 'game_12', cat: 'SYSTEM', desc: 'システム詳細設定' },
+  { id: '16', name: 'SECURITY',    icon: Shield,       color: '#444444', sim: 'game_16', cat: 'SYSTEM', desc: 'アクセス権限と防壁' },
 ];
+
+const AppListItem = ({ slot, onPress }: { slot: any; onPress: () => void }) => {
+  const Icon = slot.icon;
+  return (
+    <TouchableOpacity activeOpacity={0.7} onPress={onPress} style={styles.listItem}>
+      <LinearGradient colors={[`${slot.color}44`, 'transparent']} start={{x:0, y:0}} end={{x:1, y:0}} style={styles.listGradient}>
+        <View style={[styles.listIconBox, { borderColor: slot.color }]}>
+          <Icon color={slot.color} size={20} />
+        </View>
+        <View style={styles.listTextContent}>
+          <Text style={styles.listName}>{slot.name}</Text>
+          <Text style={styles.listDesc}>{slot.desc}</Text>
+        </View>
+        <ChevronRight color="rgba(255,255,255,0.2)" size={18} />
+      </LinearGradient>
+    </TouchableOpacity>
+  );
+};
+
+const TabButton = ({ label, active, onPress }: { label: string, active: boolean, onPress: () => void }) => (
+  <TouchableOpacity onPress={onPress} style={[styles.tabButton, active && styles.tabButtonActive]}>
+    <Text style={[styles.tabText, active && styles.tabTextActive]}>{label}</Text>
+    {active && <View style={styles.tabIndicator} />}
+  </TouchableOpacity>
+);
+
+export default function App() {
+  const [currentScreen, setCurrentScreen] = useState<string>('home');
+  const [activeCat, setActiveCat] = useState('INTEL');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [fontsLoaded] = useFonts({ Outfit_400Regular, Outfit_700Bold, Outfit_900Black });
+
+  if (!fontsLoaded) return <View style={{ flex: 1, backgroundColor: '#000' }} />;
+
+  if (currentScreen !== 'home') {
+    const slot = SLOTS.find(s => s.id === currentScreen);
+    return (
+      <View style={{ flex: 1, backgroundColor: '#000' }}>
+        <TouchableOpacity style={styles.backButton} onPress={() => setCurrentScreen('home')}>
+          <BlurView intensity={80} tint="dark" style={styles.backBlur}>
+            <Text style={styles.backText}>← {slot?.name} / EXIT</Text>
+          </BlurView>
+        </TouchableOpacity>
+        {Platform.OS === 'web' ? (
+          <iframe src={`${BASE}/sims/${slot?.sim}.html`} style={styles.fullSim} allow="camera; microphone" />
+        ) : <View style={styles.webOnly}><Text style={{color:'#FFF'}}>Web Only</Text></View>}
+      </View>
+    );
+  }
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="light-content" />
+      <View style={styles.header}>
+        <View>
+          <Text style={styles.headerTitle}>QUMI INTEGRATED OS</Text>
+          <Text style={styles.headerSub}>STATUS: SYSTEM NOMINAL</Text>
+        </View>
+        <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.soulOrb}>
+          <LinearGradient colors={['#A020F0', '#00D4FF']} style={styles.orbGradient}>
+            <Sparkles color="#FFF" size={20} />
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.tabBar}>
+        <TabButton label="INTEL" active={activeCat === 'INTEL'} onPress={() => setActiveCat('INTEL')} />
+        <TabButton label="VISUAL" active={activeCat === 'VISUAL'} onPress={() => setActiveCat('VISUAL')} />
+        <TabButton label="SYSTEM" active={activeCat === 'SYSTEM'} onPress={() => setActiveCat('SYSTEM')} />
+      </View>
+
+      <ScrollView contentContainerStyle={styles.content}>
+        {SLOTS.filter(s => s.cat === activeCat).map((slot) => (
+          <AppListItem key={slot.id} slot={slot} onPress={() => setCurrentScreen(slot.id)} />
+        ))}
+      </ScrollView>
+
+      {/* Thought Modal (Simplified) */}
+      <Modal visible={modalVisible} transparent animationType="slide">
+        <ThoughtModal onClose={() => setModalVisible(false)} />
+      </Modal>
+    </SafeAreaView>
+  );
+}
+
+// --- Styles and ThoughtModal remain similar but cleaned up for brevity ---
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#050505' },
+  header: { flexDirection: 'row', justifyContent: 'space-between', padding: 24, paddingTop: 40, alignItems: 'center' },
+  headerTitle: { color: '#FFF', fontSize: 16, fontFamily: 'Outfit_900Black', letterSpacing: 2 },
+  headerSub: { color: '#00F0FF', fontSize: 10, opacity: 0.7, marginTop: 4, letterSpacing: 1 },
+  soulOrb: { width: 44, height: 44, borderRadius: 22, overflow: 'hidden' },
+  orbGradient: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  
+  tabBar: { flexDirection: 'row', paddingHorizontal: 20, marginBottom: 10, borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.05)' },
+  tabButton: { paddingVertical: 12, paddingHorizontal: 16, marginRight: 10, alignItems: 'center' },
+  tabButtonActive: { },
+  tabText: { color: '#666', fontSize: 12, fontFamily: 'Outfit_700Bold', letterSpacing: 1 },
+  tabTextActive: { color: '#FFF' },
+  tabIndicator: { position: 'absolute', bottom: 0, width: '100%', height: 2, backgroundColor: '#00F0FF' },
+  
+  content: { padding: 20 },
+  listItem: { marginBottom: 12, borderRadius: 16, overflow: 'hidden', backgroundColor: 'rgba(255,255,255,0.02)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.05)' },
+  listGradient: { flexDirection: 'row', alignItems: 'center', padding: 16 },
+  listIconBox: { width: 40, height: 40, borderRadius: 12, borderWidth: 1, justifyContent: 'center', alignItems: 'center', marginRight: 16 },
+  listTextContent: { flex: 1 },
+  listName: { color: '#FFF', fontSize: 14, fontFamily: 'Outfit_700Bold', letterSpacing: 1 },
+  listDesc: { color: '#AAA', fontSize: 10, marginTop: 2 },
+  
+  backButton: { position: 'absolute', top: 40, left: 20, zIndex: 100 },
+  backBlur: { paddingHorizontal: 16, paddingVertical: 10, borderRadius: 20, backgroundColor: 'rgba(0,0,0,0.6)' },
+  backText: { color: '#FFF', fontSize: 12, fontWeight: 'bold' },
+  fullSim: { flex: 1, border: 'none' },
+  webOnly: { flex: 1, justifyContent: 'center', alignItems: 'center' }
+});
+
+const ThoughtModal = ({ onClose }: { onClose: () => void }) => {
+  const [thought, setThought] = useState('');
+  const [loading, setLoading] = useState(false);
+  return (
+    <BlurView intensity={100} tint="dark" style={{ flex: 1, padding: 30, justifyContent: 'center' }}>
+      <View style={{ backgroundColor: '#111', padding: 24, borderRadius: 24, borderWidth: 1, borderColor: '#333' }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
+          <Text style={{ color: '#00F0FF', fontSize: 14, fontWeight: 'bold' }}>THOUGHT DELEGATION</Text>
+          <TouchableOpacity onPress={onClose}><X color="#FFF" /></TouchableOpacity>
+        </View>
+        <TextInput 
+          style={{ color: '#FFF', backgroundColor: '#000', padding: 20, borderRadius: 16, height: 150, textAlignVertical: 'top' }}
+          placeholder="思考を入力..." placeholderTextColor="#444" multiline value={thought} onChangeText={setThought}
+        />
+        <TouchableOpacity style={{ backgroundColor: '#A020F0', padding: 18, borderRadius: 16, marginTop: 20, alignItems: 'center' }}>
+          <Text style={{ color: '#FFF', fontWeight: 'bold' }}>DELEGATE</Text>
+        </TouchableOpacity>
+      </View>
+    </BlurView>
+  );
+};
 
 const AppIcon = ({ slot, index, onPress }: { slot: any; index: number; onPress: () => void }) => {
   const Icon = slot.icon;
@@ -102,7 +230,7 @@ const SlotCluster = ({ title, layer, onOpenApp }: { title: string, layer: string
   );
 };
 
-const DraggableCore = () => {
+const DraggableCore = ({ onPress }: { onPress: () => void }) => {
   const pan = useRef(new RNAnimated.ValueXY({ x: 0, y: height / 2.5 })).current;
   const panResponder = useRef(
     PanResponder.create({
@@ -111,6 +239,9 @@ const DraggableCore = () => {
       onPanResponderMove: RNAnimated.event([null, { dx: pan.x, dy: pan.y }], { useNativeDriver: false }),
       onPanResponderRelease: (_, gs) => {
         pan.flattenOffset();
+        if (Math.abs(gs.dx) < 5 && Math.abs(gs.dy) < 5) {
+          onPress();
+        }
         RNAnimated.spring(pan, { toValue: { x: gs.moveX > width / 2 ? width / 2 - 40 : -width / 2 + 40, y: (pan.y as any)._value + gs.vy * 50 }, friction: 6, tension: 40, useNativeDriver: false }).start();
       }
     })
@@ -127,6 +258,73 @@ const DraggableCore = () => {
         <View style={styles.coreGlow} />
       </View>
     </RNAnimated.View>
+  );
+};
+
+const ThoughtModal = ({ visible, onClose }: { visible: boolean, onClose: () => void }) => {
+  const [thought, setThought] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<any>(null);
+
+  const handleDelegate = async () => {
+    if (!thought) return;
+    setLoading(true);
+    try {
+      const response = await fetch(`${API_BASE}/delegate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ thought })
+      });
+      const data = await response.json();
+      setResult(data.result);
+    } catch (error) {
+      console.error(error);
+      alert('Error connecting to Qumi Backend');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Modal visible={visible} transparent animationType="fade">
+      <BlurView intensity={90} tint="dark" style={styles.modalOverlay}>
+        <SafeAreaView style={styles.modalContent}>
+          <View style={styles.modalHeader}>
+            <Text style={styles.modalTitle}>THOUGHT CAPTURE</Text>
+            <TouchableOpacity onPress={onClose}><X color="#FFF" size={24} /></TouchableOpacity>
+          </View>
+          
+          {!result ? (
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.textInput}
+                placeholder="魂のフワッとしたアイディアを入力..."
+                placeholderTextColor="rgba(255,255,255,0.4)"
+                value={thought}
+                onChangeText={setThought}
+                multiline
+              />
+              <TouchableOpacity 
+                style={[styles.sendButton, !thought && { opacity: 0.5 }]} 
+                onPress={handleDelegate}
+                disabled={loading || !thought}
+              >
+                {loading ? <ActivityIndicator color="#FFF" /> : <Send color="#FFF" size={20} />}
+                <Text style={styles.sendButtonText}>{loading ? 'DELEGATING...' : 'DELEGATE TO AGENT'}</Text>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <ScrollView style={styles.resultContainer}>
+              <Text style={styles.resultTitle}>// DELEGATION COMPLETE</Text>
+              <Text style={styles.resultJson}>{JSON.stringify(result, null, 2)}</Text>
+              <TouchableOpacity style={styles.resetButton} onPress={() => {setResult(null); setThought('');}}>
+                <Text style={styles.resetButtonText}>NEW THOUGHT</Text>
+              </TouchableOpacity>
+            </ScrollView>
+          )}
+        </SafeAreaView>
+      </BlurView>
+    </Modal>
   );
 };
 
@@ -156,6 +354,7 @@ const SimViewer = ({ simName, onBack }: { simName: string; onBack: () => void })
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<string>('home');
+  const [modalVisible, setModalVisible] = useState(false);
   const [fontsLoaded] = useFonts({ Outfit_400Regular, Outfit_700Bold, Outfit_900Black });
   
   const orb1X = useSharedValue(0);
@@ -216,7 +415,8 @@ export default function App() {
         </View>
       </ScrollView>
 
-      <DraggableCore />
+      <DraggableCore onPress={() => setModalVisible(true)} />
+      <ThoughtModal visible={modalVisible} onClose={() => setModalVisible(false)} />
     </SafeAreaView>
   );
 }
@@ -253,6 +453,20 @@ const styles = StyleSheet.create({
   
   floatingCore: { width: 70, height: 70, borderRadius: 35, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: 'rgba(0, 212, 255, 0.4)' },
   coreGradient: { ...StyleSheet.absoluteFillObject, justifyContent: 'center', alignItems: 'center', opacity: 0.9 },
-  coreGlow: { position: 'absolute', top: -15, left: -15, right: -15, bottom: -15, borderRadius: 50, backgroundColor: '#A020F0', opacity: 0.4, filter: 'blur(15px)' as any, zIndex: -1 }
+  coreGlow: { position: 'absolute', top: -15, left: -15, right: -15, bottom: -15, borderRadius: 50, backgroundColor: '#A020F0', opacity: 0.4, filter: 'blur(15px)' as any, zIndex: -1 },
+
+  modalOverlay: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  modalContent: { width: width > 600 ? 500 : '90%', maxHeight: '80%', backgroundColor: 'rgba(15, 23, 42, 0.8)', borderRadius: 32, padding: 24, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
+  modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 },
+  modalTitle: { color: '#00D4FF', fontSize: 14, fontFamily: 'Outfit_900Black', letterSpacing: 3 },
+  inputContainer: { width: '100%' },
+  textInput: { color: '#FFF', fontSize: 16, fontFamily: 'Outfit_400Regular', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 16, padding: 20, minHeight: 150, textAlignVertical: 'top', marginBottom: 20 },
+  sendButton: { backgroundColor: '#A020F0', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 18, borderRadius: 16 },
+  sendButtonText: { color: '#FFF', fontSize: 13, fontFamily: 'Outfit_700Bold', marginLeft: 10, letterSpacing: 1 },
+  resultContainer: { width: '100%' },
+  resultTitle: { color: '#00FF99', fontSize: 12, fontFamily: 'Outfit_900Black', marginBottom: 12 },
+  resultJson: { color: '#00FF99', fontSize: 12, fontFamily: 'monospace', backgroundColor: 'rgba(0,0,0,0.3)', padding: 16, borderRadius: 12 },
+  resetButton: { marginTop: 20, padding: 16, alignItems: 'center', borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.1)' },
+  resetButtonText: { color: '#AAA', fontSize: 11, fontFamily: 'Outfit_700Bold', letterSpacing: 2 }
 });
 

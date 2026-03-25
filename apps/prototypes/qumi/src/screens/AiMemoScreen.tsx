@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   StyleSheet, Text, View, TextInput, TouchableOpacity,
   ScrollView, KeyboardAvoidingView, Platform, Dimensions,
-  Keyboard, TouchableWithoutFeedback
+  Keyboard, TouchableWithoutFeedback, Linking
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Sparkles, Mic, Send, BrainCircuit, Zap } from 'lucide-react-native';
+import { Sparkles, Send, BrainCircuit, Zap } from 'lucide-react-native';
 import Animated, { 
   FadeInDown, FadeInUp, useSharedValue, useAnimatedStyle, 
   withSpring, withRepeat, withTiming, Easing 
@@ -79,7 +79,7 @@ export default function AiMemoScreen() {
     const newMemo = { id: Date.now().toString(), text: userInput, type: 'user' as const };
     setMemos(prev => [...prev, newMemo]);
     setInputText('');
-    syncRate.value = 100; // 送信時に最大フラッシュ
+    syncRate.value = 100;
     
     const aiMessageId = (Date.now()+1).toString();
     setMemos(prev => [...prev, { id: aiMessageId, text: '🧠 思考のベクトルを解析中...\n外部脳（Soul API）が情報を拡張しています。', type: 'ai' }]);
@@ -91,7 +91,6 @@ export default function AiMemoScreen() {
         body: JSON.stringify({ thought: userInput })
       });
       const data = await response.json();
-      
       const resultText = data.result ? (typeof data.result === 'string' ? data.result : JSON.stringify(data.result, null, 2)) : '解析エラー';
       setMemos(prev => prev.map(m => m.id === aiMessageId ? { ...m, text: resultText } : m));
     } catch (e: any) {
@@ -101,10 +100,14 @@ export default function AiMemoScreen() {
     }
   };
 
+  const openGithubPortal = () => {
+    const url = 'https://github.com/b221393/my-syukatu-app/blob/main/logs/STRATEGIC_INTEL_LOG.md';
+    Linking.openURL(url);
+  };
+
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.container}>
       
-      {/* 🔮 シンクロ率で脈動する背景 */}
       <Animated.View style={[styles.bgGlow1, glowStyle]} />
       <View style={styles.bgGlow2} />
       <BlurView intensity={Platform.OS === 'ios' ? 70 : 100} tint="dark" style={StyleSheet.absoluteFillObject} />
@@ -117,18 +120,7 @@ export default function AiMemoScreen() {
               <BrainCircuit color="#00D4FF" size={24} />
               <Text style={styles.title}>AI MEMO</Text>
             </View>
-            <TouchableOpacity 
-              onPress={() => {
-                const url = 'https://github.com/b221393/my-syukatu-app/blob/main/logs/STRATEGIC_INTEL_LOG.md';
-                if (Platform.OS === 'web') {
-                  window.open(url, '_blank');
-                } else {
-                  // Actually, we'd use Linking.openURL if we were on mobile
-                  import('react-native').then(({ Linking }) => Linking.openURL(url));
-                }
-              }}
-              style={styles.githubPortal}
-            >
+            <TouchableOpacity onPress={openGithubPortal} style={styles.githubPortal}>
               <BlurView intensity={20} tint="light" style={styles.portalBlur}>
                 <Sparkles color="#00FF99" size={14} />
                 <Text style={styles.portalText}>GITHUB PORTAL</Text>
@@ -141,6 +133,22 @@ export default function AiMemoScreen() {
           </Animated.View>
 
           <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+            {/* 📜 AI Remodeling Chronicle Insight */}
+            <Animated.View entering={FadeInDown.delay(200).springify()}>
+              <BlurView intensity={30} tint="light" style={styles.chronicleCard}>
+                <View style={styles.chronicleHeader}>
+                  <Sparkles color="#00FF99" size={16} />
+                  <Text style={styles.chronicleLabel}>LATEST CHRONICLE: VOL.01</Text>
+                </View>
+                <Text style={styles.chronicleText}>AIインフラによる「覚えるコスト」の削減。人間は「問いを立てる」ことに特化し始める。</Text>
+                <TouchableOpacity style={styles.readMoreBtn} onPress={() => {
+                   Linking.openURL('https://github.com/b221393/my-syukatu-app/blob/main/apps/prototypes/qumi/docs/remodeling/vol_01_external_brain.md');
+                }}>
+                  <Text style={styles.readMoreText}>READ FULL ANALYSIS</Text>
+                </TouchableOpacity>
+              </BlurView>
+            </Animated.View>
+
             {memos.map((memo, index) => (
               <Animated.View 
                 key={memo.id} 
@@ -183,8 +191,8 @@ export default function AiMemoScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#000' },
   
-  bgGlow1: { position: 'absolute', top: '-10%', left: '-20%', width: width*0.8, height: width*0.8, borderRadius: width, backgroundColor: '#4B0082', opacity: 0.5, filter: 'blur(100px)' as any },
-  bgGlow2: { position: 'absolute', bottom: '10%', right: '-20%', width: width*0.7, height: width*0.7, borderRadius: width, backgroundColor: '#00BFFF', opacity: 0.4, filter: 'blur(100px)' as any },
+  bgGlow1: { position: 'absolute', top: '-10%', left: '-20%', width: width*0.8, height: width*0.8, borderRadius: width, backgroundColor: '#4B0082', opacity: 0.5 },
+  bgGlow2: { position: 'absolute', bottom: '10%', right: '-20%', width: width*0.7, height: width*0.7, borderRadius: width, backgroundColor: '#00BFFF', opacity: 0.4 },
   
   inner: { flex: 1, paddingTop: Platform.OS === 'web' ? 60 : 80 },
 
@@ -198,6 +206,13 @@ const styles = StyleSheet.create({
   syncLabel: { color: '#666', fontSize: 10, fontWeight: '900', letterSpacing: 1 },
   syncValue: { color: '#00D4FF', fontSize: 10, fontWeight: '900', marginLeft: 6 },
 
+  chronicleCard: { marginVertical: 20, padding: 16, borderRadius: 20, borderWidth: 1, borderColor: 'rgba(0, 255, 153, 0.2)', backgroundColor: 'rgba(0, 0, 0, 0.3)' },
+  chronicleHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
+  chronicleLabel: { color: '#00FF99', fontSize: 10, fontWeight: '900', marginLeft: 8, letterSpacing: 1 },
+  chronicleText: { color: '#CCC', fontSize: 13, lineHeight: 18 },
+  readMoreBtn: { marginTop: 12, alignSelf: 'flex-start' },
+  readMoreText: { color: '#00D4FF', fontSize: 10, fontWeight: '900', letterSpacing: 1 },
+
   scrollContent: { paddingHorizontal: 20, paddingBottom: 150 },
 
   messageWrapper: { flexDirection: 'row', alignItems: 'flex-end', marginBottom: 20 },
@@ -210,55 +225,13 @@ const styles = StyleSheet.create({
   messageUser: { backgroundColor: 'rgba(255, 255, 255, 0.1)', borderBottomRightRadius: 4, borderWidth: 1, borderColor: 'rgba(255,255,255,0.05)' },
   messageAi: { backgroundColor: 'rgba(10, 10, 20, 0.7)', borderBottomLeftRadius: 4, borderWidth: 1, borderColor: 'rgba(160, 32, 240, 0.2)' },
   
-  messageText: { color: '#E0E0E0', fontSize: 14, lineHeight: 22, fontFamily: 'Outfit_400Regular' },
+  messageText: { color: '#E0E0E0', fontSize: 14, lineHeight: 22 },
 
   inputContainer: { position: 'absolute', bottom: Platform.OS === 'ios' ? 40 : 20, left: 16, right: 16 },
   inputBlur: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 12, borderRadius: 32, backgroundColor: 'rgba(30,30,30,0.5)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
   
-  textInput: { flex: 1, color: '#FFF', fontSize: 15, marginRight: 12, maxHeight: 120, fontFamily: 'Outfit_400Regular' },
+  textInput: { flex: 1, color: '#FFF', fontSize: 15, marginRight: 12, maxHeight: 120 },
 
-  siriGlow: { position: 'absolute', top: -4, left: -4, right: -4, bottom: -4, borderRadius: 24, backgroundColor: '#00D4FF', filter: 'blur(8px)' as any },
+  siriGlow: { position: 'absolute', top: -4, left: -4, right: -4, bottom: -4, borderRadius: 24, backgroundColor: '#00D4FF' },
   sendButton: { width: 44, height: 44, borderRadius: 22, justifyContent: 'center', alignItems: 'center', shadowColor: '#A020F0', shadowOpacity: 0.5, shadowRadius: 10 }
-});
-
-
-const BrainIcon = (props: any) => <Sparkles {...props} />; // 一時的にSparklesをBrain代わりに
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#000' },
-  
-  // 背景オーブ
-  bgGlow1: { position: 'absolute', top: '-10%', left: '-20%', width: width*0.8, height: width*0.8, borderRadius: width, backgroundColor: '#4B0082', opacity: 0.5, filter: 'blur(100px)' as any },
-  bgGlow2: { position: 'absolute', bottom: '10%', right: '-20%', width: width*0.7, height: width*0.7, borderRadius: width, backgroundColor: '#00BFFF', opacity: 0.4, filter: 'blur(100px)' as any },
-  
-  inner: { flex: 1, paddingTop: Platform.OS === 'web' ? 80 : 100 },
-
-  header: { alignItems: 'center', marginBottom: 24 },
-  title: { color: '#FFF', fontSize: 28, fontWeight: '800', fontFamily: 'Outfit_900Black', letterSpacing: 2 },
-  subtitle: { color: '#888', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 4, letterSpacing: 1 },
-
-  scrollContent: { paddingHorizontal: 20, paddingBottom: 120 },
-
-  messageWrapper: { flexDirection: 'row', alignItems: 'flex-end', marginBottom: 20 },
-  messageUserWrapper: { justifyContent: 'flex-end' },
-  messageAiWrapper: { justifyContent: 'flex-start' },
-
-  aiAvatar: { width: 30, height: 30, borderRadius: 15, justifyContent: 'center', alignItems: 'center', marginRight: 10, shadowColor: '#A020F0', shadowOpacity: 0.8, shadowRadius: 10, shadowOffset: { width:0, height:0 } },
-
-  messageBubble: { maxWidth: '75%', paddingHorizontal: 18, paddingVertical: 14, borderRadius: 24, overflow: 'hidden' },
-  messageUser: { backgroundColor: 'rgba(255, 255, 255, 0.15)', borderBottomRightRadius: 6, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
-  messageAi: { backgroundColor: 'rgba(10, 10, 20, 0.8)', borderBottomLeftRadius: 6, borderWidth: 1, borderColor: 'rgba(160, 32, 240, 0.3)' },
-  
-  aiGlowEffect: { position: 'absolute', top: -10, left: -10, right: -10, bottom: -10, backgroundColor: 'rgba(0, 212, 255, 0.05)' },
-  
-  messageText: { color: '#E0E0E0', fontSize: 15, lineHeight: 22, fontFamily: 'Outfit_400Regular' },
-
-  inputContainer: { position: 'absolute', bottom: Platform.OS === 'ios' ? 30 : 20, left: 16, right: 16 },
-  inputBlur: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 12, borderRadius: 30, backgroundColor: 'rgba(30,30,30,0.4)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
-  
-  iconButton: { padding: 8 },
-  textInput: { flex: 1, color: '#FFF', fontSize: 15, marginHorizontal: 8, maxHeight: 100, fontFamily: 'Outfit_400Regular' },
-
-  siriGlow: { position: 'absolute', top: -4, left: -4, right: -4, bottom: -4, borderRadius: 24, backgroundColor: '#00D4FF', filter: 'blur(8px)' as any },
-  sendButton: { width: 44, height: 44, borderRadius: 22, justifyContent: 'center', alignItems: 'center', shadowColor: '#A020F0', shadowOpacity: 0.5, shadowRadius: 10, shadowOffset: { width:0, height:0 } }
 });

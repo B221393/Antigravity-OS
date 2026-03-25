@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PULSE DYNAMICS | App #5</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; font-family: 'Outfit', sans-serif; }
+        #ui { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100; text-align: center; pointer-events: none; }
+        h1 { font-size: 2rem; letter-spacing: 15px; color: #f43f5e; margin: 0; text-shadow: 0 0 20px #f43f5e; opacity: 0.8; }
+        p { font-size: 0.8rem; color: #fff; opacity: 0.3; margin-top: 20px; letter-spacing: 2px; }
+        .pulse-text { font-family: monospace; color: #f43f5e; font-size: 1.2rem; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <h1>STAY AWAKE</h1>
+        <div class="pulse-text" id="bpm">BPM: 60</div>
+        <p>INTEGRATED THINKING OS / HEARTBEAT_SYNC</p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, core, rings = [];
+        let time = 0;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 100;
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.body.appendChild(renderer.domElement);
+
+            // Core - The Heart
+            const geo = new THREE.IcosahedronGeometry(15, 2);
+            const mat = new THREE.MeshBasicMaterial({ color: 0xf43f5e, wireframe: true, transparent: true, opacity: 0.8 });
+            core = new THREE.Mesh(geo, mat);
+            scene.add(core);
+
+            // Rings
+            for (let i = 0; i < 3; i++) {
+                const ringGeo = new THREE.TorusGeometry(30 + i * 15, 0.2, 16, 100);
+                const ringMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1 });
+                const ring = new THREE.Mesh(ringGeo, ringMat);
+                ring.rotation.x = Math.random() * Math.PI;
+                ring.rotation.y = Math.random() * Math.PI;
+                scene.add(ring);
+                rings.push(ring);
+            }
+
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.05;
+
+            // Heartbeat Pulse
+            const pulse = 1 + Math.sin(time * 2) * 0.1 + (Math.sin(time * 8) > 0.9 ? 0.2 : 0);
+            core.scale.set(pulse, pulse, pulse);
+            core.rotation.y += 0.01;
+            core.rotation.x += 0.005;
+
+            rings.forEach((ring, i) => {
+                ring.rotation.z += 0.005 * (i + 1);
+                ring.rotation.x += 0.002;
+                ring.scale.set(1 + Math.sin(time + i) * 0.05, 1 + Math.sin(time + i) * 0.05, 1);
+            });
+
+            document.getElementById('bpm').textContent = `BPM: ${Math.floor(60 + Math.sin(time) * 5)}`;
+
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Nexus Override | Mobile</title>
+<style>
+  body, html { margin: 0; padding: 0; overflow: hidden; background: #050a05; color: #0f0; font-family: monospace; touch-action: manipulation; }
+  #ui { position: absolute; top: 15px; left: 15px; z-index: 20; pointer-events: none; }
+  h1 { margin: 0; font-size: 1rem; }
+  #progress { font-size: 1.5rem; font-weight: bold; }
+  .node { 
+    position: absolute; width: 60px; height: 60px; border: 2px solid #0f0; 
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+    background: rgba(0,40,0,0.8); z-index: 10; font-size: 0.8rem;
+  }
+  .node.active { background: #0f0; color: #000; box-shadow: 0 0 15px #0f0; }
+  svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  line { stroke: #0f0; stroke-width: 2; opacity: 0.8; }
+</style>
+</head>
+<body>
+<div id="ui"><h1>NEXUS OVERRIDE</h1><div id="progress">0%</div></div>
+<svg id="svg"></svg>
+<div id="nodes"></div>
+<script>
+  const container = document.getElementById('nodes');
+  const svg = document.getElementById('svg');
+  const progressText = document.getElementById('progress');
+  let nodes = [], activeCount = 0;
+  const total = 8;
+
+  for(let i=0; i<total; i++) {
+    const x = Math.random() * (window.innerWidth - 80) + 40;
+    const y = Math.random() * (window.innerHeight - 150) + 100;
+    const el = document.createElement('div');
+    el.className = 'node';
+    el.style.left = (x-30) + 'px';
+    el.style.top = (y-30) + 'px';
+    el.innerText = i.toString(16).toUpperCase();
+    el.addEventListener('touchstart', (e) => { e.preventDefault(); activate(i); });
+    el.addEventListener('mousedown', () => activate(i));
+    container.appendChild(el);
+    nodes.push({ x, y, el, active: false });
+  }
+
+  function activate(idx) {
+    if(nodes[idx].active) return;
+    nodes[idx].active = true;
+    nodes[idx].el.classList.add('active');
+    activeCount++;
+    
+    nodes.forEach((n, i) => {
+      if(n.active && i !== idx) {
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", n.x); line.setAttribute("y1", n.y);
+        line.setAttribute("x2", nodes[idx].x); line.setAttribute("y2", nodes[idx].y);
+        svg.appendChild(line);
+      }
+    });
+    const p = Math.floor((activeCount/total)*100);
+    progressText.innerText = p + '%';
+    if(p === 100) progressText.innerText = 'ACCESS GRANTED';
+  }
+</script>
+</body>
+</html>

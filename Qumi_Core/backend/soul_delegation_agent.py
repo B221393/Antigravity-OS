@@ -5,18 +5,12 @@ from browser_use import Agent
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv; load_dotenv() # .envファイルからの読み込み
 
-async def main():
-    print("="*60)
-    print(" [ 統合思考OS ] - EXTERNAL BRAIN DELEGATION ENGINE (CLI Layer)")
-    print("="*60)
-    
-    # ユーザーの思考（魂）をそのまま入力させる
-    soul_input = input("\n[あなた] 思考（魂のフワッとしたアイディア）を入力: ")
-    
-    print("\n[SYSTEM] n8nの視覚的パイプラインをスキップし、LLMに直接・自律行動を委譲します...")
-    print("[SYSTEM] ブラウザ自動操作エージェントを起動中 (browser-use)...\n")
+async def run_soul_agent(soul_input: str):
+    """
+    ユーザーの抽象的な思考（魂）をブラウザ操作エージェントで構造化（JSON化）する。
+    """
+    print(f"\n[SYSTEM] Soul Agent processing input: '{soul_input}'")
 
-    # 抽象度のレイヤーが変わった証拠：ノードを繋ぐのではなく、プロンプトで「目的」だけを渡す
     task_description = (
         f"ユーザーの以下の抽象的な思考（魂）を処理してください。\n"
         f"思考: '{soul_input}'\n\n"
@@ -33,18 +27,24 @@ async def main():
         llm=llm
     )
     
-    # ここでエージェントが自動でブラウザを開き、検索し、勝手にJSONに構造化してくれる
+    # エージェント実行
     result = await agent.run()
+    return result
+
+async def main():
+    print("="*60)
+    print(" [ 統合思考OS ] - EXTERNAL BRAIN DELEGATION ENGINE (CLI Layer)")
+    print("="*60)
+    
+    soul_input = input("\n[あなた] 思考（魂のフワッとしたアイディア）を入力: ")
+    result = await run_soul_agent(soul_input)
     
     print("\n" + "="*60)
     print(" 【魂の構造化完了（JSON）】")
     print("="*60)
     print(result)
-    print("\n>> 【気づき】: 視覚的なブロック（n8n）ではなく、CLIを通じて『目的』だけを委譲しました。")
-    print(">> 解決している問題（自身の思考を構造化して拡張する）のコアは、全く同じです。")
 
 if __name__ == "__main__":
-    # Windowsのasyncioのエラー対策
     if os.name == 'nt':
         asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
     asyncio.run(main())

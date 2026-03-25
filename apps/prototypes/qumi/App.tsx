@@ -3,13 +3,14 @@ import {
   StyleSheet, Text, View, TouchableOpacity, SafeAreaView,
   StatusBar, Dimensions, ScrollView, Platform
 } from 'react-native';
-import { 
-  BrainCircuit, Gamepad2, GraduationCap, FileText, 
-  MessageSquare, Camera, Shield, Mic, Calendar, 
-  Zap, Map, Settings, Sparkles, BookOpen
+import {
+  BrainCircuit, Gamepad2, GraduationCap, FileText,
+  MessageSquare, Camera, Shield, Mic, Calendar,
+  Zap, Map, Settings, Sparkles, BookOpen, Database
 } from 'lucide-react-native';
 
 import AiMemoScreen from './src/screens/AiMemoScreen';
+import IdeaBankScreen from './src/screens/IdeaBankScreen';
 import EducationScreen from './src/screens/EducationScreen';
 import VectorBrainScreen from './src/screens/VectorBrainScreen';
 import CyberGameScreen from './src/screens/CyberGameScreen';
@@ -30,18 +31,19 @@ import { Animated as RNAnimated, PanResponder } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
-// 12 Core OS Slots (Layer Categorized)
+// 13 Core OS Slots
 const SLOTS = [
   // INTEL LAYER (知能層)
   { id: '01', name: 'VECTOR CORE',  icon: BrainCircuit,   color: '#00F0FF', layer: 'INTEL', available: true },
+  { id: '13', name: 'IDEA BANK',    icon: Database,       color: '#00D4FF', layer: 'INTEL', available: true },
   { id: '05', name: 'LOCAL LLM',    icon: Zap,             color: '#FF9E00', layer: 'INTEL', available: true },
   { id: '03', name: 'TUTOR AI',     icon: GraduationCap,   color: '#00FF99', layer: 'INTEL', available: true },
-  
+
   // THOUGHT LAYER (思考層)
   { id: '04', name: 'AI MEMO',      icon: FileText,        color: '#B026FF', layer: 'THOUGHT', available: true },
   { id: '10', name: 'NOVEL STD',    icon: MessageSquare,   color: '#FF00B3', layer: 'THOUGHT', available: true },
   { id: '09', name: 'DAILY LOG',    icon: Calendar,        color: '#FF5C93', layer: 'THOUGHT', available: true },
-  
+
   // SENSE LAYER (知覚層)
   { id: '06', name: 'VISION',       icon: Camera,          color: '#FF0055', layer: 'SENSE', available: true },
   { id: '08', name: 'SOUND',        icon: Mic,             color: '#00D4FF', layer: 'SENSE', available: true },

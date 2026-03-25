@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soul Hub Log | App #04</title>
+<style>
+  body { margin: 0; background: #050505; color: #b026ff; font-family: 'monospace'; padding: 20px; }
+  .header { border-bottom: 1px solid #b026ff; padding-bottom: 10px; margin-bottom: 20px; }
+  h1 { font-size: 1.2rem; margin: 0; letter-spacing: 2px; }
+  .entry { border-left: 2px solid #b026ff; padding-left: 15px; margin-bottom: 25px; }
+  .timestamp { font-size: 0.7rem; opacity: 0.5; margin-bottom: 5px; }
+  .thought { color: #fff; font-size: 0.9rem; margin-bottom: 10px; }
+  .json-view { background: rgba(176, 38, 255, 0.1); padding: 10px; border-radius: 4px; font-size: 0.7rem; color: #d1a3ff; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>SOUL_HUB_HISTORY</h1>
+  </div>
+
+  <div id="history">
+    <div class="entry">
+      <div class="timestamp">2026-03-25 16:45:12</div>
+      <div class="thought">"システムをより使いやすく、ジャンル分けして実用的にしたい"</div>
+      <div class="json-view">
+{
+  "title": "OS UI Refactoring",
+  "core_philosophy": "Categorical Organization",
+  "actionable_insights": ["Tab navigation", "Functional apps", "Data synchronization"]
+}
+      </div>
+    </div>
+    
+    <div class="entry" style="opacity: 0.6;">
+      <div class="timestamp">2026-03-25 15:20:05</div>
+      <div class="thought">"スマホで全然使えない。回転するだけで中身がない"</div>
+      <div class="json-view">
+{
+  "title": "Mobile Optimization Crisis",
+  "core_philosophy": "User Accessibility",
+  "actionable_insights": ["Lightweight assets", "Touch support", "Functional value"]
+}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    console.log("Soul Hub History initialized.");
+  </script>
+</body>
+</html>
