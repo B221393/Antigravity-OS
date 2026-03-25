@@ -1,0 +1,112 @@
+// Copyright 2022-2026 The Jujutsu Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::io;
+use std::path::Path;
+use std::sync::Mutex;
+use std::time::Duration;
+use std::time::Instant;
+
+use crossterm::terminal::Clear;
+use crossterm::terminal::ClearType;
+use jj_lib::repo_path::RepoPath;
+
+use crate::text_util;
+use crate::ui::OutputGuard;
+use crate::ui::ProgressOutput;
+use crate::ui::Ui;
+
+pub const UPDATE_HZ: u32 = 30;
+pub const INITIAL_DELAY: Duration = Duration::from_millis(250);
+
+pub struct ProgressWriter<'a> {
+    prefix: &'a str,
+    guard: Option<OutputGuard>,
+    output: ProgressOutput<io::Stderr>,
+    next_display_time: Instant,
+}
+
+// Future work: Make that the progress prints the current element we are
+// currently working on, either:
+// - upon change of the element we are working on and if the next display time
+//   is passed (current behavior)
+// - upon reaching the next display time for an element that would have not been
+//   displayed yet. This
+// would assure two things:
+// - The first message will end-up being displayed if it takes more than the
+//   initial delay to process the associated element. Assuring jj never goes
+//   silent for more than the specified initial delay.
+// - For the other elements, what we print is more factual regarding what we are
+//   doing. Without printing too much.
+//
+// Note that the first message printing by itself, would not be suitable for the
+// commit signing progress as, on some configuration the user is prompted to
+// enter its password to unlock the key used to sign, then the message would be
+// conflicting with that message from another process.
+
+impl<'a> ProgressWriter<'a> {
+    pub fn new(ui: &Ui, prefix: &'a str) -> Option<Self> {
+        let output = ui.progress_output()?;
+
+        // Don't clutter the output during fast operations.
+        let next_display_time = Instant::now() + INITIAL_DELAY;
+        Some(Self {
+            prefix,
+            guard: None,
+            output,
+            next_display_time,
+        })
+    }
+
+    pub fn display(&mut self, text: &str) -> io::Result<()> {
+        let now = Instant::now();
+        if now < self.next_display_time {
+            return Ok(());
+        }
+
+        self.next_display_time = now + Duration::from_secs(1) / UPDATE_HZ;
+
+        if self.guard.is_none() {
+            self.guard = Some(
+                self.output
+                    .output_guard(format!("\r{}", Clear(ClearType::CurrentLine))),
+            );
+        }
+
+        let line_width = self.output.term_width().map(usize::from).unwrap_or(80);
+        let max_path_width = self.prefix.len() + 1; // Take into account the empty space added after the prefix.
+        let (display_text, _) =
+            text_util::elide_start(text, "...", line_width.saturating_sub(max_path_width));
+
+        write!(
+            self.output,
+            "\r{}{} {display_text}",
+            Clear(ClearType::CurrentLine),
+            self.prefix
+        )?;
+        self.output.flush()
+    }
+}
+
+pub fn snapshot_progress(ui: &Ui) -> Option<impl Fn(&RepoPath) + use<>> {
+    let writer = Mutex::new(ProgressWriter::new(ui, "Snapshotting")?);
+
+    Some(move |path: &RepoPath| {
+        writer
+            .lock()
+            .unwrap()
+            .display(path.to_fs_path_unchecked(Path::new("")).to_str().unwrap())
+            .ok();
+    })
+}
