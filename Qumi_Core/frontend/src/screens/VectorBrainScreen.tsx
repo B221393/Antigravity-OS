@@ -4,13 +4,15 @@ import {
   SafeAreaView, StatusBar, ScrollView, Animated as RNAnimated
 } from 'react-native';
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
-import Animated, { FadeIn, FadeInUp, Layout } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeInUp, FadeInDown, Layout } from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
+import ThoughtCapture from '../components/ThoughtCapture';
 
 export default function VectorBrainScreen({ onBack }: { onBack: () => void }) {
   const [query, setQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [results, setResults] = useState<any[]>([]);
+  const [capturedSoul, setCapturedSoul] = useState<any>(null);
 
   // 検索アクション（デモ用）
   const handleSearch = () => {
@@ -58,6 +60,48 @@ export default function VectorBrainScreen({ onBack }: { onBack: () => void }) {
           <Text style={styles.heroTitle}>768D SEMANTIC SEARCH</Text>
           <Text style={styles.heroSubtitle}>あなたの「外部脳」にアクセスします。キーワードが一致しなくても、"意味の近さ" で過去の自分を探し出します。</Text>
         </View>
+
+        {/* 音声思考キャプチャ */}
+        <ThoughtCapture onResult={(res) => {
+          console.log("Captured Soul:", res);
+          setCapturedSoul(res);
+        }} />
+
+        {capturedSoul && (
+          <Animated.View 
+            entering={FadeInDown} 
+            style={styles.capturedSoulCard}
+          >
+            <View style={styles.capturedSoulHeader}>
+              <Ionicons name="sparkles" size={20} color="#fbbf24" />
+              <Text style={styles.capturedSoulTitle}>CAPTURED SOUL STRUCTURE</Text>
+              <TouchableOpacity onPress={() => setCapturedSoul(null)}>
+                <Ionicons name="close" size={20} color="#64748b" />
+              </TouchableOpacity>
+            </View>
+            
+            <View style={styles.capturedSoulContent}>
+              <Text style={styles.soulLabel}>TITLE:</Text>
+              <Text style={styles.soulValue}>{capturedSoul.structured_result.title || capturedSoul.transcription}</Text>
+              
+              <Text style={styles.soulLabel}>CORE PHILOSOPHY:</Text>
+              <Text style={styles.soulValue}>{capturedSoul.structured_result.core_philosophy}</Text>
+              
+              <Text style={styles.soulLabel}>ACTIONABLE INSIGHTS:</Text>
+              {Array.isArray(capturedSoul.structured_result.actionable_insights) ? (
+                capturedSoul.structured_result.actionable_insights.map((insight: string, i: number) => (
+                  <Text key={i} style={styles.soulValue}>• {insight}</Text>
+                ))
+              ) : (
+                <Text style={styles.soulValue}>{capturedSoul.structured_result.actionable_insights}</Text>
+              )}
+            </View>
+            
+            <View style={styles.transcriptionSource}>
+              <Text style={styles.sourceText}>Source: "{capturedSoul.transcription}"</Text>
+            </View>
+          </Animated.View>
+        )}
 
         {/* 検索バー */}
         <Animated.View style={styles.searchBox} entering={FadeInUp.delay(200)}>
@@ -156,4 +200,24 @@ const styles = StyleSheet.create({
   scoreBadge: { backgroundColor: '#1e3a8a', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8, marginLeft: 12 },
   scoreText: { color: '#93c5fd', fontSize: 10, fontWeight: '900', letterSpacing: 1 },
   resultSnippet: { color: '#94a3b8', fontSize: 14, lineHeight: 22 },
+
+  capturedSoulCard: {
+    backgroundColor: 'rgba(30, 41, 59, 0.8)',
+    borderRadius: 24,
+    padding: 24,
+    marginBottom: 40,
+    borderWidth: 1,
+    borderColor: '#fbbf24',
+    shadowColor: '#fbbf24',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 20,
+  },
+  capturedSoulHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 20 },
+  capturedSoulTitle: { color: '#fbbf24', fontSize: 12, fontWeight: '900', letterSpacing: 2, flex: 1, marginLeft: 10 },
+  capturedSoulContent: { gap: 16 },
+  soulLabel: { color: '#64748b', fontSize: 10, fontWeight: 'bold', letterSpacing: 1 },
+  soulValue: { color: '#f8fafc', fontSize: 15, lineHeight: 24 },
+  transcriptionSource: { marginTop: 20, paddingTop: 16, borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.05)' },
+  sourceText: { color: '#475569', fontSize: 12, fontStyle: 'italic' },
 });
