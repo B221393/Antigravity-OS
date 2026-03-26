@@ -76,6 +76,41 @@ async def delegate_soul(req: SoulRequest):
         # JSONパースエラーなどの場合でもテキストとして返す
         return {"status": "error", "result": str(history)}
 
+class DebateRequest(BaseModel):
+    thought: str
+
+@app.post("/api/debate")
+async def start_debate(req: DebateRequest):
+    print(f"\n====================\n【MULTI-AGENT DEBATE】: {req.thought}\n====================")
+    
+    prompt = (
+        f"以下のユーザーの考えについて、3人の異なる専門家として議論してください。\n"
+        f"ユーザーの考え: '{req.thought}'\n\n"
+        f"【登場人物】\n"
+        f"1. ARCHITECT: 構造、効率、実現可能性を重視する。冷静で論理的。\n"
+        f"2. CRITIC: あらゆる死角、リスク、倫理的問題を指摘する。鋭く批判的。\n"
+        f"3. VISIONARY: 可能性、未来、夢を重視する。楽観的で情熱的。\n\n"
+        f"彼らが互いに意見を戦わせ、最後に一つの「統合された気付き」を導き出してください。\n\n"
+        f"出力形式（純粋なJSONのみ）:\n"
+        f"{{\n"
+        f"  \"architect\": \"文章\",\n"
+        f"  \"critic\": \"文章\",\n"
+        f"  \"visionary\": \"文章\",\n"
+        f"  \"synthesis\": \"最終的な統合された答え\"\n"
+        f"}}"
+    )
+
+    llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", api_key=os.getenv("GEMINI_API_KEY", "YOUR_API_KEY_HERE"))
+    
+    try:
+        response = await llm.ainvoke(prompt)
+        content = response.content.replace('```json', '').replace('```', '').strip()
+        debate_result = json.loads(content)
+        return {"status": "success", "debate": debate_result}
+    except Exception as e:
+        print(f"Error: {e}")
+        return {"status": "error", "message": str(e)}
+
 @app.post("/api/novel")
 async def generate_novel_branches(req: NovelRequest):
     print(f"\n====================\n【NOVEL EXPANSION REQUEST】: {req.title}\n====================")
