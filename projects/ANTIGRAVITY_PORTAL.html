@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity | Self-Expanding Thinking OS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+JP:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050a0f;
+            --accent-color: #00f2ff;
+            --text-color: #e0f7fa;
+            --card-bg: rgba(0, 242, 255, 0.05);
+            --border-glow: 0 0 10px rgba(0, 242, 255, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05) 0%, transparent 70%),
+                linear-gradient(rgba(0, 242, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 20px -10px rgba(0, 242, 255, 0.2);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 10px;
+            margin: 0;
+            color: var(--accent-color);
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            padding: 30px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-color);
+            box-shadow: var(--border-glow);
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-header::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background: var(--accent-color);
+            margin-right: 15px;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .card p {
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .tech-tags {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .philosophy-section {
+            margin-top: 80px;
+            background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.05), transparent);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .philosophy-section blockquote {
+            font-size: 1.8rem;
+            font-weight: 300;
+            font-style: italic;
+            border: none;
+            margin: 0;
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.5;
+            padding-bottom: 40px;
+        }
+
+        /* Scanline effect */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 100, 0.02));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>ANTIGRAVITY</h1>
+        <div class="subtitle">Self-Expanding Thinking OS / Concept Portal</div>
+    </header>
+
+    <div class="grid">
+        <div class="card">
+            <div class="card-header">KNOWLEDGE LAYER</div>
+            <p>MCP(Model Context Protocol)を介した、知識の自律的統合。外部情報ソースからナレッジグラフを構築し、システム全体の「知能」をリアルタイムに拡張します。</p>
+            <div class="tech-tags">
+                <span class="tag">MCP</span>
+                <span class="tag">Knowledge Graph</span>
+                <span class="tag">RAG</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">EXECUTION LAYER</div>
+            <p>具体的な目標に対し、戦略的知見を適用する自己修正レイヤー。アウトプットの自動洗練とGitHub同期を行い、成功・失敗のパターンをシステムへフィードバックします。</p>
+            <div class="tech-tags">
+                <span class="tag">Autonomous Agent</span>
+                <span class="tag">Auto-Feedback</span>
+                <span class="tag">GitHub Sync</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">VISUALIZATION LAYER</div>
+            <p>システムの内部状態をHUDダッシュボードや3D構造解析として具現化。データの密度が上がるにつれ、環境そのものが自律的に解像度を高めていきます。</p>
+            <div class="tech-tags">
+                <span class="tag">HUD UI</span>
+                <span class="tag">3D Analytics</span>
+                <span class="tag">Contextual UX</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="philosophy-section">
+        <blockquote>"Personal Evolution Infrastructure"</blockquote>
+        <p>コンピュータは、単なる計算機から、個人を自律的に拡張する基盤へ進化する。</p>
+    </div>
+
+    <footer>
+        &copy; 2026 ANTIGRAVITY AGENTIC SYSTEMS | SYSTEM STATUS: OPTIMIZED
+    </footer>
+</div>
+
+</body>
+</html>

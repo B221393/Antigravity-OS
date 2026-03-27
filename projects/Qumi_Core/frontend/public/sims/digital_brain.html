@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Neural Network Visualization</title>
+    <style>
+        body { margin: 0; background-color: #020205; overflow: hidden; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const group = new THREE.Group();
+        scene.add(group);
+
+        // パーティクル（ノード）の作成
+        const count = 150;
+        const posArr = new Float32Array(count * 3);
+        const particles = [];
+
+        for (let i = 0; i < count; i++) {
+            const x = (Math.random() - 0.5) * 100;
+            const y = (Math.random() - 0.5) * 100;
+            const z = (Math.random() - 0.5) * 100;
+            posArr[i*3] = x;
+            posArr[i*3+1] = y;
+            posArr[i*3+2] = z;
+            
+            particles.push({
+                pos: new THREE.Vector3(x, y, z),
+                vel: new THREE.Vector3((Math.random()-0.5)*0.1, (Math.random()-0.5)*0.1, (Math.random()-0.5)*0.1)
+            });
+        }
+
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(posArr, 3));
+        const mat = new THREE.PointsMaterial({ color: 0x00f2ff, size: 0.8 });
+        const points = new THREE.Points(geo, mat);
+        group.add(points);
+
+        // 線（接続）の作成
+        const lineMat = new THREE.LineBasicMaterial({ color: 0x00f2ff, transparent: true, opacity: 0.2 });
+        let lineMesh;
+
+        camera.position.z = 120;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // ポジション更新
+            const positions = geo.attributes.position.array;
+            for (let i = 0; i < count; i++) {
+                const p = particles[i];
+                p.pos.add(p.vel);
+                
+                // バウンド
+                if (Math.abs(p.pos.x) > 50) p.vel.x *= -1;
+                if (Math.abs(p.pos.y) > 50) p.vel.y *= -1;
+                if (Math.abs(p.pos.z) > 50) p.vel.z *= -1;
+
+                positions[i*3] = p.pos.x;
+                positions[i*3+1] = p.pos.y;
+                positions[i*3+2] = p.pos.z;
+            }
+            geo.attributes.position.needsUpdate = true;
+
+            // 距離が近いもの同士を線で結ぶ (動的生成は重いのでシンプルに)
+            if (lineMesh) group.remove(lineMesh);
+            const lineVertices = [];
+            for (let i = 0; i < count; i++) {
+                for (let j = i + 1; j < count; j++) {
+                    const dist = particles[i].pos.distanceTo(particles[j].pos);
+                    if (dist < 20) {
+                        lineVertices.push(particles[i].pos.x, particles[i].pos.y, particles[i].pos.z);
+                        lineVertices.push(particles[j].pos.x, particles[j].pos.y, particles[j].pos.z);
+                    }
+                }
+            }
+            const lineGeo = new THREE.BufferGeometry();
+            lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(lineVertices, 3));
+            lineMesh = new THREE.LineSegments(lineGeo, lineMat);
+            group.add(lineMesh);
+
+            group.rotation.y += 0.002;
+            group.rotation.x += 0.001;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

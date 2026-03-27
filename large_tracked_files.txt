@@ -1,3 +1,0 @@
-﻿11260420 : VECTIS_SYSTEM_FILES/apps/AI_LAB/shogi_dojo/resources/ShogiGUIv0.0.8.3/ShogiGUI/gpsfish/data/joseki.dat
-64217066 : VECTIS_SYSTEM_FILES/apps/AI_LAB/shogi_dojo/resources/Suisho5/nn.bin
-10584058 : VECTIS_SYSTEM_FILES/apps/UTILS/productivity/diary/command.wav

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERRAIN VOID | App #3</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; font-family: 'Outfit', sans-serif; }
+        #ui { position: absolute; top: 20px; right: 20px; z-index: 100; text-align: right; pointer-events: none; }
+        h1 { font-size: 1.5rem; letter-spacing: 5px; color: #10b981; margin: 0; }
+        p { font-size: 0.8rem; color: #fff; opacity: 0.5; }
+        .stats { color: #38bdf8; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <h1>TERRAIN VOID</h1>
+        <p>PROCEDURAL MESH GEN: APP #3</p>
+        <div class="stats" id="stats">VERTS: 0</div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        let scene, camera, renderer, controls, mesh;
+        const worldWidth = 64, worldDepth = 64;
+
+        function init() {
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x050510);
+            scene.fog = new THREE.FogExp2(0x050510, 0.005);
+
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 10000);
+            camera.position.set(100, 150, 200);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.body.appendChild(renderer.domElement);
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+
+            // Geometry with "Noise"
+            const geometry = new THREE.PlaneBufferGeometry(1000, 1000, worldWidth - 1, worldDepth - 1);
+            geometry.rotateX(-Math.PI / 2);
+
+            const vertices = geometry.attributes.position.array;
+            for (let i = 0, j = 0; i < vertices.length; i++, j += 3) {
+                vertices[j+1] = Math.sin(i * 0.1) * 30 + Math.cos(i * 0.05) * 20; // Pseudo noise
+            }
+            geometry.computeVertexNormals();
+
+            const material = new THREE.MeshStandardMaterial({ 
+                color: 0x111111, 
+                wireframe: true,
+                emissive: 0x10b981,
+                emissiveIntensity: 0.5
+            });
+
+            mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+
+            const light = new THREE.DirectionalLight(0xffffff, 1);
+            light.position.set(1, 1, 1);
+            scene.add(light);
+
+            const ambient = new THREE.AmbientLight(0x404040);
+            scene.add(ambient);
+
+            document.getElementById('stats').textContent = `VERTS: ${vertices.length / 3}`;
+
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = Date.now() * 0.001;
+            
+            const vertices = mesh.geometry.attributes.position.array;
+            for (let i = 0, j = 0; i < vertices.length; i++, j += 3) {
+                vertices[j+1] += Math.sin(time + i * 0.1) * 0.2; // Waviness
+            }
+            mesh.geometry.attributes.position.needsUpdate = true;
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        init();
+    </script>
+</body>
+</html>

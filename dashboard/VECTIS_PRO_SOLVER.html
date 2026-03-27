@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>VECTIS PRO: STRATEGIC TETRIS SOLVER</title>
+    <style>
+        body { background: #000; color: #00ff88; font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .wrapper-container { border: 2px solid #333; padding: 20px; border-radius: 12px; background: rgba(0,255,136,0.05); }
+        .tetris-container { display: flex; gap: 20px; }
+        #stage, #next { border: 1px solid #444; }
+        .ai-status { font-weight: 900; letter-spacing: 5px; color: #fff; margin-bottom: 20px; }
+        #lines { color: #00e5ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="ai-status">VECTIS_PRO_SOLVER: AUTONOMOUS_CONTROL</div>
+    <div class="wrapper-container">
+        <div class="tetris-container">
+            <canvas id="stage" width="250" height="500"></canvas>
+            <div class="tetris-panel-container">
+                <p>Next:</p>
+                <canvas id="next" width="150" height="150"></canvas>
+                <p>LINES: <span id="lines">0</span></p>
+                <div id="message">AI_THINKING...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The original jstetris logic, refined and AI-integrated -->
+    <script>
+    class Tetris {
+        constructor() {
+            this.stageWidth = 10;
+            this.stageHeight = 20;
+            this.stageCanvas = document.getElementById("stage");
+            this.nextCanvas = document.getElementById("next");
+            this.cellSize = this.stageCanvas.width / this.stageWidth;
+            this.stageLeftPadding = 0;
+            this.stageTopPadding = 0;
+            this.blocks = this.createBlocks();
+            this.deletedLines = 0;
+            this.virtualStage = Array.from({length: this.stageWidth}, () => Array(this.stageHeight).fill(null));
+        }
+
+        createBlocks() {
+            return [
+                { shape: [[[-1, 0], [0, 0], [1, 0], [2, 0]], [[0, -1], [0, 0], [0, 1], [0, 2]], [[-1, 0], [0, 0], [1, 0], [2, 0]], [[0, -1], [0, 0], [0, 1], [0, 2]]], color: "rgb(0, 255, 255)", highlight: "rgb(255, 255, 255)", shadow: "rgb(0, 128, 128)" },
+                { shape: [[[0, 0], [1, 0], [0, 1], [1, 1]], [[0, 0], [1, 0], [0, 1], [1, 1]], [[0, 0], [1, 0], [0, 1], [1, 1]], [[0, 0], [1, 0], [0, 1], [1, 1]]], color: "rgb(255, 255, 0)", highlight: "rgb(255, 255, 255)", shadow: "rgb(128, 128, 0)" },
+                { shape: [[[0, 0], [1, 0], [-1, 1], [0, 1]], [[-1, -1], [-1, 0], [0, 0], [0, 1]], [[0, 0], [1, 0], [-1, 1], [0, 1]], [[-1, -1], [-1, 0], [0, 0], [0, 1]]], color: "rgb(0, 255, 0)", highlight: "rgb(255, 255, 255)", shadow: "rgb(0, 128, 0)" },
+                { shape: [[[-1, 0], [0, 0], [0, 1], [1, 1]], [[0, -1], [-1, 0], [0, 0], [-1, 1]], [[-1, 0], [0, 0], [0, 1], [1, 1]], [[0, -1], [-1, 0], [0, 0], [-1, 1]]], color: "rgb(255, 0, 0)", highlight: "rgb(255, 255, 255)", shadow: "rgb(128, 0, 0)" },
+                { shape: [[[-1, -1], [-1, 0], [0, 0], [1, 0]], [[0, -1], [1, -1], [0, 0], [0, 1]], [[-1, 0], [0, 0], [1, 0], [1, 1]], [[0, -1], [0, 0], [-1, 1], [0, 1]]], color: "rgb(0, 0, 255)", highlight: "rgb(255, 255, 255)", shadow: "rgb(0, 0, 128)" },
+                { shape: [[[1, -1], [-1, 0], [0, 0], [1, 0]], [[0, -1], [0, 0], [0, 1], [1, 1]], [[-1, 0], [0, 0], [1, 0], [-1, 1]], [[-1, -1], [0, -1], [0, 0], [0, 1]]], color: "rgb(255, 165, 0)", highlight: "rgb(255, 255, 255)", shadow: "rgb(128, 82, 0)" },
+                { shape: [[[0, -1], [-1, 0], [0, 0], [1, 0]], [[0, -1], [0, 0], [1, 0], [0, 1]], [[-1, 0], [0, 0], [1, 0], [0, 1]], [[0, -1], [-1, 0], [0, 0], [0, 1]]], color: "rgb(255, 0, 255)", highlight: "rgb(255, 255, 255)", shadow: "rgb(128, 0, 128)" }
+            ];
+        }
+
+        drawBlock(x, y, type, angle, canvas) {
+            let context = canvas.getContext("2d");
+            let block = this.blocks[type];
+            for (let i = 0; i < block.shape[angle].length; i++) {
+                this.drawCell(context, x + (block.shape[angle][i][0] * this.cellSize), y + (block.shape[angle][i][1] * this.cellSize), this.cellSize, type);
+            }
+        }
+
+        drawCell(context, cellX, cellY, cellSize, type) {
+            let block = this.blocks[type];
+            context.fillStyle = block.color;
+            context.fillRect(cellX, cellY, cellSize-1, cellSize-1);
+        }
+
+        startGame() {
+            this.currentBlock = null;
+            this.nextBlock = Math.floor(Math.random() * 7);
+            this.mainLoop();
+        }
+
+        mainLoop() {
+            if (this.currentBlock == null) {
+                if (!this.createNewBlock()) return;
+                this.aiThink(); // AI Trigger
+            } else {
+                this.fallBlock();
+            }
+            this.drawStage();
+            if (this.currentBlock != null) {
+                this.drawBlock(this.blockX * this.cellSize, this.blockY * this.cellSize, this.currentBlock, this.blockAngle, this.stageCanvas);
+            }
+            setTimeout(this.mainLoop.bind(this), 50); // Fast solve speed
+        }
+
+        createNewBlock() {
+            this.currentBlock = this.nextBlock;
+            this.nextBlock = Math.floor(Math.random() * 7);
+            this.blockX = 4; this.blockY = 0; this.blockAngle = 0;
+            this.drawNextBlock();
+            return this.checkBlockMove(this.blockX, this.blockY, this.currentBlock, this.blockAngle);
+        }
+
+        drawNextBlock() {
+            this.clear(this.nextCanvas);
+            this.drawBlock(this.cellSize * 2, this.cellSize * 2, this.nextBlock, 0, this.nextCanvas);
+        }
+
+        fallBlock() {
+            if (this.checkBlockMove(this.blockX, this.blockY + 1, this.currentBlock, this.blockAngle)) {
+                this.blockY++;
+            } else {
+                this.fixBlock(this.blockX, this.blockY, this.currentBlock, this.blockAngle);
+                this.currentBlock = null;
+            }
+        }
+
+        checkBlockMove(x, y, type, angle) {
+            for (let i = 0; i < this.blocks[type].shape[angle].length; i++) {
+                let cellX = x + this.blocks[type].shape[angle][i][0];
+                let cellY = y + this.blocks[type].shape[angle][i][1];
+                if (cellX < 0 || cellX >= this.stageWidth || cellY >= this.stageHeight) return false;
+                if (cellY >= 0 && this.virtualStage[cellX][cellY] != null) return false;
+            }
+            return true;
+        }
+
+        fixBlock(x, y, type, angle) {
+            for (let i = 0; i < this.blocks[type].shape[angle].length; i++) {
+                let cellX = x + this.blocks[type].shape[angle][i][0], cellY = y + this.blocks[type].shape[angle][i][1];
+                if (cellY >= 0) this.virtualStage[cellX][cellY] = type;
+            }
+            for (let j = 19; j >= 0; j--) {
+                let filled = true;
+                for (let i = 0; i < 10; i++) if (this.virtualStage[i][j] == null) { filled = false; break; }
+                if (filled) {
+                    for (let j2 = j; j2 > 0; j2--) for (let i = 0; i < 10; i++) this.virtualStage[i][j2] = this.virtualStage[i][j2-1];
+                    for (let i = 0; i < 10; i++) this.virtualStage[i][0] = null;
+                    this.deletedLines++; document.getElementById("lines").innerText = this.deletedLines;
+                    j++;
+                }
+            }
+        }
+
+        drawStage() {
+            this.clear(this.stageCanvas);
+            let ctx = this.stageCanvas.getContext("2d");
+            for (let x = 0; x < 10; x++) for (let y = 0; y < 20; y++) if (this.virtualStage[x][y] !== null) this.drawCell(ctx, x * this.cellSize, y * this.cellSize, this.cellSize, this.virtualStage[x][y]);
+        }
+
+        clear(canvas) { canvas.getContext("2d").fillRect(0, 0, canvas.width, canvas.height); }
+
+        // --- EXTREME AI SOLVER INTEGRATION ---
+        aiThink() {
+            let bestX = 0, bestAngle = 0, bestScore = -Infinity;
+            for (let a = 0; a < 4; a++) {
+                for (let x = -2; x < 11; x++) {
+                    if (!this.checkBlockMove(x, 0, this.currentBlock, a)) continue;
+                    let y = 0;
+                    while (this.checkBlockMove(x, y + 1, this.currentBlock, a)) y++;
+                    let score = this.evaluate(x, y, a);
+                    if (score > bestScore) { bestScore = score; bestX = x; bestAngle = a; }
+                }
+            }
+            this.blockX = bestX; this.blockAngle = bestAngle;
+        }
+
+        evaluate(x, y, a) {
+            let temp = this.virtualStage.map(r => [...r]);
+            for (let i = 0; i < this.blocks[this.currentBlock].shape[a].length; i++) {
+                let cx = x + this.blocks[this.currentBlock].shape[a][i][0], cy = y + this.blocks[this.currentBlock].shape[a][i][1];
+                if (cy >= 0) temp[cx][cy] = this.currentBlock;
+            }
+            let h = 0, holes = 0, bump = 0;
+            let hh = Array(10).fill(0);
+            for(let i=0; i<10; i++) {
+                let found = false;
+                for(let j=0; j<20; j++) {
+                    if(temp[i][j] !== null) { if(!found) { hh[i] = 20-j; h += hh[i]; found = true; } }
+                    else if(found) holes++;
+                }
+            }
+            for(let i=0; i<9; i++) bump += Math.abs(hh[i] - hh[i+1]);
+            return -(0.5*h + 0.4*holes + 0.2*bump);
+        }
+    }
+
+    const t = new Tetris();
+    t.startGame();
+    </script>
+</body>
+</html>

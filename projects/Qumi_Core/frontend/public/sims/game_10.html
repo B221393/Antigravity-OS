@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNAL BRIDGE | App #10</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; font-family: 'Outfit', sans-serif; }
+        #ui { position: absolute; top: 40px; left: 40px; color: #fff; pointer-events: none; }
+        h1 { font-weight: 200; letter-spacing: 15px; font-size: 1.5rem; color: #fbbf24; }
+        #status-box { position: absolute; bottom: 40px; right: 40px; text-align: right; color: #fbbf24; }
+        .label { font-size: 0.6rem; opacity: 0.5; letter-spacing: 2px; }
+        .value { font-size: 1.2rem; font-family: monospace; }
+        #msg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 0.8rem; opacity: 0; transition: opacity 2s; pointer-events: none; letter-spacing: 5px; text-align: center;}
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <h1>SIGNAL BRIDGE</h1>
+        <div style="font-size: 0.6rem; opacity: 0.4; margin-top: 10px;">COMMUNICATION_PROTOCOL / ATTEMPT_CONNECTION</div>
+    </div>
+    <div id="status-box">
+        <div class="label">TRANSMISSION_STRENGTH</div>
+        <div class="value" id="strength">0%</div>
+    </div>
+    <div id="msg">CONNECTION ESTABLISHED<br>想いは、いつか届く。</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, particles = [], bridge;
+        let strength = 0;
+        const particleCount = 200;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 50, 150);
+            camera.lookAt(0, 0, 0);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.body.appendChild(renderer.domElement);
+
+            // Origin and Target Nodes
+            const nodeGeo = new THREE.IcosahedronGeometry(10, 1);
+            const source = new THREE.Mesh(nodeGeo, new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true }));
+            source.position.x = -80;
+            scene.add(source);
+
+            const target = new THREE.Mesh(nodeGeo, new THREE.MeshBasicMaterial({ color: 0xfbbf24, wireframe: true }));
+            target.position.x = 80;
+            scene.add(target);
+
+            // Particles
+            for (let i = 0; i < particleCount; i++) {
+                const pGeo = new THREE.SphereGeometry(0.5, 4, 4);
+                const pMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true });
+                const p = new THREE.Mesh(pGeo, pMat);
+                resetParticle(p);
+                scene.add(p);
+                particles.push(p);
+            }
+
+            // Central Bridge Line
+            const lineMat = new THREE.LineBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0 });
+            const lineGeo = new THREE.BufferGeometry().setFromPoints([source.position, target.position]);
+            bridge = new THREE.Line(lineGeo, lineMat);
+            scene.add(bridge);
+
+            animate();
+        }
+
+        function resetParticle(p) {
+            p.position.set(-80, (Math.random()-0.5)*20, (Math.random()-0.5)*20);
+            p.active = true;
+            p.speed = 1 + Math.random() * 2;
+            p.noise = (Math.random() - 0.5) * 5;
+            p.material.opacity = 0.8;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            particles.forEach(p => {
+                if (!p.active) return;
+                p.position.x += p.speed;
+                p.position.y += Math.sin(p.position.x * 0.1) * 0.5;
+
+                // Loss simulation
+                if (Math.random() > 0.99 && p.position.x < 50) {
+                    p.active = false;
+                    p.material.opacity = 0;
+                    setTimeout(() => resetParticle(p), 1000);
+                }
+
+                // Success
+                if (p.position.x >= 80) {
+                    strength += 0.1;
+                    p.active = false;
+                    resetParticle(p);
+                }
+            });
+
+            // Update Bridge Strength
+            const s = Math.min(strength / 100, 1);
+            document.getElementById('strength').innerText = (s * 100).toFixed(1) + "%";
+            bridge.material.opacity = s * 0.5;
+            
+            if (s >= 1) {
+                document.getElementById('msg').style.opacity = 1;
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        init();
+    </script>
+</body>
+</html>

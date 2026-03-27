@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Fluid Grid | Mobile Optimized</title>
+<style>
+  body, html { margin: 0; padding: 0; overflow: hidden; background: #000; touch-action: none; }
+  canvas { display: block; width: 100vw; height: 100vh; }
+  #ui { 
+    position: absolute; top: 15px; left: 15px; 
+    color: #f0f; font-family: sans-serif; pointer-events: none;
+    text-shadow: 0 0 10px #f0f; z-index: 10;
+  }
+  h1 { margin: 0; font-size: 1rem; }
+</style>
+</head>
+<body>
+<div id="ui"><h1>FLUID TOPOLOGY</h1></div>
+<canvas id="canvas"></canvas>
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  let width, height, cols, rows, points = [], mouse = { x: -1000, y: -1000 };
+  const spacing = 40;
+
+  function init() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    cols = Math.ceil(width / spacing) + 1;
+    rows = Math.ceil(height / spacing) + 1;
+    points = [];
+    for (let i = 0; i < cols; i++) {
+      points[i] = [];
+      for (let j = 0; j < rows; j++) {
+        points[i][j] = { x: i*spacing, y: j*spacing, bx: i*spacing, by: j*spacing, vx: 0, vy: 0 };
+      }
+    }
+  }
+
+  const handleInput = (e) => {
+    const t = e.touches ? e.touches[0] : e;
+    mouse.x = t.clientX; mouse.y = t.clientY;
+  };
+  window.addEventListener('mousemove', handleInput);
+  window.addEventListener('touchstart', handleInput);
+  window.addEventListener('touchmove', handleInput);
+  window.addEventListener('touchend', () => { mouse.x = -1000; mouse.y = -1000; });
+  window.addEventListener('resize', init);
+
+  init();
+
+  function animate() {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, width, height);
+    ctx.strokeStyle = '#f0f';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        let p = points[i][j];
+        let dx = mouse.x - p.x;
+        let dy = mouse.y - p.y;
+        let d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 100) {
+          let f = (100 - d) / 100;
+          p.vx -= (dx / d) * f * 5;
+          p.vy -= (dy / d) * f * 5;
+        }
+        p.vx += (p.bx - p.x) * 0.1;
+        p.vy += (p.by - p.y) * 0.1;
+        p.vx *= 0.8; p.vy *= 0.8;
+        p.x += p.vx; p.y += p.vy;
+
+        if (i < cols - 1) { ctx.moveTo(p.x, p.y); ctx.lineTo(points[i+1][j].x, points[i+1][j].y); }
+        if (j < rows - 1) { ctx.moveTo(p.x, p.y); ctx.lineTo(points[i][j+1].x, points[i][j+1].y); }
+      }
+    }
+    ctx.stroke();
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+</body>
+</html>

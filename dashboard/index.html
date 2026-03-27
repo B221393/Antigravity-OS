@@ -1,83 +1,246 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integrated Thinking OS | Dashboard</title>
+    <title>Integrated Thinking OS | Command Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Noto+Sans+JP:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="wallpaper-container">
-        <!-- AI Generated Hero Image -->
-        <img src="background_april.png" id="bg-image">
-        
+        <img src="background_april.png" id="bg-image" alt="Dashboard background">
+
         <div class="glass-overlay">
-            <header>
-                <div class="date-widget">
-                    <h1 id="current-time">10:45</h1>
-                    <p id="current-date">Tuesday, March 17, 2026</p>
+            <header class="topbar">
+                <div class="hero-copy">
+                    <p class="eyebrow">INTEGRATED THINKING OS</p>
+                    <h1>VECTIS Command Dashboard</h1>
+                    <p class="hero-text">
+                        A sharper home screen for building, testing, and launching the visual modules in this workspace.
+                        The goal is speed: one glance, one click, one next move.
+                    </p>
                 </div>
-                <div class="system-status">
-                    <div class="status-item">
-                        <span class="status-dot green"></span>
-                        <p>GITHUB: SYNCED</p>
+
+                <div class="hero-side">
+                    <div class="date-widget panel">
+                        <h2 id="current-time">10:45</h2>
+                        <p id="current-date">Friday, March 27, 2026</p>
                     </div>
-                    <div class="status-item">
-                        <span class="status-dot pulsing"></span>
-                        <p>G-MAIL: CONNECTING</p>
+
+                    <div class="system-status panel">
+                        <div class="status-item">
+                            <span class="status-dot green"></span>
+                            <div>
+                                <strong>Repository</strong>
+                                <p>Local workspace active</p>
+                            </div>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-dot amber"></span>
+                            <div>
+                                <strong>Focus Mode</strong>
+                                <p>Build, test, ship</p>
+                            </div>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-dot cyan"></span>
+                            <div>
+                                <strong>Dashboard</strong>
+                                <p>Visual command center online</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </header>
 
             <main class="dashboard-grid">
-                <section class="widget todo-hero">
-                    <h2>✅ 最優先：やることリスト</h2>
-                    <ul id="todo-list">
-                        <li class="priority-high pulse-border">パナソニック ES提出 (本日)</li>
-                        <li class="priority-high pulse-border">パーソルAVC ES提出 (本日)</li>
-                        <li>テクノプロ テスト勉強 (3/18)</li>
-                        <li>学部時代の即答練習 (3/20)</li>
-                    </ul>
+                <section class="widget mission-panel">
+                    <div class="section-heading">
+                        <p class="section-kicker">TODAY</p>
+                        <h2>Priority Stack</h2>
+                    </div>
+                    <ul id="priority-list" class="priority-list"></ul>
+                    <div class="focus-meter">
+                        <div class="focus-meter__label">
+                            <span>Execution Load</span>
+                            <strong id="focus-score">78%</strong>
+                        </div>
+                        <div class="focus-meter__bar">
+                            <span id="focus-bar"></span>
+                        </div>
+                    </div>
                 </section>
 
-                <section class="widget status-widget">
-                    <h2>🏢 応募企業ステータス</h2>
-                    <table class="status-table">
-                        <thead>
-                            <tr><th>企業名</th><th>状況</th><th>期限</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>パナソニック</td><td>📋 ES作成</td><td>3/17</td></tr>
-                            <tr><td>パーソルAVC</td><td>📋 ES作成</td><td>3/17</td></tr>
-                            <tr><td>テクノプロ</td><td>📅 テスト</td><td>3/19</td></tr>
-                            <tr><td>マツダ</td><td>📂 推脳中</td><td>-</td></tr>
-                        </tbody>
-                    </table>
+                <section class="widget launch-panel">
+                    <div class="section-heading">
+                        <p class="section-kicker">MODULES</p>
+                        <h2>Quick Launch</h2>
+                    </div>
+                    <div id="launch-grid" class="launch-grid"></div>
                 </section>
 
-                <section class="widget insight-mini">
-                    <h2>🧠 戦略</h2>
-                    <p>「入り口は狭いが、通り抜ければ無限の広がりがある」</p>
+                <section class="widget overview-panel">
+                    <div class="section-heading">
+                        <p class="section-kicker">SYSTEM</p>
+                        <h2>Operational Snapshot</h2>
+                    </div>
+                    <div class="snapshot-grid">
+                        <article class="snapshot-card">
+                            <span class="snapshot-label">Primary Track</span>
+                            <strong>Dashboard polish</strong>
+                            <p>Clean entry point with denser signal and better navigation.</p>
+                        </article>
+                        <article class="snapshot-card">
+                            <span class="snapshot-label">Mode</span>
+                            <strong>Creative Engineering</strong>
+                            <p>Static modules grouped into a stronger control surface.</p>
+                        </article>
+                        <article class="snapshot-card">
+                            <span class="snapshot-label">Next Move</span>
+                            <strong>Open a module</strong>
+                            <p>Jump straight into the solver, game, or architecture view.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="widget timeline-panel">
+                    <div class="section-heading">
+                        <p class="section-kicker">FLOW</p>
+                        <h2>Execution Sequence</h2>
+                    </div>
+                    <div id="timeline" class="timeline"></div>
                 </section>
             </main>
 
-            <footer>
-                <p>AUTOSYNC: b221393/my-syukatu-app (origin/main)</p>
+            <footer class="footer-bar">
+                <p>Workspace: C:\Users\Yuto\Desktop\app\dashboard</p>
+                <p id="footer-signal">Signal: Stable</p>
             </footer>
         </div>
     </div>
+
     <script>
+        const priorities = [
+            {
+                title: "Refine dashboard entry point",
+                detail: "Increase scan speed, density, and launch clarity.",
+                level: "high"
+            },
+            {
+                title: "Open one playable module",
+                detail: "Jump into a game or solver without digging through files.",
+                level: "medium"
+            },
+            {
+                title: "Keep momentum visible",
+                detail: "Time, focus, and system state stay visible at all times.",
+                level: "low"
+            }
+        ];
+
+        const modules = [
+            {
+                title: "Battle Station",
+                tag: "Game Arena",
+                description: "AI versus visual playground with immediate motion.",
+                href: "VECTIS_BATTLE_STATION.html"
+            },
+            {
+                title: "Pro Solver",
+                tag: "Logic Core",
+                description: "Fast route into the solver-focused module.",
+                href: "VECTIS_PRO_SOLVER.html"
+            },
+            {
+                title: "Universal Game Core",
+                tag: "Sandbox",
+                description: "Core game experiments in one place.",
+                href: "VECTIS_UNIVERSAL_GAME_CORE.html"
+            },
+            {
+                title: "Architecture 3D",
+                tag: "System View",
+                description: "Structural visualization for the larger concept.",
+                href: "ARCHITECTURE_3D_LIVE.html"
+            }
+        ];
+
+        const timelineSteps = [
+            "1. Scan priorities and choose the active lane.",
+            "2. Open one module and test the interaction.",
+            "3. Return here to switch modes or continue edits.",
+            "4. Use the dashboard as the persistent control surface."
+        ];
+
         function updateClock() {
             const now = new Date();
-            const timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-            document.getElementById('current-time').textContent = timeStr;
-            
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('current-date').textContent = now.toLocaleDateString('ja-JP', options);
+            const timeStr = now.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false
+            });
+            const dateStr = now.toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            });
+
+            document.getElementById("current-time").textContent = timeStr;
+            document.getElementById("current-date").textContent = dateStr;
         }
-        setInterval(updateClock, 1000);
+
+        function renderPriorities() {
+            const list = document.getElementById("priority-list");
+            list.innerHTML = priorities.map((item, index) => `
+                <li class="priority-item priority-${item.level}">
+                    <span class="priority-index">0${index + 1}</span>
+                    <div>
+                        <strong>${item.title}</strong>
+                        <p>${item.detail}</p>
+                    </div>
+                </li>
+            `).join("");
+        }
+
+        function renderModules() {
+            const grid = document.getElementById("launch-grid");
+            grid.innerHTML = modules.map((module) => `
+                <a class="launch-card" href="${module.href}">
+                    <span class="launch-tag">${module.tag}</span>
+                    <strong>${module.title}</strong>
+                    <p>${module.description}</p>
+                    <span class="launch-cta">Open module</span>
+                </a>
+            `).join("");
+        }
+
+        function renderTimeline() {
+            const root = document.getElementById("timeline");
+            root.innerHTML = timelineSteps.map((step) => `
+                <article class="timeline-step">
+                    <p>${step}</p>
+                </article>
+            `).join("");
+        }
+
+        function animateFocusScore() {
+            const score = 78;
+            document.getElementById("focus-score").textContent = `${score}%`;
+            document.getElementById("focus-bar").style.width = `${score}%`;
+            document.getElementById("footer-signal").textContent =
+                score >= 70 ? "Signal: High Output" : "Signal: Nominal";
+        }
+
+        renderPriorities();
+        renderModules();
+        renderTimeline();
+        animateFocusScore();
         updateClock();
+        setInterval(updateClock, 1000);
     </script>
 </body>
 </html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECTIS 3D: INTEGRATED ARCHITECTURE HUB</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; font-family: 'Outfit', -apple-system, sans-serif; }
+        #canvas-interface {
+            position: absolute;
+            top: 20px; left: 20px;
+            color: #fff; z-index: 100;
+            pointer-events: none;
+        }
+        .os-logo {
+            font-size: 24px; font-weight: 900; letter-spacing: 12px;
+            opacity: 0.8; margin-bottom: 5px; cursor: pointer;
+            pointer-events: auto;
+        }
+        .os-status {
+            font-size: 10px; color: #00e5ff; letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        #label-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .node-label {
+            position: absolute; color: #fff; font-size: 10px; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 2px;
+            background: rgba(0, 0, 0, 0.5); padding: 4px 8px;
+            border-left: 2px solid #6200ea; backdrop-filter: blur(5px);
+            white-space: nowrap; pointer-events: none; transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-interface">
+        <div class="os-logo">VECTIS_INTEGRATED</div>
+        <div class="os-status">CONNECTED: LIVE_SYNC_ACTIVE [PULSING]</div>
+    </div>
+    <div id="label-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // 1. Scene Setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // 2. Nodes Configuration
+        const nodes = [
+            { id: 'CORE', name: 'USER / CORE', pos: [0, 0, 0], color: 0xffffff, size: 1.5 },
+            { id: 'REMOTE', name: 'GITHUB (REMOTE BRAIN)', pos: [8, 5, -5], color: 0x6200ea, size: 1.0 },
+            { id: 'MOBILE', name: 'PHONE (SENSOR / QUMI)', pos: [-8, 2, -5], color: 0x00e5ff, size: 1.0 },
+            { id: 'ASSET', name: 'ASSET VAULT (COLD STORAGE)', pos: [0, -6, -2], color: 0x00ff88, size: 0.8 },
+            { id: 'LOCAL', name: 'PC (WHISPER / GEMMA)', pos: [4, -4, 5], color: 0xff0088, size: 0.8 },
+            { id: 'LINE', name: 'LINE API (NOTIFY)', pos: [-4, -4, 5], color: 0x00ff00, size: 0.6 }
+        ];
+
+        const nodeMeshes = {};
+        const labels = [];
+
+        nodes.forEach(n => {
+            const geo = new THREE.SphereGeometry(n.size, 32, 32);
+            const mat = new THREE.MeshPhongMaterial({ 
+                color: n.color, 
+                emissive: n.color, 
+                emissiveIntensity: 0.5,
+                shininess: 100,
+                transparent: true,
+                opacity: 0.8
+            });
+            const mesh = new THREE.Mesh(geo, mat);
+            mesh.position.set(...n.pos);
+            scene.add(mesh);
+            nodeMeshes[n.id] = mesh;
+
+            // Halo Effect
+            const haloGeo = new THREE.SphereGeometry(n.size * 1.5, 32, 32);
+            const haloMat = new THREE.MeshBasicMaterial({ color: n.color, transparent: true, opacity: 0.05 });
+            const halo = new THREE.Mesh(haloGeo, haloMat);
+            mesh.add(halo);
+
+            // HTML Label
+            const div = document.createElement('div');
+            div.className = 'node-label';
+            div.textContent = n.name;
+            document.getElementById('label-container').appendChild(div);
+            labels.push({ element: div, position: mesh.position });
+        });
+
+        // 3. Neural Paths (Connections)
+        const connections = [
+            ['CORE', 'REMOTE'], ['CORE', 'MOBILE'], ['CORE', 'ASSET'], ['CORE', 'LOCAL'],
+            ['REMOTE', 'LOCAL'], ['REMOTE', 'MOBILE'], ['MOBILE', 'LINE'], ['ASSET', 'LINE']
+        ];
+
+        connections.forEach(pair => {
+            const start = nodeMeshes[pair[0]].position;
+            const end = nodeMeshes[pair[1]].position;
+            const curve = new THREE.LineCurve3(start, end);
+            const geo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(50));
+            const mat = new THREE.LineBasicMaterial({ color: 0x00e5ff, transparent: true, opacity: 0.2 });
+            const line = new THREE.Line(geo, mat);
+            scene.add(line);
+        });
+
+        // 4. Lights
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+        const amb = new THREE.AmbientLight(0x404040); 
+        scene.add(amb);
+
+        camera.position.z = 20;
+
+        // 5. Animation
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = Date.now() * 0.001;
+
+            // Oscillate Nodes
+            Object.values(nodeMeshes).forEach((m, i) => {
+                m.position.y += Math.sin(time + i) * 0.005;
+                m.rotation.y += 0.01;
+            });
+
+            // Update Labels
+            labels.forEach(l => {
+                const vector = l.position.clone().project(camera);
+                const x = (vector.x * 0.5 + 0.5) * window.innerWidth;
+                const y = (-(vector.y * 0.5 - 0.5)) * window.innerHeight;
+                l.element.style.left = x + 'px';
+                l.element.style.top = y + 'px';
+            });
+
+            // Rotate Camera slightly
+            scene.rotation.y = Math.sin(time * 0.2) * 0.2;
+            scene.rotation.x = Math.cos(time * 0.1) * 0.1;
+
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>

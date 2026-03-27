@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>DATA_CORE: GLOBE_NEXUS</title>
+    <script src="https://unpkg.com/globe.gl"></script>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; font-family: 'Inter', sans-serif; }
+        #info {
+            position: absolute; top: 30px; left: 40px; color: #00f2ff;
+            text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; font-weight: 800;
+            opacity: 0.8; pointer-events: none; z-index: 10;
+        }
+        #stats {
+            position: absolute; bottom: 30px; left: 40px; color: rgba(255, 255, 255, 0.5);
+            font-size: 0.65rem; font-family: 'Consolas', monospace; z-index: 10;
+        }
+        .highlight { color: #bcff00; }
+    </style>
+</head>
+<body>
+    <div id="info">DATA_CORE: GLOBAL_NEXUS_HUB</div>
+    <div id="stats">
+        ACTIVE_NODES: <span class="highlight">12,408</span><br>
+        TRAFFIC_ARCS: <span class="highlight">842/sec</span>
+    </div>
+    <div id="globeViz"></div>
+
+    <script>
+        // Generate random data for arcs and points
+        const N_POINTS = 300;
+        const gData = [...Array(N_POINTS).keys()].map(() => ({
+            lat: (Math.random() - 0.5) * 180,
+            lng: (Math.random() - 0.5) * 360,
+            size: Math.random() / 3,
+            color: Math.random() > 0.5 ? '#00f2ff' : '#bcff00'
+        }));
+
+        const N_ARCS = 150;
+        const arcsData = [...Array(N_ARCS).keys()].map(() => ({
+            startLat: (Math.random() - 0.5) * 180,
+            startLng: (Math.random() - 0.5) * 360,
+            endLat: (Math.random() - 0.5) * 180,
+            endLng: (Math.random() - 0.5) * 360,
+            color: ['#00f2ff', '#ff0055'][Math.round(Math.random())]
+        }));
+
+        const Globe = Globe()
+            (document.getElementById('globeViz'))
+            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+            .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+            .backgroundColor('#000000')
+            // Add Points
+            .pointsData(gData)
+            .pointAltitude('size')
+            .pointColor('color')
+            // Add Arcs
+            .arcsData(arcsData)
+            .arcColor('color')
+            .arcDashLength(0.4)
+            .arcDashGap(0.2)
+            .arcDashAnimateTime(() => Math.random() * 4000 + 500)
+            // Add Rings
+            .ringsData(gData.slice(0, 50))
+            .ringColor('color')
+            .ringMaxRadius(maxR => Math.random() * 5 + 2)
+            .ringPropagationSpeed(1)
+            .ringRepeatPeriod(2000);
+
+        // Custom auto-rotate
+        Globe.controls().autoRotate = true;
+        Globe.controls().autoRotateSpeed = 1.5;
+        Globe.controls().enableDamping = true;
+    </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>VECTIS: BATTLE STATION [REAL_CHAIN_AI]</title>
+    <style>
+        :root { --p1: #00ff88; --p2: #ff0088; --bg: #010101; }
+        body { margin: 0; background: var(--bg); color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        .nexus { display: flex; gap: 60px; }
+        .grid-box { position: relative; border: 4px solid #1a1a1a; padding: 15px; border-radius: 12px; background: #000; box-shadow: 0 0 50px rgba(0,0,0,1); }
+        canvas { background: #000; border: 1px solid #333; }
+        .stats { position: absolute; top: -60px; width: 100%; text-align: center; }
+        .ai-name { font-size: 20px; font-weight: 900; letter-spacing: 5px; }
+        .score { font-size: 30px; margin-top: 10px; font-weight: 100; text-align: center; }
+        .chain-msg { position: absolute; width: 100%; top: 50%; color: #fff; font-weight: 900; font-size: 40px; text-shadow: 0 0 20px #f0f; pointer-events: none; opacity: 0; transition: 0.3s; }
+    </style>
+</head>
+<body>
+    <div id="status-title" style="position:absolute; top:40px; color: #fff; letter-spacing: 15px; font-size: 14px; opacity: 0.8;">VECTIS_BATTLE_STATION: REAL_CHAIN_PROCESSOR</div>
+    <div class="nexus">
+        <div class="grid-box">
+            <div class="stats"><div class="ai-name" style="color: var(--p1);">ALPHA_TETRO</div></div>
+            <canvas id="p1-canvas" width="240" height="480"></canvas>
+            <div class="score" id="p1-score">PTS: 0</div>
+        </div>
+        <div class="grid-box">
+            <div class="stats"><div class="ai-name" style="color: var(--p2);">BETA_SLIME</div></div>
+            <canvas id="p2-canvas" width="240" height="480"></canvas>
+            <div class="score" id="p2-score">PTS: 0</div>
+            <div id="p2-chain" class="chain-msg">CHAIN!</div>
+        </div>
+    </div>
+
+    <script>
+        const COLS = 10, ROWS = 20, BLOCK_SIZE = 24;
+        const SHAPES = [ [[1,1,1,1]], [[1,1,1,0],[0,0,1,0]], [[1,1,1,0],[1,0,0,0]], [[1,1],[1,1]], [[0,1,1],[1,1,0]], [[0,1,0],[1,1,1]], [[1,1,0],[0,1,1]] ];
+
+        class Player {
+            constructor(canvasId, statsId, color, mode) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.statsId = statsId; this.color = color; this.mode = mode;
+                this.grid = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+                this.score = 0; this.bag = []; this.chainCount = 0;
+                this.spawn();
+            }
+
+            get7Bag() { if(this.bag.length === 0) this.bag = [0,1,2,3,4,5,6].sort(() => Math.random()-0.5); return this.bag.pop(); }
+
+            spawn() {
+                const sid = this.get7Bag();
+                this.piece = { x: 3, y: 0, blocks: (this.mode === 'TETRO' ? SHAPES[sid] : [[1+Math.floor(Math.random()*4)],[1+Math.floor(Math.random()*4)]]), color: this.color };
+                this.aiSolve();
+                if(this.collision(this.piece.x, this.piece.y, this.piece.blocks)) this.grid = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+            }
+
+            aiSolve() {
+                let bestX = 0, bestRot = 0, bestS = -Infinity, original = this.piece.blocks;
+                for(let r=0; r<(this.mode === 'TETRO' ? 4 : 2); r++) {
+                    for(let x=-1; x<COLS; x++) {
+                        let y = 0; while(!this.collision(x, y+1, this.piece.blocks)) { y++; if(y>ROWS) break; }
+                        const s = this.evaluate(x, y, this.piece.blocks);
+                        if(s > bestS) { bestS = s; bestX = x; bestRot = r; }
+                    }
+                    this.piece.blocks = this.rotate(this.piece.blocks);
+                }
+                this.piece.blocks = original;
+                for(let i=0; i<bestRot; i++) this.piece.blocks = this.rotate(this.piece.blocks);
+                this.piece.x = bestX;
+            }
+
+            rotate(b) { return b[0].map((_, i) => b.map(row => row[i]).reverse()); }
+            collision(x, y, b) { return b.some((row, dy) => row.some((cell, dx) => { if(!cell) return false; let nx=x+dx, ny=y+dy; return nx<0||nx>=COLS||ny>=ROWS||(ny>=0&&this.grid[ny][nx]); })); }
+
+            evaluate(x, y, blocks) {
+                const temp = this.grid.map(r => [...r]);
+                blocks.forEach((row, dy) => row.forEach((cell, dx) => { if(cell && y+dy >= 0) temp[y+dy][x+dx] = (this.mode === 'TETRO' ? 1 : cell); }));
+                let h=0, holes=0, bump=0, hh=Array(COLS).fill(0);
+                for(let j=0; j<COLS; j++) { let f=false; for(let i=0; i<ROWS; i++) { if(temp[i][j]) { if(!f) { hh[j]=20-i; h+=hh[j]; f=true; } } else if(f) holes++; } }
+                if(this.mode === 'TETRO') return -(0.5*h + 0.5*holes);
+                // Slime: connectivity
+                let conn = 0;
+                blocks.forEach((row, dy) => row.forEach((cell, dx) => {
+                    let nx=x+dx, ny=y+dy;
+                    if(ny+1 < ROWS && temp[ny+1][nx] === cell) conn += 20;
+                    if(nx+1 < COLS && temp[ny][nx+1] === cell) conn += 10;
+                }));
+                return conn - y;
+            }
+
+            // --- REAL MATCHING & CHAINS ---
+            processClearing() {
+                if (this.mode === 'TETRO') {
+                    let cleared = 0;
+                    this.grid = this.grid.filter(r => { if(r.every(c => c > 0)) { cleared++; return false; } return true; });
+                    while(this.grid.length < ROWS) this.grid.unshift(Array(COLS).fill(0));
+                    return cleared;
+                } else {
+                    return this.processSlimeChain();
+                }
+            }
+
+            processSlimeChain() {
+                let totalCleared = 0;
+                let matched = this.findMatches();
+                if(matched.length > 0) {
+                    this.chainCount++;
+                    matched.forEach(p => this.grid[p.y][p.x] = 0);
+                    this.applyGravity();
+                    return 1 + this.processSlimeChain(); // Recurse for chains
+                }
+                this.chainCount = 0;
+                return 0;
+            }
+
+            findMatches() {
+                let matched = [];
+                let visited = Array.from({length: ROWS}, () => Array(COLS).fill(false));
+                for(let y=0; y<ROWS; y++) {
+                    for(let x=0; x<COLS; x++) {
+                        if(this.grid[y][x] > 0 && !visited[y][x]) {
+                            let group = this.floodFill(x, y, this.grid[y][x], visited);
+                            if(group.length >= 4) matched = matched.concat(group);
+                        }
+                    }
+                }
+                return matched;
+            }
+
+            floodFill(x, y, color, visited) {
+                let group = [];
+                let stack = [{x, y}];
+                while(stack.length > 0) {
+                    let p = stack.pop();
+                    if(p.x<0||p.x>=COLS||p.y<0||p.y>=ROWS||visited[p.y][p.x]||this.grid[p.y][p.x]!==color) continue;
+                    visited[p.y][p.x] = true; group.push(p);
+                    stack.push({x:p.x+1, y:p.y},{x:p.x-1, y:p.y},{x:p.x, y:p.y+1},{x:p.x, y:p.y-1});
+                }
+                return group;
+            }
+
+            applyGravity() {
+                for(let x=0; x<COLS; x++) {
+                    let emptyRow = ROWS-1;
+                    for(let y=ROWS-1; y>=0; y--) {
+                        if(this.grid[y][x] > 0) {
+                            let val = this.grid[y][x]; this.grid[y][x] = 0;
+                            this.grid[emptyRow][x] = val; emptyRow--;
+                        }
+                    }
+                }
+            }
+
+            addGarbage(num) {
+                for(let i=0; i<num; i++) {
+                    const row = Array(COLS).fill(10); row[Math.floor(Math.random()*COLS)] = 0;
+                    this.grid.shift(); this.grid.push(row);
+                }
+            }
+
+            update() {
+                if(!this.collision(this.piece.x, this.piece.y+1, this.piece.blocks)) {
+                    this.piece.y++;
+                    return 0;
+                } else {
+                    this.piece.blocks.forEach((row, dy) => row.forEach((cell, dx) => { if(cell && this.piece.y+dy>=0) this.grid[this.piece.y+dy][this.piece.x+dx] = (this.mode === 'TETRO' ? 1 : cell); }));
+                    const attack = this.processClearing();
+                    this.score += attack * 100; document.getElementById(this.statsId).innerText = `PTS: ${this.score}`;
+                    this.spawn();
+                    return attack;
+                }
+            }
+
+            draw() {
+                this.ctx.clearRect(0,0,240,480);
+                this.grid.forEach((row, y) => row.forEach((cell, x) => { 
+                    if(cell > 0) { this.ctx.fillStyle = (cell===10 ? '#333' : (this.mode === 'TETRO' ? this.color : ['','#00e5ff','#ff0088','#00ff88','#ffcc00'][cell])); this.ctx.fillRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE-1, BLOCK_SIZE-1); } 
+                }));
+                this.piece.blocks.forEach((row, dy) => row.forEach((cell, dx) => { if(cell) { this.ctx.fillStyle = '#fff'; this.ctx.fillRect((this.piece.x+dx)*BLOCK_SIZE, (this.piece.y+dy)*BLOCK_SIZE, BLOCK_SIZE-1, BLOCK_SIZE-1); } }));
+            }
+        }
+
+        const p1 = new Player('p1-canvas', 'p1-score', '#00ff88', 'TETRO');
+        const p2 = new Player('p2-canvas', 'p2-score', '#ff0088', 'SLIME');
+
+        let lastTime = 0;
+        function loop(timestamp) {
+            if (timestamp - lastTime > 40) { // FAST PRO SPEED
+                const attackP2 = p1.update();
+                const attackP1 = p2.update();
+                if(attackP2) p2.addGarbage(attackP2);
+                if(attackP1) p1.addGarbage(attackP1);
+                lastTime = timestamp;
+            }
+            p1.draw(); p2.draw();
+            requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+    </script>
+</body>
+</html>

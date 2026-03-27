@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>VECTIS: STRATEGIC SOLVER CORE</title>
+    <style>
+        :root { --accent: #00ff88; --bg: #030303; }
+        body { margin: 0; background: var(--bg); color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        #canvas { background: #000; border: 2px solid #333; box-shadow: 0 0 100px rgba(0,255,136,0.1); border-radius: 8px; }
+        #stats { position: absolute; left: 50px; top: 50px; text-align: left; }
+        .ai-status { color: var(--accent); font-weight: 900; letter-spacing: 5px; margin-bottom: 20px; }
+        .score { font-size: 40px; }
+        .log-list { font-size: 10px; opacity: 0.5; height: 200px; overflow: hidden; }
+        #ai-cursor { position: absolute; width: 30px; height: 30px; border: 2px solid #fff; pointer-events: none; }
+    </style>
+</head>
+<body>
+    <div id="stats">
+        <div class="ai-status">AI_AUTO_SOLVER_ACTIVE</div>
+        <div class="score">SCORE: <span id="score">0</span></div>
+        <div id="ai-logs" class="log-list"></div>
+    </div>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const COLS = 10, ROWS = 20, BLOCK_SIZE = 30;
+        canvas.width = COLS * BLOCK_SIZE; canvas.height = ROWS * BLOCK_SIZE;
+
+        let grid = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+        let score = 0, currentPiece = null;
+
+        const SHAPES = [
+            [[1,1,1,1]], [[1,1],[1,1]], [[0,1,0],[1,1,1]], [[1,1,0],[0,1,1]], [[0,1,1],[1,1,0]]
+        ];
+
+        function spawn() {
+            const shape = SHAPES[Math.floor(Math.random()*SHAPES.length)];
+            currentPiece = { x: 3, y: 0, blocks: shape, color: '#00ff88' };
+            aiMove();
+        }
+
+        // --- AI SOLVER ENGINE (Heuristic Search) ---
+        function aiMove() {
+            let bestScore = -Infinity, bestX = 0, bestRotations = 0;
+            const originalBlocks = currentPiece.blocks;
+
+            for (let r = 0; r < 4; r++) { // Try 4 rotations
+                for (let x = -2; x < COLS; x++) { // Try all column positions
+                    const tempY = findDropY(x, currentPiece.blocks);
+                    if (tempY === -1) continue;
+                    
+                    const score = evaluateBoard(x, tempY, currentPiece.blocks);
+                    if (score > bestScore) {
+                        bestScore = score; bestX = x; bestRotations = r;
+                    }
+                }
+                currentPiece.blocks = rotate(currentPiece.blocks);
+            }
+            // Execute Best Move
+            currentPiece.blocks = originalBlocks;
+            for (let i = 0; i < bestRotations; i++) currentPiece.blocks = rotate(currentPiece.blocks);
+            currentPiece.x = bestX;
+            logAI(`BEST_POS: x=${bestX}, rot=${bestRotations}`);
+        }
+
+        function findDropY(x, blocks) {
+            let y = 0;
+            while (!checkCollision(x, y + 1, blocks)) { y++; if (y > ROWS) return -1; }
+            return y;
+        }
+
+        function evaluateBoard(x, y, blocks) {
+            // Apply piece to temp grid
+            const tempGrid = grid.map(row => [...row]);
+            blocks.forEach((row, dy) => row.forEach((cell, dx) => {
+                if (cell && y + dy >= 0) tempGrid[y+dy][x+dx] = 1;
+            }));
+
+            // Heuristic metrics
+            let aggregateHeight = 0, holes = 0, bumpiness = 0, linesCleared = 0;
+            
+            // 1. Height & Bumps
+            const heights = Array(COLS).fill(0);
+            for (let j = 0; j < COLS; j++) {
+                for (let i = 0; i < ROWS; i++) {
+                    if (tempGrid[i][j]) { heights[j] = ROWS - i; break; }
+                }
+                aggregateHeight += heights[j];
+            }
+            for (let j = 0; j < COLS - 1; j++) bumpiness += Math.abs(heights[j] - heights[j+1]);
+
+            // 2. Holes
+            for (let j = 0; j < COLS; j++) {
+                let blocking = false;
+                for (let i = 0; i < ROWS; i++) {
+                    if (tempGrid[i][j]) blocking = true;
+                    else if (blocking) holes++;
+                }
+            }
+
+            // Weights (El-Tetris style)
+            return -(0.51 * aggregateHeight) + (0.76 * linesCleared) - (0.35 * holes) - (0.18 * bumpiness);
+        }
+
+        function rotate(blocks) {
+            return blocks[0].map((_, i) => blocks.map(row => row[i]).reverse());
+        }
+
+        function checkCollision(x, y, blocks) {
+            return blocks.some((row, dy) => row.some((cell, dx) => {
+                if (!cell) return false;
+                let nx = x + dx, ny = y + dy;
+                return nx < 0 || nx >= COLS || ny >= ROWS || (ny >= 0 && grid[ny][nx]);
+            }));
+        }
+
+        function draw() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            grid.forEach((row, y) => row.forEach((cell, x) => {
+                if (cell) { ctx.fillStyle = '#00ff88'; ctx.fillRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE-1, BLOCK_SIZE-1); }
+            }));
+            currentPiece.blocks.forEach((row, dy) => row.forEach((cell, dx) => {
+                if (cell) { ctx.fillStyle = '#fff'; ctx.fillRect((currentPiece.x+dx)*BLOCK_SIZE, (currentPiece.y+dy)*BLOCK_SIZE, BLOCK_SIZE-1, BLOCK_SIZE-1); }
+            }));
+        }
+
+        function logAI(msg) {
+            const logPanel = document.getElementById('ai-logs');
+            logPanel.innerHTML = `<div>[${new Date().toLocaleTimeString()}] ${msg}</div>` + logPanel.innerHTML;
+        }
+
+        function gameLoop() {
+            if (!checkCollision(currentPiece.x, currentPiece.y + 1, currentPiece.blocks)) {
+                currentPiece.y++;
+            } else {
+                // Lock and spawn
+                currentPiece.blocks.forEach((row, dy) => row.forEach((cell, dx) => {
+                    if (cell && currentPiece.y+dy >= 0) grid[currentPiece.y+dy][currentPiece.x+dx] = 1;
+                }));
+                // Clear lines
+                grid = grid.filter(row => row.some(c => c === 0));
+                while (grid.length < ROWS) grid.unshift(Array(COLS).fill(0));
+                score += 100; document.getElementById('score').innerText = score;
+                spawn();
+            }
+            draw();
+        }
+
+        spawn();
+        setInterval(gameLoop, 100); // Super fast solve
+    </script>
+</body>
+</html>

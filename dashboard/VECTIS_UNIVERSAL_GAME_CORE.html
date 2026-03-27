@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>VECTIS: UNIVERSAL GAME CORE</title>
+    <style>
+        :root { --accent: #00e5ff; --bg: #050505; }
+        body { margin:0; background:var(--bg); color:#fff; font-family:'Outfit',sans-serif; overflow:hidden; display:flex; flex-direction:column; align-items:center; height:100vh; }
+        #canvas { background:#000; border:4px solid #333; box-shadow:0 0 50px rgba(0,0,0,0.5); border-radius:12px; }
+        #stats { position:absolute; left:50px; top:50px; text-align:left; border-left: 2px solid var(--accent); padding-left: 20px; }
+        .mode-title { font-size:24px; color:var(--accent); font-weight:900; letter-spacing:5px; }
+        .score { font-size:40px; }
+        .weights { font-size:12px; color:#ff0088; opacity:0.8; }
+        .controls { position:absolute; bottom:50px; display:flex; gap:10px; }
+        .btn { background:rgba(255,255,255,0.05); color:#fff; border:1px solid rgba(255,255,255,0.1); padding:10px 20px; cursor:pointer; }
+        .btn:hover { background:var(--accent); color:#000; }
+    </style>
+</head>
+<body>
+    <div id="stats">
+        <div id="game-name" class="mode-title">CORE: IDLE</div>
+        <div class="score">SCORE: <span id="score">0</span></div>
+        <div id="weights" class="weights">W: [H:0.0, L:0.0, B:0.0]</div>
+        <div id="status" style="font-size:10px; color:#00ff88;">AI_CONNECTED: ACTIVE</div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div class="controls">
+        <button class="btn" onclick="initGame('TETRO')">LOAD: TETRO (TETRIS)</button>
+        <button class="btn" onclick="initGame('SLIME')">LOAD: SLIME (PUYO)</button>
+        <button class="btn" onclick="initGame('NUM2048')">LOAD: NUM2048</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const COLS = 10, ROWS = 20, BLOCK_SIZE = 30;
+        canvas.width = COLS * BLOCK_SIZE; canvas.height = ROWS * BLOCK_SIZE;
+
+        let game, weights = { h: -0.5, l: 0.7, b: -0.2, c: 10.0 }; // Initial dynamic weights
+
+        // --- UNIVERSAL GAME PLUGIN SYSTEM ---
+        class TetroGame {
+            constructor() { this.grid = Array.from({length: ROWS}, () => Array(COLS).fill(0)); this.score = 0; }
+            spawn() { this.piece = { x: 3, y: 0, blocks: [[[1,1,1,1]],[[0,1,0],[1,1,1]],[[1,1],[1,1]]][Math.floor(Math.random()*3)], color: '#00e5ff' }; }
+            evaluate(x, y, blocks) {
+                const temp = this.grid.map(r => [...r]);
+                blocks.forEach((row, dy) => row.forEach((cell, dx) => { if(cell && y+dy >= 0) temp[y+dy][x+dx] = 1; }));
+                let h = 0, holes = 0, bump = 0, hh = Array(COLS).fill(0);
+                for(let j=0; j<COLS; j++) { let found=false; for(let i=0; i<ROWS; i++) { if(temp[i][j]) { if(!found) { hh[j]=ROWS-i; h+=hh[j]; found=true; } } else if(found) holes++; } }
+                for(let j=0; j<COLS-1; j++) bump += Math.abs(hh[j]-hh[j+1]);
+                return weights.h*h + weights.l*10 - weights.b*holes - weights.c*bump;
+            }
+        }
+
+        class SlimeGame {
+            constructor() { this.grid = Array.from({length: ROWS}, () => Array(COLS).fill(0)); this.score = 0; }
+            spawn() { const c = 1+Math.floor(Math.random()*4); this.piece = { x: 4, y: 0, blocks: [[c],[c]], color: 'slime' }; }
+            evaluate(x, y, blocks) {
+                let conn = 0;
+                blocks.forEach((row, dy) => row.forEach((cell, dx) => {
+                    let nx = x+dx, ny = y+dy;
+                    if(ny+1 < ROWS && this.grid[ny+1][nx] === cell) conn += 20;
+                    if(nx+1 < COLS && this.grid[ny][nx+1] === cell) conn += 10;
+                }));
+                return conn - y;
+            }
+        }
+
+        function initGame(m) {
+            if(m === 'TETRO') game = new TetroGame();
+            else if(m === 'SLIME') game = new SlimeGame();
+            document.getElementById('game-name').innerText = `CORE: ${m}_MODE`;
+            game.spawn(); aiStep();
+        }
+
+        // --- THE UNIVERSAL AI SOLVER ---
+        function aiStep() {
+            let bestX = 0, bestScore = -Infinity, originalBlocks = game.piece.blocks;
+            for(let x = -1; x < COLS; x++) {
+                let y = 0;
+                while(!checkCollision(x, y+1, game.piece.blocks)) { y++; if(y > ROWS) break; }
+                const s = game.evaluate(x, y, game.piece.blocks);
+                if(s > bestScore) { bestScore = s; bestX = x; }
+            }
+            game.piece.x = bestX;
+            // Mutation of Weights (Learning)
+            weights.h += (Math.random()-0.5) * 0.01;
+            weights.b += (Math.random()-0.5) * 0.01;
+            document.getElementById('weights').innerText = `W: [H:${weights.h.toFixed(2)}, B:${weights.b.toFixed(2)}]`;
+        }
+
+        function checkCollision(x, y, blocks) {
+            return blocks.some((row, dy) => row.some((cell, dx) => {
+                if(!cell) return false;
+                let nx = x+dx, ny = y+dy;
+                return nx < 0 || nx >= COLS || ny >= ROWS || (ny >= 0 && game.grid[ny][nx]);
+            }));
+        }
+
+        function loop() {
+            if(!game) return;
+            if(!checkCollision(game.piece.x, game.piece.y+1, game.piece.blocks)) {
+                game.piece.y++;
+            } else {
+                game.piece.blocks.forEach((row, dy) => row.forEach((cell, dx) => { if(cell && game.piece.y+dy>=0) game.grid[game.piece.y+dy][game.piece.x+dx] = cell; }));
+                game.grid = game.grid.filter(r => r.some(c => c === 0));
+                while(game.grid.length < ROWS) game.grid.unshift(Array(COLS).fill(0));
+                game.score += 100; document.getElementById('score').innerText = game.score;
+                game.spawn(); aiStep();
+            }
+            draw();
+        }
+
+        function draw() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            game.grid.forEach((row, y) => row.forEach((cell, x) => {
+                if(cell) { ctx.fillStyle = getC(cell); ctx.fillRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE-1, BLOCK_SIZE-1); }
+            }));
+            game.piece.blocks.forEach((row, dy) => row.forEach((cell, dx) => {
+                if(cell) { ctx.fillStyle = getC(cell); ctx.fillRect((game.piece.x+dx)*BLOCK_SIZE, (game.piece.y+dy)*BLOCK_SIZE, BLOCK_SIZE-1, BLOCK_SIZE-1); }
+            }));
+        }
+
+        function getC(t) { return ['#000','#00e5ff','#ff0088','#00ff88','#ffcc00'][t] || '#fff'; }
+
+        setInterval(loop, 100);
+    </script>
+</body>
+</html>

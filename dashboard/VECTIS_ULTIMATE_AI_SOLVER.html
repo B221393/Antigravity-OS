@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>VECTIS ULTIMATE AI SOLVER</title>
+    <style>
+        :root { --accent: #00e5ff; --bg: #030303; }
+        body { margin: 0; background: var(--bg); color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        #canvas { background: #000; border: 4px solid #333; box-shadow: 0 0 100px rgba(0,0,0,0.5); border-radius: 12px; }
+        #ui { position: absolute; left: 50px; top: 50px; text-align: left; }
+        .mode-label { color: var(--accent); font-weight: 900; font-size: 20px; letter-spacing: 5px; margin-bottom: 20px; }
+        .score { font-size: 50px; font-weight: 200; }
+        .controls { position: absolute; bottom: 50px; display: flex; gap: 10px; }
+        .btn { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 10px 20px; cursor: pointer; border-radius: 4px; }
+        .btn:hover { background: var(--accent); color: #000; }
+        #ai-status { color: #f00; font-size: 10px; opacity: 0.6; }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <div id="mode-id" class="mode-label">AI_NEXUS: TETRO_SYMMETRY</div>
+        <div class="score">SCORE: <span id="score">0</span></div>
+        <div id="ai-status">PROCESSING_REALTIME_HEURISTICS...</div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div class="controls">
+        <button class="btn" onclick="setMode('TETRO')">SWITCH: TETRIS</button>
+        <button class="btn" onclick="setMode('SLIME')">SWITCH: PUYO</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const COLS = 10, ROWS = 20, BLOCK_SIZE = 30;
+        canvas.width = COLS * BLOCK_SIZE; canvas.height = ROWS * BLOCK_SIZE;
+
+        let grid = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+        let score = 0, currentPiece = null, gameMode = 'TETRO';
+
+        const SHAPES = {
+            TETRO: [ [[1,1,1,1]], [[1,1],[1,1]], [[0,1,0],[1,1,1]], [[1,1,0],[0,1,1]] ],
+            SLIME: [ [[1]], [[2]], [[3]], [[4]] ]
+        };
+
+        function setMode(mode) {
+            gameMode = mode;
+            grid = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+            score = 0;
+            document.getElementById('mode-id').innerText = `AI_NEXUS: ${mode}_EVOLUTION`;
+            spawn();
+        }
+
+        function spawn() {
+            if (gameMode === 'TETRO') {
+                const shape = SHAPES.TETRO[Math.floor(Math.random()*SHAPES.TETRO.length)];
+                currentPiece = { x: 3, y: 0, blocks: shape, color: '#00e5ff' };
+            } else {
+                const c1 = 1 + Math.floor(Math.random()*4), c2 = 1 + Math.floor(Math.random()*4);
+                currentPiece = { x: 4, y: 0, blocks: [[c1],[c2]], color: 'slime' };
+            }
+            aiSolve();
+        }
+
+        // --- DUAL MODE AI BRAIN ---
+        function aiSolve() {
+            let bestX = 0, bestRotations = 0, bestScore = -Infinity;
+            const originalBlocks = currentPiece.blocks;
+
+            for (let r = 0; r < 4; r++) {
+                for (let x = -1; x < COLS - currentPiece.blocks[0].length + 1; x++) {
+                    const y = getDropY(x, currentPiece.blocks);
+                    if (y === -1) continue;
+                    const evalScore = evaluate(x, y, currentPiece.blocks);
+                    if (evalScore > bestScore) { bestScore = evalScore; bestX = x; bestRotations = r; }
+                }
+                currentPiece.blocks = rotate(currentPiece.blocks);
+            }
+            // Execute
+            currentPiece.blocks = originalBlocks;
+            for (let i = 0; i < bestRotations; i++) currentPiece.blocks = rotate(currentPiece.blocks);
+            currentPiece.x = bestX;
+        }
+
+        function getDropY(x, blocks) {
+            let y = 0;
+            while (!collision(x, y + 1, blocks)) { y++; if(y > ROWS) return -1; }
+            return y;
+        }
+
+        function evaluate(x, y, blocks) {
+            const temp = grid.map(r => [...r]);
+            blocks.forEach((row, dy) => row.forEach((cell, dx) => { if(cell && y+dy >= 0) temp[y+dy][x+dx] = (gameMode === 'TETRO' ? 1 : cell); }));
+            
+            if (gameMode === 'TETRO') {
+                let h = 0, holes = 0, bump = 0;
+                const hh = Array(COLS).fill(0);
+                for(let j=0; j<COLS; j++) {
+                    let blocking = false;
+                    for(let i=0; i<ROWS; i++) { if(temp[i][j]) { if(!hh[j]) hh[j]=ROWS-i; h+=ROWS-i; blocking=true; } else if(blocking) holes++; }
+                }
+                for(let j=0; j<COLS-1; j++) bump += Math.abs(hh[j]-hh[j+1]);
+                return -(0.5*h + 0.4*holes + 0.2*bump);
+            } else {
+                // Slime Logic: Reward connectivity
+                let connectivity = 0;
+                blocks.forEach((row, dy) => row.forEach((cell, dx) => {
+                    let nx = x+dx, ny = y+dy;
+                    if(ny+1 < ROWS && temp[ny+1][nx] === cell) connectivity += 10;
+                    if(nx+1 < COLS && temp[ny][nx+1] === cell) connectivity += 5;
+                    if(nx-1 >= 0 && temp[ny][nx-1] === cell) connectivity += 5;
+                }));
+                return connectivity - y; // Higher is better
+            }
+        }
+
+        function collision(x, y, blocks) {
+            return blocks.some((row, dy) => row.some((cell, dx) => {
+                if(!cell) return false;
+                let nx = x+dx, ny = y+dy;
+                return nx < 0 || nx >= COLS || ny >= ROWS || (ny >= 0 && grid[ny][nx]);
+            }));
+        }
+
+        function rotate(b) { return b[0].map((_, i) => b.map(row => row[i]).reverse()); }
+
+        function draw() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            grid.forEach((row, y) => row.forEach((cell, x) => {
+                if(cell) { ctx.fillStyle = getC(cell); ctx.fillRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE-1, BLOCK_SIZE-1); }
+            }));
+            currentPiece.blocks.forEach((row, dy) => row.forEach((cell, dx) => {
+                if(cell) { ctx.fillStyle = getC(cell); ctx.fillRect((currentPiece.x+dx)*BLOCK_SIZE, (currentPiece.y+dy)*BLOCK_SIZE, BLOCK_SIZE-1, BLOCK_SIZE-1); }
+            }));
+        }
+
+        function getC(t) { return ['#000','#00e5ff','#ff0088','#00ff88','#ffcc00'][t] || '#fff'; }
+
+        function loop() {
+            if (!collision(currentPiece.x, currentPiece.y + 1, currentPiece.blocks)) {
+                currentPiece.y++;
+            } else {
+                currentPiece.blocks.forEach((row, dy) => row.forEach((cell, dx) => { if(cell && currentPiece.y+dy>=0) grid[currentPiece.y+dy][currentPiece.x+dx] = (gameMode === 'TETRO' ? 1 : cell); }));
+                grid = grid.filter(r => r.some(c => c === 0));
+                while(grid.length < ROWS) grid.unshift(Array(COLS).fill(0));
+                score += 100; document.getElementById('score').innerText = score;
+                spawn();
+            }
+            draw();
+        }
+
+        spawn(); setInterval(loop, 50); // High Speed Autonomous Execution
+    </script>
+</body>
+</html>

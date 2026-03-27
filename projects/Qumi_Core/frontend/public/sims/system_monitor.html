@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>SYSTEM_OS: VITAL_MONITOR</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #000; font-family: 'Inter', sans-serif; color: #fff; }
+        #dashboard {
+            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+            width: 100vw; height: 100vh; padding: 60px; box-sizing: border-box; gap: 40px;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px; padding: 30px; display: flex; flex-direction: column;
+            justify-content: center; position: relative;
+        }
+        .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255, 255, 255, 0.4); margin-bottom: 10px; }
+        .value { font-size: 3rem; font-weight: 200; letter-spacing: -2px; }
+        .unit { font-size: 1rem; opacity: 0.5; margin-left: 10px; }
+        .bar-container { height: 4px; width: 100%; background: rgba(255, 255, 255, 0.05); margin-top: 20px; position: relative; }
+        .bar { height: 100%; background: #00f2ff; width: 0%; transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 0 10px #00f2ff; }
+        
+        #connection-status {
+            position: absolute; top: 30px; right: 40px; font-size: 0.6rem;
+            display: flex; align-items: center; gap: 8px; color: #bcff00;
+        }
+        .pulse { width: 6px; height: 6px; background: #bcff00; border-radius: 50%; box-shadow: 0 0 8px #bcff00; animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    </style>
+</head>
+<body>
+    <div id="connection-status">
+        <div class="pulse"></div> SYSTEM_BRIDGE: CONNECTED
+    </div>
+    <div id="dashboard">
+        <div class="stat-card">
+            <div class="label">CPU_THOUGHT_LOAD</div>
+            <div class="value"><span id="cpu-val">0</span><span class="unit">%</span></div>
+            <div class="bar-container"><div id="cpu-bar" class="bar"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="label">MEMORY_RETAIN_SIZE</div>
+            <div class="value"><span id="mem-val">0</span><span class="unit">GB</span></div>
+            <div class="bar-container"><div id="mem-bar" class="bar" style="background:#ff0055; box-shadow: 0 0 10px #ff0055;"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="label">DISK_PERSIST_CAPACITY</div>
+            <div class="value"><span id="disk-val">0</span><span class="unit">%</span></div>
+            <div class="bar-container"><div id="disk-bar" class="bar" style="background:#bcff00; box-shadow: 0 0 10px #bcff00;"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="label">NEURAL_NET_TRAFFIC</div>
+            <div id="net-val" style="font-size: 1.2rem; font-weight: 300;">TX: 0.0 MB/s<br>RX: 0.0 MB/s</div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchStats() {
+            try {
+                const response = await fetch('http://127.0.0.1:8088/api/stats');
+                const data = await response.json();
+                
+                document.getElementById('cpu-val').innerText = data.cpu_percent;
+                document.getElementById('cpu-bar').style.width = data.cpu_percent + '%';
+                
+                document.getElementById('mem-val').innerText = data.memory_used_gb;
+                document.getElementById('mem-bar').style.width = data.memory_percent + '%';
+                
+                document.getElementById('disk-val').innerText = data.disk_usage_percent;
+                document.getElementById('disk-bar').style.width = data.disk_usage_percent + '%';
+                
+                document.getElementById('net-val').innerHTML = `TX: ${data.network_sent_mb} MB/s<br>RX: ${data.network_recv_mb} MB/s`;
+                
+                document.getElementById('connection-status').style.color = '#bcff00';
+            } catch (err) {
+                document.getElementById('connection-status').innerText = 'SYSTEM_BRIDGE: DISCONNECTED';
+                document.getElementById('connection-status').style.color = '#ff0055';
+            }
+        }
+
+        setInterval(fetchStats, 1000);
+        fetchStats();
+    </script>
+</body>
+</html>

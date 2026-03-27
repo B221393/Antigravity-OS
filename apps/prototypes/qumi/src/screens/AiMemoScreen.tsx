@@ -2,19 +2,24 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   StyleSheet, Text, View, TextInput, TouchableOpacity,
   ScrollView, KeyboardAvoidingView, Platform, Dimensions,
-  Keyboard, TouchableWithoutFeedback, Linking
+  Keyboard, TouchableWithoutFeedback, Linking, Alert
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Sparkles, Send, BrainCircuit, Zap, Users, MessageSquare } from 'lucide-react-native';
+import { Sparkles, Send, BrainCircuit, Zap, Users, MessageSquare, Mic, Square } from 'lucide-react-native';
 import Animated, { 
   FadeInDown, FadeInUp, useSharedValue, useAnimatedStyle, 
   withSpring, withRepeat, withTiming, Easing 
 } from 'react-native-reanimated';
+import { Audio } from 'expo-av';
+import axios from 'axios';
 
 const { width, height } = Dimensions.get('window');
 
-const SiriGlowButton = ({ onPress, syncRate, isActive }: { onPress: () => void, syncRate: Animated.SharedValue<number>, isActive: boolean }) => {
+// 開発環境用のローカルIPアドレスを設定（バックエンドのポートに合わせてください）
+const BACKEND_URL = 'http://localhost:8000'; 
+
+const SiriGlowButton = ({ onPress, syncRate, isActive, isPulse }: { onPress: () => void, syncRate: Animated.SharedValue<number>, isActive: boolean, isPulse?: boolean }) => {
   const scale = useSharedValue(1);
   const glow = useSharedValue(0.5);
 
@@ -40,14 +45,14 @@ const SiriGlowButton = ({ onPress, syncRate, isActive }: { onPress: () => void, 
         onPress={onPress} 
         activeOpacity={1}
       >
-        <Animated.View style={[styles.siriGlow, glowStyle, isActive && { backgroundColor: '#FF00B3' }]} />
+        <Animated.View style={[styles.siriGlow, glowStyle, (isActive || isPulse) && { backgroundColor: isPulse ? '#FF3B30' : '#FF00B3' }]} />
         <LinearGradient 
-          colors={isActive ? ['#FF00B3', '#FF5C93'] : ['#A020F0', '#00D4FF']} 
+          colors={isPulse ? ['#FF3B30', '#FF9500'] : (isActive ? ['#FF00B3', '#FF5C93'] : ['#A020F0', '#00D4FF'])} 
           start={{ x: 0, y: 0 }} 
           end={{ x: 1, y: 1 }} 
           style={styles.sendButton}
         >
-          {isActive ? <Users color="#FFF" size={20} /> : <Zap color="#FFF" size={20} />}
+          {isPulse ? <Square color="#FFF" size={20} /> : (isActive ? <Users color="#FFF" size={20} /> : <Send color="#FFF" size={20} />)}
         </LinearGradient>
       </TouchableOpacity>
     </Animated.View>
@@ -57,8 +62,10 @@ const SiriGlowButton = ({ onPress, syncRate, isActive }: { onPress: () => void, 
 export default function AiMemoScreen() {
   const [inputText, setInputText] = useState('');
   const [isDebateMode, setIsDebateMode] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [recording, setRecording] = useState<Audio.Recording | null>(null);
   const [memos, setMemos] = useState<{ id: string, text: string, type: 'user' | 'ai' | 'debate', debateData?: any }[]>([
-    { id: '1', text: 'Abstract Layer Activated. 思考のベクトルを入力してください。', type: 'ai' }
+    { id: '1', text: 'Abstract Layer Activated. 思考のベクトルを注入してください。', type: 'ai' }
   ]);
   
   const syncRate = useSharedValue(0);
@@ -67,8 +74,76 @@ export default function AiMemoScreen() {
     const decay = setInterval(() => {
       if (syncRate.value > 0) syncRate.value = Math.max(0, syncRate.value - 3);
     }, 1000);
+    
+    // 音声パーミッションの要求
+    (async () => {
+      await Audio.requestPermissionsAsync();
+      await Audio.setAudioModeAsync({
+        allowsRecordingIOS: true,
+        playsInSilentModeIOS: true,
+      });
+    })();
+
     return () => clearInterval(decay);
   }, []);
+
+  const startRecording = async () => {
+    try {
+      const { recording } = await Audio.Recording.createAsync(
+        Audio.RecordingOptionsPresets.HIGH_QUALITY
+      );
+      setRecording(recording);
+      setIsRecording(true);
+      syncRate.value = withRepeat(withTiming(50, { duration: 500 }), -1, true);
+    } catch (err) {
+      Alert.alert('Error', '録音の開始に失敗しました。');
+    }
+  };
+
+  const stopRecording = async () => {
+    setIsRecording(false);
+    syncRate.value = 0;
+    if (!recording) return;
+    
+    try {
+      await recording.stopAndUnloadAsync();
+      const uri = recording.getURI();
+      setRecording(null);
+      if (uri) processVoice(uri);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const processVoice = async (uri: string) => {
+    const aiMessageId = Date.now().toString();
+    setMemos(prev => [...prev, { id: aiMessageId, text: '🎙️ 音声ベクトルを同期中...', type: 'ai' }]);
+    syncRate.value = 100;
+
+    try {
+      const formData = new FormData();
+      // @ts-ignore
+      formData.append('file', {
+        uri: Platform.OS === 'android' ? uri : uri.replace('file://', ''),
+        name: 'recording.m4a',
+        type: 'audio/m4a',
+      });
+
+      const response = await axios.post(`${BACKEND_URL}/voice`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+      const { transcription, structured_result } = response.data;
+      
+      setMemos(prev => [
+        ...prev.filter(m => m.id !== aiMessageId),
+        { id: Date.now().toString(), text: transcription, type: 'user' },
+        { id: (Date.now()+1).toString(), text: `【音声解析完了】\n\n${JSON.stringify(structured_result, null, 2)}`, type: 'ai' }
+      ]);
+    } catch (error) {
+      setMemos(prev => prev.map(m => m.id === aiMessageId ? { ...m, text: '⚠️ 音声同期エラー。バックエンドを確認してください。' } : m));
+    }
+  };
 
   const handleSend = async () => {
     if (!inputText.trim()) return;
@@ -80,22 +155,18 @@ export default function AiMemoScreen() {
     const aiMessageId = (Date.now()+1).toString();
     setMemos(prev => [...prev, { id: aiMessageId, text: isDebateMode ? '👥 複数人格が議論を開始します...' : '🧠 思考を解析中...', type: 'ai' }]);
     
-    const endpoint = isDebateMode ? 'http://localhost:8000/api/debate' : 'http://localhost:8000/api/soul';
+    const endpoint = isDebateMode ? `${BACKEND_URL}/api/debate` : `${BACKEND_URL}/delegate`;
     
     try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(isDebateMode ? { thought: userInput } : { thought: userInput })
-      });
-      const data = await response.json();
+      const response = await axios.post(endpoint, isDebateMode ? { thought: userInput } : { thought: userInput, persona: 'soul' });
+      const data = response.data;
       
       if (isDebateMode && data.debate) {
         setMemos(prev => prev.map(m => m.id === aiMessageId ? { 
           id: m.id, type: 'debate', text: data.debate.synthesis, debateData: data.debate 
         } : m));
       } else {
-        const resultText = data.result ? (typeof data.result === 'string' ? data.result : JSON.stringify(data.result, null, 2)) : '解析エラー';
+        const resultText = data.result ? (typeof data.result === 'string' ? data.result : JSON.stringify(data.result, null, 2)) : '解析完了';
         setMemos(prev => prev.map(m => m.id === aiMessageId ? { ...m, text: resultText } : m));
       }
     } catch (e) {
@@ -150,15 +221,23 @@ export default function AiMemoScreen() {
 
         <View style={styles.inputArea}>
           <BlurView intensity={80} tint="dark" style={styles.inputBlur}>
+            <TouchableOpacity 
+              style={[styles.micButton, isRecording && styles.micButtonActive]} 
+              onPress={isRecording ? stopRecording : startRecording}
+            >
+              <Mic color={isRecording ? "#FF3B30" : "#666"} size={22} />
+            </TouchableOpacity>
+            
             <TextInput
               style={styles.textInput}
-              placeholder={isDebateMode ? "議論を開始..." : "思考を入力..."}
+              placeholder={isRecording ? "録音中...（停止ボタンを押して解析）" : (isDebateMode ? "議論を開始..." : "思考を入力...")}
               placeholderTextColor="#666"
               value={inputText}
               onChangeText={setInputText}
               multiline
+              editable={!isRecording}
             />
-            <SiriGlowButton onPress={handleSend} syncRate={syncRate} isActive={isDebateMode} />
+            <SiriGlowButton onPress={handleSend} syncRate={syncRate} isActive={isDebateMode} isPulse={isRecording} />
           </BlurView>
         </View>
       </View>
@@ -193,8 +272,10 @@ const styles = StyleSheet.create({
   synthesisText: { color: '#FFF', fontSize: 14, fontWeight: '700', lineHeight: 22 },
 
   inputArea: { position: 'absolute', bottom: 30, left: 16, right: 16 },
-  inputBlur: { flexDirection: 'row', alignItems: 'center', padding: 12, borderRadius: 32, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
-  textInput: { flex: 1, color: '#FFF', fontSize: 15, paddingLeft: 12 },
+  inputBlur: { flexDirection: 'row', alignItems: 'center', padding: 8, paddingLeft: 16, borderRadius: 32, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', backgroundColor: 'rgba(0,0,0,0.5)' },
+  micButton: { marginRight: 12 },
+  micButtonActive: { }, 
+  textInput: { flex: 1, color: '#FFF', fontSize: 15, maxHeight: 100 },
   siriGlow: { position: 'absolute', top: -4, left: -4, right: -4, bottom: -4, borderRadius: 24, backgroundColor: '#00D4FF' },
   sendButton: { width: 44, height: 44, borderRadius: 22, justifyContent: 'center', alignItems: 'center' }
 });

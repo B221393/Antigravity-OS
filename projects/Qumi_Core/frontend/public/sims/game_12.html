@@ -85,33 +85,7 @@
             font-weight: 300;
         }
 
-        .status-indicator {
-            margin-top: 15px;
-            font-size: 9px;
-            color: var(--accent-color);
-            letter-spacing: 2px;
-            font-weight: 700;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .dot {
-            width: 6px;
-            height: 6px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-color);
-            animation: blink 1.5s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        /* --- Results Preview --- */
+        /* --- 検索結果プレビュー (ダミー) --- */
         .results-preview {
             margin-top: 40px;
             display: flex;
@@ -120,9 +94,6 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s ease-out;
-            max-height: 400px;
-            overflow-y: auto;
-            padding-right: 10px;
         }
         .results-preview.active {
             opacity: 1;
@@ -154,6 +125,7 @@
             line-height: 1.6;
         }
 
+        /* --- メタ情報 --- */
         .nexus-info {
             position: absolute;
             bottom: 40px;
@@ -171,31 +143,24 @@
         <div class="os-tag">INTEGRATED EXTERNAL BRAIN HUB</div>
         <div class="search-bar-wrapper">
             <span class="search-icon">🔍</span>
-            <input type="text" id="nexus-input" placeholder="思考を同期: 外部脳(GitHub/Logs/Docs)から情報を抽出..." spellcheck="false">      
-        </div>
-        <div class="status-indicator">
-            <div class="dot"></div>
-            THINKING INPUT ACTIVE [KEYPUSH_ZERO_ENABLED]
+            <input type="text" id="nexus-input" placeholder="あなたの外部脳(GitHub/Logs/Docs)から検索..." spellcheck="false">
         </div>
 
         <div class="results-preview" id="results">
             <div class="result-card">
                 <div class="result-title">docs/STRATEGIC_INTEL_LOG.md</div>
-                <div class="result-snippet">自律進化型アーキテクチャの核心。知識の獲得から実行、可視化までのフィードバックループを定義した機密ログ。</div>
+                <div class="result-snippet">自律実行プロトコル適用済み。エージェントの自律化とユーザー負荷の最小化を優先する。</div>
             </div>
             <div class="result-card">
-                <div class="result-title">apps/dev_loop/IDENTITY_CORE.md</div>
-                <div class="result-snippet">ユーザーの「哲学的コピー」。意思決定の基準となる思考プロトコルを格納。</div>
-            </div>
-            <div class="result-card">
-                <div class="result-title">Shukatsu/Persol_AVC_Strategy.md</div>
-                <div class="result-snippet">「微細なコントロール」をキーワードにした、物理・デジタル統合の自己PR戦略。</div>
+                <div class="result-title">Persol_AVC_ES_Draft.md</div>
+                <div class="result-snippet">強みは「未知への探求心」。馬術部での経験とIT独学スキルの融合による自己研鑽。</div>
             </div>
         </div>
     </div>
 
-    <div class="nexus-info">NEXUS SEARCH [V0.2.0] | ASSET #12 READY</div>
+    <div class="nexus-info">NEXUS SEARCH [V0.1.0] | ASSET #12 READY</div>
 
+    <!-- Three.js for Neural Network Background -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         const container = document.getElementById('canvas-container');
@@ -205,6 +170,7 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(renderer.domElement);
 
+        // 星屑（パーティクル）の生成
         const particlesGeometry = new THREE.BufferGeometry();
         const particlesCount = 2000;
         const posArray = new Float32Array(particlesCount * 3);
@@ -226,6 +192,7 @@
 
         camera.position.z = 2;
 
+        // アニメーション
         function animate() {
             requestAnimationFrame(animate);
             particlesMesh.rotation.y += 0.001;
@@ -234,6 +201,7 @@
         }
         animate();
 
+        // 検索窓のアニメーション連動
         const input = document.getElementById('nexus-input');
         const results = document.getElementById('results');
 

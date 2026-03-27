@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>VECTIS: UNIVERSAL PUZZLE NEXUS</title>
+    <style>
+        :root { --accent: #00e5ff; --bg: #050505; --glass: rgba(255,255,255,0.05); }
+        body { margin: 0; background: var(--bg); color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; display: flex; flex-direction: column; align-items: center; height: 100vh; }
+        #ui { padding: 20px; text-align: center; z-index: 10; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .logo { font-size: 24px; font-weight: 900; letter-spacing: 5px; color: var(--accent); }
+        .controls { margin-top: 10px; display: flex; justify-content: center; gap: 20px; }
+        .btn { background: var(--glass); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px 20px; cursor: pointer; border-radius: 8px; font-weight: bold; transition: 0.3s; }
+        .btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent); }
+        .active { border-color: var(--accent); background: rgba(0, 229, 255, 0.2); }
+        #game-container { position: relative; flex: 1; display: flex; justify-content: center; align-items: center; width: 100%; }
+        #canvas { background: #111; border: 4px solid #333; box-shadow: 0 0 50px rgba(0,0,0,0.5); border-radius: 12px; }
+        #info { position: absolute; right: 100px; text-align: left; opacity: 0.6; }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <div class="logo">VECTIS_PUZZLE_NEXUS</div>
+        <div class="controls">
+            <button class="btn active" id="mode-tetro" onclick="setMode('TETRO')">MODE: TETRO (TETRIS)</button>
+            <button class="btn" id="mode-slime" onclick="setMode('SLIME')">MODE: SLIME (PUYO)</button>
+        </div>
+    </div>
+    <div id="game-container">
+        <canvas id="canvas"></canvas>
+        <div id="info">
+            <h2>SCORE: <span id="score">0</span></h2>
+            <p>← → : MOVE<br>↑ : ROTATE<br>↓ : DROP</p>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const COLS = 10, ROWS = 20, BLOCK_SIZE = 30;
+        canvas.width = COLS * BLOCK_SIZE;
+        canvas.height = ROWS * BLOCK_SIZE;
+
+        let gameMode = 'TETRO';
+        let grid = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+        let score = 0;
+        let p1 = { x: 4, y: 0, blocks: [], color: '#00e5ff' };
+
+        const SHAPES = {
+            TETRO: [ [[1,1,1,1]], [[1,1],[1,1]], [[0,1,0],[1,1,1]], [[1,0,0],[1,1,1]], [[0,0,1],[1,1,1]] ],
+            SLIME: [ [[1]], [[2]], [[3]], [[4]] ] // Puyo style single colors
+        };
+
+        function setMode(mode) {
+            gameMode = mode;
+            score = 0;
+            grid = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`mode-${mode.toLowerCase()}`).classList.add('active');
+            spawn();
+        }
+
+        function spawn() {
+            if (gameMode === 'TETRO') {
+                const shape = SHAPES.TETRO[Math.floor(Math.random()*SHAPES.TETRO.length)];
+                p1 = { x: 3, y: 0, blocks: shape, color: '#00e5ff' };
+            } else {
+                // Puyo-style pair
+                const c1 = 1 + Math.floor(Math.random()*4);
+                const c2 = 1 + Math.floor(Math.random()*4);
+                p1 = { x: 4, y: 0, blocks: [[c1], [c2]], color: 'slime' };
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Draw Grid
+            grid.forEach((row, y) => row.forEach((cell, x) => {
+                if (cell) {
+                    ctx.fillStyle = getCellColor(cell);
+                    ctx.fillRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE-1, BLOCK_SIZE-1);
+                }
+            }));
+            // Draw P1
+            p1.blocks.forEach((row, dy) => row.forEach((cell, dx) => {
+                if (cell) {
+                    ctx.fillStyle = gameMode === 'TETRO' ? p1.color : getCellColor(cell);
+                    ctx.fillRect((p1.x+dx)*BLOCK_SIZE, (p1.y+dy)*BLOCK_SIZE, BLOCK_SIZE-1, BLOCK_SIZE-1);
+                }
+            }));
+        }
+
+        function getCellColor(type) {
+            const colors = ['#000', '#00e5ff', '#ff0088', '#00ff88', '#ffcc00'];
+            return colors[type] || '#fff';
+        }
+
+        function move(dx, dy) {
+            p1.x += dx; p1.y += dy;
+            if (collision()) { p1.x -= dx; p1.y -= dy; return false; }
+            return true;
+        }
+
+        function collision() {
+            return p1.blocks.some((row, dy) => row.some((cell, dx) => {
+                if (!cell) return false;
+                let nx = p1.x + dx, ny = p1.y + dy;
+                return nx < 0 || nx >= COLS || ny >= ROWS || (ny >= 0 && grid[ny][nx]);
+            }));
+        }
+
+        function lock() {
+            p1.blocks.forEach((row, dy) => row.forEach((cell, dx) => {
+                if (cell) {
+                    let ny = p1.y + dy;
+                    if (ny < 0) { reset(); return; }
+                    grid[ny][p1.x + dx] = gameMode === 'TETRO' ? 1 : cell;
+                }
+            }));
+            clearLines();
+            spawn();
+        }
+
+        function clearLines() {
+            if (gameMode === 'TETRO') {
+                grid = grid.filter(row => row.some(c => c === 0));
+                while (grid.length < ROWS) grid.unshift(Array(COLS).fill(0));
+            } else {
+                // Simplified Puyo: Clear 4 connected (naive)
+                // Real Puyo needs a recursive flood fill. For brevity: match same color rows
+                grid.forEach((row, y) => {
+                    let count = 0, last = -1;
+                    row.forEach((c, x) => {
+                        if (c > 0 && c === last) count++;
+                        else { if(count >= 3) { for(let i=0; i<=count; i++) row[x-1-i] = 0; } count = 1; last = c; }
+                    });
+                    if(count >= 3) { for(let i=0; i<count; i++) row[COLS-1-i] = 0; }
+                });
+            }
+            document.getElementById('score').innerText = score += 10;
+        }
+
+        function rotate() {
+            const rotated = p1.blocks[0].map((_, i) => p1.blocks.map(row => row[i]).reverse());
+            const old = p1.blocks; p1.blocks = rotated;
+            if (collision()) p1.blocks = old;
+        }
+
+        function reset() { grid = Array.from({ length: ROWS }, () => Array(COLS).fill(0)); score = 0; spawn(); }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') move(-1, 0);
+            if (e.key === 'ArrowRight') move(1, 0);
+            if (e.key === 'ArrowDown') move(0, 1);
+            if (e.key === 'ArrowUp') rotate();
+            draw();
+        });
+
+        setInterval(() => { if (!move(0, 1)) lock(); draw(); }, 500);
+        spawn(); draw();
+    </script>
+</body>
+</html>
