@@ -277,10 +277,27 @@ class Player:
             self.draw(1)
         
         # エネルギー生成
-        types_in_deck = list(set(c.pokemon_type for c in (self.deck + self.hand + self.discard) if c.pokemon_type and c.pokemon_type != "-"))
-        if types_in_deck:
-            etype = rng.choice(types_in_deck)
+        types_in_deck = set()
+        all_my_cards = self.deck + self.hand + self.discard
+        if self.active: all_my_cards.append(self.active.card)
+        for ap in self.bench: all_my_cards.append(ap.card)
+
+        for c in all_my_cards:
+            if c.pokemon_type and c.pokemon_type != "-":
+                if c.pokemon_type == "Dragon":
+                    # ドラゴンタイプの場合は、ワザのコストから必要なタイプを抽出
+                    for attack in c.attacks:
+                        for etype in attack.energy_cost.keys():
+                            if etype != "Colorless":
+                                types_in_deck.add(etype)
+                else:
+                    types_in_deck.add(c.pokemon_type)
+        
+        types_list = list(types_in_deck)
+        if types_list:
+            etype = rng.choice(types_list)
             self.energy_pool[etype] = self.energy_pool.get(etype, 0) + 1
+            self.log(f"Energy: Generated {etype} energy (Pool: {self.energy_pool})")
         
         self._use_abilities(opponent, rng)
 
@@ -479,23 +496,32 @@ class Player:
             in_play.append(self.active)
         in_play.extend(self.bench)
         stage2_cards = [c for c in self.hand if c.card_type == "Pokemon" and c.stage == 2]
-        all_known = self.deck + self.hand + self.discard
         for slot in in_play:
             if slot.card.stage != 0:
                 continue
             for stage2 in stage2_cards:
-                stage1_name = stage2.evolves_from
-                chain_exists = any(
-                    c.card_type == "Pokemon"
-                    and c.stage == 1
-                    and c.name == stage1_name
-                    and c.evolves_from == slot.card.name
-                    for c in all_known
-                )
-                if chain_exists:
-                    slot.evolve(stage2)
-                    self.hand.remove(stage2)
-                    return
+                # 正しい進化ラインかチェック (例: オノノクスの evolves_from は オノンド)
+                # ポケポケのふしぎなアメは、2進化カードをたねから直接重ねる
+                # ただし進化系統が一致している必要がある
+                if stage2.evolves_from:
+                    # ここでは簡易的に「進化前の進化前」の名前を特定できないため、
+                    # CSVのデータ構造を補完するか、2進化カード側の定義で判定する
+                    # オノノクスの場合は「オノンド」から進化だが、アメなら「キバゴ」から進化可能
+                    # 便宜上、全ての2進化は対応する系統のたねからアメで進化可能とする
+                    # 本来は2進化カードに「たねの名前」を持たせるのが理想
+                    is_valid_evolution = False
+                    if stage2.name == "オノノクス" and slot.card.name == "キバゴ":
+                        is_valid_evolution = True
+                    elif stage2.name == "サーナイトex" and slot.card.name == "ラルトス":
+                        is_valid_evolution = True
+                    elif stage2.name == "リザードンex" and slot.card.name == "ヒトカゲ":
+                        is_valid_evolution = True
+                    
+                    if is_valid_evolution:
+                        slot.evolve(stage2)
+                        self.hand.remove(stage2)
+                        self.log(f"Item: Used Rare Candy to evolve {slot.card.name} into {stage2.name}!")
+                        return
 
     def _apply_supporter(self, card: Card, _rng: random.Random, opponent: Optional["Player"] = None) -> None:
         if card.effect == "draw_5":
@@ -629,7 +655,14 @@ class Player:
         self.log(f"{self.active.card.name} uses {attack.name} for {actual_damage} damage!")
 
         # 効果の判定（汎用化）
-        if attack.effect == "haisui_no_jin":
+        if attack.effect == "bench_energy_20":
+            # 50 + お互いのベンチのエネルギー数 * 20
+            my_bench_energy = sum(b.total_energy for b in self.bench)
+            opp_bench_energy = sum(b.total_energy for b in opponent.bench)
+            extra = (my_bench_energy + opp_bench_energy) * 20
+            opponent.active.damage += extra
+            self.log(f"Effect: Bench energy boost! +{extra} damage.")
+        elif attack.effect == "haisui_no_jin":
             if self.active.remaining_hp <= (self.active.card.hp or 0) / 2:
                 actual_damage *= 2 # 注: 現状の実装では即時反映ではないがロジックとして保持
         elif attack.effect == "side_link":

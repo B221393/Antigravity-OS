@@ -610,7 +610,7 @@
 609,未設定ポケモン_609,,Pokemon,,,,,,,,,,,,,,
 610,キバゴ,Dragon,Pokemon,70,0,,,,かじる,1,20,,,,,,
 611,オノンド,Dragon,Pokemon,100,1,610,,,りゅうのいぶき,2,50,,,,,,
-612,オノノクス,Dragon,Pokemon,160,2,611,,,りゅうのはどう,2,130,discard_self_energy_1,りゅうのまい,1,0,boost_next_damage_40,
+612,オノノクス,Dragon,Pokemon,160,2,611,,,ドラゴンバースト,Fighting:1,Metal:1,Colorless:1,50,bench_energy_20,,,,
 613,未設定ポケモン_613,,Pokemon,,,,,,,,,,,,,,
 614,未設定ポケモン_614,,Pokemon,,,,,,,,,,,,,,
 615,未設定ポケモン_615,,Pokemon,,,,,,,,,,,,,,
