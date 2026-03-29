@@ -1,0 +1,129 @@
+{
+  "name": "メガハッサムexデッキ",
+  "description": "ハッサムexの圧倒的パワーで攻めるデッキ",
+  "cards": [
+    {
+      "name": "ストライク",
+      "card_type": "Pokemon",
+      "stage": 0,
+      "hp": 70,
+      "type": "Grass",
+      "weakness": "Fire",
+      "evolves_from": null,
+      "attacks": [
+        {"name": "きりさく", "energy_cost": 1, "damage": 20}
+      ],
+      "count": 2
+    },
+    {
+      "name": "ハッサムex",
+      "card_type": "Pokemon",
+      "stage": 1,
+      "hp": 140,
+      "type": "Grass",
+      "weakness": "Fire",
+      "evolves_from": "ストライク",
+      "attacks": [
+        {"name": "スチールウィング", "energy_cost": 2, "damage": 70},
+        {"name": "パワーサイクロン", "energy_cost": 3, "damage": 140}
+      ],
+      "count": 2
+    },
+    {
+      "name": "メガハッサムex",
+      "card_type": "Pokemon",
+      "stage": 2,
+      "hp": 200,
+      "type": "Grass",
+      "weakness": "Fire",
+      "evolves_from": "ハッサムex",
+      "attacks": [
+        {"name": "メガシザークロス", "energy_cost": 4, "damage": 120, "effect": "side_link"}
+      ],
+      "count": 2
+    },
+    {
+      "name": "キャタピー",
+      "card_type": "Pokemon",
+      "stage": 0,
+      "hp": 50,
+      "type": "Grass",
+      "weakness": "Fire",
+      "evolves_from": null,
+      "attacks": [
+        {"name": "かじる", "energy_cost": 1, "damage": 10}
+      ],
+      "count": 2
+    },
+    {
+      "name": "トランセル",
+      "card_type": "Pokemon",
+      "stage": 1,
+      "hp": 80,
+      "type": "Grass",
+      "weakness": "Fire",
+      "evolves_from": "キャタピー",
+      "attacks": [
+        {"name": "たいあたり", "energy_cost": 2, "damage": 40}
+      ],
+      "count": 2
+    },
+    {
+      "name": "バタフリー",
+      "card_type": "Pokemon",
+      "stage": 2,
+      "hp": 130,
+      "type": "Grass",
+      "weakness": "Fire",
+      "evolves_from": "トランセル",
+      "attacks": [
+        {"name": "どくのこな", "energy_cost": 2, "damage": 60, "effect": "poison"}
+      ],
+      "count": 2
+    },
+    {
+      "name": "博士の研究",
+      "card_type": "Supporter",
+      "stage": null,
+      "hp": null,
+      "type": null,
+      "evolves_from": null,
+      "attacks": [],
+      "effect": "draw_3",
+      "count": 2
+    },
+    {
+      "name": "モンスターボール",
+      "card_type": "Item",
+      "stage": null,
+      "hp": null,
+      "type": null,
+      "evolves_from": null,
+      "attacks": [],
+      "effect": "search_basic",
+      "count": 2
+    },
+    {
+      "name": "なんでもなおし",
+      "card_type": "Item",
+      "stage": null,
+      "hp": null,
+      "type": null,
+      "evolves_from": null,
+      "attacks": [],
+      "effect": "switch",
+      "count": 2
+    },
+    {
+      "name": "エネ加速",
+      "card_type": "Item",
+      "stage": null,
+      "hp": null,
+      "type": null,
+      "evolves_from": null,
+      "attacks": [],
+      "effect": "energy_accel",
+      "count": 2
+    }
+  ]
+}
