@@ -84,17 +84,37 @@ class ActivePokemon:
 
     @property
     def best_attack(self) -> Optional[Attack]:
-        """必要なタイプのエネがすべて揃っているワザの中で最大打点のものを返す"""
+        """必要なタイプのエネがすべて揃っているワザの中で最大打点のものを返す（無色は代用可能）"""
         usable = []
+        for a in self.active_attacks_available():
+            usable.append(a)
+        return max(usable, key=lambda a: a.damage) if usable else None
+
+    def active_attacks_available(self) -> list[Attack]:
+        """現在使用可能なワザのリスト（無色エネの代用ルール適用）"""
+        available = []
         for a in self.card.attacks:
+            # 1. 特定タイプ（Fighting, Metal等）の充足チェック
+            temp_energy = self.energy.copy()
             can_use = True
             for etype, count in a.energy_cost.items():
-                if self.energy.get(etype, 0) < count:
+                if etype == "Colorless":
+                    continue
+                if temp_energy.get(etype, 0) < count:
                     can_use = False
                     break
-            if can_use:
-                usable.append(a)
-        return max(usable, key=lambda a: a.damage) if usable else None
+                temp_energy[etype] -= count # 使用した分を一時的に減らす
+
+            if not can_use:
+                continue
+
+            # 2. 残りのエネルギーで「無色」コストを払えるかチェック
+            colorless_needed = a.energy_cost.get("Colorless", 0)
+            remaining_total = sum(temp_energy.values())
+            if remaining_total >= colorless_needed:
+                available.append(a)
+        
+        return available
 
     @property
     def strongest_attack(self) -> Optional[Attack]:
@@ -235,7 +255,7 @@ class Player:
         self.discard: list[Card] = []
         self.active: Optional[ActivePokemon] = None
         self.bench: list[ActivePokemon] = []
-        self.energy_pool: dict[str, int] = {} # タイプ別のエネルギー
+        self.energy_pool: dict[str, int] = {} # 手元にあるがまだ貼っていないエネルギー
         self.points: int = 0        # KO points scored
         self._supporter_played: bool = False
         self.supporter_damage_boost: int = 0
@@ -243,6 +263,28 @@ class Player:
         self.supporter_locked: bool = False # 次の自分の番、サポーターを使えないフラグ
         self.item_locked: bool = False # 次の自分の番、グッズ（Item）を使えないフラグ
         self.history: list[str] = []   # 各ターンの思考・行動ログ
+        
+        # デッキから生成可能なエネルギータイプを確定（エネルギーゾーン）
+        self.energy_zone = self._initialize_energy_zone()
+
+    def _initialize_energy_zone(self) -> list[str]:
+        """デッキに含まれるポケモンから、供給されるエネルギーのタイプを決定する"""
+        types = set()
+        all_cards = self.deck + self.hand + self.discard
+        for c in all_cards:
+            if c.card_type != "Pokemon": continue
+            if c.pokemon_type and c.pokemon_type != "-" and c.pokemon_type != "Dragon":
+                types.add(c.pokemon_type)
+            elif c.pokemon_type == "Dragon":
+                # ドラゴンタイプはワザのコストから（無色以外を）抽出
+                for attack in c.attacks:
+                    for etype in attack.energy_cost.keys():
+                        if etype != "Colorless":
+                            types.add(etype)
+        
+        # 何もない場合は無色（Colorless）とする
+        res = list(types)
+        return res if res else ["Colorless"]
 
     def log(self, msg: str) -> None:
         self.history.append(msg)
@@ -276,30 +318,82 @@ class Player:
         if self.deck:
             self.draw(1)
         
-        # エネルギー生成
-        types_in_deck = set()
-        all_my_cards = self.deck + self.hand + self.discard
-        if self.active: all_my_cards.append(self.active.card)
-        for ap in self.bench: all_my_cards.append(ap.card)
-
-        for c in all_my_cards:
-            if c.pokemon_type and c.pokemon_type != "-":
-                if c.pokemon_type == "Dragon":
-                    # ドラゴンタイプの場合は、ワザのコストから必要なタイプを抽出
-                    for attack in c.attacks:
-                        for etype in attack.energy_cost.keys():
-                            if etype != "Colorless":
-                                types_in_deck.add(etype)
-                else:
-                    types_in_deck.add(c.pokemon_type)
-        
-        types_list = list(types_in_deck)
-        if types_list:
-            etype = rng.choice(types_list)
+        # エネルギー生成（エネルギーゾーンからランダムに1つ）
+        if self.energy_zone:
+            etype = rng.choice(self.energy_zone)
             self.energy_pool[etype] = self.energy_pool.get(etype, 0) + 1
-            self.log(f"Energy: Generated {etype} energy (Pool: {self.energy_pool})")
+            self.log(f"Energy: Generated {etype} from Energy Zone. (Total Pool: {self.energy_pool})")
         
         self._use_abilities(opponent, rng)
+
+        # AI: 致死予測などは維持
+        imminent_death = False
+        if self.active and opponent.active:
+            opp_attack = opponent.active.best_attack
+            if opp_attack:
+                expected_dmg = opp_attack.damage
+                if self.active.card.weakness == opponent.active.card.pokemon_type:
+                    expected_dmg += 20
+                if expected_dmg >= self.active.remaining_hp:
+                    imminent_death = True
+
+        self._play_trainers(rng, opponent)
+        self._evolve_pokemon()
+        self._place_basics_to_bench()
+        
+        # エネルギー付着（戦略的割り当て）
+        self._attach_energy_smart(imminent_death)
+
+        return self._attack(opponent, rng)
+
+    def _attach_energy_smart(self, imminent_death: bool) -> None:
+        """手元のエネルギーをバトル場またはベンチに最適に割り当てる"""
+        if not self.energy_pool:
+            return
+
+        target_slots = []
+        if self.active: target_slots.append(self.active)
+        target_slots.extend(self.bench)
+
+        for etype, count in list(self.energy_pool.items()):
+            for _ in range(count):
+                # 誰に貼るべきかスコアリング
+                best_target = None
+                best_score = -1.0
+
+                for slot in target_slots:
+                    score = 0.0
+                    # 1. そのタイプを必要としているか？
+                    needed_specific = False
+                    needed_any = False
+                    strongest = slot.strongest_attack
+                    if strongest:
+                        if etype in strongest.energy_cost and slot.energy.get(etype, 0) < strongest.energy_cost[etype]:
+                            needed_specific = True
+                        if slot.total_energy < strongest.total_cost:
+                            needed_any = True
+                    
+                    if needed_specific: score += 10.0
+                    elif needed_any: score += 5.0
+                    
+                    # 2. バトル場が死にそうならベンチを優先
+                    if slot == self.active and imminent_death:
+                        score -= 8.0
+                    
+                    # 3. エース（EX）補正
+                    if slot.is_ex: score += 2.0
+
+                    if score > best_score:
+                        best_score = score
+                        best_target = slot
+                
+                if best_target and best_score > 0:
+                    best_target.energy[etype] = best_target.energy.get(etype, 0) + 1
+                    self.energy_pool[etype] -= 1
+                    self.log(f"Strategy: Attached {etype} to {best_target.card.name} (Score: {best_score})")
+                else:
+                    # 貼る相手がいない（全員満タンなど）
+                    break
 
         # --- すごいAI: 脅威予測と生存戦略 ---
         imminent_death = False
