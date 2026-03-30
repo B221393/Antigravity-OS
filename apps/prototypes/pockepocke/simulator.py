@@ -781,9 +781,11 @@ class Player:
             
             opponent.discard.append(opponent.active.card)
             
-            # 【新ギミック】オドリドリ（パッションダンス等）: 
-            if any(b.card.name == "オドリドリ" for b in self.bench):
-                self.draw(1)
+            # 【汎用特性チェック】ベンチに「気絶時ドロー」特性を持つポケモンがいる場合
+            for b in self.bench:
+                if b.card.ability == "ko_draw_1":
+                    self.draw(1)
+                    self.log(f"Ability: {b.card.name}'s {b.card.ability} triggered! Draw 1 card.")
             
             opponent.active = None
             if opponent.bench:
